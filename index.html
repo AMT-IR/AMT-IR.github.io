@@ -1,111 +1,3 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPONSORACB</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Vazirmatn -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-
-    <style>
-        /* تنظیم فونت پیش‌فرض و استایل‌های پایه */
-        body {
-            font-family: 'Vazirmatn', sans-serif;
-        }
-        
-        /* استایل برای هدر و فوتر شیشه‌ای */
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        /* استایل برای حالت دارک */
-        .dark .glass-effect {
-            background: rgba(15, 23, 42, 0.2); /* bg-slate-900 with opacity */
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        /* افکت درخشش برای نام سایت */
-        .animate-shine {
-            position: relative;
-            overflow: hidden;
-            -webkit-mask-image: linear-gradient(-75deg, rgba(0,0,0,.6) 30%, #000 50%, rgba(0,0,0,.6) 70%);
-            -webkit-mask-size: 200%;
-            animation: shine 3s linear infinite;
-        }
-
-        @keyframes shine {
-            from { -webkit-mask-position: 150%; }
-            to { -webkit-mask-position: -50%; }
-        }
-    </style>
-</head>
-<body class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-500">
-
-    <!-- Header Section -->
-    <header id="header" class="glass-effect fixed top-4 left-4 right-4 z-50 rounded-2xl shadow-lg transition-all duration-300">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-cyan-400 animate-shine">
-                SPONSORACB
-            </div>
-            
-            <!-- Hamburger Menu Button -->
-            <button id="menu-btn" class="md:hidden z-50">
-                <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-700 dark:text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-                 <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-700 dark:text-slate-300 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-        </div>
-    </header>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed inset-0 z-40 glass-effect flex-col items-center justify-center gap-6 text-2xl font-medium hidden">
-        <!-- Dark Mode Toggle -->
-        <button id="dark-mode-toggle-mobile" class="flex items-center gap-3 p-3 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
-            <span id="dark-mode-text-mobile">حالت تاریک</span>
-            <div class="relative">
-                 <svg id="theme-toggle-dark-icon-mobile" class="h-7 w-7 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                <svg id="theme-toggle-light-icon-mobile" class="h-7 w-7 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05A1 1 0 003.636 3.636l-.707.707a1 1 0 101.414 1.414l.707-.707zM3 11a1 1 0 100-2H2a1 1 0 100 2h1zM6.464 14.95l-.707.707a1 1 0 001.414 1.414l.707-.707a1 1 0 00-1.414-1.414z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-            </div>
-        </button>
-    </div>
-
-    <!-- Main Content -->
-    <main class="pt-32 pb-24">
-        <div class="container mx-auto px-6">
-            <div class="max-w-lg mx-auto text-center">
-                
-                <!-- Avatar -->
-                <div class="relative w-32 h-32 mx-auto mb-6">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-sky-400 to-blue-500 rounded-full animate-pulse"></div>
-                    <img src="https://placehold.co/128x128/e2e8f0/334155?text=S" alt="لوگوی SPONSORACB" class="relative w-full h-full rounded-full border-4 border-slate-100 dark:border-slate-900">
-                </div>
-                
-                <h1 class="text-4xl font-extrabold mb-2">SPONSORACB</h1>
-                <p class="text-lg text-slate-600 dark:text-slate-400 mb-8">
-                    بهترین خدمات و پشتیبانی در دستان شماست.
-                </p>
-
-                <!-- Links Section -->
-                <div class="space-y-4">
-                    <a href="https://t.me/sponsoracb" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform duration-300 shadow-lg">
-                        کانال تلگرام
-                    </a>
-                    <a href="https://t.me/sponsoracb_bot" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform duration-300 shadow-lg">
-                        ربات تلگرام
-                    </a>
-                    <a href="https://t.me/MYT7V" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-slate-800 dark:text-slate-900 bg-slate-200 dark:bg-slate-300 hover:scale-105 transform transition-transform duration-300 shadow-md">
                         ارتباط با مدیر
                     </a>
                     <a href="https://t.me/Sponsoracb_supportbot" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-slate-800 dark:text-slate-900 bg-slate-200 dark:bg-slate-300 hover:scale-105 transform transition-transform duration-300 shadow-md">
@@ -235,14 +127,302 @@
             }
 
             animateValue("stat-operators", 0, 17, 2000);
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPONSORACB - معرفی کانال و لینک‌ها</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* تنظیم فونت پیش‌فرض و استایل‌های پایه */
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        /* استایل برای هدر و فوتر شیشه‌ای */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* استایل برای حالت دارک */
+        .dark .glass-effect {
+            background: rgba(15, 23, 42, 0.2); /* bg-slate-900 with opacity */
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* افکت درخشش برای نام سایت */
+        .animate-shine {
+            position: relative;
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(-75deg, rgba(0,0,0,.6) 30%, #000 50%, rgba(0,0,0,.6) 70%);
+            -webkit-mask-size: 200%;
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            from { -webkit-mask-position: 150%; }
+            to { -webkit-mask-position: -50%; }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-500">
+
+    <!-- Header Section -->
+    <header id="header" class="glass-effect fixed top-4 left-4 right-4 z-50 rounded-2xl shadow-lg transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-cyan-400 animate-shine">
+                SPONSORACB
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <!-- Desktop Dark Mode Toggle -->
+                <button id="dark-mode-toggle-desktop" class="hidden md:flex items-center justify-center w-10 h-10 rounded-full text-slate-700 dark:text-slate-300 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+                     <svg id="theme-toggle-dark-icon-desktop" class="h-6 w-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                     <svg id="theme-toggle-light-icon-desktop" class="h-6 w-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05A1 1 0 003.636 3.636l-.707.707a1 1 0 101.414 1.414l.707-.707zM3 11a1 1 0 100-2H2a1 1 0 100 2h1zM6.464 14.95l-.707.707a1 1 0 001.414 1.414l.707-.707a1 1 0 00-1.414-1.414z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                </button>
+                
+                <!-- Hamburger Menu Button -->
+                <button id="menu-btn" class="md:hidden z-50">
+                    <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-700 dark:text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                     <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-700 dark:text-slate-300 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 glass-effect flex-col items-center justify-center gap-6 text-2xl font-medium hidden">
+        <!-- Dark Mode Toggle -->
+        <button id="dark-mode-toggle-mobile" class="flex items-center gap-3 p-3 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+            <span id="dark-mode-text-mobile">حالت تاریک</span>
+            <div class="relative">
+                 <svg id="theme-toggle-dark-icon-mobile" class="h-7 w-7 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                <svg id="theme-toggle-light-icon-mobile" class="h-7 w-7 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05A1 1 0 003.636 3.636l-.707.707a1 1 0 101.414 1.414l.707-.707zM3 11a1 1 0 100-2H2a1 1 0 100 2h1zM6.464 14.95l-.707.707a1 1 0 001.414 1.414l.707-.707a1 1 0 00-1.414-1.414z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+            </div>
+        </button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-40">
+        <div class="container mx-auto px-6">
+            <div class="max-w-lg mx-auto text-center">
+                
+                <!-- Avatar -->
+                <div class="relative w-32 h-32 mx-auto mb-6">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-sky-400 to-blue-500 rounded-full animate-pulse"></div>
+                    <img src="https://placehold.co/128x128/e2e8f0/334155?text=S" alt="لوگوی SPONSORACB" class="relative w-full h-full rounded-full border-4 border-slate-100 dark:border-slate-900">
+                </div>
+                
+                <h1 class="text-4xl font-extrabold mb-2">SPONSORACB</h1>
+                <p class="text-lg text-slate-600 dark:text-slate-400 mb-8">
+                    بهترین خدمات و پشتیبانی در دستان شماست.
+                </p>
+
+                <!-- Links Section -->
+                <div class="space-y-4">
+                    <a href="https://t.me/sponsoracb" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform duration-300 shadow-lg">
+                        کانال تلگرام
+                    </a>
+                    <a href="https://t.me/sponsoracb_bot" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform duration-300 shadow-lg">
+                        ربات تلگرام
+                    </a>
+                    <a href="https://t.me/MYT7V" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-slate-800 dark:text-slate-900 bg-slate-200 dark:bg-slate-300 hover:scale-105 transform transition-transform duration-300 shadow-md">
+                        ارتباط با مدیر
+                    </a>
+                    <a href="https://t.me/Sponsoracb_supportbot" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-slate-800 dark:text-slate-900 bg-slate-200 dark:bg-slate-300 hover:scale-105 transform transition-transform duration-300 shadow-md">
+                        پشتیبانی
+                    </a>
+                </div>
+
+                <!-- Stats Section -->
+                <div class="mt-12 grid grid-cols-2 gap-4 text-center">
+                    <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10">
+                        <p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-operators">0</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">اپراتور های انلاین</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10">
+                        <p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-bots">0</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">بات های فعال</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10">
+                        <p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-orders">0</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">سفارشات انجام شده</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10">
+                        <p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-users">0</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">کاربران انلاین</p>
+                    </div>
+                </div>
+
+                <!-- VIP & License Section -->
+                <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
+                    <a href="https://t.me/Sponsoracb_bot?start=vip_epanel_setting_bot" target="_blank" class="block w-full p-4 rounded-xl font-bold text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:scale-105 transform transition-transform duration-300 shadow-lg text-lg">
+                        خرید اکانت ویژه
+                    </a>
+                    <div class="p-4 rounded-xl bg-indigo-500/10 dark:bg-indigo-400/10">
+                        <p class="text-3xl font-bold text-indigo-500 dark:text-indigo-400" id="stat-licenses">0</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">لایسنس های خرید شده</p>
+                    </div>
+                </div>
+                
+                <!-- Products Section -->
+                <div class="mt-12">
+                    <h2 class="text-2xl font-bold mb-6 text-center">محصولات ما</h2>
+                    <div class="grid grid-cols-4 gap-3 sm:gap-4 text-center">
+                        <!-- Instagram -->
+                        <a href="#" class="aspect-square rounded-2xl flex flex-col items-center justify-center bg-slate-200 dark:bg-slate-800 transition-all duration-300 hover:scale-110 hover:shadow-xl shadow-lg p-2 group">
+                            <img src="https://s6.uupload.ir/files/258108_5mt8.png" 
+                                 alt="Instagram Logo" 
+                                 class="w-1/2 h-1/2 object-contain group-hover:animate-pulse"
+                                 onerror="this.onerror=null;this.src='https://placehold.co/64x64/e2e8f0/334155?text=Insta';">
+                            <span class="text-[10px] sm:text-xs font-bold mt-2 text-slate-500 dark:text-slate-400">بزودی</span>
+                        </a>
+                        <!-- Telegram -->
+                        <a href="#" class="aspect-square rounded-2xl flex flex-col items-center justify-center bg-slate-200 dark:bg-slate-800 transition-all duration-300 hover:scale-110 hover:shadow-xl shadow-lg p-2 group">
+                            <img src="https://s6.uupload.ir/files/telegram_logo.svg_lj9n.png" 
+                                 alt="Telegram Logo" 
+                                 class="w-1/2 h-1/2 object-contain group-hover:animate-pulse"
+                                 onerror="this.onerror=null;this.src='https://placehold.co/64x64/e2e8f0/334155?text=Tele';">
+                            <span class="text-[10px] sm:text-xs font-bold mt-2 text-slate-500 dark:text-slate-400">بزودی</span>
+                        </a>
+                        <!-- Eitaa -->
+                        <a href="#" class="aspect-square rounded-2xl flex flex-col items-center justify-center bg-slate-200 dark:bg-slate-800 transition-all duration-300 hover:scale-110 hover:shadow-xl shadow-lg p-2 group">
+                             <img src="https://s6.uupload.ir/files/picsart_25-10-19_12-11-46-658_v6x.png" 
+                                  alt="Eitaa Logo" 
+                                  class="w-1/2 h-1/2 object-contain group-hover:animate-pulse"
+                                  onerror="this.onerror=null;this.src='https://placehold.co/64x64/e2e8f0/334155?text=Eitaa';">
+                            <span class="text-[10px] sm:text-xs font-bold mt-2 text-slate-500 dark:text-slate-400">بزودی</span>
+                        </a>
+                        <!-- Rubika -->
+                        <a href="#" class="aspect-square rounded-2xl flex flex-col items-center justify-center bg-slate-200 dark:bg-slate-800 transition-all duration-300 hover:scale-110 hover:shadow-xl shadow-lg p-2 group">
+                            <img src="https://s6.uupload.ir/files/rubika_icon_numr.png" 
+                                 alt="Rubika Logo" 
+                                 class="w-1/2 h-1/2 object-contain group-hover:animate-pulse"
+                                 onerror="this.onerror=null;this.src='https://placehold.co/64x64/e2e8f0/334155?text=Rubika';">
+                            <span class="text-[10px] sm:text-xs font-bold mt-2 text-slate-500 dark:text-slate-400">بزودی</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="glass-effect fixed bottom-4 left-4 right-4 rounded-2xl shadow-lg">
+        <div class="container mx-auto px-6 py-4 text-center text-slate-600 dark:text-slate-400">
+            <p>&copy; 2025 SPONSORACB - تمام حقوق محفوظ است.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Dark Mode Elements ---
+            const themeToggleBtnMobile = document.getElementById('dark-mode-toggle-mobile');
+            const themeToggleDarkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
+            const themeToggleLightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
+            const darkModeTextMobile = document.getElementById('dark-mode-text-mobile');
+
+            const themeToggleBtnDesktop = document.getElementById('dark-mode-toggle-desktop');
+            const themeToggleDarkIconDesktop = document.getElementById('theme-toggle-dark-icon-desktop');
+            const themeToggleLightIconDesktop = document.getElementById('theme-toggle-light-icon-desktop');
+
+            // --- Function to update UI for both toggles ---
+            function updateThemeUI(isDark) {
+                if (isDark) {
+                    themeToggleLightIconMobile.classList.remove('hidden');
+                    themeToggleDarkIconMobile.classList.add('hidden');
+                    themeToggleLightIconDesktop.classList.remove('hidden');
+                    themeToggleDarkIconDesktop.classList.add('hidden');
+                    darkModeTextMobile.textContent = 'حالت روشن';
+                } else {
+                    themeToggleDarkIconMobile.classList.remove('hidden');
+                    themeToggleLightIconMobile.classList.add('hidden');
+                    themeToggleDarkIconDesktop.classList.remove('hidden');
+                    themeToggleLightIconDesktop.classList.add('hidden');
+                    darkModeTextMobile.textContent = 'حالت تاریک';
+                }
+            }
+            
+            // --- Check for saved theme on page load ---
+            const isCurrentlyDark = localStorage.getItem('color-theme') === 'dark' || 
+                                   (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+            if (isCurrentlyDark) {
+                document.documentElement.classList.add('dark');
+            }
+            updateThemeUI(isCurrentlyDark);
+
+            // --- The function that toggles the theme ---
+            const toggleTheme = () => {
+                const isDark = document.documentElement.classList.toggle('dark');
+                localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+                updateThemeUI(isDark);
+            };
+
+            // --- Add event listeners to both buttons ---
+            themeToggleBtnMobile.addEventListener('click', toggleTheme);
+            themeToggleBtnDesktop.addEventListener('click', toggleTheme);
+            
+            // --- Hamburger Menu Logic ---
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpenIcon = document.getElementById('menu-open-icon');
+            const menuCloseIcon = document.getElementById('menu-close-icon');
+
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                menuOpenIcon.classList.toggle('hidden');
+                menuCloseIcon.classList.toggle('hidden');
+            });
+
+            // --- Animated Counter Logic ---
+            function animateValue(objId, start, end, duration) {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const currentValue = Math.floor(progress * (end - start) + start);
+                    const formattedValue = currentValue.toLocaleString('fa-IR');
+                    const obj = document.getElementById(objId);
+                    if (obj) {
+                       obj.innerHTML = formattedValue;
+                    }
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+
+            animateValue("stat-operators", 0, 17, 2000);
             animateValue("stat-bots", 0, 3, 1500);
             animateValue("stat-orders", 0, 59375, 3000);
             animateValue("stat-users", 0, 708, 2500);
-            animateValue("stat-licenses", 0, 10589, 3000); // New counter
+            animateValue("stat-licenses", 0, 10589, 3000);
         });
     </script>
 </body>
 </html>
+
+
 
 
 <script type="text/javascript">
