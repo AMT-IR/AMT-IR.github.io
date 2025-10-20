@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPONSORACB</title>
+    <title>SPONSORACB - معرفی کانال و لینک‌ها</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,6 +17,82 @@
         /* General styling */
         body {
             font-family: 'Vazirmatn', sans-serif;
+            background-color: #f1f5f9; /* Light mode static background */
+            transition: background-color 0.5s ease-in-out;
+            overflow-x: hidden;
+        }
+
+        .dark body {
+            background-color: #020617; /* Dark mode static background */
+        }
+        
+        /* NEW: More beautiful animated blobs */
+        .blob-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.4;
+            transition: background 0.5s ease-in-out;
+        }
+
+        .dark .blob {
+            opacity: 0.5;
+        }
+
+        /* Blob 1: Turquoise */
+        .blob:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            top: -150px;
+            left: -150px;
+            background: #06b6d4;
+            animation: move-blob-1 20s infinite alternate;
+        }
+
+        /* Blob 2: Sky Blue */
+        .blob:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            bottom: -200px;
+            right: -250px;
+            background: #3b82f6;
+            animation: move-blob-2 25s infinite alternate;
+        }
+        
+        /* Blob 3: Purple */
+        .blob:nth-child(3) {
+            width: 300px;
+            height: 300px;
+            bottom: 50px;
+            left: -100px;
+            background: #8b5cf6;
+            animation: move-blob-3 18s infinite alternate;
+        }
+
+        @keyframes move-blob-1 {
+            0% { transform: scale(1) translate(0, 0) rotate(0deg); border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+            50% { transform: scale(1.1) translate(100px, 50px) rotate(180deg); }
+            100% { transform: scale(1) translate(0, 0) rotate(360deg); border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+        }
+        @keyframes move-blob-2 {
+            0% { transform: scale(1) translate(0, 0) rotate(0deg); border-radius: 70% 30% 40% 60% / 60% 40% 70% 30%; }
+            50% { transform: scale(1.2) translate(-80px, -40px) rotate(180deg); }
+            100% { transform: scale(1) translate(0, 0) rotate(360deg); border-radius: 70% 30% 40% 60% / 60% 40% 70% 30%; }
+        }
+        @keyframes move-blob-3 {
+            0% { transform: scale(1) translate(0, 0) rotate(0deg); border-radius: 30% 70% 60% 40% / 50% 60% 30% 70%; }
+            50% { transform: scale(1.1) translate(50px, -60px) rotate(180deg); }
+            100% { transform: scale(1) translate(0, 0) rotate(360deg); border-radius: 30% 70% 60% 40% / 50% 60% 30% 70%; }
         }
         
         /* Glass effect for header/footer */
@@ -81,7 +157,6 @@
             animation: pulse-glow-orange 2s infinite ease-in-out;
         }
         
-        /* NEW: Pink Glow for Aparat buttons */
         @keyframes pulse-glow-pink {
             0%, 100% { box-shadow: 0 0 5px #ec4899, 0 0 10px #ec4899; }
             50% { box-shadow: 0 0 15px #f472b6, 0 0 25px #f472b6; }
@@ -89,9 +164,27 @@
         .animate-pulse-glow-pink {
             animation: pulse-glow-pink 2s infinite ease-in-out;
         }
+        
+        /* On-Scroll Animation */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
-<body class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-500">
+<body class="text-slate-800 dark:text-slate-200">
+
+    <div class="blob-container">
+        <div class="blob"></div>
+        <div class="blob"></div>
+        <div class="blob"></div>
+    </div>
 
     <!-- Header Section -->
     <header id="header" class="glass-effect fixed top-4 left-4 right-4 z-50 rounded-2xl shadow-lg transition-all duration-300">
@@ -124,10 +217,10 @@
     </div>
 
     <!-- Main Content -->
-    <main class="pt-32 pb-40">
+    <main class="pt-32 pb-40 relative z-10">
         <div class="container mx-auto px-6">
             <!-- Hero Section -->
-            <div class="max-w-lg mx-auto text-center">
+            <div class="max-w-lg mx-auto text-center scroll-animate">
                 <div class="relative w-32 h-32 mx-auto mb-6">
                     <div class="absolute inset-0 bg-gradient-to-tr from-sky-400 to-blue-500 rounded-full animate-pulse"></div>
                     <img src="https://placehold.co/128x128/e2e8f0/334155?text=S" alt="لوگوی SPONSORACB" class="relative w-full h-full rounded-full border-4 border-slate-100 dark:border-slate-900">
@@ -146,7 +239,15 @@
                     <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10"><p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-orders">0</p><p class="text-sm text-slate-600 dark:text-slate-400 mt-1">سفارشات انجام شده</p></div>
                     <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10"><p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-users">0</p><p class="text-sm text-slate-600 dark:text-slate-400 mt-1">کاربران انلاین</p></div>
                 </div>
-                <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
+
+                <div class="mt-8 p-3 border border-slate-300 dark:border-slate-700 rounded-xl">
+                    <div class="flex justify-between items-center px-2 text-md">
+                        <span>سفارشات درحال انجام</span>
+                        <span id="live-orders-count" class="text-green-500 font-bold text-lg">۱۴۶+</span>
+                    </div>
+                </div>
+
+                <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
                     <a href="https://t.me/Sponsoracb_bot?start=vip_epanel_setting_bot" target="_blank" class="block w-full p-4 rounded-xl font-bold text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:scale-105 transform transition-transform duration-300 shadow-lg text-lg">خرید اکانت ویژه</a>
                     <div class="p-4 rounded-xl bg-indigo-500/10 dark:bg-indigo-400/10"><p class="text-3xl font-bold text-indigo-500 dark:text-indigo-400" id="stat-licenses">0</p><p class="text-sm text-slate-600 dark:text-slate-400 mt-1">لایسنس های خرید شده</p></div>
                 </div>
@@ -154,16 +255,15 @@
             
             <!-- Products Section -->
             <div class="max-w-4xl mx-auto text-center mt-16">
-                <h2 class="text-3xl font-extrabold mb-8">محصولات و خدمات ما</h2>
+                <h2 class="text-3xl font-extrabold mb-8 scroll-animate">محصولات و خدمات ما</h2>
                 
                 <!-- Instagram Services -->
-                <div class="mb-12">
+                <div class="mb-12 scroll-animate">
                     <div class="flex justify-center items-center gap-4 mb-6">
                         <img src="https://s6.uupload.ir/files/258108_5mt8.png" alt="Instagram Logo" class="w-12 h-12 object-contain">
                         <h3 class="text-2xl font-bold">خدمات اینستاگرام</h3>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <!-- Card with new hover -->
                         <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-red-500 hover:scale-105 transition-all duration-300">
                             <h4 class="text-xl font-bold mb-4">فالوور فیک - ایرانی پسر دختر</h4>
                             <div class="flex justify-between items-center">
@@ -192,7 +292,7 @@
                 </div>
 
                 <!-- Telegram Services -->
-                <div class="mb-12">
+                <div class="mb-12 scroll-animate">
                     <div class="flex justify-center items-center gap-4 mb-6">
                         <img src="https://s6.uupload.ir/files/telegram_logo.svg_lj9n.png" alt="Telegram Logo" class="w-12 h-12 object-contain">
                         <h3 class="text-2xl font-bold">خدمات تلگرام</h3>
@@ -226,7 +326,7 @@
                 </div>
 
                 <!-- Eitaa Services -->
-                <div class="mb-12">
+                <div class="mb-12 scroll-animate">
                     <div class="flex justify-center items-center gap-4 mb-6">
                         <img src="https://s6.uupload.ir/files/picsart_25-10-19_12-11-46-658_v6x.png" alt="Eitaa Logo" class="w-12 h-12 object-contain rounded-full">
                         <h3 class="text-2xl font-bold">خدمات ایتا</h3>
@@ -260,13 +360,12 @@
                 </div>
                 
                 <!-- Aparat Services -->
-                <div>
+                <div class="scroll-animate">
                     <div class="flex justify-center items-center gap-4 mb-6">
                         <img src="https://s6.uupload.ir/files/picsart_25-10-20_19-13-31-672_gl3x.png" alt="Aparat Logo" class="w-12 h-12 object-contain rounded-full">
                         <h3 class="text-2xl font-bold">خدمات آپارات</h3>
                     </div>
                      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Card with PINK button and hover effect -->
                         <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-pink-500 hover:scale-105 transition-all duration-300">
                             <h4 class="text-xl font-bold mb-4">فالوور آپارات — سریع</h4>
                             <div class="flex justify-between items-center">
@@ -292,7 +391,7 @@
     </main>
 
     <!-- Footer Section -->
-    <footer class="glass-effect fixed bottom-4 left-4 right-4 rounded-2xl shadow-lg">
+    <footer class="glass-effect fixed bottom-4 left-4 right-4 rounded-2xl shadow-lg z-20">
         <div class="container mx-auto px-6 py-4 text-center text-slate-600 dark:text-slate-400">
             <p>&copy; 2025 SPONSORACB - تمام حقوق محفوظ است.</p>
         </div>
@@ -300,7 +399,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Dark Mode Logic
+            // --- Dark Mode Logic ---
             const themeToggleBtnMobile = document.getElementById('dark-mode-toggle-mobile');
             const themeToggleDarkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
             const themeToggleLightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
@@ -308,6 +407,7 @@
             const themeToggleBtnDesktop = document.getElementById('dark-mode-toggle-desktop');
             const themeToggleDarkIconDesktop = document.getElementById('theme-toggle-dark-icon-desktop');
             const themeToggleLightIconDesktop = document.getElementById('theme-toggle-light-icon-desktop');
+            const docElement = document.documentElement;
 
             function updateThemeUI(isDark) {
                 if (isDark) {
@@ -325,14 +425,17 @@
                 }
             }
             
-            const isCurrentlyDark = localStorage.getItem('color-theme') === 'dark' || 
-                                   (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
-
-            if (isCurrentlyDark) document.documentElement.classList.add('dark');
-            updateThemeUI(isCurrentlyDark);
+            // MODIFIED: Default to dark mode if no theme is set
+            if (localStorage.getItem('color-theme') === 'light') {
+                docElement.classList.remove('dark');
+                updateThemeUI(false);
+            } else {
+                docElement.classList.add('dark');
+                updateThemeUI(true);
+            }
 
             const toggleTheme = () => {
-                const isDark = document.documentElement.classList.toggle('dark');
+                const isDark = docElement.classList.toggle('dark');
                 localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
                 updateThemeUI(isDark);
             };
@@ -340,7 +443,7 @@
             themeToggleBtnMobile.addEventListener('click', toggleTheme);
             themeToggleBtnDesktop.addEventListener('click', toggleTheme);
             
-            // Hamburger Menu Logic
+            // --- Hamburger Menu Logic ---
             const menuBtn = document.getElementById('menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             const menuOpenIcon = document.getElementById('menu-open-icon');
@@ -353,7 +456,7 @@
                 menuCloseIcon.classList.toggle('hidden');
             });
 
-            // Animated Counter Logic
+            // --- Animated Counter Logic ---
             function animateValue(objId, start, end, duration) {
                 let startTimestamp = null;
                 const step = (timestamp) => {
@@ -370,15 +473,63 @@
 
             animateValue("stat-operators", 0, 17, 2000);
             animateValue("stat-bots", 0, 3, 1500);
-            animateValue("stat-orders", 0, 59375, 3000);
-            animateValue("stat-users", 0, 708, 2500);
             animateValue("stat-licenses", 0, 10589, 3000);
+
+            // --- Dynamic Counters Logic ---
+            const ordersElement = document.getElementById('stat-orders');
+            if (ordersElement) {
+                let totalOrders = 59375;
+                animateValue("stat-orders", 0, totalOrders, 3000);
+                setTimeout(() => {
+                    setInterval(() => {
+                        totalOrders += 3;
+                        ordersElement.innerHTML = totalOrders.toLocaleString('fa-IR');
+                    }, 2000);
+                }, 3000);
+            }
+
+            const usersElement = document.getElementById('stat-users');
+            if (usersElement) {
+                let onlineUsers = 708;
+                animateValue("stat-users", 0, onlineUsers, 2500);
+                setTimeout(() => {
+                    setInterval(() => {
+                        onlineUsers += 13;
+                        usersElement.innerHTML = onlineUsers.toLocaleString('fa-IR');
+                    }, 2000);
+                }, 2500);
+            }
+
+            const liveOrdersElement = document.getElementById('live-orders-count');
+            if(liveOrdersElement) {
+                let liveOrdersCount = 146;
+                liveOrdersElement.innerHTML = liveOrdersCount.toLocaleString('fa-IR') + '+';
+                setInterval(() => {
+                    liveOrdersCount += 19;
+                    liveOrdersElement.innerHTML = liveOrdersCount.toLocaleString('fa-IR') + '+';
+                }, 5000);
+            }
+
+            // --- On-Scroll Animation Logic ---
+            const animatedElements = document.querySelectorAll('.scroll-animate');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
         });
     </script>
 </body>
 </html>
-
-
 
 
 <script type="text/javascript">
