@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPONSORACB - Website Official</title>
+    <title>SPONSORACB - معرفی کانال و لینک‌ها</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,26 +14,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* تنظیم فونت پیش‌فرض و استایل‌های پایه */
+        /* General styling */
         body {
             font-family: 'Vazirmatn', sans-serif;
         }
         
-        /* استایل برای هدر و فوتر شیشه‌ای */
+        /* Glass effect for header/footer */
         .glass-effect {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.15);
         }
-
-        /* استایل برای حالت دارک */
         .dark .glass-effect {
-            background: rgba(15, 23, 42, 0.2); /* bg-slate-900 with opacity */
+            background: rgba(15, 23, 42, 0.2);
             border-color: rgba(255, 255, 255, 0.1);
         }
 
-        /* افکت درخشش برای نام سایت */
+        /* Shine effect for site name */
         .animate-shine {
             position: relative;
             overflow: hidden;
@@ -41,10 +39,55 @@
             -webkit-mask-size: 200%;
             animation: shine 3s linear infinite;
         }
-
         @keyframes shine {
             from { -webkit-mask-position: 150%; }
             to { -webkit-mask-position: -50%; }
+        }
+
+        /* RGB shadow for price text */
+        .price-text-rgb {
+            font-weight: 300; 
+            color: #1e293b;
+            text-shadow: 
+                0.5px 0.5px 1px rgba(255, 0, 85, 0.6), 
+                -0.5px -0.5px 1px rgba(0, 255, 255, 0.6);
+        }
+        .dark .price-text-rgb {
+            color: #e2e8f0;
+        }
+
+        /* Animated glow for order buttons */
+        @keyframes pulse-glow-red {
+            0%, 100% { box-shadow: 0 0 5px #ef4444, 0 0 10px #ef4444; }
+            50% { box-shadow: 0 0 15px #f87171, 0 0 25px #f87171; }
+        }
+        .animate-pulse-glow-red {
+            animation: pulse-glow-red 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-glow-cyan {
+            0%, 100% { box-shadow: 0 0 5px #06b6d4, 0 0 10px #06b6d4; }
+            50% { box-shadow: 0 0 15px #22d3ee, 0 0 25px #22d3ee; }
+        }
+        .animate-pulse-glow-cyan {
+            animation: pulse-glow-cyan 2s infinite ease-in-out;
+        }
+        
+        @keyframes pulse-glow-orange {
+            0%, 100% { box-shadow: 0 0 5px #f97316, 0 0 10px #f97316; }
+            50% { box-shadow: 0 0 15px #fb923c, 0 0 25px #fb923c; }
+        }
+        .animate-pulse-glow-orange {
+            animation: pulse-glow-orange 2s infinite ease-in-out;
+        }
+        
+        /* NEW: Pink Glow for Aparat buttons */
+        @keyframes pulse-glow-pink {
+            0%, 100% { box-shadow: 0 0 5px #ec4899, 0 0 10px #ec4899; }
+            50% { box-shadow: 0 0 15px #f472b6, 0 0 25px #f472b6; }
+        }
+        .animate-pulse-glow-pink {
+            animation: pulse-glow-pink 2s infinite ease-in-out;
         }
     </style>
 </head>
@@ -56,22 +99,14 @@
             <div class="text-2xl font-bold tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-cyan-400 animate-shine">
                 SPONSORACB
             </div>
-            
             <div class="flex items-center gap-4">
-                <!-- Desktop Dark Mode Toggle -->
                 <button id="dark-mode-toggle-desktop" class="hidden md:flex items-center justify-center w-10 h-10 rounded-full text-slate-700 dark:text-slate-300 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
                      <svg id="theme-toggle-dark-icon-desktop" class="h-6 w-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
                      <svg id="theme-toggle-light-icon-desktop" class="h-6 w-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05A1 1 0 003.636 3.636l-.707.707a1 1 0 101.414 1.414l.707-.707zM3 11a1 1 0 100-2H2a1 1 0 100 2h1zM6.464 14.95l-.707.707a1 1 0 001.414 1.414l.707-.707a1 1 0 00-1.414-1.414z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
                 </button>
-                
-                <!-- Hamburger Menu Button -->
                 <button id="menu-btn" class="md:hidden z-50">
-                    <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-700 dark:text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                    </svg>
-                     <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-700 dark:text-slate-300 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+                    <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-700 dark:text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+                    <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-700 dark:text-slate-300 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
             </div>
         </div>
@@ -79,10 +114,9 @@
 
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="fixed inset-0 z-40 glass-effect flex-col items-center justify-center gap-6 text-2xl font-medium hidden">
-        <!-- Dark Mode Toggle -->
         <button id="dark-mode-toggle-mobile" class="flex items-center gap-3 p-3 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
             <span id="dark-mode-text-mobile">حالت تاریک</span>
-            <div class="relative">
+            <div>
                  <svg id="theme-toggle-dark-icon-mobile" class="h-7 w-7 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
                 <svg id="theme-toggle-light-icon-mobile" class="h-7 w-7 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05A1 1 0 003.636 3.636l-.707.707a1 1 0 101.414 1.414l.707-.707zM3 11a1 1 0 100-2H2a1 1 0 100 2h1zM6.464 14.95l-.707.707a1 1 0 001.414 1.414l.707-.707a1 1 0 00-1.414-1.414z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
             </div>
@@ -92,102 +126,164 @@
     <!-- Main Content -->
     <main class="pt-32 pb-40">
         <div class="container mx-auto px-6">
+            <!-- Hero Section -->
             <div class="max-w-lg mx-auto text-center">
-                
-                <!-- Avatar -->
                 <div class="relative w-32 h-32 mx-auto mb-6">
                     <div class="absolute inset-0 bg-gradient-to-tr from-sky-400 to-blue-500 rounded-full animate-pulse"></div>
                     <img src="https://placehold.co/128x128/e2e8f0/334155?text=S" alt="لوگوی SPONSORACB" class="relative w-full h-full rounded-full border-4 border-slate-100 dark:border-slate-900">
                 </div>
-                
                 <h1 class="text-4xl font-extrabold mb-2">SPONSORACB</h1>
-                <p class="text-lg text-slate-600 dark:text-slate-400 mb-8">
-                    بهترین خدمات و پشتیبانی در دستان شماست.
-                </p>
-
-                <!-- Links Section -->
+                <p class="text-lg text-slate-600 dark:text-slate-400 mb-8">بهترین خدمات و پشتیبانی در دستان شماست.</p>
                 <div class="space-y-4">
-                    <a href="https://t.me/sponsoracb" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform duration-300 shadow-lg">
-                        کانال تلگرام
-                    </a>
-                    <a href="https://t.me/sponsoracb_bot" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform duration-300 shadow-lg">
-                        ربات تلگرام
-                    </a>
-                    <a href="https://t.me/MYT7V" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-slate-800 dark:text-slate-900 bg-slate-200 dark:bg-slate-300 hover:scale-105 transform transition-transform duration-300 shadow-md">
-                        ارتباط با مدیر
-                    </a>
-                    <a href="https://t.me/Sponsoracb_supportbot" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-slate-800 dark:text-slate-900 bg-slate-200 dark:bg-slate-300 hover:scale-105 transform transition-transform duration-300 shadow-md">
-                        پشتیبانی
-                    </a>
+                     <a href="https://t.me/sponsoracb" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform duration-300 shadow-lg">کانال تلگرام</a>
+                     <a href="https://t.me/sponsoracb_bot" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform duration-300 shadow-lg">ربات تلگرام</a>
+                     <a href="https://t.me/MYT7V" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-slate-800 dark:text-slate-900 bg-slate-200 dark:bg-slate-300 hover:scale-105 transform transition-transform duration-300 shadow-md">ارتباط با مدیر</a>
+                     <a href="https://t.me/Sponsoracb_supportbot" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-slate-800 dark:text-slate-900 bg-slate-200 dark:bg-slate-300 hover:scale-105 transform transition-transform duration-300 shadow-md">پشتیبانی</a>
                 </div>
-
-                <!-- Stats Section -->
                 <div class="mt-12 grid grid-cols-2 gap-4 text-center">
-                    <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10">
-                        <p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-operators">0</p>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">اپراتور های انلاین</p>
+                    <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10"><p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-operators">0</p><p class="text-sm text-slate-600 dark:text-slate-400 mt-1">اپراتور های انلاین</p></div>
+                    <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10"><p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-bots">0</p><p class="text-sm text-slate-600 dark:text-slate-400 mt-1">بات های فعال</p></div>
+                    <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10"><p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-orders">0</p><p class="text-sm text-slate-600 dark:text-slate-400 mt-1">سفارشات انجام شده</p></div>
+                    <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10"><p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-users">0</p><p class="text-sm text-slate-600 dark:text-slate-400 mt-1">کاربران انلاین</p></div>
+                </div>
+                <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
+                    <a href="https://t.me/Sponsoracb_bot?start=vip_epanel_setting_bot" target="_blank" class="block w-full p-4 rounded-xl font-bold text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:scale-105 transform transition-transform duration-300 shadow-lg text-lg">خرید اکانت ویژه</a>
+                    <div class="p-4 rounded-xl bg-indigo-500/10 dark:bg-indigo-400/10"><p class="text-3xl font-bold text-indigo-500 dark:text-indigo-400" id="stat-licenses">0</p><p class="text-sm text-slate-600 dark:text-slate-400 mt-1">لایسنس های خرید شده</p></div>
+                </div>
+            </div>
+            
+            <!-- Products Section -->
+            <div class="max-w-4xl mx-auto text-center mt-16">
+                <h2 class="text-3xl font-extrabold mb-8">محصولات و خدمات ما</h2>
+                
+                <!-- Instagram Services -->
+                <div class="mb-12">
+                    <div class="flex justify-center items-center gap-4 mb-6">
+                        <img src="https://s6.uupload.ir/files/258108_5mt8.png" alt="Instagram Logo" class="w-12 h-12 object-contain">
+                        <h3 class="text-2xl font-bold">خدمات اینستاگرام</h3>
                     </div>
-                    <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10">
-                        <p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-bots">0</p>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">بات های فعال</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Card with new hover -->
+                        <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-red-500 hover:scale-105 transition-all duration-300">
+                            <h4 class="text-xl font-bold mb-4">فالوور فیک - ایرانی پسر دختر</h4>
+                            <div class="flex justify-between items-center">
+                                <a href="https://t.me/sponsoracb_bot" target="_blank" class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-red-500 to-rose-500 rounded-lg animate-pulse-glow-red">سفارش</a>
+                                <p class="text-2xl price-text-rgb">۲۰۱,۰۰۰ ت</p>
+                            </div>
+                        </div>
+                        <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-red-500 hover:scale-105 transition-all duration-300">
+                            <h4 class="text-xl font-bold mb-4">لایک فیک - ایرانی دختر پسر</h4>
+                            <div class="flex justify-between items-center">
+                                <a href="https://t.me/sponsoracb_bot" target="_blank" class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-red-500 to-rose-500 rounded-lg animate-pulse-glow-red">سفارش</a>
+                                <p class="text-2xl price-text-rgb">۵۰,۰۰۰ ت</p>
+                            </div>
+                        </div>
+                        <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-red-500 hover:scale-105 transition-all duration-300">
+                            <h4 class="text-xl font-bold mb-4">بازدید — ریلز و پست</h4>
+                            <div class="flex justify-between items-center">
+                                <a href="https://t.me/sponsoracb_bot" target="_blank" class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-red-500 to-rose-500 rounded-lg animate-pulse-glow-red">سفارش</a>
+                                <p class="text-2xl price-text-rgb">۱,۰۰۰ ت</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10">
-                        <p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-orders">0</p>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">سفارشات انجام شده</p>
-                    </div>
-                    <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10">
-                        <p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-users">0</p>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">کاربران انلاین</p>
+                    <div class="mt-6 border-t border-slate-300 dark:border-slate-700 pt-4 text-center">
+                        <p class="text-sm text-slate-500 dark:text-slate-400">* تمام قیمت ها برای هر ۱,۰۰۰ عدد (1K) می‌باشد.</p>
                     </div>
                 </div>
 
-                <!-- VIP & License Section -->
-                <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
-                    <a href="https://t.me/Sponsoracb_bot?start=vip_epanel_setting_bot" target="_blank" class="block w-full p-4 rounded-xl font-bold text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:scale-105 transform transition-transform duration-300 shadow-lg text-lg">
-                        خرید اکانت ویژه
-                    </a>
-                    <div class="p-4 rounded-xl bg-indigo-500/10 dark:bg-indigo-400/10">
-                        <p class="text-3xl font-bold text-indigo-500 dark:text-indigo-400" id="stat-licenses">0</p>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">لایسنس های خرید شده</p>
+                <!-- Telegram Services -->
+                <div class="mb-12">
+                    <div class="flex justify-center items-center gap-4 mb-6">
+                        <img src="https://s6.uupload.ir/files/telegram_logo.svg_lj9n.png" alt="Telegram Logo" class="w-12 h-12 object-contain">
+                        <h3 class="text-2xl font-bold">خدمات تلگرام</h3>
+                    </div>
+                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-cyan-500 hover:scale-105 transition-all duration-300">
+                            <h4 class="text-xl font-bold mb-4">ممبر فیک — ایرانی میکس</h4>
+                            <div class="flex justify-between items-center">
+                                <a href="https://t.me/sponsoracb_bot" target="_blank" class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 rounded-lg animate-pulse-glow-cyan">سفارش</a>
+                                <p class="text-2xl price-text-rgb">۸۰,۰۰۰ ت</p>
+                            </div>
+                        </div>
+                        <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-cyan-500 hover:scale-105 transition-all duration-300">
+                            <h4 class="text-xl font-bold mb-4">ادلیست ایرانی – گروه زیر ۱۰۰ک</h4>
+                            <div class="flex justify-between items-center">
+                                <a href="https://t.me/sponsoracb_bot" target="_blank" class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 rounded-lg animate-pulse-glow-cyan">سفارش</a>
+                                <p class="text-2xl price-text-rgb">۸۴,۰۰۰ ت</p>
+                            </div>
+                        </div>
+                        <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-cyan-500 hover:scale-105 transition-all duration-300">
+                            <h4 class="text-xl font-bold mb-4">اد اجباری عادی – گروه زیر ۱۰۰ک</h4>
+                            <div class="flex justify-between items-center">
+                                <a href="https://t.me/sponsoracb_bot" target="_blank" class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 rounded-lg animate-pulse-glow-cyan">سفارش</a>
+                                <p class="text-2xl price-text-rgb">۸۵,۰۰۰ ت</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 border-t border-slate-300 dark:border-slate-700 pt-4 text-center">
+                        <p class="text-sm text-slate-500 dark:text-slate-400">* تمام قیمت ها برای هر ۱,۰۰۰ عدد (1K) می‌باشد.</p>
+                    </div>
+                </div>
+
+                <!-- Eitaa Services -->
+                <div class="mb-12">
+                    <div class="flex justify-center items-center gap-4 mb-6">
+                        <img src="https://s6.uupload.ir/files/picsart_25-10-19_12-11-46-658_v6x.png" alt="Eitaa Logo" class="w-12 h-12 object-contain rounded-full">
+                        <h3 class="text-2xl font-bold">خدمات ایتا</h3>
+                    </div>
+                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-orange-500 hover:scale-105 transition-all duration-300">
+                            <h4 class="text-xl font-bold mb-4">ممبر ایتا — کانال</h4>
+                            <div class="flex justify-between items-center">
+                                <a href="https://t.me/sponsoracb_bot" target="_blank" class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg animate-pulse-glow-orange">سفارش</a>
+                                <p class="text-2xl price-text-rgb">۱۴۰,۰۰۰ ت</p>
+                            </div>
+                        </div>
+                        <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-orange-500 hover:scale-105 transition-all duration-300">
+                            <h4 class="text-xl font-bold mb-4">بازدید ایتا — ۱ پست آخر</h4>
+                            <div class="flex justify-between items-center">
+                                <a href="https://t.me/sponsoracb_bot" target="_blank" class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg animate-pulse-glow-orange">سفارش</a>
+                                <p class="text-2xl price-text-rgb">۲۸,۰۰۰ ت</p>
+                            </div>
+                        </div>
+                        <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-orange-500 hover:scale-105 transition-all duration-300">
+                            <h4 class="text-xl font-bold mb-4">بازدید ایتا — ۵ پست آخر</h4>
+                            <div class="flex justify-between items-center">
+                                <a href="https://t.me/sponsoracb_bot" target="_blank" class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg animate-pulse-glow-orange">سفارش</a>
+                                <p class="text-2xl price-text-rgb">۴۰,۰۰۰ ت</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 border-t border-slate-300 dark:border-slate-700 pt-4 text-center">
+                        <p class="text-sm text-slate-500 dark:text-slate-400">* تمام قیمت ها برای هر ۱,۰۰۰ عدد (1K) می‌باشد.</p>
                     </div>
                 </div>
                 
-                <!-- Products Section -->
-                <div class="mt-12">
-                    <h2 class="text-2xl font-bold mb-6 text-center">محصولات ما</h2>
-                    <div class="grid grid-cols-4 gap-3 sm:gap-4 text-center">
-                        <!-- Instagram -->
-                        <a href="#" class="aspect-square rounded-2xl flex flex-col items-center justify-center bg-slate-200 dark:bg-slate-800 transition-all duration-300 hover:scale-110 hover:shadow-xl shadow-lg p-2 group">
-                            <img src="https://s6.uupload.ir/files/258108_5mt8.png" 
-                                 alt="Instagram Logo" 
-                                 class="w-1/2 h-1/2 object-contain group-hover:animate-pulse"
-                                 onerror="this.onerror=null;this.src='https://placehold.co/64x64/e2e8f0/334155?text=Insta';">
-                            <span class="text-[10px] sm:text-xs font-bold mt-2 text-slate-500 dark:text-slate-400">بزودی</span>
-                        </a>
-                        <!-- Telegram -->
-                        <a href="#" class="aspect-square rounded-2xl flex flex-col items-center justify-center bg-slate-200 dark:bg-slate-800 transition-all duration-300 hover:scale-110 hover:shadow-xl shadow-lg p-2 group">
-                            <img src="https://s6.uupload.ir/files/telegram_logo.svg_lj9n.png" 
-                                 alt="Telegram Logo" 
-                                 class="w-1/2 h-1/2 object-contain group-hover:animate-pulse"
-                                 onerror="this.onerror=null;this.src='https://placehold.co/64x64/e2e8f0/334155?text=Tele';">
-                            <span class="text-[10px] sm:text-xs font-bold mt-2 text-slate-500 dark:text-slate-400">بزودی</span>
-                        </a>
-                        <!-- Eitaa -->
-                        <a href="#" class="aspect-square rounded-2xl flex flex-col items-center justify-center bg-slate-200 dark:bg-slate-800 transition-all duration-300 hover:scale-110 hover:shadow-xl shadow-lg p-2 group">
-                             <img src="https://s6.uupload.ir/files/picsart_25-10-19_12-11-46-658_v6x.png" 
-                                  alt="Eitaa Logo" 
-                                  class="w-1/2 h-1/2 object-contain group-hover:animate-pulse"
-                                  onerror="this.onerror=null;this.src='https://placehold.co/64x64/e2e8f0/334155?text=Eitaa';">
-                            <span class="text-[10px] sm:text-xs font-bold mt-2 text-slate-500 dark:text-slate-400">بزودی</span>
-                        </a>
-                        <!-- Rubika -->
-                        <a href="#" class="aspect-square rounded-2xl flex flex-col items-center justify-center bg-slate-200 dark:bg-slate-800 transition-all duration-300 hover:scale-110 hover:shadow-xl shadow-lg p-2 group">
-                            <img src="https://s6.uupload.ir/files/rubika_icon_numr.png" 
-                                 alt="Rubika Logo" 
-                                 class="w-1/2 h-1/2 object-contain group-hover:animate-pulse"
-                                 onerror="this.onerror=null;this.src='https://placehold.co/64x64/e2e8f0/334155?text=Rubika';">
-                            <span class="text-[10px] sm:text-xs font-bold mt-2 text-slate-500 dark:text-slate-400">بزودی</span>
-                        </a>
+                <!-- Aparat Services -->
+                <div>
+                    <div class="flex justify-center items-center gap-4 mb-6">
+                        <img src="https://s6.uupload.ir/files/picsart_25-10-20_19-13-31-672_gl3x.png" alt="Aparat Logo" class="w-12 h-12 object-contain rounded-full">
+                        <h3 class="text-2xl font-bold">خدمات آپارات</h3>
+                    </div>
+                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Card with PINK button and hover effect -->
+                        <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-pink-500 hover:scale-105 transition-all duration-300">
+                            <h4 class="text-xl font-bold mb-4">فالوور آپارات — سریع</h4>
+                            <div class="flex justify-between items-center">
+                                <a href="https://t.me/sponsoracb_bot" target="_blank" class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-pink-500 to-rose-500 rounded-lg animate-pulse-glow-pink">سفارش</a>
+                                <p class="text-2xl price-text-rgb">۵۰,۰۰۰ ت</p>
+                            </div>
+                        </div>
+                        <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-pink-500 hover:scale-105 transition-all duration-300">
+                            <h4 class="text-xl font-bold mb-4">بازدید آپارات — سریع</h4>
+                            <div class="flex justify-between items-center">
+                                <a href="https://t.me/sponsoracb_bot" target="_blank" class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-pink-500 to-rose-500 rounded-lg animate-pulse-glow-pink">سفارش</a>
+                                <p class="text-2xl price-text-rgb">۲۰,۰۰۰ ت</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 border-t border-slate-300 dark:border-slate-700 pt-4 text-center">
+                        <p class="text-sm text-slate-500 dark:text-slate-400">* تمام قیمت ها برای هر ۱,۰۰۰ عدد (1K) می‌باشد.</p>
                     </div>
                 </div>
 
@@ -204,17 +300,15 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // --- Dark Mode Elements ---
+            // Dark Mode Logic
             const themeToggleBtnMobile = document.getElementById('dark-mode-toggle-mobile');
             const themeToggleDarkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
             const themeToggleLightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
             const darkModeTextMobile = document.getElementById('dark-mode-text-mobile');
-
             const themeToggleBtnDesktop = document.getElementById('dark-mode-toggle-desktop');
             const themeToggleDarkIconDesktop = document.getElementById('theme-toggle-dark-icon-desktop');
             const themeToggleLightIconDesktop = document.getElementById('theme-toggle-light-icon-desktop');
 
-            // --- Function to update UI for both toggles ---
             function updateThemeUI(isDark) {
                 if (isDark) {
                     themeToggleLightIconMobile.classList.remove('hidden');
@@ -231,27 +325,22 @@
                 }
             }
             
-            // --- Check for saved theme on page load ---
             const isCurrentlyDark = localStorage.getItem('color-theme') === 'dark' || 
                                    (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
-            if (isCurrentlyDark) {
-                document.documentElement.classList.add('dark');
-            }
+            if (isCurrentlyDark) document.documentElement.classList.add('dark');
             updateThemeUI(isCurrentlyDark);
 
-            // --- The function that toggles the theme ---
             const toggleTheme = () => {
                 const isDark = document.documentElement.classList.toggle('dark');
                 localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
                 updateThemeUI(isDark);
             };
 
-            // --- Add event listeners to both buttons ---
             themeToggleBtnMobile.addEventListener('click', toggleTheme);
             themeToggleBtnDesktop.addEventListener('click', toggleTheme);
             
-            // --- Hamburger Menu Logic ---
+            // Hamburger Menu Logic
             const menuBtn = document.getElementById('menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             const menuOpenIcon = document.getElementById('menu-open-icon');
@@ -264,7 +353,7 @@
                 menuCloseIcon.classList.toggle('hidden');
             });
 
-            // --- Animated Counter Logic ---
+            // Animated Counter Logic
             function animateValue(objId, start, end, duration) {
                 let startTimestamp = null;
                 const step = (timestamp) => {
@@ -273,12 +362,8 @@
                     const currentValue = Math.floor(progress * (end - start) + start);
                     const formattedValue = currentValue.toLocaleString('fa-IR');
                     const obj = document.getElementById(objId);
-                    if (obj) {
-                       obj.innerHTML = formattedValue;
-                    }
-                    if (progress < 1) {
-                        window.requestAnimationFrame(step);
-                    }
+                    if (obj) obj.innerHTML = formattedValue;
+                    if (progress < 1) window.requestAnimationFrame(step);
                 };
                 window.requestAnimationFrame(step);
             }
@@ -292,6 +377,8 @@
     </script>
 </body>
 </html>
+
+
 
 
 <script type="text/javascript">
