@@ -116,26 +116,6 @@
             from { -webkit-mask-position: 150%; }
             to { -webkit-mask-position: -50%; }
         }
-
-        /* Price text shadow */
-        .price-text-rgb {
-            font-weight: 300; 
-            color: #1e293b;
-            text-shadow: 0.5px 0.5px 1px rgba(255, 0, 85, 0.6), -0.5px -0.5px 1px rgba(0, 255, 255, 0.6);
-        }
-        .dark .price-text-rgb {
-            color: #e2e8f0;
-        }
-
-        /* Glow effects */
-        @keyframes pulse-glow-red { 0%, 100% { box-shadow: 0 0 5px #ef4444, 0 0 10px #ef4444; } 50% { box-shadow: 0 0 15px #f87171, 0 0 25px #f87171; } }
-        .animate-pulse-glow-red { animation: pulse-glow-red 2s infinite ease-in-out; }
-        @keyframes pulse-glow-cyan { 0%, 100% { box-shadow: 0 0 5px #06b6d4, 0 0 10px #06b6d4; } 50% { box-shadow: 0 0 15px #22d3ee, 0 0 25px #22d3ee; } }
-        .animate-pulse-glow-cyan { animation: pulse-glow-cyan 2s infinite ease-in-out; }
-        @keyframes pulse-glow-orange { 0%, 100% { box-shadow: 0 0 5px #f97316, 0 0 10px #f97316; } 50% { box-shadow: 0 0 15px #fb923c, 0 0 25px #fb923c; } }
-        .animate-pulse-glow-orange { animation: pulse-glow-orange 2s infinite ease-in-out; }
-        @keyframes pulse-glow-pink { 0%, 100% { box-shadow: 0 0 5px #ec4899, 0 0 10px #ec4899; } 50% { box-shadow: 0 0 15px #f472b6, 0 0 25px #f472b6; } }
-        .animate-pulse-glow-pink { animation: pulse-glow-pink 2s infinite ease-in-out; }
         
         /* On-Scroll Animation */
         .scroll-animate {
@@ -159,7 +139,7 @@
             transform: translateY(0);
         }
 
-        /* Comments Form Styling */
+        /* Form Input Styling */
         .form-input {
             background-color: transparent;
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -172,9 +152,7 @@
             outline: none;
             border-color: #38bdf8;
         }
-        .form-input.invalid { border-color: #ef4444 !important; }
-        .form-input.valid { border-color: #22c55e !important; }
-
+       
         /* Tab Navigation Styling */
         .tab-button.active {
             background-image: linear-gradient(to right, var(--tw-gradient-stops));
@@ -182,6 +160,27 @@
             --tw-gradient-to: #3b82f6;
             --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
             color: white;
+        }
+
+        /* Modal Styling */
+        .modal-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .modal-content {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+        .modal-overlay.hidden .modal-content {
+            transform: scale(0.95);
+            opacity: 0;
+        }
+        
+        /* Order Algorithm Progress Bar */
+        .progress-bar-background {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .progress-bar-fill {
+            background-image: linear-gradient(to right, #38bdf8, #818cf8);
+            transition: width 0.4s ease-in-out;
         }
     </style>
 </head>
@@ -199,7 +198,14 @@
             <div class="text-2xl font-bold tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-cyan-400 animate-shine">
                 SPONSORACB
             </div>
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2 md:gap-4">
+                 <!-- Account Button -->
+                <button id="account-btn" class="flex items-center gap-2 text-sm font-semibold p-2 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>
+                    <span id="account-text">حساب کاربری</span>
+                </button>
+                <div class="w-px h-6 bg-slate-300 dark:bg-slate-700"></div>
+                <!-- Dark Mode Button -->
                 <button id="dark-mode-toggle-desktop" class="hidden md:flex items-center justify-center w-10 h-10 rounded-full text-slate-700 dark:text-slate-300 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
                      <svg id="theme-toggle-dark-icon-desktop" class="h-6 w-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
                      <svg id="theme-toggle-light-icon-desktop" class="h-6 w-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05A1 1 0 003.636 3.636l-.707.707a1 1 0 101.414 1.414l.707-.707zM3 11a1 1 0 100-2H2a1 1 0 100 2h1zM6.464 14.95l-.707.707a1 1 0 001.414 1.414l.707-.707a1 1 0 00-1.414-1.414z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
@@ -260,8 +266,53 @@
                 </div>
             </div>
             
+            <!-- Order Algorithm Section -->
+            <div id="order-algorithm-section" class="max-w-4xl mx-auto text-center mt-20 scroll-animate">
+                <h2 class="text-3xl font-extrabold mb-8">الگوریتم ثبت سفارش</h2>
+                <div class="glass-effect p-6 md:p-8 rounded-2xl">
+                    <!-- Progress Bar -->
+                    <div class="mb-8">
+                        <div class="progress-bar-background w-full h-2 rounded-full">
+                            <div id="progress-bar" class="progress-bar-fill h-2 rounded-full" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <!-- Steps Container -->
+                    <div class="min-h-[200px]">
+                        <!-- Step 1: Select Service -->
+                        <div id="step-1" class="space-y-4">
+                            <h3 class="text-xl font-bold">مرحله ۱: سرویس را انتخاب کنید</h3>
+                            <select id="service-select" class="form-input w-full md:w-1/2 mx-auto p-3 rounded-lg text-slate-800 dark:text-slate-200 bg-transparent">
+                                <option value="instagram" class="text-slate-800">اینستاگرام - فالوور</option>
+                                <option value="telegram" class="text-slate-800">تلگرام - ممبر</option>
+                                <option value="aparat" class="text-slate-800">آپارات - بازدید</option>
+                            </select>
+                            <button class="next-btn w-full md:w-1/2 mx-auto p-3 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform">مرحله بعد</button>
+                        </div>
+                        <!-- Step 2: Enter Link -->
+                        <div id="step-2" class="space-y-4 hidden">
+                             <h3 class="text-xl font-bold">مرحله ۲: لینک صفحه را وارد کنید</h3>
+                            <input type="text" id="link-input" class="form-input w-full md:w-1/2 mx-auto p-3 rounded-lg text-slate-800 dark:text-slate-200 text-left" placeholder="https://instagram.com/username">
+                            <button class="next-btn w-full md:w-1/2 mx-auto p-3 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform">مرحله بعد</button>
+                        </div>
+                        <!-- Step 3: Set Quantity -->
+                        <div id="step-3" class="space-y-4 hidden">
+                            <h3 class="text-xl font-bold">مرحله ۳: تعداد را مشخص کنید</h3>
+                            <input type="number" id="quantity-input" class="form-input w-full md:w-1/2 mx-auto p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="مثلا: 1000" min="100">
+                            <button class="next-btn w-full md:w-1/2 mx-auto p-3 rounded-xl font-semibold text-white bg-gradient-to-r from-emerald-500 to-green-500 hover:scale-105 transform transition-transform">ثبت نهایی سفارش</button>
+                        </div>
+                        <!-- Step 4: Success -->
+                         <div id="step-4" class="space-y-4 hidden text-center">
+                            <svg class="w-16 h-16 text-green-500 mx-auto animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <h3 class="text-2xl font-bold text-green-400">سفارش شما با موفقیت شبیه‌سازی شد!</h3>
+                            <p class="text-slate-400">برای ثبت سفارش واقعی، از لیست محصولات اقدام کنید.</p>
+                            <button id="restart-btn" class="w-full md:w-1/2 mx-auto p-3 rounded-xl font-semibold text-white bg-gradient-to-r from-slate-500 to-slate-600 hover:scale-105 transform transition-transform">شروع مجدد</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Products Section -->
-            <div class="max-w-4xl mx-auto text-center mt-16">
+            <div class="max-w-4xl mx-auto text-center mt-20">
                 <h2 class="text-3xl font-extrabold mb-8 scroll-animate">محصولات و خدمات ما</h2>
                 
                 <!-- Tab Navigation -->
@@ -279,157 +330,108 @@
                 
                 <!-- Instagram Services -->
                 <div id="instagram-section" class="product-section mb-12 scroll-animate hidden">
-                    <div class="flex justify-center items-center gap-4 mb-6">
-                        <img src="https://s6.uupload.ir/files/258108_5mt8.png" alt="Instagram Logo" class="w-12 h-12 object-contain">
-                        <h3 class="text-2xl font-bold">خدمات اینستاگرام</h3>
-                    </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-red-500 hover:scale-105 transition-all duration-300">
-                            <h4 class="text-xl font-bold mb-4">فالوور فیک - ایرانی پسر دختر</h4>
+                           <div class="flex justify-between items-center mb-4">
+                               <h4 class="text-xl font-bold">فالوور فیک</h4>
+                            </div>
                             <div class="flex justify-between items-center">
-                                <a href="https://t.me/sponsoracb_bot" target="_blank" class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-red-500 to-rose-500 rounded-lg animate-pulse-glow-red">سفارش</a>
+                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-red-500 to-rose-500 rounded-lg" data-product-name="فالوور اینستاگرام" data-product-price="201000">سفارش</button>
                                 <p class="text-2xl price-text-rgb">۲۰۱,۰۰۰ ت</p>
                             </div>
                         </div>
                         <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-red-500 hover:scale-105 transition-all duration-300">
-                            <h4 class="text-xl font-bold mb-4">لایک فیک - ایرانی دختر پسر</h4>
+                             <div class="flex justify-between items-center mb-4">
+                               <h4 class="text-xl font-bold">لایک فیک</h4>
+                            </div>
                             <div class="flex justify-between items-center">
-                                <a href="https://t.me/sponsoracb_bot" target="_blank" class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-red-500 to-rose-500 rounded-lg animate-pulse-glow-red">سفارش</a>
+                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-red-500 to-rose-500 rounded-lg" data-product-name="لایک اینستاگرام" data-product-price="50000">سفارش</button>
                                 <p class="text-2xl price-text-rgb">۵۰,۰۰۰ ت</p>
                             </div>
                         </div>
                         <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-red-500 hover:scale-105 transition-all duration-300">
-                            <h4 class="text-xl font-bold mb-4">بازدید — ریلز و پست</h4>
+                             <div class="flex justify-between items-center mb-4">
+                               <h4 class="text-xl font-bold">بازدید ریلز و پست</h4>
+                            </div>
                             <div class="flex justify-between items-center">
-                                <a href="https://t.me/sponsoracb_bot" target="_blank" class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-red-500 to-rose-500 rounded-lg animate-pulse-glow-red">سفارش</a>
+                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-red-500 to-rose-500 rounded-lg" data-product-name="بازدید اینستاگرام" data-product-price="1000">سفارش</button>
                                 <p class="text-2xl price-text-rgb">۱,۰۰۰ ت</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="mt-6 border-t border-slate-300 dark:border-slate-700 pt-4 text-center">
-                        <p class="text-sm text-slate-500 dark:text-slate-400">* تمام قیمت ها برای هر ۱,۰۰۰ عدد (1K) می‌باشد.</p>
                     </div>
                 </div>
 
                 <!-- Telegram Services -->
                 <div id="telegram-section" class="product-section mb-12 scroll-animate hidden">
-                    <div class="flex justify-center items-center gap-4 mb-6">
-                        <img src="https://s6.uupload.ir/files/telegram_logo.svg_lj9n.png" alt="Telegram Logo" class="w-12 h-12 object-contain">
-                        <h3 class="text-2xl font-bold">خدمات تلگرام</h3>
-                    </div>
                      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-cyan-500 hover:scale-105 transition-all duration-300">
-                            <h4 class="text-xl font-bold mb-4">ممبر فیک — ایرانی میکس</h4>
+                           <h4 class="text-xl font-bold mb-4">ممبر فیک</h4>
                             <div class="flex justify-between items-center">
-                                <a href="https://t.me/sponsoracb_bot" target="_blank" class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 rounded-lg animate-pulse-glow-cyan">سفارش</a>
+                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 rounded-lg" data-product-name="ممبر تلگرام" data-product-price="80000">سفارش</button>
                                 <p class="text-2xl price-text-rgb">۸۰,۰۰۰ ت</p>
                             </div>
                         </div>
                         <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-cyan-500 hover:scale-105 transition-all duration-300">
-                            <h4 class="text-xl font-bold mb-4">ادلیست ایرانی – گروه زیر ۱۰۰ک</h4>
+                            <h4 class="text-xl font-bold mb-4">ادلیست ایرانی</h4>
                             <div class="flex justify-between items-center">
-                                <a href="https://t.me/sponsoracb_bot" target="_blank" class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 rounded-lg animate-pulse-glow-cyan">سفارش</a>
+                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 rounded-lg" data-product-name="ادلیست تلگرام" data-product-price="84000">سفارش</button>
                                 <p class="text-2xl price-text-rgb">۸۴,۰۰۰ ت</p>
                             </div>
                         </div>
                         <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-cyan-500 hover:scale-105 transition-all duration-300">
-                            <h4 class="text-xl font-bold mb-4">اد اجباری عادی – گروه زیر ۱۰۰ک</h4>
+                           <h4 class="text-xl font-bold mb-4">اد اجباری عادی</h4>
                             <div class="flex justify-between items-center">
-                                <a href="https://t.me/sponsoracb_bot" target="_blank" class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 rounded-lg animate-pulse-glow-cyan">سفارش</a>
+                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 rounded-lg" data-product-name="اد اجباری تلگرام" data-product-price="85000">سفارش</button>
                                 <p class="text-2xl price-text-rgb">۸۵,۰۰۰ ت</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="mt-6 border-t border-slate-300 dark:border-slate-700 pt-4 text-center">
-                        <p class="text-sm text-slate-500 dark:text-slate-400">* تمام قیمت ها برای هر ۱,۰۰۰ عدد (1K) می‌باشد.</p>
                     </div>
                 </div>
 
                 <!-- Eitaa Services -->
                 <div id="eitaa-section" class="product-section mb-12 scroll-animate hidden">
-                    <div class="flex justify-center items-center gap-4 mb-6">
-                        <img src="https://s6.uupload.ir/files/picsart_25-10-19_12-11-46-658_v6x.png" alt="Eitaa Logo" class="w-12 h-12 object-contain rounded-full">
-                        <h3 class="text-2xl font-bold">خدمات ایتا</h3>
-                    </div>
                      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-orange-500 hover:scale-105 transition-all duration-300">
-                            <h4 class="text-xl font-bold mb-4">ممبر ایتا — کانال</h4>
+                            <h4 class="text-xl font-bold mb-4">ممبر ایتا</h4>
                             <div class="flex justify-between items-center">
-                                <a href="https://t.me/sponsoracb_bot" target="_blank" class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg animate-pulse-glow-orange">سفارش</a>
+                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg" data-product-name="ممبر ایتا" data-product-price="140000">سفارش</button>
                                 <p class="text-2xl price-text-rgb">۱۴۰,۰۰۰ ت</p>
                             </div>
                         </div>
                         <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-orange-500 hover:scale-105 transition-all duration-300">
-                            <h4 class="text-xl font-bold mb-4">بازدید ایتا — ۱ پست آخر</h4>
+                           <h4 class="text-xl font-bold mb-4">بازدید ۱ پست</h4>
                             <div class="flex justify-between items-center">
-                                <a href="https://t.me/sponsoracb_bot" target="_blank" class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg animate-pulse-glow-orange">سفارش</a>
+                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg" data-product-name="بازدید ایتا (۱ پست)" data-product-price="28000">سفارش</button>
                                 <p class="text-2xl price-text-rgb">۲۸,۰۰۰ ت</p>
                             </div>
                         </div>
                         <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-orange-500 hover:scale-105 transition-all duration-300">
-                            <h4 class="text-xl font-bold mb-4">بازدید ایتا — ۵ پست آخر</h4>
+                           <h4 class="text-xl font-bold mb-4">بازدید ۵ پست</h4>
                             <div class="flex justify-between items-center">
-                                <a href="https://t.me/sponsoracb_bot" target="_blank" class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg animate-pulse-glow-orange">سفارش</a>
+                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg" data-product-name="بازدید ایتا (۵ پست)" data-product-price="40000">سفارش</button>
                                 <p class="text-2xl price-text-rgb">۴۰,۰۰۰ ت</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="mt-6 border-t border-slate-300 dark:border-slate-700 pt-4 text-center">
-                        <p class="text-sm text-slate-500 dark:text-slate-400">* تمام قیمت ها برای هر ۱,۰۰۰ عدد (1K) می‌باشد.</p>
                     </div>
                 </div>
                 
                 <!-- Aparat Services -->
                 <div id="aparat-section" class="product-section scroll-animate hidden">
-                    <div class="flex justify-center items-center gap-4 mb-6">
-                        <img src="https://s6.uupload.ir/files/picsart_25-10-20_19-13-31-672_gl3x.png" alt="Aparat Logo" class="w-12 h-12 object-contain rounded-full">
-                        <h3 class="text-2xl font-bold">خدمات آپارات</h3>
-                    </div>
                      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-pink-500 hover:scale-105 transition-all duration-300">
-                            <h4 class="text-xl font-bold mb-4">فالوور آپارات — سریع</h4>
+                            <h4 class="text-xl font-bold mb-4">فالوور آپارات</h4>
                             <div class="flex justify-between items-center">
-                                <a href="https://t.me/sponsoracb_bot" target="_blank" class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-pink-500 to-rose-500 rounded-lg animate-pulse-glow-pink">سفارش</a>
+                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-pink-500 to-rose-500 rounded-lg" data-product-name="فالوور آپارات" data-product-price="50000">سفارش</button>
                                 <p class="text-2xl price-text-rgb">۵۰,۰۰۰ ت</p>
                             </div>
                         </div>
                         <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-pink-500 hover:scale-105 transition-all duration-300">
-                            <h4 class="text-xl font-bold mb-4">بازدید آپارات — سریع</h4>
+                            <h4 class="text-xl font-bold mb-4">بازدید آپارات</h4>
                             <div class="flex justify-between items-center">
-                                <a href="https://t.me/sponsoracb_bot" target="_blank" class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-pink-500 to-rose-500 rounded-lg animate-pulse-glow-pink">سفارش</a>
+                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-pink-500 to-rose-500 rounded-lg" data-product-name="بازدید آپارات" data-product-price="20000">سفارش</button>
                                 <p class="text-2xl price-text-rgb">۲۰,۰۰۰ ت</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="mt-6 border-t border-slate-300 dark:border-slate-700 pt-4 text-center">
-                        <p class="text-sm text-slate-500 dark:text-slate-400">* تمام قیمت ها برای هر ۱,۰۰۰ عدد (1K) می‌باشد.</p>
-                    </div>
-                </div>
-
-                <!-- Comments Section -->
-                <div class="mt-16 scroll-animate">
-                    <h2 class="text-3xl font-extrabold mb-8">دیدگاه خود را ثبت کنید</h2>
-                    <div class="glass-effect p-6 md:p-8 rounded-2xl">
-                        <form id="comment-form" class="space-y-6 text-right">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label for="username" class="block mb-2 text-sm font-medium text-slate-700 dark:text-slate-300">نام کاربری</label>
-                                    <input type="text" id="username" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="نام شما..." required>
-                                </div>
-                                <div>
-                                    <label for="email" class="block mb-2 text-sm font-medium text-slate-700 dark:text-slate-300">ایمیل</label>
-                                    <input type="email" id="email" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="example@email.com" required>
-                                    <p id="email-validation-message" class="text-xs mt-1 h-4"></p>
-                                </div>
-                            </div>
-                            <div>
-                                <label for="comment" class="block mb-2 text-sm font-medium text-slate-700 dark:text-slate-300">نظر شما</label>
-                                <textarea id="comment" rows="4" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="دیدگاه خود را اینجا بنویسید..." required></textarea>
-                            </div>
-                            <div>
-                                <button type="submit" class="w-full p-4 rounded-xl font-bold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform duration-300 shadow-lg text-lg">ارسال دیدگاه</button>
-                            </div>
-                        </form>
                     </div>
                 </div>
 
@@ -451,51 +453,90 @@
             <span id="notification-text" class="font-semibold"></span>
         </div>
     </div>
+    
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal-overlay fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4 hidden">
+        <div class="modal-content glass-effect w-full max-w-md p-8 rounded-2xl">
+            <form id="login-form" class="space-y-6">
+                <h2 class="text-2xl font-bold text-center">ورود / ثبت نام</h2>
+                <div>
+                    <label for="login-username" class="block mb-2 font-medium">نام کاربری</label>
+                    <input type="text" id="login-username" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" required>
+                </div>
+                <div>
+                    <label for="login-password" class="block mb-2 font-medium">رمز عبور</label>
+                    <input type="password" id="login-password" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" required>
+                </div>
+                <button type="submit" class="w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform">ورود به حساب</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard Modal -->
+    <div id="dashboard-modal" class="modal-overlay fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4 hidden">
+        <div class="modal-content glass-effect w-full max-w-md p-8 rounded-2xl space-y-6 text-center">
+             <h2 class="text-2xl font-bold">داشبورد کاربری</h2>
+             <div id="dashboard-main-view">
+                <p class="text-lg">خوش آمدید، <span id="dash-username" class="font-bold text-sky-400"></span>!</p>
+                <div class="grid grid-cols-2 gap-4 text-lg mt-4">
+                    <div class="glass-effect p-4 rounded-lg">
+                        <p class="font-bold text-2xl" id="dash-orders">12</p>
+                        <p class="text-sm text-slate-400">تعداد سفارشات</p>
+                    </div>
+                    <div class="glass-effect p-4 rounded-lg">
+                        <p class="font-bold text-2xl" id="dash-total">۳۴۵,۰۰۰ <span class="text-sm">ت</span></p>
+                        <p class="text-sm text-slate-400">مبلغ کل</p>
+                    </div>
+                </div>
+                <div class="mt-6 flex flex-col md:flex-row gap-4">
+                    <button id="show-cart-btn" class="flex-1 p-3 rounded-xl font-bold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform">سبد خرید</button>
+                    <button id="logout-btn" class="flex-1 p-3 rounded-xl font-bold text-white bg-gradient-to-r from-red-500 to-rose-500 hover:scale-105 transform transition-transform">خروج از حساب</button>
+                </div>
+             </div>
+             <!-- Cart View -->
+             <div id="cart-view" class="hidden">
+                <h3 class="text-xl font-bold mb-4">سبد خرید شما</h3>
+                <div id="cart-items-list" class="space-y-2 text-right max-h-48 overflow-y-auto pr-2">
+                    <!-- Cart items will be injected here -->
+                </div>
+                 <div id="cart-empty-msg" class="text-slate-400 my-8">سبد خرید شما خالی است.</div>
+                <div class="border-t border-slate-700 mt-4 pt-4">
+                    <div class="flex justify-between font-bold text-lg">
+                        <span>جمع کل:</span>
+                        <span id="cart-total">0 ت</span>
+                    </div>
+                </div>
+                <div class="mt-6 flex flex-col md:flex-row gap-4">
+                    <button id="pay-btn" class="flex-1 p-3 rounded-xl font-bold text-white bg-gradient-to-r from-green-500 to-emerald-500 hover:scale-105 transform transition-transform disabled:opacity-50 disabled:cursor-not-allowed">پرداخت نهایی</button>
+                    <button id="back-to-dash-btn" class="flex-1 p-3 rounded-xl font-bold text-white bg-gradient-to-r from-slate-500 to-slate-600 hover:scale-105 transform transition-transform">بازگشت</button>
+                </div>
+             </div>
+        </div>
+    </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // --- Dark Mode Logic ---
-            const themeToggleBtnMobile = document.getElementById('dark-mode-toggle-mobile');
-            const themeToggleDarkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
-            const themeToggleLightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
-            const darkModeTextMobile = document.getElementById('dark-mode-text-mobile');
-            const themeToggleBtnDesktop = document.getElementById('dark-mode-toggle-desktop');
-            const themeToggleDarkIconDesktop = document.getElementById('theme-toggle-dark-icon-desktop');
-            const themeToggleLightIconDesktop = document.getElementById('theme-toggle-light-icon-desktop');
             const docElement = document.documentElement;
-
+            const darkModeToggles = [document.getElementById('dark-mode-toggle-desktop'), document.getElementById('dark-mode-toggle-mobile')];
+            
             function updateThemeUI(isDark) {
-                if (isDark) {
-                    themeToggleLightIconMobile.classList.remove('hidden');
-                    themeToggleDarkIconMobile.classList.add('hidden');
-                    themeToggleLightIconDesktop.classList.remove('hidden');
-                    themeToggleDarkIconDesktop.classList.add('hidden');
-                    darkModeTextMobile.textContent = 'حالت روشن';
-                } else {
-                    themeToggleDarkIconMobile.classList.remove('hidden');
-                    themeToggleLightIconMobile.classList.add('hidden');
-                    themeToggleDarkIconDesktop.classList.remove('hidden');
-                    themeToggleLightIconDesktop.classList.add('hidden');
-                    darkModeTextMobile.textContent = 'حالت تاریک';
-                }
+                // Simplified UI update
             }
             
             if (localStorage.getItem('color-theme') === 'light') {
                 docElement.classList.remove('dark');
-                updateThemeUI(false);
             } else {
                 docElement.classList.add('dark');
-                updateThemeUI(true);
             }
 
             const toggleTheme = () => {
                 const isDark = docElement.classList.toggle('dark');
                 localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
-                updateThemeUI(isDark);
             };
 
-            themeToggleBtnMobile.addEventListener('click', toggleTheme);
-            themeToggleBtnDesktop.addEventListener('click', toggleTheme);
+            darkModeToggles.forEach(btn => btn.addEventListener('click', toggleTheme));
             
             // --- Hamburger Menu Logic ---
             const menuBtn = document.getElementById('menu-btn');
@@ -549,94 +590,199 @@
             const statusDot = document.getElementById('notification-dot');
             const statusText = document.getElementById('notification-text');
 
-            if (notificationBanner && statusDot && statusText) {
-                setTimeout(() => {
-                    statusDot.className = 'w-3 h-3 bg-yellow-500 rounded-full animate-pulse';
-                    statusText.className = 'font-semibold text-yellow-700 dark:text-yellow-400 transition-colors duration-300';
-                    statusText.textContent = 'درحال برقراری ارتباط با سرور';
-                    notificationBanner.classList.add('show');
-                }, 500);
-                setTimeout(() => {
-                    statusDot.className = 'w-3 h-3 bg-green-500 rounded-full animate-pulse';
-                    statusText.className = 'font-semibold text-green-700 dark:text-green-400 transition-colors duration-300';
-                    statusText.textContent = 'با موفقيت به سرور متصل شدید';
-                }, 2500);
-                setTimeout(() => {
-                    notificationBanner.classList.remove('show');
-                }, 6500);
-            }
-            
-            // --- Email Validation Logic ---
-            const emailInput = document.getElementById('email');
-            const emailValidationMessage = document.getElementById('email-validation-message');
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            emailInput.addEventListener('input', () => {
-                const email = emailInput.value;
-                if (email === "") {
-                    emailInput.classList.remove('valid', 'invalid');
-                    emailValidationMessage.textContent = '';
-                } else if (emailRegex.test(email)) {
-                    emailInput.classList.add('valid');
-                    emailInput.classList.remove('invalid');
-                    emailValidationMessage.textContent = 'ایمیل معتبر است';
-                    emailValidationMessage.classList.add('text-green-500');
-                    emailValidationMessage.classList.remove('text-red-500');
-                } else {
-                    emailInput.classList.add('invalid');
-                    emailInput.classList.remove('valid');
-                    emailValidationMessage.textContent = 'فرمت ایمیل نامعتبر است';
-                    emailValidationMessage.classList.add('text-red-500');
-                    emailValidationMessage.classList.remove('text-green-500');
-                }
-            });
-            
-            // --- Comment Form Submission ---
-            const commentForm = document.getElementById('comment-form');
-            commentForm.addEventListener('submit', (e) => {
-                e.preventDefault(); 
-                statusDot.className = 'w-3 h-3 bg-blue-500 rounded-full animate-pulse';
-                statusText.className = 'font-semibold text-blue-700 dark:text-blue-400 transition-colors duration-300';
-                statusText.textContent = 'دیدگاه شما با موفقیت ثبت شد!';
+            function showNotification(message, type = 'info') {
+                 const types = {
+                    info: { dot: 'bg-blue-500', text: 'text-blue-400' },
+                    success: { dot: 'bg-green-500', text: 'text-green-400' },
+                    warning: { dot: 'bg-yellow-500', text: 'text-yellow-400' },
+                    error: { dot: 'bg-red-500', text: 'text-red-400' },
+                };
+                statusDot.className = `w-3 h-3 ${types[type].dot} rounded-full animate-pulse`;
+                statusText.className = `font-semibold ${types[type].text} transition-colors duration-300`;
+                statusText.textContent = message;
                 notificationBanner.classList.add('show');
-                setTimeout(() => { notificationBanner.classList.remove('show'); }, 5000);
-                commentForm.reset();
-                emailInput.classList.remove('valid', 'invalid');
-                emailValidationMessage.textContent = '';
-            });
+                setTimeout(() => { notificationBanner.classList.remove('show');}, 4000);
+            }
 
+            // Connection status notification
+            setTimeout(() => showNotification('درحال برقراری ارتباط با سرور', 'warning'), 500);
+            setTimeout(() => showNotification('با موفقيت به سرور متصل شدید', 'success'), 2500);
+            
             // --- Tab Navigation Logic ---
             const tabs = document.querySelectorAll('.tab-button');
             const sections = document.querySelectorAll('.product-section');
             const productPlaceholder = document.getElementById('product-placeholder');
 
-            function showSection(targetId) {
-                if (productPlaceholder) {
-                    productPlaceholder.classList.add('hidden');
-                }
-                sections.forEach(section => {
-                    if (section.id === targetId) {
-                        section.classList.remove('hidden');
-                    } else {
-                        section.classList.add('hidden');
-                    }
-                });
-            }
-
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
                     if (tab.classList.contains('active')) return;
-                    
                     tabs.forEach(t => t.classList.remove('active'));
                     tab.classList.add('active');
                     const target = tab.dataset.target;
-                    showSection(target);
+                    productPlaceholder.classList.add('hidden');
+                    sections.forEach(s => s.id === target ? s.classList.remove('hidden') : s.classList.add('hidden'));
+                });
+            });
+
+            // --- Order Algorithm Logic ---
+            const steps = document.querySelectorAll('[id^="step-"]');
+            const nextBtns = document.querySelectorAll('.next-btn');
+            const restartBtn = document.getElementById('restart-btn');
+            const progressBar = document.getElementById('progress-bar');
+            let currentStep = 1;
+            const totalSteps = 4;
+
+            function updateUI() {
+                steps.forEach(step => step.classList.add('hidden'));
+                document.getElementById(`step-${currentStep}`).classList.remove('hidden');
+                progressBar.style.width = `${((currentStep - 1) / (totalSteps - 1)) * 100}%`;
+            }
+
+            nextBtns.forEach(btn => btn.addEventListener('click', () => { if (currentStep < totalSteps) { currentStep++; updateUI(); } }));
+            restartBtn.addEventListener('click', () => { currentStep = 1; updateUI(); });
+
+            // --- Account & Cart Logic ---
+            const accountBtn = document.getElementById('account-btn');
+            const accountText = document.getElementById('account-text');
+            const loginModal = document.getElementById('login-modal');
+            const dashboardModal = document.getElementById('dashboard-modal');
+            const loginForm = document.getElementById('login-form');
+            const logoutBtn = document.getElementById('logout-btn');
+            const dashUsername = document.getElementById('dash-username');
+            const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
+            const cartItemsList = document.getElementById('cart-items-list');
+            const cartTotalEl = document.getElementById('cart-total');
+            const cartEmptyMsg = document.getElementById('cart-empty-msg');
+            const payBtn = document.getElementById('pay-btn');
+            const showCartBtn = document.getElementById('show-cart-btn');
+            const backToDashBtn = document.getElementById('back-to-dash-btn');
+            const dashboardMainView = document.getElementById('dashboard-main-view');
+            const cartView = document.getElementById('cart-view');
+
+            let shoppingCart = [];
+
+            function updateCartUI() {
+                cartItemsList.innerHTML = '';
+                let total = 0;
+                if (shoppingCart.length > 0) {
+                    cartEmptyMsg.classList.add('hidden');
+                    payBtn.disabled = false;
+                    shoppingCart.forEach(item => {
+                        const itemEl = document.createElement('div');
+                        itemEl.className = 'flex justify-between items-center';
+                        itemEl.innerHTML = `<span>${item.name}</span><span>${parseInt(item.price).toLocaleString('fa-IR')} ت</span>`;
+                        cartItemsList.appendChild(itemEl);
+                        total += parseInt(item.price);
+                    });
+                } else {
+                    cartEmptyMsg.classList.remove('hidden');
+                    payBtn.disabled = true;
+                }
+                cartTotalEl.textContent = `${total.toLocaleString('fa-IR')} ت`;
+            }
+
+            function saveCart() {
+                localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart));
+            }
+            
+            function loadCart() {
+                const savedCart = localStorage.getItem('shoppingCart');
+                if (savedCart) {
+                    shoppingCart = JSON.parse(savedCart);
+                    updateCartUI();
+                }
+            }
+
+            function checkLogin() {
+                const loggedInUser = localStorage.getItem('loggedInUser');
+                if (loggedInUser) {
+                    accountText.textContent = loggedInUser;
+                } else {
+                    accountText.textContent = 'حساب کاربری';
+                }
+            }
+            
+            checkLogin();
+            loadCart();
+            
+            addToCartBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (!localStorage.getItem('loggedInUser')) {
+                        showNotification('برای افزودن به سبد خرید، لطفا وارد شوید', 'warning');
+                        loginModal.classList.remove('hidden');
+                        return;
+                    }
+                    const name = btn.dataset.productName;
+                    const price = btn.dataset.productPrice;
+                    shoppingCart.push({ name, price });
+                    saveCart();
+                    updateCartUI();
+                    showNotification(`${name} به سبد خرید اضافه شد!`, 'success');
+                });
+            });
+
+            accountBtn.addEventListener('click', () => {
+                if (localStorage.getItem('loggedInUser')) {
+                    dashUsername.textContent = localStorage.getItem('loggedInUser');
+                    dashboardModal.classList.remove('hidden');
+                    dashboardMainView.classList.remove('hidden');
+                    cartView.classList.add('hidden');
+                } else {
+                    loginModal.classList.remove('hidden');
+                }
+            });
+
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const username = document.getElementById('login-username').value;
+                if (username) {
+                    localStorage.setItem('loggedInUser', username);
+                    checkLogin();
+                    loginModal.classList.add('hidden');
+                    showNotification(`خوش آمدید، ${username}!`, 'info');
+                }
+            });
+
+            logoutBtn.addEventListener('click', () => {
+                localStorage.removeItem('loggedInUser');
+                localStorage.removeItem('shoppingCart');
+                shoppingCart = [];
+                updateCartUI();
+                checkLogin();
+                dashboardModal.classList.add('hidden');
+            });
+            
+            showCartBtn.addEventListener('click', () => {
+                dashboardMainView.classList.add('hidden');
+                cartView.classList.remove('hidden');
+            });
+            
+            backToDashBtn.addEventListener('click', () => {
+                cartView.classList.add('hidden');
+                dashboardMainView.classList.remove('hidden');
+            });
+
+            payBtn.addEventListener('click', () => {
+                showNotification('پرداخت با موفقیت انجام شد! سبد خرید شما خالی شد.', 'success');
+                shoppingCart = [];
+                saveCart();
+                updateCartUI();
+                setTimeout(() => {
+                    cartView.classList.add('hidden');
+                    dashboardMainView.classList.remove('hidden');
+                }, 1000);
+            });
+
+            [loginModal, dashboardModal].forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) modal.classList.add('hidden');
                 });
             });
         });
     </script>
 </body>
 </html>
+
 
 
 <script type="text/javascript">
