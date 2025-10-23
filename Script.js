@@ -1,3 +1,6 @@
+localStorage.removeItem('siteData');
+localStorage.removeItem('siteUsers');
+
 document.addEventListener('DOMContentLoaded', function() {
     // --- CONSTANTS ---
     const ADMIN_USER = 'Admin';
