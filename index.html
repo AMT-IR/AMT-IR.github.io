@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPONSORACB - Official Site</title>
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Google Fonts: Vazirmatn -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap" rel="stylesheet">
@@ -208,25 +206,21 @@
         <div class="blob"></div>
     </div>
 
-    <!-- Header Section -->
     <header id="header" class="glass-effect fixed top-4 left-4 right-4 z-50 rounded-2xl shadow-lg transition-all duration-300">
         <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
             <div class="text-2xl font-bold tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-cyan-400 animate-shine">
                 SPONSORACB
             </div>
             <div class="flex items-center gap-2 md:gap-4">
-                 <!-- Account Button -->
-                <button id="account-btn" class="flex items-center gap-2 text-sm font-semibold p-2 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+                 <button id="account-btn" class="flex items-center gap-2 text-sm font-semibold p-2 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>
                     <span id="account-text" class="hidden sm:block">حساب کاربری</span>
                 </button>
                 <div class="w-px h-6 bg-slate-300 dark:bg-slate-700"></div>
-                <!-- Dark Mode Button -->
                 <button id="dark-mode-toggle-desktop" class="flex items-center justify-center w-10 h-10 rounded-full text-slate-700 dark:text-slate-300 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
                      <svg id="theme-toggle-dark-icon-desktop" class="h-6 w-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
                      <svg id="theme-toggle-light-icon-desktop" class="h-6 w-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05A1 1 0 003.636 3.636l-.707.707a1 1 0 101.414 1.414l.707-.707zM3 11a1 1 0 100-2H2a1 1 0 100 2h1zM6.464 14.95l-.707.707a1 1 0 001.414 1.414l.707-.707a1 1 0 00-1.414-1.414z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
                 </button>
-                <!-- Mobile Menu Button -->
                 <button id="menu-btn" class="md:hidden z-50">
                     <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-700 dark:text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
                     <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-700 dark:text-slate-300 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
@@ -235,7 +229,6 @@
         </div>
     </header>
 
-    <!-- Mobile Menu -->
     <div id="mobile-menu" class="fixed inset-0 z-40 glass-effect flex-col items-center justify-center gap-6 text-2xl font-medium hidden md:hidden">
         <button id="dark-mode-toggle-mobile" class="flex items-center gap-3 p-3 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
             <span id="dark-mode-text-mobile">حالت تاریک</span>
@@ -246,10 +239,8 @@
         </button>
     </div>
 
-    <!-- Main Content -->
     <main class="pt-32 pb-40 relative z-10">
         <div class="container mx-auto px-4 sm:px-6">
-            <!-- Hero Section -->
             <div class="max-w-lg mx-auto text-center scroll-animate">
                 <div class="relative w-32 h-32 mx-auto mb-6">
                     <div class="absolute inset-0 bg-gradient-to-tr from-sky-400 to-blue-500 rounded-full animate-pulse"></div>
@@ -257,14 +248,12 @@
                 </div>
                 <h1 class="text-4xl font-extrabold mb-2">SPONSORACB</h1>
                 <p class="text-lg text-slate-600 dark:text-slate-400 mb-8">بهترین خدمات و پشتیبانی در دستان شماست.</p>
-                <!-- Responsive button links -->
                 <div class="space-y-4">
                      <a href="https://t.me/sponsoracb" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform duration-300 shadow-lg">کانال تلگرام</a>
                      <a href="https://t.me/sponsoracb_bot" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform duration-300 shadow-lg">ربات تلگرام</a>
                      <a href="https://t.me/MYT7V" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-slate-800 dark:text-slate-900 bg-slate-200 dark:bg-slate-300 hover:scale-105 transform transition-transform duration-300 shadow-md">ارتباط با مدیر</a>
                      <a href="https://t.me/Sponsoracb_supportbot" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-slate-800 dark:text-slate-900 bg-slate-200 dark:bg-slate-300 hover:scale-105 transform transition-transform duration-300 shadow-md">پشتیبانی</a>
                 </div>
-                <!-- Responsive stats grid -->
                 <div class="mt-12 grid grid-cols-2 gap-4 text-center">
                     <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10"><p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-operators">0</p><p class="text-sm text-slate-600 dark:text-slate-400 mt-1">اپراتور های انلاین</p></div>
                     <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10"><p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-bots">0</p><p class="text-sm text-slate-600 dark:text-slate-400 mt-1">بات های فعال</p></div>
@@ -279,26 +268,21 @@
                     </div>
                 </div>
 
-                <!-- Responsive VIP grid -->
                 <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
                     <a href="https://t.me/Sponsoracb_bot?start=vip_epanel_setting_bot" target="_blank" class="block w-full p-4 rounded-xl font-bold text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:scale-105 transform transition-transform duration-300 shadow-lg text-lg">خرید اکانت ویژه</a>
                     <div class="p-4 rounded-xl bg-indigo-500/10 dark:bg-indigo-400/10"><p class="text-3xl font-bold text-indigo-500 dark:text-indigo-400" id="stat-licenses">0</p><p class="text-sm text-slate-600 dark:text-slate-400 mt-1">لایسنس های خرید شده</p></div>
                 </div>
             </div>
 
-            <!-- Order Algorithm Section -->
             <div id="order-algorithm-section" class="max-w-4xl mx-auto text-center mt-20 scroll-animate">
                 <h2 class="text-3xl font-extrabold mb-8">الگوریتم ثبت سفارش</h2>
                 <div class="glass-effect p-4 md:p-8 rounded-2xl">
-                    <!-- Progress Bar -->
                     <div class="mb-8">
                         <div class="progress-bar-background w-full h-2 rounded-full">
                             <div id="progress-bar" class="progress-bar-fill h-2 rounded-full" style="width: 0%;"></div>
                         </div>
                     </div>
-                    <!-- Steps Container -->
                     <div class="min-h-[200px]">
-                        <!-- Step 1: Select Service -->
                         <div id="step-1" class="space-y-4">
                             <h3 class="text-xl font-bold">مرحله ۱: سرویس را انتخاب کنید</h3>
                             <select id="service-select" class="form-input w-full md:w-1/2 mx-auto p-3 rounded-lg text-slate-800 dark:text-slate-200 bg-transparent">
@@ -308,20 +292,17 @@
                             </select>
                             <button class="next-btn w-full md:w-1/2 mx-auto p-3 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform">مرحله بعد</button>
                         </div>
-                        <!-- Step 2: Enter Link -->
                         <div id="step-2" class="space-y-4 hidden">
                              <h3 class="text-xl font-bold">مرحله ۲: لینک صفحه را وارد کنید</h3>
                             <input type="text" id="link-input" class="form-input w-full md:w-1/2 mx-auto p-3 rounded-lg text-slate-800 dark:text-slate-200 text-left" placeholder="https://instagram.com/username">
                             <button class="next-btn w-full md:w-1/2 mx-auto p-3 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform">مرحله بعد</button>
                         </div>
-                        <!-- Step 3: Set Quantity -->
                         <div id="step-3" class="space-y-4 hidden">
                             <h3 class="text-xl font-bold">مرحله ۳: تعداد را مشخص کنید</h3>
                             <input type="number" id="quantity-input" class="form-input w-full md:w-1/2 mx-auto p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="مثلا: 1000" min="100">
                             <button class="next-btn w-full md:w-1/2 mx-auto p-3 rounded-xl font-semibold text-white bg-gradient-to-r from-emerald-500 to-green-500 hover:scale-105 transform transition-transform">ثبت نهایی سفارش</button>
                         </div>
-                        <!-- Step 4: Success -->
-                         <div id="step-4" class="space-y-4 hidden text-center">
+                        <div id="step-4" class="space-y-4 hidden text-center">
                             <svg class="w-16 h-16 text-green-500 mx-auto animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             <h3 class="text-2xl font-bold text-green-400">سفارش شما با موفقیت شبیه‌سازی شد!</h3>
                             <p class="text-slate-400">برای ثبت سفارش واقعی، از لیست محصولات اقدام کنید.</p>
@@ -331,27 +312,20 @@
                 </div>
             </div>
 
-            <!-- Products Section (DYNAMIC) -->
             <div id="product-section-container" class="max-w-4xl mx-auto text-center mt-20">
                 <h2 class="text-3xl font-extrabold mb-8 scroll-animate">محصولات و خدمات ما</h2>
 
-                <!-- Tab Navigation (Container for dynamic tabs) -->
                 <div id="product-tabs" class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8 scroll-animate glass-effect p-2 rounded-2xl">
-                    <!-- Tabs will be injected here by JS -->
-                </div>
+                    </div>
 
-                <!-- Product Placeholder -->
                 <div id="product-placeholder" class="text-center p-8 glass-effect rounded-2xl">
                     <p class="text-lg text-slate-600 dark:text-slate-400">لطفا برای مشاهده محصولات، یک دسته را انتخاب کنید.</p>
                 </div>
 
-                <!-- Product Sections (Container for dynamic sections) -->
                 <div id="product-sections-wrapper">
-                    <!-- Product sections will be injected here by JS -->
-                </div>
+                    </div>
 
-                 <!-- Comments Section -->
-                <div class="mt-20 scroll-animate max-w-2xl mx-auto">
+                 <div class="mt-20 scroll-animate max-w-2xl mx-auto">
                     <h2 class="text-3xl font-extrabold mb-8 text-center">دیدگاه خود را ثبت کنید</h2>
                     <div class="glass-effect p-6 md:p-8 rounded-2xl">
                         <form id="comment-form" class="space-y-6 text-right">
@@ -369,6 +343,39 @@
             </div>
         </div>
     </main>
+
+    <footer class="glass-effect fixed bottom-4 left-4 right-4 rounded-2xl shadow-lg z-20">
+        <div class="container mx-auto px-4 sm:px-6 py-4 text-center text-slate-600 dark:text-slate-400">
+            <p class="text-sm">&copy; 2025 SPONSORACB - تمام حقوق محفوظ است.</p>
+        </div>
+    </footer>
+
+    <div id="notification-banner" class="fixed bottom-24 md:bottom-5 right-5 z-[100] p-4 rounded-2xl shadow-lg glass-effect">
+        <div class="flex items-center gap-3">
+            <span id="notification-dot"></span>
+            <span id="notification-text" class="font-semibold text-sm"></span>
+        </div>
+    </div>
+
+    <div id="login-modal" class="modal-overlay fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4 hidden">
+        <div class="modal-content glass-effect w-full max-w-md p-6 md:p-8 rounded-2xl">
+            <form id="login-form" class="space-y-6">
+                <h2 class="text-2xl font-bold text-center">ورود / ثبت نام</h2>
+                <div>
+                    <label for="login-username" class="block mb-2 font-medium">نام کاربری</label>
+                    <input type="text" id="login-username" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" required>
+                </div>
+                <div>
+                    <label for="login-password" class="block mb-2 font-medium">رمز عبور</label>
+                    <input type="password" id="login-password" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" required>
+                </div>
+                <button type="submit" class="w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform duration-300">
+                    ورود / ثبت نام
+                </button>
+            </form>
+        </div>
+    </div>
+
     <div id="dashboard-modal" class="modal-overlay fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4 hidden">
         <div class="modal-content glass-effect w-full max-w-lg p-6 md:p-8 rounded-2xl max-h-[80vh] overflow-y-auto">
             
@@ -594,34 +601,7 @@
         </div>
     </div>
 
-    <!-- Footer Section -->
-    <footer class="glass-effect fixed bottom-4 left-4 right-4 rounded-2xl shadow-lg z-20">
-        <div class="container mx-auto px-4 sm:px-6 py-4 text-center text-slate-600 dark:text-slate-400">
-            <p class="text-sm">&copy; 2025 SPONSORACB - تمام حقوق محفوظ است.</p>
-        </div>
-    </footer>
+    <script src="Script.js"></script>
 
-    <!-- Notification Banner (Responsive Position) -->
-    <div id="notification-banner" class="fixed bottom-24 md:bottom-5 right-5 z-[100] p-4 rounded-2xl shadow-lg glass-effect">
-        <div class="flex items-center gap-3">
-            <span id="notification-dot"></span>
-            <span id="notification-text" class="font-semibold text-sm"></span>
-        </div>
-    </div>
-
-    <!-- Login Modal (Responsive) -->
-    <div id="login-modal" class="modal-overlay fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4 hidden">
-        <div class="modal-content glass-effect w-full max-w-md p-6 md:p-8 rounded-2xl">
-            <form id="login-form" class="space-y-6">
-                <h2 class="text-2xl font-bold text-center">ورود / ثبت نام</h2>
-                <div>
-                    <label for="login-username" class="block mb-2 font-medium">نام کاربری</label>
-                    <input type="text" id="login-username" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" required>
-                </div>
-                <div>
-                    <label for="login-password" class="block mb-2 font-medium">رمز عبور</label>
-                    <input type="password" id="login-password" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" required>
-                </div>
-                <button type="submit" class="w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform
-
-                    <script src="Script.js"></script>
+</body>
+</html>
