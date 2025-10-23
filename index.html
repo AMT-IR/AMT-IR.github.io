@@ -154,12 +154,16 @@
         }
        
         /* Tab Navigation Styling */
-        .tab-button.active {
+        .tab-button.active, .admin-tab-button.active {
             background-image: linear-gradient(to right, var(--tw-gradient-stops));
             --tw-gradient-from: #38bdf8;
             --tw-gradient-to: #3b82f6;
             --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
             color: white;
+        }
+        .admin-tab-button.active {
+            --tw-gradient-from: #8b5cf6;
+            --tw-gradient-to: #6366f1;
         }
 
         /* Modal Styling */
@@ -488,25 +492,45 @@
              <div id="dashboard-main-view">
                 <h2 class="text-2xl font-bold">داشبورد کاربری</h2>
                 <p class="text-lg mt-2">خوش آمدید، <span id="dash-username" class="font-bold text-sky-400"></span>!</p>
+                
+                <!-- User Stats Grid -->
                 <div class="grid grid-cols-2 gap-4 text-lg mt-4">
                     <div class="glass-effect p-4 rounded-lg">
                         <p class="font-bold text-2xl" id="dash-orders">0</p>
-                        <p class="text-sm text-slate-400">تعداد سفارشات</p>
+                        <p class="text-sm text-slate-400">سفارشات در سبد</p>
                     </div>
                     <div class="glass-effect p-4 rounded-lg">
                         <p class="font-bold text-xl" id="dash-total">۰ <span class="text-sm">ت</span></p>
-                        <p class="text-sm text-slate-400">مبلغ کل</p>
+                        <p class="text-sm text-slate-400">مبلغ سبد خرید</p>
+                    </div>
+                    <div class="glass-effect p-4 rounded-lg col-span-2"> <!-- Full width balance -->
+                        <p class="font-bold text-2xl text-green-400" id="dash-balance">۰ <span class="text-sm">ت</span></p>
+                        <p class="text-sm text-slate-400">موجودی حساب</p>
                     </div>
                 </div>
+                
+                <!-- Redeem Code -->
+                <div class="text-right">
+                    <label for="redeem-code-input" class="block mb-2 text-sm font-medium">کد افزایش موجودی</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="redeem-code-input" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="کد هدیه را وارد کنید">
+                        <button id="redeem-code-btn" class="px-4 py-2 font-semibold text-white bg-green-500 rounded-lg whitespace-nowrap">اعمال</button>
+                    </div>
+                </div>
+
                 <div id="user-comment-display" class="hidden text-right border-t border-slate-700/50 pt-4 mt-4">
                     <h4 class="font-bold mb-2">آخرین دیدگاه شما:</h4>
                     <p id="user-comment-text" class="text-sm text-slate-300 bg-slate-800/50 p-3 rounded-lg"></p>
                 </div>
-                <div class="mt-6 flex flex-col md:flex-row gap-4">
-                    <button id="show-cart-btn" class="flex-1 p-3 rounded-xl font-bold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform">سبد خرید</button>
-                    <button id="logout-btn" class="flex-1 p-3 rounded-xl font-bold text-white bg-gradient-to-r from-red-500 to-rose-500 hover:scale-105 transform transition-transform">خروج از حساب</button>
+
+                <!-- Action Buttons -->
+                <div class="mt-6 flex flex-col gap-4">
+                    <button id="admin-panel-btn" class="hidden w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-violet-600 to-purple-600 hover:scale-105 transform transition-transform">پنل مدیریت</button>
+                    <button id="show-cart-btn" class="w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform">سبد خرید</button>
+                    <button id="logout-btn" class="w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-red-500 to-rose-500 hover:scale-105 transform transition-transform">خروج از حساب</button>
                 </div>
              </div>
+
              <!-- Cart View -->
              <div id="cart-view" class="hidden">
                 <h3 class="text-xl font-bold mb-4">سبد خرید شما</h3>
@@ -514,23 +538,104 @@
                     <!-- Cart items will be injected here -->
                 </div>
                  <div id="cart-empty-msg" class="text-slate-400 my-8">سبد خرید شما خالی است.</div>
-                <div class="border-t border-slate-700 mt-4 pt-4">
-                    <div class="flex justify-between font-bold text-lg">
+
+                <!-- Discount Code -->
+                <div class="text-right mt-4">
+                    <label for="discount-code-input" class="block mb-2 text-sm font-medium">کد تخفیف</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="discount-code-input" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="کد تخفیف را وارد کنید">
+                        <button id="apply-discount-btn" class="px-4 py-2 font-semibold text-white bg-sky-500 rounded-lg whitespace-nowrap">اعمال</button>
+                    </div>
+                </div>
+
+                <div class="border-t border-slate-700 mt-4 pt-4 space-y-2">
+                    <div class="flex justify-between font-medium">
                         <span>جمع کل:</span>
+                        <span id="cart-subtotal">0 ت</span>
+                    </div>
+                    <div id="cart-discount-row" class="flex justify-between font-medium text-red-400 hidden">
+                        <span>تخفیف:</span>
+                        <span id="cart-discount-amount">0 ت</span>
+                    </div>
+                    <div class="flex justify-between font-bold text-lg border-t border-slate-700/50 pt-2 mt-2">
+                        <span>مبلغ نهایی:</span>
                         <span id="cart-total">0 ت</span>
                     </div>
                 </div>
                 <div class="mt-6 flex flex-col md:flex-row gap-4">
-                    <button id="pay-btn" class="flex-1 p-3 rounded-xl font-bold text-white bg-gradient-to-r from-green-500 to-emerald-500 hover:scale-105 transform transition-transform disabled:opacity-50 disabled:cursor-not-allowed">پرداخت نهایی</button>
+                    <button id="pay-btn" class="flex-1 p-3 rounded-xl font-bold text-white bg-gradient-to-r from-green-500 to-emerald-500 hover:scale-105 transform transition-transform disabled:opacity-50 disabled:cursor-not-allowed">پرداخت نهایی</F>
                     <button id="back-to-dash-btn" class="flex-1 p-3 rounded-xl font-bold text-white bg-gradient-to-r from-slate-500 to-slate-600 hover:scale-105 transform transition-transform">بازگشت</button>
                 </div>
              </div>
         </div>
     </div>
 
+    <!-- Admin Panel Modal -->
+    <div id="admin-modal" class="modal-overlay fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4 hidden">
+        <div class="modal-content glass-effect w-full max-w-3xl p-6 md:p-8 rounded-2xl space-y-6 text-right">
+            <!-- Header and Close Button -->
+            <div class="flex justify-between items-center">
+                <h2 class="text-2xl font-bold">پنل مدیریت حرفه‌ای</h2>
+                <button id="admin-modal-close" class="p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+            
+            <!-- Admin Tabs -->
+            <div class="flex gap-2 border-b border-slate-700/50">
+                <button class="admin-tab-button px-4 py-2 font-semibold rounded-t-lg" data-target="admin-tab-users">مدیریت کاربران</button>
+                <button class="admin-tab-button px-4 py-2 font-semibold rounded-t-lg" data-target="admin-tab-discounts">کدهای تخفیف</button>
+                <button class="admin-tab-button px-4 py-2 font-semibold rounded-t-lg" data-target="admin-tab-balance">کدهای موجودی</button>
+            </div>
+
+            <!-- Admin Tab Content -->
+            <div class="max-h-96 overflow-y-auto p-2">
+                <!-- User Management Tab -->
+                <div id="admin-tab-users" class="admin-tab-content space-y-4">
+                    <!-- User list will be injected here by JS -->
+                </div>
+
+                <!-- Discount Code Tab -->
+                <div id="admin-tab-discounts" class="admin-tab-content space-y-6 hidden">
+                    <form id="create-discount-form" class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                        <input type="text" id="discount-code-name" class="form-input p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="نام کد (مثلا: OFF30)" required>
+                        <input type="number" id="discount-code-value" class="form-input p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="مقدار (مثلا: 30)" required>
+                        <select id="discount-code-type" class="form-input p-3 rounded-lg text-slate-800 dark:text-slate-200 bg-transparent">
+                            <option value="percent" class="text-slate-800">درصد (%)</option>
+                            <option value="fixed" class="text-slate-800">مبلغ ثابت (تومان)</option>
+                        </select>
+                        <button type="submit" class="p-3 font-semibold text-white bg-sky-500 rounded-lg">ایجاد کد</button>
+                    </form>
+                    <div class="border-t border-slate-700/50 pt-4">
+                        <h4 class="font-bold mb-2">کدهای تخفیف موجود</h4>
+                        <div id="admin-discount-list" class="space-y-2"></div>
+                    </div>
+                </div>
+
+                <!-- Balance Code Tab -->
+                <div id="admin-tab-balance" class="admin-tab-content space-y-6 hidden">
+                    <form id="create-balance-form" class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <input type="number" id="balance-code-value" class="form-input p-3 rounded-lg text-slate-800 dark:text-slate-200 col-span-2" placeholder="مبلغ کد هدیه (تومان)" required>
+                        <button type="submit" class="p-3 font-semibold text-white bg-green-500 rounded-lg">ایجاد کد</button>
+                    </form>
+                    <div class="border-t border-slate-700/50 pt-4">
+                        <h4 class="font-bold mb-2">کدهای موجودی موجود</h4>
+                        <div id="admin-balance-list" class="space-y-2"></div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="admin-back-to-dash-btn" class="w-full mt-4 p-3 rounded-xl font-bold text-white bg-gradient-to-r from-slate-500 to-slate-600 hover:scale-105 transform transition-transform">بازگشت به داشبورد</button>
+        </div>
+    </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // --- CONSTANTS ---
+            const ADMIN_USER = 'Admin';
+            const ADMIN_PASS = 'Directadmin1400';
+
             // --- Dark Mode Logic ---
             const docElement = document.documentElement;
             const darkModeToggles = [document.getElementById('dark-mode-toggle-desktop'), document.getElementById('dark-mode-toggle-mobile')];
@@ -572,7 +677,7 @@
             const usersElement = document.getElementById('stat-users');
             if (usersElement) { let onlineUsers = 708; animateValue("stat-users", 0, onlineUsers, 2500); setTimeout(() => { setInterval(() => { onlineUsers += 13; usersElement.innerHTML = onlineUsers.toLocaleString('fa-IR'); }, 2000); }, 2500); }
             const liveOrdersElement = document.getElementById('live-orders-count');
-            if(liveOrdersElement) { let liveOrdersCount = 146; liveOrdersElement.innerHTML = liveOrdersCount.toLocaleString('fa-IR') + '+'; setInterval(() => { liveOrdersCount += 19; liveOrdersElement.innerHTML = liveOrdersCount.toLocaleString('fa-IR') + '+'; }, 5000); }
+            if(liveOrdersElement) { let liveOrdersCount = 146; liveOrdersElement.innerHTML = liveOrdersCount.toLocaleString('fa-IR') + '+'; setInterval(() => { setInterval(() => { liveOrdersCount += 19; liveOrdersElement.innerHTML = liveOrdersCount.toLocaleString('fa-IR') + '+'; }, 5000); }, 5000); }
 
             // --- On-Scroll Animation ---
             const animatedElements = document.querySelectorAll('.scroll-animate');
@@ -602,7 +707,7 @@
             setTimeout(() => showNotification('درحال برقراری ارتباط با سرور', 'warning'), 500);
             setTimeout(() => showNotification('با موفقيت به سرور متصل شدید', 'success'), 2500);
             
-            // --- Tab Navigation Logic ---
+            // --- Tab Navigation Logic (Products) ---
             const tabs = document.querySelectorAll('.tab-button');
             const sections = document.querySelectorAll('.product-section');
             const productPlaceholder = document.getElementById('product-placeholder');
@@ -633,7 +738,22 @@
             nextBtns.forEach(btn => btn.addEventListener('click', () => { if (currentStep < 4) { currentStep++; updateAlgorithmUI(); } }));
             restartBtn.addEventListener('click', () => { currentStep = 1; updateAlgorithmUI(); });
 
-            // --- Account & Cart & Comment Logic (ENHANCED) ---
+            // --- Account, Cart, Comment, & Admin Logic (PROFESSIONAL) ---
+
+            // --- Database Simulation ---
+            let siteUsers = JSON.parse(localStorage.getItem('siteUsers')) || {};
+            let siteData = JSON.parse(localStorage.getItem('siteData')) || { discountCodes: {}, balanceCodes: {} };
+            let currentUser = localStorage.getItem('loggedInUser');
+            let currentAppliedDiscount = null; // Store applied discount temporarily
+
+            function saveUsers() {
+                localStorage.setItem('siteUsers', JSON.stringify(siteUsers));
+            }
+            function saveSiteData() {
+                localStorage.setItem('siteData', JSON.stringify(siteData));
+            }
+            
+            // --- UI Elements ---
             const accountBtn = document.getElementById('account-btn');
             const accountText = document.getElementById('account-text');
             const loginModal = document.getElementById('login-modal');
@@ -641,32 +761,56 @@
             const loginForm = document.getElementById('login-form');
             const logoutBtn = document.getElementById('logout-btn');
             const dashUsername = document.getElementById('dash-username');
+            const dashBalance = document.getElementById('dash-balance');
+            const dashOrders = document.getElementById('dash-orders');
+            const dashTotal = document.getElementById('dash-total');
             const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
+            
             const cartItemsList = document.getElementById('cart-items-list');
+            const cartSubtotalEl = document.getElementById('cart-subtotal');
+            const cartDiscountRow = document.getElementById('cart-discount-row');
+            const cartDiscountAmountEl = document.getElementById('cart-discount-amount');
             const cartTotalEl = document.getElementById('cart-total');
             const cartEmptyMsg = document.getElementById('cart-empty-msg');
+            
             const payBtn = document.getElementById('pay-btn');
             const showCartBtn = document.getElementById('show-cart-btn');
             const backToDashBtn = document.getElementById('back-to-dash-btn');
             const dashboardMainView = document.getElementById('dashboard-main-view');
             const cartView = document.getElementById('cart-view');
+            
             const commentForm = document.getElementById('comment-form');
             const userCommentDisplay = document.getElementById('user-comment-display');
             const userCommentText = document.getElementById('user-comment-text');
 
-            // This object will act as our local user database
-            let siteUsers = JSON.parse(localStorage.getItem('siteUsers')) || {};
-
-            function saveUsers() {
-                localStorage.setItem('siteUsers', JSON.stringify(siteUsers));
-            }
+            const redeemCodeInput = document.getElementById('redeem-code-input');
+            const redeemCodeBtn = document.getElementById('redeem-code-btn');
+            const discountCodeInput = document.getElementById('discount-code-input');
+            const applyDiscountBtn = document.getElementById('apply-discount-btn');
             
-            let currentUser = localStorage.getItem('loggedInUser');
+            // Admin Panel Elements
+            const adminModal = document.getElementById('admin-modal');
+            const adminPanelBtn = document.getElementById('admin-panel-btn');
+            const adminModalClose = document.getElementById('admin-modal-close');
+            const adminBackToDashBtn = document.getElementById('admin-back-to-dash-btn');
+            const adminTabs = document.querySelectorAll('.admin-tab-button');
+            const adminTabContents = document.querySelectorAll('.admin-tab-content');
+            
+            const adminUserList = document.getElementById('admin-tab-users');
+            const createDiscountForm = document.getElementById('create-discount-form');
+            const adminDiscountList = document.getElementById('admin-discount-list');
+            const createBalanceForm = document.getElementById('create-balance-form');
+            const adminBalanceList = document.getElementById('admin-balance-list');
+
+            
+            // --- Core Functions ---
             
             function updateCartUI() {
                 let shoppingCart = (currentUser && siteUsers[currentUser]) ? siteUsers[currentUser].cart : [];
                 cartItemsList.innerHTML = '';
-                let total = 0;
+                
+                let subtotal = 0;
+                let discount = 0;
 
                 if (shoppingCart.length > 0) {
                     cartEmptyMsg.classList.add('hidden');
@@ -676,30 +820,68 @@
                         itemEl.className = 'flex justify-between items-center';
                         itemEl.innerHTML = `<span>${item.name}</span><span>${parseInt(item.price).toLocaleString('fa-IR')} ت</span>`;
                         cartItemsList.appendChild(itemEl);
-                        total += parseInt(item.price);
+                        subtotal += parseInt(item.price);
                     });
                 } else {
-                    cartEmptyMsg.classList.remove('hidden');
+                    cartEmptyMsg.classList.add('hidden');
                     payBtn.disabled = true;
                 }
-                cartTotalEl.textContent = `${total.toLocaleString('fa-IR')} ت`;
-                document.getElementById('dash-orders').textContent = shoppingCart.length.toLocaleString('fa-IR');
-                document.getElementById('dash-total').innerHTML = `${total.toLocaleString('fa-IR')} <span class="text-sm">ت</span>`;
+
+                // Apply discount if one is active
+                if (currentAppliedDiscount && siteData.discountCodes[currentAppliedDiscount]) {
+                    const code = siteData.discountCodes[currentAppliedDiscount];
+                    if (code.type === 'percent') {
+                        discount = (subtotal * code.value) / 100;
+                    } else { // fixed
+                        discount = code.value;
+                    }
+                    discount = Math.min(subtotal, discount); // Can't discount more than the total
+                    
+                    cartDiscountAmountEl.textContent = `- ${discount.toLocaleString('fa-IR')} ت`;
+                    cartDiscountRow.classList.remove('hidden');
+                    discountCodeInput.value = currentAppliedDiscount;
+                    discountCodeInput.disabled = true;
+                    applyDiscountBtn.disabled = true;
+                } else {
+                    cartDiscountRow.classList.add('hidden');
+                    discountCodeInput.value = '';
+                    discountCodeInput.disabled = false;
+                    applyDiscountBtn.disabled = false;
+                }
+
+                const finalTotal = subtotal - discount;
+                
+                cartSubtotalEl.textContent = `${subtotal.toLocaleString('fa-IR')} ت`;
+                cartTotalEl.textContent = `${finalTotal.toLocaleString('fa-IR')} ت`;
+                
+                dashOrders.textContent = shoppingCart.length.toLocaleString('fa-IR');
+                dashTotal.innerHTML = `${subtotal.toLocaleString('fa-IR')} <span class="text-sm">ت</span>`; // Dash shows subtotal
             }
 
             function checkLogin() {
                 currentUser = localStorage.getItem('loggedInUser');
                 if (currentUser && siteUsers[currentUser]) {
                     accountText.textContent = currentUser;
+                    dashBalance.textContent = siteUsers[currentUser].balance.toLocaleString('fa-IR') + ' ت';
+                    if (siteUsers[currentUser].isAdmin) {
+                        adminPanelBtn.classList.remove('hidden');
+                    } else {
+                        adminPanelBtn.classList.add('hidden');
+                    }
                 } else {
                     localStorage.removeItem('loggedInUser');
                     currentUser = null;
                     accountText.textContent = 'حساب کاربری';
+                    dashBalance.textContent = '۰ ت';
+                    adminPanelBtn.classList.add('hidden');
                 }
+                currentAppliedDiscount = null; // Reset discount on any login change
                 updateCartUI();
             }
             
             checkLogin();
+            
+            // --- Event Listeners (User) ---
             
             addToCartBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
@@ -720,6 +902,8 @@
             accountBtn.addEventListener('click', () => {
                 if (currentUser) {
                     dashUsername.textContent = currentUser;
+                    dashBalance.textContent = siteUsers[currentUser].balance.toLocaleString('fa-IR') + ' ت';
+                    
                     const savedComment = siteUsers[currentUser].comment;
                     if (savedComment) {
                         userCommentText.textContent = savedComment;
@@ -745,7 +929,34 @@
                     return;
                 }
 
-                // Check if user exists
+                // --- Hardcoded Admin Login ---
+                if (username === ADMIN_USER && password === ADMIN_PASS) {
+                    if (!siteUsers[ADMIN_USER]) {
+                        // Create admin account if it doesn't exist
+                        siteUsers[ADMIN_USER] = {
+                            password: ADMIN_PASS,
+                            cart: [],
+                            comment: '',
+                            balance: 1000000, // Admin gets starting balance
+                            isAdmin: true
+                        };
+                        saveUsers();
+                    } else {
+                        // Ensure password is correct even if account exists
+                         if (siteUsers[ADMIN_USER].password !== ADMIN_PASS) {
+                             showNotification('رمز عبور ادمین در سیستم مطابقت ندارد. با پشتیبانی تماس بگیرید.', 'error');
+                             return;
+                         }
+                    }
+                    localStorage.setItem('loggedInUser', ADMIN_USER);
+                    checkLogin();
+                    loginModal.classList.add('hidden');
+                    showNotification(`خوش آمدید، ادمین ${username}!`, 'success');
+                    loginForm.reset();
+                    return;
+                }
+                
+                // --- Regular User Login/Register ---
                 if (siteUsers[username]) {
                     // Login
                     if (siteUsers[username].password === password) {
@@ -762,7 +973,9 @@
                     siteUsers[username] = {
                         password: password,
                         cart: [],
-                        comment: ''
+                        comment: '',
+                        balance: 0,
+                        isAdmin: false // Always false for new users
                     };
                     saveUsers();
                     localStorage.setItem('loggedInUser', username);
@@ -782,17 +995,50 @@
             
             showCartBtn.addEventListener('click', () => {
                 dashboardMainView.classList.add('hidden');
+                updateCartUI(); // Refresh cart just in case
                 cartView.classList.remove('hidden');
             });
             
             backToDashBtn.addEventListener('click', () => {
                 cartView.classList.add('hidden');
                 dashboardMainView.classList.remove('hidden');
+                currentAppliedDiscount = null; // Reset discount on leaving cart
             });
 
             payBtn.addEventListener('click', () => {
-                showNotification('خطا در ارسال تراکنش. لطفا دوباره تلاش کنید.', 'error');
-                // We do NOT clear the cart on a failed transaction.
+                let shoppingCart = siteUsers[currentUser].cart;
+                let subtotal = 0;
+                shoppingCart.forEach(item => subtotal += parseInt(item.price));
+                
+                let discount = 0;
+                if (currentAppliedDiscount && siteData.discountCodes[currentAppliedDiscount]) {
+                    const code = siteData.discountCodes[currentAppliedDiscount];
+                    if (code.type === 'percent') discount = (subtotal * code.value) / 100;
+                    else discount = code.value;
+                    discount = Math.min(subtotal, discount);
+                }
+                
+                const finalTotal = subtotal - discount;
+                const user = siteUsers[currentUser];
+
+                if (user.balance < finalTotal) {
+                    showNotification('موجودی شما کافی نیست. لطفا حساب خود را شارژ کنید.', 'error');
+                    return;
+                }
+
+                // Proceed with payment
+                user.balance -= finalTotal;
+                user.cart = [];
+                saveUsers();
+                currentAppliedDiscount = null; // Reset discount
+                updateCartUI();
+                checkLogin(); // Update balance display
+                showNotification('پرداخت با موفقیت انجام شد. سبد خرید شما خالی شد.', 'success');
+                
+                setTimeout(() => {
+                    cartView.classList.add('hidden');
+                    dashboardMainView.classList.remove('hidden');
+                }, 1000);
             });
 
             commentForm.addEventListener('submit', (e) => {
@@ -800,7 +1046,7 @@
                 const commentInput = document.getElementById('comment');
                 if (!currentUser) {
                     showNotification('برای ارسال دیدگاه، لطفا وارد شوید', 'warning');
-                    loginModal.classList.remove('hidden');
+                    loginModal.classList.add('hidden');
                     return;
                 }
                 siteUsers[currentUser].comment = commentInput.value;
@@ -809,11 +1055,269 @@
                 commentInput.value = '';
             });
 
-            [loginModal, dashboardModal].forEach(modal => {
+            redeemCodeBtn.addEventListener('click', () => {
+                const code = redeemCodeInput.value.trim().toUpperCase();
+                const codeData = siteData.balanceCodes[code];
+
+                if (!codeData) {
+                    showNotification('کد وارد شده نامعتبر است', 'error');
+                    return;
+                }
+                if (codeData.used) {
+                    showNotification('این کد قبلا استفاده شده است', 'warning');
+                    return;
+                }
+
+                // Redeem
+                siteUsers[currentUser].balance += codeData.value;
+                codeData.used = true;
+                saveUsers();
+                saveSiteData();
+                checkLogin(); // Refresh balance display
+                showNotification(`مبلغ ${codeData.value.toLocaleString('fa-IR')} تومان به حساب شما اضافه شد!`, 'success');
+                redeemCodeInput.value = '';
+            });
+
+            applyDiscountBtn.addEventListener('click', () => {
+                const code = discountCodeInput.value.trim().toUpperCase();
+                if (!siteData.discountCodes[code]) {
+                    showNotification('کد تخفیف نامعتبر است', 'error');
+                    return;
+                }
+                
+                currentAppliedDiscount = code;
+                updateCartUI();
+                showNotification('کد تخفیف با موفقیت اعمال شد', 'success');
+            });
+
+            [loginModal, dashboardModal, adminModal].forEach(modal => {
                 modal.addEventListener('click', (e) => {
                     if (e.target === modal) modal.classList.add('hidden');
                 });
             });
+
+            // --- Admin Panel Logic ---
+
+            function loadAdminUsers() {
+                adminUserList.innerHTML = ''; // Clear list
+                const usernames = Object.keys(siteUsers);
+
+                if (usernames.length <= 1) { // Only admin exists
+                    adminUserList.innerHTML = '<p class="text-center text-slate-400">کاربر دیگری یافت نشد.</p>';
+                    return;
+                }
+
+                usernames.forEach(username => {
+                    if (username === ADMIN_USER) return; // Don't show admin in list
+
+                    const user = siteUsers[username];
+                    const cartItems = user.cart.length > 0 ? user.cart.map(item => item.name).join('، ') : '<i>خالی</i>';
+                    const userCard = document.createElement('div');
+                    userCard.className = 'glass-effect p-4 rounded-lg text-sm space-y-3';
+                    userCard.innerHTML = `
+                        <div class="flex justify-between items-center">
+                            <p class="font-bold text-lg">${username}</p>
+                            <button data-username="${username}" class="delete-user-btn px-3 py-1 text-xs font-semibold text-white bg-red-600 rounded-lg">حذف کاربر</button>
+                        </div>
+                        <p>موجودی: <span class="font-bold text-green-400">${user.balance.toLocaleString('fa-IR')} ت</span></p>
+                        <div class="flex gap-2">
+                            <input type="number" id="balance-input-${username}" class="form-input w-full p-2 rounded-lg text-slate-800 dark:text-slate-200" placeholder="تنظیم موجودی (تومان)">
+                            <button data-username="${username}" class="set-balance-btn px-4 py-2 font-semibold text-white bg-sky-500 rounded-lg whitespace-nowrap">تنظیم</button>
+                        </div>
+                        <p class="text-slate-400 text-xs">سبد خرید: ${cartItems}</p>
+                    `;
+                    adminUserList.appendChild(userCard);
+                });
+
+                // Add event listeners for new buttons
+                document.querySelectorAll('.set-balance-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const targetUser = e.target.dataset.username;
+                        const input = document.getElementById(`balance-input-${targetUser}`);
+                        const amount = parseInt(input.value);
+
+                        if (isNaN(amount) || amount < 0) {
+                             showNotification('لطفا مبلغ معتبری (0 یا بیشتر) وارد کنید', 'warning');
+                             return;
+                        }
+                        
+                        siteUsers[targetUser].balance = amount;
+                        saveUsers();
+                        showNotification(`موجودی ${targetUser} به ${amount.toLocaleString('fa-IR')} تومان تنظیم شد.`, 'success');
+                        input.value = '';
+                        loadAdminUsers(); // Refresh list
+                    });
+                });
+                
+                document.querySelectorAll('.delete-user-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const targetUser = e.target.dataset.username;
+                        // A simple confirmation for this simulation
+                        const isConfirmed = confirm(`آیا از حذف کاربر ${targetUser} مطمئن هستید؟ این عمل غیرقابل بازگشت است.`);
+                        if (isConfirmed) {
+                            delete siteUsers[targetUser];
+                            saveUsers();
+                            showNotification(`کاربر ${targetUser} با موفقیت حذف شد.`, 'success');
+                            loadAdminUsers(); // Refresh list
+                        }
+                    });
+                });
+            }
+            
+            function loadAdminDiscounts() {
+                adminDiscountList.innerHTML = '';
+                const codes = Object.keys(siteData.discountCodes);
+                if (codes.length === 0) {
+                    adminDiscountList.innerHTML = '<p class="text-center text-slate-400">کد تخفیفی یافت نشد.</p>';
+                    return;
+                }
+                codes.forEach(codeName => {
+                    const code = siteData.discountCodes[codeName];
+                    const typeText = code.type === 'percent' ? 'درصد' : 'تومان';
+                    const valueText = code.type === 'percent' ? `${code.value}%` : `${code.value.toLocaleString('fa-IR')} ت`;
+                    
+                    const codeEl = document.createElement('div');
+                    codeEl.className = 'glass-effect p-3 rounded-lg flex justify-between items-center text-sm';
+                    codeEl.innerHTML = `
+                        <div>
+                            <p class="font-bold text-base">${codeName}</p>
+                            <p class="text-slate-300">${valueText} (${typeText})</p>
+                        </div>
+                        <button data-code="${codeName}" class="delete-discount-btn px-3 py-1 text-xs font-semibold text-white bg-red-600 rounded-lg">حذف</button>
+                    `;
+                    adminDiscountList.appendChild(codeEl);
+                });
+
+                // Add delete listeners
+                document.querySelectorAll('.delete-discount-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const code = e.target.dataset.code;
+                        delete siteData.discountCodes[code];
+                        saveSiteData();
+                        showNotification(`کد تخفیف ${code} حذف شد.`, 'success');
+                        loadAdminDiscounts();
+                    });
+                });
+            }
+            
+            function loadAdminBalanceCodes() {
+                adminBalanceList.innerHTML = '';
+                const codes = Object.keys(siteData.balanceCodes);
+                 if (codes.length === 0) {
+                    adminBalanceList.innerHTML = '<p class="text-center text-slate-400">کد موجودی یافت نشد.</p>';
+                    return;
+                }
+                codes.forEach(codeName => {
+                    const code = siteData.balanceCodes[codeName];
+                    const statusText = code.used ? 'استفاده شده' : 'فعال';
+                    const statusClass = code.used ? 'text-red-400' : 'text-green-400';
+
+                    const codeEl = document.createElement('div');
+                    codeEl.className = 'glass-effect p-3 rounded-lg flex justify-between items-center text-sm';
+                    codeEl.innerHTML = `
+                        <div>
+                            <p class="font-bold text-base">${codeName}</p>
+                            <p class="text-slate-300">مبلغ: ${code.value.toLocaleString('fa-IR')} تومان | وضعیت: <span class="${statusClass} font-bold">${statusText}</span></p>
+                        </div>
+                        <button data-code="${codeName}" class="delete-balance-btn px-3 py-1 text-xs font-semibold text-white bg-red-600 rounded-lg">حذف</button>
+                    `;
+                    adminBalanceList.appendChild(codeEl);
+                });
+                
+                // Add delete listeners
+                document.querySelectorAll('.delete-balance-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const code = e.target.dataset.code;
+                        delete siteData.balanceCodes[code];
+                        saveSiteData();
+                        showNotification(`کد موجودی ${code} حذف شد.`, 'success');
+                        loadAdminBalanceCodes();
+                    });
+                });
+            }
+
+            function openAdminPanel() {
+                dashboardModal.classList.add('hidden');
+                // Load all tabs
+                loadAdminUsers();
+                loadAdminDiscounts();
+                loadAdminBalanceCodes();
+                // Set default tab
+                adminTabs.forEach(t => t.classList.remove('active'));
+                adminTabContents.forEach(c => c.classList.add('hidden'));
+                document.querySelector('.admin-tab-button[data-target="admin-tab-users"]').classList.add('active');
+                document.getElementById('admin-tab-users').classList.remove('hidden');
+                
+                adminModal.classList.remove('hidden');
+            }
+
+            adminPanelBtn.addEventListener('click', openAdminPanel);
+
+            adminTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    adminTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    const target = tab.dataset.target;
+                    adminTabContents.forEach(c => c.id === target ? c.classList.remove('hidden') : c.classList.add('hidden'));
+                });
+            });
+
+            adminModalClose.addEventListener('click', () => {
+                adminModal.classList.add('hidden');
+            });
+
+            adminBackToDashBtn.addEventListener('click', () => {
+                adminModal.classList.add('hidden');
+                checkLogin(); // Refresh user dashboard
+                dashboardModal.classList.remove('hidden');
+            });
+
+            // Admin Form Submissions
+            createDiscountForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('discount-code-name').value.trim().toUpperCase();
+                const value = parseInt(document.getElementById('discount-code-value').value);
+                const type = document.getElementById('discount-code-type').value;
+
+                if (!name || isNaN(value) || value <= 0) {
+                    showNotification('لطفا تمام فیلدها را به درستی پر کنید', 'warning');
+                    return;
+                }
+                
+                siteData.discountCodes[name] = { value, type };
+                saveSiteData();
+                showNotification(`کد تخفیف ${name} با موفقیت ایجاد شد`, 'success');
+                createDiscountForm.reset();
+                loadAdminDiscounts();
+            });
+            
+            createBalanceForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const value = parseInt(document.getElementById('balance-code-value').value);
+                if (isNaN(value) || value <= 0) {
+                    showNotification('لطفا مبلغ معتبری وارد کنید', 'warning');
+                    return;
+                }
+
+                // Generate a random code
+                const newCode = Math.random().toString(36).substring(2, 10).toUpperCase();
+                siteData.balanceCodes[newCode] = { value: value, used: false };
+                saveSiteData();
+                showNotification(`کد ${newCode} به ارزش ${value.toLocaleString('fa-IR')} تومان ایجاد شد`, 'success');
+                createBalanceForm.reset();
+                loadAdminBalanceCodes();
+            });
+
+
+            // Goftino Script
+            !function(){var i="sDMeys",a=window,d=document;function g(){var g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}"complete"===d.readyState?g():a.attachEvent?a.attachEvent("onload",g):a.addEventListener("load",g,!1);}();
+        });
+    </script>
+</body>
+</html>
+
+
+
 
             // Goftino Script
             !function(){var i="sDMeys",a=window,d=document;function g(){var g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}"complete"===d.readyState?g():a.attachEvent?a.attachEvent("onload",g):a.addEventListener("load",g,!1);}();
