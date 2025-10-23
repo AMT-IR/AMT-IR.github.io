@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPONSORACB - Official Site</title>
 
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- Google Fonts: Vazirmatn -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap" rel="stylesheet">
@@ -206,21 +208,25 @@
         <div class="blob"></div>
     </div>
 
+    <!-- Header Section -->
     <header id="header" class="glass-effect fixed top-4 left-4 right-4 z-50 rounded-2xl shadow-lg transition-all duration-300">
         <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
             <div class="text-2xl font-bold tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-cyan-400 animate-shine">
                 SPONSORACB
             </div>
             <div class="flex items-center gap-2 md:gap-4">
-                 <button id="account-btn" class="flex items-center gap-2 text-sm font-semibold p-2 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+                 <!-- Account Button -->
+                <button id="account-btn" class="flex items-center gap-2 text-sm font-semibold p-2 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>
                     <span id="account-text" class="hidden sm:block">حساب کاربری</span>
                 </button>
                 <div class="w-px h-6 bg-slate-300 dark:bg-slate-700"></div>
+                <!-- Dark Mode Button -->
                 <button id="dark-mode-toggle-desktop" class="flex items-center justify-center w-10 h-10 rounded-full text-slate-700 dark:text-slate-300 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
                      <svg id="theme-toggle-dark-icon-desktop" class="h-6 w-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
                      <svg id="theme-toggle-light-icon-desktop" class="h-6 w-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05A1 1 0 003.636 3.636l-.707.707a1 1 0 101.414 1.414l.707-.707zM3 11a1 1 0 100-2H2a1 1 0 100 2h1zM6.464 14.95l-.707.707a1 1 0 001.414 1.414l.707-.707a1 1 0 00-1.414-1.414z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
                 </button>
+                <!-- Mobile Menu Button -->
                 <button id="menu-btn" class="md:hidden z-50">
                     <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-700 dark:text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
                     <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-700 dark:text-slate-300 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
@@ -229,6 +235,7 @@
         </div>
     </header>
 
+    <!-- Mobile Menu -->
     <div id="mobile-menu" class="fixed inset-0 z-40 glass-effect flex-col items-center justify-center gap-6 text-2xl font-medium hidden md:hidden">
         <button id="dark-mode-toggle-mobile" class="flex items-center gap-3 p-3 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
             <span id="dark-mode-text-mobile">حالت تاریک</span>
@@ -239,8 +246,10 @@
         </button>
     </div>
 
+    <!-- Main Content -->
     <main class="pt-32 pb-40 relative z-10">
         <div class="container mx-auto px-4 sm:px-6">
+            <!-- Hero Section -->
             <div class="max-w-lg mx-auto text-center scroll-animate">
                 <div class="relative w-32 h-32 mx-auto mb-6">
                     <div class="absolute inset-0 bg-gradient-to-tr from-sky-400 to-blue-500 rounded-full animate-pulse"></div>
@@ -248,12 +257,14 @@
                 </div>
                 <h1 class="text-4xl font-extrabold mb-2">SPONSORACB</h1>
                 <p class="text-lg text-slate-600 dark:text-slate-400 mb-8">بهترین خدمات و پشتیبانی در دستان شماست.</p>
+                <!-- Responsive button links -->
                 <div class="space-y-4">
                      <a href="https://t.me/sponsoracb" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform duration-300 shadow-lg">کانال تلگرام</a>
                      <a href="https://t.me/sponsoracb_bot" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform duration-300 shadow-lg">ربات تلگرام</a>
                      <a href="https://t.me/MYT7V" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-slate-800 dark:text-slate-900 bg-slate-200 dark:bg-slate-300 hover:scale-105 transform transition-transform duration-300 shadow-md">ارتباط با مدیر</a>
                      <a href="https://t.me/Sponsoracb_supportbot" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-slate-800 dark:text-slate-900 bg-slate-200 dark:bg-slate-300 hover:scale-105 transform transition-transform duration-300 shadow-md">پشتیبانی</a>
                 </div>
+                <!-- Responsive stats grid -->
                 <div class="mt-12 grid grid-cols-2 gap-4 text-center">
                     <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10"><p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-operators">0</p><p class="text-sm text-slate-600 dark:text-slate-400 mt-1">اپراتور های انلاین</p></div>
                     <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10"><p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-bots">0</p><p class="text-sm text-slate-600 dark:text-slate-400 mt-1">بات های فعال</p></div>
@@ -268,21 +279,26 @@
                     </div>
                 </div>
 
+                <!-- Responsive VIP grid -->
                 <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
                     <a href="https://t.me/Sponsoracb_bot?start=vip_epanel_setting_bot" target="_blank" class="block w-full p-4 rounded-xl font-bold text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:scale-105 transform transition-transform duration-300 shadow-lg text-lg">خرید اکانت ویژه</a>
                     <div class="p-4 rounded-xl bg-indigo-500/10 dark:bg-indigo-400/10"><p class="text-3xl font-bold text-indigo-500 dark:text-indigo-400" id="stat-licenses">0</p><p class="text-sm text-slate-600 dark:text-slate-400 mt-1">لایسنس های خرید شده</p></div>
                 </div>
             </div>
 
+            <!-- Order Algorithm Section -->
             <div id="order-algorithm-section" class="max-w-4xl mx-auto text-center mt-20 scroll-animate">
                 <h2 class="text-3xl font-extrabold mb-8">الگوریتم ثبت سفارش</h2>
                 <div class="glass-effect p-4 md:p-8 rounded-2xl">
+                    <!-- Progress Bar -->
                     <div class="mb-8">
                         <div class="progress-bar-background w-full h-2 rounded-full">
                             <div id="progress-bar" class="progress-bar-fill h-2 rounded-full" style="width: 0%;"></div>
                         </div>
                     </div>
+                    <!-- Steps Container -->
                     <div class="min-h-[200px]">
+                        <!-- Step 1: Select Service -->
                         <div id="step-1" class="space-y-4">
                             <h3 class="text-xl font-bold">مرحله ۱: سرویس را انتخاب کنید</h3>
                             <select id="service-select" class="form-input w-full md:w-1/2 mx-auto p-3 rounded-lg text-slate-800 dark:text-slate-200 bg-transparent">
@@ -292,17 +308,20 @@
                             </select>
                             <button class="next-btn w-full md:w-1/2 mx-auto p-3 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform">مرحله بعد</button>
                         </div>
+                        <!-- Step 2: Enter Link -->
                         <div id="step-2" class="space-y-4 hidden">
                              <h3 class="text-xl font-bold">مرحله ۲: لینک صفحه را وارد کنید</h3>
                             <input type="text" id="link-input" class="form-input w-full md:w-1/2 mx-auto p-3 rounded-lg text-slate-800 dark:text-slate-200 text-left" placeholder="https://instagram.com/username">
                             <button class="next-btn w-full md:w-1/2 mx-auto p-3 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform">مرحله بعد</button>
                         </div>
+                        <!-- Step 3: Set Quantity -->
                         <div id="step-3" class="space-y-4 hidden">
                             <h3 class="text-xl font-bold">مرحله ۳: تعداد را مشخص کنید</h3>
                             <input type="number" id="quantity-input" class="form-input w-full md:w-1/2 mx-auto p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="مثلا: 1000" min="100">
                             <button class="next-btn w-full md:w-1/2 mx-auto p-3 rounded-xl font-semibold text-white bg-gradient-to-r from-emerald-500 to-green-500 hover:scale-105 transform transition-transform">ثبت نهایی سفارش</button>
                         </div>
-                        <div id="step-4" class="space-y-4 hidden text-center">
+                        <!-- Step 4: Success -->
+                         <div id="step-4" class="space-y-4 hidden text-center">
                             <svg class="w-16 h-16 text-green-500 mx-auto animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             <h3 class="text-2xl font-bold text-green-400">سفارش شما با موفقیت شبیه‌سازی شد!</h3>
                             <p class="text-slate-400">برای ثبت سفارش واقعی، از لیست محصولات اقدام کنید.</p>
@@ -312,20 +331,27 @@
                 </div>
             </div>
 
+            <!-- Products Section (DYNAMIC) -->
             <div id="product-section-container" class="max-w-4xl mx-auto text-center mt-20">
                 <h2 class="text-3xl font-extrabold mb-8 scroll-animate">محصولات و خدمات ما</h2>
 
+                <!-- Tab Navigation (Container for dynamic tabs) -->
                 <div id="product-tabs" class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8 scroll-animate glass-effect p-2 rounded-2xl">
-                    </div>
+                    <!-- Tabs will be injected here by JS -->
+                </div>
 
+                <!-- Product Placeholder -->
                 <div id="product-placeholder" class="text-center p-8 glass-effect rounded-2xl">
                     <p class="text-lg text-slate-600 dark:text-slate-400">لطفا برای مشاهده محصولات، یک دسته را انتخاب کنید.</p>
                 </div>
 
+                <!-- Product Sections (Container for dynamic sections) -->
                 <div id="product-sections-wrapper">
-                    </div>
+                    <!-- Product sections will be injected here by JS -->
+                </div>
 
-                 <div class="mt-20 scroll-animate max-w-2xl mx-auto">
+                 <!-- Comments Section -->
+                <div class="mt-20 scroll-animate max-w-2xl mx-auto">
                     <h2 class="text-3xl font-extrabold mb-8 text-center">دیدگاه خود را ثبت کنید</h2>
                     <div class="glass-effect p-6 md:p-8 rounded-2xl">
                         <form id="comment-form" class="space-y-6 text-right">
@@ -344,12 +370,14 @@
         </div>
     </main>
 
+    <!-- Footer Section -->
     <footer class="glass-effect fixed bottom-4 left-4 right-4 rounded-2xl shadow-lg z-20">
         <div class="container mx-auto px-4 sm:px-6 py-4 text-center text-slate-600 dark:text-slate-400">
             <p class="text-sm">&copy; 2025 SPONSORACB - تمام حقوق محفوظ است.</p>
         </div>
     </footer>
 
+    <!-- Notification Banner (Responsive Position) -->
     <div id="notification-banner" class="fixed bottom-24 md:bottom-5 right-5 z-[100] p-4 rounded-2xl shadow-lg glass-effect">
         <div class="flex items-center gap-3">
             <span id="notification-dot"></span>
@@ -357,6 +385,7 @@
         </div>
     </div>
 
+    <!-- Login Modal (Responsive) -->
     <div id="login-modal" class="modal-overlay fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4 hidden">
         <div class="modal-content glass-effect w-full max-w-md p-6 md:p-8 rounded-2xl">
             <form id="login-form" class="space-y-6">
@@ -369,239 +398,261 @@
                     <label for="login-password" class="block mb-2 font-medium">رمز عبور</label>
                     <input type="password" id="login-password" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" required>
                 </div>
-                <button type="submit" class="w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform duration-300">
-                    ورود / ثبت نام
-                </button>
+                <button type="submit" class="w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform">ورود به حساب</button>
             </form>
         </div>
     </div>
 
+    <!-- Dashboard Modal (Responsive) -->
     <div id="dashboard-modal" class="modal-overlay fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4 hidden">
-        <div class="modal-content glass-effect w-full max-w-lg p-6 md:p-8 rounded-2xl max-h-[80vh] overflow-y-auto">
-            
-            <div id="dashboard-main-view">
-                <h2 class="text-2xl font-bold text-center mb-6">داشبورد <span id="dash-username" class="text-sky-400">کاربر</span></h2>
-                
-                <div class="glass-effect p-4 rounded-xl text-center mb-6">
-                    <p class="text-sm text-slate-400">موجودی حساب شما</p>
-                    <p id="dash-balance" class="text-3xl font-bold text-green-400">۰ ت</p>
+        <div class="modal-content glass-effect w-full max-w-md p-6 md:p-8 rounded-2xl space-y-6 text-center relative">
+
+             <div id="dashboard-main-view">
+                <h2 class="text-2xl font-bold">داشبورد کاربری</h2>
+                <p class="text-lg mt-2">خوش آمدید، <span id="dash-username" class="font-bold text-sky-400"></span>!</p>
+
+                <!-- User Stats Grid -->
+                <div class="grid grid-cols-2 gap-4 text-lg mt-4">
+                    <div class="glass-effect p-4 rounded-lg">
+                        <p class="font-bold text-2xl" id="dash-orders">0</p>
+                        <p class="text-sm text-slate-400">سفارشات در سبد</p>
+                    </div>
+                    <div class="glass-effect p-4 rounded-lg">
+                        <p class="font-bold text-xl" id="dash-total">۰ <span class="text-sm">ت</span></p>
+                        <p class="text-sm text-slate-400">مبلغ سبد خرید</p>
+                    </div>
+                    <div class="glass-effect p-4 rounded-lg col-span-2"> <!-- Full width balance -->
+                        <p class="font-bold text-2xl text-green-400" id="dash-balance">۰ <span class="text-sm">ت</span></p>
+                        <p class="text-sm text-slate-400">موجودی حساب</p>
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4 mb-6 text-center">
-                    <div classs="p-3 rounded-lg bg-white/5">
-                        <p class="text-sm text-slate-400">آیتم‌ها در سبد</p>
-                        <p id="dash-orders" class="text-xl font-bold">۰</p>
-                    </div>
-                    <div classs="p-3 rounded-lg bg-white/5">
-                        <p class="text-sm text-slate-400">مجموع سبد</p>
-                        <p id="dash-total" class="text-xl font-bold">۰ <span class="text-sm">ت</span></p>
-                    </div>
-                </div>
-
-                <div class="space-y-3 mb-6">
-                    <label for="redeem-code-input" class="text-sm font-medium">افزایش موجودی (کد هدیه)</label>
-                    <div class="flex gap-2">
+                <!-- Redeem Code -->
+                <div class="text-right">
+                    <label for="redeem-code-input" class="block mb-2 text-sm font-medium">کد افزایش موجودی</label>
+                    <div class="flex flex-col sm:flex-row gap-2">
                         <input type="text" id="redeem-code-input" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="کد هدیه را وارد کنید">
-                        <button id="redeem-code-btn" class="px-5 py-2 font-semibold text-white bg-green-500 rounded-lg whitespace-nowrap">اعمال</button>
+                        <button id="redeem-code-btn" class="px-4 py-2 font-semibold text-white bg-green-500 rounded-lg whitespace-nowrap">اعمال</button>
                     </div>
                 </div>
 
-                <div id="user-comment-display" class="mb-6 p-4 glass-effect rounded-lg hidden">
-                    <p class="text-sm text-slate-400 mb-2">آخرین نظر ثبت شده شما:</p>
-                    <p id="user-comment-text" class="text-sm italic"></p>
+                <div id="user-comment-display" class="hidden text-right border-t border-slate-700/50 pt-4 mt-4">
+                    <h4 class="font-bold mb-2">آخرین دیدگاه شما:</h4>
+                    <p id="user-comment-text" class="text-sm text-slate-300 bg-slate-800/50 p-3 rounded-lg"></p>
                 </div>
 
-                <div class="space-y-3">
-                    <button id="show-cart-btn" class="w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform">مشاهده سبد خرید</button>
-                    <button id="admin-panel-btn" class="w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-purple-500 to-indigo-500 hover:scale-105 transform transition-transform hidden">ورود به پنل ادمین</button>
-                    <button id="logout-btn" class="w-full p-3 rounded-xl font-semibold text-white bg-slate-600 hover:bg-slate-700 transition-colors">خروج از حساب</button>
+                <!-- Action Buttons -->
+                <div class="mt-6 flex flex-col gap-4">
+                    <button id="admin-panel-btn" class="hidden w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-violet-600 to-purple-600 hover:scale-105 transform transition-transform">پنل مدیریت</button>
+                    <button id="show-cart-btn" class="w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform">سبد خرید</button>
+                    <button id="logout-btn" class="w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-red-500 to-rose-500 hover:scale-105 transform transition-transform">خروج از حساب</button>
                 </div>
-            </div>
+             </div>
 
-            <div id="cart-view" class="hidden">
-                <h2 class="text-2xl font-bold text-center mb-6">سبد خرید</h2>
-                
-                <div id="cart-items-list" class="space-y-3 mb-6 min-h-[100px] max-h-[200px] overflow-y-auto pr-2">
-                    </div>
-                
-                <div id="cart-empty-msg" class="text-center text-slate-400 p-8 hidden">
-                    <p>سبد خرید شما خالی است.</p>
+             <!-- Cart View -->
+             <div id="cart-view" class="hidden">
+                <h3 class="text-xl font-bold mb-4">سبد خرید شما</h3>
+                <div id="cart-items-list" class="space-y-2 text-right max-h-48 overflow-y-auto pr-2">
+                    <!-- Cart items will be injected here -->
                 </div>
+                 <div id="cart-empty-msg" class="text-slate-400 my-8">سبد خرید شما خالی است.</div>
 
-                <div class="border-t border-slate-700/50 pt-4 space-y-3 text-sm font-medium">
-                    <div class="flex justify-between">
-                        <span>جمع کل</span>
-                        <span id="cart-subtotal">۰ ت</span>
-                    </div>
-                    <div id="cart-discount-row" class="flex justify-between text-green-400 hidden">
-                        <span>تخفیف</span>
-                        <span id="cart-discount-amount">۰ ت</span>
-                    </div>
-                    <div classs="flex justify-between text-lg font-bold border-t border-slate-700/50 pt-3 mt-3">
-                        <span>مبلغ نهایی</span>
-                        <span id="cart-total">۰ ت</span>
-                    </div>
-                </div>
-
-                <div class="space-y-3 my-6">
-                    <label for="discount-code-input" class="text-sm font-medium">کد تخفیف</label>
-                    <div class="flex gap-2">
+                <!-- Discount Code -->
+                <div class="text-right mt-4">
+                    <label for="discount-code-input" class="block mb-2 text-sm font-medium">کد تخفیف</label>
+                    <div class="flex flex-col sm:flex-row gap-2">
                         <input type="text" id="discount-code-input" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="کد تخفیف را وارد کنید">
-                        <button id="apply-discount-btn" class="px-5 py-2 font-semibold text-white bg-sky-500 rounded-lg whitespace-nowrap">اعمال</button>
+                        <button id="apply-discount-btn" class="px-4 py-2 font-semibold text-white bg-sky-500 rounded-lg whitespace-nowrap">اعمال</button>
                     </div>
                 </div>
-                
-                <div class="space-y-3 mt-6">
-                    <button id="pay-btn" class="w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-green-500 to-emerald-500 hover:scale-105 transform transition-transform">پرداخت نهایی (از موجودی)</button>
-                    <button id="back-to-dash-btn" class="w-full p-3 rounded-xl font-semibold text-white bg-slate-600 hover:bg-slate-700 transition-colors">بازگشت به داشبورد</button>
+
+                <div class="border-t border-slate-700 mt-4 pt-4 space-y-2">
+                    <div class="flex justify-between font-medium">
+                        <span>جمع کل:</span>
+                        <span id="cart-subtotal">0 ت</span>
+                    </div>
+                    <div id="cart-discount-row" class="flex justify-between font-medium text-red-400 hidden">
+                        <span>تخفیف:</span>
+                        <span id="cart-discount-amount">0 ت</span>
+                    </div>
+                    <div class="flex justify-between font-bold text-lg border-t border-slate-700/50 pt-2 mt-2">
+                        <span>مبلغ نهایی:</span>
+                        <span id="cart-total">0 ت</span>
+                    </div>
                 </div>
-            </div>
+                <div class="mt-6 flex flex-col sm:flex-row gap-4">
+                    <button id="pay-btn" class="flex-1 p-3 rounded-xl font-bold text-white bg-gradient-to-r from-green-500 to-emerald-500 hover:scale-105 transform transition-transform disabled:opacity-50 disabled:cursor-not-allowed">پرداخت نهایی</button>
+                    <button id="back-to-dash-btn" class="flex-1 p-3 rounded-xl font-bold text-white bg-gradient-to-r from-slate-500 to-slate-600 hover:scale-105 transform transition-transform">بازگشت</button>
+                </div>
+             </div>
         </div>
     </div>
 
-    <div id="admin-modal" class="modal-overlay fixed inset-0 z-[110] bg-black/70 flex items-center justify-center p-4 hidden">
-        <div class="modal-content glass-effect w-full max-w-3xl p-6 md:p-8 rounded-2xl max-h-[90vh] flex flex-col">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-2xl font-bold text-purple-400">پنل مدیریت</h2>
-                <button id="admin-modal-close" class="text-slate-400 hover:text-white">&times;</button>
-            </div>
-            
-            <div class="flex flex-wrap gap-2 border-b border-slate-700/50 mb-4">
-                <button class="admin-tab-button px-4 py-2 rounded-t-lg font-semibold transition-colors duration-300" data-target="admin-tab-dashboard">داشبورد</button>
-                <button class="admin-tab-button px-4 py-2 rounded-t-lg font-semibold transition-colors duration-300" data-target="admin-tab-users">کاربران</button>
-                <button class="admin-tab-button px-4 py-2 rounded-t-lg font-semibold transition-colors duration-300" data-target="admin-tab-products">مدیریت محصولات</button>
-                <button class="admin-tab-button px-4 py-2 rounded-t-lg font-semibold transition-colors duration-300" data-target="admin-tab-add-product">افزودن محصول/دسته</button>
-                <button class="admin-tab-button px-4 py-2 rounded-t-lg font-semibold transition-colors duration-300" data-target="admin-tab-discounts">کدهای تخفیف</button>
-                <button class="admin-tab-button px-4 py-2 rounded-t-lg font-semibold transition-colors duration-300" data-target="admin-tab-balance">کدهای موجودی</button>
+    <!-- Admin Panel Modal (Responsive) -->
+    <div id="admin-modal" class="modal-overlay fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4 hidden">
+        <div class="modal-content glass-effect w-full max-w-3xl p-4 sm:p-6 md:p-8 rounded-2xl space-y-4 text-right">
+            <!-- Header and Close Button -->
+            <div class="flex justify-between items-center">
+                <h2 class="text-xl sm:text-2xl font-bold">پنل مدیریت حرفه‌ای</h2>
+                <button id="admin-modal-close" class="p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
             </div>
 
-            <div class="flex-grow overflow-y-auto text-right pr-2">
+            <!-- Admin Tabs (Responsive) -->
+            <div class="flex flex-wrap gap-2 border-b border-slate-700/50 text-sm sm:text-base">
+                <button class="admin-tab-button px-3 py-2 font-semibold rounded-t-lg" data-target="admin-tab-dashboard">داشبورد</button>
+                <button class="admin-tab-button px-3 py-2 font-semibold rounded-t-lg" data-target="admin-tab-users">کاربران</button>
+                <button class="admin-tab-button px-3 py-2 font-semibold rounded-t-lg" data-target="admin-tab-products">تغییر قیمت</button>
+                <button class="admin-tab-button px-3 py-2 font-semibold rounded-t-lg" data-target="admin-tab-add-product">افزودن محصول</button>
+                <button class="admin-tab-button px-3 py-2 font-semibold rounded-t-lg" data-target="admin-tab-discounts">کدهای تخفیف</button>
+                <button class="admin-tab-button px-3 py-2 font-semibold rounded-t-lg" data-target="admin-tab-balance">کدهای موجودی</button>
+            </div>
+
+            <!-- Admin Tab Content -->
+            <div class="max-h-[60vh] overflow-y-auto p-2">
+                <!-- Admin Dashboard Tab -->
                 <div id="admin-tab-dashboard" class="admin-tab-content space-y-4">
-                    <h3 class="text-xl font-bold mb-4">آمار کلی</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                        <div class="glass-effect p-4 rounded-lg"><p class="text-sm text-slate-400">کل کاربران (جز ادمین)</p><p id="admin-stat-total-users" class="text-2xl font-bold">۰</p></div>
-                        <div class="glass-effect p-4 rounded-lg"><p class="text-sm text-slate-400">موجودی کل کاربران</p><p id="admin-stat-total-balance" class="text-2xl font-bold">۰ ت</p></div>
-                        <div class="glass-effect p-4 rounded-lg"><p class="text-sm text-slate-400">کدهای تخفیف فعال</p><p id="admin-stat-discount-codes" class="text-2xl font-bold">۰</p></div>
-                        <div class="glass-effect p-4 rounded-lg"><p class="text-sm text-slate-400">کدهای موجودی (استفاده نشده)</p><p id="admin-stat-balance-codes" class="text-2xl font-bold">۰</p></div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="glass-effect p-4 rounded-lg">
+                            <p class="text-sm text-slate-400">تعداد کل کاربران</p>
+                            <p id="admin-stat-total-users" class="text-2xl font-bold text-sky-400">0</p>
+                        </div>
+                        <div class="glass-effect p-4 rounded-lg">
+                            <p class="text-sm text-slate-400">موجودی کل سیستم</p>
+                            <p id="admin-stat-total-balance" class="text-2xl font-bold text-green-400">0 ت</p>
+                        </div>
+                        <div class="glass-effect p-4 rounded-lg">
+                            <p class="text-sm text-slate-400">کدهای تخفیف فعال</p>
+                            <p id="admin-stat-discount-codes" class="text-2xl font-bold text-violet-400">0</p>
+                        </div>
+                        <div class="glass-effect p-4 rounded-lg">
+                            <p class="text-sm text-slate-400">کدهای موجودی (استفاده نشده)</p>
+                            <p id="admin-stat-balance-codes" class="text-2xl font-bold text-amber-400">0</p>
+                        </div>
                     </div>
                 </div>
 
+                <!-- User Management Tab -->
                 <div id="admin-tab-users" class="admin-tab-content space-y-4 hidden">
-                    <h3 class="text-xl font-bold mb-4">مدیریت کاربران</h3>
                     <input type="text" id="admin-user-search" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="جستجوی نام کاربری...">
-                    <div id="admin-user-list" class="space-y-4 max-h-[50vh] overflow-y-auto">
-                        </div>
+                    <div id="admin-user-list" class="space-y-4">
+                        <!-- User list will be injected here by JS -->
+                    </div>
                 </div>
 
+                <!-- Product Price Management Tab -->
                 <div id="admin-tab-products" class="admin-tab-content space-y-4 hidden">
-                    <h3 class="text-xl font-bold mb-4">مدیریت قیمت محصولات</h3>
-                    <div id="admin-product-list" class="space-y-3">
-                        </div>
+                    <h3 class="text-lg font-bold">مدیریت قیمت محصولات</h3>
+                    <div id="admin-product-list" class="space-y-4">
+                        <!-- Product list for price editing will be injected here by JS -->
+                    </div>
                 </div>
-                
+
+                <!-- Add Product/Category Tab -->
                 <div id="admin-tab-add-product" class="admin-tab-content space-y-8 hidden">
-                    <form id="add-product-form" class="space-y-4 glass-effect p-4 rounded-lg">
-                        <h3 class="text-lg font-semibold">افزودن محصول جدید</h3>
-                        <div>
-                            <label for="admin-add-product-category" class="block mb-2 text-sm font-medium">انتخاب دسته‌بندی</label>
-                            <select id="admin-add-product-category" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200"></select>
+                    <!-- Form 1: Add New Product -->
+                    <form id="add-product-form" class="space-y-4">
+                        <h3 class="text-lg font-bold">افزودن محصول جدید</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                            <div class="md:col-span-1">
+                                <label for="admin-add-product-category" class="block mb-2 text-sm font-medium">انتخاب دسته</label>
+                                <select id="admin-add-product-category" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200 bg-transparent">
+                                    <!-- Categories populated by JS -->
+                                </select>
+                            </div>
+                            <div class="md:col-span-1">
+                                <label for="admin-add-product-name" class="block mb-2 text-sm font-medium">نام محصول</label>
+                                <input type="text" id="admin-add-product-name" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="مثلا: فالوور واقعی" required>
+                            </div>
+                            <div class="md:col-span-1">
+                                <label for="admin-add-product-price" class="block mb-2 text-sm font-medium">قیمت (تومان)</label>
+                                <input type="number" id="admin-add-product-price" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="250000" required>
+                            </div>
                         </div>
-                        <div>
-                            <label for="admin-add-product-name" class="block mb-2 text-sm font-medium">نام محصول</label>
-                            <input type="text" id="admin-add-product-name" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="مثال: فالوور فیک" required>
-                        </div>
-                        <div>
-                            <label for="admin-add-product-price" class="block mb-2 text-sm font-medium">قیمت (تومان)</label>
-                            <input type="number" id="admin-add-product-price" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="مثال: 50000" required>
-                        </div>
-                        <button type="submit" class="w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-emerald-500 to-green-500">افزودن محصول</button>
+                        <button type="submit" class="w-full p-3 font-semibold text-white bg-green-500 rounded-lg">افزودن محصول</button>
                     </form>
-                    
-                    <form id="add-category-form" class="space-y-4 glass-effect p-4 rounded-lg">
-                        <h3 class="text-lg font-semibold">افزودن دسته‌بندی جدید</h3>
-                        <div>
-                            <label for="admin-add-category-id" class="block mb-2 text-sm font-medium">شناسه (انگلیسی، بدون فاصله)</label>
-                            <input type="text" id="admin-add-category-id" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="مثال: instagram" required>
-                        </div>
-                         <div>
-                            <label for="admin-add-category-name" class="block mb-2 text-sm font-medium">نام نمایشی (فارسی)</label>
-                            <input type="text" id="admin-add-category-name" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="مثال: اینستاگرام" required>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4">
+
+                    <!-- Form 2: Add New Category -->
+                    <form id="add-category-form" class="space-y-4 border-t border-slate-700/50 pt-6">
+                        <h3 class="text-lg font-bold">ایجاد دسته‌بندی جدید</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
                              <div>
-                                <label for="admin-add-category-color" class="block mb-2 text-sm font-medium">رنگ</label>
-                                <select id="admin-add-category-color" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200">
-                                    <option value="red" class="text-slate-800">قرمز</option>
-                                    <option value="cyan" class="text-slate-800">فیروزه‌ای</option>
-                                    <option value="orange" class="text-slate-800">نارنجی</option>
-                                    <option value="pink" class="text-slate-800">صورتی</option>
-                                    <option value="purple" class="text-slate-800">بنفش</option>
-                                    <option value="green" class="text-slate-800">سبز</option>
-                                    <option value="blue" class="text-slate-800">آبی</option>
-                                </select>
+                                <label for="admin-add-category-id" class="block mb-2 text-sm font-medium">شناسه (انگلیسی)</label>
+                                <input type="text" id="admin-add-category-id" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="rubika" required>
                             </div>
-                             <div>
-                                <label for="admin-add-category-grid" class="block mb-2 text-sm font-medium">چینش گرید</label>
-                                <select id="admin-add-category-grid" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200">
-                                    <option value="md:grid-cols-3" class="text-slate-800">3 ستونه</option>
-                                    <option value="md:grid-cols-2" class="text-slate-800">2 ستونه</option>
-                                    <option value="md:grid-cols-4" class="text-slate-800">4 ستونه</option>
-                                </select>
+                            <div>
+                                <label for="admin-add-category-name" class="block mb-2 text-sm font-medium">نام نمایشی (فارسی)</label>
+                                <input type="text" id="admin-add-category-name" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="روبیکا" required>
+                            </div>
+                            <div>
+                                <label for="admin-add-category-color" class="block mb-2 text-sm font-medium">رنگ (Tailwind)</label>
+                                <input type="text" id="admin-add-category-color" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="purple" required>
+                            </div>
+                            <div>
+                                <label for="admin-add-category-grid" class="block mb-2 text-sm font-medium">چیدمان (Grid)</label>
+                                <input type="text" id="admin-add-category-grid" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" value="md:grid-cols-3" required>
                             </div>
                         </div>
-                        <button type="submit" class="w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-emerald-500 to-green-500">افزودن دسته‌بندی</button>
+                        <button type="submit" class="w-full p-3 font-semibold text-white bg-sky-500 rounded-lg">ایجاد دسته‌بندی</button>
                     </form>
                 </div>
 
-                <div id="admin-tab-discounts" class="admin-tab-content space-y-4 hidden">
-                    <form id="create-discount-form" class="space-y-4 glass-effect p-4 rounded-lg">
-                        <h3 class="text-lg font-semibold">ایجاد کد تخفیف</h3>
-                        <div class="flex gap-2">
-                            <input type="text" id="discount-code-name" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="نام کد (مثال: EID1405)" required>
-                            <input type="number" id="discount-code-value" class="form-input w-1/3 p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="مقدار" required>
-                            <select id="discount-code-type" class="form-input w-1/3 p-3 rounded-lg text-slate-800 dark:text-slate-200">
-                                <option value="percent" class="text-slate-800">درصد (%)</option>
-                                <option value="fixed" class="text-slate-800">تومان</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-emerald-500 to-green-500">ایجاد کد</button>
+                <!-- Discount Code Tab -->
+                <div id="admin-tab-discounts" class="admin-tab-content space-y-6 hidden">
+                    <form id="create-discount-form" class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                        <input type="text" id="discount-code-name" class="form-input p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="نام کد (مثلا: OFF30)" required>
+                        <input type="number" id="discount-code-value" class="form-input p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="مقدار (مثلا: 30)" required>
+                        <select id="discount-code-type" class="form-input p-3 rounded-lg text-slate-800 dark:text-slate-200 bg-transparent">
+                            <option value="percent" class="text-slate-800">درصد (%)</option>
+                            <option value="fixed" class="text-slate-800">مبلغ ثابت (تومان)</option>
+                        </select>
+                        <button type="submit" class="p-3 font-semibold text-white bg-sky-500 rounded-lg">ایجاد کد</button>
                     </form>
-                    <div id="admin-discount-list" class="space-y-3">
-                        </div>
+                    <div class="border-t border-slate-700/50 pt-4">
+                        <h4 class="font-bold mb-2">کدهای تخفیف موجود</h4>
+                        <div id="admin-discount-list" class="space-y-2"></div>
+                    </div>
                 </div>
 
-                <div id="admin-tab-balance" class="admin-tab-content space-y-4 hidden">
-                    <form id="create-balance-form" class="space-y-4 glass-effect p-4 rounded-lg">
-                        <h3 class="text-lg font-semibold">ایجاد کد موجودی (هدیه)</h3>
-                        <div>
-                            <label for="balance-code-value" class="block mb-2 text-sm font-medium">مبلغ (تومان)</label>
-                            <input type="number" id="balance-code-value" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="مثال: 10000" required>
-                        </div>
-                        <button type="submit" class="w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-emerald-500 to-green-500">ایجاد کد (خودکار)</button>
+                <!-- Balance Code Tab -->
+                <div id="admin-tab-balance" class="admin-tab-content space-y-6 hidden">
+                    <form id="create-balance-form" class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <input type="number" id="balance-code-value" class="form-input p-3 rounded-lg text-slate-800 dark:text-slate-200 md:col-span-2" placeholder="مبلغ کد هدیه (تومان)" required>
+                        <button type="submit" class="p-3 font-semibold text-white bg-green-500 rounded-lg">ایجاد کد</button>
                     </form>
-                    <div id="admin-balance-list" class="space-y-3">
-                        </div>
+                    <div class="border-t border-slate-700/50 pt-4">
+                        <h4 class="font-bold mb-2">کدهای موجودی موجود</h4>
+                        <div id="admin-balance-list" class="space-y-2"></div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="border-t border-slate-700/50 pt-4 mt-4">
-                 <button id="admin-back-to-dash-btn" class="w-full p-3 rounded-xl font-semibold text-white bg-slate-600 hover:bg-slate-700 transition-colors">بازگشت به داشبورد کاربر</button>
-            </div>
+
+            <button id="admin-back-to-dash-btn" class="w-full mt-4 p-3 rounded-xl font-bold text-white bg-gradient-to-r from-slate-500 to-slate-600 hover:scale-105 transform transition-transform">بازگشت به داشبورد</button>
         </div>
     </div>
-    
-    <div id="confirmation-modal" class="modal-overlay fixed inset-0 z-[120] bg-black/70 flex items-center justify-center p-4 hidden">
-        <div class="modal-content glass-effect w-full max-w-sm p-6 md:p-8 rounded-2xl text-center">
-            <h3 id="confirmation-title" class="text-xl font-bold mb-4">آیا مطمئن هستید؟</h3>
-            <p id="confirmation-message" class="text-slate-400 mb-8">این عملیات غیرقابل بازگشت است.</p>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal" class="modal-overlay fixed inset-0 z-[110] bg-black/60 flex items-center justify-center p-4 hidden">
+        <div class="modal-content glass-effect w-full max-w-sm p-6 rounded-2xl text-center">
+            <h3 class="text-lg font-bold mb-4" id="confirmation-title">آیا مطمئن هستید؟</h3>
+            <p class="text-sm text-slate-300 mb-6" id="confirmation-message">این عمل غیرقابل بازگشت است.</p>
             <div class="flex gap-4">
-                <button id="confirm-yes-btn" class="w-full p-3 rounded-xl font-bold text-white bg-red-600">بله، انجام بده</button>
-                <button id="confirm-no-btn" class="w-full p-3 rounded-xl font-semibold text-white bg-slate-600">خیر، لغو</button>
+                <button id="confirm-yes-btn" class="flex-1 p-3 rounded-xl font-bold text-white bg-red-600">بله، حذف کن</button>
+                <button id="confirm-no-btn" class="flex-1 p-3 rounded-xl font-bold text-slate-800 dark:text-slate-900 bg-slate-300">انصراف</button>
             </div>
         </div>
     </div>
 
-    <script src="Script.js"></script>
+    <!-- Goftino Script (Leave as-is) -->
+    <script type="text/javascript">
+      !function(){var i="sDMeys",a=window,d=document;function g(){var g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}"complete"===d.readyState?g():a.attachEvent?a.attachEvent("onload",g):a.addEventListener("load",g,!1);}();
+    </script>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="script.js" defer></script>
 
 </body>
 </html>
+
+
