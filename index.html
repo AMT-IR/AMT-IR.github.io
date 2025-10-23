@@ -165,6 +165,17 @@
             --tw-gradient-from: #8b5cf6;
             --tw-gradient-to: #6366f1;
         }
+        /* Admin Product Tab Active Color */
+        .admin-tab-button[data-target="admin-tab-products"],
+        .admin-tab-button[data-target="admin-tab-add-product"] {
+            border-bottom: 3px solid transparent;
+        }
+        .admin-tab-button[data-target="admin-tab-products"].active,
+        .admin-tab-button[data-target="admin-tab-add-product"].active {
+            --tw-gradient-from: #10b981; /* emerald-500 */
+            --tw-gradient-to: #059669; /* emerald-600 */
+            border-color: #10b981;
+        }
 
         /* Modal Styling */
         .modal-overlay {
@@ -186,6 +197,20 @@
             background-image: linear-gradient(to right, #38bdf8, #818cf8);
             transition: width 0.4s ease-in-out;
         }
+
+        /* Banned User Overlay */
+        #banned-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(239, 68, 68, 0.1); /* red-500/10 */
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border-radius: 1rem; /* rounded-2xl */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
     </style>
 </head>
 <body class="text-slate-800 dark:text-slate-200">
@@ -198,7 +223,7 @@
 
     <!-- Header Section -->
     <header id="header" class="glass-effect fixed top-4 left-4 right-4 z-50 rounded-2xl shadow-lg transition-all duration-300">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
             <div class="text-2xl font-bold tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-cyan-400 animate-shine">
                 SPONSORACB
             </div>
@@ -206,14 +231,15 @@
                  <!-- Account Button -->
                 <button id="account-btn" class="flex items-center gap-2 text-sm font-semibold p-2 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>
-                    <span id="account-text">حساب کاربری</span>
+                    <span id="account-text" class="hidden sm:block">حساب کاربری</span>
                 </button>
                 <div class="w-px h-6 bg-slate-300 dark:bg-slate-700"></div>
                 <!-- Dark Mode Button -->
-                <button id="dark-mode-toggle-desktop" class="hidden md:flex items-center justify-center w-10 h-10 rounded-full text-slate-700 dark:text-slate-300 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+                <button id="dark-mode-toggle-desktop" class="flex items-center justify-center w-10 h-10 rounded-full text-slate-700 dark:text-slate-300 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
                      <svg id="theme-toggle-dark-icon-desktop" class="h-6 w-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
                      <svg id="theme-toggle-light-icon-desktop" class="h-6 w-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05A1 1 0 003.636 3.636l-.707.707a1 1 0 101.414 1.414l.707-.707zM3 11a1 1 0 100-2H2a1 1 0 100 2h1zM6.464 14.95l-.707.707a1 1 0 001.414 1.414l.707-.707a1 1 0 00-1.414-1.414z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
                 </button>
+                <!-- Mobile Menu Button (was md:hidden, now always visible but menu is hidden) -->
                 <button id="menu-btn" class="md:hidden z-50">
                     <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-700 dark:text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
                     <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-700 dark:text-slate-300 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
@@ -223,7 +249,7 @@
     </header>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed inset-0 z-40 glass-effect flex-col items-center justify-center gap-6 text-2xl font-medium hidden">
+    <div id="mobile-menu" class="fixed inset-0 z-40 glass-effect flex-col items-center justify-center gap-6 text-2xl font-medium hidden md:hidden">
         <button id="dark-mode-toggle-mobile" class="flex items-center gap-3 p-3 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
             <span id="dark-mode-text-mobile">حالت تاریک</span>
             <div>
@@ -235,7 +261,7 @@
 
     <!-- Main Content -->
     <main class="pt-32 pb-40 relative z-10">
-        <div class="container mx-auto px-6">
+        <div class="container mx-auto px-4 sm:px-6">
             <!-- Hero Section -->
             <div class="max-w-lg mx-auto text-center scroll-animate">
                 <div class="relative w-32 h-32 mx-auto mb-6">
@@ -244,12 +270,14 @@
                 </div>
                 <h1 class="text-4xl font-extrabold mb-2">SPONSORACB</h1>
                 <p class="text-lg text-slate-600 dark:text-slate-400 mb-8">بهترین خدمات و پشتیبانی در دستان شماست.</p>
+                <!-- Responsive button links -->
                 <div class="space-y-4">
                      <a href="https://t.me/sponsoracb" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform duration-300 shadow-lg">کانال تلگرام</a>
                      <a href="https://t.me/sponsoracb_bot" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform duration-300 shadow-lg">ربات تلگرام</a>
                      <a href="https://t.me/MYT7V" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-slate-800 dark:text-slate-900 bg-slate-200 dark:bg-slate-300 hover:scale-105 transform transition-transform duration-300 shadow-md">ارتباط با مدیر</a>
                      <a href="https://t.me/Sponsoracb_supportbot" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-slate-800 dark:text-slate-900 bg-slate-200 dark:bg-slate-300 hover:scale-105 transform transition-transform duration-300 shadow-md">پشتیبانی</a>
                 </div>
+                <!-- Responsive stats grid -->
                 <div class="mt-12 grid grid-cols-2 gap-4 text-center">
                     <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10"><p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-operators">0</p><p class="text-sm text-slate-600 dark:text-slate-400 mt-1">اپراتور های انلاین</p></div>
                     <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10"><p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-bots">0</p><p class="text-sm text-slate-600 dark:text-slate-400 mt-1">بات های فعال</p></div>
@@ -264,6 +292,7 @@
                     </div>
                 </div>
 
+                <!-- Responsive VIP grid -->
                 <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
                     <a href="https://t.me/Sponsoracb_bot?start=vip_epanel_setting_bot" target="_blank" class="block w-full p-4 rounded-xl font-bold text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:scale-105 transform transition-transform duration-300 shadow-lg text-lg">خرید اکانت ویژه</a>
                     <div class="p-4 rounded-xl bg-indigo-500/10 dark:bg-indigo-400/10"><p class="text-3xl font-bold text-indigo-500 dark:text-indigo-400" id="stat-licenses">0</p><p class="text-sm text-slate-600 dark:text-slate-400 mt-1">لایسنس های خرید شده</p></div>
@@ -273,7 +302,7 @@
             <!-- Order Algorithm Section -->
             <div id="order-algorithm-section" class="max-w-4xl mx-auto text-center mt-20 scroll-animate">
                 <h2 class="text-3xl font-extrabold mb-8">الگوریتم ثبت سفارش</h2>
-                <div class="glass-effect p-6 md:p-8 rounded-2xl">
+                <div class="glass-effect p-4 md:p-8 rounded-2xl">
                     <!-- Progress Bar -->
                     <div class="mb-8">
                         <div class="progress-bar-background w-full h-2 rounded-full">
@@ -315,16 +344,13 @@
                 </div>
             </div>
 
-            <!-- Products Section -->
-            <div class="max-w-4xl mx-auto text-center mt-20">
+            <!-- Products Section (NOW DYNAMIC) -->
+            <div id="product-section-container" class="max-w-4xl mx-auto text-center mt-20">
                 <h2 class="text-3xl font-extrabold mb-8 scroll-animate">محصولات و خدمات ما</h2>
                 
-                <!-- Tab Navigation -->
+                <!-- Tab Navigation (Container for dynamic tabs) -->
                 <div id="product-tabs" class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8 scroll-animate glass-effect p-2 rounded-2xl">
-                    <button class="tab-button px-4 py-2 rounded-lg font-semibold transition-colors duration-300" data-target="instagram-section">اینستاگرام</button>
-                    <button class="tab-button px-4 py-2 rounded-lg font-semibold transition-colors duration-300" data-target="telegram-section">تلگرام</button>
-                    <button class="tab-button px-4 py-2 rounded-lg font-semibold transition-colors duration-300" data-target="eitaa-section">ایتا</button>
-                    <button class="tab-button px-4 py-2 rounded-lg font-semibold transition-colors duration-300" data-target="aparat-section">آپارات</button>
+                    <!-- Tabs will be injected here by JS -->
                 </div>
 
                 <!-- Product Placeholder -->
@@ -332,105 +358,9 @@
                     <p class="text-lg text-slate-600 dark:text-slate-400">لطفا برای مشاهده محصولات، یک دسته را انتخاب کنید.</p>
                 </div>
                 
-                <!-- Instagram Services -->
-                <div id="instagram-section" class="product-section mb-12 scroll-animate hidden">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-red-500 hover:scale-105 transition-all duration-300">
-                           <h4 class="text-xl font-bold mb-4">فالوور فیک</h4>
-                            <div class="flex justify-between items-center">
-                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-red-500 to-rose-500 rounded-lg" data-product-name="فالوور اینستاگرام" data-product-price="201000">سفارش</button>
-                                <p class="text-lg">۲۰۱,۰۰۰ ت</p>
-                            </div>
-                        </div>
-                        <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-red-500 hover:scale-105 transition-all duration-300">
-                             <h4 class="text-xl font-bold mb-4">لایک فیک</h4>
-                            <div class="flex justify-between items-center">
-                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-red-500 to-rose-500 rounded-lg" data-product-name="لایک اینستاگرام" data-product-price="50000">سفارش</button>
-                                <p class="text-lg">۵۰,۰۰۰ ت</p>
-                            </div>
-                        </div>
-                        <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-red-500 hover:scale-105 transition-all duration-300">
-                             <h4 class="text-xl font-bold mb-4">بازدید ریلز و پست</h4>
-                            <div class="flex justify-between items-center">
-                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-red-500 to-rose-500 rounded-lg" data-product-name="بازدید اینستاگرام" data-product-price="1000">سفارش</button>
-                                <p class="text-lg">۱,۰۰۰ ت</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Telegram Services -->
-                <div id="telegram-section" class="product-section mb-12 scroll-animate hidden">
-                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-cyan-500 hover:scale-105 transition-all duration-300">
-                           <h4 class="text-xl font-bold mb-4">ممبر فیک</h4>
-                            <div class="flex justify-between items-center">
-                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 rounded-lg" data-product-name="ممبر تلگرام" data-product-price="80000">سفارش</button>
-                                <p class="text-lg">۸۰,۰۰۰ ت</p>
-                            </div>
-                        </div>
-                        <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-cyan-500 hover:scale-105 transition-all duration-300">
-                            <h4 class="text-xl font-bold mb-4">ادلیست ایرانی</h4>
-                            <div class="flex justify-between items-center">
-                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 rounded-lg" data-product-name="ادلیست تلگرام" data-product-price="84000">سفارش</button>
-                                <p class="text-lg">۸۴,۰۰۰ ت</p>
-                            </div>
-                        </div>
-                        <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-cyan-500 hover:scale-105 transition-all duration-300">
-                           <h4 class="text-xl font-bold mb-4">اد اجباری عادی</h4>
-                            <div class="flex justify-between items-center">
-                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 rounded-lg" data-product-name="اد اجباری تلگرام" data-product-price="85000">سفارش</button>
-                                <p class="text-lg">۸۵,۰۰۰ ت</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Eitaa Services -->
-                <div id="eitaa-section" class="product-section mb-12 scroll-animate hidden">
-                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-orange-500 hover:scale-105 transition-all duration-300">
-                            <h4 class="text-xl font-bold mb-4">ممبر ایتا</h4>
-                            <div class="flex justify-between items-center">
-                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg" data-product-name="ممبر ایتا" data-product-price="140000">سفارش</button>
-                                <p class="text-lg">۱۴۰,۰۰۰ ت</p>
-                            </div>
-                        </div>
-                        <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-orange-500 hover:scale-105 transition-all duration-300">
-                           <h4 class="text-xl font-bold mb-4">بازدید ۱ پست</h4>
-                            <div class="flex justify-between items-center">
-                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg" data-product-name="بازدید ایتا (۱ پست)" data-product-price="28000">سفارش</button>
-                                <p class="text-lg">۲۸,۰۰۰ ت</p>
-                            </div>
-                        </div>
-                        <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-orange-500 hover:scale-105 transition-all duration-300">
-                           <h4 class="text-xl font-bold mb-4">بازدید ۵ پست</h4>
-                            <div class="flex justify-between items-center">
-                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg" data-product-name="بازدید ایتا (۵ پست)" data-product-price="40000">سفارش</button>
-                                <p class="text-lg">۴۰,۰۰۰ ت</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Aparat Services -->
-                <div id="aparat-section" class="product-section scroll-animate hidden">
-                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-pink-500 hover:scale-105 transition-all duration-300">
-                            <h4 class="text-xl font-bold mb-4">فالوور آپارات</h4>
-                            <div class="flex justify-between items-center">
-                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-pink-500 to-rose-500 rounded-lg" data-product-name="فالوور آپارات" data-product-price="50000">سفارش</button>
-                                <p class="text-lg">۵۰,۰۰۰ ت</p>
-                            </div>
-                        </div>
-                        <div class="text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-pink-500 hover:scale-105 transition-all duration-300">
-                            <h4 class="text-xl font-bold mb-4">بازدید آپارات</h4>
-                            <div class="flex justify-between items-center">
-                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-pink-500 to-rose-500 rounded-lg" data-product-name="بازدید آپارات" data-product-price="20000">سفارش</button>
-                                <p class="text-lg">۲۰,۰۰۰ ت</p>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Product Sections (Container for dynamic sections) -->
+                <div id="product-sections-wrapper">
+                    <!-- Product sections will be injected here by JS -->
                 </div>
 
                  <!-- Comments Section -->
@@ -455,22 +385,22 @@
 
     <!-- Footer Section -->
     <footer class="glass-effect fixed bottom-4 left-4 right-4 rounded-2xl shadow-lg z-20">
-        <div class="container mx-auto px-6 py-4 text-center text-slate-600 dark:text-slate-400">
-            <p>&copy; 2025 SPONSORACB - تمام حقوق محفوظ است.</p>
+        <div class="container mx-auto px-4 sm:px-6 py-4 text-center text-slate-600 dark:text-slate-400">
+            <p class="text-sm">&copy; 2025 SPONSORACB - تمام حقوق محفوظ است.</p>
         </div>
     </footer>
 
-    <!-- Notification Banner -->
-    <div id="notification-banner" class="fixed bottom-5 right-5 z-[100] p-4 rounded-2xl shadow-lg glass-effect">
+    <!-- Notification Banner (Responsive Position) -->
+    <div id="notification-banner" class="fixed bottom-24 md:bottom-5 right-5 z-[100] p-4 rounded-2xl shadow-lg glass-effect">
         <div class="flex items-center gap-3">
             <span id="notification-dot"></span>
-            <span id="notification-text" class="font-semibold"></span>
+            <span id="notification-text" class="font-semibold text-sm"></span>
         </div>
     </div>
     
-    <!-- Login Modal -->
+    <!-- Login Modal (Responsive) -->
     <div id="login-modal" class="modal-overlay fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4 hidden">
-        <div class="modal-content glass-effect w-full max-w-md p-8 rounded-2xl">
+        <div class="modal-content glass-effect w-full max-w-md p-6 md:p-8 rounded-2xl">
             <form id="login-form" class="space-y-6">
                 <h2 class="text-2xl font-bold text-center">ورود / ثبت نام</h2>
                 <div>
@@ -486,9 +416,19 @@
         </div>
     </div>
 
-    <!-- Dashboard Modal -->
+    <!-- Dashboard Modal (Responsive) -->
     <div id="dashboard-modal" class="modal-overlay fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4 hidden">
-        <div class="modal-content glass-effect w-full max-w-md p-8 rounded-2xl space-y-6 text-center">
+        <div class="modal-content glass-effect w-full max-w-md p-6 md:p-8 rounded-2xl space-y-6 text-center relative">
+             
+             <!-- Banned User Overlay -->
+             <div id="banned-overlay" class="hidden">
+                <div class="text-center p-4">
+                    <svg class="w-16 h-16 text-red-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path></svg>
+                    <h3 class="text-2xl font-bold text-red-400 mt-4">حساب شما مسدود شده است</h3>
+                    <p class="text-slate-300 mt-2">شما امکان خرید یا ثبت نظر را ندارید. لطفا با پشتیبانی تماس بگیرید.</p>
+                </div>
+             </div>
+             
              <div id="dashboard-main-view">
                 <h2 class="text-2xl font-bold">داشبورد کاربری</h2>
                 <p class="text-lg mt-2">خوش آمدید، <span id="dash-username" class="font-bold text-sky-400"></span>!</p>
@@ -512,7 +452,7 @@
                 <!-- Redeem Code -->
                 <div class="text-right">
                     <label for="redeem-code-input" class="block mb-2 text-sm font-medium">کد افزایش موجودی</label>
-                    <div class="flex gap-2">
+                    <div class="flex flex-col sm:flex-row gap-2">
                         <input type="text" id="redeem-code-input" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="کد هدیه را وارد کنید">
                         <button id="redeem-code-btn" class="px-4 py-2 font-semibold text-white bg-green-500 rounded-lg whitespace-nowrap">اعمال</button>
                     </div>
@@ -542,7 +482,7 @@
                 <!-- Discount Code -->
                 <div class="text-right mt-4">
                     <label for="discount-code-input" class="block mb-2 text-sm font-medium">کد تخفیف</label>
-                    <div class="flex gap-2">
+                    <div class="flex flex-col sm:flex-row gap-2">
                         <input type="text" id="discount-code-input" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="کد تخفیف را وارد کنید">
                         <button id="apply-discount-btn" class="px-4 py-2 font-semibold text-white bg-sky-500 rounded-lg whitespace-nowrap">اعمال</button>
                     </div>
@@ -562,37 +502,122 @@
                         <span id="cart-total">0 ت</span>
                     </div>
                 </div>
-                <div class="mt-6 flex flex-col md:flex-row gap-4">
-                    <button id="pay-btn" class="flex-1 p-3 rounded-xl font-bold text-white bg-gradient-to-r from-green-500 to-emerald-500 hover:scale-105 transform transition-transform disabled:opacity-50 disabled:cursor-not-allowed">پرداخت نهایی</F>
+                <div class="mt-6 flex flex-col sm:flex-row gap-4">
+                    <button id="pay-btn" class="flex-1 p-3 rounded-xl font-bold text-white bg-gradient-to-r from-green-500 to-emerald-500 hover:scale-105 transform transition-transform disabled:opacity-50 disabled:cursor-not-allowed">پرداخت نهایی</button>
                     <button id="back-to-dash-btn" class="flex-1 p-3 rounded-xl font-bold text-white bg-gradient-to-r from-slate-500 to-slate-600 hover:scale-105 transform transition-transform">بازگشت</button>
                 </div>
              </div>
         </div>
     </div>
 
-    <!-- Admin Panel Modal -->
+    <!-- Admin Panel Modal (Responsive) -->
     <div id="admin-modal" class="modal-overlay fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4 hidden">
-        <div class="modal-content glass-effect w-full max-w-3xl p-6 md:p-8 rounded-2xl space-y-6 text-right">
+        <div class="modal-content glass-effect w-full max-w-3xl p-4 sm:p-6 md:p-8 rounded-2xl space-y-4 text-right">
             <!-- Header and Close Button -->
             <div class="flex justify-between items-center">
-                <h2 class="text-2xl font-bold">پنل مدیریت حرفه‌ای</h2>
+                <h2 class="text-xl sm:text-2xl font-bold">پنل مدیریت حرفه‌ای</h2>
                 <button id="admin-modal-close" class="p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
             </div>
             
-            <!-- Admin Tabs -->
-            <div class="flex gap-2 border-b border-slate-700/50">
-                <button class="admin-tab-button px-4 py-2 font-semibold rounded-t-lg" data-target="admin-tab-users">مدیریت کاربران</button>
-                <button class="admin-tab-button px-4 py-2 font-semibold rounded-t-lg" data-target="admin-tab-discounts">کدهای تخفیف</button>
-                <button class="admin-tab-button px-4 py-2 font-semibold rounded-t-lg" data-target="admin-tab-balance">کدهای موجودی</button>
+            <!-- Admin Tabs (Responsive) -->
+            <div class="flex flex-wrap gap-2 border-b border-slate-700/50 text-sm sm:text-base">
+                <button class="admin-tab-button px-3 py-2 font-semibold rounded-t-lg" data-target="admin-tab-dashboard">داشبورد</button>
+                <button class="admin-tab-button px-3 py-2 font-semibold rounded-t-lg" data-target="admin-tab-users">کاربران</button>
+                <button class="admin-tab-button px-3 py-2 font-semibold rounded-t-lg" data-target="admin-tab-products">تغییر قیمت</button>
+                <button class="admin-tab-button px-3 py-2 font-semibold rounded-t-lg" data-target="admin-tab-add-product">افزودن محصول</button>
+                <button class="admin-tab-button px-3 py-2 font-semibold rounded-t-lg" data-target="admin-tab-discounts">کدهای تخفیف</button>
+                <button class="admin-tab-button px-3 py-2 font-semibold rounded-t-lg" data-target="admin-tab-balance">کدهای موجودی</button>
             </div>
 
             <!-- Admin Tab Content -->
-            <div class="max-h-96 overflow-y-auto p-2">
+            <div class="max-h-[60vh] overflow-y-auto p-2">
+                <!-- Admin Dashboard Tab -->
+                <div id="admin-tab-dashboard" class="admin-tab-content space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="glass-effect p-4 rounded-lg">
+                            <p class="text-sm text-slate-400">تعداد کل کاربران</p>
+                            <p id="admin-stat-total-users" class="text-2xl font-bold text-sky-400">0</p>
+                        </div>
+                        <div class="glass-effect p-4 rounded-lg">
+                            <p class="text-sm text-slate-400">موجودی کل سیستم</p>
+                            <p id="admin-stat-total-balance" class="text-2xl font-bold text-green-400">0 ت</p>
+                        </div>
+                        <div class="glass-effect p-4 rounded-lg">
+                            <p class="text-sm text-slate-400">کدهای تخفیف فعال</p>
+                            <p id="admin-stat-discount-codes" class="text-2xl font-bold text-violet-400">0</p>
+                        </div>
+                        <div class="glass-effect p-4 rounded-lg">
+                            <p class="text-sm text-slate-400">کدهای موجودی (استفاده نشده)</p>
+                            <p id="admin-stat-balance-codes" class="text-2xl font-bold text-amber-400">0</p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- User Management Tab -->
-                <div id="admin-tab-users" class="admin-tab-content space-y-4">
-                    <!-- User list will be injected here by JS -->
+                <div id="admin-tab-users" class="admin-tab-content space-y-4 hidden">
+                    <input type="text" id="admin-user-search" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="جستجوی نام کاربری...">
+                    <div id="admin-user-list" class="space-y-4">
+                        <!-- User list will be injected here by JS -->
+                    </div>
+                </div>
+                
+                <!-- Product Price Management Tab -->
+                <div id="admin-tab-products" class="admin-tab-content space-y-4 hidden">
+                    <h3 class="text-lg font-bold">مدیریت قیمت محصولات</h3>
+                    <div id="admin-product-list" class="space-y-4">
+                        <!-- Product list for price editing will be injected here by JS -->
+                    </div>
+                </div>
+
+                <!-- NEW: Add Product/Category Tab -->
+                <div id="admin-tab-add-product" class="admin-tab-content space-y-8 hidden">
+                    <!-- Form 1: Add New Product -->
+                    <form id="add-product-form" class="space-y-4">
+                        <h3 class="text-lg font-bold">افزودن محصول جدید</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                            <div class="md:col-span-1">
+                                <label for="admin-add-product-category" class="block mb-2 text-sm font-medium">انتخاب دسته</label>
+                                <select id="admin-add-product-category" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200 bg-transparent">
+                                    <!-- Categories populated by JS -->
+                                </select>
+                            </div>
+                            <div class="md:col-span-1">
+                                <label for="admin-add-product-name" class="block mb-2 text-sm font-medium">نام محصول</label>
+                                <input type="text" id="admin-add-product-name" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="مثلا: فالوور واقعی" required>
+                            </div>
+                            <div class="md:col-span-1">
+                                <label for="admin-add-product-price" class="block mb-2 text-sm font-medium">قیمت (تومان)</label>
+                                <input type="number" id="admin-add-product-price" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="250000" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full p-3 font-semibold text-white bg-green-500 rounded-lg">افزودن محصول</button>
+                    </form>
+                    
+                    <!-- Form 2: Add New Category -->
+                    <form id="add-category-form" class="space-y-4 border-t border-slate-700/50 pt-6">
+                        <h3 class="text-lg font-bold">ایجاد دسته‌بندی جدید</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                             <div>
+                                <label for="admin-add-category-id" class="block mb-2 text-sm font-medium">شناسه (انگلیسی)</label>
+                                <input type="text" id="admin-add-category-id" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="rubika" required>
+                            </div>
+                            <div>
+                                <label for="admin-add-category-name" class="block mb-2 text-sm font-medium">نام نمایشی (فارسی)</label>
+                                <input type="text" id="admin-add-category-name" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="روبیکا" required>
+                            </div>
+                            <div>
+                                <label for="admin-add-category-color" class="block mb-2 text-sm font-medium">رنگ (Tailwind)</label>
+                                <input type="text" id="admin-add-category-color" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="purple" required>
+                            </div>
+                            <div>
+                                <label for="admin-add-category-grid" class="block mb-2 text-sm font-medium">چیدمان (Grid)</label>
+                                <input type="text" id="admin-add-category-grid" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" value="md:grid-cols-3" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full p-3 font-semibold text-white bg-sky-500 rounded-lg">ایجاد دسته‌بندی</button>
+                    </form>
                 </div>
 
                 <!-- Discount Code Tab -->
@@ -615,7 +640,7 @@
                 <!-- Balance Code Tab -->
                 <div id="admin-tab-balance" class="admin-tab-content space-y-6 hidden">
                     <form id="create-balance-form" class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                        <input type="number" id="balance-code-value" class="form-input p-3 rounded-lg text-slate-800 dark:text-slate-200 col-span-2" placeholder="مبلغ کد هدیه (تومان)" required>
+                        <input type="number" id="balance-code-value" class="form-input p-3 rounded-lg text-slate-800 dark:text-slate-200 md:col-span-2" placeholder="مبلغ کد هدیه (تومان)" required>
                         <button type="submit" class="p-3 font-semibold text-white bg-green-500 rounded-lg">ایجاد کد</button>
                     </form>
                     <div class="border-t border-slate-700/50 pt-4">
@@ -629,6 +654,18 @@
         </div>
     </div>
 
+    <!-- Confirmation Modal (BUG FIX) -->
+    <div id="confirmation-modal" class="modal-overlay fixed inset-0 z-[110] bg-black/60 flex items-center justify-center p-4 hidden">
+        <div class="modal-content glass-effect w-full max-w-sm p-6 rounded-2xl text-center">
+            <h3 class="text-lg font-bold mb-4" id="confirmation-title">آیا مطمئن هستید؟</h3>
+            <p class="text-sm text-slate-300 mb-6" id="confirmation-message">این عمل غیرقابل بازگشت است.</p>
+            <div class="flex gap-4">
+                <button id="confirm-yes-btn" class="flex-1 p-3 rounded-xl font-bold text-white bg-red-600">بله، حذف کن</button>
+                <button id="confirm-no-btn" class="flex-1 p-3 rounded-xl font-bold text-slate-800 dark:text-slate-900 bg-slate-300">انصراف</button>
+            </div>
+        </div>
+    </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -636,33 +673,206 @@
             const ADMIN_USER = 'Admin';
             const ADMIN_PASS = 'Directadmin1400';
 
+            // --- Database Simulation ---
+            let siteUsers = JSON.parse(localStorage.getItem('siteUsers')) || {};
+            
+            // Default product structure (v2)
+            const defaultProducts = {
+                instagram: {
+                    displayName: 'اینستاگرام',
+                    color: 'red',
+                    grid: 'md:grid-cols-3',
+                    items: [
+                        { id: 'insta-f', name: 'فالوور فیک', price: 201000 },
+                        { id: 'insta-l', name: 'لایک فیک', price: 50000 },
+                        { id: 'insta-v', name: 'بازدید ریلز و پست', price: 1000 }
+                    ]
+                },
+                telegram: {
+                    displayName: 'تلگرام',
+                    color: 'cyan',
+                    grid: 'md:grid-cols-3',
+                    items: [
+                        { id: 'tele-m', name: 'ممبر فیک', price: 80000 },
+                        { id: 'tele-a', name: 'ادلیست ایرانی', price: 84000 },
+                        { id: 'tele-f', name: 'اد اجباری عادی', price: 85000 }
+                    ]
+                },
+                eitaa: {
+                    displayName: 'ایتا',
+                    color: 'orange',
+                    grid: 'md:grid-cols-3',
+                    items: [
+                        { id: 'eitaa-m', name: 'ممبر ایتا', price: 140000 },
+                        { id: 'eitaa-v1', name: 'بازدید ۱ پست', price: 28000 },
+                        { id: 'eitaa-v5', name: 'بازدید ۵ پست', price: 40000 }
+                    ]
+                },
+                aparat: {
+                    displayName: 'آپارات',
+                    color: 'pink',
+                    grid: 'md:grid-cols-2',
+                    items: [
+                        { id: 'aparat-f', name: 'فالوور آپارات', price: 50000 },
+                        { id: 'aparat-v', name: 'بازدید آپارات', price: 20000 }
+                    ]
+                }
+            };
+            
+            let siteData = JSON.parse(localStorage.getItem('siteData')) || { 
+                discountCodes: {}, 
+                balanceCodes: {},
+                products: defaultProducts // Add products to DB
+            };
+            
+            // Migration logic for old product structure
+            if (siteData.products && Array.isArray(siteData.products.instagram)) {
+                console.warn("Old product structure detected. Migrating...");
+                siteData.products = defaultProducts; // Reset to new default
+                saveSiteData();
+            }
+
+            let currentUser = localStorage.getItem('loggedInUser');
+            let currentAppliedDiscount = null; // Store applied discount temporarily
+            let confirmCallback = null; // For the custom confirmation modal
+
+            function saveUsers() {
+                localStorage.setItem('siteUsers', JSON.stringify(siteUsers));
+            }
+            function saveSiteData() {
+                localStorage.setItem('siteData', JSON.stringify(siteData));
+            }
+            
+            // --- UI Elements ---
+            const accountBtn = document.getElementById('account-btn');
+            const accountText = document.getElementById('account-text');
+            const loginModal = document.getElementById('login-modal');
+            const dashboardModal = document.getElementById('dashboard-modal');
+            const loginForm = document.getElementById('login-form');
+            const logoutBtn = document.getElementById('logout-btn');
+            const dashUsername = document.getElementById('dash-username');
+            const dashBalance = document.getElementById('dash-balance');
+            const dashOrders = document.getElementById('dash-orders');
+            const dashTotal = document.getElementById('dash-total');
+            
+            // Dynamic Product UI
+            const productTabsContainer = document.getElementById('product-tabs');
+            const productSectionsWrapper = document.getElementById('product-sections-wrapper');
+            const productSectionContainer = document.getElementById('product-section-container');
+            const productPlaceholder = document.getElementById('product-placeholder');
+
+
+            const cartItemsList = document.getElementById('cart-items-list');
+            const cartSubtotalEl = document.getElementById('cart-subtotal');
+            const cartDiscountRow = document.getElementById('cart-discount-row');
+            const cartDiscountAmountEl = document.getElementById('cart-discount-amount');
+            const cartTotalEl = document.getElementById('cart-total');
+            const cartEmptyMsg = document.getElementById('cart-empty-msg');
+            
+            const payBtn = document.getElementById('pay-btn');
+            const showCartBtn = document.getElementById('show-cart-btn');
+            const backToDashBtn = document.getElementById('back-to-dash-btn');
+            const dashboardMainView = document.getElementById('dashboard-main-view');
+            const cartView = document.getElementById('cart-view');
+            
+            const commentForm = document.getElementById('comment-form');
+            const userCommentDisplay = document.getElementById('user-comment-display');
+            const userCommentText = document.getElementById('user-comment-text');
+
+            const redeemCodeInput = document.getElementById('redeem-code-input');
+            const redeemCodeBtn = document.getElementById('redeem-code-btn');
+            const discountCodeInput = document.getElementById('discount-code-input');
+            const applyDiscountBtn = document.getElementById('apply-discount-btn');
+            
+            const bannedOverlay = document.getElementById('banned-overlay');
+            
+            // Confirmation Modal
+            const confirmationModal = document.getElementById('confirmation-modal');
+            const confirmationTitle = document.getElementById('confirmation-title');
+            const confirmationMessage = document.getElementById('confirmation-message');
+            const confirmYesBtn = document.getElementById('confirm-yes-btn');
+            const confirmNoBtn = document.getElementById('confirm-no-btn');
+
+            // Admin Panel Elements
+            const adminModal = document.getElementById('admin-modal');
+            const adminPanelBtn = document.getElementById('admin-panel-btn');
+            const adminModalClose = document.getElementById('admin-modal-close');
+            const adminBackToDashBtn = document.getElementById('admin-back-to-dash-btn');
+            const adminTabs = document.querySelectorAll('.admin-tab-button');
+            const adminTabContents = document.querySelectorAll('.admin-tab-content');
+            
+            const adminStatTotalUsers = document.getElementById('admin-stat-total-users');
+            const adminStatTotalBalance = document.getElementById('admin-stat-total-balance');
+            const adminStatDiscountCodes = document.getElementById('admin-stat-discount-codes');
+            const adminStatBalanceCodes = document.getElementById('admin-stat-balance-codes');
+            
+            const adminUserSearch = document.getElementById('admin-user-search');
+            const adminUserList = document.getElementById('admin-tab-users');
+            const adminProductList = document.getElementById('admin-product-list');
+            
+            const addProductForm = document.getElementById('add-product-form');
+            const addCategoryForm = document.getElementById('add-category-form');
+            const adminAddProductCategorySelect = document.getElementById('admin-add-product-category');
+
+            const createDiscountForm = document.getElementById('create-discount-form');
+            const adminDiscountList = document.getElementById('admin-discount-list');
+            const createBalanceForm = document.getElementById('create-balance-form');
+            const adminBalanceList = document.getElementById('admin-balance-list');
+
+            
             // --- Dark Mode Logic ---
             const docElement = document.documentElement;
             const darkModeToggles = [document.getElementById('dark-mode-toggle-desktop'), document.getElementById('dark-mode-toggle-mobile')];
             
-            if (localStorage.getItem('color-theme') === 'light') docElement.classList.remove('dark');
-            else docElement.classList.add('dark');
+            // Apply theme on load
+            if (localStorage.getItem('color-theme') === 'light' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+                docElement.classList.remove('dark');
+                updateThemeIcons(false);
+            } else {
+                docElement.classList.add('dark');
+                updateThemeIcons(true);
+            }
+
+            function updateThemeIcons(isDark) {
+                // Desktop
+                document.getElementById('theme-toggle-light-icon-desktop').classList.toggle('hidden', isDark);
+                document.getElementById('theme-toggle-dark-icon-desktop').classList.toggle('hidden', !isDark);
+                // Mobile
+                document.getElementById('theme-toggle-light-icon-mobile').classList.toggle('hidden', isDark);
+                document.getElementById('theme-toggle-dark-icon-mobile').classList.toggle('hidden', !isDark);
+                document.getElementById('dark-mode-text-mobile').textContent = isDark ? 'حالت روشن' : 'حالت تاریک';
+            }
 
             darkModeToggles.forEach(btn => btn.addEventListener('click', () => {
                 const isDark = docElement.classList.toggle('dark');
                 localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+                updateThemeIcons(isDark);
             }));
             
             // --- Hamburger Menu Logic ---
             const menuBtn = document.getElementById('menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
-            menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            const menuOpenIcon = document.getElementById('menu-open-icon');
+            const menuCloseIcon = document.getElementById('menu-close-icon');
+
+            menuBtn.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex', !isOpen);
+                menuOpenIcon.classList.toggle('hidden', !isOpen);
+                menuCloseIcon.classList.toggle('hidden', isOpen);
+            });
 
             // --- Animated Counter Logic ---
             function animateValue(objId, start, end, duration) {
                 let startTimestamp = null;
+                const obj = document.getElementById(objId);
+                if (!obj) return;
+                
                 const step = (timestamp) => {
                     if (!startTimestamp) startTimestamp = timestamp;
                     const progress = Math.min((timestamp - startTimestamp) / duration, 1);
                     const currentValue = Math.floor(progress * (end - start) + start);
-                    const formattedValue = currentValue.toLocaleString('fa-IR');
-                    const obj = document.getElementById(objId);
-                    if (obj) obj.innerHTML = formattedValue;
+                    obj.innerHTML = currentValue.toLocaleString('fa-IR');
                     if (progress < 1) window.requestAnimationFrame(step);
                 };
                 window.requestAnimationFrame(step);
@@ -677,7 +887,7 @@
             const usersElement = document.getElementById('stat-users');
             if (usersElement) { let onlineUsers = 708; animateValue("stat-users", 0, onlineUsers, 2500); setTimeout(() => { setInterval(() => { onlineUsers += 13; usersElement.innerHTML = onlineUsers.toLocaleString('fa-IR'); }, 2000); }, 2500); }
             const liveOrdersElement = document.getElementById('live-orders-count');
-            if(liveOrdersElement) { let liveOrdersCount = 146; liveOrdersElement.innerHTML = liveOrdersCount.toLocaleString('fa-IR') + '+'; setInterval(() => { setInterval(() => { liveOrdersCount += 19; liveOrdersElement.innerHTML = liveOrdersCount.toLocaleString('fa-IR') + '+'; }, 5000); }, 5000); }
+            if(liveOrdersElement) { let liveOrdersCount = 146; liveOrdersElement.innerHTML = liveOrdersCount.toLocaleString('fa-IR') + '+'; setInterval(() => { liveOrdersCount += 19; liveOrdersElement.innerHTML = liveOrdersCount.toLocaleString('fa-IR') + '+'; }, 5000); }
 
             // --- On-Scroll Animation ---
             const animatedElements = document.querySelectorAll('.scroll-animate');
@@ -708,20 +918,18 @@
             setTimeout(() => showNotification('با موفقيت به سرور متصل شدید', 'success'), 2500);
             
             // --- Tab Navigation Logic (Products) ---
-            const tabs = document.querySelectorAll('.tab-button');
-            const sections = document.querySelectorAll('.product-section');
-            const productPlaceholder = document.getElementById('product-placeholder');
-
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    if (tab.classList.contains('active')) return;
-                    tabs.forEach(t => t.classList.remove('active'));
-                    tab.classList.add('active');
-                    const target = tab.dataset.target;
-                    productPlaceholder.classList.add('hidden');
-                    sections.forEach(s => s.id === target ? s.classList.remove('hidden') : s.classList.add('hidden'));
-                });
+            productTabsContainer.addEventListener('click', (e) => {
+                const tab = e.target.closest('.tab-button');
+                if (!tab) return;
+                
+                document.querySelectorAll('.tab-button').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const target = tab.dataset.target;
+                productPlaceholder.classList.add('hidden');
+                document.querySelectorAll('.product-section').forEach(s => s.id === target ? s.classList.remove('hidden') : s.classList.add('hidden'));
             });
+
 
             // --- Order Algorithm Logic ---
             const steps = document.querySelectorAll('[id^="step-"]');
@@ -738,72 +946,88 @@
             nextBtns.forEach(btn => btn.addEventListener('click', () => { if (currentStep < 4) { currentStep++; updateAlgorithmUI(); } }));
             restartBtn.addEventListener('click', () => { currentStep = 1; updateAlgorithmUI(); });
 
-            // --- Account, Cart, Comment, & Admin Logic (PROFESSIONAL) ---
-
-            // --- Database Simulation ---
-            let siteUsers = JSON.parse(localStorage.getItem('siteUsers')) || {};
-            let siteData = JSON.parse(localStorage.getItem('siteData')) || { discountCodes: {}, balanceCodes: {} };
-            let currentUser = localStorage.getItem('loggedInUser');
-            let currentAppliedDiscount = null; // Store applied discount temporarily
-
-            function saveUsers() {
-                localStorage.setItem('siteUsers', JSON.stringify(siteUsers));
+            
+            // --- NEW: Dynamic Product/Category Rendering Functions ---
+            
+            // 1. Renders the tabs (e.g., "اینستاگرام", "تلگرام")
+            function renderProductTabs() {
+                productTabsContainer.innerHTML = ''; // Clear hardcoded tabs
+                const categories = siteData.products;
+                Object.keys(categories).forEach(catId => {
+                    const category = categories[catId];
+                    const tab = document.createElement('button');
+                    tab.className = 'tab-button px-4 py-2 rounded-lg font-semibold transition-colors duration-300';
+                    tab.dataset.target = `${catId}-section`;
+                    tab.textContent = category.displayName;
+                    productTabsContainer.appendChild(tab);
+                });
             }
-            function saveSiteData() {
-                localStorage.setItem('siteData', JSON.stringify(siteData));
+
+            // 2. Renders the product cards into their sections
+            function renderProducts() {
+                productSectionsWrapper.innerHTML = ''; // Clear hardcoded sections
+                const categories = siteData.products;
+
+                for (const catId in categories) {
+                    const category = categories[catId];
+                    
+                    // Create the section container
+                    const section = document.createElement('div');
+                    section.id = `${catId}-section`;
+                    section.className = 'product-section mb-12 scroll-animate hidden';
+                    
+                    const grid = document.createElement('div');
+                    grid.className = `grid grid-cols-1 ${category.grid} gap-6`;
+
+                    category.items.forEach(product => {
+                        const productEl = document.createElement('div');
+                        // Use a mapping for Tailwind colors to avoid purging
+                        const colorVariants = {
+                            red: 'hover:border-red-500 from-red-500 to-rose-500',
+                            cyan: 'hover:border-cyan-500 from-sky-500 to-cyan-400',
+                            orange: 'hover:border-orange-500 from-orange-500 to-amber-500',
+                            pink: 'hover:border-pink-500 from-pink-500 to-rose-500',
+                            purple: 'hover:border-purple-500 from-purple-500 to-violet-500',
+                            green: 'hover:border-green-500 from-green-500 to-emerald-500',
+                        };
+                        const color = colorVariants[category.color] || colorVariants['red'];
+
+                        productEl.className = `text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent ${color.split(' ')[0]} hover:scale-105 transition-all duration-300`;
+                        productEl.innerHTML = `
+                           <h4 class="text-xl font-bold mb-4">${product.name}</h4>
+                            <div class="flex justify-between items-center">
+                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r ${color.split(' ')[1]} ${color.split(' ')[2]} rounded-lg" data-product-name="${product.name}" data-product-price="${product.price}">سفارش</button>
+                                <p class="text-lg">${product.price.toLocaleString('fa-IR')} ت</p>
+                            </div>
+                        `;
+                        grid.appendChild(productEl);
+                    });
+                    section.appendChild(grid);
+                    productSectionsWrapper.appendChild(section);
+                }
             }
             
-            // --- UI Elements ---
-            const accountBtn = document.getElementById('account-btn');
-            const accountText = document.getElementById('account-text');
-            const loginModal = document.getElementById('login-modal');
-            const dashboardModal = document.getElementById('dashboard-modal');
-            const loginForm = document.getElementById('login-form');
-            const logoutBtn = document.getElementById('logout-btn');
-            const dashUsername = document.getElementById('dash-username');
-            const dashBalance = document.getElementById('dash-balance');
-            const dashOrders = document.getElementById('dash-orders');
-            const dashTotal = document.getElementById('dash-total');
-            const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
+            // --- Account, Cart, Comment, & Admin Logic ---
             
-            const cartItemsList = document.getElementById('cart-items-list');
-            const cartSubtotalEl = document.getElementById('cart-subtotal');
-            const cartDiscountRow = document.getElementById('cart-discount-row');
-            const cartDiscountAmountEl = document.getElementById('cart-discount-amount');
-            const cartTotalEl = document.getElementById('cart-total');
-            const cartEmptyMsg = document.getElementById('cart-empty-msg');
-            
-            const payBtn = document.getElementById('pay-btn');
-            const showCartBtn = document.getElementById('show-cart-btn');
-            const backToDashBtn = document.getElementById('back-to-dash-btn');
-            const dashboardMainView = document.getElementById('dashboard-main-view');
-            const cartView = document.getElementById('cart-view');
-            
-            const commentForm = document.getElementById('comment-form');
-            const userCommentDisplay = document.getElementById('user-comment-display');
-            const userCommentText = document.getElementById('user-comment-text');
+            function showConfirmationModal(title, message, onConfirm) {
+                confirmationTitle.textContent = title;
+                confirmationMessage.textContent = message;
+                confirmCallback = onConfirm;
+                confirmationModal.classList.remove('hidden');
+            }
 
-            const redeemCodeInput = document.getElementById('redeem-code-input');
-            const redeemCodeBtn = document.getElementById('redeem-code-btn');
-            const discountCodeInput = document.getElementById('discount-code-input');
-            const applyDiscountBtn = document.getElementById('apply-discount-btn');
-            
-            // Admin Panel Elements
-            const adminModal = document.getElementById('admin-modal');
-            const adminPanelBtn = document.getElementById('admin-panel-btn');
-            const adminModalClose = document.getElementById('admin-modal-close');
-            const adminBackToDashBtn = document.getElementById('admin-back-to-dash-btn');
-            const adminTabs = document.querySelectorAll('.admin-tab-button');
-            const adminTabContents = document.querySelectorAll('.admin-tab-content');
-            
-            const adminUserList = document.getElementById('admin-tab-users');
-            const createDiscountForm = document.getElementById('create-discount-form');
-            const adminDiscountList = document.getElementById('admin-discount-list');
-            const createBalanceForm = document.getElementById('create-balance-form');
-            const adminBalanceList = document.getElementById('admin-balance-list');
+            confirmYesBtn.addEventListener('click', () => {
+                if (typeof confirmCallback === 'function') {
+                    confirmCallback();
+                }
+                confirmationModal.classList.add('hidden');
+                confirmCallback = null;
+            });
 
-            
-            // --- Core Functions ---
+            confirmNoBtn.addEventListener('click', () => {
+                confirmationModal.classList.add('hidden');
+                confirmCallback = null;
+            });
             
             function updateCartUI() {
                 let shoppingCart = (currentUser && siteUsers[currentUser]) ? siteUsers[currentUser].cart : [];
@@ -835,7 +1059,7 @@
                     } else { // fixed
                         discount = code.value;
                     }
-                    discount = Math.min(subtotal, discount); // Can't discount more than the total
+                    discount = Math.min(subtotal, discount);
                     
                     cartDiscountAmountEl.textContent = `- ${discount.toLocaleString('fa-IR')} ت`;
                     cartDiscountRow.classList.remove('hidden');
@@ -860,57 +1084,79 @@
 
             function checkLogin() {
                 currentUser = localStorage.getItem('loggedInUser');
-                if (currentUser && siteUsers[currentUser]) {
-                    accountText.textContent = currentUser;
-                    dashBalance.textContent = siteUsers[currentUser].balance.toLocaleString('fa-IR') + ' ت';
-                    if (siteUsers[currentUser].isAdmin) {
-                        adminPanelBtn.classList.remove('hidden');
-                    } else {
-                        adminPanelBtn.classList.add('hidden');
-                    }
-                } else {
+                
+                if (currentUser && !siteUsers[currentUser]) {
                     localStorage.removeItem('loggedInUser');
+                    currentUser = null;
+                    showNotification('حساب شما یافت نشد، لطفا دوباره وارد شوید.', 'error');
+                }
+
+                if (currentUser && siteUsers[currentUser]) {
+                    const user = siteUsers[currentUser];
+                    accountText.textContent = currentUser;
+                    dashBalance.textContent = user.balance.toLocaleString('fa-IR') + ' ت';
+                    adminPanelBtn.classList.toggle('hidden', !user.isAdmin);
+                    
+                    // <<<--- ADMIN BAN BUG FIX ---
+                    // Check ban status, but exempt admin (case-insensitive)
+                    const isBanned = user.isBanned && currentUser.toLowerCase() !== ADMIN_USER.toLowerCase();
+                    bannedOverlay.classList.toggle('hidden', !isBanned);
+                    
+                } else {
                     currentUser = null;
                     accountText.textContent = 'حساب کاربری';
                     dashBalance.textContent = '۰ ت';
                     adminPanelBtn.classList.add('hidden');
+                    bannedOverlay.classList.add('hidden');
                 }
                 currentAppliedDiscount = null; // Reset discount on any login change
                 updateCartUI();
             }
             
-            checkLogin();
-            
             // --- Event Listeners (User) ---
             
-            addToCartBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    if (!currentUser) {
-                        showNotification('برای سفارش، لطفا ابتدا وارد شوید', 'warning');
-                        loginModal.classList.remove('hidden');
-                        return;
-                    }
-                    const name = btn.dataset.productName;
-                    const price = btn.dataset.productPrice;
-                    siteUsers[currentUser].cart.push({ name, price });
-                    saveUsers();
-                    updateCartUI();
-                    showNotification(`${name} به سبد خرید اضافه شد!`, 'success');
-                });
+            // Use event delegation for dynamic product buttons
+            productSectionsWrapper.addEventListener('click', (e) => {
+                const btn = e.target.closest('.add-to-cart-btn');
+                if (!btn) return; 
+
+                if (!currentUser) {
+                    showNotification('برای سفارش، لطفا ابتدا وارد شوید', 'warning');
+                    loginModal.classList.remove('hidden');
+                    return;
+                }
+                if (siteUsers[currentUser].isBanned) {
+                    showNotification('حساب شما مسدود است و امکان خرید ندارید', 'error');
+                    return;
+                }
+                
+                const name = btn.dataset.productName;
+                const price = btn.dataset.productPrice;
+
+                siteUsers[currentUser].cart.push({ name, price });
+                saveUsers();
+                updateCartUI();
+                showNotification(`${name} به سبد خرید اضافه شد!`, 'success');
             });
+
 
             accountBtn.addEventListener('click', () => {
                 if (currentUser) {
+                    const user = siteUsers[currentUser];
                     dashUsername.textContent = currentUser;
-                    dashBalance.textContent = siteUsers[currentUser].balance.toLocaleString('fa-IR') + ' ت';
+                    dashBalance.textContent = user.balance.toLocaleString('fa-IR') + ' ت';
                     
-                    const savedComment = siteUsers[currentUser].comment;
+                    const savedComment = user.comment;
                     if (savedComment) {
                         userCommentText.textContent = savedComment;
                         userCommentDisplay.classList.remove('hidden');
                     } else {
                         userCommentDisplay.classList.add('hidden');
                     }
+                    
+                    // Show/hide banned overlay (Admin exempt, case-insensitive)
+                    bannedOverlay.classList.toggle('hidden', !user.isBanned || currentUser.toLowerCase() === ADMIN_USER.toLowerCase());
+
                     dashboardModal.classList.remove('hidden');
                     dashboardMainView.classList.remove('hidden');
                     cartView.classList.add('hidden');
@@ -929,29 +1175,31 @@
                     return;
                 }
 
-                // --- Hardcoded Admin Login ---
-                if (username === ADMIN_USER && password === ADMIN_PASS) {
-                    if (!siteUsers[ADMIN_USER]) {
-                        // Create admin account if it doesn't exist
+                // --- Hardcoded Admin Login (Case-Insensitive) ---
+                if (username.toLowerCase() === ADMIN_USER.toLowerCase() && password === ADMIN_PASS) {
+                    if (!siteUsers[ADMIN_USER]) { // Create admin with 'Admin' (uppercase)
                         siteUsers[ADMIN_USER] = {
                             password: ADMIN_PASS,
                             cart: [],
                             comment: '',
-                            balance: 1000000, // Admin gets starting balance
-                            isAdmin: true
+                            balance: 1000000, 
+                            isAdmin: true,
+                            isBanned: false
                         };
-                        saveUsers();
                     } else {
-                        // Ensure password is correct even if account exists
                          if (siteUsers[ADMIN_USER].password !== ADMIN_PASS) {
-                             showNotification('رمز عبور ادمین در سیستم مطابقت ندارد. با پشتیبانی تماس بگیرید.', 'error');
+                             showNotification('رمز عبور ادمین اشتباه است', 'error');
                              return;
                          }
+                         siteUsers[ADMIN_USER].isAdmin = true; 
+                         siteUsers[ADMIN_USER].isBanned = false; // <<<--- BUG FIX: Force-unban admin on every login
                     }
-                    localStorage.setItem('loggedInUser', ADMIN_USER);
+                    saveUsers();
+                    localStorage.setItem('loggedInUser', ADMIN_USER); // Always log in as 'Admin' (uppercase)
+                    
                     checkLogin();
                     loginModal.classList.add('hidden');
-                    showNotification(`خوش آمدید، ادمین ${username}!`, 'success');
+                    showNotification(`خوش آمدید، ادمین ${ADMIN_USER}!`, 'success');
                     loginForm.reset();
                     return;
                 }
@@ -960,6 +1208,11 @@
                 if (siteUsers[username]) {
                     // Login
                     if (siteUsers[username].password === password) {
+                        if (username.toLowerCase() === ADMIN_USER.toLowerCase()) {
+                             showNotification('رمز عبور ادمین اشتباه است', 'error');
+                             return;
+                        }
+                        
                         localStorage.setItem('loggedInUser', username);
                         checkLogin();
                         loginModal.classList.add('hidden');
@@ -970,12 +1223,17 @@
                     }
                 } else {
                     // Register
+                    if (username.toLowerCase() === ADMIN_USER.toLowerCase()) {
+                        showNotification('این نام کاربری برای ادمین رزرو شده است', 'error');
+                        return;
+                    }
                     siteUsers[username] = {
                         password: password,
                         cart: [],
                         comment: '',
                         balance: 0,
-                        isAdmin: false // Always false for new users
+                        isAdmin: false, 
+                        isBanned: false
                     };
                     saveUsers();
                     localStorage.setItem('loggedInUser', username);
@@ -995,17 +1253,22 @@
             
             showCartBtn.addEventListener('click', () => {
                 dashboardMainView.classList.add('hidden');
-                updateCartUI(); // Refresh cart just in case
+                updateCartUI();
                 cartView.classList.remove('hidden');
             });
             
             backToDashBtn.addEventListener('click', () => {
                 cartView.classList.add('hidden');
                 dashboardMainView.classList.remove('hidden');
-                currentAppliedDiscount = null; // Reset discount on leaving cart
+                currentAppliedDiscount = null;
             });
 
             payBtn.addEventListener('click', () => {
+                if (siteUsers[currentUser].isBanned) {
+                    showNotification('حساب شما مسدود است', 'error');
+                    return;
+                }
+                
                 let shoppingCart = siteUsers[currentUser].cart;
                 let subtotal = 0;
                 shoppingCart.forEach(item => subtotal += parseInt(item.price));
@@ -1026,13 +1289,12 @@
                     return;
                 }
 
-                // Proceed with payment
                 user.balance -= finalTotal;
                 user.cart = [];
                 saveUsers();
-                currentAppliedDiscount = null; // Reset discount
+                currentAppliedDiscount = null;
                 updateCartUI();
-                checkLogin(); // Update balance display
+                checkLogin();
                 showNotification('پرداخت با موفقیت انجام شد. سبد خرید شما خالی شد.', 'success');
                 
                 setTimeout(() => {
@@ -1043,12 +1305,17 @@
 
             commentForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const commentInput = document.getElementById('comment');
                 if (!currentUser) {
                     showNotification('برای ارسال دیدگاه، لطفا وارد شوید', 'warning');
-                    loginModal.classList.add('hidden');
+                    loginModal.classList.remove('hidden');
                     return;
                 }
+                if (siteUsers[currentUser].isBanned) {
+                    showNotification('حساب شما مسدود است و امکان ثبت نظر ندارید', 'error');
+                    return;
+                }
+
+                const commentInput = document.getElementById('comment');
                 siteUsers[currentUser].comment = commentInput.value;
                 saveUsers();
                 showNotification('دیدگاه شما با موفقیت ثبت شد!', 'success');
@@ -1056,6 +1323,15 @@
             });
 
             redeemCodeBtn.addEventListener('click', () => {
+                if (!currentUser) {
+                    showNotification('لطفا ابتدا وارد شوید', 'warning');
+                    return;
+                }
+                if (siteUsers[currentUser].isBanned) {
+                    showNotification('حساب شما مسدود است', 'error');
+                    return;
+                }
+
                 const code = redeemCodeInput.value.trim().toUpperCase();
                 const codeData = siteData.balanceCodes[code];
 
@@ -1068,17 +1344,21 @@
                     return;
                 }
 
-                // Redeem
                 siteUsers[currentUser].balance += codeData.value;
                 codeData.used = true;
                 saveUsers();
                 saveSiteData();
-                checkLogin(); // Refresh balance display
+                checkLogin();
                 showNotification(`مبلغ ${codeData.value.toLocaleString('fa-IR')} تومان به حساب شما اضافه شد!`, 'success');
                 redeemCodeInput.value = '';
             });
 
             applyDiscountBtn.addEventListener('click', () => {
+                if (siteUsers[currentUser].isBanned) {
+                    showNotification('حساب شما مسدود است', 'error');
+                    return;
+                }
+                
                 const code = discountCodeInput.value.trim().toUpperCase();
                 if (!siteData.discountCodes[code]) {
                     showNotification('کد تخفیف نامعتبر است', 'error');
@@ -1092,42 +1372,94 @@
 
             [loginModal, dashboardModal, adminModal].forEach(modal => {
                 modal.addEventListener('click', (e) => {
-                    if (e.target === modal) modal.classList.add('hidden');
+                    if (e.target === modal) {
+                        modal.classList.add('hidden');
+                        if (modal === dashboardModal) {
+                           currentAppliedDiscount = null;
+                        }
+                    }
                 });
             });
 
             // --- Admin Panel Logic ---
+            
+            function loadAdminDashboard() {
+                let totalUsers = 0;
+                let totalBalance = 0;
+                let unusedBalanceCodes = 0;
+
+                Object.keys(siteUsers).forEach(username => {
+                    if (username !== ADMIN_USER) {
+                        totalUsers++;
+                        totalBalance += siteUsers[username].balance;
+                    }
+                });
+                
+                Object.keys(siteData.balanceCodes).forEach(code => {
+                    if (!siteData.balanceCodes[code].used) {
+                        unusedBalanceCodes++;
+                    }
+                });
+
+                adminStatTotalUsers.textContent = totalUsers.toLocaleString('fa-IR');
+                adminStatTotalBalance.textContent = `${totalBalance.toLocaleString('fa-IR')} ت`;
+                adminStatDiscountCodes.textContent = Object.keys(siteData.discountCodes).length.toLocaleString('fa-IR');
+                adminStatBalanceCodes.textContent = unusedBalanceCodes.toLocaleString('fa-IR');
+            }
 
             function loadAdminUsers() {
-                adminUserList.innerHTML = ''; // Clear list
+                adminUserList.querySelector('#admin-user-list-items')?.remove();
+                const listContainer = document.createElement('div');
+                listContainer.id = 'admin-user-list-items';
+                listContainer.className = 'space-y-4';
+                
+                const searchTerm = adminUserSearch.value.trim().toLowerCase();
                 const usernames = Object.keys(siteUsers);
-
-                if (usernames.length <= 1) { // Only admin exists
-                    adminUserList.innerHTML = '<p class="text-center text-slate-400">کاربر دیگری یافت نشد.</p>';
-                    return;
-                }
+                
+                let userCount = 0;
 
                 usernames.forEach(username => {
-                    if (username === ADMIN_USER) return; // Don't show admin in list
-
+                    if (username === ADMIN_USER) return;
+                    if (searchTerm && !username.toLowerCase().includes(searchTerm)) return;
+                    
+                    userCount++;
                     const user = siteUsers[username];
                     const cartItems = user.cart.length > 0 ? user.cart.map(item => item.name).join('، ') : '<i>خالی</i>';
+                    const banBtnText = user.isBanned ? 'رفع مسدودی' : 'مسدود کردن';
+                    const banBtnClass = user.isBanned ? 'bg-green-600' : 'bg-yellow-600';
+                    const banStatus = user.isBanned ? '<span class="text-red-500 font-bold">(مسدود)</span>' : '';
+                    
                     const userCard = document.createElement('div');
                     userCard.className = 'glass-effect p-4 rounded-lg text-sm space-y-3';
                     userCard.innerHTML = `
-                        <div class="flex justify-between items-center">
-                            <p class="font-bold text-lg">${username}</p>
+                        <div class="flex flex-wrap gap-2 justify-between items-center">
+                            <p class="font-bold text-lg">${username} ${banStatus}</p>
                             <button data-username="${username}" class="delete-user-btn px-3 py-1 text-xs font-semibold text-white bg-red-600 rounded-lg">حذف کاربر</button>
                         </div>
                         <p>موجودی: <span class="font-bold text-green-400">${user.balance.toLocaleString('fa-IR')} ت</span></p>
-                        <div class="flex gap-2">
+                        <div class="flex flex-col sm:flex-row gap-2">
                             <input type="number" id="balance-input-${username}" class="form-input w-full p-2 rounded-lg text-slate-800 dark:text-slate-200" placeholder="تنظیم موجودی (تومان)">
                             <button data-username="${username}" class="set-balance-btn px-4 py-2 font-semibold text-white bg-sky-500 rounded-lg whitespace-nowrap">تنظیم</button>
                         </div>
-                        <p class="text-slate-400 text-xs">سبد خرید: ${cartItems}</p>
+                        <div class="border-t border-slate-700/50 pt-3 mt-3 space-y-2">
+                            <p class="text-slate-400 text-xs">سبد خرید: ${cartItems}</p>
+                            ${user.comment ? `
+                                <div class="flex justify-between items-center">
+                                    <p class="text-slate-300 text-xs italic">نظر: ${user.comment}</p>
+                                    <button data-username="${username}" class="clear-comment-btn px-2 py-1 text-xs text-white bg-slate-600 rounded-lg">حذف نظر</button>
+                                </div>
+                            ` : ''}
+                        </div>
+                        <button data-username="${username}" class="toggle-ban-btn w-full p-2 text-sm font-semibold text-white ${banBtnClass} rounded-lg">${banBtnText}</button>
                     `;
-                    adminUserList.appendChild(userCard);
+                    listContainer.appendChild(userCard);
                 });
+
+                if (userCount === 0) {
+                    listContainer.innerHTML = '<p class="text-center text-slate-400">کاربری یافت نشد.</p>';
+                }
+                
+                adminUserList.appendChild(listContainer);
 
                 // Add event listeners for new buttons
                 document.querySelectorAll('.set-balance-btn').forEach(btn => {
@@ -1135,35 +1467,125 @@
                         const targetUser = e.target.dataset.username;
                         const input = document.getElementById(`balance-input-${targetUser}`);
                         const amount = parseInt(input.value);
-
                         if (isNaN(amount) || amount < 0) {
                              showNotification('لطفا مبلغ معتبری (0 یا بیشتر) وارد کنید', 'warning');
                              return;
                         }
-                        
                         siteUsers[targetUser].balance = amount;
                         saveUsers();
                         showNotification(`موجودی ${targetUser} به ${amount.toLocaleString('fa-IR')} تومان تنظیم شد.`, 'success');
                         input.value = '';
-                        loadAdminUsers(); // Refresh list
+                        loadAdminUsers();
+                        loadAdminDashboard();
                     });
                 });
                 
                 document.querySelectorAll('.delete-user-btn').forEach(btn => {
                     btn.addEventListener('click', (e) => {
                         const targetUser = e.target.dataset.username;
-                        // A simple confirmation for this simulation
-                        const isConfirmed = confirm(`آیا از حذف کاربر ${targetUser} مطمئن هستید؟ این عمل غیرقابل بازگشت است.`);
-                        if (isConfirmed) {
-                            delete siteUsers[targetUser];
-                            saveUsers();
-                            showNotification(`کاربر ${targetUser} با موفقیت حذف شد.`, 'success');
-                            loadAdminUsers(); // Refresh list
-                        }
+                        showConfirmationModal(
+                            `حذف کاربر ${targetUser}`,
+                            'آیا از حذف این کاربر مطمئن هستید؟ تمام اطلاعات (موجودی، سبد خرید) حذف خواهد شد.',
+                            () => {
+                                delete siteUsers[targetUser];
+                                saveUsers();
+                                showNotification(`کاربر ${targetUser} با موفقیت حذف شد.`, 'success');
+                                loadAdminUsers();
+                                loadAdminDashboard();
+                            }
+                        );
+                    });
+                });
+                
+                document.querySelectorAll('.toggle-ban-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const targetUser = e.target.dataset.username;
+                        siteUsers[targetUser].isBanned = !siteUsers[targetUser].isBanned;
+                        saveUsers();
+                        const action = siteUsers[targetUser].isBanned ? 'مسدود' : 'رفع مسدودی';
+                        showNotification(`کاربر ${targetUser} ${action} شد.`, 'success');
+                        loadAdminUsers();
+                    });
+                });
+                
+                document.querySelectorAll('.clear-comment-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const targetUser = e.target.dataset.username;
+                        siteUsers[targetUser].comment = '';
+                        saveUsers();
+                        showNotification(`نظر کاربر ${targetUser} پاک شد.`, 'success');
+                        loadAdminUsers();
                     });
                 });
             }
             
+            adminUserSearch.addEventListener('input', loadAdminUsers);
+            
+            // MODIFIED: Load Admin Product Price Management Tab
+            function loadAdminProducts() {
+                adminProductList.innerHTML = '';
+                const categories = siteData.products;
+
+                for (const catId in categories) {
+                    const category = categories[catId];
+                    const catHeader = document.createElement('h4');
+                    catHeader.className = 'text-lg font-bold mt-4 border-b border-slate-700/50 pb-2';
+                    catHeader.textContent = category.displayName;
+                    adminProductList.appendChild(catHeader);
+
+                    category.items.forEach(product => {
+                        const el = document.createElement('div');
+                        el.className = 'glass-effect p-3 rounded-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2';
+                        el.innerHTML = `
+                            <p class="font-medium text-sm">${product.name}</p>
+                            <div class="flex gap-2 w-full sm:w-auto">
+                                <input type="number" id="price-input-${product.id}" class="form-input w-full p-2 rounded-lg text-slate-800 dark:text-slate-200" value="${product.price}">
+                                <button data-id="${product.id}" data-category="${catId}" class="save-price-btn px-4 py-2 font-semibold text-white bg-green-500 rounded-lg whitespace-nowrap">ذخیره</button>
+                            </div>
+                        `;
+                        adminProductList.appendChild(el);
+                    });
+                }
+                
+                // Add listeners for save buttons
+                adminProductList.querySelectorAll('.save-price-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = e.target.dataset.id;
+                        const category = e.target.dataset.category;
+                        const input = document.getElementById(`price-input-${id}`);
+                        const newPrice = parseInt(input.value);
+                        
+                        if (isNaN(newPrice) || newPrice < 0) {
+                            showNotification('مبلغ نامعتبر است', 'error');
+                            return;
+                        }
+                        
+                        // Find product in DB and update price
+                        const product = siteData.products[category].items.find(p => p.id === id);
+                        product.price = newPrice;
+                        saveSiteData();
+                        
+                        // Refresh main page UI
+                        renderProducts();
+                        
+                        showNotification(`قیمت ${product.name} به‌روز شد`, 'success');
+                    });
+                });
+            }
+            
+            // NEW: Load "Add Product" Tab
+            function loadAdminAddProductTab() {
+                adminAddProductCategorySelect.innerHTML = '';
+                const categories = siteData.products;
+                for (const catId in categories) {
+                    const option = document.createElement('option');
+                    option.value = catId;
+                    option.textContent = categories[catId].displayName;
+                    option.className = 'text-slate-800';
+                    adminAddProductCategorySelect.appendChild(option);
+                }
+            }
+
             function loadAdminDiscounts() {
                 adminDiscountList.innerHTML = '';
                 const codes = Object.keys(siteData.discountCodes);
@@ -1177,13 +1599,13 @@
                     const valueText = code.type === 'percent' ? `${code.value}%` : `${code.value.toLocaleString('fa-IR')} ت`;
                     
                     const codeEl = document.createElement('div');
-                    codeEl.className = 'glass-effect p-3 rounded-lg flex justify-between items-center text-sm';
+                    codeEl.className = 'glass-effect p-3 rounded-lg flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-sm';
                     codeEl.innerHTML = `
                         <div>
                             <p class="font-bold text-base">${codeName}</p>
                             <p class="text-slate-300">${valueText} (${typeText})</p>
                         </div>
-                        <button data-code="${codeName}" class="delete-discount-btn px-3 py-1 text-xs font-semibold text-white bg-red-600 rounded-lg">حذف</button>
+                        <button data-code="${codeName}" class="delete-discount-btn px-3 py-1 text-xs font-semibold text-white bg-red-600 rounded-lg w-full sm:w-auto">حذف</button>
                     `;
                     adminDiscountList.appendChild(codeEl);
                 });
@@ -1196,6 +1618,7 @@
                         saveSiteData();
                         showNotification(`کد تخفیف ${code} حذف شد.`, 'success');
                         loadAdminDiscounts();
+                        loadAdminDashboard(); // Refresh stats
                     });
                 });
             }
@@ -1213,13 +1636,13 @@
                     const statusClass = code.used ? 'text-red-400' : 'text-green-400';
 
                     const codeEl = document.createElement('div');
-                    codeEl.className = 'glass-effect p-3 rounded-lg flex justify-between items-center text-sm';
+                    codeEl.className = 'glass-effect p-3 rounded-lg flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-sm';
                     codeEl.innerHTML = `
                         <div>
                             <p class="font-bold text-base">${codeName}</p>
                             <p class="text-slate-300">مبلغ: ${code.value.toLocaleString('fa-IR')} تومان | وضعیت: <span class="${statusClass} font-bold">${statusText}</span></p>
                         </div>
-                        <button data-code="${codeName}" class="delete-balance-btn px-3 py-1 text-xs font-semibold text-white bg-red-600 rounded-lg">حذف</button>
+                        <button data-code="${codeName}" class="delete-balance-btn px-3 py-1 text-xs font-semibold text-white bg-red-600 rounded-lg w-full sm:w-auto">حذف</button>
                     `;
                     adminBalanceList.appendChild(codeEl);
                 });
@@ -1232,6 +1655,7 @@
                         saveSiteData();
                         showNotification(`کد موجودی ${code} حذف شد.`, 'success');
                         loadAdminBalanceCodes();
+                        loadAdminDashboard(); // Refresh stats
                     });
                 });
             }
@@ -1239,14 +1663,17 @@
             function openAdminPanel() {
                 dashboardModal.classList.add('hidden');
                 // Load all tabs
+                loadAdminDashboard();
                 loadAdminUsers();
+                loadAdminProducts();
+                loadAdminAddProductTab(); // Load new tab
                 loadAdminDiscounts();
                 loadAdminBalanceCodes();
                 // Set default tab
                 adminTabs.forEach(t => t.classList.remove('active'));
                 adminTabContents.forEach(c => c.classList.add('hidden'));
-                document.querySelector('.admin-tab-button[data-target="admin-tab-users"]').classList.add('active');
-                document.getElementById('admin-tab-users').classList.remove('hidden');
+                document.querySelector('.admin-tab-button[data-target="admin-tab-dashboard"]').classList.add('active');
+                document.getElementById('admin-tab-dashboard').classList.remove('hidden');
                 
                 adminModal.classList.remove('hidden');
             }
@@ -1289,6 +1716,7 @@
                 showNotification(`کد تخفیف ${name} با موفقیت ایجاد شد`, 'success');
                 createDiscountForm.reset();
                 loadAdminDiscounts();
+                loadAdminDashboard(); // Refresh stats
             });
             
             createBalanceForm.addEventListener('submit', (e) => {
@@ -1306,8 +1734,69 @@
                 showNotification(`کد ${newCode} به ارزش ${value.toLocaleString('fa-IR')} تومان ایجاد شد`, 'success');
                 createBalanceForm.reset();
                 loadAdminBalanceCodes();
+                loadAdminDashboard(); // Refresh stats
             });
 
+            // NEW: Add Product/Category Form Handlers
+            addProductForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const catId = adminAddProductCategorySelect.value;
+                const name = document.getElementById('admin-add-product-name').value;
+                const price = parseInt(document.getElementById('admin-add-product-price').value);
+                
+                if (!catId || !name || isNaN(price) || price <= 0) {
+                    showNotification('لطفا تمام فیلدهای محصول را به درستی پر کنید', 'warning');
+                    return;
+                }
+                
+                const newId = `${catId}-${Math.random().toString(36).substring(2, 6)}`;
+                siteData.products[catId].items.push({ id: newId, name: name, price: price });
+                saveSiteData();
+                
+                renderProducts(); // Refresh UI for all users
+                loadAdminProducts(); // Refresh price edit tab
+                
+                showNotification(`محصول "${name}" با موفقیت اضافه شد`, 'success');
+                addProductForm.reset();
+            });
+
+            addCategoryForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const id = document.getElementById('admin-add-category-id').value.trim().toLowerCase();
+                const name = document.getElementById('admin-add-category-name').value;
+                const color = document.getElementById('admin-add-category-color').value.trim().toLowerCase();
+                const grid = document.getElementById('admin-add-category-grid').value;
+
+                if (!id || !name || !color || !grid) {
+                    showNotification('لطفا تمام فیلدهای دسته‌بندی را پر کنید', 'warning');
+                    return;
+                }
+                if (siteData.products[id]) {
+                    showNotification('شناسه دسته‌بندی تکراری است (باید منحصربفرد باشد)', 'error');
+                    return;
+                }
+
+                siteData.products[id] = {
+                    displayName: name,
+                    color: color,
+                    grid: grid,
+                    items: []
+                };
+                saveSiteData();
+
+                // Refresh everything
+                renderProductTabs();
+                renderProducts();
+                loadAdminAddProductTab(); // Refresh dropdown
+                
+                showNotification(`دسته‌بندی "${name}" با موفقیت ایجاد شد`, 'success');
+                addCategoryForm.reset();
+            });
+
+            // --- Initial Page Load ---
+            renderProductTabs(); // NEW: Render tabs dynamically
+            renderProducts(); // Render products from DB on load
+            checkLogin(); // Check login status on load
 
             // Goftino Script
             !function(){var i="sDMeys",a=window,d=document;function g(){var g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}"complete"===d.readyState?g():a.attachEvent?a.attachEvent("onload",g):a.addEventListener("load",g,!1);}();
@@ -1315,5 +1804,4 @@
     </script>
 </body>
 </html>
-
 
