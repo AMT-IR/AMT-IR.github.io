@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl" class="scroll-smooth">
+<html lang="fa" dir="rtl" class="scroll-smooth dark"> <!-- 'dark' class is now permanent -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,25 +8,23 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Google Fonts: Vazirmatn -->
+    <!-- Font Optimization: Preconnect to Google Fonts servers -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Optimization: Load ONLY the weights used in the site (400, 500, 600, 700, 800) -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         /* General styling */
         body {
             font-family: 'Vazirmatn', sans-serif;
-            background-color: #f1f5f9; /* Light mode static background */
+            background-color: #020617; /* Dark mode only - Black/Slate-950 */
             transition: background-color 0.5s ease-in-out;
             overflow-x: hidden;
         }
 
-        .dark body {
-            background-color: #020617; /* Dark mode static background */
-        }
-
-        /* Animated blobs */
+        /* Animated blobs - New Gloomy/Dark Theme */
         .blob-container {
             position: fixed;
             top: 0;
@@ -41,12 +39,8 @@
             position: absolute;
             border-radius: 50%;
             filter: blur(120px);
-            opacity: 0.4;
+            opacity: 0.3; /* More subtle */
             transition: background 0.5s ease-in-out;
-        }
-
-        .dark .blob {
-            opacity: 0.5;
         }
 
         .blob:nth-child(1) {
@@ -54,7 +48,7 @@
             height: 400px;
             top: -150px;
             left: -150px;
-            background: #06b6d4;
+            background: #164e63; /* Dark Cyan/Teal */
             animation: move-blob-1 20s infinite alternate;
         }
 
@@ -63,7 +57,7 @@
             height: 500px;
             bottom: -200px;
             right: -250px;
-            background: #3b82f6;
+            background: #4c1d95; /* Dark Violet */
             animation: move-blob-2 25s infinite alternate;
         }
 
@@ -72,7 +66,7 @@
             height: 300px;
             bottom: 50px;
             left: -100px;
-            background: #8b5cf6;
+            background: #3730a3; /* Dark Indigo */
             animation: move-blob-3 18s infinite alternate;
         }
 
@@ -94,14 +88,10 @@
 
         /* Glass effect */
         .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(15, 23, 42, 0.2); /* Dark mode only */
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-        .dark .glass-effect {
-            background: rgba(15, 23, 42, 0.2);
-            border-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1); /* White line/groove */
         }
 
         /* Shine effect */
@@ -142,28 +132,25 @@
         /* Form Input Styling */
         .form-input {
             background-color: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1); /* White groove */
             transition: border-color 0.3s ease-in-out;
-        }
-        .dark .form-input {
-             border-color: rgba(255, 255, 255, 0.1);
         }
         .form-input:focus {
             outline: none;
-            border-color: #38bdf8;
+            border-color: #4f46e5; /* Indigo accent */
         }
 
         /* Tab Navigation Styling */
         .tab-button.active, .admin-tab-button.active {
             background-image: linear-gradient(to right, var(--tw-gradient-stops));
-            --tw-gradient-from: #38bdf8;
-            --tw-gradient-to: #3b82f6;
+            --tw-gradient-from: #3730a3; /* Dark Indigo */
+            --tw-gradient-to: #5b21b6; /* Dark Violet */
             --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
             color: white;
         }
         .admin-tab-button.active {
-            --tw-gradient-from: #8b5cf6;
-            --tw-gradient-to: #6366f1;
+            --tw-gradient-from: #5b21b6; /* Dark Violet */
+            --tw-gradient-to: #4c1d95; /* Darker Violet */
         }
         /* Admin Product Tab Active Color */
         .admin-tab-button[data-target="admin-tab-products"],
@@ -172,9 +159,9 @@
         }
         .admin-tab-button[data-target="admin-tab-products"].active,
         .admin-tab-button[data-target="admin-tab-add-product"].active {
-            --tw-gradient-from: #10b981; /* emerald-500 */
-            --tw-gradient-to: #059669; /* emerald-600 */
-            border-color: #10b981;
+            --tw-gradient-from: #047857; /* Dark Emerald */
+            --tw-gradient-to: #065f46; /* Darker Emerald */
+            border-color: #047857;
         }
 
         /* Modal Styling */
@@ -194,13 +181,29 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
         .progress-bar-fill {
-            background-image: linear-gradient(to right, #38bdf8, #818cf8);
+            background-image: linear-gradient(to right, #3730a3, #5b21b6); /* Indigo/Violet */
             transition: width 0.4s ease-in-out;
+        }
+        
+        /* Gemini Loading Spinner */
+        #gemini-loading .spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #4f46e5; /* Indigo */
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
     </style>
 </head>
-<body class="text-slate-800 dark:text-slate-200">
+<body class="text-slate-200"> <!-- Default text is light -->
 
     <div class="blob-container">
         <div class="blob"></div>
@@ -211,39 +214,41 @@
     <!-- Header Section -->
     <header id="header" class="glass-effect fixed top-4 left-4 right-4 z-50 rounded-2xl shadow-lg transition-all duration-300">
         <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-cyan-400 animate-shine">
+            <div class="text-2xl font-bold tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-violet-400 animate-shine">
                 SPONSORACB
             </div>
             <div class="flex items-center gap-2 md:gap-4">
                  <!-- Account Button -->
-                <button id="account-btn" class="flex items-center gap-2 text-sm font-semibold p-2 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+                <button id="account-btn" class="flex items-center gap-2 text-sm font-semibold p-2 rounded-lg hover:bg-white/10 transition-colors">
                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>
                     <span id="account-text" class="hidden sm:block">حساب کاربری</span>
                 </button>
-                <div class="w-px h-6 bg-slate-300 dark:bg-slate-700"></div>
-                <!-- Dark Mode Button -->
-                <button id="dark-mode-toggle-desktop" class="flex items-center justify-center w-10 h-10 rounded-full text-slate-700 dark:text-slate-300 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
-                     <svg id="theme-toggle-dark-icon-desktop" class="h-6 w-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                     <svg id="theme-toggle-light-icon-desktop" class="h-6 w-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05A1 1 0 003.636 3.636l-.707.707a1 1 0 101.414 1.414l.707-.707zM3 11a1 1 0 100-2H2a1 1 0 100 2h1zM6.464 14.95l-.707.707a1 1 0 001.414 1.414l.707-.707a1 1 0 00-1.414-1.414z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                </button>
+                <div class="w-px h-6 bg-slate-700"></div> <!-- White-ish line -->
+                
                 <!-- Mobile Menu Button -->
                 <button id="menu-btn" class="md:hidden z-50">
-                    <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-700 dark:text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
-                    <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-700 dark:text-slate-300 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                    <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+                    <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-300 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
             </div>
         </div>
     </header>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed inset-0 z-40 glass-effect flex-col items-center justify-center gap-6 text-2xl font-medium hidden md:hidden">
-        <button id="dark-mode-toggle-mobile" class="flex items-center gap-3 p-3 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
-            <span id="dark-mode-text-mobile">حالت تاریک</span>
-            <div>
-                 <svg id="theme-toggle-dark-icon-mobile" class="h-7 w-7 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                <svg id="theme-toggle-light-icon-mobile" class="h-7 w-7 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05A1 1 0 003.636 3.636l-.707.707a1 1 0 101.414 1.414l.707-.707zM3 11a1 1 0 100-2H2a1 1 0 100 2h1zM6.464 14.95l-.707.707a1 1 0 001.414 1.414l.707-.707a1 1 0 00-1.414-1.414z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-            </div>
-        </button>
+    <div id="mobile-menu" class="fixed inset-0 z-40 glass-effect flex-col items-center justify-center gap-8 text-2xl font-medium hidden md:hidden">
+        <!-- Updated Menu Items -->
+        <div class="text-center">
+            <a href="#" class="text-2xl font-medium text-slate-400 opacity-50 cursor-not-allowed">
+                خدمات ویژه
+            </a>
+            <p class="text-xs text-slate-500">(بزودی)</p>
+        </div>
+        <div class="text-center">
+            <a href="#" class="text-2xl font-medium text-slate-400 opacity-50 cursor-not-allowed">
+                آموزش‌ها
+            </a>
+            <p class="text-xs text-slate-500">(بزودی)</p>
+        </div>
     </div>
 
     <!-- Main Content -->
@@ -252,27 +257,28 @@
             <!-- Hero Section -->
             <div class="max-w-lg mx-auto text-center scroll-animate">
                 <div class="relative w-32 h-32 mx-auto mb-6">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-sky-400 to-blue-500 rounded-full animate-pulse"></div>
-                    <img src="https://placehold.co/128x128/e2e8f0/334155?text=S" alt="لوگوی SPONSORACB" class="relative w-full h-full rounded-full border-4 border-slate-100 dark:border-slate-900">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-violet-500 rounded-full animate-pulse"></div>
+                    <!-- LOGO CHANGED -->
+                    <img src="https://s6.uupload.ir/files/1760985837359_y3kw.jpg" alt="لوگوی SPONSORACB" class="relative w-full h-full rounded-full border-4 border-slate-900 object-cover">
                 </div>
                 <h1 class="text-4xl font-extrabold mb-2">SPONSORACB</h1>
-                <p class="text-lg text-slate-600 dark:text-slate-400 mb-8">بهترین خدمات و پشتیبانی در دستان شماست.</p>
+                <p class="text-lg text-slate-400 mb-8">بهترین خدمات و پشتیبانی در دستان شماست.</p>
                 <!-- Responsive button links -->
                 <div class="space-y-4">
-                     <a href="https://t.me/sponsoracb" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform duration-300 shadow-lg">کانال تلگرام</a>
-                     <a href="https://t.me/sponsoracb_bot" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform duration-300 shadow-lg">ربات تلگرام</a>
-                     <a href="https://t.me/MYT7V" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-slate-800 dark:text-slate-900 bg-slate-200 dark:bg-slate-300 hover:scale-105 transform transition-transform duration-300 shadow-md">ارتباط با مدیر</a>
-                     <a href="https://t.me/Sponsoracb_supportbot" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-slate-800 dark:text-slate-900 bg-slate-200 dark:bg-slate-300 hover:scale-105 transform transition-transform duration-300 shadow-md">پشتیبانی</a>
+                     <a href="https://t.me/sponsoracb" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-white bg-gradient-to-r from-indigo-700 to-violet-700 hover:scale-105 transform transition-transform duration-300 shadow-lg">کانال تلگرام</a>
+                     <a href="https://t.me/sponsoracb_bot" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-white bg-gradient-to-r from-indigo-700 to-violet-700 hover:scale-105 transform transition-transform duration-300 shadow-lg">ربات تلگرام</a>
+                     <a href="https://t.me/MYT7V" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-slate-300 bg-slate-800 hover:bg-slate-700 hover:scale-105 transform transition-transform duration-300 shadow-md">ارتباط با مدیر</a>
+                     <a href="https://t.me/Sponsoracb_supportbot" target="_blank" class="block w-full p-4 rounded-xl font-semibold text-slate-300 bg-slate-800 hover:bg-slate-700 hover:scale-105 transform transition-transform duration-300 shadow-md">پشتیبانی</a>
                 </div>
                 <!-- Responsive stats grid -->
                 <div class="mt-12 grid grid-cols-2 gap-4 text-center">
-                    <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10"><p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-operators">0</p><p class="text-sm text-slate-600 dark:text-slate-400 mt-1">اپراتور های انلاین</p></div>
-                    <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10"><p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-bots">0</p><p class="text-sm text-slate-600 dark:text-slate-400 mt-1">بات های فعال</p></div>
-                    <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10"><p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-orders">0</p><p class="text-sm text-slate-600 dark:text-slate-400 mt-1">سفارشات انجام شده</p></div>
-                    <div class="p-4 rounded-xl bg-sky-500/10 dark:bg-sky-400/10"><p class="text-3xl font-bold text-sky-500 dark:text-sky-400" id="stat-users">0</p><p class="text-sm text-slate-600 dark:text-slate-400 mt-1">کاربران انلاین</p></div>
+                    <div class="p-4 rounded-xl bg-indigo-400/10"><p class="text-3xl font-bold text-indigo-400" id="stat-operators">0</p><p class="text-sm text-slate-400 mt-1">اپراتور های انلاین</p></div>
+                    <div class="p-4 rounded-xl bg-indigo-400/10"><p class="text-3xl font-bold text-indigo-400" id="stat-bots">0</p><p class="text-sm text-slate-400 mt-1">بات های فعال</p></div>
+                    <div class="p-4 rounded-xl bg-indigo-400/10"><p class="text-3xl font-bold text-indigo-400" id="stat-orders">0</p><p class="text-sm text-slate-400 mt-1">سفارشات انجام شده</p></div>
+                    <div class="p-4 rounded-xl bg-indigo-400/10"><p class="text-3xl font-bold text-indigo-400" id="stat-users">0</p><p class="text-sm text-slate-400 mt-1">کاربران انلاین</p></div>
                 </div>
 
-                <div class="mt-8 p-3 border border-slate-300 dark:border-slate-700 rounded-xl">
+                <div class="mt-8 p-3 border border-slate-700 rounded-xl"> <!-- White-ish line -->
                     <div class="flex justify-between items-center px-2 text-md">
                         <span>سفارشات درحال انجام</span>
                         <span id="live-orders-count" class="text-green-500 font-bold text-lg">۱۴۶+</span>
@@ -281,11 +287,11 @@
 
                 <!-- Responsive VIP grid -->
                 <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
-                    <a href="https://t.me/Sponsoracb_bot?start=vip_epanel_setting_bot" target="_blank" class="block w-full p-4 rounded-xl font-bold text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:scale-105 transform transition-transform duration-300 shadow-lg text-lg">خرید اکانت ویژه</a>
-                    <div class="p-4 rounded-xl bg-indigo-500/10 dark:bg-indigo-400/10"><p class="text-3xl font-bold text-indigo-500 dark:text-indigo-400" id="stat-licenses">0</p><p class="text-sm text-slate-600 dark:text-slate-400 mt-1">لایسنس های خرید شده</p></div>
+                    <a href="https://t.me/Sponsoracb_bot?start=vip_epanel_setting_bot" target="_blank" class="block w-full p-4 rounded-xl font-bold text-white bg-gradient-to-r from-indigo-700 to-violet-700 hover:scale-105 transform transition-transform duration-300 shadow-lg text-lg">خرید اکانت ویژه</a>
+                    <div class="p-4 rounded-xl bg-indigo-400/10"><p class="text-3xl font-bold text-indigo-400" id="stat-licenses">0</p><p class="text-sm text-slate-400 mt-1">لایسنس های خرید شده</p></div>
                 </div>
             </div>
-
+            
             <!-- Order Algorithm Section -->
             <div id="order-algorithm-section" class="max-w-4xl mx-auto text-center mt-20 scroll-animate">
                 <h2 class="text-3xl font-extrabold mb-8">الگوریتم ثبت سفارش</h2>
@@ -301,24 +307,24 @@
                         <!-- Step 1: Select Service -->
                         <div id="step-1" class="space-y-4">
                             <h3 class="text-xl font-bold">مرحله ۱: سرویس را انتخاب کنید</h3>
-                            <select id="service-select" class="form-input w-full md:w-1/2 mx-auto p-3 rounded-lg text-slate-800 dark:text-slate-200 bg-transparent">
+                            <select id="service-select" class="form-input w-full md:w-1/2 mx-auto p-3 rounded-lg text-slate-200 bg-transparent">
                                 <option value="instagram" class="text-slate-800">اینستاگرام - فالوور</option>
                                 <option value="telegram" class="text-slate-800">تلگرام - ممبر</option>
                                 <option value="aparat" class="text-slate-800">آپارات - بازدید</option>
                             </select>
-                            <button class="next-btn w-full md:w-1/2 mx-auto p-3 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform">مرحله بعد</button>
+                            <button class="next-btn w-full md:w-1/2 mx-auto p-3 rounded-xl font-semibold text-white bg-gradient-to-r from-indigo-700 to-violet-700 hover:scale-105 transform transition-transform">مرحله بعد</button>
                         </div>
                         <!-- Step 2: Enter Link -->
                         <div id="step-2" class="space-y-4 hidden">
                              <h3 class="text-xl font-bold">مرحله ۲: لینک صفحه را وارد کنید</h3>
-                            <input type="text" id="link-input" class="form-input w-full md:w-1/2 mx-auto p-3 rounded-lg text-slate-800 dark:text-slate-200 text-left" placeholder="https://instagram.com/username">
-                            <button class="next-btn w-full md:w-1/2 mx-auto p-3 rounded-xl font-semibold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform">مرحله بعد</button>
+                            <input type="text" id="link-input" class="form-input w-full md:w-1/2 mx-auto p-3 rounded-lg text-slate-200 text-left" placeholder="https://instagram.com/username">
+                            <button class="next-btn w-full md:w-1/2 mx-auto p-3 rounded-xl font-semibold text-white bg-gradient-to-r from-indigo-700 to-violet-700 hover:scale-105 transform transition-transform">مرحله بعد</button>
                         </div>
                         <!-- Step 3: Set Quantity -->
                         <div id="step-3" class="space-y-4 hidden">
                             <h3 class="text-xl font-bold">مرحله ۳: تعداد را مشخص کنید</h3>
-                            <input type="number" id="quantity-input" class="form-input w-full md:w-1/2 mx-auto p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="مثلا: 1000" min="100">
-                            <button class="next-btn w-full md:w-1/2 mx-auto p-3 rounded-xl font-semibold text-white bg-gradient-to-r from-emerald-500 to-green-500 hover:scale-105 transform transition-transform">ثبت نهایی سفارش</button>
+                            <input type="number" id="quantity-input" class="form-input w-full md:w-1/2 mx-auto p-3 rounded-lg text-slate-200" placeholder="مثلا: 1000" min="100">
+                            <button class="next-btn w-full md:w-1/2 mx-auto p-3 rounded-xl font-semibold text-white bg-gradient-to-r from-emerald-700 to-emerald-800 hover:scale-105 transform transition-transform">ثبت نهایی سفارش</button>
                         </div>
                         <!-- Step 4: Success -->
                          <div id="step-4" class="space-y-4 hidden text-center">
@@ -340,9 +346,9 @@
                     <!-- Tabs will be injected here by JS -->
                 </div>
 
-                <!-- Product Placeholder -->
+                <!-- Product Placeholder (NOW SHOWN BY DEFAULT) -->
                 <div id="product-placeholder" class="text-center p-8 glass-effect rounded-2xl">
-                    <p class="text-lg text-slate-600 dark:text-slate-400">لطفا برای مشاهده محصولات، یک دسته را انتخاب کنید.</p>
+                    <p class="text-lg text-slate-400">لطفا برای مشاهده محصولات، یک دسته را انتخاب کنید.</p>
                 </div>
 
                 <!-- Product Sections (Container for dynamic sections) -->
@@ -356,11 +362,11 @@
                     <div class="glass-effect p-6 md:p-8 rounded-2xl">
                         <form id="comment-form" class="space-y-6 text-right">
                             <div>
-                                <label for="comment" class="block mb-2 text-sm font-medium text-slate-700 dark:text-slate-300">نظر شما</label>
-                                <textarea id="comment" rows="4" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="دیدگاه خود را اینجا بنویسید..." required></textarea>
+                                <label for="comment" class="block mb-2 text-sm font-medium text-slate-300">نظر شما</label>
+                                <textarea id="comment" rows="4" class="form-input w-full p-3 rounded-lg text-slate-200" placeholder="دیدگاه خود را اینجا بنویسید..." required></textarea>
                             </div>
                             <div>
-                                <button type="submit" class="w-full p-4 rounded-xl font-bold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform duration-300 shadow-lg text-lg">ارسال دیدگاه</button>
+                                <button type="submit" class="w-full p-4 rounded-xl font-bold text-white bg-gradient-to-r from-indigo-700 to-violet-700 hover:scale-105 transform transition-transform duration-300 shadow-lg text-lg">ارسال دیدگاه</button>
                             </div>
                         </form>
                     </div>
@@ -372,7 +378,7 @@
 
     <!-- Footer Section -->
     <footer class="glass-effect fixed bottom-4 left-4 right-4 rounded-2xl shadow-lg z-20">
-        <div class="container mx-auto px-4 sm:px-6 py-4 text-center text-slate-600 dark:text-slate-400">
+        <div class="container mx-auto px-4 sm:px-6 py-4 text-center text-slate-400">
             <p class="text-sm">&copy; 2025 SPONSORACB - تمام حقوق محفوظ است.</p>
         </div>
     </footer>
@@ -387,29 +393,31 @@
 
     <!-- Login Modal (Responsive) -->
     <div id="login-modal" class="modal-overlay fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4 hidden">
-        <div class="modal-content glass-effect w-full max-w-md p-6 md:p-8 rounded-2xl">
+        <!-- Responsive Padding: p-4 sm:p-6 md:p-8 -->
+        <div class="modal-content glass-effect w-full max-w-md p-4 sm:p-6 md:p-8 rounded-2xl">
             <form id="login-form" class="space-y-6">
                 <h2 class="text-2xl font-bold text-center">ورود / ثبت نام</h2>
                 <div>
                     <label for="login-username" class="block mb-2 font-medium">نام کاربری</label>
-                    <input type="text" id="login-username" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" required>
+                    <input type="text" id="login-username" class="form-input w-full p-3 rounded-lg text-slate-200" required>
                 </div>
                 <div>
                     <label for="login-password" class="block mb-2 font-medium">رمز عبور</label>
-                    <input type="password" id="login-password" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" required>
+                    <input type="password" id="login-password" class="form-input w-full p-3 rounded-lg text-slate-200" required>
                 </div>
-                <button type="submit" class="w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform">ورود به حساب</button>
+                <button type="submit" class="w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-indigo-700 to-violet-700 hover:scale-105 transform transition-transform">ورود به حساب</button>
             </form>
         </div>
     </div>
 
     <!-- Dashboard Modal (Responsive) -->
     <div id="dashboard-modal" class="modal-overlay fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4 hidden">
-        <div class="modal-content glass-effect w-full max-w-md p-6 md:p-8 rounded-2xl space-y-6 text-center relative">
+        <!-- Responsive Padding: p-4 sm:p-6 md:p-8 -->
+        <div class="modal-content glass-effect w-full max-w-md p-4 sm:p-6 md:p-8 rounded-2xl space-y-6 text-center relative">
 
              <div id="dashboard-main-view">
                 <h2 class="text-2xl font-bold">داشبورد کاربری</h2>
-                <p class="text-lg mt-2">خوش آمدید، <span id="dash-username" class="font-bold text-sky-400"></span>!</p>
+                <p class="text-lg mt-2">خوش آمدید، <span id="dash-username" class="font-bold text-indigo-400"></span>!</p>
 
                 <!-- User Stats Grid -->
                 <div class="grid grid-cols-2 gap-4 text-lg mt-4">
@@ -431,21 +439,21 @@
                 <div class="text-right">
                     <label for="redeem-code-input" class="block mb-2 text-sm font-medium">کد افزایش موجودی</label>
                     <div class="flex flex-col sm:flex-row gap-2">
-                        <input type="text" id="redeem-code-input" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="کد هدیه را وارد کنید">
-                        <button id="redeem-code-btn" class="px-4 py-2 font-semibold text-white bg-green-500 rounded-lg whitespace-nowrap">اعمال</button>
+                        <input type="text" id="redeem-code-input" class="form-input w-full p-3 rounded-lg text-slate-200" placeholder="کد هدیه را وارد کنید">
+                        <button id="redeem-code-btn" class="px-4 py-2 font-semibold text-white bg-emerald-700 rounded-lg whitespace-nowrap">اعمال</button>
                     </div>
                 </div>
 
-                <div id="user-comment-display" class="hidden text-right border-t border-slate-700/50 pt-4 mt-4">
+                <div id="user-comment-display" class="hidden text-right border-t border-slate-700/50 pt-4 mt-4"> <!-- White-ish line -->
                     <h4 class="font-bold mb-2">آخرین دیدگاه شما:</h4>
                     <p id="user-comment-text" class="text-sm text-slate-300 bg-slate-800/50 p-3 rounded-lg"></p>
                 </div>
 
                 <!-- Action Buttons -->
                 <div class="mt-6 flex flex-col gap-4">
-                    <button id="admin-panel-btn" class="hidden w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-violet-600 to-purple-600 hover:scale-105 transform transition-transform">پنل مدیریت</button>
-                    <button id="show-cart-btn" class="w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-sky-500 to-cyan-400 hover:scale-105 transform transition-transform">سبد خرید</button>
-                    <button id="logout-btn" class="w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-red-500 to-rose-500 hover:scale-105 transform transition-transform">خروج از حساب</button>
+                    <button id="admin-panel-btn" class="hidden w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-violet-800 to-purple-800 hover:scale-105 transform transition-transform">پنل مدیریت</button>
+                    <button id="show-cart-btn" class="w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-indigo-700 to-violet-700 hover:scale-105 transform transition-transform">سبد خرید</button>
+                    <button id="logout-btn" class="w-full p-3 rounded-xl font-bold text-white bg-gradient-to-r from-red-700 to-red-800 hover:scale-105 transform transition-transform">خروج از حساب</button>
                 </div>
              </div>
 
@@ -461,12 +469,12 @@
                 <div class="text-right mt-4">
                     <label for="discount-code-input" class="block mb-2 text-sm font-medium">کد تخفیف</label>
                     <div class="flex flex-col sm:flex-row gap-2">
-                        <input type="text" id="discount-code-input" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="کد تخفیف را وارد کنید">
-                        <button id="apply-discount-btn" class="px-4 py-2 font-semibold text-white bg-sky-500 rounded-lg whitespace-nowrap">اعمال</button>
+                        <input type="text" id="discount-code-input" class="form-input w-full p-3 rounded-lg text-slate-200" placeholder="کد تخفیف را وارد کنید">
+                        <button id="apply-discount-btn" class="px-4 py-2 font-semibold text-white bg-indigo-700 rounded-lg whitespace-nowrap">اعمال</button>
                     </div>
                 </div>
 
-                <div class="border-t border-slate-700 mt-4 pt-4 space-y-2">
+                <div class="border-t border-slate-700 mt-4 pt-4 space-y-2"> <!-- White-ish line -->
                     <div class="flex justify-between font-medium">
                         <span>جمع کل:</span>
                         <span id="cart-subtotal">0 ت</span>
@@ -475,32 +483,37 @@
                         <span>تخفیف:</span>
                         <span id="cart-discount-amount">0 ت</span>
                     </div>
-                    <div class="flex justify-between font-bold text-lg border-t border-slate-700/50 pt-2 mt-2">
+                    <div class="flex justify-between font-bold text-lg border-t border-slate-700/50 pt-2 mt-2"> <!-- White-ish line -->
                         <span>مبلغ نهایی:</span>
                         <span id="cart-total">0 ت</span>
                     </div>
                 </div>
                 <div class="mt-6 flex flex-col sm:flex-row gap-4">
-                    <button id="pay-btn" class="flex-1 p-3 rounded-xl font-bold text-white bg-gradient-to-r from-green-500 to-emerald-500 hover:scale-105 transform transition-transform disabled:opacity-50 disabled:cursor-not-allowed">پرداخت نهایی</button>
+                    <button id="pay-btn" class="flex-1 p-3 rounded-xl font-bold text-white bg-gradient-to-r from-emerald-700 to-emerald-800 hover:scale-105 transform transition-transform disabled:opacity-50 disabled:cursor-not-allowed">پرداخت نهایی</button>
                     <button id="back-to-dash-btn" class="flex-1 p-3 rounded-xl font-bold text-white bg-gradient-to-r from-slate-500 to-slate-600 hover:scale-105 transform transition-transform">بازگشت</button>
                 </div>
+                <!-- GEMINI: Generate Post Button -->
+                <button id="gemini-generate-post-btn" class="w-full mt-4 p-3 rounded-xl font-bold text-white bg-gradient-to-r from-indigo-500 to-purple-500 hover:scale-105 transform transition-transform">
+                    ✨ ایجاد پست بازاریابی
+                </button>
              </div>
         </div>
     </div>
 
     <!-- Admin Panel Modal (Responsive) -->
     <div id="admin-modal" class="modal-overlay fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4 hidden">
+        <!-- Responsive Padding: p-4 sm:p-6 md:p-8 -->
         <div class="modal-content glass-effect w-full max-w-3xl p-4 sm:p-6 md:p-8 rounded-2xl space-y-4 text-right">
             <!-- Header and Close Button -->
             <div class="flex justify-between items-center">
                 <h2 class="text-xl sm:text-2xl font-bold">پنل مدیریت حرفه‌ای</h2>
-                <button id="admin-modal-close" class="p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10">
+                <button id="admin-modal-close" class="p-2 rounded-full hover:bg-white/10">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
             </div>
 
-            <!-- Admin Tabs (Responsive) -->
-            <div class="flex flex-wrap gap-2 border-b border-slate-700/50 text-sm sm:text-base">
+            <!-- Admin Tabs (Responsive) - Removed sm:text-base for better mobile fit -->
+            <div class="flex flex-wrap gap-2 border-b border-slate-700/50 text-sm"> <!-- White-ish line -->
                 <button class="admin-tab-button px-3 py-2 font-semibold rounded-t-lg" data-target="admin-tab-dashboard">داشبورد</button>
                 <button class="admin-tab-button px-3 py-2 font-semibold rounded-t-lg" data-target="admin-tab-users">کاربران</button>
                 <button class="admin-tab-button px-3 py-2 font-semibold rounded-t-lg" data-target="admin-tab-products">تغییر قیمت</button>
@@ -516,7 +529,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="glass-effect p-4 rounded-lg">
                             <p class="text-sm text-slate-400">تعداد کل کاربران</p>
-                            <p id="admin-stat-total-users" class="text-2xl font-bold text-sky-400">0</p>
+                            <p id="admin-stat-total-users" class="text-2xl font-bold text-indigo-400">0</p>
                         </div>
                         <div class="glass-effect p-4 rounded-lg">
                             <p class="text-sm text-slate-400">موجودی کل سیستم</p>
@@ -535,7 +548,7 @@
 
                 <!-- User Management Tab -->
                 <div id="admin-tab-users" class="admin-tab-content space-y-4 hidden">
-                    <input type="text" id="admin-user-search" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="جستجوی نام کاربری...">
+                    <input type="text" id="admin-user-search" class="form-input w-full p-3 rounded-lg text-slate-200" placeholder="جستجوی نام کاربری...">
                     <div id="admin-user-list" class="space-y-4">
                         <!-- User list will be injected here by JS -->
                     </div>
@@ -557,59 +570,69 @@
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                             <div class="md:col-span-1">
                                 <label for="admin-add-product-category" class="block mb-2 text-sm font-medium">انتخاب دسته</label>
-                                <select id="admin-add-product-category" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200 bg-transparent">
+                                <select id="admin-add-product-category" class="form-input w-full p-3 rounded-lg text-slate-200 bg-transparent">
                                     <!-- Categories populated by JS -->
                                 </select>
                             </div>
-                            <div class="md:col-span-1">
+                            <div class="md:col-span-2">
                                 <label for="admin-add-product-name" class="block mb-2 text-sm font-medium">نام محصول</label>
-                                <input type="text" id="admin-add-product-name" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="مثلا: فالوور واقعی" required>
-                            </div>
-                            <div class="md:col-span-1">
-                                <label for="admin-add-product-price" class="block mb-2 text-sm font-medium">قیمت (تومان)</label>
-                                <input type="number" id="admin-add-product-price" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="250000" required>
+                                <div class="flex gap-2">
+                                     <input type="text" id="admin-add-product-name" class="form-input w-full p-3 rounded-lg text-slate-200" placeholder="مثلا: فالوور واقعی" required>
+                                     <button type="button" id="gemini-generate-desc-btn" class="p-3 font-semibold text-white bg-indigo-600 rounded-lg" title="ایجاد توضیحات با Gemini">✨</button>
+                                </div>
                             </div>
                         </div>
-                        <button type="submit" class="w-full p-3 font-semibold text-white bg-green-500 rounded-lg">افزودن محصول</button>
+                        <!-- GEMINI: New Description Field -->
+                        <div>
+                            <label for="admin-add-product-desc" class="block mb-2 text-sm font-medium">توضیحات محصول</label>
+                            <textarea id="admin-add-product-desc" rows="3" class="form-input w-full p-3 rounded-lg text-slate-200" placeholder="توضیحات توسط ✨ ساخته می‌شود..."></textarea>
+                        </div>
+                         <div class="grid grid-cols-1">
+                             <div>
+                                <label for="admin-add-product-price" class="block mb-2 text-sm font-medium">قیمت (تومان)</label>
+                                <input type="number" id="admin-add-product-price" class="form-input w-full p-3 rounded-lg text-slate-200" placeholder="250000" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full p-3 font-semibold text-white bg-emerald-700 rounded-lg">افزودن محصول</button>
                     </form>
 
                     <!-- Form 2: Add New Category -->
-                    <form id="add-category-form" class="space-y-4 border-t border-slate-700/50 pt-6">
+                    <form id="add-category-form" class="space-y-4 border-t border-slate-700/50 pt-6"> <!-- White-ish line -->
                         <h3 class="text-lg font-bold">ایجاد دسته‌بندی جدید</h3>
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
                              <div>
                                 <label for="admin-add-category-id" class="block mb-2 text-sm font-medium">شناسه (انگلیسی)</label>
-                                <input type="text" id="admin-add-category-id" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="rubika" required>
+                                <input type="text" id="admin-add-category-id" class="form-input w-full p-3 rounded-lg text-slate-200" placeholder="rubika" required>
                             </div>
                             <div>
                                 <label for="admin-add-category-name" class="block mb-2 text-sm font-medium">نام نمایشی (فارسی)</label>
-                                <input type="text" id="admin-add-category-name" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="روبیکا" required>
+                                <input type="text" id="admin-add-category-name" class="form-input w-full p-3 rounded-lg text-slate-200" placeholder="روبیکا" required>
                             </div>
                             <div>
-                                <label for="admin-add-category-color" class="block mb-2 text-sm font-medium">رنگ (Tailwind)</label>
-                                <input type="text" id="admin-add-category-color" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="purple" required>
+                                <label for="admin-add-category-color" class="block mb-2 text-sm font-medium">رنگ (dep)</label>
+                                <input type="text" id="admin-add-category-color" class="form-input w-full p-3 rounded-lg text-slate-200" placeholder="purple" required>
                             </div>
                             <div>
                                 <label for="admin-add-category-grid" class="block mb-2 text-sm font-medium">چیدمان (Grid)</label>
-                                <input type="text" id="admin-add-category-grid" class="form-input w-full p-3 rounded-lg text-slate-800 dark:text-slate-200" value="md:grid-cols-3" required>
+                                <input type="text" id="admin-add-category-grid" class="form-input w-full p-3 rounded-lg text-slate-200" value="md:grid-cols-3" required>
                             </div>
                         </div>
-                        <button type="submit" class="w-full p-3 font-semibold text-white bg-sky-500 rounded-lg">ایجاد دسته‌بندی</button>
+                        <button type="submit" class="w-full p-3 font-semibold text-white bg-indigo-700 rounded-lg">ایجاد دسته‌بندی</button>
                     </form>
                 </div>
 
                 <!-- Discount Code Tab -->
                 <div id="admin-tab-discounts" class="admin-tab-content space-y-6 hidden">
                     <form id="create-discount-form" class="grid grid-cols-1 md:grid-cols-4 gap-3">
-                        <input type="text" id="discount-code-name" class="form-input p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="نام کد (مثلا: OFF30)" required>
-                        <input type="number" id="discount-code-value" class="form-input p-3 rounded-lg text-slate-800 dark:text-slate-200" placeholder="مقدار (مثلا: 30)" required>
-                        <select id="discount-code-type" class="form-input p-3 rounded-lg text-slate-800 dark:text-slate-200 bg-transparent">
+                        <input type="text" id="discount-code-name" class="form-input p-3 rounded-lg text-slate-200" placeholder="نام کد (مثلا: OFF30)" required>
+                        <input type="number" id="discount-code-value" class="form-input p-3 rounded-lg text-slate-200" placeholder="مقدار (مثلا: 30)" required>
+                        <select id="discount-code-type" class="form-input p-3 rounded-lg text-slate-200 bg-transparent">
                             <option value="percent" class="text-slate-800">درصد (%)</option>
                             <option value="fixed" class="text-slate-800">مبلغ ثابت (تومان)</option>
                         </select>
-                        <button type="submit" class="p-3 font-semibold text-white bg-sky-500 rounded-lg">ایجاد کد</button>
+                        <button type="submit" class="p-3 font-semibold text-white bg-indigo-700 rounded-lg">ایجاد کد</button>
                     </form>
-                    <div class="border-t border-slate-700/50 pt-4">
+                    <div class="border-t border-slate-700/50 pt-4"> <!-- White-ish line -->
                         <h4 class="font-bold mb-2">کدهای تخفیف موجود</h4>
                         <div id="admin-discount-list" class="space-y-2"></div>
                     </div>
@@ -618,10 +641,10 @@
                 <!-- Balance Code Tab -->
                 <div id="admin-tab-balance" class="admin-tab-content space-y-6 hidden">
                     <form id="create-balance-form" class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                        <input type="number" id="balance-code-value" class="form-input p-3 rounded-lg text-slate-800 dark:text-slate-200 md:col-span-2" placeholder="مبلغ کد هدیه (تومان)" required>
-                        <button type="submit" class="p-3 font-semibold text-white bg-green-500 rounded-lg">ایجاد کد</button>
+                        <input type="number" id="balance-code-value" class="form-input p-3 rounded-lg text-slate-200 md:col-span-2" placeholder="مبلغ کد هدیه (تومان)" required>
+                        <button type="submit" class="p-3 font-semibold text-white bg-emerald-700 rounded-lg">ایجاد کد</button>
                     </form>
-                    <div class="border-t border-slate-700/50 pt-4">
+                    <div class="border-t border-slate-700/50 pt-4"> <!-- White-ish line -->
                         <h4 class="font-bold mb-2">کدهای موجودی موجود</h4>
                         <div id="admin-balance-list" class="space-y-2"></div>
                     </div>
@@ -638,357 +661,1436 @@
             <h3 class="text-lg font-bold mb-4" id="confirmation-title">آیا مطمئن هستید؟</h3>
             <p class="text-sm text-slate-300 mb-6" id="confirmation-message">این عمل غیرقابل بازگشت است.</p>
             <div class="flex gap-4">
-                <button id="confirm-yes-btn" class="flex-1 p-3 rounded-xl font-bold text-white bg-red-600">بله، حذف کن</button>
-                <button id="confirm-no-btn" class="flex-1 p-3 rounded-xl font-bold text-slate-800 dark:text-slate-900 bg-slate-300">انصراف</button>
+                <button id="confirm-yes-btn" class="flex-1 p-3 rounded-xl font-bold text-white bg-red-700">بله، حذف کن</button>
+                <button id="confirm-no-btn" class="flex-1 p-3 rounded-xl font-bold text-slate-900 bg-slate-300">انصراف</button>
             </div>
         </div>
     </div>
+
+    <!-- GEMINI API Modal -->
+    <div id="gemini-modal" class="modal-overlay fixed inset-0 z-[110] bg-black/60 flex items-center justify-center p-4 hidden">
+        <div class="modal-content glass-effect w-full max-w-lg p-6 rounded-2xl text-center space-y-4">
+            <h3 class="text-lg font-bold mb-4" id="gemini-modal-title">✨ ...</h3>
+            
+            <!-- Loading Spinner -->
+            <div id="gemini-loading" class="py-8">
+                <div class="spinner mx-auto"></div>
+                <p class="text-slate-400 mt-4">✨ در حال پردازش...</p>
+            </div>
+            
+            <!-- Result Text Area -->
+            <div id="gemini-result-container" class="hidden">
+                <textarea id="gemini-result-textarea" rows="8" class="form-input w-full p-3 rounded-lg text-slate-200 text-right" readonly></textarea>
+            </div>
+
+            <div class="flex gap-4">
+                <button id="gemini-copy-btn" class_name="flex-1 p-3 rounded-xl font-bold text-white bg-indigo-700 hidden">کپی کردن</button>
+                <button id="gemini-modal-close" class_name="flex-1 p-3 rounded-xl font-bold text-slate-900 bg-slate-300">بستن</button>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Goftino Script (Leave as-is) -->
     <script type="text/javascript">
       !function(){var i="sDMeys",a=window,d=document;function g(){var g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}"complete"===d.readyState?g():a.attachEvent?a.attachEvent("onload",g):a.addEventListener("load",g,!1);}();
     </script>
-
-    <!-- Embedded JavaScript with DOMContentLoaded and try/catch -->
+    
+    <!-- 
+      Merged JavaScript Content 
+    -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log("DOM fully loaded and parsed. Initializing script...");
-            try {
-                // --- Start Embedded Script ---
-                // --- CONSTANTS ---
-                const ADMIN_USER = 'Admin';
-                const ADMIN_PASS = 'Directadmin1400';
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log("DOM fully loaded and parsed. Initializing script...");
+        try {
+            // --- CONSTANTS ---
+            const ADMIN_USER = 'Admin';
+            const ADMIN_PASS = 'Directadmin1400';
 
-                // --- Default Data ---
-                const defaultProducts = {
-                    instagram: { displayName: 'اینستاگرام', color: 'red', grid: 'md:grid-cols-3', items: [ { id: 'insta-f', name: 'فالوور فیک', price: 201000 }, { id: 'insta-l', name: 'لایک فیک', price: 50000 }, { id: 'insta-v', name: 'بازدید ریلز و پست', price: 1000 } ] },
-                    telegram: { displayName: 'تلگرام', color: 'cyan', grid: 'md:grid-cols-3', items: [ { id: 'tele-m', name: 'ممبر فیک', price: 80000 }, { id: 'tele-a', name: 'ادلیست ایرانی', price: 84000 }, { id: 'tele-f', name: 'اد اجباری عادی', price: 85000 } ] },
-                    eitaa: { displayName: 'ایتا', color: 'orange', grid: 'md:grid-cols-3', items: [ { id: 'eitaa-m', name: 'ممبر ایتا', price: 140000 }, { id: 'eitaa-v1', name: 'بازدید ۱ پست', price: 28000 }, { id: 'eitaa-v5', name: 'بازدید ۵ پست', price: 40000 } ] },
-                    aparat: { displayName: 'آپارات', color: 'pink', grid: 'md:grid-cols-2', items: [ { id: 'aparat-f', name: 'فالوور آپارات', price: 50000 }, { id: 'aparat-v', name: 'بازدید آپارات', price: 20000 } ] }
+            // --- Default Data (UPDATED COLORS + DESCRIPTION) ---
+            const defaultProducts = {
+                instagram: { displayName: 'اینستاگرام', color: 'violet', grid: 'md:grid-cols-3', items: [ 
+                    { id: 'insta-f', name: 'فالوور فیک', price: 201000, description: 'افزایش سریع تعداد دنبال‌کنندگان با فالوورهای فیک.' }, 
+                    { id: 'insta-l', name: 'لایک فیک', price: 50000, description: 'بالا بردن آمار لایک پست‌های شما.' }, 
+                    { id: 'insta-v', name: 'بازدید ریلز و پست', price: 1000, description: 'افزایش بازدید ویدیوها و ریلز شما.' } 
+                ]},
+                telegram: { displayName: 'تلگرام', color: 'teal', grid: 'md:grid-cols-3', items: [ 
+                    { id: 'tele-m', name: 'ممبر فیک', price: 80000, description: 'افزایش تعداد اعضای کانال یا گروه تلگرام.' }, 
+                    { id: 'tele-a', name: 'ادلیست ایرانی', price: 84000, description: 'اعضای ایرانی و فعال برای گروه شما.' }, 
+                    { id: 'tele-f', name: 'اد اجباری عادی', price: 85000, description: 'افزایش اعضا از طریق اد اجباری.' } 
+                ]},
+                eitaa: { displayName: 'ایتا', color: 'indigo', grid: 'md:grid-cols-3', items: [ 
+                    { id: 'eitaa-m', name: 'ممبر ایتا', price: 140000, description: 'افزایش اعضای کانال شما در پیام‌رسان ایتا.' }, 
+                    { id: 'eitaa-v1', name: 'بازدید ۱ پست', price: 28000, description: 'افزایش بازدید برای یک پست خاص.' }, 
+                    { id: 'eitaa-v5', name: 'بازدید ۵ پست', price: 40000, description: 'بسته بازدید برای ۵ پست آخر کانال شما.' } 
+                ]},
+                aparat: { displayName: 'آپارات', color: 'blue', grid: 'md:grid-cols-2', items: [ 
+                    { id: 'aparat-f', name: 'فالوور آپارات', price: 50000, description: 'افزایش دنبال‌کنندگان کانال شما در آپارات.' }, 
+                    { id: 'aparat-v', name: 'بازدید آپارات', price: 20000, description: 'افزایش بازدید ویدیوهای شما در آپارات.' } 
+                ]}
+            };
+
+            // --- Database Simulation ---
+            let siteUsers = {};
+            let siteData = { discountCodes: {}, balanceCodes: {}, products: { ...defaultProducts } };
+            let currentUser = null;
+            let currentAppliedDiscount = null;
+            let confirmCallback = null;
+            let notificationTimeout;
+
+            // --- Load Data ---
+            function loadData() {
+                console.log("Loading data from localStorage...");
+                try {
+                    const storedUsers = localStorage.getItem('siteUsers');
+                    if (storedUsers) {
+                        siteUsers = JSON.parse(storedUsers);
+                        if (typeof siteUsers !== 'object' || siteUsers === null) {
+                            console.warn("Invalid siteUsers data, resetting."); siteUsers = {};
+                        }
+                    } else { siteUsers = {}; }
+                } catch (error) {
+                    console.error("Error loading siteUsers:", error); siteUsers = {};
+                }
+
+                try {
+                    const storedSiteData = localStorage.getItem('siteData');
+                    if (storedSiteData) {
+                        siteData = JSON.parse(storedSiteData);
+                        if (typeof siteData !== 'object' || siteData === null) {
+                            console.warn("Invalid siteData, resetting.");
+                            siteData = { discountCodes: {}, balanceCodes: {}, products: { ...defaultProducts } };
+                        }
+                        if (!siteData.products || typeof siteData.products !== 'object' || Object.keys(siteData.products).length === 0) {
+                            console.warn("Products missing/invalid, using defaults.");
+                            siteData.products = { ...defaultProducts };
+                            if (Array.isArray(siteData.instagram)) { // Simple migration check
+                                console.log("Migrating old product structure...");
+                                siteData.products = { ...defaultProducts };
+                            }
+                        }
+                        // GEMINI: Ensure new products have a description field
+                        Object.keys(siteData.products).forEach(catId => {
+                            if (siteData.products[catId] && siteData.products[catId].items) {
+                                siteData.products[catId].items.forEach(item => {
+                                    if (item && typeof item.description === 'undefined') {
+                                        item.description = ''; // Add missing field
+                                    }
+                                });
+                            }
+                        });
+                        if (!siteData.discountCodes) siteData.discountCodes = {};
+                        if (!siteData.balanceCodes) siteData.balanceCodes = {};
+                    } else {
+                        siteData = { discountCodes: {}, balanceCodes: {}, products: { ...defaultProducts } };
+                    }
+                } catch (error) {
+                    console.error("Error loading siteData:", error);
+                    siteData = { discountCodes: {}, balanceCodes: {}, products: { ...defaultProducts } }; // Fallback
+                }
+
+                currentUser = localStorage.getItem('loggedInUser');
+                if (currentUser && !siteUsers[currentUser]) {
+                    console.warn(`Stored user ${currentUser} not found in loaded users. Logging out.`);
+                    localStorage.removeItem('loggedInUser');
+                    currentUser = null;
+                }
+                console.log("Data loaded. Current user:", currentUser);
+            }
+
+            // --- Save Data ---
+            function saveUsers() { try { localStorage.setItem('siteUsers', JSON.stringify(siteUsers)); } catch (e) { console.error("Save Users Error:", e); showNotification("خطا در ذخیره اطلاعات کاربران", "error"); } }
+            function saveSiteData() { try { localStorage.setItem('siteData', JSON.stringify(siteData)); } catch (e) { console.error("Save Site Data Error:", e); showNotification("خطا در ذخیره اطلاعات سایت", "error"); } }
+
+            // --- UI Elements ---
+            let accountBtn, accountText, loginModal, dashboardModal, loginForm, logoutBtn, dashUsername, dashBalance, dashOrders, dashTotal, productTabsContainer, productSectionsWrapper, productSectionContainer, productPlaceholder, cartItemsList, cartSubtotalEl, cartDiscountRow, cartDiscountAmountEl, cartTotalEl, cartEmptyMsg, payBtn, showCartBtn, backToDashBtn, dashboardMainView, cartView, commentForm, userCommentDisplay, userCommentText, redeemCodeInput, redeemCodeBtn, discountCodeInput, applyDiscountBtn, confirmationModal, confirmationTitle, confirmationMessage, confirmYesBtn, confirmNoBtn, adminModal, adminPanelBtn, adminModalClose, adminBackToDashBtn, adminTabs, adminTabContents, adminStatTotalUsers, adminStatTotalBalance, adminStatDiscountCodes, adminStatBalanceCodes, adminUserSearch, adminUserList, adminProductList, addProductForm, addCategoryForm, adminAddProductCategorySelect, createDiscountForm, adminDiscountList, createBalanceForm, adminBalanceList, menuBtn, mobileMenu, menuOpenIcon, menuCloseIcon, steps, nextBtns, restartBtn, progressBar, notificationBanner, statusDot, statusText;
+            
+            // GEMINI UI Elements
+            let geminiModal, geminiModalTitle, geminiLoading, geminiResultContainer, geminiResultTextarea, geminiCopyBtn, geminiModalClose, geminiGenerateDescBtn, adminAddProductDesc, geminiGeneratePostBtn;
+
+            function getElements() {
+                console.log("Getting DOM elements...");
+                // Assign all element variables
+                accountBtn = document.getElementById('account-btn');
+                accountText = document.getElementById('account-text');
+                loginModal = document.getElementById('login-modal');
+                dashboardModal = document.getElementById('dashboard-modal');
+                loginForm = document.getElementById('login-form');
+                logoutBtn = document.getElementById('logout-btn');
+                dashUsername = document.getElementById('dash-username');
+                dashBalance = document.getElementById('dash-balance');
+                dashOrders = document.getElementById('dash-orders');
+                dashTotal = document.getElementById('dash-total');
+                productTabsContainer = document.getElementById('product-tabs');
+                productSectionsWrapper = document.getElementById('product-sections-wrapper');
+                productSectionContainer = document.getElementById('product-section-container');
+                productPlaceholder = document.getElementById('product-placeholder');
+                cartItemsList = document.getElementById('cart-items-list');
+                cartSubtotalEl = document.getElementById('cart-subtotal');
+                cartDiscountRow = document.getElementById('cart-discount-row');
+                cartDiscountAmountEl = document.getElementById('cart-discount-amount');
+                cartTotalEl = document.getElementById('cart-total');
+                cartEmptyMsg = document.getElementById('cart-empty-msg');
+                payBtn = document.getElementById('pay-btn');
+                showCartBtn = document.getElementById('show-cart-btn');
+                backToDashBtn = document.getElementById('back-to-dash-btn');
+                dashboardMainView = document.getElementById('dashboard-main-view');
+                cartView = document.getElementById('cart-view');
+                commentForm = document.getElementById('comment-form');
+                userCommentDisplay = document.getElementById('user-comment-display');
+                userCommentText = document.getElementById('user-comment-text');
+                redeemCodeInput = document.getElementById('redeem-code-input');
+                redeemCodeBtn = document.getElementById('redeem-code-btn');
+                discountCodeInput = document.getElementById('discount-code-input');
+                applyDiscountBtn = document.getElementById('apply-discount-btn');
+                confirmationModal = document.getElementById('confirmation-modal');
+                confirmationTitle = document.getElementById('confirmation-title');
+                confirmationMessage = document.getElementById('confirmation-message');
+                confirmYesBtn = document.getElementById('confirm-yes-btn');
+                confirmNoBtn = document.getElementById('confirm-no-btn');
+                adminModal = document.getElementById('admin-modal');
+                adminPanelBtn = document.getElementById('admin-panel-btn');
+                adminModalClose = document.getElementById('admin-modal-close');
+                adminBackToDashBtn = document.getElementById('admin-back-to-dash-btn');
+                adminTabs = document.querySelectorAll('.admin-tab-button');
+                adminTabContents = document.querySelectorAll('.admin-tab-content');
+                adminStatTotalUsers = document.getElementById('admin-stat-total-users');
+                adminStatTotalBalance = document.getElementById('admin-stat-total-balance');
+                adminStatDiscountCodes = document.getElementById('admin-stat-discount-codes');
+                adminStatBalanceCodes = document.getElementById('admin-stat-balance-codes');
+                adminUserSearch = document.getElementById('admin-user-search');
+                adminUserList = document.getElementById('admin-tab-users');
+                adminProductList = document.getElementById('admin-product-list');
+                addProductForm = document.getElementById('add-product-form');
+                addCategoryForm = document.getElementById('add-category-form');
+                adminAddProductCategorySelect = document.getElementById('admin-add-product-category');
+                createDiscountForm = document.getElementById('create-discount-form');
+                adminDiscountList = document.getElementById('admin-discount-list');
+                createBalanceForm = document.getElementById('create-balance-form');
+                adminBalanceList = document.getElementById('admin-balance-list');
+                menuBtn = document.getElementById('menu-btn');
+                mobileMenu = document.getElementById('mobile-menu');
+                menuOpenIcon = document.getElementById('menu-open-icon');
+                menuCloseIcon = document.getElementById('menu-close-icon');
+                steps = document.querySelectorAll('[id^="step-"]');
+                nextBtns = document.querySelectorAll('.next-btn');
+                restartBtn = document.getElementById('restart-btn');
+                progressBar = document.getElementById('progress-bar');
+                notificationBanner = document.getElementById('notification-banner');
+                statusDot = document.getElementById('notification-dot');
+                statusText = document.getElementById('notification-text');
+                
+                // GEMINI: Get new elements
+                geminiModal = document.getElementById('gemini-modal');
+                geminiModalTitle = document.getElementById('gemini-modal-title');
+                geminiLoading = document.getElementById('gemini-loading');
+                geminiResultContainer = document.getElementById('gemini-result-container');
+                geminiResultTextarea = document.getElementById('gemini-result-textarea');
+                geminiCopyBtn = document.getElementById('gemini-copy-btn');
+                geminiModalClose = document.getElementById('gemini-modal-close');
+                geminiGenerateDescBtn = document.getElementById('gemini-generate-desc-btn');
+                adminAddProductDesc = document.getElementById('admin-add-product-desc');
+                geminiGeneratePostBtn = document.getElementById('gemini-generate-post-btn');
+
+                console.log("DOM elements retrieved.");
+                if (!productTabsContainer || !productSectionsWrapper) {
+                    console.error("CRITICAL: Product containers not found!");
+                    showNotification("خطا: ساختار صفحه برای نمایش محصولات یافت نشد.", "error");
+                }
+            }
+
+            // --- Notification ---
+            function showNotification(message, type = 'info') {
+                if (!notificationBanner || !statusDot || !statusText) {
+                    console.warn("Notification elements not ready. Message:", message);
+                    return;
+                }
+                clearTimeout(notificationTimeout);
+                const types = {
+                    info: { dot: 'bg-blue-500', text: 'text-blue-400' },
+                    success: { dot: 'bg-green-500', text: 'text-green-400' },
+                    warning: { dot: 'bg-yellow-500', text: 'text-yellow-400' },
+                    error: { dot: 'bg-red-500', text: 'text-red-400' },
+                };
+                const selectedType = types[type] || types.info;
+                statusDot.className = `w-3 h-3 ${selectedType.dot} rounded-full animate-pulse`;
+                statusText.className = `font-semibold ${selectedType.text} transition-colors duration-300 text-sm`;
+                statusText.textContent = message;
+                notificationBanner.classList.add('show');
+                notificationTimeout = setTimeout(() => { notificationBanner.classList.remove('show'); }, 4000);
+            }
+
+            // --- Hamburger Menu ---
+            function setupHamburgerMenu() {
+                if (menuBtn && mobileMenu && menuOpenIcon && menuCloseIcon) {
+                    menuBtn.addEventListener('click', () => {
+                        const isClosed = mobileMenu.classList.toggle('hidden');
+                        mobileMenu.classList.toggle('flex', !isClosed);
+                        menuOpenIcon.classList.toggle('hidden', !isClosed);
+                        menuCloseIcon.classList.toggle('hidden', isClosed);
+                    });
+                } else {
+                    console.warn("Hamburger menu elements not found.");
+                }
+            }
+
+            // --- Animated Counters ---
+            function animateValue(objId, end, duration) {
+                const obj = document.getElementById(objId);
+                if(obj) obj.innerHTML = end.toLocaleString('fa-IR');
+                else console.warn(`Counter element ${objId} not found.`);
+            }
+            function setupCounters() {
+                try {
+                    animateValue("stat-operators", 17, 0);
+                    animateValue("stat-bots", 3, 0);
+                    animateValue("stat-licenses", 10589, 0);
+
+                    const ordersElement = document.getElementById('stat-orders');
+                    if (ordersElement) { let totalOrders = 59375; ordersElement.innerHTML = totalOrders.toLocaleString('fa-IR'); setInterval(() => { totalOrders += 3; ordersElement.innerHTML = totalOrders.toLocaleString('fa-IR'); }, 2000); }
+                    const usersElement = document.getElementById('stat-users');
+                    if (usersElement) { let onlineUsers = 708; usersElement.innerHTML = onlineUsers.toLocaleString('fa-IR'); setInterval(() => { onlineUsers += 13; usersElement.innerHTML = onlineUsers.toLocaleString('fa-IR'); }, 2000); }
+                    const liveOrdersElement = document.getElementById('live-orders-count');
+                    if(liveOrdersElement) { let liveOrdersCount = 146; liveOrdersElement.innerHTML = liveOrdersCount.toLocaleString('fa-IR') + '+'; setInterval(() => { liveOrdersCount += 19; liveOrdersElement.innerHTML = liveOrdersCount.toLocaleString('fa-IR') + '+'; }, 5000); }
+                } catch (error) {
+                    console.error("Error setting up counters:", error);
+                }
+            }
+
+            // --- On-Scroll Animation ---
+            function setupScrollAnimations() {
+                try {
+                    const animatedElements = document.querySelectorAll('.scroll-animate');
+                    if (animatedElements.length > 0 && 'IntersectionObserver' in window) {
+                        const observer = new IntersectionObserver((entries) => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    entry.target.classList.add('visible');
+                                    observer.unobserve(entry.target);
+                                }
+                            });
+                        }, { threshold: 0.1 });
+                        animatedElements.forEach(element => observer.observe(element));
+                    } else {
+                        animatedElements.forEach(element => element.classList.add('visible'));
+                    }
+                } catch (error) {
+                    console.error("Error setting up scroll animations:", error);
+                    document.querySelectorAll('.scroll-animate').forEach(element => element.classList.add('visible'));
+                }
+            }
+
+            // --- Order Algorithm ---
+            function setupOrderAlgorithm() {
+                if (!steps || steps.length === 0) return;
+                let currentStep = 1;
+                function updateAlgorithmUI() {
+                    steps.forEach(step => step.classList.add('hidden'));
+                    const currentStepEl = document.getElementById(`step-${currentStep}`);
+                    if (currentStepEl) currentStepEl.classList.remove('hidden');
+                    if (progressBar) progressBar.style.width = `${((currentStep - 1) / (steps.length - 1)) * 100}%`;
+                }
+                nextBtns.forEach(btn => {
+                    if (btn) btn.addEventListener('click', () => { if (currentStep < steps.length) { currentStep++; updateAlgorithmUI(); } });
+                });
+                if (restartBtn) restartBtn.addEventListener('click', () => { currentStep = 1; updateAlgorithmUI(); });
+                updateAlgorithmUI();
+            }
+
+            // --- Dynamic Product Rendering ---
+            function renderProductTabs() {
+                if (!productTabsContainer) { console.error("Product tabs container not found."); return; }
+                productTabsContainer.innerHTML = '';
+                const categories = siteData.products;
+                if (!categories || Object.keys(categories).length === 0) {
+                    console.warn("No product categories found to render tabs.");
+                    if (productPlaceholder) productPlaceholder.classList.remove('hidden');
+                    return;
+                }
+                Object.keys(categories).forEach((catId, index) => {
+                    const category = categories[catId];
+                    if (!category) return;
+                    const tab = document.createElement('button');
+                    tab.className = 'tab-button px-4 py-2 rounded-lg font-semibold transition-colors duration-300 text-sm sm:text-base';
+                    // Do NOT activate first tab by default
+                    tab.dataset.target = `${catId}-section`;
+                    tab.textContent = category.displayName || catId;
+                    productTabsContainer.appendChild(tab);
+                });
+            }
+
+            function renderProducts() {
+                console.log("Rendering products...");
+                if (!productSectionsWrapper) {
+                    console.error("Product sections wrapper not found.");
+                    if (productPlaceholder) productPlaceholder.classList.remove('hidden');
+                    return;
+                }
+                productSectionsWrapper.innerHTML = '';
+                const categories = siteData.products;
+                if (!categories || Object.keys(categories).length === 0) {
+                    console.warn("No product categories found to render sections.");
+                    if (productPlaceholder) productPlaceholder.classList.remove('hidden');
+                    return;
+                }
+                
+                Object.keys(categories).forEach((catId, index) => {
+                    const category = categories[catId];
+                    if (!category) { console.warn(`Category ${catId} is invalid.`); return; }
+                    const section = document.createElement('div');
+                    section.id = `${catId}-section`;
+                    section.className = 'product-section mb-12 scroll-animate';
+                    const grid = document.createElement('div');
+                    grid.className = `grid grid-cols-1 ${category.grid || 'md:grid-cols-3'} gap-6`;
+                    let hasItems = false;
+                    if (category.items && Array.isArray(category.items) && category.items.length > 0) {
+                        category.items.forEach(product => {
+                            if (!product || !product.id) { console.warn(`Invalid product in category ${catId}:`, product); return; }
+                            hasItems = true;
+                            const productEl = document.createElement('div');
+                            // UPDATED "Dep" Color Variants
+                            const colorVariants = {
+                                red: 'hover:border-red-700 from-red-800 to-rose-800',
+                                cyan: 'hover:border-cyan-700 from-cyan-800 to-teal-800',
+                                orange: 'hover:border-orange-700 from-orange-800 to-amber-800',
+                                pink: 'hover:border-pink-700 from-pink-800 to-rose-800',
+                                purple: 'hover:border-purple-700 from-purple-800 to-violet-800',
+                                green: 'hover:border-green-700 from-green-800 to-emerald-800',
+                                blue: 'hover:border-blue-700 from-blue-800 to-indigo-800',
+                                indigo: 'hover:border-indigo-700 from-indigo-800 to-violet-800',
+                                violet: 'hover:border-violet-700 from-violet-800 to-purple-800',
+                                teal: 'hover:border-teal-700 from-teal-800 to-cyan-800'
+                            };
+                            const colorClass = colorVariants[category.color?.toLowerCase()] || colorVariants['indigo']; 
+                            productEl.className = `text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent ${colorClass.split(' ')[0]} hover:scale-105 transition-all duration-300`;
+                            // GEMINI: Added product description
+                            productEl.innerHTML = `
+                            <h4 class="text-xl font-bold mb-2">${product.name || 'محصول بی نام'}</h4>
+                            <p class="text-sm text-slate-400 mb-4 h-10 overflow-hidden">${product.description || 'توضیحات این محصول به زودی اضافه می‌شود...'}</p>
+                            <div class="flex justify-between items-center">
+                                <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r ${colorClass.split(' ')[1]} ${colorClass.split(' ')[2]} rounded-lg" data-product-id="${product.id}" data-product-name="${product.name || 'محصول'}" data-product-price="${product.price || 0}">سفارش</button>
+                                <p class="text-lg">${(product.price || 0).toLocaleString('fa-IR')} ت</p>
+                            </div>
+                            `;
+                            grid.appendChild(productEl);
+                        });
+                        
+                    } else {
+                        grid.innerHTML = '<p class="text-slate-400 text-center col-span-full py-4">محصولی در این دسته وجود ندارد.</p>';
+                    }
+                    
+                    // Hide ALL sections by default
+                    section.classList.add('hidden');
+                    section.appendChild(grid);
+                    productSectionsWrapper.appendChild(section);
+                });
+                
+                // Ensure placeholder is VISIBLE by default
+                if (productPlaceholder) {
+                    productPlaceholder.classList.remove('hidden');
+                }
+                
+                console.log("Product rendering finished.");
+                setupScrollAnimations();
+            }
+
+            // --- Confirmation Modal ---
+            function showConfirmationModal(title, message, onConfirm) {
+                if (!confirmationModal || !confirmationTitle || !confirmationMessage) return;
+                confirmationTitle.textContent = title;
+                confirmationMessage.textContent = message;
+                confirmCallback = onConfirm;
+                confirmationModal.classList.remove('hidden');
+            }
+
+            function setupConfirmationModal() {
+                if (confirmYesBtn) confirmYesBtn.addEventListener('click', () => {
+                    if (typeof confirmCallback === 'function') {
+                        try { confirmCallback(); } catch (e) { console.error("Confirm callback error:", e); }
+                    }
+                    if (confirmationModal) confirmationModal.classList.add('hidden');
+                    confirmCallback = null;
+                });
+                if (confirmNoBtn) confirmNoBtn.addEventListener('click', () => {
+                    if (confirmationModal) confirmationModal.classList.add('hidden');
+                    confirmCallback = null;
+                });
+                if (confirmationModal) confirmationModal.addEventListener('click', (e) => {
+                    if (e.target === confirmationModal) {
+                        confirmationModal.classList.add('hidden');
+                        confirmCallback = null;
+                    }
+                });
+            }
+
+            // --- Cart UI ---
+            function updateCartUI(preserveDiscount = false) {
+                if (!cartItemsList || !cartEmptyMsg || !payBtn || !cartSubtotalEl || !cartTotalEl || !cartDiscountRow || !cartDiscountAmountEl || !discountCodeInput || !applyDiscountBtn || !dashOrders || !dashTotal) {
+                    console.error("One or more Cart UI elements are missing.");
+                    return;
+                }
+                let shoppingCart = (currentUser && siteUsers[currentUser]) ? siteUsers[currentUser].cart : [];
+                cartItemsList.innerHTML = '';
+                let subtotal = 0;
+                let discount = 0;
+                if (shoppingCart && shoppingCart.length > 0) {
+                    cartEmptyMsg.classList.add('hidden');
+                    payBtn.disabled = false;
+                    if (geminiGeneratePostBtn) geminiGeneratePostBtn.classList.remove('hidden'); // Show Gemini btn
+                    shoppingCart.forEach(item => {
+                        if (!item || typeof item.price === 'undefined') return;
+                        const itemEl = document.createElement('div');
+                        itemEl.className = 'flex justify-between items-center text-sm';
+                        itemEl.innerHTML = `<span>${item.name || 'آیتم'}</span><span>${parseInt(item.price || 0).toLocaleString('fa-IR')} ت</span>`;
+                        cartItemsList.appendChild(itemEl);
+                        subtotal += parseInt(item.price || 0);
+                    });
+                } else {
+                    cartEmptyMsg.classList.remove('hidden');
+                    payBtn.disabled = true;
+                    if (geminiGeneratePostBtn) geminiGeneratePostBtn.classList.add('hidden'); // Hide Gemini btn
+                }
+                if (!preserveDiscount) {
+                    currentAppliedDiscount = null;
+                }
+                if (currentAppliedDiscount && siteData.discountCodes && siteData.discountCodes[currentAppliedDiscount]) {
+                    const code = siteData.discountCodes[currentAppliedDiscount];
+                    discount = (code.type === 'percent') ? (subtotal * (code.value || 0)) / 100 : (code.value || 0);
+                    discount = Math.min(subtotal, discount);
+                    cartDiscountAmountEl.textContent = `- ${Math.round(discount).toLocaleString('fa-IR')} ت`;
+                    cartDiscountRow.classList.remove('hidden');
+                    discountCodeInput.value = currentAppliedDiscount;
+                    discountCodeInput.disabled = true;
+                    applyDiscountBtn.disabled = true;
+                } else {
+                    currentAppliedDiscount = null;
+                    cartDiscountRow.classList.add('hidden');
+                    discountCodeInput.value = '';
+                    discountCodeInput.disabled = false;
+                    applyDiscountBtn.disabled = false;
+                }
+                const finalTotal = subtotal - discount;
+                cartSubtotalEl.textContent = `${Math.round(subtotal).toLocaleString('fa-IR')} ت`;
+                cartTotalEl.textContent = `${Math.round(finalTotal).toLocaleString('fa-IR')} ت`;
+                dashOrders.textContent = (shoppingCart?.length || 0).toLocaleString('fa-IR');
+                dashTotal.innerHTML = `${Math.round(subtotal).toLocaleString('fa-IR')} <span class="text-sm">ت</span>`;
+            }
+
+            // --- Login/Account ---
+            function checkLogin() {
+                currentUser = localStorage.getItem('loggedInUser');
+                if (currentUser && !siteUsers[currentUser]) {
+                    console.warn(`User ${currentUser} invalid. Logging out.`);
+                    localStorage.removeItem('loggedInUser');
+                    currentUser = null;
+                    if (!window.pageReloaded) {
+                        showNotification('نشست شما نامعتبر است، لطفا دوباره وارد شوید.', 'error');
+                        window.pageReloaded = true;
+                    }
+                }
+                if (currentUser && siteUsers[currentUser]) {
+                    const user = siteUsers[currentUser];
+                    if (accountText) accountText.textContent = currentUser;
+                    if (dashBalance) dashBalance.textContent = (user.balance || 0).toLocaleString('fa-IR') + ' ت';
+                    if (adminPanelBtn) adminPanelBtn.classList.toggle('hidden', !user.isAdmin);
+                } else {
+                    currentUser = null;
+                    if (accountText) accountText.textContent = 'حساب کاربری';
+                    if (dashBalance) dashBalance.textContent = '۰ ت';
+                    if (adminPanelBtn) adminPanelBtn.classList.add('hidden');
+                }
+                updateCartUI(false);
+            }
+
+            function setupLogin() {
+                if (accountBtn) accountBtn.addEventListener('click', () => {
+                    if (currentUser && siteUsers[currentUser]) {
+                        const user = siteUsers[currentUser];
+                        if (dashUsername) dashUsername.textContent = currentUser;
+                        if (dashBalance) dashBalance.textContent = (user.balance || 0).toLocaleString('fa-IR') + ' ت';
+                        const savedComment = user.comment;
+                        if (savedComment && userCommentDisplay && userCommentText) {
+                            userCommentText.textContent = savedComment;
+                            userCommentDisplay.classList.remove('hidden');
+                        } else if (userCommentDisplay) {
+                            userCommentDisplay.classList.add('hidden');
+                        }
+                        if (dashboardModal) dashboardModal.classList.remove('hidden');
+                        if (dashboardMainView) dashboardMainView.classList.remove('hidden');
+                        if (cartView) cartView.classList.add('hidden');
+                    } else {
+                        if (loginModal) loginModal.classList.remove('hidden');
+                    }
+                });
+                if (loginForm) loginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const usernameInput = document.getElementById('login-username');
+                    const passwordInput = document.getElementById('login-password');
+                    const username = usernameInput ? usernameInput.value.trim() : '';
+                    const password = passwordInput ? passwordInput.value : '';
+                    if (!username || !password) {
+                        showNotification('نام کاربری و رمز عبور الزامی است', 'warning');
+                        return;
+                    }
+                    if (username.toLowerCase() === ADMIN_USER.toLowerCase() && password === ADMIN_PASS) {
+                        if (!siteUsers[ADMIN_USER]) {
+                            siteUsers[ADMIN_USER] = { password: ADMIN_PASS, cart: [], comment: '', balance: 1000000, isAdmin: true };
+                        } else {
+                            if (siteUsers[ADMIN_USER].password !== ADMIN_PASS) {
+                                showNotification('رمز عبور ادمین اشتباه است', 'error'); return;
+                            }
+                            siteUsers[ADMIN_USER].isAdmin = true;
+                        }
+                        saveUsers();
+                        localStorage.setItem('loggedInUser', ADMIN_USER);
+                        checkLogin();
+                        if (loginModal) loginModal.classList.add('hidden');
+                        showNotification(`خوش آمدید، ادمین ${ADMIN_USER}!`, 'success');
+                        loginForm.reset();
+                        return;
+                    }
+                    if (siteUsers[username]) {
+                        if (siteUsers[username].password === password) {
+                            if (username.toLowerCase() === ADMIN_USER.toLowerCase()) {
+                                showNotification('اطلاعات ورود ادمین نامعتبر است', 'error'); return;
+                            }
+                            localStorage.setItem('loggedInUser', username);
+                            checkLogin();
+                            if (loginModal) loginModal.classList.add('hidden');
+                            showNotification(`خوش آمدید، ${username}!`, 'success');
+                            loginForm.reset();
+                        } else {
+                            showNotification('رمز عبور اشتباه است', 'error');
+                        }
+                    } else {
+                        if (username.toLowerCase() === ADMIN_USER.toLowerCase()) {
+                            showNotification('این نام کاربری برای ادمین رزرو شده است', 'error'); return;
+                        }
+                        siteUsers[username] = { password: password, cart: [], comment: '', balance: 0, isAdmin: false };
+                        saveUsers();
+                        localStorage.setItem('loggedInUser', username);
+                        checkLogin();
+                        if (loginModal) loginModal.classList.add('hidden');
+                        showNotification(`حساب کاربری برای ${username} با موفقیت ساخته شد`, 'success');
+                        loginForm.reset();
+                    }
+                });
+                if (logoutBtn) logoutBtn.addEventListener('click', () => {
+                    localStorage.removeItem('loggedInUser');
+                    currentUser = null;
+                    checkLogin();
+                    if (dashboardModal) dashboardModal.classList.add('hidden');
+                    if (adminModal) adminModal.classList.add('hidden');
+                    showNotification('از حساب کاربری خود خارج شدید', 'info');
+                });
+                if (loginModal) loginModal.addEventListener('click', (e) => {
+                    if (e.target === loginModal) loginModal.classList.add('hidden');
+                });
+            }
+
+            // --- Cart/Dashboard Actions ---
+            function setupCartActions() {
+                if (showCartBtn) showCartBtn.addEventListener('click', () => {
+                    if (dashboardMainView) dashboardMainView.classList.add('hidden');
+                    updateCartUI(true);
+                    if (cartView) cartView.classList.remove('hidden');
+                });
+                if (backToDashBtn) backToDashBtn.addEventListener('click', () => {
+                    if (cartView) cartView.classList.add('hidden');
+                    if (dashboardMainView) dashboardMainView.classList.remove('hidden');
+                });
+                if (payBtn) payBtn.addEventListener('click', () => {
+                    if (!currentUser || !siteUsers[currentUser]) return;
+                    let shoppingCart = siteUsers[currentUser].cart || [];
+                    let subtotal = shoppingCart.reduce((sum, item) => sum + parseInt(item?.price || 0), 0);
+                    let discount = 0;
+                    if (currentAppliedDiscount && siteData.discountCodes && siteData.discountCodes[currentAppliedDiscount]) {
+                        const code = siteData.discountCodes[currentAppliedDiscount];
+                        discount = (code.type === 'percent') ? (subtotal * (code.value || 0)) / 100 : (code.value || 0);
+                        discount = Math.min(subtotal, discount);
+                    }
+                    const finalTotal = subtotal - discount;
+                    const user = siteUsers[currentUser];
+                    if ((user.balance || 0) < finalTotal) {
+                        showNotification('موجودی شما کافی نیست.', 'error'); return;
+                    }
+                    user.balance -= finalTotal;
+                    user.cart = [];
+                    saveUsers();
+                    currentAppliedDiscount = null;
+                    updateCartUI(false);
+                    checkLogin();
+                    showNotification('پرداخت با موفقیت انجام شد.', 'success');
+                    setTimeout(() => {
+                        if (cartView) cartView.classList.add('hidden');
+                        if (dashboardMainView) dashboardMainView.classList.remove('hidden');
+                    }, 1000);
+                });
+                if (dashboardModal) dashboardModal.addEventListener('click', (e) => {
+                    if (e.target === dashboardModal) dashboardModal.classList.add('hidden');
+                });
+            }
+
+            // --- Comments ---
+            function setupComments() {
+                if (commentForm) commentForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    if (!currentUser) {
+                        showNotification('برای ارسال دیدگاه، لطفا وارد شوید', 'warning');
+                        if (loginModal) loginModal.classList.remove('hidden');
+                        return;
+                    }
+                    if (!siteUsers[currentUser]) return;
+                    const commentInput = document.getElementById('comment');
+                    if (commentInput) {
+                        siteUsers[currentUser].comment = commentInput.value;
+                        saveUsers();
+                        showNotification('دیدگاه شما با موفقیت ثبت شد!', 'success');
+                        commentInput.value = '';
+                        if (userCommentText && userCommentDisplay && !dashboardModal?.classList.contains('hidden')) {
+                            userCommentText.textContent = siteUsers[currentUser].comment;
+                            userCommentDisplay.classList.remove('hidden');
+                        }
+                    }
+                });
+            }
+
+            // --- Codes (Redeem/Discount) ---
+            function setupCodes() {
+                if (redeemCodeBtn && redeemCodeInput) redeemCodeBtn.addEventListener('click', () => {
+                    if (!currentUser) { showNotification('لطفا ابتدا وارد شوید', 'warning'); return; }
+                    if (!siteUsers[currentUser]) return;
+                    const code = redeemCodeInput.value.trim().toUpperCase();
+                    if (!code) return;
+                    const codeData = siteData.balanceCodes ? siteData.balanceCodes[code] : null;
+                    if (!codeData) { showNotification('کد نامعتبر است', 'error'); return; }
+                    if (codeData.used) { showNotification('کد قبلا استفاده شده', 'warning'); return; }
+                    siteUsers[currentUser].balance = (siteUsers[currentUser].balance || 0) + (codeData.value || 0);
+                    codeData.used = true;
+                    saveUsers();
+                    saveSiteData();
+                    checkLogin();
+                    showNotification(`مبلغ ${(codeData.value || 0).toLocaleString('fa-IR')} ت به حساب شما اضافه شد!`, 'success');
+                    redeemCodeInput.value = '';
+                    if (adminModal && !adminModal.classList.contains('hidden')) loadAdminBalanceCodes();
+                });
+                if (applyDiscountBtn && discountCodeInput) applyDiscountBtn.addEventListener('click', () => {
+                    if (!currentUser) { showNotification('لطفا ابتدا وارد شوید', 'warning'); return; }
+                    if (!siteUsers[currentUser]) return;
+                    if (!siteUsers[currentUser].cart || siteUsers[currentUser].cart.length === 0) {
+                        showNotification('سبد خرید شما خالی است', 'warning'); return;
+                    }
+                    const code = discountCodeInput.value.trim().toUpperCase();
+                    if (!code) return;
+                    if (!siteData.discountCodes || !siteData.discountCodes[code]) {
+                        showNotification('کد تخفیف نامعتبر است', 'error');
+                        return;
+                    }
+                    currentAppliedDiscount = code;
+                    updateCartUI(true);
+                    showNotification('کد تخفیف با موفقیت اعمال شد', 'success');
+                });
+            }
+
+            // --- Admin Panel Functions ---
+            function loadAdminDashboard() {
+                if (!adminStatTotalUsers || !adminStatTotalBalance || !adminStatDiscountCodes || !adminStatBalanceCodes) {
+                    console.error("Admin dashboard stat elements not found.");
+                    return;
+                }
+                let totalUsers = 0;
+                let totalBalance = 0;
+                let activeDiscountCodes = 0;
+                let unusedBalanceCodes = 0;
+                Object.keys(siteUsers || {}).forEach(username => {
+                    if (username !== ADMIN_USER && siteUsers[username]) {
+                        totalUsers++;
+                        totalBalance += siteUsers[username].balance || 0;
+                    }
+                });
+                activeDiscountCodes = Object.keys(siteData.discountCodes || {}).length;
+                Object.keys(siteData.balanceCodes || {}).forEach(code => {
+                    if (siteData.balanceCodes[code] && !siteData.balanceCodes[code].used) {
+                        unusedBalanceCodes++;
+                    }
+                });
+                adminStatTotalUsers.textContent = totalUsers.toLocaleString('fa-IR');
+                adminStatTotalBalance.textContent = `${Math.round(totalBalance).toLocaleString('fa-IR')} ت`;
+                adminStatDiscountCodes.textContent = activeDiscountCodes.toLocaleString('fa-IR');
+                adminStatBalanceCodes.textContent = unusedBalanceCodes.toLocaleString('fa-IR');
+            }
+
+            function loadAdminUsers() {
+                if (!adminUserList) { console.error("Admin user list container not found."); return; }
+                const userListItemsContainer = adminUserList.querySelector('#admin-user-list-items');
+                if(userListItemsContainer) userListItemsContainer.remove();
+                const listContainer = document.createElement('div');
+                listContainer.id = 'admin-user-list-items';
+                listContainer.className = 'space-y-4';
+                const searchTerm = adminUserSearch ? adminUserSearch.value.trim().toLowerCase() : '';
+                const usernames = Object.keys(siteUsers || {});
+                let userCount = 0;
+                usernames.sort().forEach(username => {
+                    if (username === ADMIN_USER || !siteUsers[username]) return;
+                    if (searchTerm && !username.toLowerCase().includes(searchTerm)) return;
+                    userCount++;
+                    const user = siteUsers[username];
+                    const cartItems = user.cart && user.cart.length > 0
+                        ? user.cart.map(item => item?.name || '?').join('، ')
+                        : '<i>خالی</i>';
+                    const userCard = document.createElement('div');
+                    userCard.className = 'glass-effect p-4 rounded-lg text-sm space-y-3';
+                    userCard.innerHTML = `
+                        <div class="flex flex-wrap gap-2 justify-between items-center">
+                            <p class="font-bold text-lg text-indigo-300">${username}</p>
+                            <button data-username="${username}" class="delete-user-btn px-3 py-1 text-xs font-semibold text-white bg-red-700 rounded-lg hover:bg-red-800 transition-colors">حذف کاربر</button>
+                        </div>
+                        <p>موجودی: <span class="font-bold text-green-400">${(user.balance || 0).toLocaleString('fa-IR')} ت</span></p>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <input type="number" id="balance-input-${username}" class="form-input w-full p-2 rounded-lg text-slate-200" placeholder="تنظیم موجودی جدید">
+                            <button data-username="${username}" class="set-balance-btn px-4 py-2 font-semibold text-white bg-indigo-700 rounded-lg whitespace-nowrap hover:bg-indigo-800 transition-colors">تنظیم</button>
+                        </div>
+                        <div class="border-t border-slate-700/50 pt-3 mt-3 space-y-2">
+                            <p class="text-slate-400 text-xs">سبد خرید: <span class="text-slate-300">${cartItems}</span></p>
+                            ${user.comment ? `
+                                <div class="flex justify-between items-start gap-2">
+                                    <p class="text-slate-400 text-xs italic flex-1 break-words">نظر: ${user.comment}</p>
+                                    <button data-username="${username}" class="clear-comment-btn px-2 py-1 text-xs text-white bg-slate-600 rounded-lg hover:bg-slate-700 transition-colors flex-shrink-0">حذف نظر</button>
+                                </div>
+                            ` : '<p class="text-slate-500 text-xs italic">نظری ثبت نشده است.</p>'}
+                        </div>
+                    `;
+                    listContainer.appendChild(userCard);
+                });
+                if (userCount === 0) {
+                    listContainer.innerHTML = '<p class="text-center text-slate-400 py-4">کاربری یافت نشد.</p>';
+                }
+                adminUserList.appendChild(listContainer);
+                if (!adminUserList.dataset.listenersAdded) {
+                    adminUserList.addEventListener('click', handleAdminUserActions);
+                    adminUserList.dataset.listenersAdded = 'true';
+                }
+            }
+
+            function handleAdminUserActions(e) {
+                const targetUser = e.target.dataset.username;
+                if (!targetUser) return;
+                if (e.target.classList.contains('set-balance-btn')) {
+                    const input = document.getElementById(`balance-input-${targetUser}`);
+                    const amount = parseInt(input?.value || '');
+                    if (isNaN(amount) || amount < 0) { showNotification('مبلغ نامعتبر (0+)', 'warning'); return; }
+                    if(siteUsers[targetUser]) siteUsers[targetUser].balance = amount;
+                    saveUsers();
+                    showNotification(`موجودی ${targetUser} تنظیم شد.`, 'success');
+                    if(input) input.value = '';
+                    loadAdminUsers();
+                    loadAdminDashboard();
+                } else if (e.target.classList.contains('delete-user-btn')) {
+                    showConfirmationModal(`حذف ${targetUser}`, 'تمام اطلاعات کاربر حذف خواهد شد.', () => {
+                        delete siteUsers[targetUser];
+                        saveUsers();
+                        showNotification(`کاربر ${targetUser} حذف شد.`, 'success');
+                        loadAdminUsers();
+                        loadAdminDashboard();
+                    });
+                } else if (e.target.classList.contains('clear-comment-btn')) {
+                    if(siteUsers[targetUser]) siteUsers[targetUser].comment = '';
+                    saveUsers();
+                    showNotification(`نظر ${targetUser} پاک شد.`, 'success');
+                    loadAdminUsers();
+                }
+            }
+
+            function loadAdminProducts() {
+                if (!adminProductList) { console.error("Admin product list container not found."); return; }
+                adminProductList.innerHTML = '';
+                const categories = siteData.products;
+                if (!categories || Object.keys(categories).length === 0) {
+                    adminProductList.innerHTML = '<p class="text-center text-slate-400 py-4">محصولی یافت نشد.</p>';
+                    return;
+                }
+                Object.keys(categories).forEach(catId => {
+                    const category = categories[catId];
+                    if (!category) return;
+                    const catHeader = document.createElement('h4');
+                    catHeader.className = 'text-lg font-bold mt-4 border-b border-slate-700/50 pb-2 text-indigo-300';
+                    catHeader.textContent = category.displayName || catId;
+                    adminProductList.appendChild(catHeader);
+                    if (category.items && Array.isArray(category.items) && category.items.length > 0) {
+                        category.items.forEach(product => {
+                            if (!product || !product.id) return;
+                            const el = document.createElement('div');
+                            el.className = 'glass-effect p-3 rounded-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2';
+                            el.innerHTML = `
+                                <p class="font-medium text-sm flex-1">${product.name || '?'}</p>
+                                <div class="flex gap-2 w-full sm:w-auto items-center">
+                                    <input type="number" id="price-input-${product.id}" class="form-input w-full sm:w-32 p-2 rounded-lg text-slate-200" value="${product.price || 0}">
+                                    <button data-id="${product.id}" data-category="${catId}" class="save-price-btn px-4 py-2 font-semibold text-white bg-emerald-700 rounded-lg whitespace-nowrap hover:bg-emerald-800 transition-colors">ذخیره</button>
+                                    <button data-id="${product.id}" data-category="${catId}" data-name="${product.name}" class="delete-product-btn px-2 py-1 text-xs text-white bg-red-700 rounded-lg hover:bg-red-800 transition-colors">حذف</button>
+                                </div>
+                            `;
+                            adminProductList.appendChild(el);
+                        });
+                    } else {
+                        const noProductMsg = document.createElement('p');
+                        noProductMsg.className = 'text-slate-400 text-sm italic py-2';
+                        noProductMsg.textContent = 'محصولی در این دسته نیست.';
+                        adminProductList.appendChild(noProductMsg);
+                    }
+                });
+                if (!adminProductList.dataset.listenersAdded) {
+                    adminProductList.addEventListener('click', handleAdminProductActions);
+                    adminProductList.dataset.listenersAdded = 'true';
+                }
+            }
+
+            function handleAdminProductActions(e) {
+                const targetId = e.target.dataset.id;
+                const targetCategory = e.target.dataset.category;
+                if (!targetId || !targetCategory) return;
+                const category = siteData.products ? siteData.products[targetCategory] : null;
+                if (!category?.items) return;
+                const productIndex = category.items.findIndex(p => p && p.id === targetId);
+                if (productIndex < 0) return;
+                if (e.target.classList.contains('save-price-btn')) {
+                    const input = document.getElementById(`price-input-${targetId}`);
+                    const newPrice = parseInt(input?.value || '');
+                    if (isNaN(newPrice) || newPrice < 0) { showNotification('مبلغ نامعتبر', 'error'); return; }
+                    category.items[productIndex].price = newPrice;
+                    saveSiteData();
+                    renderProducts();
+                    showNotification(`قیمت ${category.items[productIndex].name} به‌روز شد`, 'success');
+                } else if (e.target.classList.contains('delete-product-btn')) {
+                    const productName = e.target.dataset.name || category.items[productIndex].name;
+                    showConfirmationModal('حذف محصول', `حذف "${productName}"؟`, () => {
+                        category.items.splice(productIndex, 1);
+                        saveSiteData();
+                        renderProducts();
+                        loadAdminProducts();
+                        showNotification(`محصول "${productName}" حذف شد.`, 'success');
+                    });
+                }
+            }
+
+            function loadAdminAddProductTab() {
+                if (!adminAddProductCategorySelect) { console.error("Admin add product category select not found."); return; }
+                adminAddProductCategorySelect.innerHTML = '';
+                const categories = siteData.products;
+                if (!categories || Object.keys(categories).length === 0) {
+                    const option = document.createElement('option');
+                    option.textContent = 'دسته‌ای وجود ندارد';
+                    option.disabled = true; option.className = 'text-slate-800';
+                    adminAddProductCategorySelect.appendChild(option);
+                    return;
+                }
+                Object.keys(categories).forEach(catId => {
+                    if (categories[catId]) {
+                        const option = document.createElement('option');
+                        option.value = catId;
+                        option.textContent = categories[catId].displayName || catId;
+                        option.className = 'text-slate-800';
+                        adminAddProductCategorySelect.appendChild(option);
+                    }
+                });
+            }
+
+            function loadAdminDiscounts() {
+                if (!adminDiscountList) { console.error("Admin discount list container not found."); return; }
+                adminDiscountList.innerHTML = '';
+                const codes = Object.keys(siteData.discountCodes || {}).sort();
+                if (codes.length === 0) {
+                    adminDiscountList.innerHTML = '<p class="text-center text-slate-400 py-4">کد تخفیفی نیست.</p>';
+                    return;
+                }
+                codes.forEach(codeName => {
+                    const code = siteData.discountCodes[codeName];
+                    if (!code) return;
+                    const valueText = code.type === 'percent' ? `${code.value || 0}%` : `${(code.value || 0).toLocaleString('fa-IR')} ت`;
+                    const codeEl = document.createElement('div');
+                    codeEl.className = 'glass-effect p-3 rounded-lg flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-sm';
+                    codeEl.innerHTML = `
+                        <div>
+                            <p class="font-bold text-base text-violet-300">${codeName}</p>
+                            <p class="text-slate-300">${valueText}</p>
+                        </div>
+                        <button data-code="${codeName}" class="delete-discount-btn px-3 py-1 text-xs font-semibold text-white bg-red-700 rounded-lg w-full sm:w-auto hover:bg-red-800 transition-colors">حذف</button>
+                    `;
+                    adminDiscountList.appendChild(codeEl);
+                });
+                if (!adminDiscountList.dataset.listenersAdded) {
+                    adminDiscountList.addEventListener('click', handleAdminDiscountActions);
+                    adminDiscountList.dataset.listenersAdded = 'true';
+                }
+            }
+
+            function handleAdminDiscountActions(e) {
+                if (!e.target.classList.contains('delete-discount-btn')) return;
+                const code = e.target.dataset.code;
+                if (code && siteData.discountCodes) {
+                    showConfirmationModal(`حذف کد ${code}`, 'کاربران دیگر نمی‌توانند از این کد استفاده کنند.', () => {
+                        delete siteData.discountCodes[code];
+                        saveSiteData();
+                        showNotification(`کد تخفیف ${code} حذف شد.`, 'success');
+                        loadAdminDiscounts();
+                        loadAdminDashboard();
+                    });
+                }
+            }
+
+            function loadAdminBalanceCodes() {
+                if (!adminBalanceList) { console.error("Admin balance code list container not found."); return; }
+                adminBalanceList.innerHTML = '';
+                const codes = Object.keys(siteData.balanceCodes || {}).sort((a, b) => (siteData.balanceCodes[a].used ? 1 : -1) - (siteData.balanceCodes[b].used ? 1 : -1) || a.localeCompare(b));
+                if (codes.length === 0) {
+                    adminBalanceList.innerHTML = '<p class="text-center text-slate-400 py-4">کد موجودی نیست.</p>';
+                    return;
+                }
+                codes.forEach(codeName => {
+                    const code = siteData.balanceCodes[codeName];
+                    if(!code) return;
+                    const statusText = code.used ? 'استفاده شده' : 'فعال';
+                    const statusClass = code.used ? 'text-red-400' : 'text-green-400';
+                    const codeEl = document.createElement('div');
+                    codeEl.className = `glass-effect p-3 rounded-lg flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-sm ${code.used ? 'opacity-60' : ''}`;
+                    codeEl.innerHTML = `
+                        <div>
+                            <p class="font-bold text-base text-amber-300">${codeName}</p>
+                            <p class="text-slate-300">مبلغ: ${(code.value || 0).toLocaleString('fa-IR')} ت | وضع: <span class="${statusClass} font-bold">${statusText}</span></p>
+                        </div>
+                        <button data-code="${codeName}" class="delete-balance-btn px-3 py-1 text-xs font-semibold text-white bg-red-700 rounded-lg w-full sm:w-auto hover:bg-red-800 transition-colors">حذف</button>
+                    `;
+                    adminBalanceList.appendChild(codeEl);
+                });
+                if (!adminBalanceList.dataset.listenersAdded) {
+                    adminBalanceList.addEventListener('click', handleAdminBalanceCodeActions);
+                    adminBalanceList.dataset.listenersAdded = 'true';
+                }
+            }
+
+            function handleAdminBalanceCodeActions(e) {
+                if (!e.target.classList.contains('delete-balance-btn')) return;
+                const code = e.target.dataset.code;
+                if (code && siteData.balanceCodes) {
+                    showConfirmationModal(`حذف کد ${code}`, 'اگر کد استفاده نشده باشد، دیگر قابل استفاده نخواهد بود.', () => {
+                        delete siteData.balanceCodes[code];
+                        saveSiteData();
+                        showNotification(`کد موجودی ${code} حذف شد.`, 'success');
+                        loadAdminBalanceCodes();
+                        loadAdminDashboard();
+                    });
+                }
+            }
+
+            function setupAdminPanel() {
+                if (adminPanelBtn) adminPanelBtn.addEventListener('click', () => {
+                    if (!adminModal) return;
+                    loadAdminDashboard();
+                    loadAdminUsers();
+                    loadAdminProducts();
+                    loadAdminAddProductTab();
+                    loadAdminDiscounts();
+                    loadAdminBalanceCodes();
+                    adminTabs.forEach(t => t.classList.remove('active'));
+                    adminTabContents.forEach(c => c.classList.add('hidden'));
+                    const defaultTabButton = document.querySelector('.admin-tab-button[data-target="admin-tab-dashboard"]');
+                    const defaultTabContent = document.getElementById('admin-tab-dashboard');
+                    if(defaultTabButton) defaultTabButton.classList.add('active');
+                    if(defaultTabContent) defaultTabContent.classList.remove('hidden');
+                    adminModal.classList.remove('hidden');
+                });
+                adminTabs.forEach(tab => {
+                    if(tab) tab.addEventListener('click', () => {
+                        adminTabs.forEach(t => t.classList.remove('active'));
+                        tab.classList.add('active');
+                        const target = tab.dataset.target;
+                        adminTabContents.forEach(c => {
+                            if(c) c.id === target ? c.classList.remove('hidden') : c.classList.add('hidden');
+                        });
+                        if (target === 'admin-tab-users') loadAdminUsers();
+                        if (target === 'admin-tab-products') loadAdminProducts();
+                        if (target === 'admin-tab-add-product') loadAdminAddProductTab();
+                        if (target === 'admin-tab-discounts') loadAdminDiscounts();
+                        if (target === 'admin-tab-balance') loadAdminBalanceCodes();
+                    });
+                });
+                if (adminModalClose) adminModalClose.addEventListener('click', () => {
+                    if (adminModal) adminModal.classList.add('hidden');
+                });
+                if (adminBackToDashBtn) adminBackToDashBtn.addEventListener('click', () => {
+                    if (adminModal) adminModal.classList.add('hidden');
+                    checkLogin();
+                    if (dashboardModal) dashboardModal.classList.remove('hidden');
+                });
+                if (adminModal) adminModal.addEventListener('click', (e) => {
+                    if (e.target === adminModal) adminModal.classList.add('hidden');
+                });
+                if (createDiscountForm) createDiscountForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const nameInput = document.getElementById('discount-code-name');
+                    const valueInput = document.getElementById('discount-code-value');
+                    const typeInput = document.getElementById('discount-code-type');
+                    const name = nameInput?.value.trim().toUpperCase() || '';
+                    const value = parseInt(valueInput?.value || '');
+                    const type = typeInput?.value || 'percent';
+                    if (!name || isNaN(value) || value <= 0 || !/^[A-Z0-9]+$/.test(name)) {
+                        showNotification('نام کد معتبر (حروف/اعداد انگلیسی) و مقدار مثبت وارد کنید', 'warning'); return;
+                    }
+                    if (siteData.discountCodes[name]) { showNotification(`کد ${name} تکراری است`, 'warning'); return; }
+                    siteData.discountCodes[name] = { value, type };
+                    saveSiteData();
+                    showNotification(`کد تخفیف ${name} ایجاد شد`, 'success');
+                    createDiscountForm.reset();
+                    loadAdminDiscounts(); loadAdminDashboard();
+                });
+                if (createBalanceForm) createBalanceForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const valueInput = document.getElementById('balance-code-value');
+                    const value = parseInt(valueInput?.value || '');
+                    if (isNaN(value) || value <= 0) { showNotification('مبلغ معتبر و مثبت وارد کنید', 'warning'); return; }
+                    let newCode;
+                    if (!siteData.balanceCodes) siteData.balanceCodes = {};
+                    do { newCode = Math.random().toString(36).substring(2, 10).toUpperCase(); } while (siteData.balanceCodes[newCode]);
+                    siteData.balanceCodes[newCode] = { value: value, used: false };
+                    saveSiteData();
+                    showNotification(`کد ${newCode} (${value.toLocaleString('fa-IR')} ت) ایجاد شد`, 'success');
+                    createBalanceForm.reset();
+                    loadAdminBalanceCodes(); loadAdminDashboard();
+                });
+                if (addProductForm) addProductForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const nameInput = document.getElementById('admin-add-product-name');
+                    const priceInput = document.getElementById('admin-add-product-price');
+                    const descInput = document.getElementById('admin-add-product-desc'); // GEMINI
+                    const catId = adminAddProductCategorySelect?.value || '';
+                    const name = nameInput?.value.trim() || '';
+                    const description = descInput?.value.trim() || ''; // GEMINI
+                    const price = parseInt(priceInput?.value || '');
+                    if (!catId || !name || isNaN(price) || price <= 0) { showNotification('فیلدها نامعتبرند', 'warning'); return; }
+                    const categoryItems = siteData.products[catId]?.items;
+                    if (!categoryItems) { showNotification('دسته نامعتبر', 'error'); return; }
+                    let newId;
+                    do { newId = `${catId}-${Math.random().toString(36).substring(2, 6)}`; } while (categoryItems.some(item => item && item.id === newId));
+                    categoryItems.push({ id: newId, name: name, price: price, description: description }); // GEMINI: Save description
+                    saveSiteData();
+                    renderProducts(); loadAdminProducts();
+                    showNotification(`محصول "${name}" اضافه شد`, 'success');
+                    addProductForm.reset();
+                });
+                if (addCategoryForm) addCategoryForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const idInput = document.getElementById('admin-add-category-id');
+                    const nameInput = document.getElementById('admin-add-category-name');
+                    const colorInput = document.getElementById('admin-add-category-color');
+                    const gridInput = document.getElementById('admin-add-category-grid');
+                    const id = idInput?.value.trim().toLowerCase().replace(/\s+/g, '-') || '';
+                    const name = nameInput?.value.trim() || '';
+                    const color = colorInput?.value.trim().toLowerCase() || 'blue'; // default color
+                    const grid = gridInput?.value || 'md:grid-cols-3';
+                    if (!id || !name || !/^[a-z0-9-]+$/.test(id)) { showNotification('شناسه/نام نامعتبر', 'warning'); return; }
+                    if (!siteData.products) siteData.products = {};
+                    if (siteData.products[id]) { showNotification('شناسه تکراری', 'error'); return; }
+                    siteData.products[id] = { displayName: name, color: color, grid: grid, items: [] };
+                    saveSiteData();
+                    renderProductTabs(); renderProducts(); loadAdminAddProductTab(); loadAdminProducts();
+                    showNotification(`دسته "${name}" ایجاد شد`, 'success');
+                    addCategoryForm.reset();
+                });
+                if(adminUserSearch) adminUserSearch.addEventListener('input', loadAdminUsers);
+            }
+
+            // --- GEMINI API FUNCTIONS ---
+
+            // Helper: Show the modal in a loading state
+            function showGeminiModal(title, loadingText = "✨ در حال پردازش...") {
+                if (!geminiModal) return;
+                if (geminiModalTitle) geminiModalTitle.textContent = title;
+                if (geminiLoading) {
+                    geminiLoading.classList.remove('hidden');
+                    const p = geminiLoading.querySelector('p');
+                    if (p) p.textContent = loadingText;
+                }
+                if (geminiResultContainer) geminiResultContainer.classList.add('hidden');
+                if (geminiCopyBtn) geminiCopyBtn.classList.add('hidden');
+                geminiModal.classList.remove('hidden');
+            }
+
+            // Helper: Show the result in the modal
+            function showGeminiResult(text) {
+                if (!geminiModal) return;
+                if (geminiLoading) geminiLoading.classList.add('hidden');
+                if (geminiResultTextarea) geminiResultTextarea.value = text;
+                if (geminiResultContainer) geminiResultContainer.classList.remove('hidden');
+                if (geminiCopyBtn) geminiCopyBtn.classList.remove('hidden');
+            }
+
+            // Helper: Hide the modal
+            function hideGeminiModal() {
+                if (geminiModal) geminiModal.classList.add('hidden');
+            }
+
+            // Helper: Copy text to clipboard
+            function copyToClipboard(text) {
+                try {
+                    const el = document.createElement('textarea');
+                    el.value = text;
+                    el.setAttribute('readonly', '');
+                    el.style.position = 'absolute';
+                    el.style.left = '-9999px';
+                    document.body.appendChild(el);
+                    el.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(el);
+                    showNotification('متن کپی شد!', 'success');
+                } catch (e) {
+                    console.error('Clipboard copy failed:', e);
+                    showNotification('کپی انجام نشد', 'error');
+                }
+            }
+            
+            // Helper: Fetch with exponential backoff
+            async function fetchWithBackoff(url, options, retries = 3, delay = 1000) {
+                try {
+                    return await fetch(url, options);
+                } catch (error) {
+                    if (retries > 0) {
+                        console.warn(`Fetch failed. Retrying in ${delay}ms... (${retries} retries left)`);
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        return fetchWithBackoff(url, options, retries - 1, delay * 2);
+                    }
+                    console.error("Fetch failed after all retries:", error);
+                    throw error;
+                }
+            }
+
+            // Core API Call Function
+            async function callGeminiAPI(userPrompt, systemPrompt) {
+                const apiKey = ""; // API key is left blank
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: userPrompt }] }],
                 };
 
-                // --- Database Simulation ---
-                let siteUsers = {};
-                let siteData = { discountCodes: {}, balanceCodes: {}, products: { ...defaultProducts } };
-                let currentUser = null;
-                let currentAppliedDiscount = null;
-                let confirmCallback = null;
-                let notificationTimeout;
-
-                // --- Load Data ---
-                function loadData() {
-                    console.log("Loading data from localStorage...");
-                    try {
-                        const storedUsers = localStorage.getItem('siteUsers');
-                        if (storedUsers) {
-                            siteUsers = JSON.parse(storedUsers);
-                            if (typeof siteUsers !== 'object' || siteUsers === null) {
-                                 console.warn("Invalid siteUsers data, resetting."); siteUsers = {};
-                            }
-                        } else { siteUsers = {}; }
-                    } catch (error) {
-                        console.error("Error loading siteUsers:", error); siteUsers = {};
-                    }
-
-                    try {
-                        const storedSiteData = localStorage.getItem('siteData');
-                        if (storedSiteData) {
-                            siteData = JSON.parse(storedSiteData);
-                            if (typeof siteData !== 'object' || siteData === null) {
-                                console.warn("Invalid siteData, resetting.");
-                                siteData = { discountCodes: {}, balanceCodes: {}, products: { ...defaultProducts } };
-                            }
-                            if (!siteData.products || typeof siteData.products !== 'object' || Object.keys(siteData.products).length === 0) {
-                                console.warn("Products missing/invalid, using defaults.");
-                                siteData.products = { ...defaultProducts };
-                                if (Array.isArray(siteData.instagram)) { // Simple migration check
-                                    console.log("Migrating old product structure...");
-                                    siteData.products = { ...defaultProducts };
-                                }
-                            }
-                            if (!siteData.discountCodes) siteData.discountCodes = {};
-                            if (!siteData.balanceCodes) siteData.balanceCodes = {};
-                        } else {
-                             siteData = { discountCodes: {}, balanceCodes: {}, products: { ...defaultProducts } };
-                        }
-                    } catch (error) {
-                        console.error("Error loading siteData:", error);
-                        siteData = { discountCodes: {}, balanceCodes: {}, products: { ...defaultProducts } }; // Fallback
-                    }
-
-                    currentUser = localStorage.getItem('loggedInUser');
-                    if (currentUser && !siteUsers[currentUser]) {
-                        console.warn(`Stored user ${currentUser} not found in loaded users. Logging out.`);
-                        localStorage.removeItem('loggedInUser');
-                        currentUser = null;
-                    }
-                     console.log("Data loaded. Current user:", currentUser);
+                if (systemPrompt) {
+                    payload.systemInstruction = {
+                        parts: [{ text: systemPrompt }]
+                    };
                 }
 
-                // --- Save Data ---
-                function saveUsers() { try { localStorage.setItem('siteUsers', JSON.stringify(siteUsers)); } catch (e) { console.error("Save Users Error:", e); showNotification("خطا در ذخیره اطلاعات کاربران", "error"); } }
-                function saveSiteData() { try { localStorage.setItem('siteData', JSON.stringify(siteData)); } catch (e) { console.error("Save Site Data Error:", e); showNotification("خطا در ذخیره اطلاعات سایت", "error"); } }
+                try {
+                    const response = await fetchWithBackoff(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
 
-                // --- UI Elements ---
-                // (Declare variables, will be assigned in getElements)
-                let accountBtn, accountText, loginModal, dashboardModal, loginForm, logoutBtn, dashUsername, dashBalance, dashOrders, dashTotal, productTabsContainer, productSectionsWrapper, productSectionContainer, productPlaceholder, cartItemsList, cartSubtotalEl, cartDiscountRow, cartDiscountAmountEl, cartTotalEl, cartEmptyMsg, payBtn, showCartBtn, backToDashBtn, dashboardMainView, cartView, commentForm, userCommentDisplay, userCommentText, redeemCodeInput, redeemCodeBtn, discountCodeInput, applyDiscountBtn, confirmationModal, confirmationTitle, confirmationMessage, confirmYesBtn, confirmNoBtn, adminModal, adminPanelBtn, adminModalClose, adminBackToDashBtn, adminTabs, adminTabContents, adminStatTotalUsers, adminStatTotalBalance, adminStatDiscountCodes, adminStatBalanceCodes, adminUserSearch, adminUserList, adminProductList, addProductForm, addCategoryForm, adminAddProductCategorySelect, createDiscountForm, adminDiscountList, createBalanceForm, adminBalanceList, docElement, darkModeToggles = [], menuBtn, mobileMenu, menuOpenIcon, menuCloseIcon, steps, nextBtns, restartBtn, progressBar, notificationBanner, statusDot, statusText;
-
-                function getElements() {
-                    console.log("Getting DOM elements...");
-                    // Assign all element variables here (copy from previous script.js)
-                    accountBtn = document.getElementById('account-btn');
-                    accountText = document.getElementById('account-text');
-                    loginModal = document.getElementById('login-modal');
-                    dashboardModal = document.getElementById('dashboard-modal');
-                    loginForm = document.getElementById('login-form');
-                    logoutBtn = document.getElementById('logout-btn');
-                    dashUsername = document.getElementById('dash-username');
-                    dashBalance = document.getElementById('dash-balance');
-                    dashOrders = document.getElementById('dash-orders');
-                    dashTotal = document.getElementById('dash-total');
-                    productTabsContainer = document.getElementById('product-tabs');
-                    productSectionsWrapper = document.getElementById('product-sections-wrapper');
-                    productSectionContainer = document.getElementById('product-section-container'); // Might not be needed
-                    productPlaceholder = document.getElementById('product-placeholder');
-                    cartItemsList = document.getElementById('cart-items-list');
-                    cartSubtotalEl = document.getElementById('cart-subtotal');
-                    cartDiscountRow = document.getElementById('cart-discount-row');
-                    cartDiscountAmountEl = document.getElementById('cart-discount-amount');
-                    cartTotalEl = document.getElementById('cart-total');
-                    cartEmptyMsg = document.getElementById('cart-empty-msg');
-                    payBtn = document.getElementById('pay-btn');
-                    showCartBtn = document.getElementById('show-cart-btn');
-                    backToDashBtn = document.getElementById('back-to-dash-btn');
-                    dashboardMainView = document.getElementById('dashboard-main-view');
-                    cartView = document.getElementById('cart-view');
-                    commentForm = document.getElementById('comment-form');
-                    userCommentDisplay = document.getElementById('user-comment-display');
-                    userCommentText = document.getElementById('user-comment-text');
-                    redeemCodeInput = document.getElementById('redeem-code-input');
-                    redeemCodeBtn = document.getElementById('redeem-code-btn');
-                    discountCodeInput = document.getElementById('discount-code-input');
-                    applyDiscountBtn = document.getElementById('apply-discount-btn');
-                    confirmationModal = document.getElementById('confirmation-modal');
-                    confirmationTitle = document.getElementById('confirmation-title');
-                    confirmationMessage = document.getElementById('confirmation-message');
-                    confirmYesBtn = document.getElementById('confirm-yes-btn');
-                    confirmNoBtn = document.getElementById('confirm-no-btn');
-                    adminModal = document.getElementById('admin-modal');
-                    adminPanelBtn = document.getElementById('admin-panel-btn');
-                    adminModalClose = document.getElementById('admin-modal-close');
-                    adminBackToDashBtn = document.getElementById('admin-back-to-dash-btn');
-                    adminTabs = document.querySelectorAll('.admin-tab-button');
-                    adminTabContents = document.querySelectorAll('.admin-tab-content');
-                    adminStatTotalUsers = document.getElementById('admin-stat-total-users');
-                    adminStatTotalBalance = document.getElementById('admin-stat-total-balance');
-                    adminStatDiscountCodes = document.getElementById('admin-stat-discount-codes');
-                    adminStatBalanceCodes = document.getElementById('admin-stat-balance-codes');
-                    adminUserSearch = document.getElementById('admin-user-search');
-                    adminUserList = document.getElementById('admin-tab-users'); // Container for list items
-                    adminProductList = document.getElementById('admin-product-list'); // Container in price edit tab
-                    addProductForm = document.getElementById('add-product-form');
-                    addCategoryForm = document.getElementById('add-category-form');
-                    adminAddProductCategorySelect = document.getElementById('admin-add-product-category');
-                    createDiscountForm = document.getElementById('create-discount-form');
-                    adminDiscountList = document.getElementById('admin-discount-list'); // Container in discount tab
-                    createBalanceForm = document.getElementById('create-balance-form');
-                    adminBalanceList = document.getElementById('admin-balance-list'); // Container in balance code tab
-                    docElement = document.documentElement;
-                    darkModeToggles = [document.getElementById('dark-mode-toggle-desktop'), document.getElementById('dark-mode-toggle-mobile')];
-                    menuBtn = document.getElementById('menu-btn');
-                    mobileMenu = document.getElementById('mobile-menu');
-                    menuOpenIcon = document.getElementById('menu-open-icon');
-                    menuCloseIcon = document.getElementById('menu-close-icon');
-                    steps = document.querySelectorAll('[id^="step-"]');
-                    nextBtns = document.querySelectorAll('.next-btn');
-                    restartBtn = document.getElementById('restart-btn');
-                    progressBar = document.getElementById('progress-bar');
-                    notificationBanner = document.getElementById('notification-banner');
-                    statusDot = document.getElementById('notification-dot');
-                    statusText = document.getElementById('notification-text');
-                    console.log("DOM elements retrieved.");
-                    // Check if critical elements are missing
-                    if (!productTabsContainer || !productSectionsWrapper) {
-                        console.error("CRITICAL: Product containers not found!");
-                        showNotification("خطا: ساختار صفحه برای نمایش محصولات یافت نشد.", "error");
-                    }
-                }
-
-                // --- Notification ---
-                function showNotification(message, type = 'info') {
-                    // (Copy function from previous script.js)
-                    if (!notificationBanner || !statusDot || !statusText) {
-                        console.warn("Notification elements not found. Message:", message);
-                        return; // Exit if elements aren't ready
-                    }
-                    clearTimeout(notificationTimeout); // Clear previous timeout if exists
-                    const types = { info: { dot: 'bg-blue-500', text: 'text-blue-400' }, success: { dot: 'bg-green-500', text: 'text-green-400' }, warning: { dot: 'bg-yellow-500', text: 'text-yellow-400' }, error: { dot: 'bg-red-500', text: 'text-red-400' }, };
-                    const selectedType = types[type] || types.info; // Default to info
-                    statusDot.className = `w-3 h-3 ${selectedType.dot} rounded-full animate-pulse`;
-                    statusText.className = `font-semibold ${selectedType.text} transition-colors duration-300 text-sm`; // Ensure text size is consistent
-                    statusText.textContent = message;
-                    notificationBanner.classList.add('show');
-                    notificationTimeout = setTimeout(() => { notificationBanner.classList.remove('show');}, 4000);
-                }
-
-                // --- Dark Mode ---
-                function updateThemeIcons(isDark) { /* ... Copy function ... */ try { const lightIconDesktop = document.getElementById('theme-toggle-light-icon-desktop'); const darkIconDesktop = document.getElementById('theme-toggle-dark-icon-desktop'); if (lightIconDesktop) lightIconDesktop.classList.toggle('hidden', isDark); if (darkIconDesktop) darkIconDesktop.classList.toggle('hidden', !isDark); const lightIconMobile = document.getElementById('theme-toggle-light-icon-mobile'); const darkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile'); const mobileText = document.getElementById('dark-mode-text-mobile'); if (lightIconMobile) lightIconMobile.classList.toggle('hidden', isDark); if (darkIconMobile) darkIconMobile.classList.toggle('hidden', !isDark); if (mobileText) mobileText.textContent = isDark ? 'حالت روشن' : 'حالت تاریک'; } catch (error) { console.error("Error updating theme icons:", error); } }
-                function setupDarkMode() { /* ... Copy function ... */ try { if (localStorage.getItem('color-theme') === 'light' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) { if(docElement) docElement.classList.remove('dark'); updateThemeIcons(false); } else { if(docElement) docElement.classList.add('dark'); updateThemeIcons(true); } } catch (error) { console.error("Error setting up dark mode:", error); } darkModeToggles.forEach(btn => { if (btn) btn.addEventListener('click', () => { try { if(!docElement) return; const isDark = docElement.classList.toggle('dark'); localStorage.setItem('color-theme', isDark ? 'dark' : 'light'); updateThemeIcons(isDark); } catch (error) { console.error("Error toggling dark mode:", error); } }); }); }
-
-                // --- Hamburger Menu ---
-                function setupHamburgerMenu() { /* ... Copy function ... */ if (menuBtn && mobileMenu && menuOpenIcon && menuCloseIcon) { menuBtn.addEventListener('click', () => { const isClosed = mobileMenu.classList.toggle('hidden'); mobileMenu.classList.toggle('flex', !isClosed); menuOpenIcon.classList.toggle('hidden', !isClosed); menuCloseIcon.classList.toggle('hidden', isClosed); }); } else { console.warn("Hamburger menu elements not found."); } }
-
-                // --- Animated Counters ---
-                function animateValue(objId, end, duration) { /* ... Copy function (simplified version) ... */ const obj = document.getElementById(objId); if(obj) obj.innerHTML = end.toLocaleString('fa-IR'); else console.warn(`Counter element ${objId} not found.`); }
-                function setupCounters() { /* ... Copy function ... */ try { animateValue("stat-operators", 17, 0); animateValue("stat-bots", 3, 0); animateValue("stat-licenses", 10589, 0); const ordersElement = document.getElementById('stat-orders'); if (ordersElement) { let totalOrders = 59375; ordersElement.innerHTML = totalOrders.toLocaleString('fa-IR'); setInterval(() => { totalOrders += 3; ordersElement.innerHTML = totalOrders.toLocaleString('fa-IR'); }, 2000); } const usersElement = document.getElementById('stat-users'); if (usersElement) { let onlineUsers = 708; usersElement.innerHTML = onlineUsers.toLocaleString('fa-IR'); setInterval(() => { onlineUsers += 13; usersElement.innerHTML = onlineUsers.toLocaleString('fa-IR'); }, 2000); } const liveOrdersElement = document.getElementById('live-orders-count'); if(liveOrdersElement) { let liveOrdersCount = 146; liveOrdersElement.innerHTML = liveOrdersCount.toLocaleString('fa-IR') + '+'; setInterval(() => { liveOrdersCount += 19; liveOrdersElement.innerHTML = liveOrdersCount.toLocaleString('fa-IR') + '+'; }, 5000); } } catch (error) { console.error("Error setting up counters:", error); } }
-
-                // --- On-Scroll Animation ---
-                function setupScrollAnimations() { /* ... Copy function ... */ try { const animatedElements = document.querySelectorAll('.scroll-animate'); if (animatedElements.length > 0 && 'IntersectionObserver' in window) { const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); }, { threshold: 0.1 }); animatedElements.forEach(element => observer.observe(element)); } else { animatedElements.forEach(element => element.classList.add('visible')); } } catch (error) { console.error("Error setting up scroll animations:", error); document.querySelectorAll('.scroll-animate').forEach(element => element.classList.add('visible')); } }
-
-                // --- Order Algorithm ---
-                function setupOrderAlgorithm() { /* ... Copy function ... */ if (!steps || steps.length === 0) return; let currentStep = 1; function updateAlgorithmUI() { steps.forEach(step => step.classList.add('hidden')); const currentStepEl = document.getElementById(`step-${currentStep}`); if (currentStepEl) currentStepEl.classList.remove('hidden'); if (progressBar) progressBar.style.width = `${((currentStep - 1) / (steps.length - 1)) * 100}%`; } nextBtns.forEach(btn => { if (btn) btn.addEventListener('click', () => { if (currentStep < steps.length) { currentStep++; updateAlgorithmUI(); } }); }); if (restartBtn) restartBtn.addEventListener('click', () => { currentStep = 1; updateAlgorithmUI(); }); updateAlgorithmUI(); }
-
-                // --- Dynamic Product Rendering ---
-                function renderProductTabs() { /* ... Copy function ... */ if (!productTabsContainer) { console.error("Product tabs container not found."); return; } productTabsContainer.innerHTML = ''; const categories = siteData.products; if (!categories || Object.keys(categories).length === 0) { console.warn("No product categories found to render tabs."); if (productPlaceholder) productPlaceholder.classList.remove('hidden'); return; } Object.keys(categories).forEach((catId, index) => { const category = categories[catId]; if (!category) return; const tab = document.createElement('button'); tab.className = 'tab-button px-4 py-2 rounded-lg font-semibold transition-colors duration-300 text-sm sm:text-base'; if (index === 0) tab.classList.add('active'); tab.dataset.target = `${catId}-section`; tab.textContent = category.displayName || catId; productTabsContainer.appendChild(tab); }); }
-                function renderProducts() { /* ... Copy function ... */ console.log("Rendering products..."); if (!productSectionsWrapper) { console.error("Product sections wrapper not found."); if (productPlaceholder) productPlaceholder.classList.remove('hidden'); return; } productSectionsWrapper.innerHTML = ''; const categories = siteData.products; if (!categories || Object.keys(categories).length === 0) { console.warn("No product categories found to render sections."); if (productPlaceholder) productPlaceholder.classList.remove('hidden'); return; } let firstSectionRendered = false; Object.keys(categories).forEach((catId, index) => { const category = categories[catId]; if (!category) { console.warn(`Category ${catId} is invalid.`); return; } const section = document.createElement('div'); section.id = `${catId}-section`; section.className = 'product-section mb-12 scroll-animate'; const grid = document.createElement('div'); grid.className = `grid grid-cols-1 ${category.grid || 'md:grid-cols-3'} gap-6`; let hasItems = false; if (category.items && Array.isArray(category.items) && category.items.length > 0) { category.items.forEach(product => { if (!product || !product.id) { console.warn(`Invalid product in category ${catId}:`, product); return; } hasItems = true; const productEl = document.createElement('div'); const colorVariants = { red: 'hover:border-red-500 from-red-500 to-rose-500', cyan: 'hover:border-cyan-500 from-sky-500 to-cyan-400', orange: 'hover:border-orange-500 from-orange-500 to-amber-500', pink: 'hover:border-pink-500 from-pink-500 to-rose-500', purple: 'hover:border-purple-500 from-purple-500 to-violet-500', green: 'hover:border-green-500 from-green-500 to-emerald-500', blue: 'hover:border-blue-500 from-blue-500 to-indigo-500' }; const colorClass = colorVariants[category.color?.toLowerCase()] || colorVariants['blue']; productEl.className = `text-right glass-effect p-6 rounded-2xl shadow-lg border-2 border-transparent ${colorClass.split(' ')[0]} hover:scale-105 transition-all duration-300`; productEl.innerHTML = ` <h4 class="text-xl font-bold mb-4">${product.name || 'محصول بی نام'}</h4> <div class="flex justify-between items-center"> <button class="add-to-cart-btn px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r ${colorClass.split(' ')[1]} ${colorClass.split(' ')[2]} rounded-lg" data-product-id="${product.id}" data-product-name="${product.name || 'محصول'}" data-product-price="${product.price || 0}">سفارش</button> <p class="text-lg">${(product.price || 0).toLocaleString('fa-IR')} ت</p> </div> `; grid.appendChild(productEl); }); } if (!hasItems) { grid.innerHTML = '<p class="text-slate-400 text-center col-span-full py-4">محصولی در این دسته وجود ندارد.</p>'; } if (index === 0) { section.classList.remove('hidden'); if (productPlaceholder) productPlaceholder.classList.add('hidden'); firstSectionRendered = true; } else { section.classList.add('hidden'); } section.appendChild(grid); productSectionsWrapper.appendChild(section); }); if (!firstSectionRendered && productPlaceholder) { productPlaceholder.classList.remove('hidden'); } console.log("Product rendering finished."); setupScrollAnimations(); } // Re-apply scroll animations
-
-                // --- Confirmation Modal ---
-                function showConfirmationModal(title, message, onConfirm) { /* ... Copy function ... */ if (!confirmationModal || !confirmationTitle || !confirmationMessage) return; confirmationTitle.textContent = title; confirmationMessage.textContent = message; confirmCallback = onConfirm; confirmationModal.classList.remove('hidden'); }
-                function setupConfirmationModal() { /* ... Copy function ... */ if (confirmYesBtn) confirmYesBtn.addEventListener('click', () => { if (typeof confirmCallback === 'function') { try { confirmCallback(); } catch (e) { console.error("Confirm callback error:", e); } } if (confirmationModal) confirmationModal.classList.add('hidden'); confirmCallback = null; }); if (confirmNoBtn) confirmNoBtn.addEventListener('click', () => { if (confirmationModal) confirmationModal.classList.add('hidden'); confirmCallback = null; }); if (confirmationModal) confirmationModal.addEventListener('click', (e) => { if (e.target === confirmationModal) { confirmationModal.classList.add('hidden'); confirmCallback = null; } }); }
-
-                // --- Cart UI ---
-                function updateCartUI(preserveDiscount = false) { /* ... Copy function ... */ if (!cartItemsList || !cartEmptyMsg || !payBtn || !cartSubtotalEl || !cartTotalEl || !cartDiscountRow || !cartDiscountAmountEl || !discountCodeInput || !applyDiscountBtn || !dashOrders || !dashTotal) { console.error("One or more Cart UI elements are missing."); return; } let shoppingCart = (currentUser && siteUsers[currentUser]) ? siteUsers[currentUser].cart : []; cartItemsList.innerHTML = ''; let subtotal = 0; let discount = 0; if (shoppingCart && shoppingCart.length > 0) { if(cartEmptyMsg) cartEmptyMsg.classList.add('hidden'); if(payBtn) payBtn.disabled = false; shoppingCart.forEach(item => { if (!item || typeof item.price === 'undefined') return; const itemEl = document.createElement('div'); itemEl.className = 'flex justify-between items-center text-sm'; itemEl.innerHTML = `<span>${item.name || 'آیتم'}</span><span>${parseInt(item.price || 0).toLocaleString('fa-IR')} ت</span>`; if(cartItemsList) cartItemsList.appendChild(itemEl); subtotal += parseInt(item.price || 0); }); } else { if(cartEmptyMsg) cartEmptyMsg.classList.remove('hidden'); if(payBtn) payBtn.disabled = true; } if (!preserveDiscount) { currentAppliedDiscount = null; } if (currentAppliedDiscount && siteData.discountCodes && siteData.discountCodes[currentAppliedDiscount]) { const code = siteData.discountCodes[currentAppliedDiscount]; discount = (code.type === 'percent') ? (subtotal * (code.value || 0)) / 100 : (code.value || 0); discount = Math.min(subtotal, discount); if(cartDiscountAmountEl) cartDiscountAmountEl.textContent = `- ${Math.round(discount).toLocaleString('fa-IR')} ت`; if(cartDiscountRow) cartDiscountRow.classList.remove('hidden'); if(discountCodeInput) { discountCodeInput.value = currentAppliedDiscount; discountCodeInput.disabled = true; } if(applyDiscountBtn) applyDiscountBtn.disabled = true; } else { currentAppliedDiscount = null; if(cartDiscountRow) cartDiscountRow.classList.add('hidden'); if(discountCodeInput) { discountCodeInput.value = ''; discountCodeInput.disabled = false; } if(applyDiscountBtn) applyDiscountBtn.disabled = false; } const finalTotal = subtotal - discount; if(cartSubtotalEl) cartSubtotalEl.textContent = `${Math.round(subtotal).toLocaleString('fa-IR')} ت`; if(cartTotalEl) cartTotalEl.textContent = `${Math.round(finalTotal).toLocaleString('fa-IR')} ت`; if(dashOrders) dashOrders.textContent = (shoppingCart?.length || 0).toLocaleString('fa-IR'); if(dashTotal) dashTotal.innerHTML = `${Math.round(subtotal).toLocaleString('fa-IR')} <span class="text-sm">ت</span>`; }
-
-                // --- Login/Account ---
-                function checkLogin() { /* ... Copy function ... */ currentUser = localStorage.getItem('loggedInUser'); if (currentUser && !siteUsers[currentUser]) { console.warn(`User ${currentUser} invalid. Logging out.`); localStorage.removeItem('loggedInUser'); currentUser = null; if (!window.pageReloaded) { showNotification('نشست شما نامعتبر است، لطفا دوباره وارد شوید.', 'error'); window.pageReloaded = true; } } if (currentUser && siteUsers[currentUser]) { const user = siteUsers[currentUser]; if (accountText) accountText.textContent = currentUser; if (dashBalance) dashBalance.textContent = (user.balance || 0).toLocaleString('fa-IR') + ' ت'; if (adminPanelBtn) adminPanelBtn.classList.toggle('hidden', !user.isAdmin); } else { currentUser = null; if (accountText) accountText.textContent = 'حساب کاربری'; if (dashBalance) dashBalance.textContent = '۰ ت'; if (adminPanelBtn) adminPanelBtn.classList.add('hidden'); } updateCartUI(false); }
-                function setupLogin() { /* ... Copy function ... */ if (accountBtn) accountBtn.addEventListener('click', () => { if (currentUser && siteUsers[currentUser]) { const user = siteUsers[currentUser]; if (dashUsername) dashUsername.textContent = currentUser; if (dashBalance) dashBalance.textContent = (user.balance || 0).toLocaleString('fa-IR') + ' ت'; const savedComment = user.comment; if (savedComment && userCommentDisplay && userCommentText) { userCommentText.textContent = savedComment; userCommentDisplay.classList.remove('hidden'); } else if (userCommentDisplay) { userCommentDisplay.classList.add('hidden'); } if (dashboardModal) dashboardModal.classList.remove('hidden'); if (dashboardMainView) dashboardMainView.classList.remove('hidden'); if (cartView) cartView.classList.add('hidden'); } else { if (loginModal) loginModal.classList.remove('hidden'); } }); if (loginForm) loginForm.addEventListener('submit', (e) => { e.preventDefault(); const usernameInput = document.getElementById('login-username'); const passwordInput = document.getElementById('login-password'); const username = usernameInput ? usernameInput.value.trim() : ''; const password = passwordInput ? passwordInput.value : ''; if (!username || !password) { showNotification('نام کاربری و رمز عبور الزامی است', 'warning'); return; } if (username.toLowerCase() === ADMIN_USER.toLowerCase() && password === ADMIN_PASS) { if (!siteUsers[ADMIN_USER]) { siteUsers[ADMIN_USER] = { password: ADMIN_PASS, cart: [], comment: '', balance: 1000000, isAdmin: true }; } else { if (siteUsers[ADMIN_USER].password !== ADMIN_PASS) { showNotification('رمز عبور ادمین اشتباه است', 'error'); return; } siteUsers[ADMIN_USER].isAdmin = true; } saveUsers(); localStorage.setItem('loggedInUser', ADMIN_USER); checkLogin(); if (loginModal) loginModal.classList.add('hidden'); showNotification(`خوش آمدید، ادمین ${ADMIN_USER}!`, 'success'); loginForm.reset(); return; } if (siteUsers[username]) { if (siteUsers[username].password === password) { if (username.toLowerCase() === ADMIN_USER.toLowerCase()) { showNotification('اطلاعات ورود ادمین نامعتبر است', 'error'); return; } localStorage.setItem('loggedInUser', username); checkLogin(); if (loginModal) loginModal.classList.add('hidden'); showNotification(`خوش آمدید، ${username}!`, 'success'); loginForm.reset(); } else { showNotification('رمز عبور اشتباه است', 'error'); } } else { if (username.toLowerCase() === ADMIN_USER.toLowerCase()) { showNotification('این نام کاربری برای ادمین رزرو شده است', 'error'); return; } siteUsers[username] = { password: password, cart: [], comment: '', balance: 0, isAdmin: false }; saveUsers(); localStorage.setItem('loggedInUser', username); checkLogin(); if (loginModal) loginModal.classList.add('hidden'); showNotification(`حساب کاربری برای ${username} با موفقیت ساخته شد`, 'success'); loginForm.reset(); } }); if (logoutBtn) logoutBtn.addEventListener('click', () => { localStorage.removeItem('loggedInUser'); currentUser = null; checkLogin(); if (dashboardModal) dashboardModal.classList.add('hidden'); if (adminModal) adminModal.classList.add('hidden'); showNotification('از حساب کاربری خود خارج شدید', 'info'); }); if (loginModal) loginModal.addEventListener('click', (e) => { if (e.target === loginModal) loginModal.classList.add('hidden'); }); }
-
-                // --- Cart/Dashboard Actions ---
-                function setupCartActions() { /* ... Copy function ... */ if (showCartBtn) showCartBtn.addEventListener('click', () => { if (dashboardMainView) dashboardMainView.classList.add('hidden'); updateCartUI(true); if (cartView) cartView.classList.remove('hidden'); }); if (backToDashBtn) backToDashBtn.addEventListener('click', () => { if (cartView) cartView.classList.add('hidden'); if (dashboardMainView) dashboardMainView.classList.remove('hidden'); }); if (payBtn) payBtn.addEventListener('click', () => { if (!currentUser || !siteUsers[currentUser]) return; let shoppingCart = siteUsers[currentUser].cart || []; let subtotal = shoppingCart.reduce((sum, item) => sum + parseInt(item?.price || 0), 0); let discount = 0; if (currentAppliedDiscount && siteData.discountCodes && siteData.discountCodes[currentAppliedDiscount]) { const code = siteData.discountCodes[currentAppliedDiscount]; discount = (code.type === 'percent') ? (subtotal * (code.value || 0)) / 100 : (code.value || 0); discount = Math.min(subtotal, discount); } const finalTotal = subtotal - discount; const user = siteUsers[currentUser]; if ((user.balance || 0) < finalTotal) { showNotification('موجودی شما کافی نیست.', 'error'); return; } user.balance -= finalTotal; user.cart = []; saveUsers(); currentAppliedDiscount = null; updateCartUI(false); checkLogin(); showNotification('پرداخت با موفقیت انجام شد.', 'success'); setTimeout(() => { if (cartView) cartView.classList.add('hidden'); if (dashboardMainView) dashboardMainView.classList.remove('hidden'); }, 1000); }); if (dashboardModal) dashboardModal.addEventListener('click', (e) => { if (e.target === dashboardModal) dashboardModal.classList.add('hidden'); }); }
-
-                // --- Comments ---
-                function setupComments() { /* ... Copy function ... */ if (commentForm) commentForm.addEventListener('submit', (e) => { e.preventDefault(); if (!currentUser) { showNotification('برای ارسال دیدگاه، لطفا وارد شوید', 'warning'); if (loginModal) loginModal.classList.remove('hidden'); return; } if (!siteUsers[currentUser]) return; const commentInput = document.getElementById('comment'); if (commentInput) { siteUsers[currentUser].comment = commentInput.value; saveUsers(); showNotification('دیدگاه شما با موفقیت ثبت شد!', 'success'); commentInput.value = ''; if (userCommentText && userCommentDisplay && !dashboardModal?.classList.contains('hidden')) { userCommentText.textContent = siteUsers[currentUser].comment; userCommentDisplay.classList.remove('hidden'); } } }); }
-
-                // --- Codes (Redeem/Discount) ---
-                function setupCodes() { /* ... Copy function ... */ if (redeemCodeBtn && redeemCodeInput) redeemCodeBtn.addEventListener('click', () => { if (!currentUser) { showNotification('لطفا ابتدا وارد شوید', 'warning'); return; } if (!siteUsers[currentUser]) return; const code = redeemCodeInput.value.trim().toUpperCase(); if (!code) return; const codeData = siteData.balanceCodes ? siteData.balanceCodes[code] : null; if (!codeData) { showNotification('کد نامعتبر است', 'error'); return; } if (codeData.used) { showNotification('کد قبلا استفاده شده', 'warning'); return; } siteUsers[currentUser].balance = (siteUsers[currentUser].balance || 0) + (codeData.value || 0); codeData.used = true; saveUsers(); saveSiteData(); checkLogin(); showNotification(`مبلغ ${(codeData.value || 0).toLocaleString('fa-IR')} ت به حساب شما اضافه شد!`, 'success'); redeemCodeInput.value = ''; if (adminModal && !adminModal.classList.contains('hidden')) loadAdminBalanceCodes(); }); if (applyDiscountBtn && discountCodeInput) applyDiscountBtn.addEventListener('click', () => { if (!currentUser) { showNotification('لطفا ابتدا وارد شوید', 'warning'); return; } if (!siteUsers[currentUser]) return; if (!siteUsers[currentUser].cart || siteUsers[currentUser].cart.length === 0) { showNotification('سبد خرید شما خالی است', 'warning'); return; } const code = discountCodeInput.value.trim().toUpperCase(); if (!code) return; if (!siteData.discountCodes || !siteData.discountCodes[code]) { showNotification('کد تخفیف نامعتبر است', 'error'); return; } currentAppliedDiscount = code; updateCartUI(true); showNotification('کد تخفیف با موفقیت اعمال شد', 'success'); }); }
-
-                // --- Admin Panel Functions ---
-                // (Include all admin functions from the previous script.js here, ensuring they check for element existence)
-                function loadAdminDashboard() { /* ... */ if (!adminStatTotalUsers || !adminStatTotalBalance || !adminStatDiscountCodes || !adminStatBalanceCodes) { console.error("Admin dashboard stat elements not found."); return; } let totalUsers = 0; let totalBalance = 0; let activeDiscountCodes = 0; let unusedBalanceCodes = 0; Object.keys(siteUsers || {}).forEach(username => { if (username !== ADMIN_USER && siteUsers[username]) { totalUsers++; totalBalance += siteUsers[username].balance || 0; } }); activeDiscountCodes = Object.keys(siteData.discountCodes || {}).length; Object.keys(siteData.balanceCodes || {}).forEach(code => { if (siteData.balanceCodes[code] && !siteData.balanceCodes[code].used) { unusedBalanceCodes++; } }); adminStatTotalUsers.textContent = totalUsers.toLocaleString('fa-IR'); adminStatTotalBalance.textContent = `${Math.round(totalBalance).toLocaleString('fa-IR')} ت`; adminStatDiscountCodes.textContent = activeDiscountCodes.toLocaleString('fa-IR'); adminStatBalanceCodes.textContent = unusedBalanceCodes.toLocaleString('fa-IR'); }
-                function loadAdminUsers() { /* ... */ if (!adminUserList) { console.error("Admin user list container not found."); return; } const userListItemsContainer = adminUserList.querySelector('#admin-user-list-items'); if(userListItemsContainer) userListItemsContainer.remove(); const listContainer = document.createElement('div'); listContainer.id = 'admin-user-list-items'; listContainer.className = 'space-y-4'; const searchTerm = adminUserSearch ? adminUserSearch.value.trim().toLowerCase() : ''; const usernames = Object.keys(siteUsers || {}); let userCount = 0; usernames.sort().forEach(username => { if (username === ADMIN_USER || !siteUsers[username]) return; if (searchTerm && !username.toLowerCase().includes(searchTerm)) return; userCount++; const user = siteUsers[username]; const cartItems = user.cart && user.cart.length > 0 ? user.cart.map(item => item?.name || '?').join('، ') : '<i>خالی</i>'; const userCard = document.createElement('div'); userCard.className = 'glass-effect p-4 rounded-lg text-sm space-y-3'; userCard.innerHTML = ` <div class="flex flex-wrap gap-2 justify-between items-center"> <p class="font-bold text-lg text-sky-300">${username}</p> <button data-username="${username}" class="delete-user-btn px-3 py-1 text-xs font-semibold text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors">حذف کاربر</button> </div> <p>موجودی: <span class="font-bold text-green-400">${(user.balance || 0).toLocaleString('fa-IR')} ت</span></p> <div class="flex flex-col sm:flex-row gap-2"> <input type="number" id="balance-input-${username}" class="form-input w-full p-2 rounded-lg text-slate-800 dark:text-slate-200" placeholder="تنظیم موجودی جدید"> <button data-username="${username}" class="set-balance-btn px-4 py-2 font-semibold text-white bg-sky-500 rounded-lg whitespace-nowrap hover:bg-sky-600 transition-colors">تنظیم</button> </div> <div class="border-t border-slate-700/50 pt-3 mt-3 space-y-2"> <p class="text-slate-400 text-xs">سبد خرید: <span class="text-slate-300">${cartItems}</span></p> ${user.comment ? ` <div class="flex justify-between items-start gap-2"> <p class="text-slate-400 text-xs italic flex-1 break-words">نظر: ${user.comment}</p> <button data-username="${username}" class="clear-comment-btn px-2 py-1 text-xs text-white bg-slate-600 rounded-lg hover:bg-slate-700 transition-colors flex-shrink-0">حذف نظر</button> </div> ` : '<p class="text-slate-500 text-xs italic">نظری ثبت نشده است.</p>'} </div> `; listContainer.appendChild(userCard); }); if (userCount === 0) { listContainer.innerHTML = '<p class="text-center text-slate-400 py-4">کاربری یافت نشد.</p>'; } adminUserList.appendChild(listContainer); if (!adminUserList.dataset.listenersAdded) { adminUserList.addEventListener('click', handleAdminUserActions); adminUserList.dataset.listenersAdded = 'true'; } }
-                function handleAdminUserActions(e) { /* ... */ const targetUser = e.target.dataset.username; if (!targetUser) return; if (e.target.classList.contains('set-balance-btn')) { const input = document.getElementById(`balance-input-${targetUser}`); const amount = parseInt(input?.value || ''); if (isNaN(amount) || amount < 0) { showNotification('مبلغ نامعتبر (0+)', 'warning'); return; } if(siteUsers[targetUser]) siteUsers[targetUser].balance = amount; saveUsers(); showNotification(`موجودی ${targetUser} تنظیم شد.`, 'success'); if(input) input.value = ''; loadAdminUsers(); loadAdminDashboard(); } else if (e.target.classList.contains('delete-user-btn')) { showConfirmationModal(`حذف ${targetUser}`, 'تمام اطلاعات کاربر حذف خواهد شد.', () => { delete siteUsers[targetUser]; saveUsers(); showNotification(`کاربر ${targetUser} حذف شد.`, 'success'); loadAdminUsers(); loadAdminDashboard(); }); } else if (e.target.classList.contains('clear-comment-btn')) { if(siteUsers[targetUser]) siteUsers[targetUser].comment = ''; saveUsers(); showNotification(`نظر ${targetUser} پاک شد.`, 'success'); loadAdminUsers(); } }
-                function loadAdminProducts() { /* ... */ if (!adminProductList) { console.error("Admin product list container not found."); return; } adminProductList.innerHTML = ''; const categories = siteData.products; if (!categories || Object.keys(categories).length === 0) { adminProductList.innerHTML = '<p class="text-center text-slate-400 py-4">محصولی یافت نشد.</p>'; return; } Object.keys(categories).forEach(catId => { const category = categories[catId]; if (!category) return; const catHeader = document.createElement('h4'); catHeader.className = 'text-lg font-bold mt-4 border-b border-slate-700/50 pb-2 text-sky-300'; catHeader.textContent = category.displayName || catId; adminProductList.appendChild(catHeader); if (category.items && Array.isArray(category.items) && category.items.length > 0) { category.items.forEach(product => { if (!product || !product.id) return; const el = document.createElement('div'); el.className = 'glass-effect p-3 rounded-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2'; el.innerHTML = ` <p class="font-medium text-sm flex-1">${product.name || '?'}</p> <div class="flex gap-2 w-full sm:w-auto items-center"> <input type="number" id="price-input-${product.id}" class="form-input w-full sm:w-32 p-2 rounded-lg text-slate-800 dark:text-slate-200" value="${product.price || 0}"> <button data-id="${product.id}" data-category="${catId}" class="save-price-btn px-4 py-2 font-semibold text-white bg-green-500 rounded-lg whitespace-nowrap hover:bg-green-600 transition-colors">ذخیره</button> <button data-id="${product.id}" data-category="${catId}" class="delete-product-btn px-2 py-1 text-xs text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors">حذف</button> </div> `; adminProductList.appendChild(el); }); } else { const noProductMsg = document.createElement('p'); noProductMsg.className = 'text-slate-400 text-sm italic py-2'; noProductMsg.textContent = 'محصولی در این دسته نیست.'; adminProductList.appendChild(noProductMsg); } }); if (!adminProductList.dataset.listenersAdded) { adminProductList.addEventListener('click', handleAdminProductActions); adminProductList.dataset.listenersAdded = 'true'; } }
-                function handleAdminProductActions(e) { /* ... */ const targetId = e.target.dataset.id; const targetCategory = e.target.dataset.category; if (!targetId || !targetCategory) return; const category = siteData.products ? siteData.products[targetCategory] : null; if (!category?.items) return; const productIndex = category.items.findIndex(p => p && p.id === targetId); if (productIndex < 0) return; if (e.target.classList.contains('save-price-btn')) { const input = document.getElementById(`price-input-${targetId}`); const newPrice = parseInt(input?.value || ''); if (isNaN(newPrice) || newPrice < 0) { showNotification('مبلغ نامعتبر', 'error'); return; } category.items[productIndex].price = newPrice; saveSiteData(); renderProducts(); showNotification(`قیمت ${category.items[productIndex].name} به‌روز شد`, 'success'); } else if (e.target.classList.contains('delete-product-btn')) { showConfirmationModal('حذف محصول', `حذف "${category.items[productIndex].name}"؟`, () => { const productName = category.items[productIndex].name; category.items.splice(productIndex, 1); saveSiteData(); renderProducts(); loadAdminProducts(); showNotification(`محصول "${productName}" حذف شد.`, 'success'); }); } }
-                function loadAdminAddProductTab() { /* ... */ if (!adminAddProductCategorySelect) { console.error("Admin add product category select not found."); return; } adminAddProductCategorySelect.innerHTML = ''; const categories = siteData.products; if (!categories || Object.keys(categories).length === 0) { const option = document.createElement('option'); option.textContent = 'دسته‌ای وجود ندارد'; option.disabled = true; option.className = 'text-slate-800'; adminAddProductCategorySelect.appendChild(option); return; } Object.keys(categories).forEach(catId => { if (categories[catId]) { const option = document.createElement('option'); option.value = catId; option.textContent = categories[catId].displayName || catId; option.className = 'text-slate-800'; adminAddProductCategorySelect.appendChild(option); } }); }
-                function loadAdminDiscounts() { /* ... */ if (!adminDiscountList) { console.error("Admin discount list container not found."); return; } adminDiscountList.innerHTML = ''; const codes = Object.keys(siteData.discountCodes || {}).sort(); if (codes.length === 0) { adminDiscountList.innerHTML = '<p class="text-center text-slate-400 py-4">کد تخفیفی نیست.</p>'; return; } codes.forEach(codeName => { const code = siteData.discountCodes[codeName]; if (!code) return; const typeText = code.type === 'percent' ? '%' : 'ت'; const valueText = code.type === 'percent' ? `${code.value || 0}%` : `${(code.value || 0).toLocaleString('fa-IR')} ت`; const codeEl = document.createElement('div'); codeEl.className = 'glass-effect p-3 rounded-lg flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-sm'; codeEl.innerHTML = ` <div> <p class="font-bold text-base text-violet-300">${codeName}</p> <p class="text-slate-300">${valueText}</p> </div> <button data-code="${codeName}" class="delete-discount-btn px-3 py-1 text-xs font-semibold text-white bg-red-600 rounded-lg w-full sm:w-auto hover:bg-red-700 transition-colors">حذف</button> `; adminDiscountList.appendChild(codeEl); }); if (!adminDiscountList.dataset.listenersAdded) { adminDiscountList.addEventListener('click', handleAdminDiscountActions); adminDiscountList.dataset.listenersAdded = 'true'; } }
-                function handleAdminDiscountActions(e) { /* ... */ if (!e.target.classList.contains('delete-discount-btn')) return; const code = e.target.dataset.code; if (code && siteData.discountCodes) { showConfirmationModal(`حذف کد ${code}`, 'کاربران دیگر نمی‌توانند از این کد استفاده کنند.', () => { delete siteData.discountCodes[code]; saveSiteData(); showNotification(`کد تخفیف ${code} حذف شد.`, 'success'); loadAdminDiscounts(); loadAdminDashboard(); }); } }
-                function loadAdminBalanceCodes() { /* ... */ if (!adminBalanceList) { console.error("Admin balance code list container not found."); return; } adminBalanceList.innerHTML = ''; const codes = Object.keys(siteData.balanceCodes || {}).sort((a, b) => (siteData.balanceCodes[a].used ? 1 : -1) - (siteData.balanceCodes[b].used ? 1 : -1) || a.localeCompare(b)); if (codes.length === 0) { adminBalanceList.innerHTML = '<p class="text-center text-slate-400 py-4">کد موجودی نیست.</p>'; return; } codes.forEach(codeName => { const code = siteData.balanceCodes[codeName]; if(!code) return; const statusText = code.used ? 'استفاده شده' : 'فعال'; const statusClass = code.used ? 'text-red-400' : 'text-green-400'; const codeEl = document.createElement('div'); codeEl.className = `glass-effect p-3 rounded-lg flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-sm ${code.used ? 'opacity-60' : ''}`; codeEl.innerHTML = ` <div> <p class="font-bold text-base text-amber-300">${codeName}</p> <p class="text-slate-300">مبلغ: ${(code.value || 0).toLocaleString('fa-IR')} ت | وضع: <span class="${statusClass} font-bold">${statusText}</span></p> </div> <button data-code="${codeName}" class="delete-balance-btn px-3 py-1 text-xs font-semibold text-white bg-red-600 rounded-lg w-full sm:w-auto hover:bg-red-700 transition-colors">حذف</button> `; adminBalanceList.appendChild(codeEl); }); if (!adminBalanceList.dataset.listenersAdded) { adminBalanceList.addEventListener('click', handleAdminBalanceCodeActions); adminBalanceList.dataset.listenersAdded = 'true'; } }
-                function handleAdminBalanceCodeActions(e) { /* ... */ if (!e.target.classList.contains('delete-balance-btn')) return; const code = e.target.dataset.code; if (code && siteData.balanceCodes) { showConfirmationModal(`حذف کد ${code}`, 'اگر کد استفاده نشده باشد، دیگر قابل استفاده نخواهد بود.', () => { delete siteData.balanceCodes[code]; saveSiteData(); showNotification(`کد موجودی ${code} حذف شد.`, 'success'); loadAdminBalanceCodes(); loadAdminDashboard(); }); } }
-                function setupAdminPanel() { /* ... */ if (adminPanelBtn) adminPanelBtn.addEventListener('click', () => { if (!adminModal) return; loadAdminDashboard(); loadAdminUsers(); loadAdminProducts(); loadAdminAddProductTab(); loadAdminDiscounts(); loadAdminBalanceCodes(); adminTabs.forEach(t => t.classList.remove('active')); adminTabContents.forEach(c => c.classList.add('hidden')); const defaultTabButton = document.querySelector('.admin-tab-button[data-target="admin-tab-dashboard"]'); const defaultTabContent = document.getElementById('admin-tab-dashboard'); if(defaultTabButton) defaultTabButton.classList.add('active'); if(defaultTabContent) defaultTabContent.classList.remove('hidden'); adminModal.classList.remove('hidden'); }); adminTabs.forEach(tab => { if(tab) tab.addEventListener('click', () => { adminTabs.forEach(t => t.classList.remove('active')); tab.classList.add('active'); const target = tab.dataset.target; adminTabContents.forEach(c => { if(c) c.id === target ? c.classList.remove('hidden') : c.classList.add('hidden'); }); if (target === 'admin-tab-users') loadAdminUsers(); /* Add other specific loads if needed */ }); }); if (adminModalClose) adminModalClose.addEventListener('click', () => { if (adminModal) adminModal.classList.add('hidden'); }); if (adminBackToDashBtn) adminBackToDashBtn.addEventListener('click', () => { if (adminModal) adminModal.classList.add('hidden'); checkLogin(); if (dashboardModal) dashboardModal.classList.remove('hidden'); }); if (adminModal) adminModal.addEventListener('click', (e) => { if (e.target === adminModal) adminModal.classList.add('hidden'); }); /* Admin Form Submissions: Copy from previous script.js, ensuring element checks */ if(createDiscountForm) createDiscountForm.addEventListener('submit', (e) => { e.preventDefault(); const nameInput = document.getElementById('discount-code-name'); const valueInput = document.getElementById('discount-code-value'); const typeInput = document.getElementById('discount-code-type'); const name = nameInput?.value.trim().toUpperCase() || ''; const value = parseInt(valueInput?.value || ''); const type = typeInput?.value || 'percent'; if (!name || isNaN(value) || value <= 0 || !/^[A-Z0-9]+$/.test(name)) { showNotification('نام کد معتبر (حروف/اعداد انگلیسی) و مقدار مثبت وارد کنید', 'warning'); return; } if (!siteData.discountCodes) siteData.discountCodes = {}; if (siteData.discountCodes[name]) { showNotification(`کد ${name} تکراری است`, 'warning'); return; } siteData.discountCodes[name] = { value, type }; saveSiteData(); showNotification(`کد تخفیف ${name} ایجاد شد`, 'success'); createDiscountForm.reset(); loadAdminDiscounts(); loadAdminDashboard(); }); if(createBalanceForm) createBalanceForm.addEventListener('submit', (e) => { e.preventDefault(); const valueInput = document.getElementById('balance-code-value'); const value = parseInt(valueInput?.value || ''); if (isNaN(value) || value <= 0) { showNotification('مبلغ معتبر و مثبت وارد کنید', 'warning'); return; } let newCode; if (!siteData.balanceCodes) siteData.balanceCodes = {}; do { newCode = Math.random().toString(36).substring(2, 10).toUpperCase(); } while (siteData.balanceCodes[newCode]); siteData.balanceCodes[newCode] = { value: value, used: false }; saveSiteData(); showNotification(`کد ${newCode} (${value.toLocaleString('fa-IR')} ت) ایجاد شد`, 'success'); createBalanceForm.reset(); loadAdminBalanceCodes(); loadAdminDashboard(); }); if(addProductForm) addProductForm.addEventListener('submit', (e) => { e.preventDefault(); const nameInput = document.getElementById('admin-add-product-name'); const priceInput = document.getElementById('admin-add-product-price'); const catId = adminAddProductCategorySelect?.value || ''; const name = nameInput?.value.trim() || ''; const price = parseInt(priceInput?.value || ''); if (!catId || !name || isNaN(price) || price <= 0) { showNotification('فیلدها نامعتبرند', 'warning'); return; } const categoryItems = siteData.products[catId]?.items; if (!categoryItems) { showNotification('دسته نامعتبر', 'error'); return; } let newId; do { newId = `${catId}-${Math.random().toString(36).substring(2, 6)}`; } while (categoryItems.some(item => item && item.id === newId)); categoryItems.push({ id: newId, name: name, price: price }); saveSiteData(); renderProducts(); loadAdminProducts(); showNotification(`محصول "${name}" اضافه شد`, 'success'); addProductForm.reset(); }); if(addCategoryForm) addCategoryForm.addEventListener('submit', (e) => { e.preventDefault(); const idInput = document.getElementById('admin-add-category-id'); const nameInput = document.getElementById('admin-add-category-name'); const colorInput = document.getElementById('admin-add-category-color'); const gridInput = document.getElementById('admin-add-category-grid'); const id = idInput?.value.trim().toLowerCase().replace(/\s+/g, '-') || ''; const name = nameInput?.value.trim() || ''; const color = colorInput?.value.trim().toLowerCase() || 'blue'; const grid = gridInput?.value || 'md:grid-cols-3'; if (!id || !name || !/^[a-z0-9-]+$/.test(id)) { showNotification('شناسه/نام نامعتبر', 'warning'); return; } if (!siteData.products) siteData.products = {}; if (siteData.products[id]) { showNotification('شناسه تکراری', 'error'); return; } siteData.products[id] = { displayName: name, color: color, grid: grid, items: [] }; saveSiteData(); renderProductTabs(); renderProducts(); loadAdminAddProductTab(); loadAdminProducts(); showNotification(`دسته "${name}" ایجاد شد`, 'success'); addCategoryForm.reset(); }); }
-
-
-                // --- Event Listener Setup ---
-                function setupEventListeners() {
-                    console.log("Setting up event listeners...");
-                    // Product Tabs
-                    if (productTabsContainer) {
-                        productTabsContainer.addEventListener('click', (e) => {
-                            const tab = e.target.closest('.tab-button');
-                            if (!tab) return;
-                            document.querySelectorAll('#product-tabs .tab-button').forEach(t => t.classList.remove('active'));
-                            tab.classList.add('active');
-                            const target = tab.dataset.target;
-                            if(productPlaceholder) productPlaceholder.classList.add('hidden');
-                            document.querySelectorAll('#product-sections-wrapper .product-section').forEach(s => {
-                                s.classList.toggle('hidden', s.id !== target);
-                            });
-                        });
-                    } else { console.error("Product tabs container not found for listener setup."); }
-
-                    // Add to Cart (Delegated)
-                    if(productSectionsWrapper) {
-                        productSectionsWrapper.addEventListener('click', (e) => {
-                            const btn = e.target.closest('.add-to-cart-btn');
-                            if (!btn) return;
-                            if (!currentUser) { showNotification('لطفا وارد شوید', 'warning'); if(loginModal) loginModal.classList.remove('hidden'); return; }
-                            if (!siteUsers[currentUser]) return;
-                            const name = btn.dataset.productName; const price = btn.dataset.productPrice; const productId = btn.dataset.productId;
-                            if (!siteUsers[currentUser].cart) siteUsers[currentUser].cart = [];
-                            siteUsers[currentUser].cart.push({ id: productId, name, price });
-                            saveUsers(); updateCartUI(true); showNotification(`${name} اضافه شد`, 'success');
-                        });
-                    } else { console.error("Product sections wrapper not found for listener setup."); }
-
-                     // Other setups that add listeners
-                     setupConfirmationModal();
-                     setupLogin();
-                     setupCartActions();
-                     setupComments();
-                     setupCodes();
-                     setupAdminPanel();
-                     setupHamburgerMenu(); // Moved here
-                     setupDarkMode(); // Moved here
-                     setupOrderAlgorithm(); // Moved here
-
-                     console.log("Event listeners setup finished.");
-                }
-
-                // --- Main Initialization ---
-                function initializeApp() {
-                    console.log("SPONSORACB Script Initializing...");
-                    loadData();        // Load data first
-                    getElements();     // Then get element references
-                    setupEventListeners(); // Then setup listeners that rely on elements
-                    setupCounters();   // Setup non-critical UI features
-                    setupScrollAnimations();
-
-                    // Initial UI rendering based on loaded data
-                    try {
-                        console.log("Performing initial UI renders...");
-                        renderProductTabs();
-                        renderProducts(); // This is the crucial part
-                    } catch (error) {
-                        console.error("Error during initial product rendering:", error);
-                        showNotification("خطا در نمایش محصولات اولیه", "error");
-                        if(productPlaceholder) productPlaceholder.classList.remove('hidden');
+                    if (!response.ok) {
+                        const errorBody = await response.json();
+                        console.error('Gemini API Error:', errorBody);
+                        throw new Error(`خطای API: ${errorBody.error?.message || response.statusText}`);
                     }
 
-                    checkLogin(); // Update UI based on login status
+                    const result = await response.json();
+                    const candidate = result.candidates?.[0];
 
-                    // Initial notifications
-                    setTimeout(() => showNotification('درحال برقراری ارتباط با سرور', 'warning'), 600); // Slightly delay
-                    setTimeout(() => showNotification('اتصال با موفقیت برقرار شد', 'success'), 2600);
+                    if (candidate && candidate.content?.parts?.[0]?.text) {
+                        return candidate.content.parts[0].text;
+                    } else {
+                        console.warn("No valid text response from Gemini:", result);
+                        throw new Error("پاسخ معتبری از هوش مصنوعی دریافت نشد.");
+                    }
 
-                    console.log("SPONSORACB Script Initialized Successfully.");
+                } catch (error) {
+                    console.error('Error in callGeminiAPI:', error);
+                    throw error; // Re-throw to be caught by the caller
                 }
-
-                // --- Run Initialization ---
-                initializeApp();
-
-                // --- End Embedded Script ---
-            } catch (error) {
-                console.error("CRITICAL ERROR in script execution:", error);
-                // Try to display an error message to the user if possible
-                const body = document.body;
-                if (body) {
-                    const errorDiv = document.createElement('div');
-                    errorDiv.style.position = 'fixed';
-                    errorDiv.style.top = '10px';
-                    errorDiv.style.left = '10px';
-                    errorDiv.style.padding = '10px';
-                    errorDiv.style.backgroundColor = 'red';
-                    errorDiv.style.color = 'white';
-                    errorDiv.style.zIndex = '9999';
-                    errorDiv.textContent = 'خطای اسکریپت رخ داد. لطفا کنسول را بررسی کنید.';
-                    body.appendChild(errorDiv);
-                }
-                // Also show a notification if the system is available
-                try { showNotification("خطای جدی در اسکریپت رخ داد!", "error"); } catch(_) {}
             }
-        });
+
+            // Setup Listeners for Gemini Features
+            function setupGeminiFeatures() {
+                if (!geminiModal) return;
+
+                // Close modal button
+                geminiModalClose.addEventListener('click', hideGeminiModal);
+                geminiModal.addEventListener('click', (e) => {
+                    if (e.target === geminiModal) hideGeminiModal();
+                });
+
+                // Copy result button
+                geminiCopyBtn.addEventListener('click', () => {
+                    if(geminiResultTextarea) copyToClipboard(geminiResultTextarea.value);
+                });
+
+                // 1. Admin: Generate Product Description
+                if (geminiGenerateDescBtn && adminAddProductDesc) {
+                    geminiGenerateDescBtn.addEventListener('click', async () => {
+                        const productNameInput = document.getElementById('admin-add-product-name');
+                        const productName = productNameInput ? productNameInput.value.trim() : '';
+                        
+                        if (!productName) {
+                            showNotification('لطفا ابتدا نام محصول را وارد کنید', 'warning');
+                            return;
+                        }
+
+                        const systemPrompt = "You are an expert e-commerce marketer. Your task is to write a short, compelling, and professional product description for a social media service. Write in Persian. Keep it to one or two sentences.";
+                        const userPrompt = `یک توضیح کوتاه و جذاب برای این محصول بنویس: "${productName}"`;
+
+                        showGeminiModal('ایجاد توضیحات محصول', '✨ در حال تولید توضیحات...');
+
+                        try {
+                            const description = await callGeminiAPI(userPrompt, systemPrompt);
+                            showGeminiResult(description);
+                            if (adminAddProductDesc) {
+                                adminAddProductDesc.value = description; // Auto-fill
+                            }
+                        } catch (error) {
+                            console.error("Gemini desc generation failed:", error);
+                            showGeminiResult(`خطا در ایجاد توضیحات: ${error.message}`);
+                        }
+                    });
+                }
+
+                // 2. User: Generate Marketing Post
+                if (geminiGeneratePostBtn) {
+                    geminiGeneratePostBtn.addEventListener('click', async () => {
+                        if (!currentUser || !siteUsers[currentUser] || !siteUsers[currentUser].cart) return;
+
+                        const cart = siteUsers[currentUser].cart;
+                        if (cart.length === 0) {
+                            showNotification('سبد خرید شما خالی است!', 'warning');
+                            return;
+                        }
+
+                        const itemNames = cart.map(item => item.name).join('، ');
+                        const systemPrompt = "You are a friendly social media manager. A user has just 'purchased' some services. Based on their cart, write a short, enthusiastic social media post (e.g., for Instagram or Twitter) in Persian that they can use to celebrate or announce their new social media growth. Be creative and positive. Use relevant emojis.";
+                        const userPrompt = `بر اساس این سرویس‌ها یک پست اجتماعی جذاب بنویس: ${itemNames}`;
+
+                        showGeminiModal('ایجاد پست بازاریابی', '✨ در حال نوشتن پست...');
+
+                        try {
+                            const post = await callGeminiAPI(userPrompt, systemPrompt);
+                            showGeminiResult(post);
+                        } catch (error) {
+                            console.error("Gemini post generation failed:", error);
+                            showGeminiResult(`خطا در ایجاد پست: ${error.message}`);
+                        }
+                    });
+                }
+            }
+
+
+            // --- Event Listener Setup ---
+            function setupEventListeners() {
+                console.log("Setting up event listeners...");
+                // Product Tabs
+                if (productTabsContainer) {
+                    productTabsContainer.addEventListener('click', (e) => {
+                        const tab = e.target.closest('.tab-button');
+                        if (!tab) return;
+                        document.querySelectorAll('#product-tabs .tab-button').forEach(t => t.classList.remove('active'));
+                        tab.classList.add('active');
+                        const target = tab.dataset.target;
+                        if(productPlaceholder) productPlaceholder.classList.add('hidden'); // HIDE PLACEHOLDER
+                        document.querySelectorAll('#product-sections-wrapper .product-section').forEach(s => {
+                            s.classList.toggle('hidden', s.id !== target); // SHOW TARGET
+                        });
+                    });
+                } else { console.error("Product tabs container not found for listener setup."); }
+
+                // Add to Cart (Delegated)
+                if(productSectionsWrapper) {
+                    productSectionsWrapper.addEventListener('click', (e) => {
+                        const btn = e.target.closest('.add-to-cart-btn');
+                        if (!btn) return;
+                        if (!currentUser) { showNotification('لطفا وارد شوید', 'warning'); if(loginModal) loginModal.classList.remove('hidden'); return; }
+                        if (!siteUsers[currentUser]) return;
+                        const name = btn.dataset.productName; const price = btn.dataset.productPrice; const productId = btn.dataset.productId;
+                        if (!siteUsers[currentUser].cart) siteUsers[currentUser].cart = [];
+                        // GEMINI: Add description to cart item if needed (not strictly necessary for this feature)
+                        siteUsers[currentUser].cart.push({ id: productId, name, price });
+                        saveUsers(); updateCartUI(true); showNotification(`${name} اضافه شد`, 'success');
+                    });
+                } else { console.error("Product sections wrapper not found for listener setup."); }
+
+                // Other setups that add listeners
+                setupConfirmationModal();
+                setupLogin();
+                setupCartActions();
+                setupComments();
+                setupCodes();
+                setupAdminPanel();
+                setupHamburgerMenu();
+                // setupDarkMode(); // REMOVED
+                setupOrderAlgorithm();
+                setupGeminiFeatures(); // GEMINI: Add this call
+
+                console.log("Event listeners setup finished.");
+            }
+
+            // --- Main Initialization ---
+            function initializeApp() {
+                console.log("Initializing App...");
+                loadData();
+                getElements();
+                // setupDarkMode(); // REMOVED
+                setupHamburgerMenu();
+                setupCounters();
+                setupScrollAnimations();
+                setupOrderAlgorithm();
+                
+                // Setup modals and core event listeners
+                setupConfirmationModal();
+                setupLogin();
+                setupCartActions();
+                setupComments();
+                setupCodes();
+                setupAdminPanel();
+                setupGeminiFeatures(); // GEMINI: Setup features
+
+                // Setup product event listeners *after* other core setups
+                setupEventListeners(); // This name is a bit confusing, but it holds the tab/cart click listeners
+
+                try {
+                    console.log("Performing initial product renders...");
+                    renderProductTabs();
+                    renderProducts(); // This will now hide all products and show placeholder
+                } catch (error) {
+                    console.error("Error during initial product rendering:", error);
+                    showNotification("خطا در نمایش محصولات", "error");
+                    if(productPlaceholder) productPlaceholder.classList.remove('hidden');
+                }
+
+                checkLogin();
+
+                // Initial notifications
+                setTimeout(() => showNotification('درحال برقراری ارتباط با سرور', 'warning'), 500);
+                setTimeout(() => showNotification('با موفقيت به سرور متصل شدید', 'success'), 2500);
+
+                console.log("App Initialized.");
+            }
+
+            // --- Run Initialization ---
+            initializeApp();
+
+        } catch (error) {
+            console.error("CRITICAL ERROR in script execution:", error);
+            const body = document.body;
+            if (body) {
+                const errorDiv = document.createElement('div');
+                errorDiv.style.position = 'fixed';
+                errorDiv.style.top = '10px';
+                errorDiv.style.left = '10px';
+                errorDiv.style.padding = '10px';
+                errorDiv.style.backgroundColor = 'red';
+                errorDiv.style.color = 'white';
+                errorDiv.style.zIndex = '9999';
+                errorDiv.textContent = 'خطای اسکریپت رخ داد. لطفا کنسول را بررسی کنید.';
+                body.appendChild(errorDiv);
+            }
+        }
+    });
     </script>
 
 </body>
 </html>
-
 
