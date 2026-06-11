@@ -1,15 +1,14 @@
-```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TERMINAL // SPONSORACB_AUTH</title>
+    <title>SPONSORACB | Official Registry & Certifications</title>
     
-    <!-- Futuristic Fonts -->
+    <!-- Trust-Optimized Fonts: Playfair (Authority) & Inter (Modern Readability) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,24 +17,15 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        'rajdhani': ['Rajdhani', 'sans-serif'],
-                        'mono': ['Space Mono', 'monospace'],
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
                     },
                     colors: {
-                        'x-black': '#000000',
-                        'x-dark': '#0a0a0a',
-                        'x-gray': '#1a1a1a',
-                        'x-cyan': '#00f3ff',
-                    },
-                    animation: {
-                        'scan': 'scanline 4s linear infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'glitch': 'glitch 0.2s linear infinite',
-                    },
-                    keyframes: {
-                        scanline: {
-                            '0%': { transform: 'translateY(-100%)' },
-                            '100%': { transform: 'translateY(1000%)' }
+                        trust: {
+                            900: '#0f172a', /* Deep Slate/Navy - conveys security */
+                            800: '#1e293b',
+                            gold: '#d4af37', /* Subtle luxury */
+                            light: '#f8fafc',
                         }
                     }
                 }
@@ -45,340 +35,218 @@
 
     <style>
         body {
-            background-color: #000;
-            color: #fff;
-            overflow-x: hidden;
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            background-position: center center;
+            background-color: #080c16;
+            color: #e2e8f0;
+            background-image: radial-gradient(circle at 50% 0%, rgba(30, 41, 59, 0.5) 0%, transparent 70%);
         }
 
-        /* 3D Card Container */
-        .card-container {
-            perspective: 1000px;
-        }
-
-        .tech-card {
-            background: rgba(10, 10, 10, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .auth-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.1s, border-color 0.3s, box-shadow 0.3s;
-            backdrop-filter: blur(10px);
+            overflow: hidden;
         }
 
-        .tech-card::before {
+        .auth-card::after {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            border: 1px solid transparent;
-            background: linear-gradient(45deg, transparent, rgba(0, 243, 255, 0.1), transparent) border-box;
-            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: destination-out;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.3s;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.03), transparent);
+            transform: skewX(-20deg);
+            transition: 0.7s;
         }
 
-        .tech-card:hover {
-            border-color: rgba(255, 255, 255, 0.4);
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.05);
+        .auth-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212, 175, 55, 0.3); /* Gold border on hover */
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.05);
         }
 
-        .tech-card:hover::before {
-            opacity: 1;
+        .auth-card:hover::after {
+            left: 200%;
         }
 
-        /* Glitch effect on title */
-        .glitch-text {
-            position: relative;
-        }
-        .glitch-text::before, .glitch-text::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: #000;
-        }
-        .glitch-text::before {
-            left: 2px; text-shadow: -1px 0 #00f3ff;
-            clip: rect(24px, 550px, 90px, 0);
-            animation: glitch-anim 3s infinite linear alternate-reverse;
-        }
-        .glitch-text::after {
-            left: -2px; text-shadow: -1px 0 #ff003c;
-            clip: rect(85px, 550px, 140px, 0);
-            animation: glitch-anim 2.5s infinite linear alternate-reverse;
-        }
-
-        @keyframes glitch-anim {
-            0% { clip: rect(10px, 9999px, 86px, 0); }
-            5% { clip: rect(69px, 9999px, 18px, 0); }
-            10% { clip: rect(4px, 9999px, 87px, 0); }
-            15% { clip: rect(10px, 9999px, 86px, 0); }
-            100% { clip: rect(10px, 9999px, 86px, 0); }
-        }
-
-        /* Cut corners */
-        .cut-corner {
-            clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
-        }
-        .cut-corner-reverse {
-            clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+        .badge-verified {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #34d399;
         }
 
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: #333; }
-        ::-webkit-scrollbar-thumb:hover { background: #00f3ff; }
-
-        .scan-line {
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
-            background: rgba(0, 243, 255, 0.5);
-            box-shadow: 0 0 10px rgba(0, 243, 255, 0.8), 0 0 20px rgba(0, 243, 255, 0.4);
-            pointer-events: none;
-            z-index: 50;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #080c16; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
     </style>
 </head>
-<body class="font-rajdhani selection:bg-x-cyan selection:text-black min-h-screen flex flex-col">
+<body class="antialiased selection:bg-trust-gold selection:text-black min-h-screen">
 
-    <!-- Top Navigation Bar (HUD style) -->
-    <nav class="w-full border-b border-white/10 flex justify-between items-center px-6 py-3 font-mono text-xs text-gray-500 uppercase tracking-widest relative z-10 bg-black/80 backdrop-blur-md">
-        <div class="flex items-center gap-4">
-            <span class="text-x-cyan animate-pulse">● LIVE</span>
-            <span>SYS.VER: 9.4.1</span>
-            <span class="hidden md:inline">ENCRYPTION: AES-256</span>
+    <!-- Official Header -->
+    <header class="relative pt-20 pb-16 px-6 max-w-6xl mx-auto flex flex-col items-center text-center">
+        <!-- Security Shield Icon -->
+        <div class="mb-6 opacity-80">
+            <svg class="w-14 h-14 text-trust-gold mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
         </div>
-        <div class="flex items-center gap-6 text-right">
-            <span>COORD: <span id="coords">34.0522° N, 118.2437° W</span></span>
-            <span class="text-white border border-white/20 px-2 py-1 bg-white/5">USER: ALIREZAT7SDS</span>
-        </div>
-    </nav>
 
-    <!-- Main Header -->
-    <header class="relative pt-20 pb-16 px-6 max-w-7xl mx-auto w-full flex flex-col items-start z-10">
-        <div class="inline-flex items-center gap-3 mb-6 font-mono text-sm border-l-2 border-x-cyan pl-3 text-gray-400">
-            INITIATING PROTOCOL: <span class="text-white">CLEARANCE_LEVEL_OMEGA</span>
-        </div>
+        <h3 class="text-sm tracking-[0.3em] text-gray-400 uppercase mb-4 font-semibold">Global Registry Database</h3>
         
-        <h1 class="text-6xl md:text-8xl font-bold tracking-tighter uppercase mb-4 glitch-text text-white" data-text="SPONSORACB">
+        <h1 class="text-5xl md:text-6xl font-serif text-white font-bold mb-6 tracking-wide drop-shadow-lg">
             SPONSORACB
         </h1>
         
-        <p class="text-xl md:text-2xl text-gray-400 font-medium tracking-wide mb-10 max-w-2xl border-l-2 border-white/20 pl-4 py-1">
-            OFFICIAL LICENSES & GLOBAL TRUST SYMBOLS
+        <div class="h-px w-24 bg-gradient-to-r from-transparent via-trust-gold to-transparent mb-6"></div>
+
+        <p class="text-lg md:text-xl text-gray-400 font-light mb-10 max-w-2xl">
+            Official repository of active licenses, regulatory permits, and corporate certifications issued to <strong class="text-white font-medium">alirezat7sds</strong>.
         </p>
 
-        <!-- Technical Stats Bar -->
-        <div class="w-full grid grid-cols-2 md:grid-cols-4 gap-1 p-1 bg-white/5 border border-white/10 font-mono text-xs">
-            <div class="bg-black/50 p-4 border border-white/5">
-                <p class="text-gray-500 mb-1">TOTAL ASSETS</p>
-                <p class="text-xl text-white">07</p>
-            </div>
-            <div class="bg-black/50 p-4 border border-white/5">
-                <p class="text-gray-500 mb-1">NETWORK STATUS</p>
-                <p class="text-xl text-x-cyan">SECURE</p>
-            </div>
-            <div class="bg-black/50 p-4 border border-white/5">
-                <p class="text-gray-500 mb-1">LAST AUDIT</p>
-                <p class="text-xl text-white" id="currentDate">--</p>
-            </div>
-            <div class="bg-black/50 p-4 border border-white/5">
-                <p class="text-gray-500 mb-1">AUTH. LEVEL</p>
-                <p class="text-xl text-white">ROOT_ADMIN</p>
-            </div>
+        <!-- Official Status Banner -->
+        <div class="inline-flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-3 rounded-full backdrop-blur-md">
+            <span class="relative flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+            </span>
+            <span class="text-sm font-medium tracking-wide text-gray-200">System Status: Secure & Verified</span>
+            <span class="text-gray-500 mx-2">|</span>
+            <span class="text-sm font-mono text-gray-400" id="currentDate"></span>
         </div>
     </header>
 
     <!-- Licenses Grid -->
-    <main class="max-w-7xl mx-auto px-6 pb-32 w-full flex-grow z-10">
+    <main class="max-w-7xl mx-auto px-6 pb-24">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="grid">
-            <!-- Cards will be injected here via JavaScript -->
+            <!-- Cards will be injected here -->
         </div>
     </main>
 
-    <!-- Futuristic Modal -->
-    <div id="modal" class="fixed inset-0 z-50 hidden flex-col items-center justify-center p-4 bg-black/95 backdrop-blur-xl opacity-0 transition-opacity duration-300">
+    <!-- Professional Modal -->
+    <div id="modal" class="fixed inset-0 z-50 hidden flex-col items-center justify-center p-6 bg-trust-900/95 backdrop-blur-md opacity-0 transition-opacity duration-300">
         
-        <!-- HUD Overlay Elements inside Modal -->
-        <div class="absolute inset-0 pointer-events-none border-[1px] border-white/5 m-4 sm:m-8">
-            <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-x-cyan"></div>
-            <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-x-cyan"></div>
-            <div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-x-cyan"></div>
-            <div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-x-cyan"></div>
-        </div>
-
-        <button onclick="closeModal()" class="absolute top-8 right-8 text-gray-500 hover:text-white font-mono text-sm tracking-widest flex items-center gap-2 transition-colors z-50 group">
-            <span class="w-8 h-[1px] bg-gray-500 group-hover:bg-white transition-colors"></span> 
-            CLOSE [ESC]
-        </button>
-
-        <!-- Image Container with Scanline -->
-        <div class="relative max-w-5xl w-full flex items-center justify-center transform scale-95 transition-transform duration-300 cut-corner border border-white/10 bg-x-dark p-2" id="modal-content">
-            <div class="scan-line hidden" id="scanLine"></div>
-            <img id="modalImg" class="max-w-full max-h-[80vh] object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] relative z-10" src="" alt="License Review">
+        <div class="relative max-w-5xl w-full flex flex-col items-center justify-center transform translate-y-4 transition-transform duration-300" id="modal-content">
             
-            <!-- Tech Watermark -->
-            <div class="absolute bottom-4 right-4 font-mono text-[10px] text-white/20 text-right z-20">
-                VERIFIED BY SPONSORACB<br>
-                AUTH HASH: <span id="randomHash"></span>
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute -top-12 right-0 text-gray-400 hover:text-white flex items-center gap-2 transition-colors">
+                <span class="text-sm tracking-widest uppercase">Close</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <!-- Image wrapper with official framing -->
+            <div class="bg-white p-2 rounded-xl shadow-2xl">
+                <div class="bg-gray-50 border border-gray-200 rounded-lg overflow-hidden relative">
+                    <img id="modalImg" class="max-w-full max-h-[75vh] object-contain" src="" alt="Official Document">
+                    
+                    <!-- Watermark overlay on image -->
+                    <div class="absolute bottom-4 right-4 pointer-events-none opacity-40">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Black_check.svg/1024px-Black_check.svg.png" class="w-8 h-8 opacity-20" alt="">
+                    </div>
+                </div>
             </div>
+            
+            <p class="text-gray-400 mt-6 text-sm font-light tracking-wide text-center">
+                This document is digitally secured. Unauthorized duplication is prohibited.
+            </p>
         </div>
     </div>
 
     <!-- Scripts -->
     <script>
-        // Set Current Date dynamically in HUD
-        const dateObj = new Date();
-        document.getElementById('currentDate').innerText = dateObj.toISOString().split('T')[0];
+        // Set formatted date
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('currentDate').innerText = new Date().toLocaleDateString('en-US', options);
 
         const licenses = [
-            { img: "https://up.20script.ir/file/66d3-e4dad337-63ad-4862-ad54-deb0ceeb821a-removalai-preview.png", title: "PREMIUM BUSINESS LICENSE", code: "PBL-0X9A", year: "2022", expiry: "2042", rating: 98 },
-            { img: "https://up.20script.ir/file/d734-159f72bb-e528-40f9-a12e-007744bee144-removalai-preview.png", title: "INTERNATIONAL TRADE CERTIFICATE", code: "ITC-0X1B", year: "2023", expiry: "2043", rating: 100 },
-            { img: "https://up.20script.ir/file/feac-e703dfaf-f688-4b01-abe9-f94daa1eb08b-removalai-preview.png", title: "E-COMMERCE TRUST SYMBOL", code: "ECT-0X4F", year: "2024", expiry: "2044", rating: 95 },
-            { img: "https://up.20script.ir/file/dcf1-98157cee-b5f6-4479-a8e6-3d45550e47f1-removalai-preview.png", title: "FINANCIAL SERVICES LICENSE", code: "FSL-0X7C", year: "2023", expiry: "2043", rating: 87 },
-            { img: "https://up.20script.ir/file/dcf1-a77d0ff8-8cbf-44e8-8989-7f449eb7e288-removalai-preview.png", title: "DIGITAL OPERATIONS PERMIT", code: "DOP-0X2E", year: "2025", expiry: "2045", rating: 99 },
-            { img: "https://up.20script.ir/file/dcf1-0ddee2e6-5c3a-4c87-8f06-3325ddd2bd13-removalai-preview.png", title: "CORPORATE EXCELLENCE AWARD", code: "CEA-0X8D", year: "2024", expiry: "2044", rating: 100 },
-            { img: "https://up.20script.ir/file/dcf1-210c316a-7eff-4b0c-a748-9e871066bfb6-removalai-preview.png", title: "STRATEGIC PARTNERSHIP LICENSE", code: "SPL-0X3F", year: "2022", expiry: "2042", rating: 93 }
+            { img: "https://up.20script.ir/file/66d3-e4dad337-63ad-4862-ad54-deb0ceeb821a-removalai-preview.png", title: "Premium Business License", ref: "LIC-8992-A", year: "2022", expiry: "2042", status: "Active" },
+            { img: "https://up.20script.ir/file/d734-159f72bb-e528-40f9-a12e-007744bee144-removalai-preview.png", title: "International Trade Certificate", ref: "TRD-4410-X", year: "2023", expiry: "2043", status: "Active" },
+            { img: "https://up.20script.ir/file/feac-e703dfaf-f688-4b01-abe9-f94daa1eb08b-removalai-preview.png", title: "E-Commerce Trust Symbol", ref: "ECT-1109-B", year: "2024", expiry: "2044", status: "Active" },
+            { img: "https://up.20script.ir/file/dcf1-98157cee-b5f6-4479-a8e6-3d45550e47f1-removalai-preview.png", title: "Financial Services License", ref: "FSL-9022-C", year: "2023", expiry: "2043", status: "Active" },
+            { img: "https://up.20script.ir/file/dcf1-a77d0ff8-8cbf-44e8-8989-7f449eb7e288-removalai-preview.png", title: "Digital Operations Permit", ref: "DOP-5514-D", year: "2025", expiry: "2045", status: "Active" },
+            { img: "https://up.20script.ir/file/dcf1-0ddee2e6-5c3a-4c87-8f06-3325ddd2bd13-removalai-preview.png", title: "Corporate Excellence Award", ref: "CEA-2024-WIN", year: "2024", expiry: "2044", status: "Active" },
+            { img: "https://up.20script.ir/file/dcf1-210c316a-7eff-4b0c-a748-9e871066bfb6-removalai-preview.png", title: "Strategic Partnership License", ref: "SPL-7731-E", year: "2022", expiry: "2042", status: "Active" }
         ];
 
         const grid = document.getElementById('grid');
 
-        // Render Cards with Futuristic Design
+        // Render Professional Cards
         licenses.forEach((lic, index) => {
-            const wrapper = document.createElement('div');
-            wrapper.className = 'card-container h-full';
-            
             const card = document.createElement('div');
-            card.className = `tech-card cut-corner p-6 cursor-pointer flex flex-col group h-full`;
+            card.className = `auth-card rounded-2xl p-6 cursor-pointer flex flex-col group`;
             
-            // Progress bar logic (Rating out of 100)
-            const barWidth = lic.rating + '%';
-            const barColor = lic.rating === 100 ? 'bg-x-cyan' : 'bg-white';
-
+            // Fade in animation with delay
+            card.style.opacity = '0';
+            card.style.animation = `fadeInUp 0.6s ease-out ${0.2 + (index * 0.1)}s forwards`;
+            
             card.innerHTML = `
-                <div class="flex justify-between items-start mb-4 font-mono text-[10px] text-gray-500 uppercase">
-                    <span>SEQ_${(index+1).toString().padStart(3, '0')}</span>
-                    <span>ID: ${lic.code}</span>
+                <div class="flex justify-between items-start mb-6 border-b border-white/5 pb-4">
+                    <div class="badge-verified px-2.5 py-1 rounded text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        ${lic.status}
+                    </div>
+                    <span class="text-xs text-gray-500 font-mono">REF: ${lic.ref}</span>
                 </div>
 
-                <div class="relative w-full h-56 bg-gradient-to-b from-white/5 to-transparent border border-white/5 mb-6 flex items-center justify-center p-4 overflow-hidden cut-corner-reverse group-hover:border-white/20 transition-colors">
-                    <!-- Grid background inside image box -->
-                    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==')] opacity-50"></div>
-                    
-                    <img src="${lic.img}" class="w-full h-full object-contain relative z-10 transition-transform duration-700 group-hover:scale-105" alt="${lic.title}">
-                    
-                    <!-- Hover crosshair -->
-                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-20 pointer-events-none">
-                        <div class="w-12 h-12 border-[1px] border-x-cyan rounded-full animate-spin-slow" style="animation-duration: 4s;"></div>
-                        <div class="absolute w-2 h-2 bg-x-cyan rounded-full"></div>
-                    </div>
+                <div class="relative w-full h-56 bg-trust-800/50 rounded-xl mb-6 flex items-center justify-center p-4">
+                    <img src="${lic.img}" class="w-full h-full object-contain relative z-10 transition-transform duration-500 group-hover:scale-105 drop-shadow-xl" alt="${lic.title}">
                 </div>
                 
                 <div class="flex-grow flex flex-col">
-                    <h3 class="text-xl font-bold text-white tracking-wide mb-4 group-hover:text-x-cyan transition-colors uppercase">${lic.title}</h3>
+                    <h3 class="text-xl font-serif text-white font-semibold mb-2 group-hover:text-trust-gold transition-colors">${lic.title}</h3>
                     
-                    <div class="mt-auto">
-                        <!-- Rating System as Tech Bar -->
-                        <div class="mb-4">
-                            <div class="flex justify-between font-mono text-[10px] text-gray-400 mb-1">
-                                <span>INTEGRITY_INDEX</span>
-                                <span>${lic.rating}%</span>
-                            </div>
-                            <div class="h-1 w-full bg-white/10 overflow-hidden">
-                                <div class="h-full ${barColor} transition-all duration-1000" style="width: 0%;" data-width="${barWidth}"></div>
-                            </div>
+                    <div class="mt-auto grid grid-cols-2 gap-4 pt-4 border-t border-white/5">
+                        <div>
+                            <p class="text-gray-500 text-[10px] uppercase tracking-wider mb-1">Date of Issue</p>
+                            <p class="text-gray-300 font-medium text-sm">${lic.year}</p>
                         </div>
-
-                        <!-- Dates Data -->
-                        <div class="grid grid-cols-2 gap-2 border-t border-white/10 pt-3 font-mono text-[11px]">
-                            <div>
-                                <p class="text-gray-500 mb-0.5">ISSUE_DATE</p>
-                                <p class="text-white">${lic.year}</p>
-                            </div>
-                            <div>
-                                <p class="text-gray-500 mb-0.5">EXPIRATION</p>
-                                <p class="text-white">${lic.expiry}</p>
-                            </div>
+                        <div>
+                            <p class="text-gray-500 text-[10px] uppercase tracking-wider mb-1">Valid Thru</p>
+                            <p class="text-gray-300 font-medium text-sm">${lic.expiry}</p>
                         </div>
                     </div>
                 </div>
             `;
             
-            // 3D Hover Logic
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                // Calculate rotation (max 10 degrees)
-                const rotateX = ((y - centerY) / centerY) * -10;
-                const rotateY = ((x - centerX) / centerX) * 10;
-                
-                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'rotateX(0deg) rotateY(0deg)';
-            });
-
             card.onclick = () => openModal(lic.img);
-            wrapper.appendChild(card);
-            grid.appendChild(wrapper);
-
-            // Animate progress bars on load
-            setTimeout(() => {
-                const bar = card.querySelector('[data-width]');
-                bar.style.width = bar.getAttribute('data-width');
-            }, 500);
+            grid.appendChild(card);
         });
+
+        // Add Keyframe animation to document
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes fadeInUp {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
 
         // Modal Logic
         const modal = document.getElementById('modal');
         const modalImg = document.getElementById('modalImg');
         const modalContent = document.getElementById('modal-content');
-        const scanLine = document.getElementById('scanLine');
-        const hashDisplay = document.getElementById('randomHash');
-
-        function generateHash() {
-            return Math.random().toString(36).substring(2, 15).toUpperCase() + 
-                   Math.random().toString(36).substring(2, 15).toUpperCase();
-        }
 
         function openModal(imgSrc) {
             modalImg.src = imgSrc;
-            hashDisplay.innerText = generateHash();
-            
             modal.classList.remove('hidden');
             
             setTimeout(() => {
                 modal.classList.remove('opacity-0');
-                modalContent.classList.remove('scale-95');
-                modalContent.classList.add('scale-100');
-                
-                // Start scanline animation
-                scanLine.classList.remove('hidden');
-                scanLine.classList.add('animate-scan');
+                modalContent.classList.remove('translate-y-4');
+                modalContent.classList.add('translate-y-0');
             }, 10);
-            
             document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
             modal.classList.add('opacity-0');
-            modalContent.classList.remove('scale-100');
-            modalContent.classList.add('scale-95');
-            scanLine.classList.add('hidden');
-            scanLine.classList.remove('animate-scan');
+            modalContent.classList.remove('translate-y-0');
+            modalContent.classList.add('translate-y-4');
             
             setTimeout(() => {
                 modal.classList.add('hidden');
@@ -398,18 +266,6 @@
                 closeModal();
             }
         });
-
-        // Simulate Random Coordinates update for realism
-        setInterval(() => {
-            const lat = (Math.random() * 90).toFixed(4);
-            const lon = (Math.random() * 180).toFixed(4);
-            const dirLat = Math.random() > 0.5 ? 'N' : 'S';
-            const dirLon = Math.random() > 0.5 ? 'E' : 'W';
-            document.getElementById('coords').innerText = `${lat}° ${dirLat}, ${lon}° ${dirLon}`;
-        }, 5000);
     </script>
 </body>
 </html>
-
-
-```
