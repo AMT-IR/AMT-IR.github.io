@@ -1,40 +1,41 @@
 ```html
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPONSORACB | Official Licenses & Certifications</title>
+    <title>TERMINAL // SPONSORACB_AUTH</title>
     
-    <!-- Google Fonts: Outfit for modern look -->
+    <!-- Futuristic Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS for rapid modern styling -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
+                        'rajdhani': ['Rajdhani', 'sans-serif'],
+                        'mono': ['Space Mono', 'monospace'],
                     },
                     colors: {
-                        brand: {
-                            900: '#0a0f1c',
-                            800: '#111827',
-                            accent: '#3b82f6',
-                            glow: '#60a5fa'
-                        }
+                        'x-black': '#000000',
+                        'x-dark': '#0a0a0a',
+                        'x-gray': '#1a1a1a',
+                        'x-cyan': '#00f3ff',
                     },
                     animation: {
-                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'scan': 'scanline 4s linear infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glitch': 'glitch 0.2s linear infinite',
                     },
                     keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        scanline: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(1000%)' }
                         }
                     }
                 }
@@ -44,189 +45,331 @@
 
     <style>
         body {
-            background-color: #050505;
-            color: #f3f4f6;
+            background-color: #000;
+            color: #fff;
             overflow-x: hidden;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: center center;
         }
 
-        /* Ambient Background Glows */
-        .bg-glow-1 {
-            position: fixed; top: -10%; left: -10%; width: 50vw; height: 50vw;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(0,0,0,0) 70%);
-            z-index: -1; pointer-events: none;
-        }
-        .bg-glow-2 {
-            position: fixed; bottom: -10%; right: -10%; width: 50vw; height: 50vw;
-            background: radial-gradient(circle, rgba(147, 51, 234, 0.12) 0%, rgba(0,0,0,0) 70%);
-            z-index: -1; pointer-events: none;
+        /* 3D Card Container */
+        .card-container {
+            perspective: 1000px;
         }
 
-        /* Glass Card Styles */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .tech-card {
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.1s, border-color 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(10px);
         }
 
-        .glass-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: rgba(96, 165, 250, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(59, 130, 246, 0.1);
-            background: rgba(255, 255, 255, 0.05);
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 1px solid transparent;
+            background: linear-gradient(45deg, transparent, rgba(0, 243, 255, 0.1), transparent) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tech-card:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.05);
+        }
+
+        .tech-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Glitch effect on title */
+        .glitch-text {
+            position: relative;
+        }
+        .glitch-text::before, .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #000;
+        }
+        .glitch-text::before {
+            left: 2px; text-shadow: -1px 0 #00f3ff;
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim 3s infinite linear alternate-reverse;
+        }
+        .glitch-text::after {
+            left: -2px; text-shadow: -1px 0 #ff003c;
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim 2.5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(10px, 9999px, 86px, 0); }
+            5% { clip: rect(69px, 9999px, 18px, 0); }
+            10% { clip: rect(4px, 9999px, 87px, 0); }
+            15% { clip: rect(10px, 9999px, 86px, 0); }
+            100% { clip: rect(10px, 9999px, 86px, 0); }
+        }
+
+        /* Cut corners */
+        .cut-corner {
+            clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+        }
+        .cut-corner-reverse {
+            clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
         }
 
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #050505; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; }
+        ::-webkit-scrollbar-thumb:hover { background: #00f3ff; }
 
-        /* Hide elements before animation */
-        .stagger-item { opacity: 0; }
+        .scan-line {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: rgba(0, 243, 255, 0.5);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.8), 0 0 20px rgba(0, 243, 255, 0.4);
+            pointer-events: none;
+            z-index: 50;
+        }
     </style>
 </head>
-<body class="antialiased selection:bg-brand-accent selection:text-white relative min-h-screen">
+<body class="font-rajdhani selection:bg-x-cyan selection:text-black min-h-screen flex flex-col">
 
-    <!-- Ambient Glow Backgrounds -->
-    <div class="bg-glow-1"></div>
-    <div class="bg-glow-2"></div>
+    <!-- Top Navigation Bar (HUD style) -->
+    <nav class="w-full border-b border-white/10 flex justify-between items-center px-6 py-3 font-mono text-xs text-gray-500 uppercase tracking-widest relative z-10 bg-black/80 backdrop-blur-md">
+        <div class="flex items-center gap-4">
+            <span class="text-x-cyan animate-pulse">● LIVE</span>
+            <span>SYS.VER: 9.4.1</span>
+            <span class="hidden md:inline">ENCRYPTION: AES-256</span>
+        </div>
+        <div class="flex items-center gap-6 text-right">
+            <span>COORD: <span id="coords">34.0522° N, 118.2437° W</span></span>
+            <span class="text-white border border-white/20 px-2 py-1 bg-white/5">USER: ALIREZAT7SDS</span>
+        </div>
+    </nav>
 
-    <!-- Header / Hero Section -->
-    <header class="relative pt-24 pb-16 lg:pt-36 lg:pb-24 px-6 text-center max-w-5xl mx-auto flex flex-col items-center justify-center">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-brand-glow text-sm font-medium mb-8 animate-fade-in-up" style="animation-delay: 0.1s;">
-            <span class="relative flex h-2.5 w-2.5">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-glow opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span>
-            </span>
-            Verified & Authentic
+    <!-- Main Header -->
+    <header class="relative pt-20 pb-16 px-6 max-w-7xl mx-auto w-full flex flex-col items-start z-10">
+        <div class="inline-flex items-center gap-3 mb-6 font-mono text-sm border-l-2 border-x-cyan pl-3 text-gray-400">
+            INITIATING PROTOCOL: <span class="text-white">CLEARANCE_LEVEL_OMEGA</span>
         </div>
         
-        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 animate-fade-in-up text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500" style="animation-delay: 0.2s;">
+        <h1 class="text-6xl md:text-8xl font-bold tracking-tighter uppercase mb-4 glitch-text text-white" data-text="SPONSORACB">
             SPONSORACB
         </h1>
         
-        <p class="text-xl md:text-2xl text-gray-400 font-light mb-8 max-w-2xl animate-fade-in-up" style="animation-delay: 0.3s;">
-            Official Licenses & Trust Symbols
+        <p class="text-xl md:text-2xl text-gray-400 font-medium tracking-wide mb-10 max-w-2xl border-l-2 border-white/20 pl-4 py-1">
+            OFFICIAL LICENSES & GLOBAL TRUST SYMBOLS
         </p>
-        
-        <div class="flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-4 rounded-2xl animate-fade-in-up backdrop-blur-md" style="animation-delay: 0.4s;">
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold shadow-lg">
-                A
+
+        <!-- Technical Stats Bar -->
+        <div class="w-full grid grid-cols-2 md:grid-cols-4 gap-1 p-1 bg-white/5 border border-white/10 font-mono text-xs">
+            <div class="bg-black/50 p-4 border border-white/5">
+                <p class="text-gray-500 mb-1">TOTAL ASSETS</p>
+                <p class="text-xl text-white">07</p>
             </div>
-            <div class="text-left">
-                <p class="text-xs text-gray-400 uppercase tracking-wider">Issued to</p>
-                <p class="text-lg font-semibold text-white">alirezat7sds</p>
+            <div class="bg-black/50 p-4 border border-white/5">
+                <p class="text-gray-500 mb-1">NETWORK STATUS</p>
+                <p class="text-xl text-x-cyan">SECURE</p>
+            </div>
+            <div class="bg-black/50 p-4 border border-white/5">
+                <p class="text-gray-500 mb-1">LAST AUDIT</p>
+                <p class="text-xl text-white" id="currentDate">--</p>
+            </div>
+            <div class="bg-black/50 p-4 border border-white/5">
+                <p class="text-gray-500 mb-1">AUTH. LEVEL</p>
+                <p class="text-xl text-white">ROOT_ADMIN</p>
             </div>
         </div>
     </header>
 
     <!-- Licenses Grid -->
-    <main class="max-w-7xl mx-auto px-6 pb-32">
+    <main class="max-w-7xl mx-auto px-6 pb-32 w-full flex-grow z-10">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="grid">
             <!-- Cards will be injected here via JavaScript -->
         </div>
     </main>
 
-    <!-- Interactive Modal -->
-    <div id="modal" class="fixed inset-0 z-50 hidden flex-col items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300" style="background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);">
+    <!-- Futuristic Modal -->
+    <div id="modal" class="fixed inset-0 z-50 hidden flex-col items-center justify-center p-4 bg-black/95 backdrop-blur-xl opacity-0 transition-opacity duration-300">
         
-        <!-- Close Button -->
-        <button onclick="closeModal()" class="absolute top-6 right-6 sm:top-10 sm:right-10 text-gray-400 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-200 z-50">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+        <!-- HUD Overlay Elements inside Modal -->
+        <div class="absolute inset-0 pointer-events-none border-[1px] border-white/5 m-4 sm:m-8">
+            <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-x-cyan"></div>
+            <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-x-cyan"></div>
+            <div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-x-cyan"></div>
+            <div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-x-cyan"></div>
+        </div>
+
+        <button onclick="closeModal()" class="absolute top-8 right-8 text-gray-500 hover:text-white font-mono text-sm tracking-widest flex items-center gap-2 transition-colors z-50 group">
+            <span class="w-8 h-[1px] bg-gray-500 group-hover:bg-white transition-colors"></span> 
+            CLOSE [ESC]
         </button>
 
-        <!-- Modal Content -->
-        <div class="relative max-w-5xl w-full flex flex-col items-center justify-center transform scale-95 transition-transform duration-300" id="modal-content">
-            <img id="modalImg" class="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl drop-shadow-[0_0_30px_rgba(59,130,246,0.2)]" src="" alt="License Preview">
-            <p class="text-gray-400 mt-6 text-sm bg-black/50 px-4 py-2 rounded-full backdrop-blur-sm">Click anywhere outside to close</p>
+        <!-- Image Container with Scanline -->
+        <div class="relative max-w-5xl w-full flex items-center justify-center transform scale-95 transition-transform duration-300 cut-corner border border-white/10 bg-x-dark p-2" id="modal-content">
+            <div class="scan-line hidden" id="scanLine"></div>
+            <img id="modalImg" class="max-w-full max-h-[80vh] object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] relative z-10" src="" alt="License Review">
+            
+            <!-- Tech Watermark -->
+            <div class="absolute bottom-4 right-4 font-mono text-[10px] text-white/20 text-right z-20">
+                VERIFIED BY SPONSORACB<br>
+                AUTH HASH: <span id="randomHash"></span>
+            </div>
         </div>
     </div>
 
     <!-- Scripts -->
     <script>
+        // Set Current Date dynamically in HUD
+        const dateObj = new Date();
+        document.getElementById('currentDate').innerText = dateObj.toISOString().split('T')[0];
+
         const licenses = [
-            { img: "https://up.20script.ir/file/66d3-e4dad337-63ad-4862-ad54-deb0ceeb821a-removalai-preview.png", title: "Premium Business License", year: "2022", expiry: "2042", rating: 9.8 },
-            { img: "https://up.20script.ir/file/d734-159f72bb-e528-40f9-a12e-007744bee144-removalai-preview.png", title: "International Trade Certificate", year: "2023", expiry: "2043", rating: 10 },
-            { img: "https://up.20script.ir/file/feac-e703dfaf-f688-4b01-abe9-f94daa1eb08b-removalai-preview.png", title: "E-Commerce Trust Symbol", year: "2024", expiry: "2044", rating: 9.5 },
-            { img: "https://up.20script.ir/file/dcf1-98157cee-b5f6-4479-a8e6-3d45550e47f1-removalai-preview.png", title: "Financial Services License", year: "2023", expiry: "2043", rating: 8.7 },
-            { img: "https://up.20script.ir/file/dcf1-a77d0ff8-8cbf-44e8-8989-7f449eb7e288-removalai-preview.png", title: "Digital Operations Permit", year: "2025", expiry: "2045", rating: 9.9 },
-            { img: "https://up.20script.ir/file/dcf1-0ddee2e6-5c3a-4c87-8f06-3325ddd2bd13-removalai-preview.png", title: "Corporate Excellence Award", year: "2024", expiry: "2044", rating: 10 },
-            { img: "https://up.20script.ir/file/dcf1-210c316a-7eff-4b0c-a748-9e871066bfb6-removalai-preview.png", title: "Strategic Partnership License", year: "2022", expiry: "2042", rating: 9.3 }
+            { img: "https://up.20script.ir/file/66d3-e4dad337-63ad-4862-ad54-deb0ceeb821a-removalai-preview.png", title: "PREMIUM BUSINESS LICENSE", code: "PBL-0X9A", year: "2022", expiry: "2042", rating: 98 },
+            { img: "https://up.20script.ir/file/d734-159f72bb-e528-40f9-a12e-007744bee144-removalai-preview.png", title: "INTERNATIONAL TRADE CERTIFICATE", code: "ITC-0X1B", year: "2023", expiry: "2043", rating: 100 },
+            { img: "https://up.20script.ir/file/feac-e703dfaf-f688-4b01-abe9-f94daa1eb08b-removalai-preview.png", title: "E-COMMERCE TRUST SYMBOL", code: "ECT-0X4F", year: "2024", expiry: "2044", rating: 95 },
+            { img: "https://up.20script.ir/file/dcf1-98157cee-b5f6-4479-a8e6-3d45550e47f1-removalai-preview.png", title: "FINANCIAL SERVICES LICENSE", code: "FSL-0X7C", year: "2023", expiry: "2043", rating: 87 },
+            { img: "https://up.20script.ir/file/dcf1-a77d0ff8-8cbf-44e8-8989-7f449eb7e288-removalai-preview.png", title: "DIGITAL OPERATIONS PERMIT", code: "DOP-0X2E", year: "2025", expiry: "2045", rating: 99 },
+            { img: "https://up.20script.ir/file/dcf1-0ddee2e6-5c3a-4c87-8f06-3325ddd2bd13-removalai-preview.png", title: "CORPORATE EXCELLENCE AWARD", code: "CEA-0X8D", year: "2024", expiry: "2044", rating: 100 },
+            { img: "https://up.20script.ir/file/dcf1-210c316a-7eff-4b0c-a748-9e871066bfb6-removalai-preview.png", title: "STRATEGIC PARTNERSHIP LICENSE", code: "SPL-0X3F", year: "2022", expiry: "2042", rating: 93 }
         ];
 
         const grid = document.getElementById('grid');
 
-        const fallbackSVG = `<div class='flex flex-col items-center justify-center text-gray-600 relative z-10 w-full h-full'><svg class='w-16 h-16 mb-3 opacity-30' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='1' d='M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z'></path></svg><span class='text-xs tracking-widest uppercase opacity-50'>Image Missing</span></div>`;
-
-        // Render Cards
+        // Render Cards with Futuristic Design
         licenses.forEach((lic, index) => {
-            const delay = 0.3 + (index * 0.1); // Staggered animation
+            const wrapper = document.createElement('div');
+            wrapper.className = 'card-container h-full';
             
             const card = document.createElement('div');
-            card.className = `glass-card rounded-3xl p-5 cursor-pointer flex flex-col group stagger-item`;
-            card.style.animation = `fadeInUp 0.8s ease-out ${delay}s forwards`;
+            card.className = `tech-card cut-corner p-6 cursor-pointer flex flex-col group h-full`;
             
+            // Progress bar logic (Rating out of 100)
+            const barWidth = lic.rating + '%';
+            const barColor = lic.rating === 100 ? 'bg-x-cyan' : 'bg-white';
+
             card.innerHTML = `
-                <div class="relative w-full h-64 bg-black/40 rounded-2xl mb-6 overflow-hidden flex items-center justify-center p-4">
-                    <!-- Subtle gradient overlay on hover -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-brand-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"></div>
+                <div class="flex justify-between items-start mb-4 font-mono text-[10px] text-gray-500 uppercase">
+                    <span>SEQ_${(index+1).toString().padStart(3, '0')}</span>
+                    <span>ID: ${lic.code}</span>
+                </div>
+
+                <div class="relative w-full h-56 bg-gradient-to-b from-white/5 to-transparent border border-white/5 mb-6 flex items-center justify-center p-4 overflow-hidden cut-corner-reverse group-hover:border-white/20 transition-colors">
+                    <!-- Grid background inside image box -->
+                    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==')] opacity-50"></div>
                     
-                    <img src="${lic.img}" class="w-full h-full object-contain relative z-10 transition-transform duration-500 group-hover:scale-110 drop-shadow-lg" alt="${lic.title}" 
-                         onerror="this.outerHTML=\`${fallbackSVG}\`">
+                    <img src="${lic.img}" class="w-full h-full object-contain relative z-10 transition-transform duration-700 group-hover:scale-105" alt="${lic.title}">
+                    
+                    <!-- Hover crosshair -->
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-20 pointer-events-none">
+                        <div class="w-12 h-12 border-[1px] border-x-cyan rounded-full animate-spin-slow" style="animation-duration: 4s;"></div>
+                        <div class="absolute w-2 h-2 bg-x-cyan rounded-full"></div>
+                    </div>
                 </div>
                 
                 <div class="flex-grow flex flex-col">
-                    <div class="flex justify-between items-start mb-3">
-                        <h3 class="text-xl font-bold text-white group-hover:text-brand-glow transition-colors">${lic.title}</h3>
-                    </div>
+                    <h3 class="text-xl font-bold text-white tracking-wide mb-4 group-hover:text-x-cyan transition-colors uppercase">${lic.title}</h3>
                     
-                    <div class="inline-flex items-center gap-1.5 bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 px-2.5 py-1 rounded-md w-fit text-sm font-semibold mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
-                        </svg>
-                        ${lic.rating} / 10
-                    </div>
-
-                    <div class="mt-auto grid grid-cols-2 gap-4 pt-4 border-t border-white/10 text-sm">
-                        <div>
-                            <p class="text-gray-500 text-xs uppercase tracking-wide mb-1">Received</p>
-                            <p class="text-gray-200 font-medium">${lic.year}</p>
+                    <div class="mt-auto">
+                        <!-- Rating System as Tech Bar -->
+                        <div class="mb-4">
+                            <div class="flex justify-between font-mono text-[10px] text-gray-400 mb-1">
+                                <span>INTEGRITY_INDEX</span>
+                                <span>${lic.rating}%</span>
+                            </div>
+                            <div class="h-1 w-full bg-white/10 overflow-hidden">
+                                <div class="h-full ${barColor} transition-all duration-1000" style="width: 0%;" data-width="${barWidth}"></div>
+                            </div>
                         </div>
-                        <div>
-                            <p class="text-gray-500 text-xs uppercase tracking-wide mb-1">Valid Until</p>
-                            <p class="text-gray-200 font-medium">${lic.expiry}</p>
+
+                        <!-- Dates Data -->
+                        <div class="grid grid-cols-2 gap-2 border-t border-white/10 pt-3 font-mono text-[11px]">
+                            <div>
+                                <p class="text-gray-500 mb-0.5">ISSUE_DATE</p>
+                                <p class="text-white">${lic.year}</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 mb-0.5">EXPIRATION</p>
+                                <p class="text-white">${lic.expiry}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             `;
             
+            // 3D Hover Logic
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                // Calculate rotation (max 10 degrees)
+                const rotateX = ((y - centerY) / centerY) * -10;
+                const rotateY = ((x - centerX) / centerX) * 10;
+                
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            });
+
             card.onclick = () => openModal(lic.img);
-            grid.appendChild(card);
+            wrapper.appendChild(card);
+            grid.appendChild(wrapper);
+
+            // Animate progress bars on load
+            setTimeout(() => {
+                const bar = card.querySelector('[data-width]');
+                bar.style.width = bar.getAttribute('data-width');
+            }, 500);
         });
 
         // Modal Logic
         const modal = document.getElementById('modal');
         const modalImg = document.getElementById('modalImg');
         const modalContent = document.getElementById('modal-content');
+        const scanLine = document.getElementById('scanLine');
+        const hashDisplay = document.getElementById('randomHash');
+
+        function generateHash() {
+            return Math.random().toString(36).substring(2, 15).toUpperCase() + 
+                   Math.random().toString(36).substring(2, 15).toUpperCase();
+        }
 
         function openModal(imgSrc) {
             modalImg.src = imgSrc;
+            hashDisplay.innerText = generateHash();
             
-            modalImg.onerror = function() {
-                this.src = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22800%22 height%3D%22500%22 viewBox%3D%220 0 800 500%22%3E%3Crect width%3D%22800%22 height%3D%22500%22 fill%3D%22%23111827%22 rx%3D%2220%22%2F%3E%3Ctext x%3D%2250%25%22 y%3D%2250%25%22 dominant-baseline%3D%22middle%22 text-anchor%3D%22middle%22 font-family%3D%22sans-serif%22 font-size%3D%2224%22 fill%3D%22%234b5563%22%3EImage link is broken or blocked%3C%2Ftext%3E%3C%2Fsvg%3E";
-            };
-
             modal.classList.remove('hidden');
+            
             setTimeout(() => {
                 modal.classList.remove('opacity-0');
                 modalContent.classList.remove('scale-95');
                 modalContent.classList.add('scale-100');
+                
+                // Start scanline animation
+                scanLine.classList.remove('hidden');
+                scanLine.classList.add('animate-scan');
             }, 10);
+            
             document.body.style.overflow = 'hidden';
         }
 
@@ -234,6 +377,8 @@
             modal.classList.add('opacity-0');
             modalContent.classList.remove('scale-100');
             modalContent.classList.add('scale-95');
+            scanLine.classList.add('hidden');
+            scanLine.classList.remove('animate-scan');
             
             setTimeout(() => {
                 modal.classList.add('hidden');
@@ -253,6 +398,15 @@
                 closeModal();
             }
         });
+
+        // Simulate Random Coordinates update for realism
+        setInterval(() => {
+            const lat = (Math.random() * 90).toFixed(4);
+            const lon = (Math.random() * 180).toFixed(4);
+            const dirLat = Math.random() > 0.5 ? 'N' : 'S';
+            const dirLon = Math.random() > 0.5 ? 'E' : 'W';
+            document.getElementById('coords').innerText = `${lat}° ${dirLat}, ${lon}° ${dirLon}`;
+        }, 5000);
     </script>
 </body>
 </html>
