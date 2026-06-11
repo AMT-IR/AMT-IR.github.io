@@ -74,11 +74,34 @@
             color: #34d399;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #080c16; }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+        /* --- Custom Premium Scrollbar --- */
+        ::-webkit-scrollbar { 
+            width: 10px; /* slightly wider for better usability */
+        }
+        
+        ::-webkit-scrollbar-track { 
+            background: #080c16; 
+            border-left: 1px solid rgba(255, 255, 255, 0.02); /* subtle separator */
+        }
+        
+        ::-webkit-scrollbar-thumb { 
+            background: #1e293b; 
+            border-radius: 8px; /* more rounded */
+            border: 2px solid #080c16; /* creates padding effect around the thumb */
+            transition: background-color 0.3s ease;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover { 
+            background: #d4af37; /* Trust Gold color on hover */
+            border: 2px solid #080c16;
+            cursor: pointer;
+        }
+        
+        /* Firefox Support */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #1e293b #080c16;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-trust-gold selection:text-black min-h-screen">
