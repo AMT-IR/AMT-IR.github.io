@@ -1,133 +1,261 @@
+```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPONSORACB | Official Licenses & Certifications</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    
+    <!-- Google Fonts: Outfit for modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS for rapid modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            900: '#0a0f1c',
+                            800: '#111827',
+                            accent: '#3b82f6',
+                            glow: '#60a5fa'
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap');
-
-        :root {
-            --gold: #d4af37;
-            --dark: #0a0a0a;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-            color: #e0e0e0;
-            min-height: 100vh;
+            background-color: #050505;
+            color: #f3f4f6;
+            overflow-x: hidden;
         }
 
-        .header {
-            height: 88vh;
-            background: linear-gradient(rgba(10,10,10,0.75), rgba(10,10,10,0.88)), 
-                        url('https://cdn.imgurl.ir/uploads/x904941_6b55290a-5656-4f60-b1d0-a4729287141e_removalai_preview.png') center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
+        /* Ambient Background Glows */
+        .bg-glow-1 {
+            position: fixed; top: -10%; left: -10%; width: 50vw; height: 50vw;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1; pointer-events: none;
+        }
+        .bg-glow-2 {
+            position: fixed; bottom: -10%; right: -10%; width: 50vw; height: 50vw;
+            background: radial-gradient(circle, rgba(147, 51, 234, 0.12) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1; pointer-events: none;
         }
 
-        .header-content h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 5.5rem;
-            color: var(--gold);
-            text-shadow: 0 0 60px rgba(212, 175, 55, 0.7);
+        /* Glass Card Styles */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .licenses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
-            gap: 45px;
-            padding: 110px 5%;
-            max-width: 1650px;
-            margin: 0 auto;
+        .glass-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(96, 165, 250, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(59, 130, 246, 0.1);
+            background: rgba(255, 255, 255, 0.05);
         }
 
-        .license-card {
-            background: #111111;
-            border-radius: 26px;
-            overflow: hidden;
-            border: 1px solid rgba(212, 175, 55, 0.18);
-            transition: all 0.5s ease;
-            cursor: pointer;
-        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
 
-        .license-card:hover {
-            transform: translateY(-25px);
-            box-shadow: 0 35px 80px rgba(212, 175, 55, 0.22);
-        }
-
-        .license-image {
-            width: 100%;
-            height: 460px;
-            object-fit: contain;
-            background: #0a0a0a;
-            padding: 30px;
-        }
+        /* Hide elements before animation */
+        .stagger-item { opacity: 0; }
     </style>
 </head>
-<body>
+<body class="antialiased selection:bg-brand-accent selection:text-white relative min-h-screen">
 
-    <header class="header">
-        <div class="header-content">
-            <h1>SPONSORACB</h1>
-            <p style="font-size: 1.7rem; margin-top: 25px; color: #ddd;">Official Licenses & Trust Symbols</p>
-            <p style="margin-top: 15px; font-size: 1.2rem;">Issued to: <strong>alirezat7sds</strong></p>
+    <!-- Ambient Glow Backgrounds -->
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <!-- Header / Hero Section -->
+    <header class="relative pt-24 pb-16 lg:pt-36 lg:pb-24 px-6 text-center max-w-5xl mx-auto flex flex-col items-center justify-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-brand-glow text-sm font-medium mb-8 animate-fade-in-up" style="animation-delay: 0.1s;">
+            <span class="relative flex h-2.5 w-2.5">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-glow opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span>
+            </span>
+            Verified & Authentic
+        </div>
+        
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 animate-fade-in-up text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500" style="animation-delay: 0.2s;">
+            SPONSORACB
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-gray-400 font-light mb-8 max-w-2xl animate-fade-in-up" style="animation-delay: 0.3s;">
+            Official Licenses & Trust Symbols
+        </p>
+        
+        <div class="flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-4 rounded-2xl animate-fade-in-up backdrop-blur-md" style="animation-delay: 0.4s;">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold shadow-lg">
+                A
+            </div>
+            <div class="text-left">
+                <p class="text-xs text-gray-400 uppercase tracking-wider">Issued to</p>
+                <p class="text-lg font-semibold text-white">alirezat7sds</p>
+            </div>
         </div>
     </header>
 
-    <div class="licenses-grid" id="grid"></div>
+    <!-- Licenses Grid -->
+    <main class="max-w-7xl mx-auto px-6 pb-32">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="grid">
+            <!-- Cards will be injected here via JavaScript -->
+        </div>
+    </main>
 
-    <!-- Modal -->
-    <div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.96); z-index:1000; align-items:center; justify-content:center;">
-        <div style="background:#111; padding:40px; border-radius:20px; max-width:820px; width:92%; border:2px solid #d4af37; position:relative;">
-            <span onclick="closeModal()" style="position:absolute; top:15px; right:25px; font-size:2.8rem; color:#d4af37; cursor:pointer;">×</span>
-            <img id="modalImg" style="width:100%; border-radius:12px; max-height:75vh; object-fit:contain;">
+    <!-- Interactive Modal -->
+    <div id="modal" class="fixed inset-0 z-50 hidden flex-col items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300" style="background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);">
+        
+        <!-- Close Button -->
+        <button onclick="closeModal()" class="absolute top-6 right-6 sm:top-10 sm:right-10 text-gray-400 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-200 z-50">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+
+        <!-- Modal Content -->
+        <div class="relative max-w-5xl w-full flex flex-col items-center justify-center transform scale-95 transition-transform duration-300" id="modal-content">
+            <img id="modalImg" class="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl drop-shadow-[0_0_30px_rgba(59,130,246,0.2)]" src="" alt="License Preview">
+            <p class="text-gray-400 mt-6 text-sm bg-black/50 px-4 py-2 rounded-full backdrop-blur-sm">Click anywhere outside to close</p>
         </div>
     </div>
 
+    <!-- Scripts -->
     <script>
         const licenses = [
-            { img: "https://cdn.imgurl.ir/uploads/c178766_e4dad337-63ad-4862-ad54-deb0ceeb821a_removalai_preview.png", title: "Premium Business License", year: "2022", expiry: "2042", rating: 9.8 },
-            { img: "https://cdn.imgurl.ir/uploads/a64307_159f72bb-e528-40f9-a12e-007744bee144_removalai_preview.png", title: "International Trade Certificate", year: "2023", expiry: "2043", rating: 10 },
-            { img: "https://cdn.imgurl.ir/uploads/f31686_e703dfaf-f688-4b01-abe9-f94daa1eb08b_removalai_preview.png", title: "E-Commerce Trust Symbol", year: "2024", expiry: "2044", rating: 9.5 },
-            { img: "https://cdn.imgurl.ir/uploads/v1758_98157cee-b5f6-4479-a8e6-3d45550e47f1_removalai_preview.png", title: "Financial Services License", year: "2023", expiry: "2043", rating: 8.7 },
-            { img: "https://cdn.imgurl.ir/uploads/p374384_a77d0ff8-8cbf-44e8-8989-7f449eb7e288_removalai_preview.png", title: "Digital Operations Permit", year: "2025", expiry: "2045", rating: 9.9 },
-            { img: "https://cdn.imgurl.ir/uploads/h469097_0ddee2e6-5c3a-4c87-8f06-3325ddd2bd13_removalai_preview.png", title: "Corporate Excellence Award", year: "2024", expiry: "2044", rating: 10 },
-            { img: "https://cdn.imgurl.ir/uploads/e3149_210c316a-7eff-4b0c-a748-9e871066bfb6_removalai_preview.png", title: "Strategic Partnership License", year: "2022", expiry: "2042", rating: 9.3 }
+            { img: "https://up.20script.ir/file/66d3-e4dad337-63ad-4862-ad54-deb0ceeb821a-removalai-preview.png", title: "Premium Business License", year: "2022", expiry: "2042", rating: 9.8 },
+            { img: "https://up.20script.ir/file/d734-159f72bb-e528-40f9-a12e-007744bee144-removalai-preview.png", title: "International Trade Certificate", year: "2023", expiry: "2043", rating: 10 },
+            { img: "https://up.20script.ir/file/feac-e703dfaf-f688-4b01-abe9-f94daa1eb08b-removalai-preview.png", title: "E-Commerce Trust Symbol", year: "2024", expiry: "2044", rating: 9.5 },
+            { img: "https://up.20script.ir/file/dcf1-98157cee-b5f6-4479-a8e6-3d45550e47f1-removalai-preview.png", title: "Financial Services License", year: "2023", expiry: "2043", rating: 8.7 },
+            { img: "https://up.20script.ir/file/dcf1-a77d0ff8-8cbf-44e8-8989-7f449eb7e288-removalai-preview.png", title: "Digital Operations Permit", year: "2025", expiry: "2045", rating: 9.9 },
+            { img: "https://up.20script.ir/file/dcf1-0ddee2e6-5c3a-4c87-8f06-3325ddd2bd13-removalai-preview.png", title: "Corporate Excellence Award", year: "2024", expiry: "2044", rating: 10 },
+            { img: "https://up.20script.ir/file/dcf1-210c316a-7eff-4b0c-a748-9e871066bfb6-removalai-preview.png", title: "Strategic Partnership License", year: "2022", expiry: "2042", rating: 9.3 }
         ];
 
         const grid = document.getElementById('grid');
 
-        licenses.forEach(lic => {
+        const fallbackSVG = `<div class='flex flex-col items-center justify-center text-gray-600 relative z-10 w-full h-full'><svg class='w-16 h-16 mb-3 opacity-30' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='1' d='M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z'></path></svg><span class='text-xs tracking-widest uppercase opacity-50'>Image Missing</span></div>`;
+
+        // Render Cards
+        licenses.forEach((lic, index) => {
+            const delay = 0.3 + (index * 0.1); // Staggered animation
+            
             const card = document.createElement('div');
-            card.className = 'license-card';
+            card.className = `glass-card rounded-3xl p-5 cursor-pointer flex flex-col group stagger-item`;
+            card.style.animation = `fadeInUp 0.8s ease-out ${delay}s forwards`;
+            
             card.innerHTML = `
-                <img src="\( {lic.img}" class="license-image" alt=" \){lic.title}" 
-                     onerror="this.src='https://via.placeholder.com/800x500/1a1a1a/aaaaaa?text=License+Image'">
-                <div style="padding:30px; text-align:center;">
-                    <h3 style="color:#d4af37; margin-bottom:12px;">${lic.title}</h3>
-                    <p style="color:#ffd700; font-size:1.4rem;">★ ${lic.rating}/10</p>
-                    <p><strong>Issued to:</strong> alirezat7sds</p>
-                    <p><strong>Received:</strong> ${lic.year} — <strong>Valid Until:</strong> ${lic.expiry}</p>
+                <div class="relative w-full h-64 bg-black/40 rounded-2xl mb-6 overflow-hidden flex items-center justify-center p-4">
+                    <!-- Subtle gradient overlay on hover -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"></div>
+                    
+                    <img src="${lic.img}" class="w-full h-full object-contain relative z-10 transition-transform duration-500 group-hover:scale-110 drop-shadow-lg" alt="${lic.title}" 
+                         onerror="this.outerHTML=\`${fallbackSVG}\`">
+                </div>
+                
+                <div class="flex-grow flex flex-col">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-xl font-bold text-white group-hover:text-brand-glow transition-colors">${lic.title}</h3>
+                    </div>
+                    
+                    <div class="inline-flex items-center gap-1.5 bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 px-2.5 py-1 rounded-md w-fit text-sm font-semibold mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                        </svg>
+                        ${lic.rating} / 10
+                    </div>
+
+                    <div class="mt-auto grid grid-cols-2 gap-4 pt-4 border-t border-white/10 text-sm">
+                        <div>
+                            <p class="text-gray-500 text-xs uppercase tracking-wide mb-1">Received</p>
+                            <p class="text-gray-200 font-medium">${lic.year}</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-xs uppercase tracking-wide mb-1">Valid Until</p>
+                            <p class="text-gray-200 font-medium">${lic.expiry}</p>
+                        </div>
+                    </div>
                 </div>
             `;
-            card.onclick = () => {
-                document.getElementById('modalImg').src = lic.img;
-                document.getElementById('modal').style.display = 'flex';
-            };
+            
+            card.onclick = () => openModal(lic.img);
             grid.appendChild(card);
         });
 
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
+        // Modal Logic
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modalImg');
+        const modalContent = document.getElementById('modal-content');
+
+        function openModal(imgSrc) {
+            modalImg.src = imgSrc;
+            
+            modalImg.onerror = function() {
+                this.src = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22800%22 height%3D%22500%22 viewBox%3D%220 0 800 500%22%3E%3Crect width%3D%22800%22 height%3D%22500%22 fill%3D%22%23111827%22 rx%3D%2220%22%2F%3E%3Ctext x%3D%2250%25%22 y%3D%2250%25%22 dominant-baseline%3D%22middle%22 text-anchor%3D%22middle%22 font-family%3D%22sans-serif%22 font-size%3D%2224%22 fill%3D%22%234b5563%22%3EImage link is broken or blocked%3C%2Ftext%3E%3C%2Fsvg%3E";
+            };
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+            document.body.style.overflow = 'hidden';
         }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modalImg.src = ''; 
+                document.body.style.overflow = 'auto'; 
+            }, 300); 
+        }
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
     </script>
 </body>
 </html>
+
+
+```
