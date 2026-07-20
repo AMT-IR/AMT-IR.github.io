@@ -1,32 +1,30 @@
+
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<!-- دارک مود به صورت پیش‌فرض فعال است -->
+<html lang="en" dir="ltr" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPONSORACB | Official Registry & Certifications</title>
     
-    <!-- Trust-Optimized Fonts: Playfair (Authority) & Inter (Modern Readability) -->
+    <!-- فونت‌های Inter (برای متون انگلیسی) و Vazirmatn (برای فارسی احتمالی) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <script>
         tailwind.config = {
+            darkMode: 'class', // فعال‌سازی دارک مود از طریق کلاس
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    colors: {
-                        trust: {
-                            900: '#0f172a', /* Deep Slate/Navy - conveys security */
-                            800: '#1e293b',
-                            gold: '#d4af37', /* Subtle luxury */
-                            light: '#f8fafc',
-                        }
+                        sans: ['Inter', 'Vazirmatn', 'sans-serif'],
                     }
                 }
             }
@@ -35,143 +33,158 @@
 
     <style>
         body {
-            background-color: #080c16;
-            color: #e2e8f0;
-            background-image: radial-gradient(circle at 50% 0%, rgba(30, 41, 59, 0.5) 0%, transparent 70%);
+            font-family: 'Inter', 'Vazirmatn', sans-serif;
+            transition: background-color 0.4s ease;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .auth-card {
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .auth-card::after {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 50%; height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.03), transparent);
-            transform: skewX(-20deg);
-            transition: 0.7s;
-        }
-
-        .auth-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(212, 175, 55, 0.3); /* Gold border on hover */
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.05);
-        }
-
-        .auth-card:hover::after {
-            left: 200%;
-        }
-
-        .badge-verified {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: #34d399;
-        }
-
-        /* --- Custom Premium Scrollbar --- */
-        ::-webkit-scrollbar { 
-            width: 10px; /* slightly wider for better usability */
+        /* پس‌زمینه محو و زیبا */
+        .ambient-bg {
+            background-color: #f4f4f5;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05), transparent 25%);
         }
         
-        ::-webkit-scrollbar-track { 
-            background: #080c16; 
-            border-left: 1px solid rgba(255, 255, 255, 0.02); /* subtle separator */
+        .dark .ambient-bg {
+            background-color: #09090b;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.04), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.04), transparent 25%);
         }
-        
+
+        .glass-base {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* انیمیشن لود شدن کارت‌ها */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* کاستوم اسکرول‌بار پریمیوم */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { 
-            background: #1e293b; 
-            border-radius: 8px; /* more rounded */
-            border: 2px solid #080c16; /* creates padding effect around the thumb */
-            transition: background-color 0.3s ease;
+            background: #d4d4d8; 
+            border-radius: 10px; 
         }
-        
-        ::-webkit-scrollbar-thumb:hover { 
-            background: #d4af37; /* Trust Gold color on hover */
-            border: 2px solid #080c16;
-            cursor: pointer;
+        .dark ::-webkit-scrollbar-thumb { 
+            background: #27272a; 
         }
-        
-        /* Firefox Support */
-        * {
-            scrollbar-width: thin;
-            scrollbar-color: #1e293b #080c16;
-        }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
     </style>
 </head>
-<body class="antialiased selection:bg-trust-gold selection:text-black min-h-screen">
+<body class="ambient-bg text-zinc-900 dark:text-white min-h-screen flex flex-col relative transition-colors duration-500">
 
-    <!-- Official Header -->
-    <header class="relative pt-20 pb-16 px-6 max-w-6xl mx-auto flex flex-col items-center text-center">
-        <!-- Security Shield Icon -->
-        <div class="mb-6 opacity-80">
-            <svg class="w-14 h-14 text-trust-gold mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
-        </div>
-
-        <h3 class="text-sm tracking-[0.3em] text-gray-400 uppercase mb-4 font-semibold">Global Registry Database</h3>
+    <!-- هدر (Navbar) -->
+    <nav class="w-full h-16 sm:h-20 flex items-center justify-between px-4 sm:px-8 border-b glass-base sticky top-0 z-40 
+        bg-white/40 border-zinc-200/50 
+        dark:bg-zinc-950/40 dark:border-zinc-800/50 transition-colors">
         
-        <h1 class="text-5xl md:text-6xl font-serif text-white font-bold mb-6 tracking-wide drop-shadow-lg">
-            SPONSORACB
-        </h1>
+        <!-- دکمه تغییر تم (سمت چپ) -->
+        <button onclick="toggleTheme()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all border shadow-sm
+            bg-white/70 border-zinc-200/80 hover:bg-white
+            dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 group">
+            <i data-lucide="sun" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-600 hidden dark:block group-hover:text-amber-400 transition-colors"></i>
+            <i data-lucide="moon" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 block dark:hidden group-hover:text-indigo-500 transition-colors"></i>
+        </button>
+
+        <!-- عنوان وسط -->
+        <span class="font-black text-lg sm:text-xl tracking-[0.2em]">SPONSORACB</span>
         
-        <div class="h-px w-24 bg-gradient-to-r from-transparent via-trust-gold to-transparent mb-6"></div>
+        <!-- فضای خالی برای تراز -->
+        <div class="w-10 sm:w-12"></div>
+    </nav>
 
-        <p class="text-lg md:text-xl text-gray-400 font-light mb-10 max-w-2xl">
-            Official repository of active licenses, regulatory permits, and corporate certifications issued to <strong class="text-white font-medium">alirezat7sds</strong>.
-        </p>
+    <!-- محتوای اصلی -->
+    <main class="flex-1 w-full max-w-6xl mx-auto flex flex-col gap-8 py-10 px-4 sm:px-6">
+        
+        <!-- Hero Section -->
+        <header class="text-center flex flex-col items-center gap-4 mt-4 mb-8">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center border shadow-sm transition-colors
+                bg-white/70 border-zinc-200/80 
+                dark:bg-zinc-900/60 dark:border-zinc-800">
+                <i data-lucide="shield-check" class="w-8 h-8 text-zinc-800 dark:text-emerald-400"></i>
+            </div>
+            
+            <h3 class="text-xs sm:text-sm tracking-[0.3em] uppercase font-bold text-zinc-400 dark:text-zinc-500">Global Registry Database</h3>
+            
+            <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">
+                Official Registry & <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600 dark:from-emerald-400 dark:to-teal-400">Certifications</span>
+            </h1>
+            
+            <p class="text-sm md:text-base font-medium max-w-2xl mx-auto text-zinc-500 dark:text-zinc-400 leading-relaxed px-4">
+                Official repository of active licenses, regulatory permits, and corporate certifications issued to <strong class="text-zinc-900 dark:text-white">alirezat7sds</strong>.
+            </p>
 
-        <!-- Official Status Banner -->
-        <div class="inline-flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-3 rounded-full backdrop-blur-md">
-            <span class="relative flex h-3 w-3">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-            </span>
-            <span class="text-sm font-medium tracking-wide text-gray-200">System Status: Secure & Verified</span>
-            <span class="text-gray-500 mx-2">|</span>
-            <span class="text-sm font-mono text-gray-400" id="currentDate"></span>
+            <!-- Status Banner -->
+            <div class="mt-4 inline-flex items-center gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-full border glass-base shadow-sm transition-colors
+                bg-emerald-50/50 border-emerald-200 
+                dark:bg-emerald-950/20 dark:border-emerald-900/50">
+                <span class="relative flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                </span>
+                <span class="text-xs sm:text-sm font-bold tracking-wide text-emerald-800 dark:text-emerald-200">System Status: Secure & Verified</span>
+                <span class="text-zinc-300 dark:text-zinc-700 mx-1">|</span>
+                <span class="text-xs sm:text-sm font-mono font-medium text-emerald-700 dark:text-emerald-400/80" id="currentDate"></span>
+            </div>
+        </header>
+
+        <!-- Certificates Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6" id="grid">
+            <!-- کارت‌ها توسط جاوا اسکریپت در اینجا قرار می‌گیرند -->
         </div>
-    </header>
 
-    <!-- Licenses Grid -->
-    <main class="max-w-7xl mx-auto px-6 pb-24">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="grid">
-            <!-- Cards will be injected here -->
-        </div>
     </main>
 
-    <!-- Professional Modal -->
-    <div id="modal" class="fixed inset-0 z-50 hidden flex-col items-center justify-center p-6 bg-trust-900/95 backdrop-blur-md opacity-0 transition-opacity duration-300">
+    <!-- فوتر -->
+    <footer class="w-full py-6 mt-auto border-t glass-base flex flex-col items-center justify-center gap-2 transition-colors
+        bg-white/40 border-zinc-200/50 
+        dark:bg-zinc-950/40 dark:border-zinc-800/50">
+        <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400">© Official Registry Database</p>
+        <a href="https://AMT-IR.github.io" target="_blank" class="flex items-center gap-1.5 text-sm font-bold transition-colors text-zinc-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400">
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+            <span>AMT-IR Central Portal</span>
+        </a>
+    </footer>
+
+    <!-- Modal (پاپ‌آپ نمایش گواهینامه) -->
+    <div id="modal" class="fixed inset-0 z-50 hidden flex-col items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300 glass-base
+        bg-white/80 dark:bg-zinc-950/90">
         
-        <div class="relative max-w-5xl w-full flex flex-col items-center justify-center transform translate-y-4 transition-transform duration-300" id="modal-content">
+        <div class="relative max-w-4xl w-full flex flex-col items-center justify-center transform translate-y-4 transition-transform duration-300" id="modal-content">
             
-            <!-- Close Button -->
-            <button onclick="closeModal()" class="absolute -top-12 right-0 text-gray-400 hover:text-white flex items-center gap-2 transition-colors">
-                <span class="text-sm tracking-widest uppercase">Close</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
+            <!-- دکمه بستن -->
+            <button onclick="closeModal()" class="absolute -top-12 right-0 sm:-right-4 flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors border
+                bg-white border-zinc-200 text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900
+                dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-white">
+                <span class="text-xs font-bold tracking-widest uppercase">Close</span>
+                <i data-lucide="x" class="w-4 h-4"></i>
             </button>
 
-            <!-- Image wrapper with official framing -->
-            <div class="bg-white p-2 rounded-xl shadow-2xl">
-                <div class="bg-gray-50 border border-gray-200 rounded-lg overflow-hidden relative">
-                    <img id="modalImg" class="max-w-full max-h-[75vh] object-contain" src="" alt="Official Document">
+            <!-- فریم تصویر -->
+            <div class="p-2 sm:p-3 rounded-2xl sm:rounded-[24px] border shadow-2xl transition-colors
+                bg-white border-zinc-200 
+                dark:bg-zinc-900/80 dark:border-zinc-800">
+                <div class="rounded-xl sm:rounded-[16px] overflow-hidden relative border transition-colors
+                    bg-zinc-50 border-zinc-100 
+                    dark:bg-zinc-950 dark:border-zinc-900">
+                    <img id="modalImg" class="max-w-full max-h-[70vh] sm:max-h-[80vh] object-contain select-none" src="" alt="Official Document">
                     
-                    <!-- Watermark overlay on image -->
-                    <div class="absolute bottom-4 right-4 pointer-events-none opacity-40">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Black_check.svg/1024px-Black_check.svg.png" class="w-8 h-8 opacity-20" alt="">
+                    <!-- واترمارک امنیتی -->
+                    <div class="absolute bottom-4 right-4 pointer-events-none opacity-20 dark:opacity-10 flex items-center gap-2">
+                        <i data-lucide="shield-check" class="w-8 h-8 text-zinc-900 dark:text-white"></i>
+                        <span class="font-black tracking-widest text-zinc-900 dark:text-white">VERIFIED</span>
                     </div>
                 </div>
             </div>
             
-            <p class="text-gray-400 mt-6 text-sm font-light tracking-wide text-center">
+            <p class="mt-6 text-xs sm:text-sm font-medium tracking-wide text-center
+                text-zinc-500 dark:text-zinc-400">
                 This document is digitally secured. Unauthorized duplication is prohibited.
             </p>
         </div>
@@ -179,10 +192,19 @@
 
     <!-- Scripts -->
     <script>
-        // Set formatted date
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('currentDate').innerText = new Date().toLocaleDateString('en-US', options);
+        // آیکون‌ها
+        lucide.createIcons();
 
+        // تغییر تم (دارک / لایت)
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+
+        // تنظیم تاریخ
+        const options = { year: 'numeric', month: 'short', day: 'numeric' };
+        document.getElementById('currentDate').innerText = new Date().toLocaleDateString('en-US', options).toUpperCase();
+
+        // داده‌های گواهینامه‌ها
         const licenses = [
             { img: "https://up.20script.ir/file/66d3-e4dad337-63ad-4862-ad54-deb0ceeb821a-removalai-preview.png", title: "Premium Business License", ref: "LIC-8992-A", year: "2022", expiry: "2042", status: "Active" },
             { img: "https://up.20script.ir/file/d734-159f72bb-e528-40f9-a12e-007744bee144-removalai-preview.png", title: "International Trade Certificate", ref: "TRD-4410-X", year: "2023", expiry: "2043", status: "Active" },
@@ -195,41 +217,52 @@
 
         const grid = document.getElementById('grid');
 
-        // Render Professional Cards
+        // ساخت کارت‌ها
         licenses.forEach((lic, index) => {
             const card = document.createElement('div');
-            card.className = `auth-card rounded-2xl p-6 cursor-pointer flex flex-col group`;
             
-            // Fade in animation with delay
+            // استایل‌های مشترک دکمه و کارت با قابلیت تغییر تم
+            card.className = `w-full rounded-[24px] border glass-base p-4 sm:p-5 flex flex-col gap-4 cursor-pointer group transition-all duration-300
+                bg-white/70 border-zinc-200/80 hover:bg-white hover:shadow-lg
+                dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 dark:hover:border-zinc-700`;
+            
+            // انیمیشن لود
             card.style.opacity = '0';
-            card.style.animation = `fadeInUp 0.6s ease-out ${0.2 + (index * 0.1)}s forwards`;
+            card.style.animation = `fadeInUp 0.6s ease-out ${0.1 + (index * 0.1)}s forwards`;
             
             card.innerHTML = `
-                <div class="flex justify-between items-start mb-6 border-b border-white/5 pb-4">
-                    <div class="badge-verified px-2.5 py-1 rounded text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5">
-                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                        ${lic.status}
+                <!-- هدر کارت -->
+                <div class="flex justify-between items-center border-b pb-3 transition-colors
+                    border-zinc-200 dark:border-zinc-800/50">
+                    <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] sm:text-[11px] font-bold border transition-colors
+                        bg-emerald-50 border-emerald-200 text-emerald-600
+                        dark:bg-emerald-500/10 dark:border-emerald-500/20 dark:text-emerald-400">
+                        <i data-lucide="check-circle" class="w-3.5 h-3.5"></i> ${lic.status}
                     </div>
-                    <span class="text-xs text-gray-500 font-mono">REF: ${lic.ref}</span>
+                    <span class="text-[10px] sm:text-xs font-mono font-medium text-zinc-500 dark:text-zinc-500">REF: ${lic.ref}</span>
                 </div>
 
-                <div class="relative w-full h-56 bg-trust-800/50 rounded-xl mb-6 flex items-center justify-center p-4">
-                    <img src="${lic.img}" class="w-full h-full object-contain relative z-10 transition-transform duration-500 group-hover:scale-105 drop-shadow-xl" alt="${lic.title}">
+                <!-- باکس تصویر -->
+                <div class="relative w-full h-40 sm:h-48 rounded-xl flex items-center justify-center p-3 transition-colors overflow-hidden
+                    bg-zinc-50 dark:bg-zinc-800/30">
+                    <img src="${lic.img}" class="w-full h-full object-contain relative z-10 transition-transform duration-500 group-hover:scale-110 drop-shadow-md dark:drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]" alt="${lic.title}">
                 </div>
                 
-                <div class="flex-grow flex flex-col">
-                    <h3 class="text-xl font-serif text-white font-semibold mb-2 group-hover:text-trust-gold transition-colors">${lic.title}</h3>
+                <!-- اطلاعات پایین -->
+                <div class="flex-1 flex flex-col">
+                    <h3 class="text-sm sm:text-base font-bold mb-4 transition-colors leading-tight
+                        text-zinc-900 group-hover:text-emerald-600
+                        dark:text-white dark:group-hover:text-emerald-400">${lic.title}</h3>
                     
-                    <div class="mt-auto grid grid-cols-2 gap-4 pt-4 border-t border-white/5">
-                        <div>
-                            <p class="text-gray-500 text-[10px] uppercase tracking-wider mb-1">Date of Issue</p>
-                            <p class="text-gray-300 font-medium text-sm">${lic.year}</p>
+                    <div class="mt-auto grid grid-cols-2 gap-2 pt-3 border-t transition-colors
+                        border-zinc-100 dark:border-white/5">
+                        <div class="flex flex-col gap-0.5">
+                            <p class="text-[9px] sm:text-[10px] uppercase tracking-wider font-semibold text-zinc-400 dark:text-zinc-500">Issue Date</p>
+                            <p class="text-xs sm:text-sm font-bold text-zinc-700 dark:text-zinc-300">${lic.year}</p>
                         </div>
-                        <div>
-                            <p class="text-gray-500 text-[10px] uppercase tracking-wider mb-1">Valid Thru</p>
-                            <p class="text-gray-300 font-medium text-sm">${lic.expiry}</p>
+                        <div class="flex flex-col gap-0.5">
+                            <p class="text-[9px] sm:text-[10px] uppercase tracking-wider font-semibold text-zinc-400 dark:text-zinc-500">Valid Thru</p>
+                            <p class="text-xs sm:text-sm font-bold text-zinc-700 dark:text-zinc-300">${lic.expiry}</p>
                         </div>
                     </div>
                 </div>
@@ -239,17 +272,10 @@
             grid.appendChild(card);
         });
 
-        // Add Keyframe animation to document
-        const style = document.createElement('style');
-        style.innerHTML = `
-            @keyframes fadeInUp {
-                from { opacity: 0; transform: translateY(20px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-        `;
-        document.head.appendChild(style);
+        // رندر مجدد آیکون‌های تزریق شده
+        lucide.createIcons();
 
-        // Modal Logic
+        // منطق Modal
         const modal = document.getElementById('modal');
         const modalImg = document.getElementById('modalImg');
         const modalContent = document.getElementById('modal-content');
@@ -257,13 +283,15 @@
         function openModal(imgSrc) {
             modalImg.src = imgSrc;
             modal.classList.remove('hidden');
+            modal.classList.add('flex');
             
+            // تاخیر کوچک برای اجرای انیمیشن CSS
             setTimeout(() => {
                 modal.classList.remove('opacity-0');
                 modalContent.classList.remove('translate-y-4');
                 modalContent.classList.add('translate-y-0');
             }, 10);
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden'; // قفل کردن اسکرول صفحه
         }
 
         function closeModal() {
@@ -273,17 +301,20 @@
             
             setTimeout(() => {
                 modal.classList.add('hidden');
+                modal.classList.remove('flex');
                 modalImg.src = ''; 
-                document.body.style.overflow = 'auto'; 
+                document.body.style.overflow = 'auto'; // باز کردن اسکرول
             }, 300); 
         }
 
+        // بستن با کلیک روی فضای خالی
         modal.addEventListener('click', function(e) {
             if (e.target === modal) {
                 closeModal();
             }
         });
 
+        // بستن با دکمه Esc
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
                 closeModal();
