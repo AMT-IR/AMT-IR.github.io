@@ -1,0 +1,235 @@
+```html
+<!DOCTYPE html>
+<!-- دارک مود به صورت پیش‌فرض فعال است -->
+<html lang="fa" dir="rtl" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مخزن اصلی | پورتال لینک‌ها</title>
+    
+    <!-- فونت Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    },
+                    colors: {
+                        pro: '#3b82f6',      /* Blue */
+                        plus: '#10b981',     /* Emerald */
+                        premium: '#8b5cf6',  /* Violet */
+                        ultra: '#f59e0b',    /* Amber/Gold */
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            transition: background-color 0.4s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* پس‌زمینه محو و زیبا */
+        .ambient-bg {
+            background-color: #f4f4f5;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05), transparent 25%);
+        }
+        
+        .dark .ambient-bg {
+            background-color: #09090b;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.04), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.04), transparent 25%);
+        }
+
+        .glass-base {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* انیمیشن لود شدن کارت‌ها */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in-up {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        /* کاستوم اسکرول‌بار پریمیوم */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { 
+            background: #d4d4d8; 
+            border-radius: 10px; 
+        }
+        .dark ::-webkit-scrollbar-thumb { background: #27272a; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+    </style>
+</head>
+<body class="ambient-bg text-zinc-900 dark:text-white min-h-screen flex flex-col relative transition-colors duration-500">
+
+    <!-- هدر (Navbar) -->
+    <nav class="w-full h-16 sm:h-20 flex items-center justify-between px-4 sm:px-8 border-b glass-base sticky top-0 z-40 
+        bg-white/40 border-zinc-200/50 
+        dark:bg-zinc-950/40 dark:border-zinc-800/50 transition-colors">
+        
+        <!-- فضای خالی برای تراز وسط (در RTL راست قرار می‌گیرد) -->
+        <div class="w-10 sm:w-12"></div>
+
+        <!-- عنوان وسط -->
+        <span class="font-black text-lg sm:text-xl tracking-[0.2em] dir-ltr text-zinc-900 dark:text-white">SPONSORACB</span>
+        
+        <!-- دکمه تغییر تم (در RTL چپ قرار می‌گیرد) -->
+        <button onclick="toggleTheme()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all border shadow-sm
+            bg-white/70 border-zinc-200/80 hover:bg-white
+            dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 group">
+            <i data-lucide="sun" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-600 hidden dark:block group-hover:text-amber-400 transition-colors"></i>
+            <i data-lucide="moon" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 block dark:hidden group-hover:text-indigo-500 transition-colors"></i>
+        </button>
+    </nav>
+
+    <!-- محتوای اصلی -->
+    <main class="flex-1 w-full max-w-5xl mx-auto flex flex-col gap-8 py-12 px-4 sm:px-6 lg:px-8">
+        
+        <!-- بخش عنوان -->
+        <header class="text-center flex flex-col items-center gap-4 mb-8 sm:mb-12">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center border shadow-sm transition-colors
+                bg-white/70 border-zinc-200/80 
+                dark:bg-zinc-900/60 dark:border-zinc-800">
+                <i data-lucide="layers" class="w-8 h-8 sm:w-10 sm:h-10 text-zinc-800 dark:text-indigo-400"></i>
+            </div>
+            
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-zinc-900 dark:text-white">
+                پورتال و <span class="text-transparent bg-clip-text bg-gradient-to-l from-indigo-500 to-emerald-500 dark:from-indigo-400 dark:to-emerald-400">مخزن اصلی لینک‌ها</span>
+            </h1>
+            
+            <p class="text-sm sm:text-base font-medium max-w-2xl mx-auto text-zinc-500 dark:text-zinc-400 leading-relaxed px-4">
+                از طریق منوی زیر می‌توانید به سرعت به بخش‌های کلیدی سایت، تعرفه‌ها، مجوزها و راه‌های ارتباطی دسترسی پیدا کنید.
+            </p>
+        </header>
+
+        <!-- گرید کارت‌های لینک -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+            
+            <!-- ======================= CARD 1: Pricing ======================= -->
+            <a href="https://AMT-IR.github.io/pricing.html" class="animate-fade-in-up flex flex-col items-center text-center rounded-[28px] border glass-base p-8 transition-all duration-300 relative group cursor-pointer
+                bg-white/70 border-zinc-200/80 hover:bg-white hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/10 hover:border-blue-300
+                dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 dark:hover:border-blue-500/50 dark:hover:shadow-blue-500/10"
+                style="animation-delay: 0.1s;">
+                
+                <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-colors border
+                    bg-blue-50 border-blue-200 text-blue-600 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600
+                    dark:bg-blue-500/10 dark:border-blue-500/20 dark:text-blue-400 dark:group-hover:bg-blue-600 dark:group-hover:text-white">
+                    <i data-lucide="credit-card" class="w-8 h-8"></i>
+                </div>
+                
+                <h3 class="text-xl font-black text-zinc-900 dark:text-white mb-3">قیمت اشتراک‌ها</h3>
+                
+                <p class="text-sm font-medium text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6 flex-1">
+                    مشاهده پلن‌ها، تعرفه‌ها و شرایط خرید اشتراک برای دسترسی به خدمات ویژه بات و هوش مصنوعی.
+                </p>
+
+                <div class="mt-auto w-full py-3 rounded-xl text-sm font-bold transition-all border
+                    text-blue-600 border-blue-200 bg-blue-50/50 group-hover:bg-blue-50
+                    dark:text-blue-400 dark:border-blue-500/30 dark:bg-blue-500/10 dark:group-hover:bg-blue-500/20">
+                    ورود به صفحه تعرفه‌ها
+                </div>
+            </a>
+
+            <!-- ======================= CARD 2: Trust Symbols ======================= -->
+            <a href="https://AMT-IR.github.io/Symbol.html" class="animate-fade-in-up flex flex-col items-center text-center rounded-[28px] border glass-base p-8 transition-all duration-300 relative group cursor-pointer
+                bg-white/70 border-zinc-200/80 hover:bg-white hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-500/10 hover:border-emerald-300
+                dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 dark:hover:border-emerald-500/50 dark:hover:shadow-emerald-500/10"
+                style="animation-delay: 0.2s;">
+                
+                <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-colors border
+                    bg-emerald-50 border-emerald-200 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white group-hover:border-emerald-600
+                    dark:bg-emerald-500/10 dark:border-emerald-500/20 dark:text-emerald-400 dark:group-hover:bg-emerald-600 dark:group-hover:text-white">
+                    <i data-lucide="shield-check" class="w-8 h-8"></i>
+                </div>
+                
+                <h3 class="text-xl font-black text-zinc-900 dark:text-white mb-3">نمادهای اعتماد</h3>
+                
+                <p class="text-sm font-medium text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6 flex-1">
+                    بررسی مجوزها، تاییدیه‌های رسمی و نمادهای اعتماد الکترونیک برای اطمینان از خریدی امن.
+                </p>
+
+                <div class="mt-auto w-full py-3 rounded-xl text-sm font-bold transition-all border
+                    text-emerald-600 border-emerald-200 bg-emerald-50/50 group-hover:bg-emerald-50
+                    dark:text-emerald-400 dark:border-emerald-500/30 dark:bg-emerald-500/10 dark:group-hover:bg-emerald-500/20">
+                    بررسی مجوزها
+                </div>
+            </a>
+
+            <!-- ======================= CARD 3: Support ======================= -->
+            <a href="https://AMT-IR.github.io/Support.html" class="animate-fade-in-up flex flex-col items-center text-center rounded-[28px] border glass-base p-8 transition-all duration-300 relative group cursor-pointer
+                bg-white/70 border-zinc-200/80 hover:bg-white hover:-translate-y-2 hover:shadow-xl hover:shadow-violet-500/10 hover:border-violet-300
+                dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 dark:hover:border-violet-500/50 dark:hover:shadow-violet-500/10"
+                style="animation-delay: 0.3s;">
+                
+                <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-colors border
+                    bg-violet-50 border-violet-200 text-violet-600 group-hover:bg-violet-600 group-hover:text-white group-hover:border-violet-600
+                    dark:bg-violet-500/10 dark:border-violet-500/20 dark:text-violet-400 dark:group-hover:bg-violet-600 dark:group-hover:text-white">
+                    <i data-lucide="headset" class="w-8 h-8"></i>
+                </div>
+                
+                <h3 class="text-xl font-black text-zinc-900 dark:text-white mb-3">راه‌های ارتباطی</h3>
+                
+                <p class="text-sm font-medium text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6 flex-1">
+                    دسترسی به راه‌های تماس با تیم پشتیبانی فنی، شبکه‌های اجتماعی و فرم‌های ارتباط با ما.
+                </p>
+
+                <div class="mt-auto w-full py-3 rounded-xl text-sm font-bold transition-all border
+                    text-violet-600 border-violet-200 bg-violet-50/50 group-hover:bg-violet-50
+                    dark:text-violet-400 dark:border-violet-500/30 dark:bg-violet-500/10 dark:group-hover:bg-violet-500/20">
+                    تماس با پشتیبانی
+                </div>
+            </a>
+
+        </div>
+
+    </main>
+
+    <!-- فوتر -->
+    <footer class="w-full py-6 mt-auto border-t glass-base flex flex-col items-center justify-center gap-2 transition-colors
+        bg-white/40 border-zinc-200/50 
+        dark:bg-zinc-950/40 dark:border-zinc-800/50">
+        <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400">© تمامی حقوق برای مجموعه محفوظ است</p>
+        <div class="flex items-center gap-1.5 text-sm font-bold text-zinc-900 dark:text-white">
+            <i data-lucide="fingerprint" class="w-4 h-4 text-emerald-500"></i>
+            <span>AMT-IR</span>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // مقداردهی و ساخت آیکون‌ها
+        lucide.createIcons();
+
+        // منطق تغییر تم
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body>
+</html>
