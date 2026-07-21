@@ -24,8 +24,7 @@
 
 we utilize a modern, decoupled architecture to ensure maximum uptime and zero-latency redirects.
 
-```mermaid
-graph td
+flowchart TD
     a["user click"] -->|"request"| b("sponsoracb gateway")
     b --> c{"validation layer"}
     c -->|"valid"| d[("routing database")]
@@ -34,5 +33,5 @@ graph td
     d --> g["301 target redirect"]
     
     classDef default fill:#1a1a1a,stroke:#00ffcc,stroke-width:2px,color:#fff;
-    class e fill:#1a1a1a,stroke:#ff0033,stroke-width:2px,color:#fff;
-
+    classDef err fill:#1a1a1a,stroke:#ff0033,stroke-width:2px,color:#fff;
+    class e err;
