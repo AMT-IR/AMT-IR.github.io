@@ -26,12 +26,13 @@ we utilize a modern, decoupled architecture to ensure maximum uptime and zero-la
 
 ```mermaid
 graph td
-    A[user click] -->|request| B(sponsoracb gateway)
-    B --> C{validation layer}
-    C -->|valid| D[(routing database)]
-    C -->|invalid| E[403 access denied]
-    D --> F[analytics engine]
-    D --> G[301 target redirect]
+    a["user click"] -->|"request"| b("sponsoracb gateway")
+    b --> c{"validation layer"}
+    c -->|"valid"| d[("routing database")]
+    c -->|"invalid"| e["403 access denied"]
+    d --> f["analytics engine"]
+    d --> g["301 target redirect"]
     
     classDef default fill:#1a1a1a,stroke:#00ffcc,stroke-width:2px,color:#fff;
-    class E fill:#1a1a1a,stroke:#ff0033,stroke-width:2px,color:#fff;
+    class e fill:#1a1a1a,stroke:#ff0033,stroke-width:2px,color:#fff;
+
