@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<!-- دارک مود به صورت پیش‌فرض فعال است -->
+<html lang="fa" dir="rtl" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درباره ما | SPONSORACB</title>
+    
+    <!-- فونت Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            transition: background-color 0.4s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* پس‌زمینه محو و زیبا */
+        .ambient-bg {
+            background-color: #f4f4f5;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.06), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.05), transparent 25%),
+                radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.04), transparent 25%);
+        }
+        
+        .dark .ambient-bg {
+            background-color: #09090b;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.04), transparent 25%),
+                radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.03), transparent 25%);
+        }
+
+        .glass-base {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* انیمیشن لود شدن المان‌ها */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in-up {
+            opacity: 0;
+            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* کاستوم اسکرول‌بار */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { 
+            background: #d4d4d8; 
+            border-radius: 10px; 
+        }
+        .dark ::-webkit-scrollbar-thumb { background: #27272a; }
+        ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+    </style>
+</head>
+<body class="ambient-bg text-zinc-900 dark:text-white min-h-screen flex flex-col relative transition-colors duration-500">
+
+    <!-- هدر (Navbar) -->
+    <nav class="w-full h-16 sm:h-20 flex items-center justify-between px-4 sm:px-8 border-b glass-base sticky top-0 z-40 
+        bg-white/40 border-zinc-200/50 
+        dark:bg-zinc-950/40 dark:border-zinc-800/50 transition-colors">
+        
+        <!-- فضای خالی برای تراز وسط -->
+        <div class="w-10 sm:w-12"></div>
+
+        <!-- عنوان وسط -->
+        <span class="font-black text-lg sm:text-xl tracking-[0.2em] dir-ltr text-zinc-900 dark:text-white">SPONSORACB</span>
+        
+        <!-- دکمه تغییر تم -->
+        <button onclick="toggleTheme()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all border shadow-sm
+            bg-white/70 border-zinc-200/80 hover:bg-white
+            dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 group">
+            <i data-lucide="sun" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-600 hidden dark:block group-hover:text-amber-400 transition-colors"></i>
+            <i data-lucide="moon" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 block dark:hidden group-hover:text-indigo-500 transition-colors"></i>
+        </button>
+    </nav>
+
+    <!-- محتوای اصلی -->
+    <main class="flex-1 w-full max-w-5xl mx-auto flex flex-col gap-8 py-10 px-4 sm:px-6 lg:px-8">
+        
+        <!-- بخش عنوان (Hero Section) -->
+        <header class="text-center flex flex-col items-center gap-4 mb-4 sm:mb-8 animate-fade-in-up" style="animation-delay: 0.1s;">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center border shadow-sm transition-colors
+                bg-white/70 border-zinc-200/80 
+                dark:bg-zinc-900/60 dark:border-zinc-800">
+                <i data-lucide="rocket" class="w-7 h-7 sm:w-8 sm:h-8 text-zinc-800 dark:text-blue-400"></i>
+            </div>
+            
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-zinc-900 dark:text-white">
+                درباره ما
+            </h1>
+            
+            <p class="text-sm sm:text-base font-medium max-w-2xl mx-auto text-zinc-500 dark:text-zinc-400 leading-relaxed px-4">
+                پیشگام در ارائه خدمات هوشمند، وب‌سرویس‌های ابری و نسل جدید ابزارهای هوش مصنوعی بدون مرز در ایران.
+            </p>
+        </header>
+
+        <!-- بخش ماموریت ما (Mission & Vision) -->
+        <section class="animate-fade-in-up" style="animation-delay: 0.2s;">
+            <div class="w-full rounded-[28px] border glass-base p-6 sm:p-10 transition-all duration-300 relative overflow-hidden
+                bg-white/70 border-zinc-200/80 hover:shadow-xl
+                dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:border-zinc-700">
+                
+                <!-- افکت نوری پس زمینه کارت -->
+                <div class="absolute -top-32 -right-32 w-64 h-64 bg-blue-500/10 dark:bg-blue-500/20 rounded-full blur-[80px] pointer-events-none"></div>
+                <div class="absolute -bottom-32 -left-32 w-64 h-64 bg-violet-500/10 dark:bg-violet-500/20 rounded-full blur-[80px] pointer-events-none"></div>
+
+                <div class="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-8">
+                    <div class="w-20 h-20 rounded-2xl flex-shrink-0 flex items-center justify-center border shadow-sm
+                        bg-white border-zinc-100 text-blue-600
+                        dark:bg-zinc-950/50 dark:border-zinc-800 dark:text-blue-400">
+                        <i data-lucide="target" class="w-10 h-10"></i>
+                    </div>
+                    
+                    <div class="flex-1 text-center md:text-right">
+                        <h2 class="text-2xl font-black mb-4 text-zinc-900 dark:text-white">داستان و ماموریت ما</h2>
+                        <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-300 leading-loose text-justify md:text-right font-medium">
+                            مجموعه <strong>SPONSORACB</strong> با هدف دسترسی آسان، ارزان و بدون محدودیت کاربران ایرانی به برترین مدل‌های هوش مصنوعی جهان (مانند ChatGPT, Gemini, Claude و ...) شکل گرفته است. ما باور داریم که تکنولوژی مرز نمی‌شناسد. در همین راستا، در تلاشیم تا با ارائه ربات‌های تلگرامی پیشرفته، وب‌سرویس‌های (API) پایدار، کانفیگ‌های شبکه‌ای قدرتمند و پلتفرم‌های جامع، مرزهای فناوری را برای توسعه‌دهندگان، دانشجویان و کاربران عادی جابجا کنیم.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- بخش آمارها (Stats) -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 animate-fade-in-up" style="animation-delay: 0.3s;">
+            
+            <div class="flex flex-col items-center justify-center p-6 rounded-[24px] border glass-base transition-colors
+                bg-white/60 border-zinc-200/80 
+                dark:bg-zinc-900/40 dark:border-zinc-800">
+                <i data-lucide="users" class="w-6 h-6 text-emerald-500 mb-3"></i>
+                <span class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white dir-ltr mb-1">+50,000</span>
+                <span class="text-xs font-bold text-zinc-500 dark:text-zinc-400">کاربر فعال</span>
+            </div>
+
+            <div class="flex flex-col items-center justify-center p-6 rounded-[24px] border glass-base transition-colors
+                bg-white/60 border-zinc-200/80 
+                dark:bg-zinc-900/40 dark:border-zinc-800">
+                <i data-lucide="bot" class="w-6 h-6 text-blue-500 mb-3"></i>
+                <span class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white dir-ltr mb-1">+15</span>
+                <span class="text-xs font-bold text-zinc-500 dark:text-zinc-400">مدل هوش مصنوعی</span>
+            </div>
+
+            <div class="flex flex-col items-center justify-center p-6 rounded-[24px] border glass-base transition-colors
+                bg-white/60 border-zinc-200/80 
+                dark:bg-zinc-900/40 dark:border-zinc-800">
+                <i data-lucide="server" class="w-6 h-6 text-violet-500 mb-3"></i>
+                <span class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white dir-ltr mb-1">99.9%</span>
+                <span class="text-xs font-bold text-zinc-500 dark:text-zinc-400">پایداری سرورها</span>
+            </div>
+
+            <div class="flex flex-col items-center justify-center p-6 rounded-[24px] border glass-base transition-colors
+                bg-white/60 border-zinc-200/80 
+                dark:bg-zinc-900/40 dark:border-zinc-800">
+                <i data-lucide="code-2" class="w-6 h-6 text-amber-500 mb-3"></i>
+                <span class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white dir-ltr mb-1">+2M</span>
+                <span class="text-xs font-bold text-zinc-500 dark:text-zinc-400">درخواست روزانه</span>
+            </div>
+
+        </section>
+
+        <!-- بخش ارزش‌های ما (Core Values) -->
+        <section class="animate-fade-in-up" style="animation-delay: 0.4s;">
+            <div class="flex items-center gap-4 mb-6 px-2">
+                <div class="h-px bg-zinc-200 dark:bg-zinc-800 flex-1"></div>
+                <h3 class="text-sm font-bold text-zinc-500 dark:text-zinc-400">ارزش‌های کلیدی ما</h3>
+                <div class="h-px bg-zinc-200 dark:bg-zinc-800 flex-1"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+                <!-- ارزش 1 -->
+                <div class="flex flex-col p-6 rounded-[24px] border glass-base transition-all duration-300 hover:-translate-y-1
+                    bg-white/70 border-zinc-200/80 hover:bg-white
+                    dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4 border
+                        bg-blue-50 border-blue-100 text-blue-600
+                        dark:bg-blue-500/10 dark:border-blue-500/20 dark:text-blue-400">
+                        <i data-lucide="lightbulb" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2 text-zinc-900 dark:text-white">نوآوری مداوم</h4>
+                    <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed font-medium">
+                        تیم توسعه ما به صورت روزانه در حال آپدیت الگوریتم‌ها و اضافه کردن جدیدترین ابزارهای ترند جهانی به سیستم است.
+                    </p>
+                </div>
+
+                <!-- ارزش 2 -->
+                <div class="flex flex-col p-6 rounded-[24px] border glass-base transition-all duration-300 hover:-translate-y-1
+                    bg-white/70 border-zinc-200/80 hover:bg-white
+                    dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4 border
+                        bg-emerald-50 border-emerald-100 text-emerald-600
+                        dark:bg-emerald-500/10 dark:border-emerald-500/20 dark:text-emerald-400">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2 text-zinc-900 dark:text-white">امنیت و حریم خصوصی</h4>
+                    <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed font-medium">
+                        حفظ حریم خصوصی کاربران و رمزنگاری اطلاعات در سرورهای ابری امن، خط قرمز و اولویت اصلی مجموعه ماست.
+                    </p>
+                </div>
+
+                <!-- ارزش 3 -->
+                <div class="flex flex-col p-6 rounded-[24px] border glass-base transition-all duration-300 hover:-translate-y-1
+                    bg-white/70 border-zinc-200/80 hover:bg-white
+                    dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4 border
+                        bg-amber-50 border-amber-100 text-amber-600
+                        dark:bg-amber-500/10 dark:border-amber-500/20 dark:text-amber-400">
+                        <i data-lucide="headset" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2 text-zinc-900 dark:text-white">پشتیبانی ۷/۲۴</h4>
+                    <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed font-medium">
+                        ما هرگز شما را تنها نمی‌گذاریم. تیم پشتیبانی ما به صورت شبانه‌روزی آماده پاسخگویی و رفع مشکلات فنی شماست.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- فوتر -->
+    <footer class="w-full py-6 mt-auto border-t glass-base flex flex-col items-center justify-center gap-2 transition-colors
+        bg-white/40 border-zinc-200/50 
+        dark:bg-zinc-950/40 dark:border-zinc-800/50">
+        <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400">© تمامی حقوق برای مجموعه محفوظ است</p>
+        <a href="https://AMT-IR.github.io" target="_blank" class="flex items-center gap-1.5 text-sm font-bold transition-colors text-zinc-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400">
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+            <span>پورتال جامع AMT-IR</span>
+        </a>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // مقداردهی و ساخت آیکون‌ها
+        lucide.createIcons();
+
+        // منطق تغییر تم
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body>
+</html>
