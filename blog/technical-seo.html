@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاوت کلیدی ایندکس شدن و کسب رتبه در گوگل | وبلاگ SPONSORACB</title>
+    
+    <!-- سئو متا تگ‌ها (SEO Meta Tags) -->
+    <meta name="description" content="بررسی کامل تفاوت ایندکس شدن صفحات (Indexing) و کسب رتبه در گوگل (Ranking)، دلایل عدم رتبه‌گیری صفحات ایندکس شده و استراتژی‌های افزایش نرخ تبدیل برای برند SPONSORACB.">
+    <meta name="keywords" content="ایندکس شدن سایت, کسب رتبه گوگل, تفاوت Indexing و Ranking, سئو فنی, سرچ کنسول, بودجه خزش, SPONSORACB, Search Intent">
+    
+    <!-- فونت Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            transition: background-color 0.4s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* پس‌زمینه محو و زیبا */
+        .ambient-bg {
+            background-color: #f4f4f5;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05), transparent 25%);
+        }
+        
+        .dark .ambient-bg {
+            background-color: #09090b;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.04), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.04), transparent 25%);
+        }
+
+        .glass-base {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* کاستوم اسکرول‌بار */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { 
+            background: #d4d4d8; 
+            border-radius: 10px; 
+        }
+        .dark ::-webkit-scrollbar-thumb { background: #27272a; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+        /* استایل‌های تایپوگرافی مقاله */
+        .article-content p {
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            text-align: justify;
+        }
+        .article-content ul {
+            margin-bottom: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        .article-content li {
+            margin-bottom: 0.75rem;
+            line-height: 1.8;
+            position: relative;
+        }
+        .article-content li::before {
+            content: '•';
+            color: #10b981; /* Emerald-500 */
+            position: absolute;
+            right: -1.2rem;
+            font-size: 1.5rem;
+            line-height: 1;
+            top: 0.1rem;
+        }
+        .dark .article-content li::before {
+            color: #34d399; /* Emerald-400 */
+        }
+    </style>
+</head>
+<body class="ambient-bg text-zinc-900 dark:text-white min-h-screen flex flex-col relative transition-colors duration-500">
+
+    <!-- هدر (Navbar) -->
+    <nav class="w-full h-16 sm:h-20 flex items-center justify-between px-4 sm:px-8 border-b glass-base sticky top-0 z-40 
+        bg-white/40 border-zinc-200/50 
+        dark:bg-zinc-950/40 dark:border-zinc-800/50 transition-colors">
+        
+        <!-- فضای خالی برای تراز وسط -->
+        <div class="w-10 sm:w-12"></div>
+
+        <!-- عنوان وسط -->
+        <span class="font-black text-lg sm:text-xl tracking-[0.2em] dir-ltr text-zinc-900 dark:text-white">SPONSORACB</span>
+        
+        <!-- دکمه تغییر تم -->
+        <button onclick="toggleTheme()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all border shadow-sm
+            bg-white/70 border-zinc-200/80 hover:bg-white
+            dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 group">
+            <i data-lucide="sun" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-600 hidden dark:block group-hover:text-amber-400 transition-colors"></i>
+            <i data-lucide="moon" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 block dark:hidden group-hover:text-indigo-500 transition-colors"></i>
+        </button>
+    </nav>
+
+    <!-- محتوای اصلی مقاله -->
+    <main class="flex-1 w-full max-w-4xl mx-auto flex flex-col py-10 px-4 sm:px-6 lg:px-8">
+        
+        <!-- بخش عنوان مقاله -->
+        <header class="mb-10 text-center sm:text-right border-b border-zinc-200 dark:border-zinc-800 pb-8">
+            <div class="flex items-center justify-center sm:justify-start gap-3 mb-4 text-emerald-600 dark:text-emerald-400">
+                <i data-lucide="layers" class="w-5 h-5"></i>
+                <span class="text-sm font-bold tracking-wide">مفاهیم بنیادی و استراتژی‌های سئو</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-zinc-900 dark:text-white leading-[1.4] tracking-tight mb-6">
+                تفاوت کلیدی ایندکس شدن صفحات (Indexing) و کسب رتبه در گوگل (Ranking)
+            </h1>
+            
+            <div class="flex items-center justify-center sm:justify-start gap-4 text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400">
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    <span>تاریخ انتشار: ۸ مرداد ۱۴۰۵</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="clock" class="w-4 h-4"></i>
+                    <span>زمان مطالعه: ۹ دقیقه</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- متن مقاله -->
+        <article class="article-content text-base sm:text-lg text-zinc-700 dark:text-zinc-300">
+            
+            <p>
+                یکی از رایج‌ترین سوءتفاهم‌ها در حوزه سئو و بازاریابی دیجیتال، یکسان فرض‌کردن مفاهیم <strong>ایندکس شدن (Indexing)</strong> و <strong>کسب رتبه (Ranking)</strong> است. بسیار پیش می‌آید که مدیران وب‌سایت‌ها با خطای «صفحه من در گوگل نیست!» مواجه می‌شوند، اما پس از بررسی مشخص می‌شود که صفحه به‌درستی ثبت و پردازش شده، ولی به دلیل نداشتن رتبه، در صفحات عقب‌تر (مثلاً صفحه ۴ یا ۵ نتایج) پنهان مانده است.
+            </p>
+            <p>
+                برای درک دقیق چرخه حیات یک صفحه در گوگل، باید فرآیند سه مرحله‌ای موتورهای جستجو را بشناسید:
+            </p>
+
+            <!-- نمودار چرخه حیات -->
+            <div class="my-8 p-6 rounded-2xl border glass-base bg-zinc-100/80 dark:bg-zinc-900/80 border-zinc-300 dark:border-zinc-800 text-center">
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm font-bold">
+                    <div class="flex-1 p-3 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-600 dark:text-blue-400 w-full">
+                        <div class="text-base mb-1">۱. خزش (Crawling)</div>
+                        <div class="text-xs font-normal text-zinc-500 dark:text-zinc-400">کشف و خواندن فایل</div>
+                    </div>
+                    <i data-lucide="arrow-left" class="w-5 h-5 text-zinc-400 rotate-90 sm:rotate-0"></i>
+                    <div class="flex-1 p-3 rounded-xl bg-violet-500/10 border border-violet-500/30 text-violet-600 dark:text-violet-400 w-full">
+                        <div class="text-base mb-1">۲. ایندکس (Indexing)</div>
+                        <div class="text-xs font-normal text-zinc-500 dark:text-zinc-400">ذخیره‌سازی در دیتابیس</div>
+                    </div>
+                    <i data-lucide="arrow-left" class="w-5 h-5 text-zinc-400 rotate-90 sm:rotate-0"></i>
+                    <div class="flex-1 p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 w-full">
+                        <div class="text-base mb-1">۳. رتبه‌بندی (Ranking)</div>
+                        <div class="text-xs font-normal text-zinc-500 dark:text-zinc-400">سنجش کیفیت و نمایش در SERP</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="scale" class="w-6 h-6 text-emerald-500"></i>
+                ۱. تعریف دقیق و مقایسه‌ای دو مفهوم
+            </h2>
+
+            <!-- جدول مقایسه‌ای -->
+            <div class="overflow-x-auto w-full mb-8 mt-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm">
+                <table class="w-full text-sm text-right border-collapse whitespace-nowrap min-w-[700px]">
+                    <thead class="bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800">
+                        <tr>
+                            <th class="p-4 font-bold text-zinc-900 dark:text-white border-l border-zinc-200 dark:border-zinc-800">محور مقایسه</th>
+                            <th class="p-4 font-bold text-violet-600 dark:text-violet-400 border-l border-zinc-200 dark:border-zinc-800">ایندکس شدن (Indexing)</th>
+                            <th class="p-4 font-bold text-emerald-600 dark:text-emerald-400">کسب رتبه (Ranking)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-zinc-200 dark:divide-zinc-800 glass-base bg-white/30 dark:bg-zinc-950/30">
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold border-l border-zinc-200 dark:border-zinc-800">تعریف ساده</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800">ورود و ثبت رسمی شناسنامه صفحه در پایگاه داده عظیم گوگل.</td>
+                            <td class="p-4 font-bold">تعیین محل قرارگیری صفحه در صفحه نتایج (SERP) برای یک عبارت خاص.</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold border-l border-zinc-200 dark:border-zinc-800">پیش‌نیاز</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800">نیازمند خزش (Crawl) موفقیت‌آمیز و نبود موانع فنی (مثل noindex).</td>
+                            <td class="p-4 font-bold text-emerald-500">الزاماً نیازمند ایندکس شدن قبلی است (بدون ایندکس، رتبه‌ای وجود ندارد).</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold border-l border-zinc-200 dark:border-zinc-800">ماهیت</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800">یک حالت <span class="text-blue-500 font-bold">صفر و یک (Binary)</span> است؛ صفحه یا ایندکس شده یا نشده.</td>
+                            <td class="p-4 font-bold text-emerald-500">یک معیار طیفی و پویا است؛ از رتبه ۱ تا صفحات ۱۰۰+ گوگل متغیر است.</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold border-l border-zinc-200 dark:border-zinc-800">تمرکز اصلی</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800">عمدتاً وابسته به <span class="font-bold">سئو فنی (Technical SEO)</span> و سلامت سرور.</td>
+                            <td class="p-4 font-bold">وابسته به سئو محتوایی (Content)، سئو خارجی (Backlinks) و تجربه کاربر (UX).</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold border-l border-zinc-200 dark:border-zinc-800">هدف گوگل</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800">فهم موضوع، ساختار و محتوای صفحه جهت دسته‌بندی.</td>
+                            <td class="p-4 font-bold text-emerald-500">ارائه بهترین، مرتبط‌ترین و معتبرترین پاسخ به جستجوی کاربر.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="book-open-check" class="w-6 h-6 text-violet-500"></i>
+                ۲. بررسی عمیق مرحله به مرحله
+            </h2>
+
+            <h3 class="text-xl sm:text-2xl font-bold text-zinc-800 dark:text-zinc-200 mt-8 mb-4 border-r-4 border-violet-500 pr-3">
+                مرحله اول: ایندکس شدن (Indexing) — ورود به کتابخانه
+            </h3>
+            <p>
+                زمانی که ربات‌های گوگل (Googlebot) کدهای HTML و محتوای صفحه شما را می‌خوانند و آن را پس از ارزشیابی اولیه در دیتابیس بزرگ خود ذخیره می‌کنند، صفحه شما <strong>ایندکس</strong> شده است.
+            </p>
+            <div class="my-6 p-5 rounded-2xl border glass-base bg-violet-500/10 border-violet-500/30 text-violet-900 dark:text-violet-200">
+                <strong class="flex items-center gap-2 mb-2 font-bold text-violet-600 dark:text-violet-400">
+                    <i data-lucide="bookmark" class="w-5 h-5"></i>
+                    تشبیه ملموس:
+                </strong>
+                تصور کنید یک کتاب جدید نوشته‌اید و کتابدار، آن را قفسه‌بندی کرده و در فهرست کتابخانه ملی ثبت می‌کند. تا این مرحله، کتاب شما فقط "موجود" است.
+            </div>
+
+            <h3 class="text-xl sm:text-2xl font-bold text-zinc-800 dark:text-zinc-200 mt-8 mb-4 border-r-4 border-emerald-500 pr-3">
+                مرحله دوم: رتبه‌بندی (Ranking) — رقابت برای ویترین
+            </h3>
+            <p>
+                پس از این که میلیون‌ها صفحه با موضوع مشابه ایندکس شدند، زمانی که کاربری کلمه‌ای را جستجو می‌کند، الگوریتم‌های گوگل (مانند RankBrain، Helpful Content System و...) وارد عمل می‌شوند. آن‌ها بیش از ۲۰۰ فاکتور مختلف را می‌سنجند تا مشخص کنند کدام صفحات باید در ۱۰ لینک اول (صفحه اول) قرار گیرند.
+            </p>
+            <div class="my-6 p-5 rounded-2xl border glass-base bg-emerald-500/10 border-emerald-500/30 text-emerald-900 dark:text-emerald-200">
+                <strong class="flex items-center gap-2 mb-2 font-bold text-emerald-600 dark:text-emerald-400">
+                    <i data-lucide="award" class="w-5 h-5"></i>
+                    تشبیه ملموس:
+                </strong>
+                از میان هزاران کتاب موجود در قفسه‌ها با موضوع "بازاریابی"، کتابدار ۱۰ کتاب برتر را روی میز اصلی ویترین ورودی کتابخانه می‌گذارد. کسب رتبه یعنی رسیدن به این ویترین!
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="alert-triangle" class="w-6 h-6 text-amber-500"></i>
+                ۳. چرا یک صفحه ایندکس می‌شود اما رتبه نمی‌گیرد؟
+            </h2>
+            <p>
+                این حالت، شایع‌ترین وضعیت برای صفحات تازه‌تأسیس یا وب‌سایت‌های بدون استراتژی رقابتی است. دلایل اصلی این اتفاق عبارتند از:
+            </p>
+            <ul class="list-none space-y-3">
+                <li><strong>عدم تطابق با قصد کاربر (Search Intent):</strong> محتوای صفحه ایندکس شده، اما آنچه کاربر دقیقاً به دنبالش بوده را پاسخ نمی‌دهد.</li>
+                <li><strong>ضعف در اعتبار دامنه و بک‌لینک (Domain Authority):</strong> در رقابت‌های سنگین، صفحاتی که بک‌لینک‌های معتبرتر و اشاره‌های برند (Brand Mentions) بیشتری دارند، رتبه‌های برتر را تصاحب می‌کنند.</li>
+                <li><strong>محتوای کم‌کیفیت یا بدون ارزش افزوده (Thin Content):</strong> صفحه کپی نیست و از نظر فنی سالم است، اما حرف جدیدی برای گفتن ندارد و گوگل ترجیح می‌دهد منابع جامع‌تر را در صدر نشان دهد.</li>
+                <li><strong>تجربه کاربری ضعیف (Core Web Vitals):</strong> کندی شدید سایت یا بهم‌ریختگی ظاهری در موبایل باعث تنزل رتبه صفحه می‌شود.</li>
+            </ul>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="stethoscope" class="w-6 h-6 text-blue-500"></i>
+                ۴. چگونگی تشخیص وضعیت یک صفحه در ابزارهای تحلیل
+            </h2>
+            <p>
+                برای این که متوجه شوید مشکل صفحه شما از <strong>ایندکس</strong> است یا <strong>رتبه</strong>، الگوی زیر را دنبال کنید:
+            </p>
+
+            <div class="space-y-4 my-6">
+                <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800">
+                    <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-2">آزمایش ۱: بررسی ایندکس بودن</h3>
+                    <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
+                        در گوگل عبارت <code class="bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block text-blue-500">site:yourdomain.com/page-url</code> را جستجو کنید.
+                    </p>
+                    <ul class="list-disc pr-5 mt-2 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 space-y-1">
+                        <li><strong>نتیجه خالی باشد:</strong> صفحه ایندکس نشده است (مشکل فنی یا کیفیت بنیادی).</li>
+                        <li><strong>نتیجه نمایش داده شود:</strong> صفحه ایندکس شده و مشکل از رتبه‌بندی است.</li>
+                    </ul>
+                </div>
+
+                <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800">
+                    <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-2">آزمایش ۲: بررسی وضعیت در Google Search Console</h3>
+                    <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
+                        با ابزار <strong>URL Inspection</strong> آدرس را چک کنید:
+                    </p>
+                    <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+                        پیام <strong>"URL is on Google"</strong> یعنی صفحه ایندکس است. حالا باید به بخش <strong>Performance</strong> بروید و بررسی کنید که این صفحه برای چه کلمات کلیدی، چه <strong>ایمپرشن (Impression)</strong> و <strong>رتبه متوسطی (Average Position)</strong> دارد.
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="target" class="w-6 h-6 text-emerald-500"></i>
+                ۵. کاربرد استراتژیک این تفاوت برای برندهایی مانند SPONSORACB
+            </h2>
+            <p>
+                در پلتفرم‌های ارائه‌دهنده خدمات آنلاین و پلتفرم‌های مبتنی بر تراکنش (مانند <strong>SPONSORACB</strong>)، درک این تفاوت مستقیماً روی بازگشت سرمایه (ROI) سئو تأثیر می‌گذارد:
+            </p>
+            <ul class="list-none space-y-3">
+                <li><strong>عدم اتلاف بودجه روی ایندکس صفحات زاید:</strong> تمام صفحات مثل فرم‌های ورود، سبد خرید، یا فیلترهای موقت نباید ایندکس شوند. با noindex کردن آن‌ها، <strong>بودجه خزش (Crawl Budget)</strong> را برای صفحات اصلی خدمات و وبلاگ حفظ کنید تا آن صفحات شانس بیشتری برای <strong>کسب رتبه</strong> پیدا کنند.</li>
+                <li><strong>تمرکز بر نرخ تبدیل (Conversion) به‌جای صرفاً ایندکس:</strong> داشتن ۱,۰۰۰ صفحه ایندکس‌شده در گوگل که هیچ‌کدام در صفحه اول نیستند، هیچ ورودی و فروشی ایجاد نمی‌کند. بهتر است ۵۰ صفحه تخصصی و کاملاً سئو شده داشته باشید که در کلمات کلیدی کلیدی برند مانند "خدمات اتوماسیون"، "پشتیبانی ربات‌" و... در <strong>رتبه‌های ۱ تا ۳</strong> قرار گیرند.</li>
+            </ul>
+
+            <!-- باکس ویژه CTA برای SPONSORACB -->
+            <div class="mt-12 p-8 rounded-3xl border glass-base bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 border-emerald-200 dark:border-emerald-800/50 shadow-lg shadow-emerald-500/5 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 dark:bg-emerald-400/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                <div class="relative z-10 flex flex-col items-center text-center gap-4">
+                    <div class="w-16 h-16 bg-emerald-600 text-white rounded-2xl flex items-center justify-center shadow-md mb-2">
+                        <i data-lucide="trending-up" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-emerald-900 dark:text-emerald-100">ارتقای رتبه و تسخیر نتایج گوگل با SPONSORACB</h3>
+                    <p class="text-sm sm:text-base font-medium text-emerald-800/80 dark:text-emerald-200/80 max-w-2xl leading-relaxed">
+                        اگر صفحات سایت شما ایندکس می‌شوند اما توانایی رقابت و رسیدن به صفحه اول گوگل را ندارند، جهت مشاوره استراتژی محتوا، بهینه‌سازی لینک‌سازی و ارتقای رتبه کلمات کلیدی با متخصصان **SPONSORACB** در ارتباط باشید.
+                    </p>
+                    <a href="https://t.me/sponsoracb_bot" target="_blank" rel="noopener noreferrer" class="mt-4 flex items-center gap-3 px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold transition-all shadow-lg shadow-emerald-600/30 hover:shadow-emerald-600/50 hover:-translate-y-1">
+                        <i data-lucide="bot" class="w-5 h-5"></i>
+                        <span>ارتباط با ربات رسمی (sponsoracb_bot@)</span>
+                    </a>
+                </div>
+            </div>
+
+        </article>
+
+    </main>
+
+    <!-- فوتر -->
+    <footer class="w-full py-6 mt-auto border-t glass-base bg-zinc-950/40 border-zinc-800/50 flex flex-col items-center justify-center gap-2 transition-colors" id="footer">
+        <p class="text-xs text-zinc-400" id="footer-text">تمامی حقوق برای مجموعه محفوظ است</p>
+        <a href="https://AMT-IR.github.io" target="_blank" class="flex items-center gap-1.5 text-sm font-bold transition-colors hover:text-emerald-500 text-white" id="footer-link">
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+            <span>پورتال جامع AMT-IR</span>
+        </a>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // مقداردهی و ساخت آیکون‌ها
+        lucide.createIcons();
+
+        // منطق تغییر تم
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body>
+</html>
