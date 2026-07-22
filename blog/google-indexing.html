@@ -1,0 +1,394 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>چرا سایت در گوگل نمایش داده نمی‌شود؟ بررسی مشکلات ایندکس | وبلاگ SPONSORACB</title>
+    
+    <!-- سئو متا تگ‌ها (SEO Meta Tags) -->
+    <meta name="description" content="علل عدم نمایش سایت در نتایج گوگل، تفاوت خزش (Crawling) و ایندکس (Indexing)، تحلیل کامل کدهای گزارش Coverage سرچ کنسول و راهکارهای تخصصی برای پلتفرم SPONSORACB.">
+    <meta name="keywords" content="عدم ایندکس سایت, چرا سایتم در گوگل نیست, مشکلات سرچ کنسول, Discovered currently not indexed, Crawled currently not indexed, noindex, بودجه خزش, سئو فنی, SPONSORACB">
+    
+    <!-- فونت Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            transition: background-color 0.4s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* پس‌زمینه محو و زیبا */
+        .ambient-bg {
+            background-color: #f4f4f5;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05), transparent 25%);
+        }
+        
+        .dark .ambient-bg {
+            background-color: #09090b;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.04), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.04), transparent 25%);
+        }
+
+        .glass-base {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* کاستوم اسکرول‌بار */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { 
+            background: #d4d4d8; 
+            border-radius: 10px; 
+        }
+        .dark ::-webkit-scrollbar-thumb { background: #27272a; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+        /* استایل‌های تایپوگرافی مقاله */
+        .article-content p {
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            text-align: justify;
+        }
+        .article-content ul {
+            margin-bottom: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        .article-content li {
+            margin-bottom: 0.75rem;
+            line-height: 1.8;
+            position: relative;
+        }
+        .article-content li::before {
+            content: '•';
+            color: #ef4444; /* Red-500 */
+            position: absolute;
+            right: -1.2rem;
+            font-size: 1.5rem;
+            line-height: 1;
+            top: 0.1rem;
+        }
+        .dark .article-content li::before {
+            color: #f87171; /* Red-400 */
+        }
+    </style>
+</head>
+<body class="ambient-bg text-zinc-900 dark:text-white min-h-screen flex flex-col relative transition-colors duration-500">
+
+    <!-- هدر (Navbar) -->
+    <nav class="w-full h-16 sm:h-20 flex items-center justify-between px-4 sm:px-8 border-b glass-base sticky top-0 z-40 
+        bg-white/40 border-zinc-200/50 
+        dark:bg-zinc-950/40 dark:border-zinc-800/50 transition-colors">
+        
+        <!-- فضای خالی برای تراز وسط -->
+        <div class="w-10 sm:w-12"></div>
+
+        <!-- عنوان وسط -->
+        <span class="font-black text-lg sm:text-xl tracking-[0.2em] dir-ltr text-zinc-900 dark:text-white">SPONSORACB</span>
+        
+        <!-- دکمه تغییر تم -->
+        <button onclick="toggleTheme()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all border shadow-sm
+            bg-white/70 border-zinc-200/80 hover:bg-white
+            dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 group">
+            <i data-lucide="sun" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-600 hidden dark:block group-hover:text-amber-400 transition-colors"></i>
+            <i data-lucide="moon" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 block dark:hidden group-hover:text-indigo-500 transition-colors"></i>
+        </button>
+    </nav>
+
+    <!-- محتوای اصلی مقاله -->
+    <main class="flex-1 w-full max-w-4xl mx-auto flex flex-col py-10 px-4 sm:px-6 lg:px-8">
+        
+        <!-- بخش عنوان مقاله -->
+        <header class="mb-10 text-center sm:text-right border-b border-zinc-200 dark:border-zinc-800 pb-8">
+            <div class="flex items-center justify-center sm:justify-start gap-3 mb-4 text-red-600 dark:text-red-400">
+                <i data-lucide="alert-octagon" class="w-5 h-5"></i>
+                <span class="text-sm font-bold tracking-wide">خطایابی و سئوی فنی</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-zinc-900 dark:text-white leading-[1.4] tracking-tight mb-6">
+                چرا سایت در نتایج گوگل نمایش داده نمی‌شود؟ بررسی تخصصی و عمیق مشکلات ایندکس
+            </h1>
+            
+            <div class="flex items-center justify-center sm:justify-start gap-4 text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400">
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    <span>تاریخ انتشار: ۶ مرداد ۱۴۰۵</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="clock" class="w-4 h-4"></i>
+                    <span>زمان مطالعه: ۱۱ دقیقه</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- متن مقاله -->
+        <article class="article-content text-base sm:text-lg text-zinc-700 dark:text-zinc-300">
+            
+            <p>
+                عدم نمایش صفحات سایت در نتایج جستجو یکی از چالش‌برانگیزترین بحران‌ها در مسیر رشد ارگانیک یک پلتفرم دیجیتال است. بسیاری از کسب‌وکارها به‌محض اینکه نام یا محتوای خود را در گوگل پیدا نمی‌کنند، آن را ناشی از ضعف در رتبه‌بندی می‌دانند؛ در حالی که در اکثر موارد، مشکل اصلاً به <strong>رتبه‌بندی (Ranking)</strong> مربوط نیست، بلکه به <strong>نمایه‌سازی (Indexing)</strong> و حتی پیش از آن، <strong>خزش (Crawling)</strong> بازمی‌گردد.
+            </p>
+            <p>
+                برای حل مشکل، ابتدا باید تفاوت دو مفهوم کلیدی را درک کرد:
+            </p>
+            <ul class="list-none space-y-3 my-6">
+                <li><strong>خزش (Crawling):</strong> کشف و دریافت صفحات سایت توسط ربات‌های گوگل (Googlebot).</li>
+                <li><strong>ایندکس (Indexing):</strong> پردازش، تحلیل و ذخیره‌سازی محتوای صفحه در پایگاه داده عظیم گوگل جهت نمایش در نتایج.</li>
+            </ul>
+            <p>
+                اگر صفحه‌ای ایندکس نشود، هیچ شانسی برای دریافت ورودی ارگانیک نخواهد داشت. در ادامه، تمامی دلایل عدم نمایش سایت در گوگل به همراه راهکارهای عمیق و فنی بررسی شده‌اند.
+            </p>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="git-fork" class="w-6 h-6 text-red-500"></i>
+                ۱. اکوسیستم دلایل عدم ایندکس صفحات (بررسی ریشه‌ای)
+            </h2>
+            <p>
+                گوگل برای مدیریت منابع خود و ارتقای کیفیت نتایج، خط‌مشی‌های سخت‌گیرانه‌ای برای خزش و ایندکس دارد. دلایل اصلی عدم نمایش صفحات را می‌توان در دسته کلی طبقه‌بندی کرد:
+            </p>
+
+            <!-- نمودار ساختاری دلایل عدم ایندکس -->
+            <div class="my-8 p-6 rounded-2xl border glass-base bg-zinc-100/80 dark:bg-zinc-900/80 border-zinc-300 dark:border-zinc-800 font-mono text-xs sm:text-sm overflow-x-auto text-center leading-relaxed">
+                <div class="font-bold text-red-600 dark:text-red-400 text-base mb-4">[ عدم نمایش سایت در گوگل ]</div>
+                <div class="text-zinc-400 mb-2">│</div>
+                <div class="flex justify-around gap-2 border-t border-zinc-300 dark:border-zinc-700 pt-3 min-w-[550px]">
+                    <div class="flex-1">
+                        <span class="text-blue-600 dark:text-blue-400 font-bold">[موانع فنی / دسترسی]</span>
+                        <div class="text-zinc-500 dark:text-zinc-400 text-xs mt-2 space-y-1">
+                            <div>• Noindex / Robots</div>
+                            <div>• خطاهای سرور (5xx)</div>
+                            <div>• Canonical اشتباه</div>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <span class="text-violet-600 dark:text-violet-400 font-bold">[کیفیت محتوا]</span>
+                        <div class="text-zinc-500 dark:text-zinc-400 text-xs mt-2 space-y-1">
+                            <div>• محتوای تکراری</div>
+                            <div>• Thin Content</div>
+                            <div>• اسپم و بی‌کیفیتی</div>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <span class="text-emerald-600 dark:text-emerald-400 font-bold">[اعتبار و بودجه خزش]</span>
+                        <div class="text-zinc-500 dark:text-zinc-400 text-xs mt-2 space-y-1">
+                            <div>• لینک‌سازی ضعیف</div>
+                            <div>• Low Crawl Budget</div>
+                            <div>• جریمه یا پنالتی</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-xl sm:text-2xl font-bold text-zinc-800 dark:text-zinc-200 mt-8 mb-4 border-r-4 border-blue-500 pr-3">
+                الف) موانع فنی و مسدودسازی دسترسی
+            </h3>
+            <ul class="list-none space-y-3">
+                <li><strong>تگ noindex ناخواسته:</strong> متداول‌ترین دلیل عدم ایندکس، وجود متاتگ <code class="bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block text-red-500">&lt;meta name="robots" content="noindex"&gt;</code> در بخش <code class="bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block">&lt;head&gt;</code> صفحه است. این تگ صراحتاً به گوگل فرمان می‌دهد که صفحه را ذخیره نکند.</li>
+                <li><strong>انسداد در فایل robots.txt:</strong> اگر دسترسی ربات‌ها به یک مسیر خاص در فایل robots.txt با دستور <code class="bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block">Disallow:</code> مسدود شده باشد، گوگل صفحه را خزش نمی‌کند.</li>
+                <li><strong>استفاده نادرست از تگ کانوینکال (rel="canonical"):</strong> اگر صفحه A اشاره به صفحه B داشته باشد، گوگل تمام ارزش ایندکس را به صفحه B می‌دهد و صفحه A را از نتایج حذف می‌کند.</li>
+                <li><strong>خطاهای سروری و دسترس‌پذیری (5xx Errors):</strong> اگر هنگام مراجعه Googlebot سرور دچار کندی شدیدی شده یا خطاهای ۵۰۰ تا ۵۰۴ صادر کند، گوگل خزش را متوقف و صفحه را از ایندکس خارج می‌کند.</li>
+            </ul>
+
+            <h3 class="text-xl sm:text-2xl font-bold text-zinc-800 dark:text-zinc-200 mt-8 mb-4 border-r-4 border-violet-500 pr-3">
+                ب) چالش‌های مربوط به کیفیت و ارزشمندی محتوا
+            </h3>
+            <ul class="list-none space-y-3">
+                <li><strong>محتوای کم‌ارزش یا لاغر (Thin Content):</strong> گوگل صفحاتی که محتوای بسیار کوتاه، بی‌ارزش، کپی‌شده یا تولیدشده توسط هوش مصنوعی بدون ارزش افزوده (Value Added) دارند را ایندکس نمی‌کند.</li>
+                <li><strong>محتوای تکراری (Duplicate Content):</strong> اگر محتوای یک صفحه شباهت بسیار زیادی به صفحات دیگر سایت داشته باشد، گوگل تنها یک نسخه اصلی را انتخاب می‌کند.</li>
+                <li><strong>صفحات تغییرمسیر یافته (Redirections):</strong> صفحاتی که دارای ریدایرکت (مثلاً ۳۰۱ یا ۳۰۲) هستند، مستقیماً ایندکس نمی‌شوند.</li>
+            </ul>
+
+            <h3 class="text-xl sm:text-2xl font-bold text-zinc-800 dark:text-zinc-200 mt-8 mb-4 border-r-4 border-emerald-500 pr-3">
+                ج) عدم وجود اعتبار و ساختار لینک‌سازی مناسب
+            </h3>
+            <ul class="list-none space-y-3">
+                <li><strong>صفحات یتیم (Orphan Pages):</strong> صفحاتی که هیچ لینک داخلی از سایر بخش‌های سایت به آن‌ها داده نشده است، توسط ربات‌های گوگل به سختی کشف می‌شوند.</li>
+                <li><strong>کمبود بک‌لینک و اعتبار:</strong> دامنه‌های تازه تأسیس که هنوز اعتباری در وب ندارند، توسط گوگل با سرعت کمتری خزش و ایندکس می‌شوند.</li>
+            </ul>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="file-search" class="w-6 h-6 text-violet-500"></i>
+                ۲. راهنمای عمیق وضعیت‌های گزارش Coverage در سرچ کنسول
+            </h2>
+            <p>
+                بهترین ابزار برای تشخیص علت دقیق عدم ایندکس، بخش <strong>Pages (Index Coverage)</strong> در گوگل سرچ کنسول است. کدهای اعلام‌شده به شکل زیر تفسیر می‌شوند:
+            </p>
+
+            <!-- جدول وضعیت‌های Coverage -->
+            <div class="overflow-x-auto w-full mb-8 mt-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm">
+                <table class="w-full text-sm text-right border-collapse whitespace-nowrap min-w-[750px]">
+                    <thead class="bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800">
+                        <tr>
+                            <th class="p-4 font-bold text-zinc-900 dark:text-white border-l border-zinc-200 dark:border-zinc-800">وضعیت گزارش (Status)</th>
+                            <th class="p-4 font-bold text-zinc-900 dark:text-white border-l border-zinc-200 dark:border-zinc-800">علت فنی و مفهومی</th>
+                            <th class="p-4 font-bold text-emerald-600 dark:text-emerald-400">راهکار حل مشکل</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-zinc-200 dark:divide-zinc-800 glass-base bg-white/30 dark:bg-zinc-950/30">
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold text-amber-600 dark:text-amber-400 border-l border-zinc-200 dark:border-zinc-800">Discovered - currently not indexed</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800">گوگل صفحه را کشف کرده اما به دلیل محدودیت بودجه خزش یا کمبود اعتبار هنوز آن را خزش نکرده است.</td>
+                            <td class="p-4 font-bold">تقویت لینک‌سازی داخلی، دریافت بک‌لینک، افزایش سرعت سرور.</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold text-orange-600 dark:text-orange-400 border-l border-zinc-200 dark:border-zinc-800">Crawled - currently not indexed</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800">گوگل صفحه را خزش و محتوا را خوانده، اما تصمیم گرفته آن را ایندکس نکند (کیفیت پایین یا تکراری بودن).</td>
+                            <td class="p-4 font-bold">بازنویسی محتوا، افزودن ارزش تخصصی، اصلاح ساختار صفحه.</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold text-red-500 border-l border-zinc-200 dark:border-zinc-800">Excluded by ‘noindex’ tag</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800">صفحه دارای متاتگ noindex یا هدر HTTP عدم ایندکس است.</td>
+                            <td class="p-4 font-bold">حذف متاتگ noindex از سورس کد صفحه.</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold text-red-500 border-l border-zinc-200 dark:border-zinc-800">Blocked by robots.txt</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800">فایل robots.txt مانع از خزش صفحه شده است.</td>
+                            <td class="p-4 font-bold">بررسی robots.txt و حذف دستور Disallow مربوطه.</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold text-blue-600 dark:text-blue-400 border-l border-zinc-200 dark:border-zinc-800">Alternate page with proper canonical tag</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800">صفحه نسخه فرعی بوده و تگ کانوینکال آن به صفحه اصلی اشاره دارد.</td>
+                            <td class="p-4 font-bold">در صورت خطا بودن، کانوینکال را به خود صفحه (Self-referencing) تغییر دهید.</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold text-zinc-500 border-l border-zinc-200 dark:border-zinc-800">Page with redirect</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800">آدرس حاوی ریدایرکت است و مستقیماً ایندکس نمی‌شود.</td>
+                            <td class="p-4 font-bold">اصلاح لینک‌های داخلی به مقصد نهایی.</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold text-red-600 border-l border-zinc-200 dark:border-zinc-800">Not found (404)</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800">صفحه حذف شده اما گوگل هنوز آدرس آن را دارد.</td>
+                            <td class="p-4 font-bold">ارسال کد ۴۱۰ یا ریدایرکت ۳۰۱ به صفحه مرتبط.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="check-square" class="w-6 h-6 text-emerald-500"></i>
+                ۳. چک‌لیست کاربردی و گام‌به‌گام رفع مشکل عدم نمایش سایت
+            </h2>
+
+            <div class="space-y-6 my-8">
+                <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800">
+                    <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-2 flex items-center gap-2">
+                        <span class="w-7 h-7 rounded-lg bg-emerald-500 text-white flex items-center justify-center text-sm font-black">۱</span>
+                        گام اول: تست دستور site: در گوگل
+                    </h3>
+                    <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
+                        در کادر جستجوی گوگل عبارت <code class="bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block text-blue-500">site:yourdomain.com/page-url</code> را سرچ کنید. اگر صفحه نمایش داده شد، عدم مشاهده آن در کلمات کلیدی به دلیل <strong>رتبه ضعیف (Ranking)</strong> است؛ در غیر این صورت، ایندکس نشده است.
+                    </p>
+                </div>
+
+                <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800">
+                    <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-2 flex items-center gap-2">
+                        <span class="w-7 h-7 rounded-lg bg-emerald-500 text-white flex items-center justify-center text-sm font-black">۲</span>
+                        گام دوم: بررسی لایه‌های دسترسی فنی
+                    </h3>
+                    <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
+                        فایل <code class="bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block">robots.txt</code> را چک کنید تا کدهایی مثل <code class="bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block text-red-500">Disallow: /</code> وجود نداشته باشد. همچنین با کلیدهای Ctrl + U سورس صفحه را باز کرده و عبارت noindex را سرچ کنید.
+                    </p>
+                </div>
+
+                <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800">
+                    <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-2 flex items-center gap-2">
+                        <span class="w-7 h-7 rounded-lg bg-emerald-500 text-white flex items-center justify-center text-sm font-black">۳</span>
+                        گام سوم: استفاده از ابزار URL Inspection
+                    </h3>
+                    <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
+                        آدرس دقیق صفحه را در بالای سرچ کنسول وارد کرده و دکمه <strong>Test Live URL</strong> را بزنید. در صورت نبود خطا، دکمه <strong>Request Indexing</strong> را برای اولویت‌بخشی فشار دهید.
+                    </p>
+                </div>
+
+                <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800">
+                    <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-2 flex items-center gap-2">
+                        <span class="w-7 h-7 rounded-lg bg-emerald-500 text-white flex items-center justify-center text-sm font-black">۴</span>
+                        گام چهارم: بهینه‌سازی معماری لینک‌سازی داخلی
+                    </h3>
+                    <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
+                        از صفحه اصلی یا صفحات پربازدید حداقل ۱ تا ۳ لینک به صفحه جدید بدهید و از وجود آدرس در <code class="bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block text-blue-500">Sitemap.xml</code> مطمئن شوید.
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="shield" class="w-6 h-6 text-blue-600"></i>
+                ۴. استراتژی ویژه برای برندهای خدمات دیجیتال (مانند SPONSORACB)
+            </h2>
+            <p>
+                در پلتفرم‌های ارائه‌دهنده خدمات آنلاین و فروشگاهی (نظیر مجموعه <strong>SPONSORACB</strong>)، به دلیل حجم بالای صفحات و تغییرات تعرفه‌ها، مشکلات ایندکس به‌وفور رخ می‌دهد. رعایت نکات زیر الزامی است:
+            </p>
+            <ul class="list-none space-y-3">
+                <li><strong>مدیریت صفحات پارامتردار (Faceted Navigation):</strong> سیستم‌های فیلتر محصولات نباید آدرس‌های نامحدود با پارامترهای مختلف ایجاد کنند تا بودجه خزش (Crawl Budget) بلعیده نشود. پارامترها را با تگ canonical به دسته اصلی وصل کنید.</li>
+                <li><strong>سرعت بالا و نرخ پاسخ‌دهی سرور:</strong> مطمئن شوید سرور پاسخ‌دهی زیر ۲۰۰ میلی‌ثانیه دارد تا نرخ خزش ربات‌های گوگل کاهش نیابد.</li>
+                <li><strong>تولید محتوای اختصاصی برای هر خدمت:</strong> از کپی‌برداری توضیحات یکسان خودداری کرده و با افزودن FAQ و Schema Markup، ارزشمندی صفحه را ثابت کنید.</li>
+            </ul>
+
+            <!-- باکس ویژه CTA برای SPONSORACB -->
+            <div class="mt-12 p-8 rounded-3xl border glass-base bg-gradient-to-br from-red-50 to-amber-50 dark:from-red-900/20 dark:to-amber-900/20 border-red-200 dark:border-red-800/50 shadow-lg shadow-red-500/5 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-red-500/10 dark:bg-red-400/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                <div class="relative z-10 flex flex-col items-center text-center gap-4">
+                    <div class="w-16 h-16 bg-red-600 text-white rounded-2xl flex items-center justify-center shadow-md mb-2">
+                        <i data-lucide="wrench" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-red-900 dark:text-red-100">عیب‌یابی تخصصی و رفع مشکلات ایندکس با SPONSORACB</h3>
+                    <p class="text-sm sm:text-base font-medium text-red-800/80 dark:text-red-200/80 max-w-2xl leading-relaxed">
+                        اگر صفحات سایت شما در گوگل ثبت نمی‌شوند یا نرخ خزش پایینی دارند، جهت آنالیز فنی، بهینه‌سازی سرعت سرور و رفع خطاهای سرچ کنسول با تیم سئوی **SPONSORACB** در ارتباط باشید.
+                    </p>
+                    <a href="https://t.me/sponsoracb_bot" target="_blank" rel="noopener noreferrer" class="mt-4 flex items-center gap-3 px-8 py-4 bg-red-600 hover:bg-red-700 text-white rounded-xl font-bold transition-all shadow-lg shadow-red-600/30 hover:shadow-red-600/50 hover:-translate-y-1">
+                        <i data-lucide="bot" class="w-5 h-5"></i>
+                        <span>ارتباط با ربات پشتیبانی (sponsoracb_bot@)</span>
+                    </a>
+                </div>
+            </div>
+
+        </article>
+
+    </main>
+
+    <!-- فوتر -->
+    <footer class="w-full py-6 mt-auto border-t glass-base bg-zinc-950/40 border-zinc-800/50 flex flex-col items-center justify-center gap-2 transition-colors" id="footer">
+        <p class="text-xs text-zinc-400" id="footer-text">تمامی حقوق برای مجموعه محفوظ است</p>
+        <a href="https://AMT-IR.github.io" target="_blank" class="flex items-center gap-1.5 text-sm font-bold transition-colors hover:text-emerald-500 text-white" id="footer-link">
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+            <span>پورتال جامع AMT-IR</span>
+        </a>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // مقداردهی و ساخت آیکون‌ها
+        lucide.createIcons();
+
+        // منطق تغییر تم
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body>
+</html>
