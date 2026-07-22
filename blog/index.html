@@ -1,1 +1,359 @@
 
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وبلاگ و مقالات آموزشی | پورتال لینک‌ها</title>
+    
+    <!-- فونت Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            transition: background-color 0.4s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* پس‌زمینه محو و زیبا */
+        .ambient-bg {
+            background-color: #f4f4f5;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05), transparent 25%);
+        }
+        
+        .dark .ambient-bg {
+            background-color: #09090b;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.04), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.04), transparent 25%);
+        }
+
+        .glass-base {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* انیمیشن لود شدن کارت‌ها */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in-up {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        /* کاستوم اسکرول‌بار پریمیوم */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { 
+            background: #d4d4d8; 
+            border-radius: 10px; 
+        }
+        .dark ::-webkit-scrollbar-thumb { background: #27272a; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+    </style>
+</head>
+<body class="ambient-bg text-zinc-900 dark:text-white min-h-screen flex flex-col relative transition-colors duration-500">
+
+    <!-- هدر (Navbar) -->
+    <nav class="w-full h-16 sm:h-20 flex items-center justify-between px-4 sm:px-8 border-b glass-base sticky top-0 z-40 
+        bg-white/40 border-zinc-200/50 
+        dark:bg-zinc-950/40 dark:border-zinc-800/50 transition-colors">
+        
+        <!-- فضای خالی برای تراز وسط (در RTL راست قرار می‌گیرد) -->
+        <div class="w-10 sm:w-12"></div>
+
+        <!-- عنوان وسط -->
+        <span class="font-black text-lg sm:text-xl tracking-[0.2em] dir-ltr text-zinc-900 dark:text-white">SPONSORACB</span>
+        
+        <!-- دکمه تغییر تم (در RTL چپ قرار می‌گیرد) -->
+        <button onclick="toggleTheme()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all border shadow-sm
+            bg-white/70 border-zinc-200/80 hover:bg-white
+            dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 group">
+            <i data-lucide="sun" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-600 hidden dark:block group-hover:text-amber-400 transition-colors"></i>
+            <i data-lucide="moon" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 block dark:hidden group-hover:text-indigo-500 transition-colors"></i>
+        </button>
+    </nav>
+
+    <!-- محتوای اصلی -->
+    <main class="flex-1 w-full max-w-6xl mx-auto flex flex-col gap-8 py-12 px-4 sm:px-6 lg:px-8">
+        
+        <!-- بخش معرفی بلاگ -->
+        <header class="text-center flex flex-col items-center gap-4 mb-8 sm:mb-12">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center border shadow-sm transition-colors
+                bg-white/70 border-zinc-200/80 
+                dark:bg-zinc-900/60 dark:border-zinc-800">
+                <i data-lucide="book-open" class="w-8 h-8 sm:w-10 sm:h-10 text-zinc-800 dark:text-indigo-400"></i>
+            </div>
+            
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-zinc-900 dark:text-white">
+                وبلاگ تخصصی SPONSORACB
+            </h1>
+            
+            <p class="text-sm sm:text-base font-medium max-w-2xl mx-auto text-zinc-500 dark:text-zinc-400 leading-relaxed px-4">
+                مرجع تخصصی مقالات آموزش رشد کانال تلگرام، خدمات ربات‌سازی، بهینه‌سازی سئو (SEO) و توسعه برندینگ دیجیتال. با آموزش‌های جامع AMT-IR کسب‌وکار آنلاین خود را متحول کنید.
+            </p>
+        </header>
+
+        <!-- گرید دسته‌بندی مقالات -->
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 sm:gap-8 items-start">
+            
+            <!-- ======================= دسته ۱: تلگرام (Blue) ======================= -->
+            <div class="animate-fade-in-up flex flex-col rounded-3xl border glass-base p-6 sm:p-8 transition-all duration-300
+                bg-white/70 border-zinc-200/80 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-500/5
+                dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:border-blue-500/40"
+                style="animation-delay: 0.1s;">
+                
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 rounded-2xl flex items-center justify-center border bg-blue-50 border-blue-200 text-blue-600 dark:bg-blue-500/10 dark:border-blue-500/20 dark:text-blue-400">
+                        <i data-lucide="send" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-zinc-900 dark:text-white">تلگرام و خدمات رباتی AMT-IR</h2>
+                        <p class="text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 mt-1">راهکارهای نوین توسعه کسب‌وکار در تلگرام</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <a href="https://sponsoracb.ir/blog/real-vs-fake-members.html" class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-blue-200 dark:hover:border-blue-900/50 hover:bg-white dark:hover:bg-zinc-800/80 transition-all group">
+                        <span class="text-blue-500 font-bold opacity-60 text-sm mt-0.5 w-4 text-center">۱</span>
+                        <h3 class="flex-1 text-sm sm:text-base font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">ممبر واقعی vs ممبر فیک تلگرام: کدام برای کسب‌وکار شما مناسب است؟</h3>
+                        <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:text-blue-500 group-hover:-translate-x-1 transition-all mt-0.5 hidden sm:block"></i>
+                    </a>
+                    
+                    <a href="https://sponsoracb.ir/blog/grow-telegram-channel.html" class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-blue-200 dark:hover:border-blue-900/50 hover:bg-white dark:hover:bg-zinc-800/80 transition-all group">
+                        <span class="text-blue-500 font-bold opacity-60 text-sm mt-0.5 w-4 text-center">۲</span>
+                        <h3 class="flex-1 text-sm sm:text-base font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">ترفندهای طلایی رشد سریع کانال تلگرام در سال ۲۰۲۶</h3>
+                        <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:text-blue-500 group-hover:-translate-x-1 transition-all mt-0.5 hidden sm:block"></i>
+                    </a>
+
+                    <a href="https://sponsoracb.ir/blog/telegram-members.html" class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-blue-200 dark:hover:border-blue-900/50 hover:bg-white dark:hover:bg-zinc-800/80 transition-all group">
+                        <span class="text-blue-500 font-bold opacity-60 text-sm mt-0.5 w-4 text-center">۳</span>
+                        <h3 class="flex-1 text-sm sm:text-base font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">بهترین روش‌های ارگانیک افزایش ممبر کانال تلگرام</h3>
+                        <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:text-blue-500 group-hover:-translate-x-1 transition-all mt-0.5 hidden sm:block"></i>
+                    </a>
+
+                    <a href="https://sponsoracb.ir/blog/telegram-bots.html" class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-blue-200 dark:hover:border-blue-900/50 hover:bg-white dark:hover:bg-zinc-800/80 transition-all group">
+                        <span class="text-blue-500 font-bold opacity-60 text-sm mt-0.5 w-4 text-center">۴</span>
+                        <h3 class="flex-1 text-sm sm:text-base font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">کاربردهای تجاری ربات تلگرام برای اتوماسیون کسب‌وکارها</h3>
+                        <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:text-blue-500 group-hover:-translate-x-1 transition-all mt-0.5 hidden sm:block"></i>
+                    </a>
+
+                    <a href="https://sponsoracb.ir/blog/telegram-business.html" class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-blue-200 dark:hover:border-blue-900/50 hover:bg-white dark:hover:bg-zinc-800/80 transition-all group">
+                        <span class="text-blue-500 font-bold opacity-60 text-sm mt-0.5 w-4 text-center">۵</span>
+                        <h3 class="flex-1 text-sm sm:text-base font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">آموزش گام‌به‌گام ساخت ربات تلگرام (پایتون) ویژه بازار کار</h3>
+                        <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:text-blue-500 group-hover:-translate-x-1 transition-all mt-0.5 hidden sm:block"></i>
+                    </a>
+
+                    <a href="https://sponsoracb.ir/blog/telegram-updates.html" class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-blue-200 dark:hover:border-blue-900/50 hover:bg-white dark:hover:bg-zinc-800/80 transition-all group">
+                        <span class="text-blue-500 font-bold opacity-60 text-sm mt-0.5 w-4 text-center">۶</span>
+                        <h3 class="flex-1 text-sm sm:text-base font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">دلایل عدم رشد کانال‌های تلگرامی و راهکارهای حل آن</h3>
+                        <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:text-blue-500 group-hover:-translate-x-1 transition-all mt-0.5 hidden sm:block"></i>
+                    </a>
+
+                    <a href="https://sponsoracb.ir/blog/telegram-premium.html" class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-blue-200 dark:hover:border-blue-900/50 hover:bg-white dark:hover:bg-zinc-800/80 transition-all group">
+                        <span class="text-blue-500 font-bold opacity-60 text-sm mt-0.5 w-4 text-center">۷</span>
+                        <h3 class="flex-1 text-sm sm:text-base font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">بررسی کامل تلگرام پریمیوم و مزایای آن برای ادمین‌ها</h3>
+                        <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:text-blue-500 group-hover:-translate-x-1 transition-all mt-0.5 hidden sm:block"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ======================= دسته ۲: سئو و سایت (Emerald) ======================= -->
+            <div class="animate-fade-in-up flex flex-col rounded-3xl border glass-base p-6 sm:p-8 transition-all duration-300
+                bg-white/70 border-zinc-200/80 hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-500/5
+                dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:border-emerald-500/40"
+                style="animation-delay: 0.2s;">
+                
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 rounded-2xl flex items-center justify-center border bg-emerald-50 border-emerald-200 text-emerald-600 dark:bg-emerald-500/10 dark:border-emerald-500/20 dark:text-emerald-400">
+                        <i data-lucide="globe" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-zinc-900 dark:text-white">سئو و بهینه‌سازی سایت (SEO)</h2>
+                        <p class="text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 mt-1">تکنیک‌های افزایش ترافیک و ورودی ارگانیک از گوگل</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <a href="https://sponsoracb.ir/blog/what-is-seo.html" class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-emerald-200 dark:hover:border-emerald-900/50 hover:bg-white dark:hover:bg-zinc-800/80 transition-all group">
+                        <span class="text-emerald-500 font-bold opacity-60 text-sm mt-0.5 w-4 text-center">۸</span>
+                        <h3 class="flex-1 text-sm sm:text-base font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">سئو (SEO) چیست؟ راهنمای جامع بهینه‌سازی سایت برای موتورهای جستجو</h3>
+                        <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:text-emerald-500 group-hover:-translate-x-1 transition-all mt-0.5 hidden sm:block"></i>
+                    </a>
+                    
+                    <a href="https://sponsoracb.ir/blog/google-search-console.html" class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-emerald-200 dark:hover:border-emerald-900/50 hover:bg-white dark:hover:bg-zinc-800/80 transition-all group">
+                        <span class="text-emerald-500 font-bold opacity-60 text-sm mt-0.5 w-4 text-center">۹</span>
+                        <h3 class="flex-1 text-sm sm:text-base font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">آموزش ثبت سایت در گوگل سرچ کنسول (Google Search Console)</h3>
+                        <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:text-emerald-500 group-hover:-translate-x-1 transition-all mt-0.5 hidden sm:block"></i>
+                    </a>
+
+                    <a href="https://sponsoracb.ir/blog/google-indexing.html" class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-emerald-200 dark:hover:border-emerald-900/50 hover:bg-white dark:hover:bg-zinc-800/80 transition-all group">
+                        <span class="text-emerald-500 font-bold opacity-60 text-sm mt-0.5 w-5 text-center">۱۰</span>
+                        <h3 class="flex-1 text-sm sm:text-base font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">چرا سایت در نتایج گوگل نمایش داده نمی‌شود؟ (بررسی مشکلات ایندکس)</h3>
+                        <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:text-emerald-500 group-hover:-translate-x-1 transition-all mt-0.5 hidden sm:block"></i>
+                    </a>
+
+                    <a href="https://sponsoracb.ir/blog/sitemap-guide.html" class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-emerald-200 dark:hover:border-emerald-900/50 hover:bg-white dark:hover:bg-zinc-800/80 transition-all group">
+                        <span class="text-emerald-500 font-bold opacity-60 text-sm mt-0.5 w-5 text-center">۱۱</span>
+                        <h3 class="flex-1 text-sm sm:text-base font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">نقشه سایت (Sitemap) چیست و نحوه معرفی آن به گوگل</h3>
+                        <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:text-emerald-500 group-hover:-translate-x-1 transition-all mt-0.5 hidden sm:block"></i>
+                    </a>
+
+                    <a href="https://sponsoracb.ir/blog/technical-seo.html" class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-emerald-200 dark:hover:border-emerald-900/50 hover:bg-white dark:hover:bg-zinc-800/80 transition-all group">
+                        <span class="text-emerald-500 font-bold opacity-60 text-sm mt-0.5 w-5 text-center">۱۲</span>
+                        <h3 class="flex-1 text-sm sm:text-base font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">تفاوت کلیدی ایندکس شدن صفحات و کسب رتبه در گوگل</h3>
+                        <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:text-emerald-500 group-hover:-translate-x-1 transition-all mt-0.5 hidden sm:block"></i>
+                    </a>
+
+                    <a href="https://sponsoracb.ir/blog/website-speed.html" class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-emerald-200 dark:hover:border-emerald-900/50 hover:bg-white dark:hover:bg-zinc-800/80 transition-all group">
+                        <span class="text-emerald-500 font-bold opacity-60 text-sm mt-0.5 w-5 text-center">۱۳</span>
+                        <h3 class="flex-1 text-sm sm:text-base font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">راهکارهای عملی افزایش سرعت سایت و تاثیر آن بر سئو</h3>
+                        <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:text-emerald-500 group-hover:-translate-x-1 transition-all mt-0.5 hidden sm:block"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ======================= دسته ۳: برندینگ (Amber) ======================= -->
+            <div class="animate-fade-in-up flex flex-col rounded-3xl border glass-base p-6 sm:p-8 transition-all duration-300
+                bg-white/70 border-zinc-200/80 hover:border-amber-300 hover:shadow-xl hover:shadow-amber-500/5
+                dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:border-amber-500/40"
+                style="animation-delay: 0.3s;">
+                
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 rounded-2xl flex items-center justify-center border bg-amber-50 border-amber-200 text-amber-600 dark:bg-amber-500/10 dark:border-amber-500/20 dark:text-amber-400">
+                        <i data-lucide="award" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-zinc-900 dark:text-white">برندینگ و اعتمادسازی دیجیتال</h2>
+                        <p class="text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 mt-1">استراتژی‌های خلق هویت بصری و افزایش فروش آنلاین</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <a href="https://sponsoracb.ir/blog/responsive-design.html" class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-amber-200 dark:hover:border-amber-900/50 hover:bg-white dark:hover:bg-zinc-800/80 transition-all group">
+                        <span class="text-amber-500 font-bold opacity-60 text-sm mt-0.5 w-5 text-center">۱۴</span>
+                        <h3 class="flex-1 text-sm sm:text-base font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">چگونه یک برند آنلاین قدرتمند و حرفه‌ای بسازیم؟</h3>
+                        <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:text-amber-500 group-hover:-translate-x-1 transition-all mt-0.5 hidden sm:block"></i>
+                    </a>
+                    
+                    <a href="https://sponsoracb.ir/blog/domain-vs-hosting.html" class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-amber-200 dark:hover:border-amber-900/50 hover:bg-white dark:hover:bg-zinc-800/80 transition-all group">
+                        <span class="text-amber-500 font-bold opacity-60 text-sm mt-0.5 w-5 text-center">۱۵</span>
+                        <h3 class="flex-1 text-sm sm:text-base font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">اهمیت طراحی سایت اختصاصی برای توسعه کسب‌وکارهای اینترنتی</h3>
+                        <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:text-amber-500 group-hover:-translate-x-1 transition-all mt-0.5 hidden sm:block"></i>
+                    </a>
+
+                    <a href="https://sponsoracb.ir/blog/website-security.html" class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-amber-200 dark:hover:border-amber-900/50 hover:bg-white dark:hover:bg-zinc-800/80 transition-all group">
+                        <span class="text-amber-500 font-bold opacity-60 text-sm mt-0.5 w-5 text-center">۱۶</span>
+                        <h3 class="flex-1 text-sm sm:text-base font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">تکنیک‌های روانشناسی برای افزایش اعتماد کاربران در سایت</h3>
+                        <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:text-amber-500 group-hover:-translate-x-1 transition-all mt-0.5 hidden sm:block"></i>
+                    </a>
+
+                    <a href="https://sponsoracb.ir/blog/ssl-certificate.html" class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-amber-200 dark:hover:border-amber-900/50 hover:bg-white dark:hover:bg-zinc-800/80 transition-all group">
+                        <span class="text-amber-500 font-bold opacity-60 text-sm mt-0.5 w-5 text-center">۱۷</span>
+                        <h3 class="flex-1 text-sm sm:text-base font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">تاثیر نماد اعتماد الکترونیک (اینماد) بر نرخ تبدیل و فروش</h3>
+                        <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:text-amber-500 group-hover:-translate-x-1 transition-all mt-0.5 hidden sm:block"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ======================= دسته ۴: مقالات تخصصی (Violet) ======================= -->
+            <div class="animate-fade-in-up flex flex-col rounded-3xl border glass-base p-6 sm:p-8 transition-all duration-300
+                bg-white/70 border-zinc-200/80 hover:border-violet-300 hover:shadow-xl hover:shadow-violet-500/5
+                dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:border-violet-500/40"
+                style="animation-delay: 0.4s;">
+                
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 rounded-2xl flex items-center justify-center border bg-violet-50 border-violet-200 text-violet-600 dark:bg-violet-500/10 dark:border-violet-500/20 dark:text-violet-400">
+                        <i data-lucide="cpu" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-zinc-900 dark:text-white">مقالات تخصصی و زیرساخت وب</h2>
+                        <p class="text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 mt-1">مفاهیم فنی شبکه، سرور و هوش مصنوعی</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <a href="https://sponsoracb.ir/blog/cloudflare-guide.html" class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-violet-200 dark:hover:border-violet-900/50 hover:bg-white dark:hover:bg-zinc-800/80 transition-all group">
+                        <span class="text-violet-500 font-bold opacity-60 text-sm mt-0.5 w-5 text-center">۱۸</span>
+                        <h3 class="flex-1 text-sm sm:text-base font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">کلودفلر (Cloudflare) چیست؟ آموزش تامین امنیت و سرعت سایت</h3>
+                        <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:text-violet-500 group-hover:-translate-x-1 transition-all mt-0.5 hidden sm:block"></i>
+                    </a>
+                    
+                    <a href="https://sponsoracb.ir/blog/github-pages.html" class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-violet-200 dark:hover:border-violet-900/50 hover:bg-white dark:hover:bg-zinc-800/80 transition-all group">
+                        <span class="text-violet-500 font-bold opacity-60 text-sm mt-0.5 w-5 text-center">۱۹</span>
+                        <h3 class="flex-1 text-sm sm:text-base font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">آموزش میزبانی رایگان سایت استاتیک با Github Pages</h3>
+                        <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:text-violet-500 group-hover:-translate-x-1 transition-all mt-0.5 hidden sm:block"></i>
+                    </a>
+
+                    <a href="https://sponsoracb.ir/blog/what-is-cdn.html" class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-violet-200 dark:hover:border-violet-900/50 hover:bg-white dark:hover:bg-zinc-800/80 transition-all group">
+                        <span class="text-violet-500 font-bold opacity-60 text-sm mt-0.5 w-5 text-center">۲۰</span>
+                        <h3 class="flex-1 text-sm sm:text-base font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">بررسی تفاوت‌های هاست، سرور مجازی و شبکه توزیع محتوا (CDN)</h3>
+                        <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:text-violet-500 group-hover:-translate-x-1 transition-all mt-0.5 hidden sm:block"></i>
+                    </a>
+
+                    <a href="https://sponsoracb.ir/blog/javascript-basics.html" class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-violet-200 dark:hover:border-violet-900/50 hover:bg-white dark:hover:bg-zinc-800/80 transition-all group">
+                        <span class="text-violet-500 font-bold opacity-60 text-sm mt-0.5 w-5 text-center">۲۱</span>
+                        <h3 class="flex-1 text-sm sm:text-base font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">رابط برنامه‌نویسی یا API چیست و چگونه کار می‌کند؟</h3>
+                        <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:text-violet-500 group-hover:-translate-x-1 transition-all mt-0.5 hidden sm:block"></i>
+                    </a>
+
+                    <a href="https://sponsoracb.ir/blog/ai-for-business.html" class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-violet-200 dark:hover:border-violet-900/50 hover:bg-white dark:hover:bg-zinc-800/80 transition-all group">
+                        <span class="text-violet-500 font-bold opacity-60 text-sm mt-0.5 w-5 text-center">۲۲</span>
+                        <h3 class="flex-1 text-sm sm:text-base font-semibold text-zinc-700 dark:text-zinc-300 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">تحول کسب‌وکارهای اینترنتی با ابزارهای هوش مصنوعی (AI)</h3>
+                        <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:text-violet-500 group-hover:-translate-x-1 transition-all mt-0.5 hidden sm:block"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- فوتر -->
+    <footer class="w-full py-6 mt-auto border-t glass-base bg-zinc-950/40 border-zinc-800/50 flex flex-col items-center justify-center gap-2 transition-colors" id="footer">
+        <p class="text-xs text-zinc-400" id="footer-text">تمامی حقوق برای مجموعه محفوظ است</p>
+        <a href="https://AMT-IR.github.io" target="_blank" class="flex items-center gap-1.5 text-sm font-bold transition-colors hover:text-emerald-500 text-white" id="footer-link">
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+            <span>پورتال جامع AMT-IR</span>
+        </a>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // مقداردهی و ساخت آیکون‌ها
+        lucide.createIcons();
+
+        // منطق تغییر تم
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body>
+</html>
