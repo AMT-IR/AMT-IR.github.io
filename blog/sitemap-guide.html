@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نقشه سایت (Sitemap) چیست و نحوه معرفی آن به گوگل | وبلاگ SPONSORACB</title>
+    
+    <!-- سئو متا تگ‌ها (SEO Meta Tags) -->
+    <meta name="description" content="راهنمای جامع نقشه سایت (XML Sitemap)، انواع فرمت‌ها، ساختار استاندارد XML، نحوه ثبت در گوگل سرچ کنسول و استراتژی‌های اختصاصی بهینه‌سازی برای SPONSORACB.">
+    <meta name="keywords" content="نقشه سایت, XML Sitemap, ثبت Sitemap در گوگل, سرچ کنسول, sitemap index, robots.txt, بودجه خزش, سئو فنی, SPONSORACB">
+    
+    <!-- فونت Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            transition: background-color 0.4s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* پس‌زمینه محو و زیبا */
+        .ambient-bg {
+            background-color: #f4f4f5;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05), transparent 25%);
+        }
+        
+        .dark .ambient-bg {
+            background-color: #09090b;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.04), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.04), transparent 25%);
+        }
+
+        .glass-base {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* کاستوم اسکرول‌بار */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { 
+            background: #d4d4d8; 
+            border-radius: 10px; 
+        }
+        .dark ::-webkit-scrollbar-thumb { background: #27272a; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+        /* استایل‌های تایپوگرافی مقاله */
+        .article-content p {
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            text-align: justify;
+        }
+        .article-content ul {
+            margin-bottom: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        .article-content li {
+            margin-bottom: 0.75rem;
+            line-height: 1.8;
+            position: relative;
+        }
+        .article-content li::before {
+            content: '•';
+            color: #10b981; /* Emerald-500 */
+            position: absolute;
+            right: -1.2rem;
+            font-size: 1.5rem;
+            line-height: 1;
+            top: 0.1rem;
+        }
+        .dark .article-content li::before {
+            color: #34d399; /* Emerald-400 */
+        }
+    </style>
+</head>
+<body class="ambient-bg text-zinc-900 dark:text-white min-h-screen flex flex-col relative transition-colors duration-500">
+
+    <!-- هدر (Navbar) -->
+    <nav class="w-full h-16 sm:h-20 flex items-center justify-between px-4 sm:px-8 border-b glass-base sticky top-0 z-40 
+        bg-white/40 border-zinc-200/50 
+        dark:bg-zinc-950/40 dark:border-zinc-800/50 transition-colors">
+        
+        <!-- فضای خالی برای تراز وسط -->
+        <div class="w-10 sm:w-12"></div>
+
+        <!-- عنوان وسط -->
+        <span class="font-black text-lg sm:text-xl tracking-[0.2em] dir-ltr text-zinc-900 dark:text-white">SPONSORACB</span>
+        
+        <!-- دکمه تغییر تم -->
+        <button onclick="toggleTheme()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all border shadow-sm
+            bg-white/70 border-zinc-200/80 hover:bg-white
+            dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 group">
+            <i data-lucide="sun" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-600 hidden dark:block group-hover:text-amber-400 transition-colors"></i>
+            <i data-lucide="moon" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 block dark:hidden group-hover:text-indigo-500 transition-colors"></i>
+        </button>
+    </nav>
+
+    <!-- محتوای اصلی مقاله -->
+    <main class="flex-1 w-full max-w-4xl mx-auto flex flex-col py-10 px-4 sm:px-6 lg:px-8">
+        
+        <!-- بخش عنوان مقاله -->
+        <header class="mb-10 text-center sm:text-right border-b border-zinc-200 dark:border-zinc-800 pb-8">
+            <div class="flex items-center justify-center sm:justify-start gap-3 mb-4 text-emerald-600 dark:text-emerald-400">
+                <i data-lucide="map" class="w-5 h-5"></i>
+                <span class="text-sm font-bold tracking-wide">سئوی فنی و معماری وب</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-zinc-900 dark:text-white leading-[1.4] tracking-tight mb-6">
+                نقشه سایت (Sitemap) چیست و نحوه معرفی آن به گوگل
+            </h1>
+            
+            <div class="flex items-center justify-center sm:justify-start gap-4 text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400">
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    <span>تاریخ انتشار: ۷ مرداد ۱۴۰۵</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="clock" class="w-4 h-4"></i>
+                    <span>زمان مطالعه: ۹ دقیقه</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- متن مقاله -->
+        <article class="article-content text-base sm:text-lg text-zinc-700 dark:text-zinc-300">
+            
+            <p>
+                نقشه سایت (Sitemap) یک فایل ساختاریافته — معمولاً با فرمت <strong>XML</strong> — است که فهرستی کامل از آدرس‌های مهم وب‌سایت، ارتباط آن‌ها با یکدیگر و متادیتاهای تکمیلی (مانند تاریخ آخرین تغییرات) را در اختیار موتورهای جستجو قرار می‌دهد.
+            </p>
+            <p>
+                نقشه سایت را می‌توان مانند «نقشه راه یا GPS» برای ربات‌های گوگل (Googlebot) تصور کرد. اگرچه گوگل می‌تواند از طریق لینک‌سازی داخلی صفحات را پیدا کند، اما فایل Sitemap روند کشف (Discovery)، خزش (Crawling) و ایندکس محتوا را به‌شدت سرعت می‌بخشد.
+            </p>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="compass" class="w-6 h-6 text-emerald-500"></i>
+                ۱. چرا داشتن نقشه سایت الزامی است؟
+            </h2>
+            <p>
+                برای وب‌سایت‌های کوچک (زیر ۱۰۰ صفحه) که لینک‌سازی داخلی قوی دارند، ممکن است گوگل بدون Sitemap هم تمام صفحات را پیدا کند. اما داشتن نقشه سایت برای مجموعه‌های زیر <strong>حیاتی</strong> است:
+            </p>
+
+            <ul class="list-none space-y-3">
+                <li><strong>سایت‌های بزرگ و فروشگاهی:</strong> پلتفرم‌ها یا وب‌سایت‌های خدماتی بزرگ (مانند <strong>SPONSORACB</strong>) که دارای ده‌ها دسته، محصول یا محتوای داینامیک هستند.</li>
+                <li><strong>سایت‌های تازه تأسیس:</strong> دامنه‌های جدیدی که هنوز بک‌لینک و اعتبار کافی برای کشف سریع صفحات توسط گوگل ندارند.</li>
+                <li><strong>صفحات یتیم (Orphan Pages) یا عمیق:</strong> صفحاتی که لینک‌سازی داخلی ضعیفی دارند و در عمق چند کلیکی از صفحه اصلی قرار گرفته‌اند.</li>
+                <li><strong>محتواهای چندرسانه‌ای:</strong> سایت‌هایی که از تصاویر، ویدیوها یا اخبار لحظه‌ای بهره می‌برند و نیاز به ایندکس سریع دارند.</li>
+            </ul>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="file-code-2" class="w-6 h-6 text-blue-500"></i>
+                ۲. انواع فرمت‌های نقشه سایت و ساختار استاندارد XML
+            </h2>
+            <p>
+                نقشه سایت می‌تواند شامل چندین بخش جداگانه و تخصصی باشد:
+            </p>
+
+            <!-- جدول انواع Sitemap -->
+            <div class="overflow-x-auto w-full mb-8 mt-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm">
+                <table class="w-full text-sm text-right border-collapse whitespace-nowrap min-w-[700px]">
+                    <thead class="bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800">
+                        <tr>
+                            <th class="p-4 font-bold text-zinc-900 dark:text-white border-l border-zinc-200 dark:border-zinc-800">نوع Sitemap</th>
+                            <th class="p-4 font-bold text-zinc-900 dark:text-white border-l border-zinc-200 dark:border-zinc-800">کاربرد اصلی</th>
+                            <th class="p-4 font-bold text-emerald-600 dark:text-emerald-400">تگ‌های کلیدی استاندارد</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-zinc-200 dark:divide-zinc-800 glass-base bg-white/30 dark:bg-zinc-950/30">
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold text-blue-600 dark:text-blue-400 border-l border-zinc-200 dark:border-zinc-800">Sitemap Index</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800">فایل اصلی که چند Sitemap فرعی را یکجا مدیریت می‌کند.</td>
+                            <td class="p-4 font-mono text-xs text-zinc-600 dark:text-zinc-400">&lt;sitemapindex&gt;, &lt;sitemap&gt;, &lt;loc&gt;</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold text-emerald-600 dark:text-emerald-400 border-l border-zinc-200 dark:border-zinc-800">XML Sitemap عمومی</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800">معرفی صفحات متنی، مقالات، محصولات و دسته‌بندی‌ها.</td>
+                            <td class="p-4 font-mono text-xs text-zinc-600 dark:text-zinc-400">&lt;urlset&gt;, &lt;url&gt;, &lt;loc&gt;, &lt;lastmod&gt;</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold text-violet-600 dark:text-violet-400 border-l border-zinc-200 dark:border-zinc-800">Image Sitemap</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800">کمک به ایندکس بهتر تصاویر در Google Images.</td>
+                            <td class="p-4 font-mono text-xs text-zinc-600 dark:text-zinc-400">&lt;image:image&gt;, &lt;image:loc&gt;</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold text-amber-600 dark:text-amber-400 border-l border-zinc-200 dark:border-zinc-800">Video Sitemap</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800">انتقال متادیتای ویدیوها (مدت زمان، کاور، عنوان).</td>
+                            <td class="p-4 font-mono text-xs text-zinc-600 dark:text-zinc-400">&lt;video:video&gt;, &lt;video:thumbnail_loc&gt;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="text-xl sm:text-2xl font-bold text-zinc-800 dark:text-zinc-200 mt-8 mb-4">نمونه یک فایل XML ساده:</h3>
+            
+            <div class="my-6 p-5 rounded-2xl bg-zinc-900 text-zinc-100 font-mono text-xs sm:text-sm dir-ltr overflow-x-auto border border-zinc-800 shadow-inner">
+                <pre class="leading-relaxed"><code class="text-zinc-300">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9"&gt;
+   &lt;url&gt;
+      &lt;loc&gt;<span class="text-emerald-400">https://sponsoracb.com/blog/seo-guide/</span>&lt;/loc&gt;
+      &lt;lastmod&gt;<span class="text-amber-400">2026-07-20</span>&lt;/lastmod&gt;
+   &lt;/url&gt;
+&lt;/urlset&gt;</code></pre>
+            </div>
+
+            <!-- باکس نکات مهم استاندارد -->
+            <div class="my-8 p-6 rounded-2xl border glass-base bg-amber-500/10 border-amber-500/30 text-amber-900 dark:text-amber-200">
+                <h4 class="text-lg font-bold flex items-center gap-2 mb-2">
+                    <i data-lucide="alert-circle" class="w-5 h-5 text-amber-500"></i>
+                    نکته مهم در استانداردهای گوگل:
+                </h4>
+                <p class="text-sm sm:text-base leading-relaxed mb-0">
+                    هر فایل XML می‌تواند <strong>حداکثر ۵۰,۰۰۰ آدرس (URL)</strong> داشته باشد و حجم آن نباید از <strong>۵۰ مگابایت</strong> (به صورت آن‌فشرده) تجاوز کند. در صورت داشتن صفحات بیشتر، باید از چند Sitemap مجزا و یک فایل <strong>Sitemap Index</strong> استفاده کنید.
+                </p>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="wrench" class="w-6 h-6 text-violet-500"></i>
+                ۳. روش‌های ساخت نقشه سایت
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                <div class="p-6 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold text-zinc-900 dark:text-white">۱. ساخت خودکار با CMS</h3>
+                            <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">پیشنهادی</span>
+                        </div>
+                        <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mb-4">
+                            اگر از وردپرس استفاده می‌کنید، افزونه‌هایی نظیر Yoast SEO یا Rank Math به صورت خودکار نقشه سایت پویا (Dynamic) ایجاد می‌کنند (معمولاً در آدرس <code class="bg-zinc-200 dark:bg-zinc-800 px-1.5 py-0.5 rounded dir-ltr inline-block text-emerald-500">sitemap_index.xml</code>). در فریم‌ورک‌های اختصاصی مانند لاراول نیز کتابخانه‌های آماده جهت آپدیت خودکار XML وجود دارد.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold text-zinc-900 dark:text-white">۲. ابزارهای آنلاین</h3>
+                            <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-zinc-500/10 text-zinc-600 dark:text-zinc-400 border border-zinc-500/20">مناسب سایت‌های ایستا</span>
+                        </div>
+                        <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mb-4">
+                            برای سایت‌های کوچک یا ایستا (Static HTML)، می‌توانید از ابزارهایی مانند <code class="bg-zinc-200 dark:bg-zinc-800 px-1.5 py-0.5 rounded dir-ltr inline-block text-blue-500">xml-sitemaps.com</code> استفاده کنید تا خروجی .xml را دانلود کرده و در پوشه اصلی (Root) هاست آپلود نمایید.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="upload-cloud" class="w-6 h-6 text-emerald-500"></i>
+                ۴. نحوه معرفی نقشه سایت به گوگل سرچ کنسول (گام‌به‌گام)
+            </h2>
+            <p>
+                پس از ساخت فایل نقشه سایت و اطمینان از دسترس‌پذیری آن در مرورگر، مراحل معرفی آن به گوگل به شرح زیر است:
+            </p>
+
+            <div class="space-y-4 my-6">
+                <div class="p-4 rounded-xl border glass-base bg-white/40 dark:bg-zinc-900/40 border-zinc-200 dark:border-zinc-800 flex items-center gap-3">
+                    <span class="w-7 h-7 rounded-lg bg-emerald-500 text-white flex items-center justify-center font-black text-sm shrink-0">۱</span>
+                    <span class="text-sm sm:text-base font-medium">وارد پنل <strong>Google Search Console</strong> سایت خود شوید.</span>
+                </div>
+                <div class="p-4 rounded-xl border glass-base bg-white/40 dark:bg-zinc-900/40 border-zinc-200 dark:border-zinc-800 flex items-center gap-3">
+                    <span class="w-7 h-7 rounded-lg bg-emerald-500 text-white flex items-center justify-center font-black text-sm shrink-0">۲</span>
+                    <span class="text-sm sm:text-base font-medium">از منوی سمت چپ (بخش Index)، روی گزینه <strong>Sitemaps</strong> کلیک کنید.</span>
+                </div>
+                <div class="p-4 rounded-xl border glass-base bg-white/40 dark:bg-zinc-900/40 border-zinc-200 dark:border-zinc-800 flex items-center gap-3">
+                    <span class="w-7 h-7 rounded-lg bg-emerald-500 text-white flex items-center justify-center font-black text-sm shrink-0">۳</span>
+                    <span class="text-sm sm:text-base font-medium">در بخش <strong>Add a new sitemap</strong>، نام فایل نقشه سایت را وارد کنید (مثلاً <code class="bg-zinc-200 dark:bg-zinc-800 px-1.5 py-0.5 rounded dir-ltr inline-block text-blue-500">sitemap_index.xml</code>).</span>
+                </div>
+                <div class="p-4 rounded-xl border glass-base bg-white/40 dark:bg-zinc-900/40 border-zinc-200 dark:border-zinc-800 flex items-center gap-3">
+                    <span class="w-7 h-7 rounded-lg bg-emerald-500 text-white flex items-center justify-center font-black text-sm shrink-0">۴</span>
+                    <span class="text-sm sm:text-base font-medium">روی دکمه <strong>SUBMIT</strong> کلیک کنید.</span>
+                </div>
+            </div>
+
+            <h3 class="text-xl sm:text-2xl font-bold text-zinc-800 dark:text-zinc-200 mt-8 mb-4">کارهای تکمیلی پس از ثبت:</h3>
+            <p>
+                <strong>معرفی در فایل robots.txt:</strong> خط زیر را به ابتدای فایل <code class="bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block">robots.txt</code> اضافه کنید تا تمامی موتورهای جستجو (از جمله Bing) آن را به سرعت پیدا کنند:
+            </p>
+            <div class="my-4 p-4 rounded-xl bg-zinc-900 text-zinc-200 font-mono text-xs sm:text-sm dir-ltr border border-zinc-800">
+                Sitemap: <span class="text-emerald-400">https://yourdomain.com/sitemap_index.xml</span>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="shield-check" class="w-6 h-6 text-blue-600"></i>
+                ۵. استراتژی اختصاصی نقشه سایت برای پلتفرم‌های خدماتی و برندینگ (مانند SPONSORACB)
+            </h2>
+            <p>
+                در وب‌سایت‌هایی که خدمات آنلاین، دسته‌بندی‌های متعدد و آدرس‌های پویا ارائه می‌دهند (نظیر مجموعه <strong>SPONSORACB</strong>)، ساختار نقشه سایت باید به صورت هوشمندانه تفکیک شود:
+            </p>
+
+            <ul class="list-none space-y-4 my-6">
+                <li>
+                    <strong>جداسازی نقشه‌ها (Sitemap Segmentation):</strong> برای مدیریت بهتر بودجه خزش (Crawl Budget)، نقشه‌ها را دسته‌بندی کنید:
+                    <div class="mt-2 space-y-1 font-mono text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 pr-4 border-r-2 border-emerald-500">
+                        <div>• sitemap-pages.xml <span class="font-sans text-xs text-zinc-400">(صفحات اصلی و درباره ما)</span></div>
+                        <div>• sitemap-services.xml <span class="font-sans text-xs text-zinc-400">(صفحات خدمات و دسته‌بندی‌ها)</span></div>
+                        <div>• sitemap-posts.xml <span class="font-sans text-xs text-zinc-400">(مقالات وبلاگ)</span></div>
+                    </div>
+                </li>
+                <li><strong>به‌روزرسانی خودکار تگ &lt;lastmod&gt;:</strong> حتماً مطمئن شوید که تگ تاریخ آخرین تغییرات واقعی باشد. اگر بدون تغییر در محتوا، تاریخ این تگ دائماً به‌روزرسانی شود، گوگل اعتبار این سیگنال را نادیده می‌گیرد.</li>
+                <li><strong>حذف صفحات بی‌ارزش:</strong> صفحاتی نظیر نتایج جستجوی داخلی، صفحات پروفایل کاربر، سبد خرید، آدرس‌های دارای noindex و آدرس‌های خطادار (4x / 5x) نباید در نقشه سایت قرار گیرند.</li>
+            </ul>
+
+            <!-- باکس ویژه CTA برای SPONSORACB -->
+            <div class="mt-12 p-8 rounded-3xl border glass-base bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 border-emerald-200 dark:border-emerald-800/50 shadow-lg shadow-emerald-500/5 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 dark:bg-emerald-400/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                <div class="relative z-10 flex flex-col items-center text-center gap-4">
+                    <div class="w-16 h-16 bg-emerald-600 text-white rounded-2xl flex items-center justify-center shadow-md mb-2">
+                        <i data-lucide="route" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-emerald-900 dark:text-emerald-100">تنظیم تخصصی نقشه سایت و بهینه‌سازی فنی با SPONSORACB</h3>
+                    <p class="text-sm sm:text-base font-medium text-emerald-800/80 dark:text-emerald-200/80 max-w-2xl leading-relaxed">
+                        جهت ساخت نقشه‌های سایت تفکیک‌شده (Segmentation)، اتصال به گوگل سرچ کنسول، و مدیریت فنی بودجه خزش برای ساختارهای پیچیده وب، با دپارتمان سئوی **SPONSORACB** در ارتباط باشید.
+                    </p>
+                    <a href="https://t.me/sponsoracb_bot" target="_blank" rel="noopener noreferrer" class="mt-4 flex items-center gap-3 px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold transition-all shadow-lg shadow-emerald-600/30 hover:shadow-emerald-600/50 hover:-translate-y-1">
+                        <i data-lucide="bot" class="w-5 h-5"></i>
+                        <span>ارتباط با ربات پشتیبانی (sponsoracb_bot@)</span>
+                    </a>
+                </div>
+            </div>
+
+        </article>
+
+    </main>
+
+    <!-- فوتر -->
+    <footer class="w-full py-6 mt-auto border-t glass-base bg-zinc-950/40 border-zinc-800/50 flex flex-col items-center justify-center gap-2 transition-colors" id="footer">
+        <p class="text-xs text-zinc-400" id="footer-text">تمامی حقوق برای مجموعه محفوظ است</p>
+        <a href="https://AMT-IR.github.io" target="_blank" class="flex items-center gap-1.5 text-sm font-bold transition-colors hover:text-emerald-500 text-white" id="footer-link">
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+            <span>پورتال جامع AMT-IR</span>
+        </a>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // مقداردهی و ساخت آیکون‌ها
+        lucide.createIcons();
+
+        // منطق تغییر تم
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body>
+  </html>
