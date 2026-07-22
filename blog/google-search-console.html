@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آموزش ثبت و مدیریت گوگل سرچ کنسول (GSC) | وبلاگ SPONSORACB</title>
+    
+    <!-- سئو متا تگ‌ها (SEO Meta Tags) -->
+    <meta name="description" content="راهنمای جامع ثبت سایت در گوگل سرچ کنسول (Google Search Console 2026)، بررسی Domain Property، Platform Property، نحوه ثبت DNS TXT و محدودیت‌های ۱۶ ماهه داده‌ها.">
+    <meta name="keywords" content="گوگل سرچ کنسول, ثبت سایت در گوگل, Search Console 2026, Domain Property, Platform Property, ثبت DNS, سئو فنی, SPONSORACB">
+    
+    <!-- فونت Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            transition: background-color 0.4s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* پس‌زمینه محو و زیبا */
+        .ambient-bg {
+            background-color: #f4f4f5;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05), transparent 25%);
+        }
+        
+        .dark .ambient-bg {
+            background-color: #09090b;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.04), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.04), transparent 25%);
+        }
+
+        .glass-base {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* کاستوم اسکرول‌بار */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { 
+            background: #d4d4d8; 
+            border-radius: 10px; 
+        }
+        .dark ::-webkit-scrollbar-thumb { background: #27272a; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+        /* استایل‌های تایپوگرافی مقاله */
+        .article-content p {
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            text-align: justify;
+        }
+        .article-content ul {
+            margin-bottom: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        .article-content li {
+            margin-bottom: 0.75rem;
+            line-height: 1.8;
+            position: relative;
+        }
+        .article-content li::before {
+            content: '•';
+            color: #3b82f6; /* Blue-500 */
+            position: absolute;
+            right: -1.2rem;
+            font-size: 1.5rem;
+            line-height: 1;
+            top: 0.1rem;
+        }
+        .dark .article-content li::before {
+            color: #60a5fa; /* Blue-400 */
+        }
+    </style>
+</head>
+<body class="ambient-bg text-zinc-900 dark:text-white min-h-screen flex flex-col relative transition-colors duration-500">
+
+    <!-- هدر (Navbar) -->
+    <nav class="w-full h-16 sm:h-20 flex items-center justify-between px-4 sm:px-8 border-b glass-base sticky top-0 z-40 
+        bg-white/40 border-zinc-200/50 
+        dark:bg-zinc-950/40 dark:border-zinc-800/50 transition-colors">
+        
+        <!-- فضای خالی برای تراز وسط -->
+        <div class="w-10 sm:w-12"></div>
+
+        <!-- عنوان وسط -->
+        <span class="font-black text-lg sm:text-xl tracking-[0.2em] dir-ltr text-zinc-900 dark:text-white">SPONSORACB</span>
+        
+        <!-- دکمه تغییر تم -->
+        <button onclick="toggleTheme()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all border shadow-sm
+            bg-white/70 border-zinc-200/80 hover:bg-white
+            dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 group">
+            <i data-lucide="sun" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-600 hidden dark:block group-hover:text-amber-400 transition-colors"></i>
+            <i data-lucide="moon" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 block dark:hidden group-hover:text-indigo-500 transition-colors"></i>
+        </button>
+    </nav>
+
+    <!-- محتوای اصلی مقاله -->
+    <main class="flex-1 w-full max-w-4xl mx-auto flex flex-col py-10 px-4 sm:px-6 lg:px-8">
+        
+        <!-- بخش عنوان مقاله -->
+        <header class="mb-10 text-center sm:text-right border-b border-zinc-200 dark:border-zinc-800 pb-8">
+            <div class="flex items-center justify-center sm:justify-start gap-3 mb-4 text-blue-600 dark:text-blue-400">
+                <i data-lucide="line-chart" class="w-5 h-5"></i>
+                <span class="text-sm font-bold tracking-wide">ابزارهای وب‌مستر و آنالیز گوگل</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-zinc-900 dark:text-white leading-[1.4] tracking-tight mb-6">
+                چگونه سایت خود را در گوگل ثبت کنیم؟ (راهنمای جامع Google Search Console در سال ۲۰۲۶)
+            </h1>
+            
+            <div class="flex items-center justify-center sm:justify-start gap-4 text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400">
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    <span>تاریخ انتشار: ۵ مرداد ۱۴۰۵</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="clock" class="w-4 h-4"></i>
+                    <span>زمان مطالعه: ۱۰ دقیقه</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- متن مقاله -->
+        <article class="article-content text-base sm:text-lg text-zinc-700 dark:text-zinc-300">
+            
+            <p>
+                ابزار <strong>گوگل سرچ کنسول (GSC)</strong> در سال ۲۰۲۶ پیشرفته‌ترین و ضروری‌ترین رابط کاربری برای مدیریت ارتباط یک برند با هسته مرکزی جستجوی گوگل است. برخلاف سیستم‌هایی مانند Google Analytics 4 (GA4) که رفتار کاربران را از طریق اسکریپت‌های سمت کلاینت رهگیری می‌کنند، سرچ کنسول داده‌های کلیک، ایمپرشن و رتبه را مستقیماً از سرورهای گوگل استخراج می‌نماید. 
+            </p>
+            <p>
+                این تفاوت بنیادین در منبع داده‌ها باعث می‌شود که اعداد گزارش شده در این دو پلتفرم هرگز مطابقت کامل نداشته باشند. GSC یک ابزار کاملاً رایگان است که هیچ سطح پولی (Paid Tier) برای آن تعریف نشده و تنها نیازمند احراز هویت مالکیت دارایی دیجیتال است.
+            </p>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="layers" class="w-6 h-6 text-blue-500"></i>
+                تحولات نوین و معرفی انواع ویژگی‌ها (Property Types) در سال ۲۰۲۶
+            </h2>
+            <p>
+                معماری گوگل سرچ کنسول اخیراً تغییرات مهمی را تجربه کرده است. مهم‌ترین این تغییرات، معرفی <strong>Platform Properties در ژوئیه ۲۰۲۶</strong> است که امکان ارزیابی عملکرد شبکه‌های اجتماعی در جستجوی گوگل را بدون نیاز به اثبات مالکیت دامنه فراهم می‌کند. 
+            </p>
+            <p>
+                در حال حاضر، مدیران وب و متخصصان برندینگ در سازمان‌هایی مانند <strong>SPONSORACB</strong> می‌توانند سه نوع دارایی مختلف را در این پلتفرم ثبت کنند:
+            </p>
+
+            <!-- جدول نوع ویژگی‌ها -->
+            <div class="overflow-x-auto w-full mb-8 mt-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm">
+                <table class="w-full text-sm text-right border-collapse whitespace-nowrap min-w-[750px]">
+                    <thead class="bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800">
+                        <tr>
+                            <th class="p-4 font-bold text-zinc-900 dark:text-white border-l border-zinc-200 dark:border-zinc-800">نوع ویژگی (Property)</th>
+                            <th class="p-4 font-bold text-zinc-900 dark:text-white border-l border-zinc-200 dark:border-zinc-800">دامنه پوشش</th>
+                            <th class="p-4 font-bold text-zinc-900 dark:text-white border-l border-zinc-200 dark:border-zinc-800">روش‌های اعتبارسنجی (Verification)</th>
+                            <th class="p-4 font-bold text-blue-600 dark:text-blue-400">ملاحظات استراتژیک</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-zinc-200 dark:divide-zinc-800 glass-base bg-white/30 dark:bg-zinc-950/30">
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold text-blue-600 dark:text-blue-400 border-l border-zinc-200 dark:border-zinc-800">Domain Property</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800">تمامی زیردامنه‌ها و پروتکل‌های مرتبط با یک دامنه (مانند example.com).</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800">منحصراً از طریق افزودن رکورد DNS TXT در پنل مدیریت دامنه.</td>
+                            <td class="p-4 font-bold text-emerald-500">جامع‌ترین نمای کلی از داده‌های سایت؛ مناسب برای مدیریت کلان.</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold text-violet-600 dark:text-violet-400 border-l border-zinc-200 dark:border-zinc-800">URL-Prefix Property</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800">فقط یک مسیر دقیق با پروتکل مشخص (مثلاً فقط https://example.com/blog/).</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800">آپلود فایل HTML، متاتگ HTML، GA4، GTM یا رکورد DNS.</td>
+                            <td class="p-4">مناسب برای زمانی که دسترسی DNS وجود ندارد یا نیاز به تحلیل بخش مجزاست.</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold text-amber-600 dark:text-amber-400 border-l border-zinc-200 dark:border-zinc-800">Platform Property (جدید ۲۰۲۶)</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800">پروفایل شبکه‌های اجتماعی (اینستاگرام، تیک‌تاک، شبکه ایکس و یوتیوب).</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800">اتصال امن (OAuth) به حساب شبکه اجتماعی بدون نیاز به دامنه.</td>
+                            <td class="p-4 font-bold text-blue-500">رهگیری عملکرد پست‌های سوشال مدیا در نتایج جستجوی گوگل.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="key-round" class="w-6 h-6 text-emerald-500"></i>
+                فرآیند گام‌به‌گام ثبت دامنه (Domain Property)
+            </h2>
+            <p>
+                راه‌اندازی دقیق و بی‌نقص GSC از روز اول، از بروز مشکلات داده‌ای در آینده جلوگیری می‌کند. برای ثبت کامل و یکپارچه دامنه برند، مراحل زیر باید در نظر گرفته شود:
+            </p>
+
+            <div class="space-y-6 my-8">
+                <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 flex gap-4 items-start">
+                    <div class="w-8 h-8 rounded-xl bg-blue-500 text-white font-black flex items-center justify-center shrink-0">۱</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-1">دسترسی اولیه</h3>
+                        <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">به آدرس <a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer" class="text-blue-500 underline dir-ltr inline-block">search.google.com/search-console</a> مراجعه کرده و با حساب کاربری رسمی و سازمانی گوگل وارد شوید. این اکانت باید همان حسابی باشد که در آینده مدیریت دائمی دارایی را بر عهده خواهد داشت.</p>
+                    </div>
+                </div>
+
+                <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 flex gap-4 items-start">
+                    <div class="w-8 h-8 rounded-xl bg-blue-500 text-white font-black flex items-center justify-center shrink-0">۲</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-1">انتخاب نوع ویژگی</h3>
+                        <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">در پنجره افزودن دارایی، گزینه <strong>"Domain"</strong> را انتخاب کرده و آدرس خالص سایت را وارد کنید (به عنوان مثال <code class="bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded text-blue-500 dir-ltr inline-block">sponsoracb.com</code>). هیچ‌گونه پیشوندی نظیر www یا https نباید در این فیلد قرار گیرد.</p>
+                    </div>
+                </div>
+
+                <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 flex gap-4 items-start">
+                    <div class="w-8 h-8 rounded-xl bg-blue-500 text-white font-black flex items-center justify-center shrink-0">۳</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-1">دریافت رکورد تأییدیه</h3>
+                        <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">گوگل یک رشته متنی اختصاصی با فرمت TXT تولید می‌کند (مثلاً <code class="bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded text-emerald-500 dir-ltr inline-block">google-site-verification=abc...</code>). این رشته باید به دقت و به طور کامل کپی شود.</p>
+                    </div>
+                </div>
+
+                <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 flex gap-4 items-start">
+                    <div class="w-8 h-8 rounded-xl bg-blue-500 text-white font-black flex items-center justify-center shrink-0">۴</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-1">پیکربندی DNS</h3>
+                        <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">وارد پنل ارائه‌دهنده دامنه (مانند Cloudflare یا کنترل‌پنل هاستینگ) شوید. یک رکورد جدید از نوع <strong>TXT</strong> ایجاد کنید، مقدار Host یا Name را روی <code class="bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block">@</code> تنظیم نموده و رشته کپی شده را در فیلد Value قرار دهید.</p>
+                    </div>
+                </div>
+
+                <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 flex gap-4 items-start">
+                    <div class="w-8 h-8 rounded-xl bg-blue-500 text-white font-black flex items-center justify-center shrink-0">۵</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-1">تأیید نهایی</h3>
+                        <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">انتشار رکوردهای DNS در سطح شبکه جهانی ممکن است از چند دقیقه تا چند ساعت زمان ببرد. پس از بازگشت به سرچ کنسول، روی دکمه <strong>"Verify"</strong> کلیک کنید. در صورت بروز خطا، پس از ۱۵ الی ۳۰ دقیقه مجدداً تلاش کنید.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="users-2" class="w-6 h-6 text-violet-500"></i>
+                معماری تیم و محدودیت‌های مدیریت داده
+            </h2>
+            <p>
+                مدیریت سطوح دسترسی یکی از جنبه‌های امنیتی کار با سرچ کنسول است. مالکان (Owners) به تمامی تنظیمات پیکربندی، ابزارهای اعتبارسنجی و مدیریت کاربران دسترسی کامل دارند. اعطای دسترسی‌های محدودتر (Read Access) به تیم‌های فروش و استراتژی محتوا این امکان را می‌دهد تا از داده‌های ارزشمند کوئری‌ها برای استخراج نیازهای مشتریان و ایجاد پیام‌های هدفمند بهره‌مند شوند.
+            </p>
+
+            <div class="my-8 p-6 rounded-2xl border glass-base bg-red-500/10 border-red-500/30 text-red-900 dark:text-red-200">
+                <h4 class="text-lg font-bold flex items-center gap-2 mb-3">
+                    <i data-lucide="alert-triangle" class="w-5 h-5 text-red-500"></i>
+                    نکته حیاتی: سقف غیرقابل انعطاف ۱۶ ماهه داده‌ها
+                </h4>
+                <p class="text-sm sm:text-base leading-relaxed mb-0">
+                    داده‌های عملکردی در سرچ کنسول یک <strong>سقف سخت و غیرقابل انعطاف ۱۶ ماهه</strong> دارند. پس از گذشت ۱۶ ماه، اطلاعات مربوط به کلیک‌ها و ایمپرشن‌ها به طور دائم پاک می‌شوند. سازمان‌های توسعه‌یافته باید به صورت دوره‌ای، داده‌ها را از طریق API یا ابزارهای شخص ثالث صادر (Export) و ذخیره کنند تا تحلیل‌های سالانه مختل نگردد.
+                </p>
+            </div>
+
+            <!-- باکس ویژه CTA برای SPONSORACB -->
+            <div class="mt-12 p-8 rounded-3xl border glass-base bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border-blue-200 dark:border-blue-800/50 shadow-lg shadow-blue-500/5 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 dark:bg-blue-400/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                <div class="relative z-10 flex flex-col items-center text-center gap-4">
+                    <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center shadow-md mb-2">
+                        <i data-lucide="line-chart" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-blue-900 dark:text-blue-100">تحلیل فنی و پیکربندی تخصصی سرچ کنسول با SPONSORACB</h3>
+                    <p class="text-sm sm:text-base font-medium text-blue-800/80 dark:text-blue-200/80 max-w-2xl leading-relaxed">
+                        جهت نصب صحیح، رفع خطاهای ایندکس، خروجی گرفتن مداوم از داده‌های ۱۶ ماهه و اتصال سرچ کنسول به سیستم‌های آنالیز، با دپارتمان سئوی **SPONSORACB** در ارتباط باشید.
+                    </p>
+                    <a href="https://t.me/sponsoracb_bot" target="_blank" rel="noopener noreferrer" class="mt-4 flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-all shadow-lg shadow-blue-600/30 hover:shadow-blue-600/50 hover:-translate-y-1">
+                        <i data-lucide="bot" class="w-5 h-5"></i>
+                        <span>شروع کار با ربات رسمی (sponsoracb_bot@)</span>
+                    </a>
+                </div>
+            </div>
+
+        </article>
+
+    </main>
+
+    <!-- فوتر -->
+    <footer class="w-full py-6 mt-auto border-t glass-base bg-zinc-950/40 border-zinc-800/50 flex flex-col items-center justify-center gap-2 transition-colors" id="footer">
+        <p class="text-xs text-zinc-400" id="footer-text">تمامی حقوق برای مجموعه محفوظ است</p>
+        <a href="https://AMT-IR.github.io" target="_blank" class="flex items-center gap-1.5 text-sm font-bold transition-colors hover:text-emerald-500 text-white" id="footer-link">
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+            <span>پورتال جامع AMT-IR</span>
+        </a>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // مقداردهی و ساخت آیکون‌ها
+        lucide.createIcons();
+
+        // منطق تغییر تم
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body>
+</html>
