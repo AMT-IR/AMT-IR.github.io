@@ -2,7 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <!-- Main Pages -->
-
   <url>
     <loc>https://sponsoracb.ir/</loc>
   </url>
@@ -23,16 +22,33 @@
     <loc>https://sponsoracb.ir/Symbol.html</loc>
   </url>
 
+  <!-- Legal Pages -->
+  <url>
+    <loc>https://sponsoracb.ir/legal/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://sponsoracb.ir/legal/privacy.html</loc>
+  </url>
+
+  <url>
+    <loc>https://sponsoracb.ir/legal/terms.html</loc>
+  </url>
+
+  <url>
+    <loc>https://sponsoracb.ir/legal/refund.html</loc>
+  </url>
+
+  <url>
+    <loc>https://sponsoracb.ir/legal/FAQ.html</loc>
+  </url>
 
   <!-- Blog -->
-
   <url>
     <loc>https://sponsoracb.ir/blog/</loc>
   </url>
 
-
   <!-- Articles -->
-
   <url>
     <loc>https://sponsoracb.ir/blog/articles/ai-for-business.html</loc>
   </url>
@@ -122,23 +138,3 @@
   </url>
 
 </urlset>
-
-<url>
-    <loc>https://sponsoracb.ir/legal/index.html</loc>
-</url>
-
-<url>
-    <loc>https://sponsoracb.ir/legal/privacy.html</loc>
-</url>
-
-<url>
-    <loc>https://sponsoracb.ir/legal/terms.html</loc>
-</url>
-
-<url>
-    <loc>https://sponsoracb.ir/legal/refund.html</loc>
-</url>
-
-<url>
-    <loc>https://sponsoracb.ir/legal/FAQ.html</loc>
-</url>
