@@ -1,1 +1,327 @@
 
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شرایط و قوانین استرداد وجه و انصراف از خرید اشتراک ربات | وبلاگ SPONSORACB</title>
+    
+    <!-- سئو متا تگ‌ها (SEO Meta Tags) -->
+    <meta name="description" content="سند رسمی قوانین استرداد وجه، لغو اشتراک ربات، ضوابط عدم عودت وجه، شرایط قطعی سرور و استثنائات لغو خرید در پلتفرم SPONSORACB.">
+    <meta name="keywords" content="قوانین استرداد وجه, لغو اشتراک ربات, بازگشت وجه, SPONSORACB, قوانین خرید آنلاین, No Refund Policy, عدم عودت وجه">
+    
+    <!-- فونت Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    },
+                    colors: {
+                        pro: '#3b82f6',      /* Blue */
+                        plus: '#10b981',     /* Emerald */
+                        premium: '#8b5cf6',  /* Violet */
+                        ultra: '#f59e0b',    /* Amber/Gold */
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            transition: background-color 0.4s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* پس‌زمینه محو و استاندارد اصلی سایت (ترکیب زمردی و آبی) */
+        .ambient-bg {
+            background-color: #f4f4f5;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05), transparent 25%);
+        }
+        
+        .dark .ambient-bg {
+            background-color: #09090b;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.04), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.04), transparent 25%);
+        }
+
+        .glass-base {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* استایل پایه آیکون‌های SVG */
+        svg.lucide, .lucide {
+            display: inline-block;
+            vertical-align: middle;
+            stroke-width: 2px;
+            stroke: currentColor;
+            fill: none;
+            flex-shrink: 0;
+        }
+
+        /* کاستوم اسکرول‌بار استاندارد */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { 
+            background: #d4d4d8; 
+            border-radius: 10px; 
+        }
+        .dark ::-webkit-scrollbar-thumb { background: #27272a; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+        /* استایل‌های تایپوگرافی مقاله */
+        .article-content p {
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            text-align: justify;
+        }
+        
+        /* فقط آیتم‌های ul نقطه زمردی دریافت می‌کنند */
+        .article-content ul {
+            margin-bottom: 1.5rem;
+            padding-right: 1.5rem;
+            list-style: none;
+        }
+        .article-content ul > li {
+            margin-bottom: 0.75rem;
+            line-height: 1.8;
+            position: relative;
+        }
+        .article-content ul > li::before {
+            content: '•';
+            color: #10b981; /* Emerald-500 */
+            position: absolute;
+            right: -1.2rem;
+            font-size: 1.5rem;
+            line-height: 1;
+            top: 0.1rem;
+        }
+        .dark .article-content ul > li::before {
+            color: #34d399; /* Emerald-400 */
+        }
+
+        /* عدم وجود بولت اضافی برای ol */
+        .article-content ol {
+            margin-bottom: 1.5rem;
+        }
+        .article-content ol > li::before {
+            content: none !important;
+        }
+    </style>
+</head>
+<body class="ambient-bg text-zinc-900 dark:text-white min-h-screen flex flex-col relative transition-colors duration-500">
+
+    <!-- هدر (Navbar) -->
+    <nav class="w-full h-16 sm:h-20 flex items-center justify-between px-4 sm:px-8 border-b glass-base sticky top-0 z-40 
+        bg-white/40 border-zinc-200/50 
+        dark:bg-zinc-950/40 dark:border-zinc-800/50 transition-colors">
+        
+        <!-- فضای خالی برای تراز وسط -->
+        <div class="w-10 sm:w-12"></div>
+
+        <!-- عنوان وسط -->
+        <span class="font-black text-lg sm:text-xl tracking-[0.2em] dir-ltr text-zinc-900 dark:text-white">SPONSORACB</span>
+        
+        <!-- دکمه تغییر تم -->
+        <button onclick="toggleTheme()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all border shadow-sm
+            bg-white/70 border-zinc-200/80 hover:bg-white
+            dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 group">
+            <i data-lucide="sun" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-600 hidden dark:block group-hover:text-amber-400 transition-colors"></i>
+            <i data-lucide="moon" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 block dark:hidden group-hover:text-indigo-500 transition-colors"></i>
+        </button>
+    </nav>
+
+    <!-- محتوای اصلی مقاله -->
+    <main class="flex-1 w-full max-w-4xl mx-auto flex flex-col py-10 px-4 sm:px-6 lg:px-8">
+        
+        <!-- بخش عنوان مقاله -->
+        <header class="mb-10 text-center sm:text-right border-b border-zinc-200 dark:border-zinc-800 pb-8">
+            <div class="flex items-center justify-center sm:justify-start gap-3 mb-4 text-emerald-600 dark:text-emerald-400">
+                <i data-lucide="receipt" class="w-5 h-5 shrink-0"></i>
+                <span class="text-sm font-bold tracking-wide">قوانین مالی، اشتراک‌ها و عودت وجه</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-zinc-900 dark:text-white leading-[1.4] tracking-tight mb-6">
+                شرایط و قوانین استرداد وجه و انصراف از خرید اشتراک ربات
+            </h1>
+            
+            <div class="flex items-center justify-center sm:justify-start gap-4 text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400">
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="calendar" class="w-4 h-4 shrink-0"></i>
+                    <span>تاریخ آخرین به‌روزرسانی: ۱۹ مرداد ۱۴۰۵</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="clock" class="w-4 h-4 shrink-0"></i>
+                    <span>زمان مطالعه: ۶ دقیقه</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- متن مقاله -->
+        <article class="article-content text-base sm:text-lg text-zinc-700 dark:text-zinc-300">
+            
+            <p>
+                این سند ضوابط اختصاصی مجموعه در خصوص خرید، تمدید، لغو و استرداد وجه اشتراک‌های نرم‌افزاری و ربات‌های آنلاین می‌باشد. با توجه به ماهیت دیجیتالی، آنی و غیرقابل بازگشت خدمات ربات، ثبت سفارش و پرداخت هرگونه پلن یا اشتراک به منزله مطالعه دقیق، آگاهی کامل و پذیرش بی‌قید و شرط تمامی بندهای این سند بوده و خریدار حق هرگونه ادعای بعدی را از خود سلب می‌نماید.
+            </p>
+
+            <!-- باکس ویژه: اصل عدم استرداد وجه -->
+            <div class="my-8 p-6 rounded-3xl border glass-base bg-rose-500/10 border-rose-500/30 text-rose-900 dark:text-rose-200">
+                <h2 class="text-xl sm:text-2xl font-black text-rose-600 dark:text-rose-400 mb-3 flex items-center gap-3">
+                    <i data-lucide="alert-octagon" class="w-6 h-6 shrink-0"></i>
+                    <span>۱. اصل عدم استرداد وجه (No-Refund Policy)</span>
+                </h2>
+                <p class="text-sm sm:text-base leading-relaxed mb-0">
+                    با توجه به اینکه خدمات این مجموعه شامل ارائه دسترسی آنی به نرم‌افزار، تخصیص منابع سرور، مصرف منابع پردازشی و API می‌باشد، پس از ثبت سفارش، فعال‌سازی اشتراک یا شارژ پنل، به هیچ عنوان و تحت هیچ شرایطی امکان انصراف از خرید، لغو اشتراک یا بازگشت وجه (کلی یا جزئی) وجود ندارد.
+                </p>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="check-square" class="w-6 h-6 shrink-0 text-blue-500"></i>
+                <span>۲. مسئولیت بررسی و تست پیش از خرید</span>
+            </h2>
+            <ul class="list-none space-y-3">
+                <li>امکانات، ویژگی‌ها، محدودیت‌ها و نحوه عملکرد ربات به‌طور کامل در وب‌سایت/کانال اطلاع‌رسانی شده است.</li>
+                <li>در صورتی که دمو، تست رایگان یا پلن آزمایشی ارائه شده باشد، کاربر موظف است پیش از خرید پلن‌های اصلی، ربات را به دقت تست کند.</li>
+                <li>اقدام به خرید هر یک از اشتراک‌ها به منزله رضایت کامل کاربر از عملکرد فعلی ربات و آگاهی از تمام محدودیت‌های فنی آن است و عدم رضایت سلیقه‌ای، عدم نیاز بعدی یا عدم توانایی کاربر در استفاده از ربات، به هیچ عنوان دلیل پذیرفته‌شده‌ای برای بازگشت وجه نخواهد بود.</li>
+            </ul>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="cloud-off" class="w-6 h-6 shrink-0 text-amber-500"></i>
+                <span>۳. تغییرات، محدودیت‌ها و سیاست‌های پلتفرم‌های واسط</span>
+            </h2>
+            <p>
+                ربات‌های مجموعه بر بستر یا در ارتباط با پلتفرم‌های ثالث (مانند تلگرام، اینستاگرام، واتساپ، بستر وب، سرویس‌های هوش مصنوعی، سرورهای واسط و...) فعالیت می‌کنند:
+            </p>
+            <ul class="list-none space-y-3">
+                <li>در صورت ایجاد تغییر در الگوریتم‌ها، سیاست‌ها، محدودیتی از سوی پلتفرم‌های اصلی یا فیلترینگ/محدودسازی اینترنت که باعث اختلال، کاهش سرعت یا عدم کارکرد بخشی از ربات گردد، هیچ‌گونه مسئولیتی متوجه مجموعه نبوده و هیچ وجهی استرداد نخواهد شد.</li>
+                <li>مجموعه متعهد است در صورت امکان فنی، ربات را با شرایط جدید آپدیت کند، اما ضمانتی برای دور زدن محدودیت‌های اعمال‌شده توسط پلتفرم‌های ثالث داده نمی‌شود.</li>
+            </ul>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="user-minus" class="w-6 h-6 shrink-0 text-rose-500"></i>
+                <span>۴. مسدودی حساب کاربر، بلاک یا محدودیت‌های شخصی</span>
+            </h2>
+            <p>
+                در صورتی که حساب کاربریِ خریدار در پلتفرم‌های مقصد (مانند حساب تلگرام، پیج اینستاگرام، شماره واتساپ و...) به دلیل رعایت نکردن قوانین آن پلتفرم‌ها، ارسال اسپم، گزارش کاربران یا شناسایی توسط ربات‌های نظارتی مسدود، بن (Ban) یا محدود شود، مسئولیت آن تماماً بر عهده خود کاربر است. مسدود شدن حساب کاربر در پلتفرم‌های ثالث به هیچ عنوان حقی برای دریافت خسارت، تعویض اشتراک یا بازگشت وجه ایجاد نمی‌کند.
+            </p>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="pie-chart" class="w-6 h-6 shrink-0 text-violet-500"></i>
+                <span>۵. عدم امکان استرداد تناسبی یا باقی‌مانده زمان اشتراک (Partial Refund)</span>
+            </h2>
+            <p>
+                اگر کاربر پس از خرید یک اشتراک (مثلاً ۱ ماهه، ۳ ماهه یا سالانه) به هر دلیلی تصمیم به عدم استفاده از ربات بگیرد یا حساب خود را ببندد، زمان باقی‌مانده از اشتراک سوخت شده و هیچ‌گونه مبلغی متناسب با روزهای باقی‌مانده به وی عودت داده نخواهد شد.
+            </p>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="server-off" class="w-6 h-6 shrink-0 text-indigo-500"></i>
+                <span>۶. اختلالات فنی و به‌روزرسانی سرورها</span>
+            </h2>
+            <p>
+                برای ارتقا و نگهداری سرورها، ربات ممکن است دچار قطعی‌های موقت یا بازه‌های نگهداری (Maintenance) شود. قطعی‌های کوتاه‌مدت و متعارف جزئی از ماهیت سرویس‌های آنلاین بوده و موجب استرداد وجه نمی‌شود.
+            </p>
+            <div class="my-6 p-5 rounded-2xl border glass-base bg-emerald-500/10 border-emerald-500/30 text-emerald-900 dark:text-emerald-200">
+                <strong class="flex items-center gap-2 mb-2 font-bold text-emerald-600 dark:text-emerald-400">
+                    <i data-lucide="shield-check" class="w-5 h-5 shrink-0"></i>
+                    <span>تعهد جبران زمان قطعی:</span>
+                </strong>
+                تنها در صورتی که ربات به دلیل مشکل مستقیمی که تماماً ناشی از سرورهای اصلی مجموعه باشد (منهای اختلالات اینترنت کشور یا پلتفرم‌های واسط) بیش از ۷۲ ساعت متوالی به‌طور کامل قطع گردد، مجموعه صرفاً متناسب با مدت زمان قطعی، زمان اشتراک کاربر را تمدید خواهد نمود و واریز وجه نقدی صورت نمی‌گیرد.
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="mouse-pointer-click" class="w-6 h-6 shrink-0 text-amber-500"></i>
+                <span>۷. اشتباه کاربر در ثبت سفارش یا انتخاب پلن</span>
+            </h2>
+            <p>
+                مسئولیت انتخاب درست پلن، حجم، تعداد اکانت یا مدت زمان اشتراک کاملاً بر عهده کاربر است. در صورت خرید اشتباه، ثبت چندباره فاکتور به دلیل خطای کاربر، یا عدم دقت در انتخاب نوع ربات، امکان استرداد وجه وجود ندارد (در صورت تایید پشتیبانی، تنها امکان تغییر یا جابه‌جایی پلن پیش از مصرف منابع وجود خواهد داشت).
+            </p>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="shield-ban" class="w-6 h-6 shrink-0 text-rose-500"></i>
+                <span>۸. عدم بازگشت وجه در صورت بروز رفتارهای مجرمانه یا نقض قوانین</span>
+            </h2>
+            <p>
+                در صورتی که مشخص شود کاربر از ربات برای اهداف غیرقانونی، ارسال اسپم، کلاهبرداری، ایجاد مزاحمت، حملات سایبری یا نقض قوانین جاری استفاده کرده است، حساب کاربری و اشتراک وی فوراً و بدون اطلاع قبلی مسدود شده و کلیه مبالغ پرداختی به عنوان جریمه ضبط خواهد شد.
+            </p>
+
+            <!-- باکس شرایط استثنایی -->
+            <div class="my-8 p-6 rounded-3xl border glass-base bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 border-amber-200 dark:border-amber-800/50">
+                <h2 class="text-xl sm:text-2xl font-black text-amber-900 dark:text-amber-100 mb-3 flex items-center gap-3">
+                    <i data-lucide="gavel" class="w-6 h-6 shrink-0 text-amber-500"></i>
+                    <span>۹. شرایط استرداد وجه استثنایی (در صورت تایید صریح مجموعه)</span>
+                </h2>
+                <p class="text-sm sm:text-base leading-relaxed text-amber-800/90 dark:text-amber-200/90 mb-4">
+                    اگر در موارد بسیار استثنایی و با تشخیص و موافقت مستقیم مدیریت، درخواستی برای بازگشت وجه تایید شود:
+                </p>
+                <ul class="list-none space-y-2 mb-0 text-amber-900 dark:text-amber-100 font-medium">
+                    <li>هزینه‌های درگاه بانکی، مالیات و ۲۰ درصد کارمزد اداری و زیرساخت از مبلغ کل کسر خواهد شد.</li>
+                    <li>واریز وجه باقی‌مانده فقط و فقط به شماره شبا/کارت بانکی که به نام شخص ثبت‌نام‌کننده در سایت باشد، ظرف ۳ الی ۷ روز کاری انجام می‌پذیرد.</li>
+                </ul>
+            </div>
+
+            <!-- باکس ارتباط با پشتیبانی -->
+            <div class="mt-12 p-8 rounded-3xl border glass-base bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 border-emerald-200 dark:border-emerald-800/50 shadow-lg shadow-emerald-500/5 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 dark:bg-emerald-400/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                <div class="relative z-10 flex flex-col items-center text-center gap-4">
+                    <div class="w-16 h-16 bg-emerald-600 text-white rounded-2xl flex items-center justify-center shadow-md mb-2">
+                        <i data-lucide="headphones" class="w-8 h-8 shrink-0"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-emerald-900 dark:text-emerald-100">ارتباط با واحد پشتیبانی و مرکز پاسخگویی</h3>
+                    <p class="text-sm sm:text-base font-medium text-emerald-800/80 dark:text-emerald-200/80 max-w-2xl leading-relaxed">
+                        در صورت داشتن هرگونه سوال، ابهام یا درخواست راهنمایی پیش از خرید، می‌توانید از راه‌های زیر با واحد پشتیبانی مجموعه در ارتباط باشید.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center gap-4 mt-2 w-full justify-center">
+                        <a href="https://sponsoracb.ir/Support.html" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold transition-all shadow-lg shadow-emerald-600/30 hover:shadow-emerald-600/50 hover:-translate-y-1">
+                            <i data-lucide="headphones" class="w-5 h-5 shrink-0"></i>
+                            <span>ورود به بخش پشتیبانی آنلاین</span>
+                        </a>
+                        <a href="https://t.me/sponsoracb_bot" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-zinc-800 hover:bg-zinc-900 text-white rounded-xl font-bold transition-all shadow-md hover:-translate-y-1">
+                            <i data-lucide="bot" class="w-5 h-5 shrink-0"></i>
+                            <span>ارتباط با ربات تلگرام</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </article>
+
+    </main>
+
+    <!-- فوتر -->
+    <footer class="w-full py-6 mt-auto border-t glass-base bg-zinc-950/40 border-zinc-800/50 flex flex-col items-center justify-center gap-2 transition-colors" id="footer">
+        <p class="text-xs text-zinc-400" id="footer-text">تمامی حقوق برای مجموعه محفوظ است</p>
+        <a href="https://AMT-IR.github.io" target="_blank" class="flex items-center gap-1.5 text-sm font-bold transition-colors hover:text-emerald-500 text-white" id="footer-link">
+            <i data-lucide="external-link" class="w-4 h-4 shrink-0"></i>
+            <span>پورتال جامع AMT-IR</span>
+        </a>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // مقداردهی و ساخت آیکون‌ها
+        lucide.createIcons();
+
+        // منطق تغییر تم
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body>
+</html>
