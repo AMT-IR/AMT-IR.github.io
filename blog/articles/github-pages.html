@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آموزش میزبانی رایگان سایت استاتیک با GitHub Pages | وبلاگ SPONSORACB</title>
+    
+    <!-- سئو متا تگ‌ها (SEO Meta Tags) -->
+    <meta name="description" content="آموزش گام‌به‌گام و عملی میزبانی رایگان وب‌سایت‌های استاتیک با GitHub Pages، روش‌های آپلود کدهای HTML و دستورات Git، و ساخت صفحات فرود برای پلتفرم SPONSORACB.">
+    <meta name="keywords" content="میزبانی رایگان سایت, GitHub Pages, هاست رایگان, سایت استاتیک, آموزش Git, گیت هاب پیجز, SPONSORACB, توسعه فرانت اند">
+    
+    <!-- فونت Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    },
+                    colors: {
+                        pro: '#3b82f6',      /* Blue */
+                        plus: '#10b981',     /* Emerald */
+                        premium: '#8b5cf6',  /* Violet */
+                        ultra: '#f59e0b',    /* Amber/Gold */
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            transition: background-color 0.4s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* پس‌زمینه محو و استاندارد اصلی سایت (ترکیب زمردی و آبی) */
+        .ambient-bg {
+            background-color: #f4f4f5;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05), transparent 25%);
+        }
+        
+        .dark .ambient-bg {
+            background-color: #09090b;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.04), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.04), transparent 25%);
+        }
+
+        .glass-base {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* کاستوم اسکرول‌بار استاندارد */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { 
+            background: #d4d4d8; 
+            border-radius: 10px; 
+        }
+        .dark ::-webkit-scrollbar-thumb { background: #27272a; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+        /* استایل‌های تایپوگرافی مقاله مطابق قالب اصلی */
+        .article-content p {
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            text-align: justify;
+        }
+        
+        /* فقط آیتم‌های ul نقطه بنفش دریافت می‌کنند تا روی ol عددها نیفتد */
+        .article-content ul {
+            margin-bottom: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        .article-content ul > li {
+            margin-bottom: 0.75rem;
+            line-height: 1.8;
+            position: relative;
+        }
+        .article-content ul > li::before {
+            content: '•';
+            color: #8b5cf6; /* Violet-500 */
+            position: absolute;
+            right: -1.2rem;
+            font-size: 1.5rem;
+            line-height: 1;
+            top: 0.1rem;
+        }
+        .dark .article-content ul > li::before {
+            color: #a78bfa; /* Violet-400 */
+        }
+    </style>
+</head>
+<body class="ambient-bg text-zinc-900 dark:text-white min-h-screen flex flex-col relative transition-colors duration-500">
+
+    <!-- هدر (Navbar) -->
+    <nav class="w-full h-16 sm:h-20 flex items-center justify-between px-4 sm:px-8 border-b glass-base sticky top-0 z-40 
+        bg-white/40 border-zinc-200/50 
+        dark:bg-zinc-950/40 dark:border-zinc-800/50 transition-colors">
+        
+        <!-- فضای خالی برای تراز وسط -->
+        <div class="w-10 sm:w-12"></div>
+
+        <!-- عنوان وسط -->
+        <span class="font-black text-lg sm:text-xl tracking-[0.2em] dir-ltr text-zinc-900 dark:text-white">SPONSORACB</span>
+        
+        <!-- دکمه تغییر تم -->
+        <button onclick="toggleTheme()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all border shadow-sm
+            bg-white/70 border-zinc-200/80 hover:bg-white
+            dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 group">
+            <i data-lucide="sun" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-600 hidden dark:block group-hover:text-amber-400 transition-colors"></i>
+            <i data-lucide="moon" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 block dark:hidden group-hover:text-indigo-500 transition-colors"></i>
+        </button>
+    </nav>
+
+    <!-- محتوای اصلی مقاله -->
+    <main class="flex-1 w-full max-w-4xl mx-auto flex flex-col py-10 px-4 sm:px-6 lg:px-8">
+        
+        <!-- بخش عنوان مقاله -->
+        <header class="mb-10 text-center sm:text-right border-b border-zinc-200 dark:border-zinc-800 pb-8">
+            <div class="flex items-center justify-center sm:justify-start gap-3 mb-4 text-violet-600 dark:text-violet-400">
+                <!-- استفاده از آیکون معتبر cloud -->
+                <i data-lucide="cloud" class="w-5 h-5"></i>
+                <span class="text-sm font-bold tracking-wide">میزبانی وب، سرویس‌های ابری و توسعه فرانت‌اند</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-zinc-900 dark:text-white leading-[1.4] tracking-tight mb-6">
+                آموزش میزبانی رایگان سایت استاتیک با GitHub Pages (گام‌به‌گام و عملی)
+            </h1>
+            
+            <div class="flex items-center justify-center sm:justify-start gap-4 text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400">
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    <span>تاریخ انتشار: ۱۵ مرداد ۱۴۰۵</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="clock" class="w-4 h-4"></i>
+                    <span>زمان مطالعه: ۱۱ دقیقه</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- متن مقاله -->
+        <article class="article-content text-base sm:text-lg text-zinc-700 dark:text-zinc-300">
+            
+            <p>
+                یکی از دغدغه‌های همیشگی طراحان وب، توسعه‌دهندگان نوپا و حتی صاحبان پروژه‌های کوچک، هزینه‌های مداوم خرید هاست و دامنه برای بالا آوردن وب‌سایت است. اگر سایت شما از نوع <strong>استاتیک (Static)</strong> است—یعنی صرفاً با کدهای فرانت‌اند مثل HTML، CSS و جاوا اسکریپت نوشته شده و نیازی به پایگاه‌داده یا زبان‌های بک‌اند مانند PHP ندارد—پلتفرم مایکروسافت گیت‌هاب یک هدیه شگفت‌انگیز برای شما دارد: <strong>GitHub Pages</strong>.
+            </p>
+            <p>
+                سیستم گیت‌هاب پیجز به شما اجازه می‌دهد مخازن کدهای خود را به صورت کاملاً رایگان، بدون محدودیت‌های ترافیکی آزاردهنده و با آپتایم نزدیک به ۱۰۰ درصد روی سرورهای فوق‌سریع گیت‌هاب میزبانی کنید. در این آموزش، فرآیند راه‌اندازی این ابزار فوق‌العاده را از صفر تا صد بررسی می‌کنیم.
+            </p>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="help-circle" class="w-6 h-6 text-violet-500"></i>
+                چرا باید از GitHub Pages استفاده کنیم؟
+            </h2>
+            <p>
+                پیش از شروع فرآیند فنی، بیایید نگاهی به فرمول ساده صرفه‌جویی اقتصادی این سیستم بیندازیم. اگر هزینه متوسط خرید سالانه یک هاست اشتراکی معمولی را $H$ و هزینه تمدید دامنه را $D$ در نظر بگیریم، مجموع هزینه‌های سالانه میزبانی یک وب‌سایت ساده ($T$) به این صورت محاسبه می‌شود:
+            </p>
+
+            <!-- باکس فرمول ریاضی صرفه‌جویی -->
+            <div class="my-6 p-6 rounded-2xl border glass-base bg-zinc-100 dark:bg-zinc-900 border-violet-500/40 text-center font-mono text-lg font-bold text-violet-600 dark:text-violet-400">
+                $$T = H + D \xrightarrow{GitHub\ Pages} T = 0 + D = D$$
+                <div class="text-xs font-sans font-normal text-zinc-500 dark:text-zinc-400 mt-2">
+                    (با استفاده از گیت‌هاب پیجز، هزینه هاست H برای همیشه صفر می‌شود)
+                </div>
+            </div>
+
+            <p>
+                در جدول زیر، مقایسه ساده‌ای میان این روش و میزبانی سنتی آورده شده است:
+            </p>
+
+            <!-- جدول مقایسه هاست و گیت هاب پیجز -->
+            <div class="overflow-x-auto w-full mb-8 mt-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm">
+                <table class="w-full text-sm text-right border-collapse whitespace-nowrap min-w-[650px]">
+                    <thead class="bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800">
+                        <tr>
+                            <th class="p-4 font-bold text-zinc-900 dark:text-white border-l border-zinc-200 dark:border-zinc-800">شاخص مقایسه</th>
+                            <th class="p-4 font-bold text-emerald-600 dark:text-emerald-400 border-l border-zinc-200 dark:border-zinc-800">گیت‌هاب پیجز (GitHub Pages)</th>
+                            <th class="p-4 font-bold text-zinc-500">هاست اشتراکی معمولی</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-zinc-200 dark:divide-zinc-800 glass-base bg-white/30 dark:bg-zinc-950/30">
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold border-l border-zinc-200 dark:border-zinc-800">هزینه سالانه</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800 font-bold text-emerald-500">کاملا رایگان (۰ تومان)</td>
+                            <td class="p-4 text-red-500">دارای هزینه ماهیانه و سالانه</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold border-l border-zinc-200 dark:border-zinc-800">پشتیبانی از بک‌اند</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800 text-zinc-500">خیر (فقط استاتیک)</td>
+                            <td class="p-4 font-bold text-emerald-500">بله (PHP، پایتون، دیتابیس و...)</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold border-l border-zinc-200 dark:border-zinc-800">پهنای باند و آپتایم</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800 font-bold text-emerald-500">بسیار بالا (زیرساخت ابری مایکروسافت)</td>
+                            <td class="p-4 text-zinc-500">محدود بر اساس پلن خرید</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
+                            <td class="p-4 font-bold border-l border-zinc-200 dark:border-zinc-800">تمدید سالانه هاست</td>
+                            <td class="p-4 border-l border-zinc-200 dark:border-zinc-800 font-bold text-emerald-500">ندارد (دائمی)</td>
+                            <td class="p-4 text-red-500">دارد</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="folder-plus" class="w-6 h-6 text-emerald-500"></i>
+                گام اول: ثبت‌نام و ایجاد مخزن (Repository) جدید
+            </h2>
+            <ol class="list-decimal pr-5 space-y-3 font-medium text-zinc-800 dark:text-zinc-200 mb-6 marker:text-emerald-500 marker:font-bold">
+                <li>ابتدا وارد سایت رسمی گیت‌هاب به آدرس <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-violet-500 underline dir-ltr inline-block">github.com</a> شوید و یک حساب کاربری بسازید (اگر حساب دارید، وارد شوید).</li>
+                <li>در پیشخوان کاربری خود، از گوشه سمت چپ بالا بر روی دکمه سبز رنگ <strong>New</strong> کلیک کنید تا وارد صفحه ساخت مخزن شوید.</li>
+                <li>فیلدهای زیر را با دقت پر کنید:
+                    <ul class="list-none space-y-2 mt-2 pr-4">
+                        <li><strong>Repository Name (نام مخزن):</strong> برای اینکه سایت به عنوان سایت اصلی اکانتتان شناسایی شود، نام مخزن را دقیقاً با الگوی <code class="bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block text-violet-500 font-bold">username.github.io</code> بنویسید (به جای username نام کاربری دقیق گیت‌هاب خود را بگذارید).</li>
+                        <li><strong>Public / Private:</strong> حتماً گزینه <strong>Public</strong> را انتخاب کنید. در پلن رایگان، سایت‌های استاتیک تنها از روی مخازن عمومی منتشر می‌شوند.</li>
+                        <li><strong>Add a README file:</strong> تیک این گزینه را بزنید تا مخزن با یک فایل متنی اولیه ایجاد شود.</li>
+                    </ul>
+                </li>
+                <li>در نهایت روی دکمه <strong>Create repository</strong> کلیک کنید.</li>
+            </ol>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="upload-cloud" class="w-6 h-6 text-blue-500"></i>
+                گام دوم: آماده‌سازی و آپلود فایل‌های سایت
+            </h2>
+            <p>
+                سرورهای گیت‌هاب پیجز به طور پیش‌فرض به دنبال فایلی به نام <code class="bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block font-bold text-emerald-500">index.html</code> در پوشه اصلی (Root) کدهای شما می‌گردند تا آن را به عنوان صفحه خانگی لود کنند. بنابراین فایل اصلی پروژه‌تان باید دقیقاً با همین نام ذخیره شده باشد.
+            </p>
+
+            <h3 class="text-xl sm:text-2xl font-bold text-zinc-800 dark:text-zinc-200 mt-8 mb-4 border-r-4 border-blue-500 pr-3">
+                روش اول: آپلود مستقیم از طریق مرورگر (ساده‌ترین راه)
+            </h3>
+            <p>
+                اگر کدهای شما آماده است و نمی‌خواهید درگیر دستورات ترمینال شوید:
+            </p>
+
+            <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 space-y-2 text-sm sm:text-base">
+                <div>۱. در صفحه مخزن خود، روی دکمه <strong>Add file</strong> کلیک کرده و گزینه <strong>Upload files</strong> را انتخاب کنید.</div>
+                <div>۲. تمام فایل‌های طراحی وب (HTML، CSS، JS و پوشه تصاویر) را بکشید و در کادر مربوطه رها کنید.</div>
+                <div>۳. در پایین صفحه، یک توضیح کوتاه بنویسید و روی دکمه سبز رنگ <strong>Commit changes</strong> کلیک کنید.</div>
+            </div>
+
+            <h3 class="text-xl sm:text-2xl font-bold text-zinc-800 dark:text-zinc-200 mt-8 mb-4 border-r-4 border-indigo-500 pr-3">
+                روش دوم: استفاده از دستورات Git (ویژه توسعه‌دهندگان)
+            </h3>
+            <p>
+                اگر نرم‌افزار Git را روی سیستم خود نصب دارید، ترمینال را در پوشه پروژه باز کرده و کدهای زیر را به ترتیب اجرا نمایید:
+            </p>
+
+            <!-- کادربندی دستورات گیت -->
+            <div class="my-6 p-5 rounded-2xl border glass-base bg-zinc-900 border-zinc-800 text-zinc-100 font-mono text-xs sm:text-sm dir-ltr overflow-x-auto leading-relaxed">
+                <div class="text-zinc-500 mb-2"># آماده‌سازی و ارسال کدها به گیت‌هاب</div>
+                <div class="text-emerald-400">git init</div>
+                <div class="text-emerald-400">git add .</div>
+                <div class="text-emerald-400">git commit -m "First deploy"</div>
+                <div class="text-emerald-400">git branch -M main</div>
+                <div class="text-blue-400">git remote add origin https://github.com/username/username.github.io.git</div>
+                <div class="text-violet-400">git push -u origin main</div>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="globe" class="w-6 h-6 text-emerald-500"></i>
+                گام سوم: فعال‌سازی و انتشار نهایی وب‌سایت
+            </h2>
+            <p>
+                پس از اینکه فایل‌های شما با موفقیت آپلود شدند:
+            </p>
+            <ol class="list-decimal pr-5 space-y-2 font-medium text-zinc-800 dark:text-zinc-200 mb-6 marker:text-emerald-500 marker:font-bold">
+                <li>به تب <strong>Settings</strong> در بالای صفحه مخزن گیت‌هاب خود بروید.</li>
+                <li>از منوی سمت چپ، به بخش <strong>Pages</strong> مراجعه کنید.</li>
+                <li>در بخش <em>Build and deployment</em>، مطمئن شوید گزینه Source روی <strong>Deploy from a branch</strong> باشد.</li>
+                <li>در کادر پایین آن، شاخه اصلی خود یعنی <strong>main</strong> را انتخاب کرده و پوشه را روی <strong>/ (root)</strong> بگذارید و دکمه <strong>Save</strong> را بزنید.</li>
+            </ol>
+
+            <div class="my-6 p-5 rounded-2xl border glass-base bg-emerald-500/10 border-emerald-500/30 text-emerald-900 dark:text-emerald-200">
+                <strong class="flex items-center gap-2 mb-2 font-bold text-emerald-600 dark:text-emerald-400">
+                    <i data-lucide="check-circle" class="w-5 h-5"></i>
+                    لینک زنده وب‌سایت شما:
+                </strong>
+                حدود ۱ الی ۵ دقیقه منتظر بمانید. آدرس وب‌سایت شما با پروتکل امن HTTPS آماده استفاده خواهد بود:
+                <div class="mt-2 font-mono font-bold text-emerald-500 dir-ltr text-center bg-white/50 dark:bg-zinc-900/50 py-2 rounded-xl border border-emerald-500/20">
+                    https://username.github.io
+                </div>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="code-2" class="w-6 h-6 text-indigo-500"></i>
+                کاربرد GitHub Pages برای توسعه‌دهندگان بومی و همکار با SPONSORACB
+            </h2>
+            <p>
+                بسیاری از توسعه‌دهندگان خلاق ایرانی که با استفاده از وب‌سرویس‌ها و APIهای پایدار پلتفرم <strong>SPONSORACB</strong> اقدام به توسعه ربات‌های تلگرامی یا ابزارهای مبتنی بر هوش مصنوعی می‌کنند، از بستر رایگان GitHub Pages برای پروژه‌های خود بهره می‌برند.
+            </p>
+
+            <!-- کیس استدی SPONSORACB -->
+            <div class="my-8 p-6 rounded-3xl border glass-base bg-gradient-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-950/30 dark:to-purple-950/30 border-indigo-200 dark:border-indigo-800/50 shadow-sm">
+                <div class="flex items-center gap-3 mb-4 text-indigo-600 dark:text-indigo-400 font-black text-xl">
+                    <i data-lucide="terminal" class="w-6 h-6"></i>
+                    الگوی توسعه فرانت‌اند با SPONSORACB
+                </div>
+                <p class="text-sm sm:text-base leading-relaxed text-zinc-700 dark:text-zinc-300 mb-0">
+                    برنامه‌نویسانی که ربات‌های چندمنظوره تحت وب یا سیستم‌های اختصاصی متصل به مدل‌های زبانی (مانند ChatGPT و Claude) را با الگوبرداری از ربات محبوب <code class="bg-white/60 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block font-bold">SPONSORACB_BOT</code> توسعه می‌دهند، برای قرار دادن فایل‌های راهنما، مستندات کدهای فرانت‌اند (Documentation) و صفحات فرود (Landing Pages) خود از گیت‌هاب پیجز استفاده می‌کنند. این صفحات استاتیک حتی می‌توانند به عنوان بستری برای معرفی خدمات هوش مصنوعی و هدایت کاربران به درگاه‌های دونیت ریالی و سیستم پرداخت درون‌برنامه‌ای <strong>monsmain</strong> (مربوط به سطوح کاربری فروشگاه SPONSORACB به آدرس <code class="bg-white/60 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block text-indigo-500 font-bold">sponsoracb.mydigify.app</code>) مورد استفاده قرار گیرند.
+                </p>
+            </div>
+
+            <!-- باکس ویژه CTA برای SPONSORACB -->
+            <div class="mt-12 p-8 rounded-3xl border glass-base bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-900/20 dark:to-purple-900/20 border-violet-200 dark:border-violet-800/50 shadow-lg shadow-violet-500/5 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-violet-500/10 dark:bg-violet-400/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                <div class="relative z-10 flex flex-col items-center text-center gap-4">
+                    <div class="w-16 h-16 bg-violet-600 text-white rounded-2xl flex items-center justify-center shadow-md mb-2">
+                        <i data-lucide="rocket" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-violet-900 dark:text-violet-100">پشتیبانی و توسعه زیرساخت وب با SPONSORACB</h3>
+                    <p class="text-sm sm:text-base font-medium text-violet-800/80 dark:text-violet-200/80 max-w-2xl leading-relaxed">
+                        جهت مشاوره اتصال دامنه‌های اختصاصی (.ir / .com) به GitHub Pages، اتصال APIهای هوش مصنوعی و ساخت لندینگ‌پیج‌های پرسرعت، با تیم فنی **SPONSORACB** در ارتباط باشید.
+                    </p>
+                    <a href="https://t.me/sponsoracb_bot" target="_blank" rel="noopener noreferrer" class="mt-4 flex items-center gap-3 px-8 py-4 bg-violet-600 hover:bg-violet-700 text-white rounded-xl font-bold transition-all shadow-lg shadow-violet-600/30 hover:shadow-violet-600/50 hover:-translate-y-1">
+                        <i data-lucide="bot" class="w-5 h-5"></i>
+                        <span>ارتباط با ربات رسمی (sponsoracb_bot@)</span>
+                    </a>
+                </div>
+            </div>
+
+        </article>
+
+    </main>
+
+    <!-- فوتر -->
+    <footer class="w-full py-6 mt-auto border-t glass-base bg-zinc-950/40 border-zinc-800/50 flex flex-col items-center justify-center gap-2 transition-colors" id="footer">
+        <p class="text-xs text-zinc-400" id="footer-text">تمامی حقوق برای مجموعه محفوظ است</p>
+        <a href="https://AMT-IR.github.io" target="_blank" class="flex items-center gap-1.5 text-sm font-bold transition-colors hover:text-emerald-500 text-white" id="footer-link">
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+            <span>پورتال جامع AMT-IR</span>
+        </a>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // مقداردهی و ساخت آیکون‌ها
+        lucide.createIcons();
+
+        // منطق تغییر تم
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body>
+</html>
