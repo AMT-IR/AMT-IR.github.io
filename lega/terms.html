@@ -1,1 +1,434 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قوانین و مقررات عمومی استفاده از خدمات | SPONSORACB</title>
+    
+    <!-- سئو متا تگ‌ها (SEO Meta Tags) -->
+    <meta name="description" content="شرایط و ضوابط عمومی استفاده از خدمات، محصولات، حساب‌های کاربری، حقوق مالکیت فکری و قوانین حقوقی پلتفرم SPONSORACB.">
+    <meta name="keywords" content="قوانین و مقررات, شرایط استفاده, قوانین SPONSORACB, حریم خصوصی, حقوق مالکیت فکری, پشتیبانی SPONSORACB">
+    
+    <!-- فونت Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    },
+                    colors: {
+                        pro: '#3b82f6',      /* Blue */
+                        plus: '#10b981',     /* Emerald */
+                        premium: '#8b5cf6',  /* Violet */
+                        ultra: '#f59e0b',    /* Amber/Gold */
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            transition: background-color 0.4s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* پس‌زمینه محو و استاندارد اصلی سایت */
+        .ambient-bg {
+            background-color: #f4f4f5;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05), transparent 25%);
+        }
+        
+        .dark .ambient-bg {
+            background-color: #09090b;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.04), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.04), transparent 25%);
+        }
+
+        .glass-base {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* استایل پایه آیکون‌های SVG */
+        svg.lucide, .lucide {
+            display: inline-block;
+            vertical-align: middle;
+            stroke-width: 2px;
+            stroke: currentColor;
+            fill: none;
+            flex-shrink: 0;
+        }
+
+        /* کاستوم اسکرول‌بار استاندارد */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { 
+            background: #d4d4d8; 
+            border-radius: 10px; 
+        }
+        .dark ::-webkit-scrollbar-thumb { background: #27272a; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+        /* استایل‌های تایپوگرافی مقاله */
+        .article-content p {
+            margin-bottom: 1.25rem;
+            line-height: 2;
+            text-align: justify;
+        }
+        
+        /* فقط آیتم‌های ul نقطه بنفش دریافت می‌کنند */
+        .article-content ul {
+            margin-bottom: 1.5rem;
+            padding-right: 1.5rem;
+            list-style: none;
+        }
+        .article-content ul > li {
+            margin-bottom: 0.75rem;
+            line-height: 1.8;
+            position: relative;
+        }
+        .article-content ul > li::before {
+            content: '•';
+            color: #8b5cf6; /* Violet-500 */
+            position: absolute;
+            right: -1.2rem;
+            font-size: 1.5rem;
+            line-height: 1;
+            top: 0.1rem;
+        }
+        .dark .article-content ul > li::before {
+            color: #a78bfa; /* Violet-400 */
+        }
+
+        /* عدم وجود بولت اضافی برای ol */
+        .article-content ol {
+            margin-bottom: 1.5rem;
+        }
+        .article-content ol > li::before {
+            content: none !important;
+        }
+    </style>
+</head>
+<body class="ambient-bg text-zinc-900 dark:text-white min-h-screen flex flex-col relative transition-colors duration-500">
+
+    <!-- هدر (Navbar) -->
+    <nav class="w-full h-16 sm:h-20 flex items-center justify-between px-4 sm:px-8 border-b glass-base sticky top-0 z-40 
+        bg-white/40 border-zinc-200/50 
+        dark:bg-zinc-950/40 dark:border-zinc-800/50 transition-colors">
+        
+        <!-- فضای خالی برای تراز وسط -->
+        <div class="w-10 sm:w-12"></div>
+
+        <!-- عنوان وسط -->
+        <span class="font-black text-lg sm:text-xl tracking-[0.2em] dir-ltr text-zinc-900 dark:text-white">SPONSORACB</span>
+        
+        <!-- دکمه تغییر تم -->
+        <button onclick="toggleTheme()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all border shadow-sm
+            bg-white/70 border-zinc-200/80 hover:bg-white
+            dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 group">
+            <i data-lucide="sun" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-600 hidden dark:block group-hover:text-amber-400 transition-colors"></i>
+            <i data-lucide="moon" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 block dark:hidden group-hover:text-indigo-500 transition-colors"></i>
+        </button>
+    </nav>
+
+    <!-- محتوای اصلی -->
+    <main class="flex-1 w-full max-w-4xl mx-auto flex flex-col py-10 px-4 sm:px-6 lg:px-8">
+        
+        <!-- بخش عنوان صفحه -->
+        <header class="mb-10 text-center sm:text-right border-b border-zinc-200 dark:border-zinc-800 pb-8">
+            <div class="flex items-center justify-center sm:justify-start gap-3 mb-4 text-emerald-600 dark:text-emerald-400">
+                <i data-lucide="scale" class="w-5 h-5 shrink-0"></i>
+                <span class="text-sm font-bold tracking-wide">حقوقی، قوانین و ضوابط کاری</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-zinc-900 dark:text-white leading-[1.4] tracking-tight mb-6">
+                قوانین و مقررات عمومی استفاده از خدمات
+            </h1>
+            
+            <div class="flex items-center justify-center sm:justify-start gap-4 text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400">
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="calendar" class="w-4 h-4 shrink-0"></i>
+                    <span>آخرین به‌روزرسانی: مرداد ۱۴۰۵</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="clock" class="w-4 h-4 shrink-0"></i>
+                    <span>زمان مطالعه: ۱۰ دقیقه</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- متن قوانین -->
+        <article class="article-content text-base sm:text-lg text-zinc-700 dark:text-zinc-300">
+            
+            <!-- کادر اعلان توافق‌نامه -->
+            <div class="mb-10 p-6 rounded-3xl border glass-base bg-emerald-500/10 border-emerald-500/30 text-emerald-950 dark:text-emerald-200 shadow-sm relative overflow-hidden">
+                <div class="flex items-start gap-3.5">
+                    <div class="w-10 h-10 rounded-2xl bg-emerald-500 text-white flex items-center justify-center shrink-0 shadow-md">
+                        <i data-lucide="file-check" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-emerald-800 dark:text-emerald-300 mb-2">توافق‌نامه الزام‌آور حقوقی</h3>
+                        <p class="text-sm sm:text-base leading-relaxed mb-0">
+                            ورود شما به وب‌سایت، ثبت‌نام، ایجاد حساب کاربری، ثبت سفارش و استفاده از هرگونه خدمات یا محصولات این مجموعه به معنای پذیرش کامل، آگاهانه و بی‌قید و شرط تمامی بندهای مندرج در این سند است. این شرایط و ضوابط یک قرارداد قانونی و الزام‌آور میان شما (کاربر) و این مجموعه محسوب می‌شود. در صورت عدم موافقت با هر یک از این مقررات، مجاز به استفاده از خدمات مجموعه نخواهید بود.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ۱. تعاریف و اصول کلی -->
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-10 mb-6 flex items-center gap-3">
+                <i data-lucide="book-open" class="w-6 h-6 shrink-0 text-violet-500"></i>
+                <span>۱. تعاریف و اصول کلی</span>
+            </h2>
+            <p>
+                جهت شفافیت کامل در مفاد این توافق‌نامه، اصطلاحات زیر در معانی مشروح ذیل به کار می‌روند:
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-6">
+                <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800">
+                    <div class="w-8 h-8 rounded-xl bg-violet-500/10 text-violet-500 flex items-center justify-center font-bold mb-3">
+                        <i data-lucide="building" class="w-4 h-4"></i>
+                    </div>
+                    <h4 class="font-bold text-zinc-900 dark:text-white text-base mb-1">مجموعه</h4>
+                    <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-0">
+                        دارنده وب‌سایت، بستر آنلاین و ارائه‌دهنده کالاها، خدمات، دوره‌ها یا محتواهای دیجیتال.
+                    </p>
+                </div>
+
+                <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800">
+                    <div class="w-8 h-8 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center font-bold mb-3">
+                        <i data-lucide="user" class="w-4 h-4"></i>
+                    </div>
+                    <h4 class="font-bold text-zinc-900 dark:text-white text-base mb-1">کاربر یا مشتری</h4>
+                    <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-0">
+                        هر شخص حقیقی یا حقوقی که وارد سایت شده، اقدام به ثبت‌نام کرده یا از خدمات، محصولات و امکانات مجموعه استفاده می‌نماید.
+                    </p>
+                </div>
+
+                <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800">
+                    <div class="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center font-bold mb-3">
+                        <i data-lucide="box" class="w-4 h-4"></i>
+                    </div>
+                    <h4 class="font-bold text-zinc-900 dark:text-white text-base mb-1">خدمات و محصولات</h4>
+                    <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-0">
+                        شامل تمامی کالاهای فیزیکی، محصولات دیجیتال، فایل‌های دانلودی، اشتراک‌ها، دوره‌های آموزشی و خدمات مشاوره یا پشتیبانی ارائه شده.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ۲. شرایط ثبت‌نام و حساب کاربری -->
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="user-check" class="w-6 h-6 shrink-0 text-blue-500"></i>
+                <span>۲. شرایط ثبت‌نام و حساب کاربری</span>
+            </h2>
+            <ul class="list-none space-y-4">
+                <li>
+                    <strong>شرایط سنی:</strong> هر شخص حقیقی برای ثبت‌نام و خرید مستقیم باید حداقل ۱۸ سال تمام خورشیدی داشته باشد. افراد زیر ۱۸ سال تنها با نظارت و تایید سرپرست قانونی خود مجاز به خریدهای آنلاین هستند.
+                </li>
+                <li>
+                    <strong>صحت اطلاعات:</strong> کاربر موظف است هنگام ثبت‌نام، تمام اطلاعات درخواستی (مانند نام، نام خانوادگی، شماره تلفن همراه به نام خود فرد، کد ملی، ایمیل و آدرس دقیق) را به صورت صحیح و کاملاً به‌روز وارد کند. مسئولیت هرگونه تبعات ناشی از درج اطلاعات اشتباه یا ناقص (مانند عدم تحویل کالا یا عدم امکان احراز هویت) تماماً بر عهده کاربر است.
+                </li>
+                <li>
+                    <strong>محدودیت حساب کاربری:</strong> هر کاربر تنها مجاز به ایجاد یک حساب کاربری است. ایجاد حساب‌های متعدد با هدف سوءاستفاده از کدهای تخفیف، سیستم ارجاع یا دور زدن محدودیت‌های سایت ممنوع است و در صورت شناسایی، مجموعه حق مسدودسازی دائمی تمامی حساب‌ها و ضبط امتیازات را خواهد داشت.
+                </li>
+                <li>
+                    <strong>مسئولیت امنیت حساب:</strong> حفظ نام کاربری، رمز عبور و کدهای ورود یک‌بارمصرف (OTP) بر عهده کاربر است. کلیه فعالیت‌هایی که از طریق حساب کاربری انجام می‌شود، به صاحب حساب منتسب شده و مسئولیت حقوقی و مالی آن بر عهده وی خواهد بود. در صورت سرقت اطلاعات یا دسترسی غیرمجاز اشخاص ثالث، کاربر مکلف است فوراً موضوع را به پشتیبانی اطلاع دهد.
+                </li>
+            </ul>
+
+            <!-- ۳. حقوق مالکیت فکری و معنوی -->
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="shield-alert" class="w-6 h-6 shrink-0 text-amber-500"></i>
+                <span>۳. حقوق مالکیت فکری و معنوی</span>
+            </h2>
+            <p>
+                کلیه محتواهای موجود در وب‌سایت شامل متون، طرح‌های گرافیکی، لوگو، تصاویر، ویدئوها، فایل‌های صوتی، دوره‌های آموزشی، کدهای نرم‌افزاری، علائم تجاری و ساختار بصری، متعلق به این مجموعه بوده و تحت حمایت قوانین حقوق مؤلفان و قانون تجارت الکترونیک قرار دارد.
+            </p>
+            <div class="my-6 p-5 rounded-2xl border glass-base bg-amber-500/10 border-amber-500/30 text-amber-950 dark:text-amber-200">
+                <p class="text-sm sm:text-base leading-relaxed mb-0 font-medium">
+                    <i data-lucide="alert-triangle" class="w-4 h-4 inline-block ml-1 text-amber-500"></i>
+                    هرگونه کپی‌برداری، بازنشر، فروش، اجاره، بازآفرینی، دستکاری، استخراج داده یا بهره‌برداری تجاری و غیرتجاری از محتواها و محصولات سایت بدون دریافت مجوز مکتوب و رسمی از مدیریت مجموعه، اکیداً ممنوع بوده و پیگرد شدید قانونی و قضایی خواهد داشت.
+                </p>
+            </div>
+            <p>
+                خرید محصولات دیجیتال، فایل‌ها یا دوره‌های آموزشی تنها حق استفاده «شخصی و غیرانحصاری» را به خریدار می‌دهد. بازفروش، اشتراک‌گذاری فایل‌ها یا حساب کاربری با دیگران جرم تلقی شده و علاوه بر مسدودی حساب، خسارات وارده از طریق مراجع قضایی پیگیری خواهد شد.
+            </p>
+
+            <!-- ۴. تعهدات کاربر و رفتارهای ممنوعه -->
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="ban" class="w-6 h-6 shrink-0 text-rose-500"></i>
+                <span>۴. تعهدات کاربر و رفتارهای ممنوعه</span>
+            </h2>
+            <p>
+                کاربر متعهد می‌شود که در هنگام استفاده از وب‌سایت و خدمات مجموعه، موارد زیر را رعایت کرده و از انجام آن‌ها خودداری کند:
+            </p>
+            <div class="space-y-3 my-6">
+                <div class="p-4 rounded-xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-rose-500/20 flex items-center gap-3">
+                    <i data-lucide="x-circle" class="w-5 h-5 text-rose-500 shrink-0"></i>
+                    <span class="text-sm sm:text-base">انجام هرگونه فعالیت غیرقانونی یا ناقض قوانین جمهوری اسلامی ایران و حقوق اشخاص ثالث.</span>
+                </div>
+                <div class="p-4 rounded-xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-rose-500/20 flex items-center gap-3">
+                    <i data-lucide="x-circle" class="w-5 h-5 text-rose-500 shrink-0"></i>
+                    <span class="text-sm sm:text-base">تلاش برای نفوذ (هک)، ایجاد اختلال در سرورها، ارسال ویروس یا بدافزار، استخراج خودکار داده‌ها (Scraping) یا هرگونه اقدامی که عملکرد فنی سایت را مختل کند.</span>
+                </div>
+                <div class="p-4 rounded-xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-rose-500/20 flex items-center gap-3">
+                    <i data-lucide="x-circle" class="w-5 h-5 text-rose-500 shrink-0"></i>
+                    <span class="text-sm sm:text-base">درج نظر، دیدگاه یا محتوای توهین‌آمیز، سیاسی، خلاف عفت عمومی، افتراآمیز یا کذب در بخش نظرات محصولات یا تیکت‌های پشتیبانی.</span>
+                </div>
+                <div class="p-4 rounded-xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-rose-500/20 flex items-center gap-3">
+                    <i data-lucide="x-circle" class="w-5 h-5 text-rose-500 shrink-0"></i>
+                    <span class="text-sm sm:text-base">انجام تراکنش‌های مالی مشکوک، استفاده از کارت‌های بانکی سرقتی یا پول‌شویی. در صورت مشاهده موارد مشکوک، اطلاعات کاربر فوراً به مراجع انتظامی و قضایی (پلیس فتا) تحویل داده خواهد شد.</span>
+                </div>
+            </div>
+
+            <!-- ۵. شرایط ثبت سفارش، قیمت‌گذاری و ارسال -->
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="shopping-cart" class="w-6 h-6 shrink-0 text-emerald-500"></i>
+                <span>۵. شرایط ثبت سفارش، قیمت‌گذاری و ارسال</span>
+            </h2>
+            <ul class="list-none space-y-4">
+                <li>
+                    <strong>نهایی شدن سفارش:</strong> نمایش محصولات در سایت به معنی اعلام تمایل به فروش است، اما نهایی شدن معامله منوط به پرداخت موفق وجه و دریافت کد پیگیری سفارش توسط مشتری می‌باشد.
+                </li>
+                <li>
+                    <strong>تغییرات قیمت و موجودی:</strong> مجموعه همواره تلاش می‌کند تا قیمت‌ها و موجودی کالاها کاملاً به‌روز باشند. با این حال، در صورت بروز هرگونه خطای سیستمی، تایپی یا نوسانات ناگهانی، اگر سفارشی با قیمت یا مشخصات اشتباه ثبت شده باشد، مجموعه این حق را برای خود محفوظ می‌دارد که سفارش را لغو کرده و وجه را به حساب مشتری مسترد نماید. ثبت سفارش هیچ حقی برای خریدار جهت اجبار به تحویل کالا با قیمت اشتباه ایجاد نمی‌کند.
+                </li>
+                <li>
+                    <strong>ضوابط ارسال:</strong> هزینه‌های ارسال، بسته‌بندی و مالیات (در صورت شمول) در مرحله نهایی فاکتور به اطلاع مشتری می‌رسد. زمان‌های تحویل اعلام‌شده تقریبی بوده و مجموعه مسئولیتی در قبال تأخیرهای ناشی از عملکرد شرکت‌های پست، پیک یا شرایط غیرمترقبه جوی ندارد.
+                </li>
+                <li>
+                    <strong>بررسی سلامت کالا هنگام تحویل:</strong> خریدار موظف است هنگام دریافت کالای فیزیکی از مامور ارسال، بسته‌بندی را بررسی نموده و در صورت مشاهده هرگونه آسیب ظاهری یا بازشدگی، از تحویل گرفتن آن خودداری کند. تحویل گرفتن کالا به منزله تایید سلامت فیزیکی اولیه بسته‌بندی تلقی می‌گردد.
+                </li>
+            </ul>
+
+            <!-- ۶. حدود مسئولیت‌ها و سلب مسئولیت -->
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="shield-off" class="w-6 h-6 shrink-0 text-indigo-500"></i>
+                <span>۶. حدود مسئولیت‌ها و سلب مسئولیت</span>
+            </h2>
+            <ul class="list-none space-y-4">
+                <li>
+                    <strong>اختلالات فنی:</strong> مجموعه تمام تلاش خود را برای پایداری و دسترس‌پذیری ۲۴ ساعته سایت به کار می‌بندد، اما هیچ‌گونه مسئولیتی در قبال قطعی‌های ناگهانی سرورها، اختلال در شبکه اینترنت کشور، حملات سایبری یا قطعی درگاه‌های بانکی ندارد.
+                </li>
+                <li>
+                    <strong>حوادث غیرقابل پیش‌بینی (قوه قهریه):</strong> در صورت بروز حوادثی مانند شیوع بیماری، زلزله، سیل، جنگ، تحریم‌ها یا قطعی سراسری اینترنت که ارائه خدمات را غیرممکن سازد، مسئولیت متوجه مجموعه نخواهد بود.
+                </li>
+                <li>
+                    <strong>لینک‌های ثالث:</strong> وب‌سایت ممکن است حاوی لینک‌هایی به سایت‌های دیگر باشد. ارائه این لینک‌ها به معنی تایید محتوای آن‌ها نیست و مجموعه مسئولیتی در قبال عملکرد یا قوانین سایت‌های ثالث ندارد.
+                </li>
+            </ul>
+
+            <!-- ۷. حل اختلاف و قوانین حاکم -->
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="gavel" class="w-6 h-6 shrink-0 text-violet-500"></i>
+                <span>۷. حل اختلاف و قوانین حاکم</span>
+            </h2>
+            <p>
+                کلیه مفاد این سند و روابط میان کاربر و مجموعه تحت شمول قوانین جمهوری اسلامی ایران (به ویژه قانون تجارت الکترونیک، قانون حمایت از حقوق مستهلکین و قانون جرائم رایانه‌ای) قرار دارد.
+            </p>
+            <p>
+                در صورت بروز هرگونه اختلاف یا ابهام، طرفین متعهد می‌شوند ابتدا موضوع را از طریق گفتگو و ارتباط با واحد پشتیبانی مجموعه حل و فصل نمایند. در صورت عدم دستیابی به توافق، مرجع صالح جهت رسیدگی، مراجع قانونی و دادگاه‌های ذی‌صلاح محل استقرار مجموعه خواهد بود.
+            </p>
+
+            <!-- ۸. تغییرات و به‌روزرسانی قوانین -->
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="refresh-cw" class="w-6 h-6 shrink-0 text-pro"></i>
+                <span>۸. تغییرات و به‌روزرسانی قوانین</span>
+            </h2>
+            <p>
+                مجموعه این حق را برای خود محفوظ می‌دارد که در هر زمان، بنا به تغییرات قانونی یا فرآیندهای کاری، مفاد این قوانین را ویرایش یا به‌روزرسانی کند. تغییرات بلافاصله پس از انتشار در وب‌سایت لازم‌الاجرا خواهند بود و ادامه استفاده کاربر از سایت به منزله پذیرش آخرین نسخه قوانین می‌باشد.
+            </p>
+
+            <!-- ۹. راه‌های ارتباطی و پشتیبانی -->
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 border-t border-zinc-200 dark:border-zinc-800 pt-8 flex items-center gap-3">
+                <i data-lucide="headset" class="w-6 h-6 shrink-0 text-plus"></i>
+                <span>۹. راه‌های ارتباطی و پشتیبانی</span>
+            </h2>
+            <p>
+                در صورت داشتن هرگونه سوال، ابهام یا نیاز به پشتیبانی در خصوص قوانین و مقررات، می‌توانید از راه‌های زیر با تیم حقوقی و پشتیبانی ما در تماس باشید:
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
+                <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center shrink-0">
+                        <i data-lucide="bot" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-zinc-400 font-bold block mb-1">پشتیبانی تلگرام</span>
+                        <a href="https://t.me/sponsoracb_bot" target="_blank" rel="noopener noreferrer" class="text-sm font-bold text-pro hover:underline dir-ltr inline-block">
+                            @sponsoracb_bot
+                        </a>
+                    </div>
+                </div>
+
+                <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center shrink-0">
+                        <i data-lucide="globe" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-zinc-400 font-bold block mb-1">پورتال و وب‌سایت</span>
+                        <a href="https://sponsoracb.ir" target="_blank" rel="noopener noreferrer" class="text-sm font-bold text-plus hover:underline dir-ltr inline-block">
+                            SPONSORACB.IR
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- باکس CTA پشتیبانی -->
+            <div class="mt-12 p-8 rounded-3xl border glass-base bg-gradient-to-br from-violet-50 to-indigo-50 dark:from-violet-900/20 dark:to-indigo-900/20 border-violet-200 dark:border-violet-800/50 shadow-lg shadow-violet-500/5 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-violet-500/10 dark:bg-violet-400/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                <div class="relative z-10 flex flex-col items-center text-center gap-4">
+                    <div class="w-16 h-16 bg-violet-600 text-white rounded-2xl flex items-center justify-center shadow-md mb-2">
+                        <i data-lucide="help-circle" class="w-8 h-8 shrink-0"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-violet-900 dark:text-violet-100">نیاز به راهنمایی بیشتری دارید؟</h3>
+                    <p class="text-sm sm:text-base font-medium text-violet-800/80 dark:text-violet-200/80 max-w-2xl leading-relaxed">
+                        تیم پشتیبانی حقوقی و فنی مجموعه به صورت ۲۴ ساعته آماده پاسخگویی به ابهامات شما درباره قوانین استفاده از سرویس‌ها و اکانت‌ها است.
+                    </p>
+                    <a href="https://t.me/sponsoracb_bot" target="_blank" rel="noopener noreferrer" class="mt-4 flex items-center gap-3 px-8 py-4 bg-violet-600 hover:bg-violet-700 text-white rounded-xl font-bold transition-all shadow-lg shadow-violet-600/30 hover:shadow-violet-600/50 hover:-translate-y-1">
+                        <i data-lucide="bot" class="w-5 h-5 shrink-0"></i>
+                        <span>ارتباط با پشتیبانی در تلگرام (sponsoracb_bot@)</span>
+                    </a>
+                </div>
+            </div>
+
+        </article>
+
+    </main>
+
+    <!-- فوتر -->
+    <footer class="w-full py-6 mt-auto border-t glass-base bg-zinc-950/40 border-zinc-800/50 flex flex-col items-center justify-center gap-2 transition-colors" id="footer">
+        <p class="text-xs text-zinc-400" id="footer-text">تمامی حقوق برای مجموعه محفوظ است</p>
+        <a href="https://AMT-IR.github.io" target="_blank" class="flex items-center gap-1.5 text-sm font-bold transition-colors hover:text-emerald-500 text-white" id="footer-link">
+            <i data-lucide="external-link" class="w-4 h-4 shrink-0"></i>
+            <span>پورتال جامع AMT-IR</span>
+        </a>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // مقداردهی و ساخت آیکون‌ها
+        lucide.createIcons();
+
+        // منطق تغییر تم
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body>
+                      </html>
