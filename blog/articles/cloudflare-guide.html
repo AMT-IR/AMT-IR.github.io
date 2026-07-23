@@ -1,0 +1,344 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کلودفلر (Cloudflare) چیست؟ آموزش جامع امنیت و سرعت سایت | وبلاگ SPONSORACB</title>
+    
+    <!-- سئو متا تگ‌ها (SEO Meta Tags) -->
+    <meta name="description" content="آموزش جامع کلودفلر (Cloudflare)، نحوه کارکرد شبکه توزیع محتوا (CDN)، مقابله با حملات DDoS، تنظیمات Brotli و Polish، و نقش آن در پایداری پلتفرم SPONSORACB.">
+    <meta name="keywords" content="کلودفلر چیست, آموزش Cloudflare, شبکه توزیع محتوا CDN, افزایش سرعت سایت, امنیت وبسایت, جلوگیری از DDoS, گواهی SSL رایگان, SPONSORACB, سئو فنی">
+    
+    <!-- فونت Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    },
+                    colors: {
+                        pro: '#3b82f6',      /* Blue */
+                        plus: '#10b981',     /* Emerald */
+                        premium: '#8b5cf6',  /* Violet */
+                        ultra: '#f59e0b',    /* Amber/Gold */
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            transition: background-color 0.4s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* پس‌زمینه محو و استاندارد اصلی سایت (ترکیب زمردی و آبی) */
+        .ambient-bg {
+            background-color: #f4f4f5;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05), transparent 25%);
+        }
+        
+        .dark .ambient-bg {
+            background-color: #09090b;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.04), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.04), transparent 25%);
+        }
+
+        .glass-base {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* کاستوم اسکرول‌بار استاندارد */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { 
+            background: #d4d4d8; 
+            border-radius: 10px; 
+        }
+        .dark ::-webkit-scrollbar-thumb { background: #27272a; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+        /* استایل‌های تایپوگرافی مقاله مطابق قالب اصلی */
+        .article-content p {
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            text-align: justify;
+        }
+        .article-content ul {
+            margin-bottom: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        .article-content li {
+            margin-bottom: 0.75rem;
+            line-height: 1.8;
+            position: relative;
+        }
+        .article-content li::before {
+            content: '•';
+            color: #8b5cf6; /* Violet-500 */
+            position: absolute;
+            right: -1.2rem;
+            font-size: 1.5rem;
+            line-height: 1;
+            top: 0.1rem;
+        }
+        .dark .article-content li::before {
+            color: #a78bfa; /* Violet-400 */
+        }
+    </style>
+</head>
+<body class="ambient-bg text-zinc-900 dark:text-white min-h-screen flex flex-col relative transition-colors duration-500">
+
+    <!-- هدر (Navbar) -->
+    <nav class="w-full h-16 sm:h-20 flex items-center justify-between px-4 sm:px-8 border-b glass-base sticky top-0 z-40 
+        bg-white/40 border-zinc-200/50 
+        dark:bg-zinc-950/40 dark:border-zinc-800/50 transition-colors">
+        
+        <!-- فضای خالی برای تراز وسط -->
+        <div class="w-10 sm:w-12"></div>
+
+        <!-- عنوان وسط -->
+        <span class="font-black text-lg sm:text-xl tracking-[0.2em] dir-ltr text-zinc-900 dark:text-white">SPONSORACB</span>
+        
+        <!-- دکمه تغییر تم -->
+        <button onclick="toggleTheme()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all border shadow-sm
+            bg-white/70 border-zinc-200/80 hover:bg-white
+            dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 group">
+            <i data-lucide="sun" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-600 hidden dark:block group-hover:text-amber-400 transition-colors"></i>
+            <i data-lucide="moon" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 block dark:hidden group-hover:text-indigo-500 transition-colors"></i>
+        </button>
+    </nav>
+
+    <!-- محتوای اصلی مقاله -->
+    <main class="flex-1 w-full max-w-4xl mx-auto flex flex-col py-10 px-4 sm:px-6 lg:px-8">
+        
+        <!-- بخش عنوان مقاله -->
+        <header class="mb-10 text-center sm:text-right border-b border-zinc-200 dark:border-zinc-800 pb-8">
+            <div class="flex items-center justify-center sm:justify-start gap-3 mb-4 text-violet-600 dark:text-violet-400">
+                <i data-lucide="cloud" class="w-5 h-5"></i>
+                <span class="text-sm font-bold tracking-wide">زیرساخت ابری، CDN و امنیت وب</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-zinc-900 dark:text-white leading-[1.4] tracking-tight mb-6">
+                کلودفلر (Cloudflare) چیست؟ آموزش جامع تامین امنیت و سرعت سایت
+            </h1>
+            
+            <div class="flex items-center justify-center sm:justify-start gap-4 text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400">
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    <span>تاریخ انتشار: ۱۴ مرداد ۱۴۰۵</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="clock" class="w-4 h-4"></i>
+                    <span>زمان مطالعه: ۱۲ دقیقه</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- متن مقاله -->
+        <article class="article-content text-base sm:text-lg text-zinc-700 dark:text-zinc-300">
+            
+            <p>
+                در دنیای رقابتی وب امروز، دو فاکتور «سرعت بارگذاری» و «امنیت داده‌ها» حرف اول را در موفقیت یک کسب‌وکار اینترنتی می‌زنند. موتور جستجوی گوگل به طور مداوم معیارهای تجربه کاربری (به‌ویژه شاخص‌های Core Web Vitals) را رصد می‌کند و سایت‌های کند یا ناامن را به رتبه‌های پایین‌تر می‌فرستد. 
+            </p>
+            <p>
+                در این میان، فناوری <strong>کلودفلر (Cloudflare)</strong> به عنوان فرشته نجات وب‌سایت‌ها شناخته می‌شود. در این مقاله، به زبان ساده بررسی می‌کنیم که کلودفلر چیست، چگونه کار می‌کند و چطور می‌توانید از آن برای افزایش چشمگیر سرعت و امنیت سایت خود استفاده کنید.
+            </p>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="network" class="w-6 h-6 text-violet-500"></i>
+                کلودفلر چیست و چگونه کار می‌کند؟
+            </h2>
+            <p>
+                کلودفلر بزرگ‌ترین ارائه‌دهنده خدمات <strong>شبکه توزیع محتوا (CDN)</strong> و امنیت ابری در سراسر جهان است. این پلتفرم قدرتمند که در سال ۲۰۰۷ راه‌اندازی شد، امروزه میزبان ترافیک بخش بزرگی از اینترنت جهانی است.
+            </p>
+            <p>
+                از نظر فنی، کلودفلر به عنوان یک <strong>پروکسی معکوس (Reverse Proxy)</strong> عمل می‌کند. در حالت عادی، وقتی کاربری آدرس سایت شما را وارد می‌کند، مرورگر او مستقیماً به سرور اصلی (هاست شما) متصل می‌شود. اما با فعال‌سازی کلودفلر، این پلتفرم مانند یک واسطه هوشمند بین کاربر و سرور اصلی قرار می‌گیرد. 
+            </p>
+            <p>
+                از این پس، تمام درخواست‌های ورودی ابتدا به سرورهای لبه (Edge Servers) کلودفلر که در بیش از ۲۰۰ شهر جهان توزیع شده‌اند فرستاده شده و پس از بررسی و بهینه‌سازی، به سرور شما هدایت می‌شوند.
+            </p>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="zap" class="w-6 h-6 text-amber-500"></i>
+                چگونه کلودفلر سرعت سایت و سئو را دگرگون می‌کند؟
+            </h2>
+            <p>
+                بهبود سرعت بارگذاری وب‌سایت تأثیر مستقیمی بر کاهش نرخ پرش (Bounce Rate)، افزایش رضایت مشتریان و در نهایت ارتقای رتبه سئو دارد. کلودفلر با استفاده از ابزارهای زیر سرعت لود صفحات شما را به حداقل می‌رساند:
+            </p>
+            <ol class="list-decimal pr-5 space-y-4 font-medium text-zinc-800 dark:text-zinc-200 mb-6 marker:text-violet-500 marker:font-bold">
+                <li>
+                    <strong>سیستم ذخیره‌سازی موقت (Caching پیشرفته):</strong> کلودفلر کدهای HTML، فایل‌های CSS، جاوا اسکریپت و تصاویر ثابت سایت شما را روی سرورهای جهانی خود ذخیره (کش) می‌کند. وقتی کاربری از یک کشور خاص وارد سایت شود، این اطلاعات از نزدیک‌ترین دیتاسنتر به او تحویل داده می‌شود که تاخیر شبکه را به شدت کاهش می‌دهد.
+                </li>
+                <li>
+                    <strong>فشرده‌سازی خودکار کدهای فرانت‌اند (Minification):</strong> کلودفلر با حذف فضاهای خالی، خطوط اضافی و کاراکترهای بیهوده از کدهای CSS ،HTML و جاوا اسکریپت، بدون تغییر در عملکرد، حجم آن‌ها را سبک‌تر می‌کند. همچنین با فعال‌سازی پروتکل مدرن <strong>Brotli</strong> در بخش تنظیمات Speed، فایل‌ها با الگوریتم‌های فوق‌پیشرفته فشرده و ارسال می‌شوند.
+                </li>
+                <li>
+                    <strong>بهینه‌سازی تصاویر (Cloudflare Polish):</strong> تصاویر بخش عمده‌ای از پهنای باند را مصرف می‌کنند. ابزار اختصاصی Polish تصاویر سایت شما را فشرده کرده و در صورت امکان آن‌ها را به فرمت فوق‌سریع و مدرن <strong>WebP</strong> تبدیل می‌کند.
+                </li>
+                <li>
+                    <strong>ایندکس آنی صفحات با Crawler Hints:</strong> با همکاری کلودفلر و موتورهای جستجو (مانند مایکروسافت بینگ)، پروتکل IndexNow تغییرات سایت شما را فوراً به ربات‌های جستجوگر اعلام می‌کند تا صفحات جدید شما در سریع‌ترین زمان ممکن ایندکس شوند.
+                </li>
+            </ol>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="shield-check" class="w-6 h-6 text-emerald-500"></i>
+                سپر دفاعی کلودفلر در برابر تهدیدات سایبری
+            </h2>
+            <p>
+                امنیت یکی از ارکان اصلی اعتماد کاربران است. کلودفلر با فیلتر کردن ترافیک‌های مخرب، از سایت شما در برابر خطرات زیر محافظت می‌کند:
+            </p>
+            <ul class="list-none space-y-3">
+                <li>
+                    <strong>دفاع در برابر حملات DDoS:</strong> در این نوع حملات، هکرها با ارسال میلیون‌ها درخواست همزمان تلاش می‌کنند سرور شما را از کار بیندازند. کلودفلر با توزیع این حجم از ترافیک روی شبکه عظیم سرورهای خود، حملات را در نطفه خفه کرده و سایت شما را همیشه آنلاین نگه می‌دارد.
+                </li>
+                <li>
+                    <strong>فایروال هوشمند اپلیکیشن وب (WAF):</strong> دیواره آتش کلودفلر به طور مداوم رفتارهای ربات‌ها را آنالیز کرده و تلاش برای هک، نفوذ به پایگاه داده (SQL Injection) یا کدهای مخرب (XSS) را شناسایی و مسدود می‌کند.
+                </li>
+                <li>
+                    <strong>فعال‌سازی SSL/TLS رایگان:</strong> این گواهی داده‌های رد و بدل شده میان کاربر و سایت را رمزنگاری می‌کند تا اطلاعات شخصی و بانکی کاربران از خطر شنود در امان بماند.
+                </li>
+            </ul>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="sliders" class="w-6 h-6 text-blue-500"></i>
+                آموزش گام‌به‌گام راه‌اندازی و کانفیگ کلودفلر
+            </h2>
+            <p>
+                راه‌اندازی کلودفلر بسیار آسان است و در کمتر از ۱۰ دقیقه انجام می‌شود:
+            </p>
+
+            <!-- مراحل راه اندازی -->
+            <div class="space-y-4 my-8">
+                <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 flex gap-4 items-start">
+                    <div class="w-8 h-8 rounded-xl bg-violet-600 text-white font-black flex items-center justify-center shrink-0">۱</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-1">ثبت‌نام در پلتفرم</h3>
+                        <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">به سایت رسمی کلودفلر مراجعه کرده، بر روی دکمه "Start for free" کلیک کنید و با ایمیل خود یک حساب کاربری بسازید.</p>
+                    </div>
+                </div>
+
+                <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 flex gap-4 items-start">
+                    <div class="w-8 h-8 rounded-xl bg-violet-600 text-white font-black flex items-center justify-center shrink-0">۲</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-1">ثبت وب‌سایت</h3>
+                        <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">آدرس دامنه خود (مثلاً <code class="bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block">mysite.com</code>) را وارد کنید تا کلودفلر شروع به اسکن رکوردهای DNS فعلی شما کند.</p>
+                    </div>
+                </div>
+
+                <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 flex gap-4 items-start">
+                    <div class="w-8 h-8 rounded-xl bg-violet-600 text-white font-black flex items-center justify-center shrink-0">۳</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-1">انتخاب پلن رایگان (Free Plan)</h3>
+                        <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">برای شروع، پلن رایگان کلودفلر کاملاً کافیست و امکانات فوق‌العاده‌ای برای بهینه‌سازی سرعت و امنیت اولیه در اختیارتان قرار می‌دهد.</p>
+                    </div>
+                </div>
+
+                <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 flex gap-4 items-start">
+                    <div class="w-8 h-8 rounded-xl bg-violet-600 text-white font-black flex items-center justify-center shrink-0">۴</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-1">تغییر دی‌ان‌اس‌ها (Nameservers)</h3>
+                        <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">کلودفلر به شما دو آدرس DNS اختصاصی می‌دهد. کافیست به پنل مدیریت دامنه خود بروید و دی‌ان‌اس‌های قدیمی را با دی‌ان‌اس‌های جدید کلودفلر جایگزین کنید.</p>
+                    </div>
+                </div>
+
+                <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 flex gap-4 items-start">
+                    <div class="w-8 h-8 rounded-xl bg-violet-600 text-white font-black flex items-center justify-center shrink-0">۵</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-1">تنظیمات نهایی</h3>
+                        <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">پس از تأیید اتصال، به تب SSL/TLS رفته و حالت آن را روی Flexible یا Full قرار دهید و در تب Speed، گزینه Brotli را فعال کنید.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="cpu" class="w-6 h-6 text-indigo-500"></i>
+                نقش کلودفلر در پایداری پلتفرم‌های مدرن؛ الگوبرداری از SPONSORACB
+            </h2>
+            <p>
+                اهمیت کلودفلر تنها به وب‌سایت‌های فروشگاهی یا شرکتی محدود نمی‌شود، بلکه پلتفرم‌های نوین تکنولوژی نیز پایداری خود را مدیون این زیرساخت هستند. به عنوان یک نمونه موفق بومی، مجموعه فناوری و هوش مصنوعی <strong>SPONSORACB</strong> را در نظر بگیرید.
+            </p>
+
+            <!-- کیس استدی SPONSORACB -->
+            <div class="my-8 p-6 rounded-3xl border glass-base bg-gradient-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-950/30 dark:to-purple-950/30 border-indigo-200 dark:border-indigo-800/50 shadow-sm">
+                <div class="flex items-center gap-3 mb-4 text-indigo-600 dark:text-indigo-400 font-black text-xl">
+                    <i data-lucide="server" class="w-6 h-6"></i>
+                    کیس‌استدی زیرساختی پلتفرم SPONSORACB
+                </div>
+                <p class="text-sm sm:text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
+                    پورتال رسمی این مجموعه به آدرس <code class="bg-white/60 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block text-indigo-500 font-bold">SPONSORACB.IR</code> و بستر فروشگاهی آن در <code class="bg-white/60 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block text-indigo-500 font-bold">sponsoracb.mydigify.app</code> که هدف دسترسی بدون محدودیت ایرانیان به برترین مدل‌های هوش مصنوعی جهان (مانند ChatGPT، Gemini و Claude) را دنبال می‌کند، از قوی‌ترین کانفیگ‌های شبکه‌ای کلودفلر بهره می‌برند.
+                </p>
+                <p class="text-sm sm:text-base leading-relaxed text-zinc-700 dark:text-zinc-300 mt-3 mb-0">
+                    پلتفرم <strong>SPONSORACB</strong> برای تضمین پایداری ربات تلگرامی فوق‌سریع خود (<code class="bg-white/60 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block font-bold">SPONSORACB_BOT</code>) و محافظت از تراکنش‌های مالی و درگاه‌های حمایتی ریالی کاربران (سیستم دونیت monsmain)، از پروکسی‌های معکوس و فایروال‌های پیشرفته کلودفلر استفاده می‌کند تا ابزارهای هوشمند این مجموعه همیشه بدون قطعی در دسترس باشند.
+                </p>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 border-t border-zinc-200 dark:border-zinc-800 pt-8 flex items-center gap-3">
+                <i data-lucide="check-circle" class="w-6 h-6 text-violet-500"></i>
+                جمع‌بندی
+            </h2>
+            <p>
+                استفاده از کلودفلر یک انتخاب لوکس نیست، بلکه یک ضرورت دفاعی و فنی برای هر وب‌سایتی است که سودای رتبه‌های برتر گوگل و امنیت همه‌جانبه را دارد. با راه‌اندازی این سیستم، نه‌تنها تجربه کاربری مخاطبان خود را بهبود می‌دهید، بلکه هزینه‌های پهنای باند و فشار روی هاست خود را نیز به حداقل خواهید رساند.
+            </p>
+
+            <!-- باکس ویژه CTA برای SPONSORACB -->
+            <div class="mt-12 p-8 rounded-3xl border glass-base bg-gradient-to-br from-violet-50 to-indigo-50 dark:from-violet-900/20 dark:to-indigo-900/20 border-violet-200 dark:border-violet-800/50 shadow-lg shadow-violet-500/5 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-violet-500/10 dark:bg-violet-400/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                <div class="relative z-10 flex flex-col items-center text-center gap-4">
+                    <div class="w-16 h-16 bg-violet-600 text-white rounded-2xl flex items-center justify-center shadow-md mb-2">
+                        <i data-lucide="shield" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-violet-900 dark:text-violet-100">تنظیم تخصصی شبکه ابری و CDN با SPONSORACB</h3>
+                    <p class="text-sm sm:text-base font-medium text-violet-800/80 dark:text-violet-200/80 max-w-2xl leading-relaxed">
+                        جهت مشاوره کانفیگ حرفه‌ای کلودفلر، فعال‌سازی SSL کامل، رفع خطاهای ۵۰۲ و ۵۰۴ سرور، و اتصال امن ربات‌ها و اپلیکیشن‌ها به زیرساخت ابری، با متخصصان شبکه **SPONSORACB** در ارتباط باشید.
+                    </p>
+                    <a href="https://t.me/sponsoracb_bot" target="_blank" rel="noopener noreferrer" class="mt-4 flex items-center gap-3 px-8 py-4 bg-violet-600 hover:bg-violet-700 text-white rounded-xl font-bold transition-all shadow-lg shadow-violet-600/30 hover:shadow-violet-600/50 hover:-translate-y-1">
+                        <i data-lucide="bot" class="w-5 h-5"></i>
+                        <span>ارتباط با ربات رسمی (sponsoracb_bot@)</span>
+                    </a>
+                </div>
+            </div>
+
+        </article>
+
+    </main>
+
+    <!-- فوتر -->
+    <footer class="w-full py-6 mt-auto border-t glass-base bg-zinc-950/40 border-zinc-800/50 flex flex-col items-center justify-center gap-2 transition-colors" id="footer">
+        <p class="text-xs text-zinc-400" id="footer-text">تمامی حقوق برای مجموعه محفوظ است</p>
+        <a href="https://AMT-IR.github.io" target="_blank" class="flex items-center gap-1.5 text-sm font-bold transition-colors hover:text-emerald-500 text-white" id="footer-link">
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+            <span>پورتال جامع AMT-IR</span>
+        </a>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // مقداردهی و ساخت آیکون‌ها
+        lucide.createIcons();
+
+        // منطق تغییر تم
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body>
+</html>
