@@ -1,1 +1,365 @@
 
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سیاست حریم خصوصی کاربران | وبلاگ SPONSORACB</title>
+    
+    <!-- سئو متا تگ‌ها (SEO Meta Tags) -->
+    <meta name="description" content="سند رسمی سیاست حریم خصوصی کاربران، نحوه جمع‌آوری، استفاده، امنیت داده‌ها، سیاست کوکی‌ها و راهکارهای حفاظت از اطلاعات در پلتفرم SPONSORACB.">
+    <meta name="keywords" content="حریم خصوصی, سیاست حفظ اطلاعات, امنیت داده‌ها, رمزنگاری SSL, SPONSORACB, سیاست کوکی ها, حفاظت از اطلاعات شخص">
+    
+    <!-- فونت Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    },
+                    colors: {
+                        pro: '#3b82f6',      /* Blue */
+                        plus: '#10b981',     /* Emerald */
+                        premium: '#8b5cf6',  /* Violet */
+                        ultra: '#f59e0b',    /* Amber/Gold */
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            transition: background-color 0.4s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* پس‌زمینه محو و استاندارد اصلی سایت (ترکیب زمردی و آبی) */
+        .ambient-bg {
+            background-color: #f4f4f5;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05), transparent 25%);
+        }
+        
+        .dark .ambient-bg {
+            background-color: #09090b;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.04), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.04), transparent 25%);
+        }
+
+        .glass-base {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* استایل پایه آیکون‌های SVG */
+        svg.lucide, .lucide {
+            display: inline-block;
+            vertical-align: middle;
+            stroke-width: 2px;
+            stroke: currentColor;
+            fill: none;
+            flex-shrink: 0;
+        }
+
+        /* کاستوم اسکرول‌بار استاندارد */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { 
+            background: #d4d4d8; 
+            border-radius: 10px; 
+        }
+        .dark ::-webkit-scrollbar-thumb { background: #27272a; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+        /* استایل‌های تایپوگرافی مقاله */
+        .article-content p {
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            text-align: justify;
+        }
+        
+        /* فقط آیتم‌های ul نقطه زمردی دریافت می‌کنند */
+        .article-content ul {
+            margin-bottom: 1.5rem;
+            padding-right: 1.5rem;
+            list-style: none;
+        }
+        .article-content ul > li {
+            margin-bottom: 0.75rem;
+            line-height: 1.8;
+            position: relative;
+        }
+        .article-content ul > li::before {
+            content: '•';
+            color: #10b981; /* Emerald-500 */
+            position: absolute;
+            right: -1.2rem;
+            font-size: 1.5rem;
+            line-height: 1;
+            top: 0.1rem;
+        }
+        .dark .article-content ul > li::before {
+            color: #34d399; /* Emerald-400 */
+        }
+
+        /* عدم وجود بولت اضافی برای ol */
+        .article-content ol {
+            margin-bottom: 1.5rem;
+        }
+        .article-content ol > li::before {
+            content: none !important;
+        }
+    </style>
+</head>
+<body class="ambient-bg text-zinc-900 dark:text-white min-h-screen flex flex-col relative transition-colors duration-500">
+
+    <!-- هدر (Navbar) -->
+    <nav class="w-full h-16 sm:h-20 flex items-center justify-between px-4 sm:px-8 border-b glass-base sticky top-0 z-40 
+        bg-white/40 border-zinc-200/50 
+        dark:bg-zinc-950/40 dark:border-zinc-800/50 transition-colors">
+        
+        <!-- فضای خالی برای تراز وسط -->
+        <div class="w-10 sm:w-12"></div>
+
+        <!-- عنوان وسط -->
+        <span class="font-black text-lg sm:text-xl tracking-[0.2em] dir-ltr text-zinc-900 dark:text-white">SPONSORACB</span>
+        
+        <!-- دکمه تغییر تم -->
+        <button onclick="toggleTheme()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all border shadow-sm
+            bg-white/70 border-zinc-200/80 hover:bg-white
+            dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 group">
+            <i data-lucide="sun" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-600 hidden dark:block group-hover:text-amber-400 transition-colors"></i>
+            <i data-lucide="moon" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 block dark:hidden group-hover:text-indigo-500 transition-colors"></i>
+        </button>
+    </nav>
+
+    <!-- محتوای اصلی مقاله -->
+    <main class="flex-1 w-full max-w-4xl mx-auto flex flex-col py-10 px-4 sm:px-6 lg:px-8">
+        
+        <!-- بخش عنوان مقاله -->
+        <header class="mb-10 text-center sm:text-right border-b border-zinc-200 dark:border-zinc-800 pb-8">
+            <div class="flex items-center justify-center sm:justify-start gap-3 mb-4 text-emerald-600 dark:text-emerald-400">
+                <i data-lucide="shield-check" class="w-5 h-5 shrink-0"></i>
+                <span class="text-sm font-bold tracking-wide">سیاست‌ها، امنیت داده و حریم خصوصی</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-zinc-900 dark:text-white leading-[1.4] tracking-tight mb-6">
+                سیاست حریم خصوصی کاربران
+            </h1>
+            
+            <div class="flex items-center justify-center sm:justify-start gap-4 text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400">
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="calendar" class="w-4 h-4 shrink-0"></i>
+                    <span>تاریخ آخرین به‌روزرسانی: ۱۹ مرداد ۱۴۰۵</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="clock" class="w-4 h-4 shrink-0"></i>
+                    <span>زمان مطالعه: ۷ دقیقه</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- متن مقاله -->
+        <article class="article-content text-base sm:text-lg text-zinc-700 dark:text-zinc-300">
+            
+            <p>
+                مجموعه ما متعهد است که از اطلاعات شخصی و حریم خصوصی شما به عنوان یک امانت گران‌بها با بالاترین استانداردهای امنیتی محافظت کند. این سند به روشنی توضیح می‌دهد که چه اطلاعاتی از شما جمع‌آوری می‌شود، این اطلاعات چگونه مورد استفاده قرار می‌گیرند و ما چه اقداماتی برای امنیت آن‌ها انجام می‌دهیم. ورود، ثبت‌نام و استفاده شما از وب‌سایت و خدمات ما به منزله آگاهی و پذیرش کامل این سیاست‌نامه است.
+            </p>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="user-check" class="w-6 h-6 shrink-0 text-emerald-500"></i>
+                <span>۱. چه اطلاعاتی را از شما جمع‌آوری می‌کنیم؟</span>
+            </h2>
+            <p>
+                برای ارائه خدمات، ثبت و ارسال سفارش‌ها و برقراری ارتباط موثر، اطلاعات زیر از کاربران دریافت و ذخیره می‌شود:
+            </p>
+
+            <!-- کارت‌های ۴گانه انواع اطلاعات -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-8">
+                <div class="p-5 rounded-2xl border glass-base bg-white/40 dark:bg-zinc-900/40 border-emerald-500/30">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center font-bold mb-3">
+                        <i data-lucide="id-card" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-2">اطلاعات هویتی و شناسایی</h3>
+                    <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                        شامل نام، نام خانوادگی، کد ملی (در صورت نیاز به صدور فاکتور رسمی یا احراز هویت قانونی) و تاریخ تولد.
+                    </p>
+                </div>
+
+                <div class="p-5 rounded-2xl border glass-base bg-white/40 dark:bg-zinc-900/40 border-blue-500/30">
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center font-bold mb-3">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-2">اطلاعات تماس و ارسال</h3>
+                    <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                        شامل شماره تلفن همراه، آدرس ایمیل، آدرس پستی دقیق، کد پستی و شماره تلفن ثابت.
+                    </p>
+                </div>
+
+                <div class="p-5 rounded-2xl border glass-base bg-white/40 dark:bg-zinc-900/40 border-violet-500/30">
+                    <div class="w-10 h-10 rounded-xl bg-violet-500/10 text-violet-500 flex items-center justify-center font-bold mb-3">
+                        <i data-lucide="cpu" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-2">اطلاعات فنی و نحوه استفاده</h3>
+                    <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                        آدرس IP دستگاه شما، نوع مرورگر، سیستم‌عامل، صفحات بازدید شده در سایت، زمان و مدت زمان حضور در صفحات و داده‌های کوکی (Cookies).
+                    </p>
+                </div>
+
+                <div class="p-5 rounded-2xl border glass-base bg-white/40 dark:bg-zinc-900/40 border-amber-500/30">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center font-bold mb-3">
+                        <i data-lucide="credit-card" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-2">اطلاعات مالی و تراکنش‌ها</h3>
+                    <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                        تاریخچه خریدهای انجام‌شده، شماره تیکت‌ها و شماره تراکنش‌های مالی جهت پیگیری خریدهای شما.
+                    </p>
+                </div>
+            </div>
+
+            <!-- هشدار عدم ذخیره‌سازی اطلاعات کارت بانکی -->
+            <div class="my-6 p-5 rounded-2xl border glass-base bg-amber-500/10 border-amber-500/30 text-amber-900 dark:text-amber-200">
+                <strong class="flex items-center gap-2 mb-2 font-bold text-amber-600 dark:text-amber-400">
+                    <i data-lucide="shield-alert" class="w-5 h-5 shrink-0"></i>
+                    <span>نکته امنیتی بسیار مهم:</span>
+                </strong>
+                اطلاعات حساس کارت بانکی شما (مانند شماره کارت، رمز دوم، CVV2 و تاریخ انقضا) مستقیماً در درگاه‌های امن و رسمی شاپرک و بانک‌های طرف قرارداد وارد شده و مجموعه ما به هیچ‌عنوان به این اطلاعات دسترسی ندارد و آن‌ها را ذخیره نمی‌کند.
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="target" class="w-6 h-6 shrink-0 text-blue-500"></i>
+                <span>۲. اطلاعات شما را به چه منظوری استفاده می‌کنیم؟</span>
+            </h2>
+            <p>
+                تمامی اطلاعات جمع‌آوری‌شده تنها در جهت ارتقای کیفیت خدمات و حفظ امنیت شما مورد بهره‌برداری قرار می‌گیرند. مهم‌ترین اهداف ما عبارتند از:
+            </p>
+            <ul class="list-none space-y-3">
+                <li><strong>پردازش و ارسال:</strong> بسته‌بندی، ارسال و پیگیری دقیق سفارش‌های خریده‌شده و تحویل کالا.</li>
+                <li><strong>اطلاع‌رسانی و پشتیبانی:</strong> اطلاع‌رسانی در خصوص وضعیت سفارش، تغییرات در خدمات یا پاسخ‌گویی به تیکت‌ها و درخواست‌های پشتیبانی.</li>
+                <li><strong>احراز هویت و امنیت:</strong> احراز هویت کاربران جهت جلوگیری از ورود غیرمجاز، کلاهبرداری‌های اینترنتی، استفاده از کارت‌های سرقتی و رفتارهای مشکوک.</li>
+                <li><strong>بهبود تجربه کاربری:</strong> بهینه‌سازی سرعت و عملکرد وب‌سایت و شخصی‌سازی پیشنهادات بر اساس ترجیحات شما.</li>
+                <li><strong>ارسال پیام‌های اطلاع‌رسانی:</strong> ارسال پیامک یا ایمیل‌های اطلاع‌رسانی، تخفیف‌ها و پیشنهادات ویژه (در صورت تمایل کاربر؛ امکان لغو دریافت این پیام‌ها همواره فعال است).</li>
+            </ul>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="lock" class="w-6 h-6 shrink-0 text-violet-500"></i>
+                <span>۳. امنیت اطلاعات و نحوه حفاظت از آن‌ها</span>
+            </h2>
+            <p>
+                ما خود را موظف به حفاظت همه‌جانبه از داده‌های شما می‌دانیم و در این راستا اقدامات زیر را انجام داده‌ایم:
+            </p>
+            <ul class="list-none space-y-3">
+                <li><strong>رمزنگاری داده‌ها (SSL):</strong> کلیه تبادلات اطلاعاتی میان دستگاه شما و سرورهای ما با استفاده از پروتکل‌های امنیتی و گواهی رمزنگاری رسمی SSL انجام می‌شود.</li>
+                <li><strong>دیوارهای آتشین و سرورهای امن:</strong> داده‌های کاربران روی سرورهای اختصاصی و امن با دسترسی‌های کاملاً محدود نگهداری می‌شوند.</li>
+                <li><strong>محدودیت دسترسی داخلی:</strong> تنها آن دسته از کارکنان مجموعه که برای انجام وظایف خود (مانند تیم پشتیبانی یا ارسال کالا) به اطلاعات نیاز دارند، دسترسی کنترل‌شده به این داده‌ها خواهند داشت.</li>
+                <li><strong>مسئولیت کاربر:</strong> حفظ و نگهداری از نام کاربری، رمز عبور و کدهای ورود یک‌بارمصرف (OTP) بر عهده خود کاربر است. لطفاً این اطلاعات را در اختیار هیچ شخص ثالثی قرار ندهید.</li>
+            </ul>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="eye-off" class="w-6 h-6 shrink-0 text-rose-500"></i>
+                <span>۴. عدم افشای اطلاعات به اشخاص ثالث</span>
+            </h2>
+            <p>
+                اطلاعات شخصی شما به عنوان دارایی محرمانه مجموعه تلقی شده و تحت هیچ شرایطی به هیچ شخص حقیقی یا حقوقی دیگری فروخته، اجاره یا واگذار نخواهد شد. افشای اطلاعات تنها در دو حالت استثنایی زیر رخ خواهد داد:
+            </p>
+            <ol class="list-decimal pr-5 space-y-3 font-medium text-zinc-800 dark:text-zinc-200 mb-6 marker:text-rose-500 marker:font-bold">
+                <li><strong>ارائه‌دهندگان خدمات مکمل:</strong> جهت انجام فرایندهای عملیاتی، بخش محدود و لازمی از اطلاعات (مانند نام، آدرس و شماره تماس) در اختیار شرکت‌های پست، پیک یا سامانه‌های پیامکی قرار می‌گیرد تا سفارش شما تحویل داده شود.</li>
+                <li><strong>الزامات قانونی و قضایی:</strong> در صورت صدور دستور رسمی و مکتوب از سوی مراجع ذی‌صلاح قضایی، دادستانی یا پلیس فتا، مجموعه موظف است بر طبق قانون، اطلاعات درخواستی را به مراجع قانونی تحویل دهد.</li>
+            </ol>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="cookie" class="w-6 h-6 shrink-0 text-amber-500"></i>
+                <span>۵. سیاست استفاده از کوکی‌ها (Cookies)</span>
+            </h2>
+            <p>
+                وب‌سایت ما برای ارتقای کیفیت سرویس‌دهی از فایل‌های کوکی استفاده می‌کند. کوکی‌ها فایل‌های متنی کوچکی هستند که روی مرورگر شما ذخیره می‌شوند و به ما کمک می‌کنند تا تنظیمات شما را به خاطر بسپاریم، سبد خرید شما را حفظ کنیم و آمار بازدید سایت را تحلیل نماییم. شما می‌توانید در تنظیمات مرورگر خود ذخیره کوکی‌ها را غیرفعال کنید، اما ممکن است این کار باعث اختلال در عملکرد برخی از بخش‌های وب‌سایت شود.
+            </p>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="external-link" class="w-6 h-6 shrink-0 text-indigo-500"></i>
+                <span>۶. لینک به وب‌سایت‌های دیگر</span>
+            </h2>
+            <p>
+                سایت ما ممکن است حاوی لینک‌هایی به وب‌سایت‌ها یا سامانه‌های دیگر (مانند درگاه‌های پرداخت یا شبکه‌های اجتماعی) باشد. این سیاست حریم خصوصی صرفاً مربوط به وب‌سایت ماست و مجموعه ما هیچ‌گونه مسئولیتی در قبال محتوا یا سیاست‌های حریم خصوصی وب‌سایت‌های دیگر ندارد. پیش از ورود اطلاعات در سایت‌های ثالث، حتماً قوانین آن‌ها را مطالعه فرمایید.
+            </p>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
+                <i data-lucide="refresh-cw" class="w-6 h-6 shrink-0 text-emerald-500"></i>
+                <span>۷. تغییرات در سیاست حریم خصوصی</span>
+            </h2>
+            <p>
+                مجموعه این حق را برای خود محفوظ می‌دارد که در صورت نیاز، تغییرات یا به‌روزرسانی‌هایی را در این سیاست‌نامه اعمال کند. تمامی تغییرات بلافاصله در همین صفحه منتشر شده و تاریخ آخرین تغییرات درج خواهد شد. استفاده مداوم شما از سایت به منزله آگاهی و پذیرش آخرین نسخه این سند است.
+            </p>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 border-t border-zinc-200 dark:border-zinc-800 pt-8 flex items-center gap-3">
+                <i data-lucide="headphones" class="w-6 h-6 shrink-0 text-emerald-500"></i>
+                <span>۸. راه‌های ارتباطی و مدیریت اطلاعات</span>
+            </h2>
+            <p>
+                شما در هر زمان می‌توانید با ورود به حساب کاربری خود، اطلاعات شخصی‌تان را ویرایش، تکمیل یا به‌روزرسانی کنید. همچنین در صورت داشتن هرگونه سوال، ابهام یا درخواست در رابطه با حریم خصوصی، می‌توانید از راه‌های زیر با ما در ارتباط باشید:
+            </p>
+
+            <!-- باکس ارتباط با پشتیبانی -->
+            <div class="mt-8 p-8 rounded-3xl border glass-base bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 border-emerald-200 dark:border-emerald-800/50 shadow-lg shadow-emerald-500/5 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 dark:bg-emerald-400/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                <div class="relative z-10 flex flex-col items-center text-center gap-4">
+                    <div class="w-16 h-16 bg-emerald-600 text-white rounded-2xl flex items-center justify-center shadow-md mb-2">
+                        <i data-lucide="headphones" class="w-8 h-8 shrink-0"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-emerald-900 dark:text-emerald-100">ارتباط با واحد پشتیبانی و مرکز پاسخگویی</h3>
+                    <p class="text-sm sm:text-base font-medium text-emerald-800/80 dark:text-emerald-200/80 max-w-2xl leading-relaxed">
+                        جهت ثبت تیکت پشتیبانی، پیگیری امور حریم خصوصی یا مشاوره مستقیم، می‌توانید به بخش رسمی پشتیبانی مراجعه کرده یا با ربات تلگرامی ما در تماس باشید.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center gap-4 mt-2 w-full justify-center">
+                        <a href="https://sponsoracb.ir/Support.html" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold transition-all shadow-lg shadow-emerald-600/30 hover:shadow-emerald-600/50 hover:-translate-y-1">
+                            <i data-lucide="headphones" class="w-5 h-5 shrink-0"></i>
+                            <span>ورود به بخش پشتیبانی آنلاین</span>
+                        </a>
+                        <a href="https://t.me/sponsoracb_bot" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-zinc-800 hover:bg-zinc-900 text-white rounded-xl font-bold transition-all shadow-md hover:-translate-y-1">
+                            <i data-lucide="bot" class="w-5 h-5 shrink-0"></i>
+                            <span>ارتباط با ربات تلگرام</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </article>
+
+    </main>
+
+    <!-- فوتر -->
+    <footer class="w-full py-6 mt-auto border-t glass-base bg-zinc-950/40 border-zinc-800/50 flex flex-col items-center justify-center gap-2 transition-colors" id="footer">
+        <p class="text-xs text-zinc-400" id="footer-text">تمامی حقوق برای مجموعه محفوظ است</p>
+        <a href="https://AMT-IR.github.io" target="_blank" class="flex items-center gap-1.5 text-sm font-bold transition-colors hover:text-emerald-500 text-white" id="footer-link">
+            <i data-lucide="external-link" class="w-4 h-4 shrink-0"></i>
+            <span>پورتال جامع AMT-IR</span>
+        </a>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // مقداردهی و ساخت آیکون‌ها
+        lucide.createIcons();
+
+        // منطق تغییر تم
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body>
+</html>
