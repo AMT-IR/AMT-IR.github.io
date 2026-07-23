@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرکز قوانین، حقوق کاربران و شفافیت | SPONSORACB</title>
+    
+    <!-- سئو متا تگ‌ها (SEO Meta Tags) -->
+    <meta name="description" content="پورتال جامع قوانین، سیاست حریم خصوصی، ضوابط استرداد وجه و سوالات متداول پلتفرم هوش مصنوعی و اتوماسیون SPONSORACB.">
+    <meta name="keywords" content="قوانین SPONSORACB, حریم خصوصی کاربران, استرداد وجه ربات, سوالات متداول, قوانین عمومی, مرکز پشتیبانی SPONSORACB">
+    
+    <!-- فونت Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    },
+                    colors: {
+                        pro: '#3b82f6',      /* Blue */
+                        plus: '#10b981',     /* Emerald */
+                        premium: '#8b5cf6',  /* Violet */
+                        ultra: '#f59e0b',    /* Amber/Gold */
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            transition: background-color 0.4s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* پس‌زمینه محو و استاندارد اصلی سایت (ترکیب زمردی و آبی) */
+        .ambient-bg {
+            background-color: #f4f4f5;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.06), transparent 30%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.06), transparent 30%);
+        }
+        
+        .dark .ambient-bg {
+            background-color: #09090b;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05), transparent 30%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05), transparent 30%);
+        }
+
+        .glass-base {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* استایل پایه آیکون‌های SVG */
+        svg.lucide, .lucide {
+            display: inline-block;
+            vertical-align: middle;
+            stroke-width: 2px;
+            stroke: currentColor;
+            fill: none;
+            flex-shrink: 0;
+        }
+
+        /* کاستوم اسکرول‌بار استاندارد */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { 
+            background: #d4d4d8; 
+            border-radius: 10px; 
+        }
+        .dark ::-webkit-scrollbar-thumb { background: #27272a; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+    </style>
+</head>
+<body class="ambient-bg text-zinc-900 dark:text-white min-h-screen flex flex-col relative transition-colors duration-500">
+
+    <!-- هدر (Navbar) -->
+    <nav class="w-full h-16 sm:h-20 flex items-center justify-between px-4 sm:px-8 border-b glass-base sticky top-0 z-40 
+        bg-white/40 border-zinc-200/50 
+        dark:bg-zinc-950/40 dark:border-zinc-800/50 transition-colors">
+        
+        <div class="w-10 sm:w-12"></div>
+        <span class="font-black text-lg sm:text-xl tracking-[0.2em] dir-ltr text-zinc-900 dark:text-white">SPONSORACB</span>
+        
+        <!-- دکمه تغییر تم -->
+        <button onclick="toggleTheme()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all border shadow-sm
+            bg-white/70 border-zinc-200/80 hover:bg-white
+            dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 group">
+            <i data-lucide="sun" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-600 hidden dark:block group-hover:text-amber-400 transition-colors"></i>
+            <i data-lucide="moon" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 block dark:hidden group-hover:text-indigo-500 transition-colors"></i>
+        </button>
+    </nav>
+
+    <!-- محتوای اصلی -->
+    <main class="flex-1 w-full max-w-5xl mx-auto flex flex-col py-12 px-4 sm:px-6 lg:px-8">
+        
+        <!-- بخش هدر و معرفی -->
+        <header class="text-center mb-14">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs sm:text-sm font-bold mb-6 shadow-sm">
+                <i data-lucide="shield-check" class="w-4 h-4 shrink-0"></i>
+                <span>پورتال رسمی قوانین، شفافیت و راهنمای کاربران</span>
+            </div>
+            
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-black text-zinc-900 dark:text-white leading-[1.3] tracking-tight mb-6">
+                مرکز اطلاعات حقوقی و قوانین SPONSORACB
+            </h1>
+            
+            <p class="text-base sm:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-3xl mx-auto font-medium">
+                ما در مجموعه‌ی SPONSORACB متعهد به حفظ شفافیت، امنیت داده‌ها، احترام به حقوق مشتریان و ارائه خدمات پایدار هستیم. جهت بررسی ضوابط و منشور کاری، بخش مورد نظر خود را انتخاب کنید.
+            </p>
+        </header>
+
+        <!-- شبکه‌ی ۴ تایی بخش‌های حقوقی اصلی -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+            
+            <!-- کارت ۱: قوانین و مقررات عمومی -->
+            <a href="https://sponsoracb.ir/legal/terms.html" class="group relative rounded-3xl border border-zinc-200/80 dark:border-zinc-800/80 glass-base bg-white/50 dark:bg-zinc-900/50 p-7 sm:p-8 hover:-translate-y-1.5 transition-all duration-300 hover:shadow-xl hover:shadow-emerald-500/5 hover:border-emerald-500/40 flex flex-col justify-between">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all"></div>
+                <div>
+                    <div class="w-14 h-16 sm:w-16 sm:h-16 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-6 border border-emerald-500/20 group-hover:scale-105 transition-transform">
+                        <i data-lucide="file-text" class="w-8 h-8 shrink-0"></i>
+                    </div>
+                    <h2 class="text-2xl font-black text-zinc-900 dark:text-white mb-3 group-hover:text-emerald-500 transition-colors">
+                        قوانین و مقررات عمومی
+                    </h2>
+                    <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6">
+                        بررسی شرایط ثبت‌نام، ایجاد حساب کاربری، تعهدات کاربر، حقوق مالکیت فکری، ضوابط ثبت سفارش و حدود مسئولیت‌های حقوقی مجموعه.
+                    </p>
+                </div>
+                <div class="flex items-center gap-2 text-sm font-bold text-emerald-600 dark:text-emerald-400 group-hover:gap-3 transition-all pt-2 border-t border-zinc-100 dark:border-zinc-800/60">
+                    <span>مطالعه قوانین عمومی</span>
+                    <i data-lucide="arrow-left" class="w-4 h-4 shrink-0"></i>
+                </div>
+            </a>
+
+            <!-- کارت ۲: سیاست حریم خصوصی -->
+            <a href="https://sponsoracb.ir/legal/privacy.html" class="group relative rounded-3xl border border-zinc-200/80 dark:border-zinc-800/80 glass-base bg-white/50 dark:bg-zinc-900/50 p-7 sm:p-8 hover:-translate-y-1.5 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/5 hover:border-blue-500/40 flex flex-col justify-between">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all"></div>
+                <div>
+                    <div class="w-14 h-16 sm:w-16 sm:h-16 rounded-2xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold mb-6 border border-blue-500/20 group-hover:scale-105 transition-transform">
+                        <i data-lucide="lock" class="w-8 h-8 shrink-0"></i>
+                    </div>
+                    <h2 class="text-2xl font-black text-zinc-900 dark:text-white mb-3 group-hover:text-blue-500 transition-colors">
+                        حریم خصوصی کاربران
+                    </h2>
+                    <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6">
+                        نحوه جمع‌آوری اطلاعات هویتی و فنی، حفاظت از داده‌ها با گواهی SSL، سیاست کوکی‌ها و تضمین عدم افشای اطلاعات به اشخاص ثالث.
+                    </p>
+                </div>
+                <div class="flex items-center gap-2 text-sm font-bold text-blue-600 dark:text-blue-400 group-hover:gap-3 transition-all pt-2 border-t border-zinc-100 dark:border-zinc-800/60">
+                    <span>مشاهده بیانیه حریم خصوصی</span>
+                    <i data-lucide="arrow-left" class="w-4 h-4 shrink-0"></i>
+                </div>
+            </a>
+
+            <!-- کارت ۳: قوانین استرداد وجه -->
+            <a href="https://sponsoracb.ir/legal/refund.html" class="group relative rounded-3xl border border-zinc-200/80 dark:border-zinc-800/80 glass-base bg-white/50 dark:bg-zinc-900/50 p-7 sm:p-8 hover:-translate-y-1.5 transition-all duration-300 hover:shadow-xl hover:shadow-rose-500/5 hover:border-rose-500/40 flex flex-col justify-between">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-rose-500/10 rounded-full blur-2xl group-hover:bg-rose-500/20 transition-all"></div>
+                <div>
+                    <div class="w-14 h-16 sm:w-16 sm:h-16 rounded-2xl bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center font-bold mb-6 border border-rose-500/20 group-hover:scale-105 transition-transform">
+                        <i data-lucide="receipt" class="w-8 h-8 shrink-0"></i>
+                    </div>
+                    <h2 class="text-2xl font-black text-zinc-900 dark:text-white mb-3 group-hover:text-rose-500 transition-colors">
+                        قوانین استرداد وجه
+                    </h2>
+                    <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6">
+                        ضوابط خرید و انصراف از اشتراک ربات‌ها، اصل عدم عودت وجه خدمات آنی دیجیتال، جبران قطعی‌های سرور و شرایط موارد استثنایی.
+                    </p>
+                </div>
+                <div class="flex items-center gap-2 text-sm font-bold text-rose-600 dark:text-rose-400 group-hover:gap-3 transition-all pt-2 border-t border-zinc-100 dark:border-zinc-800/60">
+                    <span>بررسی قوانین مالی و عودت</span>
+                    <i data-lucide="arrow-left" class="w-4 h-4 shrink-0"></i>
+                </div>
+            </a>
+
+            <!-- کارت ۴: سوالات متداول (FAQ) -->
+            <a href="https://sponsoracb.ir/legal/faq.html" class="group relative rounded-3xl border border-zinc-200/80 dark:border-zinc-800/80 glass-base bg-white/50 dark:bg-zinc-900/50 p-7 sm:p-8 hover:-translate-y-1.5 transition-all duration-300 hover:shadow-xl hover:shadow-amber-500/5 hover:border-amber-500/40 flex flex-col justify-between">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-amber-500/10 rounded-full blur-2xl group-hover:bg-amber-500/20 transition-all"></div>
+                <div>
+                    <div class="w-14 h-16 sm:w-16 sm:h-16 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold mb-6 border border-amber-500/20 group-hover:scale-105 transition-transform">
+                        <i data-lucide="help-circle" class="w-8 h-8 shrink-0"></i>
+                    </div>
+                    <h2 class="text-2xl font-black text-zinc-900 dark:text-white mb-3 group-hover:text-amber-500 transition-colors">
+                        سوالات متداول (FAQ)
+                    </h2>
+                    <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6">
+                        پاسخ به متداول‌ترین پرسش‌های کاربران درباره ثبت‌نام، تست رایگان، عملکرد ۲۴ ساعته ابری، امنیت حساب‌ها و راه‌های پشتیبانی.
+                    </p>
+                </div>
+                <div class="flex items-center gap-2 text-sm font-bold text-amber-600 dark:text-amber-400 group-hover:gap-3 transition-all pt-2 border-t border-zinc-100 dark:border-zinc-800/60">
+                    <span>مشاهده پرسش‌ها و پاسخ‌ها</span>
+                    <i data-lucide="arrow-left" class="w-4 h-4 shrink-0"></i>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- باکس ارتباط با واحد پشتیبانی -->
+        <section class="p-8 sm:p-10 rounded-3xl border glass-base bg-gradient-to-br from-emerald-50 via-teal-50 to-blue-50 dark:from-emerald-950/20 dark:via-teal-950/20 dark:to-blue-950/20 border-emerald-200/80 dark:border-emerald-800/50 shadow-lg shadow-emerald-500/5 relative overflow-hidden group">
+            <div class="absolute top-0 right-0 w-40 h-40 bg-emerald-500/10 dark:bg-emerald-400/10 rounded-full blur-3xl -mr-12 -mt-12"></div>
+            <div class="relative z-10 flex flex-col items-center text-center gap-4">
+                <div class="w-16 h-16 bg-emerald-600 text-white rounded-2xl flex items-center justify-center shadow-md mb-2">
+                    <i data-lucide="headphones" class="w-8 h-8 shrink-0"></i>
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white">نیاز به راهنمایی و پشتیبانی مستقیم دارید؟</h3>
+                <p class="text-sm sm:text-base font-medium text-zinc-600 dark:text-zinc-300 max-w-2xl leading-relaxed">
+                    کارشناسان ما همواره آماده پاسخگویی به سوالات، بررسی ابهامات و ثبت درخواست‌های پشتیبانی شما هستند.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center gap-4 mt-4 w-full justify-center">
+                    <a href="https://sponsoracb.ir/Support.html" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold transition-all shadow-lg shadow-emerald-600/30 hover:shadow-emerald-600/50 hover:-translate-y-1">
+                        <i data-lucide="headphones" class="w-5 h-5 shrink-0"></i>
+                        <span>ورود به بخش پشتیبانی آنلاین</span>
+                    </a>
+                    <a href="https://t.me/sponsoracb_bot" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-zinc-800 hover:bg-zinc-900 text-white rounded-xl font-bold transition-all shadow-md hover:-translate-y-1">
+                        <i data-lucide="bot" class="w-5 h-5 shrink-0"></i>
+                        <span>ارتباط با ربات تلگرام</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- فوتر -->
+    <footer class="w-full py-6 mt-auto border-t glass-base bg-zinc-950/40 border-zinc-800/50 flex flex-col items-center justify-center gap-2 transition-colors" id="footer">
+        <p class="text-xs text-zinc-400" id="footer-text">تمامی حقوق برای مجموعه محفوظ است</p>
+        <a href="https://AMT-IR.github.io" target="_blank" class="flex items-center gap-1.5 text-sm font-bold transition-colors hover:text-emerald-500 text-white" id="footer-link">
+            <i data-lucide="external-link" class="w-4 h-4 shrink-0"></i>
+            <span>پورتال جامع AMT-IR</span>
+        </a>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // مقداردهی آیکون‌ها
+        lucide.createIcons();
+
+        // تغییر تم
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body>
+</html>
