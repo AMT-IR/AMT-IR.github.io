@@ -1,39 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <url>
-    <loc>https://sponsoracb.ir/</loc>
-    <lastmod>2026-07-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
+<url>
+<loc>https://sponsoracb.ir/</loc>
+<lastmod>2026-07-23</lastmod>
+<changefreq>daily</changefreq>
+<priority>1.0</priority>
+</url>
 
-  <url>
-    <loc>https://sponsoracb.ir/AboutUs.html</loc>
-    <lastmod>2026-07-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+<url>
+<loc>https://sponsoracb.ir/AboutUs.html</loc>
+<lastmod>2026-07-23</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
 
-  <url>
-    <loc>https://sponsoracb.ir/pricing.html</loc>
-    <lastmod>2026-07-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
+<url>
+<loc>https://sponsoracb.ir/pricing.html</loc>
+<lastmod>2026-07-23</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.9</priority>
+</url>
 
-  <url>
-    <loc>https://sponsoracb.ir/Support.html</loc>
-    <lastmod>2026-07-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+<url>
+<loc>https://sponsoracb.ir/Support.html</loc>
+<lastmod>2026-07-23</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
 
-  <url>
-    <loc>https://sponsoracb.ir/Symbol.html</loc>
-    <lastmod>2026-07-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+<url>
+<loc>https://sponsoracb.ir/Symbol.html</loc>
+<lastmod>2026-07-23</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+
+
+<url>
+<loc>https://sponsoracb.ir/blog/</loc>
+<lastmod>2026-07-23</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
+</url>
+
+
+<url>
+<loc>https://sponsoracb.ir/blog/domain-vs-hosting.html</loc>
+<lastmod>2026-07-23</lastmod>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://sponsoracb.ir/blog/google-indexing.html</loc>
+<lastmod>2026-07-23</lastmod>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://sponsoracb.ir/blog/google-search-console.html</loc>
+<lastmod>2026-07-23</lastmod>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://sponsoracb.ir/blog/grow-telegram-channel.html</loc>
+<lastmod>2026-07-23</lastmod>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://sponsoracb.ir/blog/real-vs-fake-members.html</loc>
+<lastmod>2026-07-23</lastmod>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://sponsoracb.ir/blog/responsive-design.html</loc>
+<lastmod>2026-07-23</lastmod>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://sponsoracb.ir/blog/sitemap-guide.html</loc>
+<lastmod>2026-07-23</lastmod>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://sponsoracb.ir/blog/ssl-certificate.html</loc>
+<lastmod>2026-07-23</lastmod>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://sponsoracb.ir/blog/technical-seo.html</loc>
+<lastmod>2026-07-23</lastmod>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://sponsoracb.ir/blog/telegram-bots.html</loc>
+<lastmod>2026-07-23</lastmod>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://sponsoracb.ir/blog/telegram-members.html</loc>
+<lastmod>2026-07-23</lastmod>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://sponsoracb.ir/blog/telegram-premium.html</loc>
+<lastmod>2026-07-23</lastmod>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://sponsoracb.ir/blog/telegram-updates.html</loc>
+<lastmod>2026-07-23</lastmod>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://sponsoracb.ir/blog/website-security.html</loc>
+<lastmod>2026-07-23</lastmod>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://sponsoracb.ir/blog/website-speed.html</loc>
+<lastmod>2026-07-23</lastmod>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://sponsoracb.ir/blog/what-is-seo.html</loc>
+<lastmod>2026-07-23</lastmod>
+<priority>0.9</priority>
+</url>
 
 </urlset>
