@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سوالات متداول (FAQ) | وبلاگ SPONSORACB</title>
+    
+    <!-- سئو متا تگ‌ها (SEO Meta Tags) -->
+    <meta name="description" content="پاسخ جامع به متداول‌ترین سوالات شما درباره نحوه خرید، فعال‌سازی، عملکرد، امنیت و قوانین استفاده از اشتراک ربات‌ها در پلتفرم SPONSORACB.">
+    <meta name="keywords" content="سوالات متداول, FAQ ربات, راهنمای خرید اشتراک, پشتیبانی ربات تلگرام, SPONSORACB, امنیت حساب کاربری">
+    
+    <!-- فونت Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    },
+                    colors: {
+                        pro: '#3b82f6',      /* Blue */
+                        plus: '#10b981',     /* Emerald */
+                        premium: '#8b5cf6',  /* Violet */
+                        ultra: '#f59e0b',    /* Amber/Gold */
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            transition: background-color 0.4s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* پس‌زمینه محو و استاندارد اصلی سایت */
+        .ambient-bg {
+            background-color: #f4f4f5;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05), transparent 25%);
+        }
+        
+        .dark .ambient-bg {
+            background-color: #09090b;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.04), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.04), transparent 25%);
+        }
+
+        .glass-base {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* استایل پایه آیکون‌های SVG */
+        svg.lucide, .lucide {
+            display: inline-block;
+            vertical-align: middle;
+            stroke-width: 2px;
+            stroke: currentColor;
+            fill: none;
+            flex-shrink: 0;
+        }
+
+        /* کاستوم اسکرول‌بار استاندارد */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { 
+            background: #d4d4d8; 
+            border-radius: 10px; 
+        }
+        .dark ::-webkit-scrollbar-thumb { background: #27272a; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+        /* حذف فلش پیش‌فرض details */
+        summary::-webkit-details-marker {
+            display: none;
+        }
+    </style>
+</head>
+<body class="ambient-bg text-zinc-900 dark:text-white min-h-screen flex flex-col relative transition-colors duration-500">
+
+    <!-- هدر (Navbar) -->
+    <nav class="w-full h-16 sm:h-20 flex items-center justify-between px-4 sm:px-8 border-b glass-base sticky top-0 z-40 
+        bg-white/40 border-zinc-200/50 
+        dark:bg-zinc-950/40 dark:border-zinc-800/50 transition-colors">
+        
+        <div class="w-10 sm:w-12"></div>
+        <span class="font-black text-lg sm:text-xl tracking-[0.2em] dir-ltr text-zinc-900 dark:text-white">SPONSORACB</span>
+        
+        <!-- دکمه تغییر تم -->
+        <button onclick="toggleTheme()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all border shadow-sm
+            bg-white/70 border-zinc-200/80 hover:bg-white
+            dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 group">
+            <i data-lucide="sun" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-600 hidden dark:block group-hover:text-amber-400 transition-colors"></i>
+            <i data-lucide="moon" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 block dark:hidden group-hover:text-indigo-500 transition-colors"></i>
+        </button>
+    </nav>
+
+    <!-- محتوای اصلی -->
+    <main class="flex-1 w-full max-w-4xl mx-auto flex flex-col py-10 px-4 sm:px-6 lg:px-8">
+        
+        <!-- بخش عنوان -->
+        <header class="mb-10 text-center sm:text-right border-b border-zinc-200 dark:border-zinc-800 pb-8">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold mb-4">
+                <i data-lucide="help-circle" class="w-4 h-4 shrink-0"></i>
+                <span>پاسخ به پرسش‌ها و راهنمای کاربران</span>
+            </div>
+            
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-zinc-900 dark:text-white leading-[1.3] tracking-tight mb-4">
+                سوالات متداول (FAQ)
+            </h1>
+            
+            <p class="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
+                پاسخ به متداول‌ترین سوالات شما درباره نحوه خرید، فعال‌سازی، عملکرد و قوانین استفاده از اشتراک ربات‌ها.
+            </p>
+            
+            <div class="flex items-center justify-center sm:justify-start gap-4 text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 mt-6">
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="calendar" class="w-4 h-4 shrink-0"></i>
+                    <span>آخرین به‌روزرسانی: مرداد ۱۴۰۵</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="clock" class="w-4 h-4 shrink-0"></i>
+                    <span>زمان مطالعه: ۵ دقیقه</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- بخش سوالات -->
+        <div class="space-y-10">
+            
+            <!-- دسته ۱: ثبت‌نام و خرید اشتراک -->
+            <section>
+                <div class="flex items-center gap-3 mb-6 pb-2 border-b border-zinc-200/60 dark:border-zinc-800/60">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
+                        <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-black text-zinc-900 dark:text-white">۱. ثبت‌نام و خرید اشتراک</h2>
+                </div>
+
+                <div class="space-y-3">
+                    <details class="group rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 glass-base bg-white/50 dark:bg-zinc-900/50 transition-all duration-300 [&[open]]:bg-white dark:[&[open]]:bg-zinc-900 [&[open]]:shadow-lg [&[open]]:shadow-emerald-500/5 [&[open]]:border-emerald-500/30">
+                        <summary class="flex items-center justify-between gap-4 p-5 font-bold text-base sm:text-lg text-zinc-900 dark:text-white cursor-pointer select-none list-none">
+                            <span>چگونه می‌توانم اشتراک ربات را خریداری کنم؟</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform duration-300 shrink-0"></i>
+                        </summary>
+                        <div class="px-5 pb-5 pt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 leading-relaxed border-t border-zinc-100 dark:border-zinc-800/60 mt-1">
+                            <p class="mb-0">پس از ثبت‌نام در سایت یا پنل کاربری، پلن مورد نظر خود را انتخاب کرده و از طریق درگاه پرداخت آنلاین، هزینه را پرداخت کنید. اشتراک شما بلافاصله و به‌صورت خودکار فعال خواهد شد.</p>
+                        </div>
+                    </details>
+
+                    <details class="group rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 glass-base bg-white/50 dark:bg-zinc-900/50 transition-all duration-300 [&[open]]:bg-white dark:[&[open]]:bg-zinc-900 [&[open]]:shadow-lg [&[open]]:shadow-emerald-500/5 [&[open]]:border-emerald-500/30">
+                        <summary class="flex items-center justify-between gap-4 p-5 font-bold text-base sm:text-lg text-zinc-900 dark:text-white cursor-pointer select-none list-none">
+                            <span>آیا امکان تست ربات قبل از خرید اشتراک وجود دارد؟</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform duration-300 shrink-0"></i>
+                        </summary>
+                        <div class="px-5 pb-5 pt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 leading-relaxed border-t border-zinc-100 dark:border-zinc-800/60 mt-1">
+                            <p class="mb-0">بله، در صورت فعال بودن پلن تست رایگان یا دمو در پنل، می‌توانید عملکرد ربات را بررسی کنید. توصیه می‌کنیم پیش از خرید پلن‌های اصلی، حتماً امکانات ربات را تست کنید زیرا پس از خرید، امکان بازگشت وجه وجود ندارد.</p>
+                        </div>
+                    </details>
+
+                    <details class="group rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 glass-base bg-white/50 dark:bg-zinc-900/50 transition-all duration-300 [&[open]]:bg-white dark:[&[open]]:bg-zinc-900 [&[open]]:shadow-lg [&[open]]:shadow-emerald-500/5 [&[open]]:border-emerald-500/30">
+                        <summary class="flex items-center justify-between gap-4 p-5 font-bold text-base sm:text-lg text-zinc-900 dark:text-white cursor-pointer select-none list-none">
+                            <span>آیا می‌توانم پلن اشتراک خود را در طول دوره ارتقا دهم؟</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform duration-300 shrink-0"></i>
+                        </summary>
+                        <div class="px-5 pb-5 pt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 leading-relaxed border-t border-zinc-100 dark:border-zinc-800/60 mt-1">
+                            <p class="mb-0">بله، شما می‌توانید در هر زمان از طریق پنل کاربری، اشتراک خود را به پلن‌های بالاتر ارتقا دهید. مابه‌التفاوت هزینه با توجه به روزهای باقی‌مانده از اشتراک قبلی محاسبه خواهد شد.</p>
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <!-- دسته ۲: عملکرد و تنظیمات ربات -->
+            <section>
+                <div class="flex items-center gap-3 mb-6 pb-2 border-b border-zinc-200/60 dark:border-zinc-800/60">
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center">
+                        <i data-lucide="settings" class="w-5 h-5"></i>
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-black text-zinc-900 dark:text-white">۲. عملکرد و تنظیمات ربات</h2>
+                </div>
+
+                <div class="space-y-3">
+                    <details class="group rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 glass-base bg-white/50 dark:bg-zinc-900/50 transition-all duration-300 [&[open]]:bg-white dark:[&[open]]:bg-zinc-900 [&[open]]:shadow-lg [&[open]]:shadow-blue-500/5 [&[open]]:border-blue-500/30">
+                        <summary class="flex items-center justify-between gap-4 p-5 font-bold text-base sm:text-lg text-zinc-900 dark:text-white cursor-pointer select-none list-none">
+                            <span>آیا برای استفاده از ربات نیاز به روشن بودن سیستم یا گوشی من است؟</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform duration-300 shrink-0"></i>
+                        </summary>
+                        <div class="px-5 pb-5 pt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 leading-relaxed border-t border-zinc-100 dark:border-zinc-800/60 mt-1">
+                            <p class="mb-0">خیر؛ ربات به‌صورت ۲۴ ساعته روی سرورهای اختصاصی و ابری مجموعه اجرا می‌شود و نیازی به روشن بودن رایانه یا گوشی تلفن همراه شما ندارد.</p>
+                        </div>
+                    </details>
+
+                    <details class="group rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 glass-base bg-white/50 dark:bg-zinc-900/50 transition-all duration-300 [&[open]]:bg-white dark:[&[open]]:bg-zinc-900 [&[open]]:shadow-lg [&[open]]:shadow-blue-500/5 [&[open]]:border-blue-500/30">
+                        <summary class="flex items-center justify-between gap-4 p-5 font-bold text-base sm:text-lg text-zinc-900 dark:text-white cursor-pointer select-none list-none">
+                            <span>اگر در تنظیم یا کار با ربات دچار مشکل شوم، چه کنم؟</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform duration-300 shrink-0"></i>
+                        </summary>
+                        <div class="px-5 pb-5 pt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 leading-relaxed border-t border-zinc-100 dark:border-zinc-800/60 mt-1">
+                            <p class="mb-0">تمام راهنماهای متنی و تصویری آموزش کار با ربات در پنل کاربری یا کانال آموزش موجود است. در صورت نیاز به راهنمایی بیشتر، می‌توانید از طریق بخش پشتیبانی (تیکت) با کارشناسان ما در ارتباط باشید.</p>
+                        </div>
+                    </details>
+
+                    <details class="group rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 glass-base bg-white/50 dark:bg-zinc-900/50 transition-all duration-300 [&[open]]:bg-white dark:[&[open]]:bg-zinc-900 [&[open]]:shadow-lg [&[open]]:shadow-blue-500/5 [&[open]]:border-blue-500/30">
+                        <summary class="flex items-center justify-between gap-4 p-5 font-bold text-base sm:text-lg text-zinc-900 dark:text-white cursor-pointer select-none list-none">
+                            <span>آیا محدودیتی در تعداد دستورات یا استفاده از ربات وجود دارد؟</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform duration-300 shrink-0"></i>
+                        </summary>
+                        <div class="px-5 pb-5 pt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 leading-relaxed border-t border-zinc-100 dark:border-zinc-800/60 mt-1">
+                            <p class="mb-0">محدودیت‌ها بسته به پلن خریداری‌شده (مانند تعداد اکانت، تعداد پیام ارسال‌شده یا حجم پردازش) متفاوت است. جزئیات دقیق هر پلن در صفحه خرید درج شده است.</p>
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <!-- دسته ۳: امنیت و مسئولیت حساب‌ها -->
+            <section>
+                <div class="flex items-center gap-3 mb-6 pb-2 border-b border-zinc-200/60 dark:border-zinc-800/60">
+                    <div class="w-10 h-10 rounded-xl bg-violet-500/10 text-violet-500 flex items-center justify-center">
+                        <i data-lucide="shield-check" class="w-5 h-5"></i>
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-black text-zinc-900 dark:text-white">۳. امنیت و مسئولیت حساب‌ها</h2>
+                </div>
+
+                <div class="space-y-3">
+                    <details class="group rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 glass-base bg-white/50 dark:bg-zinc-900/50 transition-all duration-300 [&[open]]:bg-white dark:[&[open]]:bg-zinc-900 [&[open]]:shadow-lg [&[open]]:shadow-violet-500/5 [&[open]]:border-violet-500/30">
+                        <summary class="flex items-center justify-between gap-4 p-5 font-bold text-base sm:text-lg text-zinc-900 dark:text-white cursor-pointer select-none list-none">
+                            <span>آیا اطلاعات حساب کاربر من نزد ربات امن است؟</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform duration-300 shrink-0"></i>
+                        </summary>
+                        <div class="px-5 pb-5 pt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 leading-relaxed border-t border-zinc-100 dark:border-zinc-800/60 mt-1">
+                            <p class="mb-0">بله، تمامی داده‌ها و توکن‌های اتصال به‌صورت رمزنگاری‌شده در سرورهای امن نگهداری می‌شوند و مجموعه به هیچ عنوان به اطلاعات شخصی یا پیام‌های خصوصی شما دسترسی ندارد.</p>
+                        </div>
+                    </details>
+
+                    <details class="group rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 glass-base bg-white/50 dark:bg-zinc-900/50 transition-all duration-300 [&[open]]:bg-white dark:[&[open]]:bg-zinc-900 [&[open]]:shadow-lg [&[open]]:shadow-violet-500/5 [&[open]]:border-violet-500/30">
+                        <summary class="flex items-center justify-between gap-4 p-5 font-bold text-base sm:text-lg text-zinc-900 dark:text-white cursor-pointer select-none list-none">
+                            <span>آیا استفاده از ربات باعث مسدود (Ban) شدن حساب من می‌شود؟</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform duration-300 shrink-0"></i>
+                        </summary>
+                        <div class="px-5 pb-5 pt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 leading-relaxed border-t border-zinc-100 dark:border-zinc-800/60 mt-1">
+                            <p class="mb-0">ربات بر اساس الگوریتم‌های استاندارد و ایمن طراحی شده است؛ اما رعایت سقف مجاز فعالیت، قوانین پلتفرم مقصد (مانند تلگرام، اینستاگرام، واتساپ و...) و عدم ارسال اسپم بر عهده خود کاربر است. مسئولیت ناشی از عدم رعایت سقف‌های ایمنی و مسدود شدن حساب توسط پلتفرم‌های ثالث تماماً متوجه کاربر می‌باشد.</p>
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <!-- دسته ۴: قطعی‌ها، پشتیبانی و بازگشت وجه -->
+            <section>
+                <div class="flex items-center gap-3 mb-6 pb-2 border-b border-zinc-200/60 dark:border-zinc-800/60">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center">
+                        <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-black text-zinc-900 dark:text-white">۴. قطعی‌ها، پشتیبانی و بازگشت وجه</h2>
+                </div>
+
+                <div class="space-y-3">
+                    <details class="group rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 glass-base bg-white/50 dark:bg-zinc-900/50 transition-all duration-300 [&[open]]:bg-white dark:[&[open]]:bg-zinc-900 [&[open]]:shadow-lg [&[open]]:shadow-amber-500/5 [&[open]]:border-amber-500/30">
+                        <summary class="flex items-center justify-between gap-4 p-5 font-bold text-base sm:text-lg text-zinc-900 dark:text-white cursor-pointer select-none list-none">
+                            <span>آیا امکان لغو اشتراک و بازگشت وجه وجود دارد؟</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform duration-300 shrink-0"></i>
+                        </summary>
+                        <div class="px-5 pb-5 pt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 leading-relaxed border-t border-zinc-100 dark:border-zinc-800/60 mt-1">
+                            <p class="mb-0">خیر؛ با توجه به ماهیت دیجیتالی خدمات، تخصیص آنی منابع سرور و ارائه دسترسی بلافاصله پس از پرداخت، امکان لغو سفارش و استرداد وجه تحت هیچ شرایطی وجود ندارد. لطفاً قبل از خرید، تمام جوانب را بررسی فرمایید.</p>
+                        </div>
+                    </details>
+
+                    <details class="group rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 glass-base bg-white/50 dark:bg-zinc-900/50 transition-all duration-300 [&[open]]:bg-white dark:[&[open]]:bg-zinc-900 [&[open]]:shadow-lg [&[open]]:shadow-amber-500/5 [&[open]]:border-amber-500/30">
+                        <summary class="flex items-center justify-between gap-4 p-5 font-bold text-base sm:text-lg text-zinc-900 dark:text-white cursor-pointer select-none list-none">
+                            <span>در صورت بروز قطعی در ربات، چه اتفاقی برای اشتراک من می‌افتد؟</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform duration-300 shrink-0"></i>
+                        </summary>
+                        <div class="px-5 pb-5 pt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 leading-relaxed border-t border-zinc-100 dark:border-zinc-800/60 mt-1">
+                            <p class="mb-0">قطعی‌های کوتاه‌مدت جهت به‌روزرسانی یا نگهداری سرور طبیعی است. با این حال، اگر قطعی ناشی از سرورهای اصلی مجموعه بیش از ۲۴ ساعت به طول بینجامد، زمان قطعی به‌صورت خودکار به پایان مدت اشتراک شما اضافه خواهد شد.</p>
+                        </div>
+                    </details>
+
+                    <details class="group rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 glass-base bg-white/50 dark:bg-zinc-900/50 transition-all duration-300 [&[open]]:bg-white dark:[&[open]]:bg-zinc-900 [&[open]]:shadow-lg [&[open]]:shadow-amber-500/5 [&[open]]:border-amber-500/30">
+                        <summary class="flex items-center justify-between gap-4 p-5 font-bold text-base sm:text-lg text-zinc-900 dark:text-white cursor-pointer select-none list-none">
+                            <span>اگر اینترنت کشور یا پلتفرم اصلی (مثل تلگرام یا اینستاگرام) دچار اختلال شود چه می‌شود؟</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform duration-300 shrink-0"></i>
+                        </summary>
+                        <div class="px-5 pb-5 pt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 leading-relaxed border-t border-zinc-100 dark:border-zinc-800/60 mt-1">
+                            <p class="mb-0">اختلالات سراسری اینترنت، فیلترینگ یا تغییرات ناگهانی در قوانین و الگوریتم‌های پلتفرم‌های واسط خارج از کنترل مجموعه است؛ با این وجود، تیم فنی تمام تلاش خود را جهت به‌روزرسانی و تطبیق ربات با شرایط جدید به کار خواهد بست.</p>
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <!-- دسته ۵: راه‌های ارتباط و پشتیبانی -->
+            <section class="p-8 rounded-3xl border glass-base bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 border-emerald-200 dark:border-emerald-800/50 shadow-lg shadow-emerald-500/5 relative overflow-hidden group mt-12">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 dark:bg-emerald-400/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                <div class="relative z-10 flex flex-col items-center text-center gap-4">
+                    <div class="w-16 h-16 bg-emerald-600 text-white rounded-2xl flex items-center justify-center shadow-md mb-2">
+                        <i data-lucide="headphones" class="w-8 h-8 shrink-0"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-emerald-900 dark:text-emerald-100">پاسخ سوال خود را پیدا نکردید؟</h3>
+                    <p class="text-sm sm:text-base font-medium text-emerald-800/80 dark:text-emerald-200/80 max-w-2xl leading-relaxed">
+                        بهترین و سریع‌ترین راه جهت پاسخگویی به ابهامات شما، ثبت تیکت پشتیبانی است. تیم پشتیبانی در روزهای کاری از ساعت ۹:۰۰ الی ۱۸:۰۰ پاسخگوی شما خواهد بود.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center gap-4 mt-2 w-full justify-center">
+                        <a href="https://sponsoracb.ir/Support.html" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold transition-all shadow-lg shadow-emerald-600/30 hover:shadow-emerald-600/50 hover:-translate-y-1">
+                            <i data-lucide="headphones" class="w-5 h-5 shrink-0"></i>
+                            <span>ورود به بخش پشتیبانی آنلاین</span>
+                        </a>
+                        <a href="https://t.me/sponsoracb_bot" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-zinc-800 hover:bg-zinc-900 text-white rounded-xl font-bold transition-all shadow-md hover:-translate-y-1">
+                            <i data-lucide="bot" class="w-5 h-5 shrink-0"></i>
+                            <span>ارتباط با ربات تلگرام</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- فوتر -->
+    <footer class="w-full py-6 mt-auto border-t glass-base bg-zinc-950/40 border-zinc-800/50 flex flex-col items-center justify-center gap-2 transition-colors" id="footer">
+        <p class="text-xs text-zinc-400" id="footer-text">تمامی حقوق برای مجموعه محفوظ است</p>
+        <a href="https://AMT-IR.github.io" target="_blank" class="flex items-center gap-1.5 text-sm font-bold transition-colors hover:text-emerald-500 text-white" id="footer-link">
+            <i data-lucide="external-link" class="w-4 h-4 shrink-0"></i>
+            <span>پورتال جامع AMT-IR</span>
+        </a>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // مقداردهی آیکون‌ها
+        lucide.createIcons();
+
+        // تغییر تم
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body>
+</html>
