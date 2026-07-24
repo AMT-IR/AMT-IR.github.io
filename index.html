@@ -5,20 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مخزن اصلی | پورتال لینک‌ها</title>
 
-    <!-- متاتگ‌های Open Graph (برای پیش‌نمایش در تلگرام، واتساپ، فیسبوک و...) -->
+    <!-- متاتگ‌های Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="مخزن اصلی | پورتال لینک‌ها">
     <meta property="og:description" content="از طریق منوی زیر می‌توانید به سرعت به بخش‌های کلیدی سایت، تعرفه‌ها، محصولات و راه‌های ارتباطی دسترسی پیدا کنید.">
-    <meta property="og:image" content="20474.png">
+    <meta property="og:image" content="https://sponsoracb.ir/20474.png">
+    <meta property="og:image:secure_url" content="https://sponsoracb.ir/20474.png">
     <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="1024">
     <meta property="og:url" content="https://sponsoracb.ir">
     <meta property="og:site_name" content="SPONSORACB">
 
-    <!-- متاتگ‌های Twitter Cards (برای پیش‌نمایش در توییتر/X) -->
+    <!-- متاتگ‌های Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="مخزن اصلی | پورتال لینک‌ها">
     <meta name="twitter:description" content="از طریق منوی زیر می‌توانید به سرعت به بخش‌های کلیدی سایت، تعرفه‌ها، محصولات و راه‌های ارتباطی دسترسی پیدا کنید.">
-    <meta name="twitter:image" content="20474.png">
+    <meta name="twitter:image" content="https://sponsoracb.ir/20474.png">
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" sizes="any">
@@ -93,6 +96,32 @@
             animation: fadeInUp 0.6s ease-out forwards;
         }
 
+        /* انیمیشن نوار آبی هایلایت متحرک دور کادر پاپ‌آپ */
+        @keyframes blueGlowPulse {
+            0%, 100% {
+                border-color: #3b82f6;
+                box-shadow: 0 0 15px rgba(59, 130, 246, 0.4), inset 0 0 10px rgba(59, 130, 246, 0.15);
+            }
+            50% {
+                border-color: #60a5fa;
+                box-shadow: 0 0 35px rgba(59, 130, 246, 0.85), inset 0 0 20px rgba(59, 130, 246, 0.35);
+            }
+        }
+
+        .animated-blue-border {
+            animation: blueGlowPulse 2.5s infinite ease-in-out;
+        }
+
+        /* انیمیشن باز شدن پاپ‌آپ */
+        @keyframes modalZoomIn {
+            from { opacity: 0; transform: scale(0.92) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .animate-modal-in {
+            animation: modalZoomIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
         /* کاستوم اسکرول‌بار پریمیوم */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: transparent; }
@@ -105,6 +134,59 @@
     </style>
 </head>
 <body class="ambient-bg text-zinc-900 dark:text-white min-h-screen flex flex-col relative transition-colors duration-500 overflow-x-hidden">
+
+    <!-- ======================= پاپ‌آپ اطلاع‌رسانی (Modal) ======================= -->
+    <div id="noticeModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+        
+        <!-- کادر اصلی پاپ‌آپ با نوار آبی هایلایت متحرک -->
+        <div class="w-full max-w-lg rounded-3xl border-2 animated-blue-border bg-white dark:bg-zinc-950 p-6 sm:p-8 shadow-2xl relative flex flex-col gap-5 text-right transition-all transform animate-modal-in">
+            
+            <!-- دکمه بستن -->
+            <button onclick="closeNoticeModal()" class="absolute top-4 left-4 p-2 rounded-full text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <!-- آیکون و هدر -->
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/30 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
+                    <i data-lucide="bot-off" class="w-6 h-6"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xs font-bold text-blue-600 dark:text-blue-400 tracking-wider">اطلاعیه مهم خدمات</span>
+                    <h2 class="text-lg sm:text-xl font-extrabold text-zinc-900 dark:text-white">وضعیت فعالیت ربات تلگرام</h2>
+                </div>
+            </div>
+
+            <!-- متن اطلاعیه (رسمی و ویرایش‌شده) -->
+            <div class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed font-medium space-y-3 bg-zinc-50 dark:bg-zinc-900/60 p-4 rounded-2xl border border-zinc-200/60 dark:border-zinc-800/80">
+                <p>
+                    به اطلاع کاربران گرامی می‌رسانیم که ربات 
+                    <span class="font-bold dir-ltr inline-block text-blue-600 dark:text-blue-400">@sponsoracb_bot</span> 
+                    به دلیل ارتقای فنی و توسعه زیرساخت‌ها، در حال حاضر موقتاً غیرفعال شده است.
+                </p>
+                <p>
+                    با توجه به گسترده بودن فرایند به‌روزرسانی و بهینه‌سازی، فرآیند راه‌اندازی کامل ممکن است تا چند ماه آینده به طول بینجامد.
+                </p>
+                <p class="text-zinc-500 dark:text-zinc-400 text-[11px] sm:text-xs">
+                    جهت آگاهی از آخرین اخبار، اطلاعیه‌ها و زمان دقیق فعالیت مجدد، می‌توانید عضو کانال رسمی تلگرام شوید.
+                </p>
+            </div>
+
+            <!-- دکمه‌های اقدام (CTA) -->
+            <div class="flex flex-col sm:flex-row items-center gap-3 mt-1">
+                <a href="https://t.me/sponsoracb" target="_blank" onclick="closeNoticeModal()" class="w-full flex-1 py-3 px-5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm transition-all shadow-lg shadow-blue-500/25 flex items-center justify-center gap-2 group">
+                    <i data-lucide="send" class="w-4 h-4 transition-transform group-hover:-translate-x-1"></i>
+                    <span>ورود به کانال تلگرام (@sponsoracb)</span>
+                </a>
+                
+                <button onclick="closeNoticeModal()" class="w-full sm:w-auto py-3 px-5 rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-semibold text-xs sm:text-sm transition-colors border border-zinc-200 dark:border-zinc-800">
+                    متوجه شدم
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <!-- ======================= پایان پاپ‌آپ ======================= -->
 
     <!-- لایه تاریک پشت منوی کشویی -->
     <div id="sidebarOverlay" class="fixed inset-0 bg-zinc-900/40 dark:bg-black/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleSidebar()"></div>
@@ -488,19 +570,38 @@
             const panel = document.getElementById('sidebarPanel');
             
             if (panel.classList.contains('translate-x-full')) {
-                // باز کردن منو
                 panel.classList.remove('translate-x-full');
                 panel.classList.add('translate-x-0');
-                
                 overlay.classList.remove('opacity-0', 'pointer-events-none');
                 overlay.classList.add('opacity-100', 'pointer-events-auto');
             } else {
-                // بستن منو
                 panel.classList.remove('translate-x-0');
                 panel.classList.add('translate-x-full');
-                
-                overlay.classList.remove('opacity-0', 'pointer-events-auto');
+                overlay.classList.remove('opacity-100', 'pointer-events-auto');
                 overlay.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        // نمایش پاپ‌آپ در هر بار لود شدن وب‌سایت
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                showNoticeModal();
+            }, 300); // تاخیر بسیار کوتاه جهت انیمیشن نرم‌تر
+        });
+
+        function showNoticeModal() {
+            const modal = document.getElementById('noticeModal');
+            if (modal) {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modal.classList.add('opacity-100', 'pointer-events-auto');
+            }
+        }
+
+        function closeNoticeModal() {
+            const modal = document.getElementById('noticeModal');
+            if (modal) {
+                modal.classList.remove('opacity-100', 'pointer-events-auto');
+                modal.classList.add('opacity-0', 'pointer-events-none');
             }
         }
     </script>
