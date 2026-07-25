@@ -17,6 +17,11 @@
         tailwind.config = {
             darkMode: 'class',
             theme: {
+                screens: {
+                    'xs': '380px',
+                    'sm': '640px',
+                    'md': '768px',
+                },
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -56,7 +61,8 @@
             top: -10%;
             left: 50%;
             transform: translateX(-50%);
-            width: 500px;
+            width: 90vw;
+            max-width: 500px;
             height: 350px;
             background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
             filter: blur(60px);
@@ -105,57 +111,56 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between items-center px-4 py-8 relative">
+<body class="min-h-screen flex flex-col justify-between items-center px-3 sm:px-4 py-6 sm:py-8 relative">
 
     <!-- Subtle Ambient Backdrop Glow -->
     <div class="ambient-glow"></div>
 
     <!-- Notification Toast -->
-    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 bg-zinc-900 text-zinc-100 border border-zinc-700/60 px-5 py-2.5 rounded-xl shadow-2xl text-xs font-semibold transition-all duration-300 opacity-0 pointer-events-none z-50 flex items-center gap-2 backdrop-blur-md">
+    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 bg-zinc-900 text-zinc-100 border border-zinc-700/60 px-4 sm:px-5 py-2.5 rounded-xl shadow-2xl text-xs font-semibold transition-all duration-300 opacity-0 pointer-events-none z-50 flex items-center gap-2 backdrop-blur-md max-w-[90vw]">
         <i class="fa-solid fa-circle-check text-violet-400"></i>
         <span id="toast-msg">Notification</span>
     </div>
 
     <!-- Main Container -->
-    <main class="w-full max-w-sm sm:max-w-md mx-auto flex flex-col items-center gap-4 relative z-10 my-auto">
+    <main class="w-full max-w-[calc(100vw-1.5rem)] xs:max-w-sm sm:max-w-md mx-auto flex flex-col items-center gap-3.5 sm:gap-4 relative z-10 my-auto">
         
         <!-- Profile Header Card -->
-        <div class="minimal-card w-full rounded-2xl p-6 text-center flex flex-col items-center relative overflow-hidden">
+        <div class="minimal-card w-full rounded-2xl p-4 sm:p-6 text-center flex flex-col items-center relative overflow-hidden">
             
             <!-- Top Subtle Accent Highlight -->
             <div class="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-violet-500/60 to-transparent"></div>
 
-            <!-- Profile Avatar -->
-            <div class="relative mb-3 mt-1">
-                <div class="w-24 h-24 rounded-full border border-violet-500/30 p-1 bg-zinc-950 shadow-xl relative">
-                    <img 
-                        src="https://Sponsoracb.ir/image/72812.png" 
-                        alt="NOXEDITR Avatar" 
-                        class="w-full h-full object-cover rounded-full"
-                        onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=NOXEDITR&background=8b5cf6&color=fff&size=200';"
-                    />
+            <!-- Profile Avatar with Cyber Glowing Ring -->
+            <div class="relative mb-3 sm:mb-4 mt-1 sm:mt-2 group">
+                <!-- Glowing Glow Ring -->
+                <div class="absolute -inset-1.5 rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-600 to-violet-500 opacity-70 blur-md group-hover:opacity-100 transition duration-500 animate-pulse"></div>
+                
+                <!-- Rotating Dashed Ring -->
+                <div class="absolute -inset-2.5 rounded-full border-2 border-dashed border-violet-500/40 animate-[spin_12s_linear_infinite]"></div>
+                
+                <!-- Main Avatar Image Container -->
+                <div class="relative w-20 h-20 xs:w-24 xs:h-24 sm:w-28 sm:h-28 rounded-full p-[3px] bg-gradient-to-tr from-violet-500 via-fuchsia-500 to-violet-400 shadow-2xl">
+                    <div class="w-full h-full rounded-full overflow-hidden bg-zinc-950 border-2 border-zinc-900">
+                        <img 
+                            src="https://Sponsoracb.ir/image/72812.png" 
+                            alt="NOXEDITR Avatar" 
+                            class="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-105"
+                            onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=NOXEDITR&background=8b5cf6&color=fff&size=200';"
+                        />
+                    </div>
                 </div>
             </div>
 
             <!-- Profile Name & Badge -->
-            <div class="flex items-center justify-center gap-1.5 mb-2">
-                <h1 class="font-heading text-2xl font-bold tracking-wide text-white">
+            <div class="flex items-center justify-center gap-1.5 mb-0.5 sm:mb-1">
+                <h1 class="font-heading text-xl xs:text-2xl font-bold tracking-wide text-white">
                     NOXEDITR
                 </h1>
-                <i class="fa-solid fa-circle-check text-violet-400 text-sm" title="Verified Creator"></i>
+                <i class="fa-solid fa-circle-check text-violet-400 text-xs sm:text-sm" title="Verified Creator"></i>
             </div>
-
-            <!-- Bio Description Block -->
-            <div class="w-full pt-3 border-t border-zinc-800/80 text-center space-y-1">
-                <p class="text-xs text-zinc-300 font-medium">Welcome to NOXEDITR.</p>
-                <p class="text-xs font-bold text-violet-400 tracking-wider">Dark Phonk Edits.</p>
-                <p class="text-xs text-zinc-400">Anime • Sigma Cinematic.</p>
-                <p class="text-xs text-zinc-400">New Shorts Every Week.</p>
-                <p class="text-xs font-bold text-zinc-200 pt-1 flex items-center justify-center gap-1.5">
-                    <i class="fa-brands fa-youtube text-red-500 text-sm"></i>
-                    Subscribe for more.
-                </p>
-            </div>
+            
+            <p class="text-[10px] sm:text-[11px] font-medium text-zinc-400 tracking-wider uppercase">Video Creator & Editor</p>
         </div>
 
         <!-- Navigation Tabs (Links & About) -->
@@ -171,78 +176,78 @@
         </div>
 
         <!-- TAB 1: LINKS SECTION -->
-        <div id="tab-links" class="w-full flex flex-col gap-3 transition-all duration-300">
+        <div id="tab-links" class="w-full flex flex-col gap-2.5 sm:gap-3 transition-all duration-300">
             
             <!-- YOUTUBE LINK -->
             <a href="https://youtube.com/@noxeditr?si=aslYip3obuIUBXOy" target="_blank" rel="noopener noreferrer" 
-               class="minimal-btn rounded-xl p-3.5 flex items-center justify-between group">
+               class="minimal-btn rounded-xl p-3 sm:p-3.5 flex items-center justify-between group">
                 
-                <div class="flex items-center gap-3.5">
-                    <div class="w-10 h-10 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-500 group-hover:bg-red-600 group-hover:text-white transition-all">
-                        <i class="fa-brands fa-youtube text-lg"></i>
+                <div class="flex items-center gap-3 sm:gap-3.5 min-w-0">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-red-500/10 border border-red-500/20 flex-shrink-0 flex items-center justify-center text-red-500 group-hover:bg-red-600 group-hover:text-white transition-all">
+                        <i class="fa-brands fa-youtube text-base sm:text-lg"></i>
                     </div>
-                    <div class="text-left">
-                        <span class="font-bold text-white text-sm block group-hover:text-violet-300 transition-colors">YouTube Channel</span>
-                        <span class="text-zinc-400 text-[11px] font-normal block">Watch latest edits & shorts</span>
+                    <div class="text-left min-w-0">
+                        <span class="font-bold text-white text-xs sm:text-sm block group-hover:text-violet-300 transition-colors truncate">YouTube Channel</span>
+                        <span class="text-zinc-400 text-[10px] sm:text-[11px] font-normal block truncate">Watch latest edits & shorts</span>
                     </div>
                 </div>
 
-                <div class="text-zinc-500 group-hover:text-violet-400 group-hover:translate-x-0.5 transition-all text-xs">
+                <div class="text-zinc-500 group-hover:text-violet-400 group-hover:translate-x-0.5 transition-all text-xs flex-shrink-0 ml-2">
                     <i class="fa-solid fa-arrow-right"></i>
                 </div>
             </a>
 
             <!-- TELEGRAM CHANNEL -->
             <a href="https://t.me/NOXEDITR" target="_blank" rel="noopener noreferrer" 
-               class="minimal-btn rounded-xl p-3.5 flex items-center justify-between group">
+               class="minimal-btn rounded-xl p-3 sm:p-3.5 flex items-center justify-between group">
                 
-                <div class="flex items-center gap-3.5">
-                    <div class="w-10 h-10 rounded-lg bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 group-hover:bg-sky-500 group-hover:text-white transition-all">
-                        <i class="fa-brands fa-telegram text-lg"></i>
+                <div class="flex items-center gap-3 sm:gap-3.5 min-w-0">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-sky-500/10 border border-sky-500/20 flex-shrink-0 flex items-center justify-center text-sky-400 group-hover:bg-sky-500 group-hover:text-white transition-all">
+                        <i class="fa-brands fa-telegram text-base sm:text-lg"></i>
                     </div>
-                    <div class="text-left">
-                        <span class="font-bold text-white text-sm block group-hover:text-violet-300 transition-colors">Telegram Channel</span>
-                        <span class="text-zinc-400 text-[11px] font-normal block">Projects, presets & assets</span>
+                    <div class="text-left min-w-0">
+                        <span class="font-bold text-white text-xs sm:text-sm block group-hover:text-violet-300 transition-colors truncate">Telegram Channel</span>
+                        <span class="text-zinc-400 text-[10px] sm:text-[11px] font-normal block truncate">Projects, presets & assets</span>
                     </div>
                 </div>
 
-                <div class="text-zinc-500 group-hover:text-violet-400 group-hover:translate-x-0.5 transition-all text-xs">
+                <div class="text-zinc-500 group-hover:text-violet-400 group-hover:translate-x-0.5 transition-all text-xs flex-shrink-0 ml-2">
                     <i class="fa-solid fa-arrow-right"></i>
                 </div>
             </a>
 
             <!-- TELEGRAM ADMIN -->
             <a href="https://t.me/NOXEDITR_admin" target="_blank" rel="noopener noreferrer" 
-               class="minimal-btn rounded-xl p-3.5 flex items-center justify-between group">
+               class="minimal-btn rounded-xl p-3 sm:p-3.5 flex items-center justify-between group">
                 
-                <div class="flex items-center gap-3.5">
-                    <div class="w-10 h-10 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 group-hover:bg-violet-600 group-hover:text-white transition-all">
-                        <i class="fa-solid fa-user-gear text-base"></i>
+                <div class="flex items-center gap-3 sm:gap-3.5 min-w-0">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-violet-500/10 border border-violet-500/20 flex-shrink-0 flex items-center justify-center text-violet-400 group-hover:bg-violet-600 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-user-gear text-sm sm:text-base"></i>
                     </div>
-                    <div class="text-left">
-                        <span class="font-bold text-white text-sm block group-hover:text-violet-300 transition-colors">Telegram Admin</span>
-                        <span class="text-zinc-400 text-[11px] font-normal block">Business, edits & commissions</span>
+                    <div class="text-left min-w-0">
+                        <span class="font-bold text-white text-xs sm:text-sm block group-hover:text-violet-300 transition-colors truncate">Telegram Admin</span>
+                        <span class="text-zinc-400 text-[10px] sm:text-[11px] font-normal block truncate">Business, edits & commissions</span>
                     </div>
                 </div>
 
-                <div class="text-zinc-500 group-hover:text-violet-400 group-hover:translate-x-0.5 transition-all text-xs">
+                <div class="text-zinc-500 group-hover:text-violet-400 group-hover:translate-x-0.5 transition-all text-xs flex-shrink-0 ml-2">
                     <i class="fa-solid fa-arrow-right"></i>
                 </div>
             </a>
 
             <!-- TIKTOK (COMING SOON) -->
-            <div class="minimal-btn rounded-xl p-3.5 flex items-center justify-between opacity-50 cursor-not-allowed">
-                <div class="flex items-center gap-3.5">
-                    <div class="w-10 h-10 rounded-lg bg-zinc-800/80 border border-zinc-700/50 flex items-center justify-center text-zinc-500">
-                        <i class="fa-brands fa-tiktok text-lg"></i>
+            <div class="minimal-btn rounded-xl p-3 sm:p-3.5 flex items-center justify-between opacity-50 cursor-not-allowed">
+                <div class="flex items-center gap-3 sm:gap-3.5 min-w-0">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-zinc-800/80 border border-zinc-700/50 flex-shrink-0 flex items-center justify-center text-zinc-500">
+                        <i class="fa-brands fa-tiktok text-base sm:text-lg"></i>
                     </div>
-                    <div class="text-left">
-                        <span class="font-bold text-zinc-400 text-sm block">TikTok Profile</span>
-                        <span class="text-zinc-500 text-[11px] font-normal block">Launching soon</span>
+                    <div class="text-left min-w-0">
+                        <span class="font-bold text-zinc-400 text-xs sm:text-sm block truncate">TikTok Profile</span>
+                        <span class="text-zinc-500 text-[10px] sm:text-[11px] font-normal block truncate">Launching soon</span>
                     </div>
                 </div>
 
-                <span class="bg-zinc-800 text-zinc-400 border border-zinc-700/50 text-[10px] font-bold px-2.5 py-0.5 rounded-md">
+                <span class="bg-zinc-800 text-zinc-400 border border-zinc-700/50 text-[9px] sm:text-[10px] font-bold px-2 sm:px-2.5 py-0.5 rounded-md flex-shrink-0 ml-2">
                     Soon
                 </span>
             </div>
@@ -250,7 +255,7 @@
             <!-- SHARE BUTTON -->
             <div class="w-full pt-1">
                 <button onclick="handleShare()" 
-                        class="w-full minimal-btn py-3 rounded-xl text-xs font-bold text-zinc-300 hover:text-white flex items-center justify-center gap-2">
+                        class="w-full minimal-btn py-2.5 sm:py-3 rounded-xl text-xs font-bold text-zinc-300 hover:text-white flex items-center justify-center gap-2">
                     <i class="fa-solid fa-share-nodes text-violet-400"></i>
                     <span>Share Profile</span>
                 </button>
@@ -260,34 +265,43 @@
 
         <!-- TAB 2: ABOUT SECTION -->
         <div id="tab-about" class="w-full hidden flex-col gap-3 transition-all duration-300">
-            <div class="minimal-card rounded-2xl p-5 text-left space-y-4">
-                <div>
-                    <h3 class="text-sm font-bold text-white mb-1.5 flex items-center gap-2">
-                        <i class="fa-solid fa-clapperboard text-violet-400"></i>
+            <div class="minimal-card rounded-2xl p-4 sm:p-6 text-center space-y-4">
+                <div class="space-y-2">
+                    <h3 class="text-xs sm:text-sm font-bold text-white flex items-center justify-center gap-2 pb-2 border-b border-zinc-800/80">
+                        <i class="fa-solid fa-circle-info text-violet-400"></i>
                         About NOXEDITR
                     </h3>
-                    <p class="text-xs text-zinc-300 leading-relaxed font-normal">
-                        NOXEDITR is a digital creator specializing in high-energy dark phonk edits, anime velocity, and cinematic video edits. Producing weekly YouTube Shorts, tutorials, and sharing exclusive editing assets for creators.
-                    </p>
+                    
+                    <!-- Bio Lines -->
+                    <div class="space-y-1.5 pt-1 sm:pt-2">
+                        <p class="text-xs text-zinc-300 font-medium">Welcome to NOXEDITR.</p>
+                        <p class="text-xs font-bold text-violet-400 tracking-wider">Dark Phonk Edits.</p>
+                        <p class="text-xs text-zinc-300 font-medium">Anime • Sigma Cinematic.</p>
+                        <p class="text-xs text-zinc-400 font-medium">New Shorts Every Week.</p>
+                        <p class="text-xs font-bold text-zinc-200 pt-2 flex items-center justify-center gap-1.5">
+                            <i class="fa-brands fa-youtube text-red-500 text-sm"></i>
+                            Subscribe for more.
+                        </p>
+                    </div>
                 </div>
 
                 <!-- Specs Grid -->
-                <div class="pt-3 border-t border-zinc-800/80 space-y-2 text-xs">
-                    <div class="flex items-center justify-between">
-                        <span class="text-zinc-400">Content Focus:</span>
-                        <span class="text-zinc-200 font-semibold">Phonk, Anime & Cinematic</span>
+                <div class="pt-3 border-t border-zinc-800/80 space-y-2 text-[11px] sm:text-xs text-left">
+                    <div class="flex items-center justify-between gap-2">
+                        <span class="text-zinc-400 flex-shrink-0">Content Focus:</span>
+                        <span class="text-zinc-200 font-semibold text-right truncate">Phonk, Anime & Cinematic</span>
                     </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-zinc-400">Software Used:</span>
-                        <span class="text-zinc-200 font-semibold">After Effects • Premiere • CapCut</span>
+                    <div class="flex items-center justify-between gap-2">
+                        <span class="text-zinc-400 flex-shrink-0">Software Used:</span>
+                        <span class="text-zinc-200 font-semibold text-right truncate">After Effects • Premiere • CapCut</span>
                     </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-zinc-400">Schedule:</span>
-                        <span class="text-zinc-200 font-semibold">Weekly Shorts & Assets</span>
+                    <div class="flex items-center justify-between gap-2">
+                        <span class="text-zinc-400 flex-shrink-0">Schedule:</span>
+                        <span class="text-zinc-200 font-semibold text-right truncate">Weekly Shorts & Assets</span>
                     </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-zinc-400">Commissions:</span>
-                        <span class="text-emerald-400 font-semibold">Open via Telegram Admin</span>
+                    <div class="flex items-center justify-between gap-2">
+                        <span class="text-zinc-400 flex-shrink-0">Commissions:</span>
+                        <span class="text-emerald-400 font-semibold text-right truncate">Open via Telegram Admin</span>
                     </div>
                 </div>
             </div>
@@ -296,8 +310,16 @@
     </main>
 
     <!-- Footer -->
-    <footer class="w-full text-center text-zinc-600 text-xs py-4 relative z-10">
-        <p>NOXEDITR &copy; <span id="year"></span> | All Rights Reserved</p>
+    <footer class="w-full text-center text-zinc-500 text-xs py-5 sm:py-6 relative z-10 flex flex-col items-center gap-2 sm:gap-2.5">
+        <!-- Verified Badge -->
+        <div class="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-zinc-900/90 border border-violet-500/30 text-[10px] sm:text-[11px] text-zinc-300 shadow-lg backdrop-blur-md max-w-[92vw]">
+            <!-- Custom Verified Shield SVG Icon -->
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 flex-shrink-0 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+            </svg>
+            <span class="truncate">Content verified by <strong class="text-white font-semibold">AMT-IR Organization</strong></span>
+        </div>
+        <p class="text-zinc-600 text-[10px] sm:text-[11px]">NOXEDITR &copy; <span id="year"></span> | All Rights Reserved</p>
     </footer>
 
     <!-- Scripts -->
