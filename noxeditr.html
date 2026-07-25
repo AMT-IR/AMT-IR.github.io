@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NOXEDITR | Official Links</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome 6 Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: {
+                            bg: '#09090c',
+                            card: '#121218',
+                            border: 'rgba(255, 255, 255, 0.08)',
+                            hover: '#181822',
+                        },
+                        accent: {
+                            purple: '#8b5cf6',
+                            purpleDark: '#6d28d9',
+                            purpleMuted: 'rgba(139, 92, 246, 0.15)',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #09090c;
+            color: #f4f4f5;
+            min-height: 100vh;
+            overflow-x: hidden;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Minimal Background Blur Ambient */
+        .ambient-glow {
+            position: fixed;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+            filter: blur(60px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Sleek Glass Card */
+        .minimal-card {
+            background: rgba(18, 18, 24, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .minimal-btn {
+            background: rgba(24, 24, 34, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .minimal-btn:hover, .minimal-btn:active {
+            border-color: rgba(139, 92, 246, 0.5);
+            background: rgba(30, 30, 44, 0.8);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.12);
+        }
+
+        /* Custom Tab Active Animation */
+        .tab-btn.active {
+            background-color: #8b5cf6;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #09090c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between items-center px-4 py-8 relative">
+
+    <!-- Subtle Ambient Backdrop Glow -->
+    <div class="ambient-glow"></div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 bg-zinc-900 text-zinc-100 border border-zinc-700/60 px-5 py-2.5 rounded-xl shadow-2xl text-xs font-semibold transition-all duration-300 opacity-0 pointer-events-none z-50 flex items-center gap-2 backdrop-blur-md">
+        <i class="fa-solid fa-circle-check text-violet-400"></i>
+        <span id="toast-msg">Notification</span>
+    </div>
+
+    <!-- Main Container -->
+    <main class="w-full max-w-sm sm:max-w-md mx-auto flex flex-col items-center gap-4 relative z-10 my-auto">
+        
+        <!-- Profile Header Card -->
+        <div class="minimal-card w-full rounded-2xl p-6 text-center flex flex-col items-center relative overflow-hidden">
+            
+            <!-- Top Subtle Accent Highlight -->
+            <div class="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-violet-500/60 to-transparent"></div>
+
+            <!-- Profile Avatar -->
+            <div class="relative mb-3 mt-1">
+                <div class="w-24 h-24 rounded-full border border-violet-500/30 p-1 bg-zinc-950 shadow-xl relative">
+                    <img 
+                        src="https://Sponsoracb.ir/image/72812.png" 
+                        alt="NOXEDITR Avatar" 
+                        class="w-full h-full object-cover rounded-full"
+                        onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=NOXEDITR&background=8b5cf6&color=fff&size=200';"
+                    />
+                </div>
+            </div>
+
+            <!-- Profile Name & Badge -->
+            <div class="flex items-center justify-center gap-1.5 mb-2">
+                <h1 class="font-heading text-2xl font-bold tracking-wide text-white">
+                    NOXEDITR
+                </h1>
+                <i class="fa-solid fa-circle-check text-violet-400 text-sm" title="Verified Creator"></i>
+            </div>
+
+            <!-- Bio Description Block -->
+            <div class="w-full pt-3 border-t border-zinc-800/80 text-center space-y-1">
+                <p class="text-xs text-zinc-300 font-medium">Welcome to NOXEDITR.</p>
+                <p class="text-xs font-bold text-violet-400 tracking-wider">Dark Phonk Edits.</p>
+                <p class="text-xs text-zinc-400">Anime • Sigma Cinematic.</p>
+                <p class="text-xs text-zinc-400">New Shorts Every Week.</p>
+                <p class="text-xs font-bold text-zinc-200 pt-1 flex items-center justify-center gap-1.5">
+                    <i class="fa-brands fa-youtube text-red-500 text-sm"></i>
+                    Subscribe for more.
+                </p>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs (Links & About) -->
+        <div class="w-full bg-zinc-900/80 p-1 rounded-xl border border-zinc-800/80 flex items-center gap-1 backdrop-blur-md">
+            <button onclick="switchTab('links')" id="tab-links-btn" class="tab-btn active flex-1 py-2 rounded-lg text-xs font-bold transition-all text-zinc-400 hover:text-white flex items-center justify-center gap-2">
+                <i class="fa-solid fa-link text-xs"></i>
+                Links
+            </button>
+            <button onclick="switchTab('about')" id="tab-about-btn" class="tab-btn flex-1 py-2 rounded-lg text-xs font-bold transition-all text-zinc-400 hover:text-white flex items-center justify-center gap-2">
+                <i class="fa-solid fa-circle-info text-xs"></i>
+                About
+            </button>
+        </div>
+
+        <!-- TAB 1: LINKS SECTION -->
+        <div id="tab-links" class="w-full flex flex-col gap-3 transition-all duration-300">
+            
+            <!-- YOUTUBE LINK -->
+            <a href="https://youtube.com/@noxeditr?si=aslYip3obuIUBXOy" target="_blank" rel="noopener noreferrer" 
+               class="minimal-btn rounded-xl p-3.5 flex items-center justify-between group">
+                
+                <div class="flex items-center gap-3.5">
+                    <div class="w-10 h-10 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-500 group-hover:bg-red-600 group-hover:text-white transition-all">
+                        <i class="fa-brands fa-youtube text-lg"></i>
+                    </div>
+                    <div class="text-left">
+                        <span class="font-bold text-white text-sm block group-hover:text-violet-300 transition-colors">YouTube Channel</span>
+                        <span class="text-zinc-400 text-[11px] font-normal block">Watch latest edits & shorts</span>
+                    </div>
+                </div>
+
+                <div class="text-zinc-500 group-hover:text-violet-400 group-hover:translate-x-0.5 transition-all text-xs">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </a>
+
+            <!-- TELEGRAM CHANNEL -->
+            <a href="https://t.me/NOXEDITR" target="_blank" rel="noopener noreferrer" 
+               class="minimal-btn rounded-xl p-3.5 flex items-center justify-between group">
+                
+                <div class="flex items-center gap-3.5">
+                    <div class="w-10 h-10 rounded-lg bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 group-hover:bg-sky-500 group-hover:text-white transition-all">
+                        <i class="fa-brands fa-telegram text-lg"></i>
+                    </div>
+                    <div class="text-left">
+                        <span class="font-bold text-white text-sm block group-hover:text-violet-300 transition-colors">Telegram Channel</span>
+                        <span class="text-zinc-400 text-[11px] font-normal block">Projects, presets & assets</span>
+                    </div>
+                </div>
+
+                <div class="text-zinc-500 group-hover:text-violet-400 group-hover:translate-x-0.5 transition-all text-xs">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </a>
+
+            <!-- TELEGRAM ADMIN -->
+            <a href="https://t.me/NOXEDITR_admin" target="_blank" rel="noopener noreferrer" 
+               class="minimal-btn rounded-xl p-3.5 flex items-center justify-between group">
+                
+                <div class="flex items-center gap-3.5">
+                    <div class="w-10 h-10 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 group-hover:bg-violet-600 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-user-gear text-base"></i>
+                    </div>
+                    <div class="text-left">
+                        <span class="font-bold text-white text-sm block group-hover:text-violet-300 transition-colors">Telegram Admin</span>
+                        <span class="text-zinc-400 text-[11px] font-normal block">Business, edits & commissions</span>
+                    </div>
+                </div>
+
+                <div class="text-zinc-500 group-hover:text-violet-400 group-hover:translate-x-0.5 transition-all text-xs">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </a>
+
+            <!-- TIKTOK (COMING SOON) -->
+            <div class="minimal-btn rounded-xl p-3.5 flex items-center justify-between opacity-50 cursor-not-allowed">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-10 h-10 rounded-lg bg-zinc-800/80 border border-zinc-700/50 flex items-center justify-center text-zinc-500">
+                        <i class="fa-brands fa-tiktok text-lg"></i>
+                    </div>
+                    <div class="text-left">
+                        <span class="font-bold text-zinc-400 text-sm block">TikTok Profile</span>
+                        <span class="text-zinc-500 text-[11px] font-normal block">Launching soon</span>
+                    </div>
+                </div>
+
+                <span class="bg-zinc-800 text-zinc-400 border border-zinc-700/50 text-[10px] font-bold px-2.5 py-0.5 rounded-md">
+                    Soon
+                </span>
+            </div>
+
+            <!-- SHARE BUTTON -->
+            <div class="w-full pt-1">
+                <button onclick="handleShare()" 
+                        class="w-full minimal-btn py-3 rounded-xl text-xs font-bold text-zinc-300 hover:text-white flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-share-nodes text-violet-400"></i>
+                    <span>Share Profile</span>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- TAB 2: ABOUT SECTION -->
+        <div id="tab-about" class="w-full hidden flex-col gap-3 transition-all duration-300">
+            <div class="minimal-card rounded-2xl p-5 text-left space-y-4">
+                <div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 flex items-center gap-2">
+                        <i class="fa-solid fa-clapperboard text-violet-400"></i>
+                        About NOXEDITR
+                    </h3>
+                    <p class="text-xs text-zinc-300 leading-relaxed font-normal">
+                        NOXEDITR is a digital creator specializing in high-energy dark phonk edits, anime velocity, and cinematic video edits. Producing weekly YouTube Shorts, tutorials, and sharing exclusive editing assets for creators.
+                    </p>
+                </div>
+
+                <!-- Specs Grid -->
+                <div class="pt-3 border-t border-zinc-800/80 space-y-2 text-xs">
+                    <div class="flex items-center justify-between">
+                        <span class="text-zinc-400">Content Focus:</span>
+                        <span class="text-zinc-200 font-semibold">Phonk, Anime & Cinematic</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-zinc-400">Software Used:</span>
+                        <span class="text-zinc-200 font-semibold">After Effects • Premiere • CapCut</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-zinc-400">Schedule:</span>
+                        <span class="text-zinc-200 font-semibold">Weekly Shorts & Assets</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-zinc-400">Commissions:</span>
+                        <span class="text-emerald-400 font-semibold">Open via Telegram Admin</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full text-center text-zinc-600 text-xs py-4 relative z-10">
+        <p>NOXEDITR &copy; <span id="year"></span> | All Rights Reserved</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const shareTargetUrl = 'https://Sponsoracb.ir/noxeditr';
+
+        // Tab Switcher Logic
+        function switchTab(tab) {
+            const linksTab = document.getElementById('tab-links');
+            const aboutTab = document.getElementById('tab-about');
+            const linksBtn = document.getElementById('tab-links-btn');
+            const aboutBtn = document.getElementById('tab-about-btn');
+
+            if (tab === 'links') {
+                linksTab.classList.remove('hidden');
+                linksTab.classList.add('flex');
+                aboutTab.classList.add('hidden');
+                aboutTab.classList.remove('flex');
+
+                linksBtn.classList.add('active');
+                aboutBtn.classList.remove('active');
+            } else {
+                aboutTab.classList.remove('hidden');
+                aboutTab.classList.add('flex');
+                linksTab.classList.add('hidden');
+                linksTab.classList.remove('flex');
+
+                aboutBtn.classList.add('active');
+                linksBtn.classList.remove('active');
+            }
+        }
+
+        // Share & Copy Handler
+        function handleShare() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'NOXEDITR | Official Links',
+                    text: 'Check out NOXEDITR official channels and links!',
+                    url: shareTargetUrl,
+                }).catch(() => {
+                    copyToClipboard(shareTargetUrl);
+                });
+            } else {
+                copyToClipboard(shareTargetUrl);
+            }
+        }
+
+        function copyToClipboard(text) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            showToast('Link copied to clipboard!');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').textContent = msg;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            toast.classList.add('opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
