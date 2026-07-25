@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعرفه‌ها و نرخ تبلیغات (Ads) | SPONSORACB</title>
+    
+    <!-- سئو متا تگ‌ها (SEO Meta Tags) -->
+    <meta name="description" content="تعرفه‌های رسمی تبلیغات سراسری (سوپر Ads)، تبلیغات در پورتال وب‌سایت، جوین اجباری ربات تلگرام و کمپین‌های پلتفرم‌های همکار SPONSORACB.">
+    <meta name="keywords" content="تبلیغات SPONSORACB, سوپر Ads, نرخ تبلیغات, جوین اجباری ربات, تبلیغات پورتال, تعرفه تبلیغات تلگرام, اسپانسری هوش مصنوعی">
+    
+    <!-- فونت Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    },
+                    colors: {
+                        pro: '#3b82f6',      /* Blue */
+                        plus: '#10b981',     /* Emerald */
+                        premium: '#8b5cf6',  /* Violet */
+                        ultra: '#f59e0b',    /* Amber/Gold */
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            transition: background-color 0.4s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* پس‌زمینه محو و استاندارد اصلی سایت */
+        .ambient-bg {
+            background-color: #f4f4f5;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.06), transparent 30%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.06), transparent 30%);
+        }
+        
+        .dark .ambient-bg {
+            background-color: #09090b;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05), transparent 30%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05), transparent 30%);
+        }
+
+        .glass-base {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* استایل پایه آیکون‌های SVG */
+        svg.lucide, .lucide {
+            display: inline-block;
+            vertical-align: middle;
+            stroke-width: 2px;
+            stroke: currentColor;
+            fill: none;
+            flex-shrink: 0;
+        }
+
+        /* کاستوم اسکرول‌بار پریمیوم */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { 
+            background: #d4d4d8; 
+            border-radius: 10px; 
+        }
+        .dark ::-webkit-scrollbar-thumb { background: #27272a; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+    </style>
+</head>
+<body class="ambient-bg text-zinc-900 dark:text-white min-h-screen flex flex-col relative transition-colors duration-500 overflow-x-hidden">
+
+    <!-- هدر (Navbar) -->
+    <nav class="w-full h-16 sm:h-20 flex items-center justify-between px-4 sm:px-8 border-b glass-base sticky top-0 z-40 
+        bg-white/40 border-zinc-200/50 
+        dark:bg-zinc-950/40 dark:border-zinc-800/50 transition-colors">
+        
+        <!-- فضای خالی برای تراز وسط -->
+        <div class="w-10 sm:w-12"></div>
+
+        <!-- عنوان وسط -->
+        <span class="font-black text-lg sm:text-xl tracking-[0.2em] dir-ltr text-zinc-900 dark:text-white">SPONSORACB</span>
+        
+        <!-- دکمه تغییر تم -->
+        <button onclick="toggleTheme()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all border shadow-sm
+            bg-white/70 border-zinc-200/80 hover:bg-white
+            dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 group">
+            <i data-lucide="sun" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-600 hidden dark:block group-hover:text-amber-400 transition-colors"></i>
+            <i data-lucide="moon" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 block dark:hidden group-hover:text-indigo-500 transition-colors"></i>
+        </button>
+    </nav>
+
+    <!-- محتوای اصلی -->
+    <main class="flex-1 w-full max-w-5xl mx-auto flex flex-col gap-10 py-12 px-4 sm:px-6 lg:px-8">
+        
+        <!-- بخش عنوان -->
+        <header class="text-center flex flex-col items-center gap-4 mb-4">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 text-xs font-bold shadow-sm">
+                <i data-lucide="megaphone" class="w-4 h-4 shrink-0"></i>
+                <span>پلن‌های تبلیغاتی و اسپانسری</span>
+            </div>
+            
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-zinc-900 dark:text-white leading-[1.3]">
+                تعرفه‌های رسمی تبلیغات SPONSORACB
+            </h1>
+            
+            <p class="text-sm sm:text-base font-medium max-w-2xl mx-auto text-zinc-500 dark:text-zinc-400 leading-relaxed px-4">
+                انتخاب بهترین کانال‌های تبلیغاتی جهت دیده‌شدن کسب‌ و کار شما در پورتال وب، ربات‌های هوشمند و شبکه‌های همکار.
+            </p>
+        </header>
+
+        <!-- ======================= دسته ویژه VIP: سوپر Ads ======================= -->
+        <section class="space-y-6">
+            <div class="flex items-center justify-between pb-3 border-b border-amber-500/40 dark:border-amber-500/30">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-yellow-400 text-zinc-950 flex items-center justify-center font-bold shadow-lg shadow-amber-500/20">
+                        <i data-lucide="sparkles" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h2 class="text-xl sm:text-2xl font-black text-zinc-900 dark:text-white">سوپر Ads (تبلیغات ویژه سراسری)</h2>
+                            <span class="px-2 py-0.5 rounded-md bg-amber-500/20 border border-amber-500/30 text-amber-600 dark:text-amber-400 font-bold text-[10px]">VIP</span>
+                        </div>
+                        <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">نمایش اختصاصی و فوق‌العاده در کل سایت، پورتال اصلی و تمام پلتفرم‌های مجموعه</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                
+                <!-- سوپر Ads ۱ هفته -->
+                <div class="rounded-3xl border-2 border-amber-500/60 glass-base bg-gradient-to-br from-amber-500/10 via-amber-500/5 to-transparent p-7 flex flex-col justify-between relative overflow-hidden shadow-xl shadow-amber-500/10 hover:-translate-y-1 transition-all group">
+                    <div class="absolute top-0 left-0 bg-gradient-to-r from-amber-500 to-yellow-400 text-zinc-950 font-black text-[11px] px-4 py-1.5 rounded-br-2xl uppercase tracking-wider shadow-md">
+                        پرچمدار ۱ هفته‌ای
+                    </div>
+
+                    <div>
+                        <div class="flex items-center gap-2 mb-4 text-amber-500 font-bold text-sm">
+                            <i data-lucide="crown" class="w-5 h-5"></i>
+                            <span>پوشش کامل ۱ هفته (۷ روز)</span>
+                        </div>
+
+                        <div class="mb-5">
+                            <span class="text-3xl sm:text-4xl font-black text-zinc-900 dark:text-white">۵۵,۰۰۰,۰۰۰</span>
+                            <span class="text-xs font-bold text-zinc-500 mr-1">تومان / ۷ روز</span>
+                        </div>
+
+                        <div class="space-y-2.5 text-xs font-medium text-zinc-700 dark:text-zinc-200 mb-6">
+                            <div class="flex items-center gap-2 text-amber-700 dark:text-amber-300 font-bold bg-amber-500/15 p-3 rounded-2xl border border-amber-500/30">
+                                <i data-lucide="check-check" class="w-4 h-4 text-amber-500 shrink-0"></i>
+                                <span>نمایش اولویت دار در تمام بنرها، پورتال و پاپ‌آپ سراسری</span>
+                            </div>
+                            <div class="flex items-center gap-2 pt-1 text-zinc-600 dark:text-zinc-300">
+                                <i data-lucide="zap" class="w-4 h-4 text-amber-500 shrink-0"></i>
+                                <span>حداکثر بازدهی، کلیک و جذب ورودی برای برندها</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://t.me/AcbShopp" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-zinc-950 rounded-xl font-black text-xs text-center transition-all shadow-lg shadow-amber-500/25 flex items-center justify-center gap-2 hover:scale-[1.01]">
+                        <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+                        <span>رزرو سوپر Ads ۱ هفته‌ای</span>
+                    </a>
+                </div>
+
+                <!-- سوپر Ads ۳ روز -->
+                <div class="rounded-3xl border border-amber-500/40 glass-base bg-gradient-to-br from-amber-500/5 via-transparent to-transparent p-7 flex flex-col justify-between relative overflow-hidden shadow-lg shadow-amber-500/5 hover:-translate-y-1 transition-all group">
+                    <div class="absolute top-0 left-0 bg-amber-500/20 text-amber-600 dark:text-amber-400 font-bold text-[10px] px-3.5 py-1 rounded-br-2xl border-b border-r border-amber-500/30">
+                        کمپین ۳ روزه
+                    </div>
+
+                    <div>
+                        <div class="flex items-center gap-2 mb-4 text-amber-500 font-bold text-sm">
+                            <i data-lucide="star" class="w-5 h-5"></i>
+                            <span>پوشش کامل ۳ روز</span>
+                        </div>
+
+                        <div class="mb-5">
+                            <span class="text-3xl sm:text-4xl font-black text-zinc-900 dark:text-white">۳۳,۰۰۰,۰۰۰</span>
+                            <span class="text-xs font-bold text-zinc-500 mr-1">تومان / ۳ روز</span>
+                        </div>
+
+                        <div class="space-y-2.5 text-xs font-medium text-zinc-700 dark:text-zinc-200 mb-6">
+                            <div class="flex items-center gap-2 text-zinc-800 dark:text-zinc-200 font-bold bg-zinc-100 dark:bg-zinc-800/80 p-3 rounded-2xl border border-zinc-200 dark:border-zinc-700">
+                                <i data-lucide="globe" class="w-4 h-4 text-amber-500 shrink-0"></i>
+                                <span>نمایش وی‌آی‌پی در پورتال اصلی و پلتفرم‌ها</span>
+                            </div>
+                            <div class="flex items-center gap-2 pt-1 text-zinc-600 dark:text-zinc-300">
+                                <i data-lucide="trending-up" class="w-4 h-4 text-amber-500 shrink-0"></i>
+                                <span>عالی برای پروموشن‌های سریع و لاندچ محصول</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://t.me/AcbShopp" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 bg-zinc-900 hover:bg-zinc-800 text-amber-400 border border-amber-500/40 rounded-xl font-black text-xs text-center transition-all shadow-md flex items-center justify-center gap-2 hover:scale-[1.01]">
+                        <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+                        <span>رزرو سوپر Ads ۳ روزه</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======================= دسته ۱: تبلیغات در پورتال سایت ======================= -->
+        <section class="space-y-6">
+            <div class="flex items-center justify-between pb-3 border-b border-zinc-200/80 dark:border-zinc-800/80">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-violet-500/10 text-violet-500 flex items-center justify-center font-bold border border-violet-500/20">
+                        <i data-lucide="globe" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-black text-zinc-900 dark:text-white">تبلیغات در پورتال سایت</h2>
+                        <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">مدت زمان ۲۴ ساعته | شروع نمایش از ساعت ۰۰:۰۰ بامداد</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                
+                <!-- جایگاه ۱ -->
+                <div class="rounded-3xl border border-amber-500/30 glass-base bg-white/60 dark:bg-zinc-900/60 p-6 flex flex-col justify-between relative overflow-hidden shadow-lg shadow-amber-500/5 hover:-translate-y-1 transition-all">
+                    <div class="absolute top-0 left-0 bg-amber-500 text-zinc-950 font-black text-[10px] px-3 py-1 rounded-br-xl uppercase tracking-wider">
+                        جایگاه ویژه ۱
+                    </div>
+                    
+                    <div>
+                        <div class="flex items-center gap-2 mb-4 text-amber-500 font-bold text-sm">
+                            <i data-lucide="crown" class="w-5 h-5"></i>
+                            <span>جایگاه اول پورتال</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <span class="text-3xl font-black text-zinc-900 dark:text-white">۹۱۰,۰۰۰</span>
+                            <span class="text-xs font-bold text-zinc-500 mr-1">تومان / ۲۴ ساعت</span>
+                        </div>
+
+                        <div class="space-y-2 text-xs font-medium text-zinc-600 dark:text-zinc-300 mb-6">
+                            <div class="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-500/10 p-2 rounded-xl border border-emerald-500/20">
+                                <i data-lucide="gift" class="w-4 h-4 shrink-0"></i>
+                                <span>+ ۸ ساعت زمان اضافه هدیه</span>
+                            </div>
+                            <div class="flex items-center gap-2 pt-1">
+                                <i data-lucide="clock" class="w-4 h-4 text-zinc-400"></i>
+                                <span>تاریخ شروع: ساعت ۰۰:۰۰</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://t.me/AcbShopp" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-amber-500 hover:bg-amber-600 text-zinc-950 rounded-xl font-bold text-xs text-center transition-colors shadow-md flex items-center justify-center gap-2">
+                        <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+                        <span>رزرو جایگاه اول</span>
+                    </a>
+                </div>
+
+                <!-- جایگاه ۲ -->
+                <div class="rounded-3xl border border-violet-500/30 glass-base bg-white/60 dark:bg-zinc-900/60 p-6 flex flex-col justify-between relative overflow-hidden shadow-lg shadow-violet-500/5 hover:-translate-y-1 transition-all">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4 text-violet-500 font-bold text-sm">
+                            <i data-lucide="star" class="w-5 h-5"></i>
+                            <span>جایگاه دوم پورتال</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <span class="text-3xl font-black text-zinc-900 dark:text-white">۸۴۰,۰۰۰</span>
+                            <span class="text-xs font-bold text-zinc-500 mr-1">تومان / ۲۴ ساعت</span>
+                        </div>
+
+                        <div class="space-y-2 text-xs font-medium text-zinc-600 dark:text-zinc-300 mb-6">
+                            <div class="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-500/10 p-2 rounded-xl border border-emerald-500/20">
+                                <i data-lucide="gift" class="w-4 h-4 shrink-0"></i>
+                                <span>+ ۶ ساعت زمان اضافه هدیه</span>
+                            </div>
+                            <div class="flex items-center gap-2 pt-1">
+                                <i data-lucide="clock" class="w-4 h-4 text-zinc-400"></i>
+                                <span>تاریخ شروع: ساعت ۰۰:۰۰</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://t.me/AcbShopp" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-violet-600 hover:bg-violet-700 text-white rounded-xl font-bold text-xs text-center transition-colors shadow-md flex items-center justify-center gap-2">
+                        <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+                        <span>رزرو جایگاه دوم</span>
+                    </a>
+                </div>
+
+                <!-- جایگاه ۳ -->
+                <div class="rounded-3xl border border-zinc-200 dark:border-zinc-800 glass-base bg-white/60 dark:bg-zinc-900/60 p-6 flex flex-col justify-between hover:-translate-y-1 transition-all">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4 text-blue-500 font-bold text-sm">
+                            <i data-lucide="layout" class="w-5 h-5"></i>
+                            <span>جایگاه سوم پورتال</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <span class="text-3xl font-black text-zinc-900 dark:text-white">۳۱۰,۰۰۰</span>
+                            <span class="text-xs font-bold text-zinc-500 mr-1">تومان / ۲۴ ساعت</span>
+                        </div>
+
+                        <div class="space-y-2 text-xs font-medium text-zinc-600 dark:text-zinc-300 mb-6">
+                            <div class="flex items-center gap-2 p-2 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 shrink-0"></i>
+                                <span>نمایش استاندارد ۲۴ ساعته</span>
+                            </div>
+                            <div class="flex items-center gap-2 pt-1">
+                                <i data-lucide="clock" class="w-4 h-4 text-zinc-400"></i>
+                                <span>تاریخ شروع: ساعت ۰۰:۰۰</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://t.me/AcbShopp" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-zinc-800 hover:bg-zinc-900 text-white rounded-xl font-bold text-xs text-center transition-colors shadow-md flex items-center justify-center gap-2">
+                        <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+                        <span>رزرو جایگاه سوم</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======================= دسته ۲: تبلیغات جوین اجباری بات ======================= -->
+        <section class="space-y-6">
+            <div class="flex items-center justify-between pb-3 border-b border-zinc-200/80 dark:border-zinc-800/80">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center font-bold border border-emerald-500/20">
+                        <i data-lucide="bot" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-black text-zinc-900 dark:text-white">تبلیغات جوین اجباری بات</h2>
+                        <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">افزایش عضو و مخاطب واقعی از طریق سیستم قفل کانال ربات</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                
+                <!-- پلن ۵۰۰۰ نفر -->
+                <div class="rounded-3xl border border-emerald-500/30 glass-base bg-white/60 dark:bg-zinc-900/60 p-6 flex flex-col justify-between relative overflow-hidden shadow-lg shadow-emerald-500/5 hover:-translate-y-1 transition-all">
+                    <div class="absolute top-0 left-0 bg-emerald-500 text-white font-black text-[10px] px-3 py-1 rounded-br-xl">
+                        +۲۰٪ ظرفیت هدیه
+                    </div>
+
+                    <div>
+                        <div class="flex items-center gap-2 mb-4 text-emerald-500 font-bold text-sm">
+                            <i data-lucide="users" class="w-5 h-5"></i>
+                            <span>ظرفیت ۵,۰۰۰ کاربر</span>
+                        </div>
+
+                        <div class="mb-4">
+                            <span class="text-3xl font-black text-zinc-900 dark:text-white">۶,۳۰۰,۰۰۰</span>
+                            <span class="text-xs font-bold text-zinc-500 mr-1">تومان</span>
+                        </div>
+
+                        <div class="space-y-2 text-xs font-medium text-zinc-600 dark:text-zinc-300 mb-6">
+                            <div class="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-500/10 p-2.5 rounded-xl border border-emerald-500/20">
+                                <i data-lucide="sparkles" class="w-4 h-4 shrink-0"></i>
+                                <span>ارسال بیش از ۱,۰۰۰ عضو رایگان اضافه‌تر (+۲۰٪)</span>
+                            </div>
+                            <div class="flex items-center gap-2 pt-1">
+                                <i data-lucide="user-check" class="w-4 h-4 text-emerald-500"></i>
+                                <span>مخاطبان فعال و کاملاً واقعی تلگرام</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://t.me/AcbShopp" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-xs text-center transition-colors shadow-md flex items-center justify-center gap-2">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                        <span>سفارش پلن ۵ هزار تایی</span>
+                    </a>
+                </div>
+
+                <!-- پلن ۱۰۰۰ نفر -->
+                <div class="rounded-3xl border border-zinc-200 dark:border-zinc-800 glass-base bg-white/60 dark:bg-zinc-900/60 p-6 flex flex-col justify-between hover:-translate-y-1 transition-all">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4 text-blue-500 font-bold text-sm">
+                            <i data-lucide="user-plus" class="w-5 h-5"></i>
+                            <span>ظرفیت ۱,۰۰۰ کاربر</span>
+                        </div>
+
+                        <div class="mb-4">
+                            <span class="text-3xl font-black text-zinc-900 dark:text-white">۱,۸۰۰,۰۰۰</span>
+                            <span class="text-xs font-bold text-zinc-500 mr-1">تومان</span>
+                        </div>
+
+                        <div class="space-y-2 text-xs font-medium text-zinc-600 dark:text-zinc-300 mb-6">
+                            <div class="flex items-center gap-2 p-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-blue-500 shrink-0"></i>
+                                <span>تکمیل سریع ظرفیت در کمترین زمان</span>
+                            </div>
+                            <div class="flex items-center gap-2 pt-1">
+                                <i data-lucide="shield-check" class="w-4 h-4 text-zinc-400"></i>
+                                <span>تضمین کیفیت جذب مخاطب</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://t.me/AcbShopp" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-zinc-800 hover:bg-zinc-900 text-white rounded-xl font-bold text-xs text-center transition-colors shadow-md flex items-center justify-center gap-2">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                        <span>سفارش پلن ۱ هزار تایی</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======================= دسته ۳: تبلیغات در پلتفرم‌های همکار ======================= -->
+        <section class="space-y-6">
+            <div class="flex items-center justify-between pb-3 border-b border-zinc-200/80 dark:border-zinc-800/80">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center font-bold border border-blue-500/20">
+                        <i data-lucide="share-2" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-black text-zinc-900 dark:text-white">تبلیغات شبکه پلتفرم‌های همکار</h2>
+                        <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">انتشار گسترده در رسانه‌ها و پلتفرم‌های تحت پوشش شبکه همکاری</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                
+                <!-- ۱۰ پلتفرم -->
+                <div class="rounded-3xl border border-blue-500/30 glass-base bg-white/60 dark:bg-zinc-900/60 p-6 flex flex-col justify-between relative overflow-hidden shadow-lg shadow-blue-500/5 hover:-translate-y-1 transition-all">
+                    <div class="absolute top-0 left-0 bg-blue-600 text-white font-black text-[10px] px-3 py-1 rounded-br-xl">
+                        ۶٪ تخفیف ویژه
+                    </div>
+
+                    <div>
+                        <div class="flex items-center gap-2 mb-4 text-blue-500 font-bold text-sm">
+                            <i data-lucide="layers" class="w-5 h-5"></i>
+                            <span>کمپین ۱۰ پلتفرمی</span>
+                        </div>
+
+                        <div class="mb-4">
+                            <span class="text-3xl font-black text-zinc-900 dark:text-white">۲۷,۰۰۰,۰۰۰</span>
+                            <span class="text-xs font-bold text-zinc-500 mr-1">تومان</span>
+                        </div>
+
+                        <div class="space-y-2 text-xs font-medium text-zinc-600 dark:text-zinc-300 mb-6">
+                            <div class="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold bg-blue-500/10 p-2.5 rounded-xl border border-blue-500/20">
+                                <i data-lucide="eye" class="w-4 h-4 shrink-0"></i>
+                                <span>نرخ بازدید تضمینی: ۱۲۰,۰۰۰ (120k View)</span>
+                            </div>
+                            <div class="flex items-center gap-2 pt-1">
+                                <i data-lucide="check-check" class="w-4 h-4 text-emerald-500"></i>
+                                <span>پوشش حداکثری و بازدهی بالا</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://t.me/AcbShopp" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-xs text-center transition-colors shadow-md flex items-center justify-center gap-2">
+                        <i data-lucide="rocket" class="w-4 h-4"></i>
+                        <span>رزرو کمپین ۱۰ پلتفرمی</span>
+                    </a>
+                </div>
+
+                <!-- ۵ پلتفرم -->
+                <div class="rounded-3xl border border-zinc-200 dark:border-zinc-800 glass-base bg-white/60 dark:bg-zinc-900/60 p-6 flex flex-col justify-between hover:-translate-y-1 transition-all">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4 text-indigo-500 font-bold text-sm">
+                            <i data-lucide="layout-grid" class="w-5 h-5"></i>
+                            <span>کمپین ۵ پلتفرمی</span>
+                        </div>
+
+                        <div class="mb-4">
+                            <span class="text-3xl font-black text-zinc-900 dark:text-white">۱۳,۵۰۰,۰۰۰</span>
+                            <span class="text-xs font-bold text-zinc-500 mr-1">تومان</span>
+                        </div>
+
+                        <div class="space-y-2 text-xs font-medium text-zinc-600 dark:text-zinc-300 mb-6">
+                            <div class="flex items-center gap-2 p-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 font-bold">
+                                <i data-lucide="eye" class="w-4 h-4 text-indigo-500 shrink-0"></i>
+                                <span>نرخ بازدید تضمینی: ۶۰,۰۰۰ (60k View)</span>
+                            </div>
+                            <div class="flex items-center gap-2 pt-1">
+                                <i data-lucide="trending-up" class="w-4 h-4 text-zinc-400"></i>
+                                <span>مناسب کسب و کارهای در حال رشد</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://t.me/AcbShopp" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-zinc-800 hover:bg-zinc-900 text-white rounded-xl font-bold text-xs text-center transition-colors shadow-md flex items-center justify-center gap-2">
+                        <i data-lucide="rocket" class="w-4 h-4"></i>
+                        <span>رزرو کمپین ۵ پلتفرمی</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- باکس پشتیبانی و ثبت سفارش تبلیغات -->
+        <section class="p-5 sm:p-6 rounded-2xl border glass-base bg-gradient-to-br from-emerald-50/80 via-teal-50/50 to-blue-50/50 dark:from-emerald-950/30 dark:via-teal-950/20 dark:to-blue-950/20 border-emerald-200/80 dark:border-emerald-800/50 shadow-md shadow-emerald-500/5 relative overflow-hidden group mt-2">
+            <div class="absolute top-0 right-0 w-28 h-28 bg-emerald-500/10 dark:bg-emerald-400/10 rounded-full blur-2xl -mr-8 -mt-8"></div>
+            <div class="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-right">
+                <div class="flex flex-col sm:flex-row items-center gap-3.5">
+                    <div class="w-11 h-11 bg-emerald-600 text-white rounded-xl flex items-center justify-center shadow-sm shrink-0">
+                        <i data-lucide="headphones" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white mb-0.5">مشاوره و ثبت رزرو اختصاصی تبلیغات</h3>
+                        <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                            جهت هماهنگی بنرها، مشاوره کمپین‌های اسپانسری یا رزرو جایگاه با ما در تماس باشید.
+                        </p>
+                    </div>
+                </div>
+                <a href="https://t.me/AcbShopp" target="_blank" rel="noopener noreferrer" class="shrink-0 w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-xs transition-all shadow-md shadow-emerald-600/20 hover:-translate-y-0.5">
+                    <i data-lucide="send" class="w-4 h-4 shrink-0"></i>
+                    <span>ارتباط با واحد پشتیبانی</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- فوتر قدیمی -->
+    <footer class="w-full py-6 mt-auto border-t glass-base bg-zinc-950/40 border-zinc-800/50 flex flex-col items-center justify-center gap-2 transition-colors" id="footer">
+        <p class="text-xs text-zinc-400" id="footer-text">تمامی حقوق برای مجموعه محفوظ است</p>
+        <a href="https://AMT-IR.github.io" target="_blank" class="flex items-center gap-1.5 text-sm font-bold transition-colors hover:text-emerald-500 text-white" id="footer-link">
+            <i data-lucide="external-link" class="w-4 h-4 shrink-0"></i>
+            <span>پورتال جامع AMT-IR</span>
+        </a>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // مقداردهی آیکون‌ها
+        lucide.createIcons();
+
+        // منطق تغییر تم
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body>
+</html>
