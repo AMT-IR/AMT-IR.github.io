@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>تایید هویت انسانی | SPONSORACB</title>
+    
+    <!-- فونت Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Face API JS -->
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Vazirmatn', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .ambient-bg {
+            background-color: #09090b; /* zinc-950 */
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.08), transparent 40%),
+                radial-gradient(circle at 50% 100%, rgba(16, 185, 129, 0.05), transparent 40%);
+        }
+
+        .glass-panel {
+            background: rgba(24, 24, 27, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* حلقه دوربین - کوچکتر و ظریف‌تر شده */
+        .camera-wrapper {
+            position: relative;
+            width: 220px; /* سایز بسیار متناسب و ظریف */
+            height: 220px;
+            border-radius: 50%;
+            margin: 0 auto;
+            overflow: hidden;
+            background-color: #000; 
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            /* حاشیه بسیار نازک و مدرن */
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.08), inset 0 0 20px rgba(0,0,0,0.8);
+            z-index: 10;
+        }
+
+        /* افکت‌های رنگی نازک‌تر و درخشان‌تر */
+        .ring-scanning { box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.6), 0 0 20px rgba(59, 130, 246, 0.2); }
+        .ring-right { box-shadow: 3px 0 0 2px rgba(139, 92, 246, 0.7), 15px 0 30px rgba(139, 92, 246, 0.3); }
+        .ring-left { box-shadow: -3px 0 0 2px rgba(245, 158, 11, 0.7), -15px 0 30px rgba(245, 158, 11, 0.3); }
+        .ring-up { box-shadow: 0 -3px 0 2px rgba(236, 72, 153, 0.7), 0 -15px 30px rgba(236, 72, 153, 0.3); }
+        .ring-down { box-shadow: 0 3px 0 2px rgba(14, 165, 233, 0.7), 0 15px 30px rgba(14, 165, 233, 0.3); }
+        .ring-success { box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.8), 0 0 30px rgba(16, 185, 129, 0.4); }
+        .ring-warning { box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.6), 0 0 20px rgba(239, 68, 68, 0.2); }
+
+        .video-mirror-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: scaleX(-1);
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        video.active { opacity: 1; }
+
+        .pulse-text { animation: pulse-text 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse-text { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+<body class="ambient-bg text-white min-h-screen flex flex-col relative overflow-x-hidden">
+
+    <!-- هدر بسیار مینیمال -->
+    <nav class="w-full h-14 flex items-center justify-center px-4 border-b border-white/5 bg-transparent sticky top-0 z-40">
+        <a href="#" class="font-black text-lg tracking-[0.2em] dir-ltr text-zinc-100 hover:text-blue-400 transition-colors">
+            SPONSORACB
+        </a>
+    </nav>
+
+    <!-- محتوای اصلی -->
+    <main class="flex-1 w-full max-w-sm mx-auto flex flex-col items-center justify-center p-4">
+        
+        <article class="w-full rounded-[28px] glass-panel p-6 flex flex-col items-center text-center relative overflow-hidden">
+            
+            <div class="mb-6 relative z-10">
+                <h1 class="text-xl font-bold mb-1.5 text-zinc-100" id="mainTitle">تایید هویت انسانی</h1>
+                <p class="text-xs text-zinc-400 font-medium" id="subTitle">چهره خود را در مرکز کادر قرار دهید</p>
+            </div>
+
+            <!-- حالت اسکن زنده -->
+            <div id="livenessState" class="w-full flex flex-col items-center z-10">
+                
+                <div class="relative mb-6 w-full flex justify-center items-center">
+                    
+                    <!-- فلش‌های راهنما (کوچک و ظریف شده‌اند) -->
+                    <div id="arrowRight" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-violet-500/80 backdrop-blur-sm text-white flex items-center justify-center opacity-0 transition-all duration-300 transform translate-x-2 z-0">
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </div>
+                    <div id="arrowLeft" class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-amber-500/80 backdrop-blur-sm text-white flex items-center justify-center opacity-0 transition-all duration-300 transform -translate-x-2 z-0">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                    </div>
+                    <div id="arrowUp" class="absolute top-[-5px] left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-pink-500/80 backdrop-blur-sm text-white flex items-center justify-center opacity-0 transition-all duration-300 transform -translate-y-2 z-20">
+                        <i data-lucide="chevron-up" class="w-4 h-4"></i>
+                    </div>
+                    <div id="arrowDown" class="absolute bottom-[-5px] left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-sky-500/80 backdrop-blur-sm text-white flex items-center justify-center opacity-0 transition-all duration-300 transform translate-y-2 z-20">
+                        <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    </div>
+
+                    <!-- کادر دوربین -->
+                    <div id="cameraRing" class="camera-wrapper">
+                        
+                        <div id="loadingLayer" class="absolute inset-0 flex flex-col items-center justify-center bg-zinc-900 z-30">
+                            <i data-lucide="scan-face" class="w-8 h-8 text-blue-500 mb-2 pulse-text"></i>
+                            <span class="text-[10px] font-medium text-zinc-400">راه‌اندازی دوربین...</span>
+                        </div>
+
+                        <!-- نمایش موفقیت -->
+                        <div id="successLayer" class="hidden absolute inset-0 flex flex-col items-center justify-center bg-emerald-500/80 backdrop-blur-md z-40 transition-all rounded-full">
+                            <i data-lucide="check" class="w-14 h-14 text-white animate-bounce stroke-[3]"></i>
+                        </div>
+
+                        <div class="video-mirror-container">
+                            <video id="videoElement" autoplay muted playsinline></video>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- متن راهنما (بسیار مینیمال) -->
+                <div class="h-10 flex items-center justify-center w-full">
+                    <div id="instructionBox" class="px-5 py-2 rounded-xl bg-zinc-800/40 border border-white/5 backdrop-blur-md text-xs font-medium text-white transition-all duration-300 text-center">
+                        در حال اتصال...
+                    </div>
+                </div>
+            </div>
+
+            <!-- دکمه هدایت شونده (در ابتدا مخفی است) -->
+            <div id="redirectAction" class="hidden w-full mt-4 flex-col items-center animate-fade-in-up z-20">
+                <a href="https://SPONSORACB.ir" class="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-bold text-sm shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all">
+                    <span>ورود به سایت SPONSORACB</span>
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+        </article>
+
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        // متغیرهای DOM
+        const video = document.getElementById('videoElement');
+        const cameraRing = document.getElementById('cameraRing');
+        const instructionBox = document.getElementById('instructionBox');
+        const loadingLayer = document.getElementById('loadingLayer');
+        const successLayer = document.getElementById('successLayer');
+        const redirectAction = document.getElementById('redirectAction');
+        
+        const arrowRight = document.getElementById('arrowRight');
+        const arrowLeft = document.getElementById('arrowLeft');
+        const arrowUp = document.getElementById('arrowUp');
+        const arrowDown = document.getElementById('arrowDown');
+
+        // منطق هوش مصنوعی
+        let livenessState = 0; // 0: Straight, 1: Right, 2: Left, 3: Up, 4: Down, 5: Success
+        let holdTimer = 0;
+        let lostFramesCount = 0; 
+        let detectionInterval;
+
+        const MODEL_URL = 'https://cdn.jsdelivr.net/npm/@vladmandic/face-api/model/';
+
+        async function initApp() {
+            try {
+                loadingLayer.querySelector('span').innerText = "دانلود مدل هوش مصنوعی...";
+                await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
+                await faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL);
+                
+                loadingLayer.querySelector('span').innerText = "دسترسی به دوربین...";
+                const stream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { facingMode: 'user', width: { ideal: 480 }, height: { ideal: 480 } }, 
+                    audio: false 
+                });
+                video.srcObject = stream;
+            } catch (err) {
+                loadingLayer.querySelector('span').innerText = "خطا در دسترسی به دوربین.";
+                loadingLayer.querySelector('span').classList.add('text-red-400');
+            }
+        }
+
+        video.addEventListener('play', () => {
+            loadingLayer.classList.add('hidden');
+            video.classList.add('active'); 
+            updateUI(0);
+
+            detectionInterval = setInterval(async () => {
+                if (livenessState === 5) return;
+
+                const options = new faceapi.TinyFaceDetectorOptions({ inputSize: 224, scoreThreshold: 0.4 });
+                const detections = await faceapi.detectSingleFace(video, options).withFaceLandmarks();
+                
+                if (detections) {
+                    lostFramesCount = 0;
+                    analyzeLiveness(detections.landmarks);
+                } else {
+                    handleLostFace();
+                }
+            }, 100);
+        });
+
+        function handleLostFace() {
+            if (livenessState === 5) return;
+            lostFramesCount++;
+            
+            if (lostFramesCount > 15) {
+                livenessState = 0;
+                holdTimer = 0;
+                updateUI(0, true);
+            } else if (lostFramesCount > 5) {
+                cameraRing.className = "camera-wrapper ring-warning";
+                instructionBox.innerText = "لطفاً در کادر بمانید...";
+                instructionBox.className = "px-5 py-2 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-medium transition-all text-center";
+                hideAllArrows();
+            }
+        }
+
+        function analyzeLiveness(landmarks) {
+            const noseTip = landmarks.positions[30]; 
+            const noseBridge = landmarks.positions[27]; 
+            const chin = landmarks.positions[8]; 
+            const leftJaw = landmarks.positions[0];  
+            const rightJaw = landmarks.positions[16]; 
+
+            const distLeft = Math.abs(noseTip.x - leftJaw.x);
+            const distRight = Math.abs(noseTip.x - rightJaw.x);
+            const distUp = Math.abs(noseTip.y - noseBridge.y);
+            const distDown = Math.abs(chin.y - noseTip.y);
+
+            if (livenessState === 0) {
+                if (Math.abs(distLeft - distRight) < 45) {
+                    holdTimer++;
+                    instructionBox.innerText = `عالی... (${holdTimer}/3)`;
+                    if (holdTimer >= 3) { livenessState = 1; updateUI(1); holdTimer = 0; }
+                } else { updateUI(0); holdTimer = 0; }
+            } 
+            else if (livenessState === 1) { // راست
+                if (distRight > distLeft * 1.3) {
+                    holdTimer++;
+                    instructionBox.innerText = `نگه دارید... (${holdTimer}/3)`;
+                    if (holdTimer >= 3) { livenessState = 2; updateUI(2); holdTimer = 0; }
+                } else { updateUI(1); holdTimer = 0; }
+            }
+            else if (livenessState === 2) { // چپ
+                if (distLeft > distRight * 1.3) {
+                    holdTimer++;
+                    instructionBox.innerText = `نگه دارید... (${holdTimer}/3)`;
+                    if (holdTimer >= 3) { livenessState = 3; updateUI(3); holdTimer = 0; }
+                } else { updateUI(2); holdTimer = 0; }
+            }
+            else if (livenessState === 3) { // بالا
+                if (distDown > distUp * 2.2) { 
+                    holdTimer++;
+                    instructionBox.innerText = `نگه دارید... (${holdTimer}/3)`;
+                    if (holdTimer >= 3) { livenessState = 4; updateUI(4); holdTimer = 0; }
+                } else { updateUI(3); holdTimer = 0; }
+            }
+            else if (livenessState === 4) { // پایین
+                if (distUp > distDown * 0.9) { 
+                    holdTimer++;
+                    instructionBox.innerText = `نگه دارید... (${holdTimer}/3)`;
+                    if (holdTimer >= 3) { 
+                        livenessState = 5; 
+                        updateUI(5); 
+                        holdTimer = 0; 
+                        setTimeout(triggerSuccess, 300); 
+                    }
+                } else { updateUI(4); holdTimer = 0; }
+            }
+        }
+
+        function hideAllArrows() {
+            arrowRight.classList.add('opacity-0', 'translate-x-2');
+            arrowLeft.classList.add('opacity-0', '-translate-x-2');
+            arrowUp.classList.add('opacity-0', '-translate-y-2');
+            arrowDown.classList.add('opacity-0', 'translate-y-2');
+        }
+
+        function updateUI(state, fullReset = false) {
+            if(lostFramesCount > 5 && !fullReset) return; 
+
+            cameraRing.className = "camera-wrapper";
+            hideAllArrows();
+
+            const baseInstructionClass = "px-5 py-2 rounded-xl text-xs font-bold transition-all text-center ";
+
+            if (fullReset) {
+                cameraRing.classList.add('ring-warning');
+                instructionBox.innerText = "دوباره روبرو بایستید";
+                instructionBox.className = baseInstructionClass + "bg-red-500/10 border border-red-500/20 text-red-400 pulse-text";
+                return;
+            }
+
+            if (state === 0) {
+                cameraRing.classList.add('ring-scanning');
+                instructionBox.innerText = "مستقیم نگاه کنید";
+                instructionBox.className = baseInstructionClass + "bg-blue-500/10 border border-blue-500/20 text-blue-400";
+            } 
+            else if (state === 1) {
+                cameraRing.classList.add('ring-right');
+                arrowRight.classList.remove('opacity-0', 'translate-x-2');
+                instructionBox.innerText = "سر را به راست بچرخانید ➔";
+                instructionBox.className = baseInstructionClass + "bg-violet-500/10 border border-violet-500/20 text-violet-300";
+            }
+            else if (state === 2) {
+                cameraRing.classList.add('ring-left');
+                arrowLeft.classList.remove('opacity-0', '-translate-x-2');
+                instructionBox.innerText = "حالا به چپ بچرخانید ⬅";
+                instructionBox.className = baseInstructionClass + "bg-amber-500/10 border border-amber-500/20 text-amber-300";
+            }
+            else if (state === 3) {
+                cameraRing.classList.add('ring-up');
+                arrowUp.classList.remove('opacity-0', '-translate-y-2');
+                instructionBox.innerText = "سر را به بالا ببرید ⬆";
+                instructionBox.className = baseInstructionClass + "bg-pink-500/10 border border-pink-500/20 text-pink-300";
+            }
+            else if (state === 4) {
+                cameraRing.classList.add('ring-down');
+                arrowDown.classList.remove('opacity-0', 'translate-y-2');
+                instructionBox.innerText = "به پایین نگاه کنید ⬇";
+                instructionBox.className = baseInstructionClass + "bg-sky-500/10 border border-sky-500/20 text-sky-300";
+            }
+        }
+
+        function triggerSuccess() {
+            clearInterval(detectionInterval);
+            
+            // خاموش کردن دوربین
+            const stream = video.srcObject;
+            if(stream) stream.getTracks().forEach(track => track.stop());
+
+            cameraRing.className = "camera-wrapper ring-success";
+            successLayer.classList.remove('hidden');
+            
+            // متن سفارشی شما
+            instructionBox.innerText = "تایید شد! حالا می‌تونی بری تو سایت";
+            instructionBox.className = "px-5 py-2 rounded-xl text-xs font-bold transition-all text-center bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 pulse-text";
+
+            // نمایش دکمه هدایت شونده
+            redirectAction.classList.remove('hidden');
+            redirectAction.classList.add('flex');
+        }
+
+        window.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
