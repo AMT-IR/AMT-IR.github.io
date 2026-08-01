@@ -2,20 +2,28 @@
 <html lang="fa" dir="rtl" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>Verify | SPONSORACB</title>
+    <title>احراز هویت | SPONSORACB</title>
     
+<<<<<<< HEAD
     
+=======
+>>>>>>> 4c229142e66482ede4ca00eb26c80a91a8b6a904
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
+<<<<<<< HEAD
     
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script src="https://unpkg.com/lucide@latest"></script>
     
+=======
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+>>>>>>> 4c229142e66482ede4ca00eb26c80a91a8b6a904
     <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
 
     <script>
@@ -36,29 +44,38 @@
         }
 
         .ambient-bg {
-            background-color: #09090b; /* zinc-950 */
+            background-color: #09090b; 
             background-image: 
-                radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.08), transparent 40%),
-                radial-gradient(circle at 50% 100%, rgba(16, 185, 129, 0.05), transparent 40%);
+                radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.05), transparent 40%),
+                radial-gradient(circle at 50% 100%, rgba(16, 185, 129, 0.03), transparent 40%);
         }
 
         .glass-panel {
-            background: rgba(24, 24, 27, 0.4);
+            background: rgba(24, 24, 27, 0.6);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
+<<<<<<< HEAD
         /* Ø­Ù„Ù‚Ù‡ Ø¯ÙˆØ±Ø¨ÛŒÙ† - Ú©ÙˆÚ†Ú©ØªØ± Ùˆ Ø¸Ø±ÛŒÙâ€ŒØªØ± Ø´Ø¯Ù‡ */
         .camera-wrapper {
             position: relative;
             width: 220px; /* Ø³Ø§ÛŒØ² Ø¨Ø³ÛŒØ§Ø± Ù…ØªÙ†Ø§Ø³Ø¨ Ùˆ Ø¸Ø±ÛŒÙ */
             height: 220px;
+=======
+        .camera-wrapper {
+            position: relative;
+            width: 100%;            
+            max-width: 280px;       
+            aspect-ratio: 1 / 1;    
+>>>>>>> 4c229142e66482ede4ca00eb26c80a91a8b6a904
             border-radius: 50%;
             margin: 0 auto;
             overflow: hidden;
             background-color: #000; 
+<<<<<<< HEAD
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             /* Ø­Ø§Ø´ÛŒÙ‡ Ø¨Ø³ÛŒØ§Ø± Ù†Ø§Ø²Ú© Ùˆ Ù…Ø¯Ø±Ù† */
             box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.08), inset 0 0 20px rgba(0,0,0,0.8);
@@ -73,6 +90,20 @@
         .ring-down { box-shadow: 0 3px 0 2px rgba(14, 165, 233, 0.7), 0 15px 30px rgba(14, 165, 233, 0.3); }
         .ring-success { box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.8), 0 0 30px rgba(16, 185, 129, 0.4); }
         .ring-warning { box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.6), 0 0 20px rgba(239, 68, 68, 0.2); }
+=======
+            transition: all 0.4s ease-out;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), inset 0 0 20px rgba(0,0,0,0.8);
+            z-index: 10;
+        }
+
+        .ring-straight { box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.7), 0 0 30px rgba(59, 130, 246, 0.3); } 
+        .ring-right { box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.7), 0 0 30px rgba(139, 92, 246, 0.3); } 
+        .ring-left { box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.7), 0 0 30px rgba(245, 158, 11, 0.3); } 
+        .ring-up { box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.7), 0 0 30px rgba(236, 72, 153, 0.3); } 
+        .ring-down { box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.7), 0 0 30px rgba(14, 165, 233, 0.3); } 
+        .ring-success { box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.9), 0 0 40px rgba(16, 185, 129, 0.5); } 
+        .ring-warning { box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.7), 0 0 30px rgba(239, 68, 68, 0.3); } 
+>>>>>>> 4c229142e66482ede4ca00eb26c80a91a8b6a904
 
         .video-mirror-container {
             position: absolute;
@@ -92,33 +123,71 @@
         }
 
         video.active { opacity: 1; }
+        video.blurred { filter: blur(6px) brightness(0.5); }
 
-        .pulse-text { animation: pulse-text 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
-        @keyframes pulse-text { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+        @keyframes point-right { 0%, 100% { transform: translateY(-50%) translateX(0); } 50% { transform: translateY(-50%) translateX(8px); } }
+        @keyframes point-left { 0%, 100% { transform: translateY(-50%) translateX(0); } 50% { transform: translateY(-50%) translateX(-8px); } }
+        @keyframes point-up { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-8px); } }
+        @keyframes point-down { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+        
+        .anim-point-right { animation: point-right 0.8s infinite ease-in-out; }
+        .anim-point-left { animation: point-left 0.8s infinite ease-in-out; }
+        .anim-point-up { animation: point-up 0.8s infinite ease-in-out; }
+        .anim-point-down { animation: point-down 0.8s infinite ease-in-out; }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-up {
-            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in-up { animation: fadeInUp 0.5s ease forwards; }
+
+        @keyframes scaleInGlow { 0% { transform: scale(0); opacity: 0; } 70% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+        .animate-scale-in { animation: scaleInGlow 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+
+        .aura-glow { animation: pulse-glow 2s infinite alternate ease-in-out; }
+        @keyframes pulse-glow { 0% { box-shadow: 0 0 15px 5px rgba(16, 185, 129, 0.4); transform: scale(0.95); } 100% { box-shadow: 0 0 30px 10px rgba(16, 185, 129, 0.7); transform: scale(1.05); } }
+
+        .modal-overlay { background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
     </style>
 </head>
-<body class="ambient-bg text-white min-h-screen flex flex-col relative overflow-x-hidden">
+<body class="ambient-bg text-white min-h-screen flex flex-col relative overflow-hidden">
 
+<<<<<<< HEAD
     
     <nav class="w-full h-14 flex items-center justify-center px-4 border-b border-white/5 bg-transparent sticky top-0 z-40">
         <a href="#" class="font-black text-lg tracking-[0.2em] dir-ltr text-zinc-100 hover:text-blue-400 transition-colors">
+=======
+    <div id="welcomeModal" class="fixed inset-0 z-50 flex items-center justify-center modal-overlay p-4 sm:p-6 transition-opacity duration-300">
+        <div class="glass-panel w-full max-w-sm rounded-2xl p-6 sm:p-8 text-center animate-fade-in-up border border-white/10 shadow-2xl mx-auto">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 bg-zinc-800/50 border border-zinc-700 text-zinc-300 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-5">
+                <i data-lucide="shield" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+            </div>
+            <h2 class="text-base sm:text-lg font-bold text-white mb-3">سیستم احراز هویت</h2>
+            <p class="text-[11px] sm:text-xs text-zinc-400 font-medium leading-relaxed mb-6 sm:mb-8 text-justify">
+                کاربر گرامی، جهت تایید هویت، نیازمند بررسی زنده بودن چهره شما (Liveness Detection) هستیم. لطفاً دسترسی به دوربین را تایید نموده و جهت سر خود را طبق راهنما تغییر دهید.
+                <br><br>
+                <span class="text-blue-400 opacity-80">* اطلاعات تصویر شما ذخیره نخواهد شد.</span>
+            </p>
+            <button onclick="startProcess()" class="w-full py-3 rounded-lg bg-white hover:bg-zinc-200 text-zinc-900 font-bold text-sm transition-colors shadow-lg">
+                تایید و شروع اسکن
+            </button>
+        </div>
+    </div>
+
+    <nav class="w-full h-14 sm:h-16 flex items-center justify-center px-4 border-b border-white/5 bg-transparent sticky top-0 z-40">
+        <a href="#" class="font-bold text-base sm:text-lg tracking-widest dir-ltr text-zinc-100 hover:text-zinc-300 transition-colors">
+>>>>>>> 4c229142e66482ede4ca00eb26c80a91a8b6a904
             SPONSORACB
         </a>
     </nav>
 
+<<<<<<< HEAD
     
     <main class="flex-1 w-full max-w-sm mx-auto flex flex-col items-center justify-center p-4">
+=======
+    <main class="flex-1 w-full max-w-md mx-auto flex flex-col items-center justify-center p-4 sm:p-6 filter blur-md transition-all duration-500" id="mainContent">
+>>>>>>> 4c229142e66482ede4ca00eb26c80a91a8b6a904
         
-        <article class="w-full rounded-[28px] glass-panel p-6 flex flex-col items-center text-center relative overflow-hidden">
+        <article class="w-full rounded-[24px] sm:rounded-[32px] glass-panel p-5 sm:p-8 flex flex-col items-center text-center relative overflow-hidden">
             
+<<<<<<< HEAD
             <div class="mb-6 relative z-10">
                 <h1 class="text-xl font-bold mb-1.5 text-zinc-100" id="mainTitle">ØªØ§ÛŒÛŒØ¯ Ù‡ÙˆÛŒØª</h1>
                 <p class="text-xs text-zinc-400 font-medium" id="subTitle">Ú†Ù‡Ø±Ù‡ Ø®ÙˆØ¯ Ø±Ø§ Ø¯Ø± Ù…Ø±Ú©Ø² Ú©Ø§Ø¯Ø± Ù‚Ø±Ø§Ø± Ø¯Ù‡ÛŒØ¯</p>
@@ -126,9 +195,18 @@
 
             
             <div id="livenessState" class="w-full flex flex-col items-center z-10">
+=======
+            <div class="mb-5 sm:mb-8 relative z-10 w-full">
+                <h1 class="text-sm sm:text-base font-bold mb-1.5 text-zinc-100">احراز هویت</h1>
+                <p class="text-[10px] sm:text-[11px] text-zinc-400 font-medium">لطفاً فلش‌های راهنما را دنبال کنید</p>
+            </div>
+
+            <div id="livenessState" class="w-full flex flex-col items-center z-10 px-4 sm:px-0">
+>>>>>>> 4c229142e66482ede4ca00eb26c80a91a8b6a904
                 
-                <div class="relative mb-6 w-full flex justify-center items-center">
+                <div class="relative mb-6 sm:mb-8 w-full flex justify-center items-center">
                     
+<<<<<<< HEAD
                     
                     <div id="arrowRight" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-violet-500/80 backdrop-blur-sm text-white flex items-center justify-center opacity-0 transition-all duration-300 transform translate-x-2 z-0">
                         <i data-lucide="chevron-right" class="w-4 h-4"></i>
@@ -154,85 +232,163 @@
                         
                         <div id="successLayer" class="hidden absolute inset-0 flex flex-col items-center justify-center bg-emerald-500/80 backdrop-blur-md z-40 transition-all rounded-full">
                             <i data-lucide="check" class="w-14 h-14 text-white animate-bounce stroke-[3]"></i>
+=======
+                    <div id="cameraRing" class="camera-wrapper ring-straight">
+                        
+                        <div id="loadingLayer" class="absolute inset-0 flex flex-col items-center justify-center bg-zinc-900 z-30">
+                            <i data-lucide="loader-2" class="w-5 h-5 sm:w-6 sm:h-6 text-zinc-400 mb-2 sm:mb-3 animate-spin"></i>
+                            <span class="text-[9px] sm:text-[10px] font-medium text-zinc-500 text-center px-2">در حال آماده‌سازی منابع...</span>
+>>>>>>> 4c229142e66482ede4ca00eb26c80a91a8b6a904
                         </div>
 
                         <div class="video-mirror-container">
                             <video id="videoElement" autoplay muted playsinline></video>
                         </div>
+
+                        <div id="arrowRight" class="hidden absolute right-3 top-1/2 z-20 text-purple-400 anim-point-right bg-black/50 p-1.5 rounded-full backdrop-blur-sm border border-purple-500/40">
+                            <i data-lucide="arrow-right" class="w-6 h-6 sm:w-7 sm:h-7 drop-shadow-[0_0_8px_rgba(139,92,246,1)]"></i>
+                        </div>
+                        <div id="arrowLeft" class="hidden absolute left-3 top-1/2 z-20 text-amber-400 anim-point-left bg-black/50 p-1.5 rounded-full backdrop-blur-sm border border-amber-500/40">
+                            <i data-lucide="arrow-left" class="w-6 h-6 sm:w-7 sm:h-7 drop-shadow-[0_0_8px_rgba(245,158,11,1)]"></i>
+                        </div>
+                        <div id="arrowUp" class="hidden absolute top-3 left-1/2 z-20 text-pink-400 anim-point-up bg-black/50 p-1.5 rounded-full backdrop-blur-sm border border-pink-500/40">
+                            <i data-lucide="arrow-up" class="w-6 h-6 sm:w-7 sm:h-7 drop-shadow-[0_0_8px_rgba(236,72,153,1)]"></i>
+                        </div>
+                        <div id="arrowDown" class="hidden absolute bottom-3 left-1/2 z-20 text-sky-400 anim-point-down bg-black/50 p-1.5 rounded-full backdrop-blur-sm border border-sky-500/40">
+                            <i data-lucide="arrow-down" class="w-6 h-6 sm:w-7 sm:h-7 drop-shadow-[0_0_8px_rgba(14,165,233,1)]"></i>
+                        </div>
+
+                        <div id="successLayer" class="hidden absolute inset-0 z-40 flex-col items-center justify-center bg-black/40">
+                            <div class="relative flex items-center justify-center animate-scale-in">
+                                <div class="absolute inset-0 rounded-full bg-emerald-500/20 aura-glow blur-sm w-12 h-12 sm:w-16 sm:h-16 m-auto"></div>
+                                <div class="relative w-12 h-12 sm:w-16 sm:h-16 bg-emerald-500 rounded-full flex items-center justify-center shadow-lg border-2 border-emerald-300 z-10">
+                                    <i data-lucide="check" class="w-6 h-6 sm:w-8 sm:h-8 text-white stroke-[3]"></i>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
+<<<<<<< HEAD
                 
                 <div class="h-10 flex items-center justify-center w-full">
                     <div id="instructionBox" class="px-5 py-2 rounded-xl bg-zinc-800/40 border border-white/5 backdrop-blur-md text-xs font-medium text-white transition-all duration-300 text-center">
                         Ø¯Ø± Ø­Ø§Ù„ Ø§ØªØµØ§Ù„...
+=======
+                <div class="h-10 sm:h-12 flex items-center justify-center w-full max-w-[280px] mx-auto">
+                    <div id="instructionBox" class="px-3 sm:px-5 py-2.5 sm:py-3 rounded-lg bg-zinc-800/60 border border-zinc-700/50 text-[11px] sm:text-xs font-bold text-zinc-200 transition-all duration-300 text-center w-full">
+                        منتظر ارتباط با دوربین...
+>>>>>>> 4c229142e66482ede4ca00eb26c80a91a8b6a904
                     </div>
                 </div>
             </div>
 
+<<<<<<< HEAD
             
             <div id="redirectAction" class="hidden w-full mt-4 flex-col items-center animate-fade-in-up z-20">
                 <a href="https://SPONSORACB.ir" class="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-bold text-sm shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all">
                     <span>ÙˆØ±ÙˆØ¯</span>
                     <i data-lucide="external-link" class="w-4 h-4"></i>
+=======
+            <div id="redirectAction" class="hidden w-full max-w-[280px] mx-auto mt-5 sm:mt-6 flex-col items-center animate-fade-in-up z-20">
+                <a href="https://SPONSORACB.ir" class="w-full flex items-center justify-center gap-2 py-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-[13px] sm:text-sm transition-colors shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                    <span>ورود به پورتال اصلی</span>
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+>>>>>>> 4c229142e66482ede4ca00eb26c80a91a8b6a904
                 </a>
             </div>
 
         </article>
-
     </main>
+
+    <footer class="w-full py-4 sm:py-6 mt-auto flex justify-center text-[9px] sm:text-[10px] text-zinc-600 font-medium">
+        SPONSORACB © 2024
+    </footer>
 
     <script>
         lucide.createIcons();
 
+<<<<<<< HEAD
         // Ù…ØªØºÛŒØ±Ù‡Ø§ÛŒ DOM
+=======
+>>>>>>> 4c229142e66482ede4ca00eb26c80a91a8b6a904
         const video = document.getElementById('videoElement');
         const cameraRing = document.getElementById('cameraRing');
         const instructionBox = document.getElementById('instructionBox');
         const loadingLayer = document.getElementById('loadingLayer');
         const successLayer = document.getElementById('successLayer');
         const redirectAction = document.getElementById('redirectAction');
-        
-        const arrowRight = document.getElementById('arrowRight');
-        const arrowLeft = document.getElementById('arrowLeft');
-        const arrowUp = document.getElementById('arrowUp');
-        const arrowDown = document.getElementById('arrowDown');
+        const welcomeModal = document.getElementById('welcomeModal');
+        const mainContent = document.getElementById('mainContent');
 
+<<<<<<< HEAD
         // Ù…Ù†Ø·Ù‚ Ù‡ÙˆØ´ Ù…ØµÙ†ÙˆØ¹ÛŒ
         let livenessState = 0; // 0: Straight, 1: Right, 2: Left, 3: Up, 4: Down, 5: Success
+=======
+        let livenessState = 0; 
+>>>>>>> 4c229142e66482ede4ca00eb26c80a91a8b6a904
         let holdTimer = 0;
         let lostFramesCount = 0; 
         let detectionInterval;
 
         const MODEL_URL = 'https://cdn.jsdelivr.net/npm/@vladmandic/face-api/model/';
+        
+        const INTERVAL_MS = 150; 
+        const TICKS_STRAIGHT = 3;  
+        const TICKS_TURN = 2;      
 
-        async function initApp() {
+        function startProcess() {
+            welcomeModal.style.opacity = '0';
+            setTimeout(() => {
+                welcomeModal.classList.add('hidden');
+                mainContent.classList.remove('blur-md');
+                requestCameraAndModels();
+            }, 300);
+        }
+
+        async function requestCameraAndModels() {
             try {
+<<<<<<< HEAD
                 loadingLayer.querySelector('span').innerText = "Ø¯Ø§Ù†Ù„ÙˆØ¯ Ù…Ø¯Ù„ Ù‡ÙˆØ´ Ù…ØµÙ†ÙˆØ¹ÛŒ...";
                 await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
                 await faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL);
                 
                 loadingLayer.querySelector('span').innerText = "Ø¯Ø³ØªØ±Ø³ÛŒ Ø¨Ù‡ Ø¯ÙˆØ±Ø¨ÛŒÙ†...";
+=======
+                loadingLayer.querySelector('span').innerText = "در حال دریافت الگوریتم پردازش...";
+                await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
+                await faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL);
+                
+                loadingLayer.querySelector('span').innerText = "در حال ارتباط با دوربین...";
+>>>>>>> 4c229142e66482ede4ca00eb26c80a91a8b6a904
                 const stream = await navigator.mediaDevices.getUserMedia({ 
                     video: { facingMode: 'user', width: { ideal: 480 }, height: { ideal: 480 } }, 
                     audio: false 
                 });
                 video.srcObject = stream;
             } catch (err) {
+<<<<<<< HEAD
                 loadingLayer.querySelector('span').innerText = "Ø®Ø·Ø§ Ø¯Ø± Ø¯Ø³ØªØ±Ø³ÛŒ Ø¨Ù‡ Ø¯ÙˆØ±Ø¨ÛŒÙ†.";
+=======
+                loadingLayer.querySelector('span').innerText = "خطا: دسترسی به دوربین مقدور نیست.";
+>>>>>>> 4c229142e66482ede4ca00eb26c80a91a8b6a904
                 loadingLayer.querySelector('span').classList.add('text-red-400');
+                loadingLayer.querySelector('i').setAttribute('data-lucide', 'alert-circle');
+                loadingLayer.querySelector('i').classList.replace('text-zinc-400', 'text-red-400');
+                lucide.createIcons();
             }
         }
 
         video.addEventListener('play', () => {
             loadingLayer.classList.add('hidden');
             video.classList.add('active'); 
-            updateUI(0);
+            updateUIState(0);
 
             detectionInterval = setInterval(async () => {
                 if (livenessState === 5) return;
 
-                const options = new faceapi.TinyFaceDetectorOptions({ inputSize: 224, scoreThreshold: 0.4 });
+                const options = new faceapi.TinyFaceDetectorOptions({ inputSize: 160, scoreThreshold: 0.3 });
                 const detections = await faceapi.detectSingleFace(video, options).withFaceLandmarks();
                 
                 if (detections) {
@@ -241,29 +397,40 @@
                 } else {
                     handleLostFace();
                 }
-            }, 100);
+            }, INTERVAL_MS);
         });
 
         function handleLostFace() {
             if (livenessState === 5) return;
             lostFramesCount++;
             
-            if (lostFramesCount > 15) {
+            if (lostFramesCount > 10) { 
                 livenessState = 0;
                 holdTimer = 0;
-                updateUI(0, true);
-            } else if (lostFramesCount > 5) {
+                updateUIText("ارتباط چهره قطع شد، مجدداً روبرو بایستید");
                 cameraRing.className = "camera-wrapper ring-warning";
+<<<<<<< HEAD
                 instructionBox.innerText = "Ù„Ø·ÙØ§Ù‹ Ø¯Ø± Ú©Ø§Ø¯Ø± Ø¨Ù…Ø§Ù†ÛŒØ¯...";
                 instructionBox.className = "px-5 py-2 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-medium transition-all text-center";
+=======
+>>>>>>> 4c229142e66482ede4ca00eb26c80a91a8b6a904
                 hideAllArrows();
+            } else if (lostFramesCount > 4) {
+                updateUIText("لطفاً چهره خود را در کادر حفظ نمایید...");
+                cameraRing.className = "camera-wrapper ring-warning";
             }
+        }
+
+        function hideAllArrows() {
+            ['arrowRight', 'arrowLeft', 'arrowUp', 'arrowDown'].forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
         }
 
         function analyzeLiveness(landmarks) {
             const noseTip = landmarks.positions[30]; 
-            const noseBridge = landmarks.positions[27]; 
-            const chin = landmarks.positions[8]; 
+            const noseBridge = landmarks.positions[27];
+            const chin = landmarks.positions[8];
             const leftJaw = landmarks.positions[0];  
             const rightJaw = landmarks.positions[16]; 
 
@@ -273,8 +440,9 @@
             const distDown = Math.abs(chin.y - noseTip.y);
 
             if (livenessState === 0) {
-                if (Math.abs(distLeft - distRight) < 45) {
+                if (Math.abs(distLeft - distRight) < 150) { 
                     holdTimer++;
+<<<<<<< HEAD
                     instructionBox.innerText = `Ø¹Ø§Ù„ÛŒ... (${holdTimer}/3)`;
                     if (holdTimer >= 3) { livenessState = 1; updateUI(1); holdTimer = 0; }
                 } else { updateUI(0); holdTimer = 0; }
@@ -309,24 +477,79 @@
                         updateUI(5); 
                         holdTimer = 0; 
                         setTimeout(triggerSuccess, 300); 
+=======
+                    updateUIState(0);
+                    updateUIText("کمی صبر کنید...");
+                    if (holdTimer >= TICKS_STRAIGHT) { 
+                        livenessState = 1; holdTimer = 0; updateUIState(1); 
+>>>>>>> 4c229142e66482ede4ca00eb26c80a91a8b6a904
                     }
-                } else { updateUI(4); holdTimer = 0; }
+                } else { 
+                    holdTimer = 0; updateUIState(0); 
+                    updateUIText("لطفاً مستقیم نگاه کنید"); 
+                }
+            } 
+            else if (livenessState === 1) { 
+                if (distRight > distLeft * 1.02) { 
+                    holdTimer++;
+                    updateUIText("کمی صبر کنید...");
+                    if (holdTimer >= TICKS_TURN) { 
+                        livenessState = 2; holdTimer = 0; updateUIState(2); 
+                    }
+                } else { 
+                    holdTimer = 0; updateUIState(1); 
+                    updateUIText("سر را به سمت راست بچرخانید"); 
+                }
+            }
+            else if (livenessState === 2) { 
+                if (distLeft > distRight * 1.02) {
+                    holdTimer++;
+                    updateUIText("کمی صبر کنید...");
+                    if (holdTimer >= TICKS_TURN) { 
+                        livenessState = 3; holdTimer = 0; updateUIState(3); 
+                    }
+                } else { 
+                    holdTimer = 0; updateUIState(2); 
+                    updateUIText("سر را به سمت چپ بچرخانید"); 
+                }
+            }
+            else if (livenessState === 3) {
+                if (distDown > distUp * 1.1) {
+                    holdTimer++;
+                    updateUIText("کمی صبر کنید...");
+                    if (holdTimer >= TICKS_TURN) { 
+                        livenessState = 4; holdTimer = 0; updateUIState(4); 
+                    }
+                } else { 
+                    holdTimer = 0; updateUIState(3); 
+                    updateUIText("سر را کمی به سمت بالا حرکت دهید"); 
+                }
+            }
+            else if (livenessState === 4) {
+                if (distUp > distDown * 0.95) {
+                    holdTimer++;
+                    updateUIText("کمی صبر کنید...");
+                    if (holdTimer >= TICKS_TURN) { 
+                        livenessState = 5; holdTimer = 0; updateUIState(5); 
+                        setTimeout(triggerSuccess, 200);
+                    }
+                } else { 
+                    holdTimer = 0; updateUIState(4); 
+                    updateUIText("سر را کمی به سمت پایین حرکت دهید"); 
+                }
             }
         }
 
-        function hideAllArrows() {
-            arrowRight.classList.add('opacity-0', 'translate-x-2');
-            arrowLeft.classList.add('opacity-0', '-translate-x-2');
-            arrowUp.classList.add('opacity-0', '-translate-y-2');
-            arrowDown.classList.add('opacity-0', 'translate-y-2');
+        function updateUIText(text) {
+            instructionBox.innerText = text;
         }
 
-        function updateUI(state, fullReset = false) {
-            if(lostFramesCount > 5 && !fullReset) return; 
+        function updateUIState(state) {
+            if (lostFramesCount > 4) return;
 
-            cameraRing.className = "camera-wrapper";
             hideAllArrows();
 
+<<<<<<< HEAD
             const baseInstructionClass = "px-5 py-2 rounded-xl text-xs font-bold transition-all text-center ";
 
             if (fullReset) {
@@ -364,29 +587,66 @@
                 arrowDown.classList.remove('opacity-0', 'translate-y-2');
                 instructionBox.innerText = "Ø¨Ù‡ Ù¾Ø§ÛŒÛŒÙ† Ù†Ú¯Ø§Ù‡ Ú©Ù†ÛŒØ¯ â¬‡";
                 instructionBox.className = baseInstructionClass + "bg-sky-500/10 border border-sky-500/20 text-sky-300";
+=======
+            if (state === 0) {
+                cameraRing.className = "camera-wrapper ring-straight";
+            }
+            else if (state === 1) {
+                cameraRing.className = "camera-wrapper ring-right";
+                document.getElementById('arrowRight').classList.remove('hidden');
+            }
+            else if (state === 2) {
+                cameraRing.className = "camera-wrapper ring-left";
+                document.getElementById('arrowLeft').classList.remove('hidden');
+            }
+            else if (state === 3) {
+                cameraRing.className = "camera-wrapper ring-up";
+                document.getElementById('arrowUp').classList.remove('hidden');
+            }
+            else if (state === 4) {
+                cameraRing.className = "camera-wrapper ring-down";
+                document.getElementById('arrowDown').classList.remove('hidden');
+            }
+            else if (state === 5) {
+                cameraRing.className = "camera-wrapper ring-success";
+>>>>>>> 4c229142e66482ede4ca00eb26c80a91a8b6a904
             }
         }
 
         function triggerSuccess() {
             clearInterval(detectionInterval);
+            hideAllArrows();
             
+<<<<<<< HEAD
             // Ø®Ø§Ù…ÙˆØ´ Ú©Ø±Ø¯Ù† Ø¯ÙˆØ±Ø¨ÛŒÙ†
+=======
+>>>>>>> 4c229142e66482ede4ca00eb26c80a91a8b6a904
             const stream = video.srcObject;
             if(stream) stream.getTracks().forEach(track => track.stop());
+            video.pause();
+            video.classList.add('blurred');
 
             cameraRing.className = "camera-wrapper ring-success";
-            successLayer.classList.remove('hidden');
             
+<<<<<<< HEAD
             // Ù…ØªÙ† Ø³ÙØ§Ø±Ø´ÛŒ Ø´Ù…Ø§
             instructionBox.innerText = "ØªØ§ÛŒÛŒØ¯ Ø´Ø¯!";
             instructionBox.className = "px-5 py-2 rounded-xl text-xs font-bold transition-all text-center bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 pulse-text";
 
             // Ù†Ù…Ø§ÛŒØ´ Ø¯Ú©Ù…Ù‡ Ù‡Ø¯Ø§ÛŒØª Ø´ÙˆÙ†Ø¯Ù‡
+=======
+            successLayer.classList.remove('hidden');
+            successLayer.classList.add('flex');
+            
+            updateUIText("احراز هویت با موفقیت انجام شد");
+            instructionBox.classList.replace('bg-zinc-800/60', 'bg-emerald-500/10');
+            instructionBox.classList.replace('border-zinc-700/50', 'border-emerald-500/20');
+            instructionBox.classList.replace('text-zinc-200', 'text-emerald-400');
+
+>>>>>>> 4c229142e66482ede4ca00eb26c80a91a8b6a904
             redirectAction.classList.remove('hidden');
             redirectAction.classList.add('flex');
         }
-
-        window.addEventListener('DOMContentLoaded', initApp);
     </script>
 </body>
 </html>
