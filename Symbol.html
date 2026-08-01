@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr" class="dark scroll-smooth">
@@ -20,7 +20,7 @@
 
     <script>
         tailwind.config = {
-            darkMode: 'class', // ÙØ¹Ø§Ù„â€ŒØ³Ø§Ø²ÛŒ Ø¯Ø§Ø±Ú© Ù…ÙˆØ¯ Ø§Ø² Ø·Ø±ÛŒÙ‚ Ú©Ù„Ø§Ø³
+            darkMode: 'class', // فعال‌سازی دارک مود از طریق کلاس
             theme: {
                 extend: {
                     fontFamily: {
@@ -145,7 +145,7 @@
     <footer class="w-full py-6 mt-auto border-t glass-base flex flex-col items-center justify-center gap-2 transition-colors
         bg-white/40 border-zinc-200/50 
         dark:bg-zinc-950/40 dark:border-zinc-800/50">
-        <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400">Â© Official Registry Database</p>
+        <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400">© Official Registry Database</p>
         <a href="https://AMT-IR.github.io" target="_blank" class="flex items-center gap-1.5 text-sm font-bold transition-colors text-zinc-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400">
             <i data-lucide="external-link" class="w-4 h-4"></i>
             <span>AMT-IR Central Portal</span>
@@ -192,19 +192,19 @@
 
     
     <script>
-        // Ø¢ÛŒÚ©ÙˆÙ†â€ŒÙ‡Ø§
+        // آیکون‌ها
         lucide.createIcons();
 
-        // ØªØºÛŒÛŒØ± ØªÙ… (Ø¯Ø§Ø±Ú© / Ù„Ø§ÛŒØª)
+        // تغییر تم (دارک / لایت)
         function toggleTheme() {
             document.documentElement.classList.toggle('dark');
         }
 
-        // ØªÙ†Ø¸ÛŒÙ… ØªØ§Ø±ÛŒØ®
+        // تنظیم تاریخ
         const options = { year: 'numeric', month: 'short', day: 'numeric' };
         document.getElementById('currentDate').innerText = new Date().toLocaleDateString('en-US', options).toUpperCase();
 
-        // Ø¯Ø§Ø¯Ù‡â€ŒÙ‡Ø§ÛŒ Ú¯ÙˆØ§Ù‡ÛŒÙ†Ø§Ù…Ù‡â€ŒÙ‡Ø§
+        // داده‌های گواهینامه‌ها
         const licenses = [
             { img: "https://up.20script.ir/file/66d3-e4dad337-63ad-4862-ad54-deb0ceeb821a-removalai-preview.png", title: "Premium Business License", ref: "LIC-8992-A", year: "2022", expiry: "2042", status: "Active" },
             { img: "https://up.20script.ir/file/d734-159f72bb-e528-40f9-a12e-007744bee144-removalai-preview.png", title: "International Trade Certificate", ref: "TRD-4410-X", year: "2023", expiry: "2043", status: "Active" },
@@ -217,16 +217,16 @@
 
         const grid = document.getElementById('grid');
 
-        // Ø³Ø§Ø®Øª Ú©Ø§Ø±Øªâ€ŒÙ‡Ø§
+        // ساخت کارت‌ها
         licenses.forEach((lic, index) => {
             const card = document.createElement('div');
             
-            // Ø§Ø³ØªØ§ÛŒÙ„â€ŒÙ‡Ø§ÛŒ Ù…Ø´ØªØ±Ú© Ø¯Ú©Ù…Ù‡ Ùˆ Ú©Ø§Ø±Øª Ø¨Ø§ Ù‚Ø§Ø¨Ù„ÛŒØª ØªØºÛŒÛŒØ± ØªÙ…
+            // استایل‌های مشترک دکمه و کارت با قابلیت تغییر تم
             card.className = `w-full rounded-[24px] border glass-base p-4 sm:p-5 flex flex-col gap-4 cursor-pointer group transition-all duration-300
                 bg-white/70 border-zinc-200/80 hover:bg-white hover:shadow-lg
                 dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 dark:hover:border-zinc-700`;
             
-            // Ø§Ù†ÛŒÙ…ÛŒØ´Ù† Ù„ÙˆØ¯
+            // انیمیشن لود
             card.style.opacity = '0';
             card.style.animation = `fadeInUp 0.6s ease-out ${0.1 + (index * 0.1)}s forwards`;
             
@@ -272,10 +272,10 @@
             grid.appendChild(card);
         });
 
-        // Ø±Ù†Ø¯Ø± Ù…Ø¬Ø¯Ø¯ Ø¢ÛŒÚ©ÙˆÙ†â€ŒÙ‡Ø§ÛŒ ØªØ²Ø±ÛŒÙ‚ Ø´Ø¯Ù‡
+        // رندر مجدد آیکون‌های تزریق شده
         lucide.createIcons();
 
-        // Ù…Ù†Ø·Ù‚ Modal
+        // منطق Modal
         const modal = document.getElementById('modal');
         const modalImg = document.getElementById('modalImg');
         const modalContent = document.getElementById('modal-content');
@@ -285,13 +285,13 @@
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             
-            // ØªØ§Ø®ÛŒØ± Ú©ÙˆÚ†Ú© Ø¨Ø±Ø§ÛŒ Ø§Ø¬Ø±Ø§ÛŒ Ø§Ù†ÛŒÙ…ÛŒØ´Ù† CSS
+            // تاخیر کوچک برای اجرای انیمیشن CSS
             setTimeout(() => {
                 modal.classList.remove('opacity-0');
                 modalContent.classList.remove('translate-y-4');
                 modalContent.classList.add('translate-y-0');
             }, 10);
-            document.body.style.overflow = 'hidden'; // Ù‚ÙÙ„ Ú©Ø±Ø¯Ù† Ø§Ø³Ú©Ø±ÙˆÙ„ ØµÙØ­Ù‡
+            document.body.style.overflow = 'hidden'; // قفل کردن اسکرول صفحه
         }
 
         function closeModal() {
@@ -303,18 +303,18 @@
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
                 modalImg.src = ''; 
-                document.body.style.overflow = 'auto'; // Ø¨Ø§Ø² Ú©Ø±Ø¯Ù† Ø§Ø³Ú©Ø±ÙˆÙ„
+                document.body.style.overflow = 'auto'; // باز کردن اسکرول
             }, 300); 
         }
 
-        // Ø¨Ø³ØªÙ† Ø¨Ø§ Ú©Ù„ÛŒÚ© Ø±ÙˆÛŒ ÙØ¶Ø§ÛŒ Ø®Ø§Ù„ÛŒ
+        // بستن با کلیک روی فضای خالی
         modal.addEventListener('click', function(e) {
             if (e.target === modal) {
                 closeModal();
             }
         });
 
-        // Ø¨Ø³ØªÙ† Ø¨Ø§ Ø¯Ú©Ù…Ù‡ Esc
+        // بستن با دکمه Esc
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
                 closeModal();

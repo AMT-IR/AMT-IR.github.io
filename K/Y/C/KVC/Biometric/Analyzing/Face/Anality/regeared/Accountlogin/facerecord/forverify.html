@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -54,7 +54,7 @@
 <<<<<<< HEAD
         
 =======
-        /* Ø­Ù„Ù‚Ù‡ Ø¯ÙˆØ±Ø¨ÛŒÙ† - Ú©ÙˆÚ†Ú©ØªØ± Ùˆ Ø¸Ø±ÛŒÙâ€ŒØªØ± Ø´Ø¯Ù‡ */
+        /* حلقه دوربین - کوچکتر و ظریف‌تر شده */
 >>>>>>> parent of 3090054 (Update forverify.html)
         .camera-wrapper {
             position: relative;
@@ -125,8 +125,8 @@
         <article class="w-full rounded-[28px] glass-panel p-6 flex flex-col items-center text-center relative overflow-hidden">
             
             <div class="mb-6 relative z-10">
-                <h1 class="text-xl font-bold mb-1.5 text-zinc-100" id="mainTitle">ØªØ§ÛŒÛŒØ¯ Ù‡ÙˆÛŒØª</h1>
-                <p class="text-xs text-zinc-400 font-medium" id="subTitle">Ú†Ù‡Ø±Ù‡ Ø®ÙˆØ¯ Ø±Ø§ Ø¯Ø± Ù…Ø±Ú©Ø² Ú©Ø§Ø¯Ø± Ù‚Ø±Ø§Ø± Ø¯Ù‡ÛŒØ¯</p>
+                <h1 class="text-xl font-bold mb-1.5 text-zinc-100" id="mainTitle">تایید هویت</h1>
+                <p class="text-xs text-zinc-400 font-medium" id="subTitle">چهره خود را در مرکز کادر قرار دهید</p>
             </div>
 
             
@@ -153,7 +153,7 @@
                         
                         <div id="loadingLayer" class="absolute inset-0 flex flex-col items-center justify-center bg-zinc-900 z-30">
                             <i data-lucide="scan-face" class="w-8 h-8 text-blue-500 mb-2 pulse-text"></i>
-                            <span class="text-[10px] font-medium text-zinc-400">Ø±Ø§Ù‡â€ŒØ§Ù†Ø¯Ø§Ø²ÛŒ Ø¯ÙˆØ±Ø¨ÛŒÙ†...</span>
+                            <span class="text-[10px] font-medium text-zinc-400">راه‌اندازی دوربین...</span>
                         </div>
 
                         
@@ -170,7 +170,7 @@
                 
                 <div class="h-10 flex items-center justify-center w-full">
                     <div id="instructionBox" class="px-5 py-2 rounded-xl bg-zinc-800/40 border border-white/5 backdrop-blur-md text-xs font-medium text-white transition-all duration-300 text-center">
-                        Ø¯Ø± Ø­Ø§Ù„ Ø§ØªØµØ§Ù„...
+                        در حال اتصال...
                     </div>
                 </div>
             </div>
@@ -178,7 +178,7 @@
             
             <div id="redirectAction" class="hidden w-full mt-4 flex-col items-center animate-fade-in-up z-20">
                 <a href="https://SPONSORACB.ir" class="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-bold text-sm shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all">
-                    <span>ÙˆØ±ÙˆØ¯</span>
+                    <span>ورود</span>
                     <i data-lucide="external-link" class="w-4 h-4"></i>
                 </a>
             </div>
@@ -190,7 +190,7 @@
     <script>
         lucide.createIcons();
 
-        // Ù…ØªØºÛŒØ±Ù‡Ø§ÛŒ DOM
+        // متغیرهای DOM
         const video = document.getElementById('videoElement');
         const cameraRing = document.getElementById('cameraRing');
         const instructionBox = document.getElementById('instructionBox');
@@ -203,7 +203,7 @@
         const arrowUp = document.getElementById('arrowUp');
         const arrowDown = document.getElementById('arrowDown');
 
-        // Ù…Ù†Ø·Ù‚ Ù‡ÙˆØ´ Ù…ØµÙ†ÙˆØ¹ÛŒ
+        // منطق هوش مصنوعی
         let livenessState = 0; // 0: Straight, 1: Right, 2: Left, 3: Up, 4: Down, 5: Success
         let holdTimer = 0;
         let lostFramesCount = 0; 
@@ -213,18 +213,18 @@
 
         async function initApp() {
             try {
-                loadingLayer.querySelector('span').innerText = "Ø¯Ø§Ù†Ù„ÙˆØ¯ Ù…Ø¯Ù„ Ù‡ÙˆØ´ Ù…ØµÙ†ÙˆØ¹ÛŒ...";
+                loadingLayer.querySelector('span').innerText = "دانلود مدل هوش مصنوعی...";
                 await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
                 await faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL);
                 
-                loadingLayer.querySelector('span').innerText = "Ø¯Ø³ØªØ±Ø³ÛŒ Ø¨Ù‡ Ø¯ÙˆØ±Ø¨ÛŒÙ†...";
+                loadingLayer.querySelector('span').innerText = "دسترسی به دوربین...";
                 const stream = await navigator.mediaDevices.getUserMedia({ 
                     video: { facingMode: 'user', width: { ideal: 480 }, height: { ideal: 480 } }, 
                     audio: false 
                 });
                 video.srcObject = stream;
             } catch (err) {
-                loadingLayer.querySelector('span').innerText = "Ø®Ø·Ø§ Ø¯Ø± Ø¯Ø³ØªØ±Ø³ÛŒ Ø¨Ù‡ Ø¯ÙˆØ±Ø¨ÛŒÙ†.";
+                loadingLayer.querySelector('span').innerText = "خطا در دسترسی به دوربین.";
                 loadingLayer.querySelector('span').classList.add('text-red-400');
             }
         }
@@ -259,7 +259,7 @@
                 updateUI(0, true);
             } else if (lostFramesCount > 5) {
                 cameraRing.className = "camera-wrapper ring-warning";
-                instructionBox.innerText = "Ù„Ø·ÙØ§Ù‹ Ø¯Ø± Ú©Ø§Ø¯Ø± Ø¨Ù…Ø§Ù†ÛŒØ¯...";
+                instructionBox.innerText = "لطفاً در کادر بمانید...";
                 instructionBox.className = "px-5 py-2 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-medium transition-all text-center";
                 hideAllArrows();
             }
@@ -280,35 +280,35 @@
             if (livenessState === 0) {
                 if (Math.abs(distLeft - distRight) < 45) {
                     holdTimer++;
-                    instructionBox.innerText = `Ø¹Ø§Ù„ÛŒ... (${holdTimer}/3)`;
+                    instructionBox.innerText = `عالی... (${holdTimer}/3)`;
                     if (holdTimer >= 3) { livenessState = 1; updateUI(1); holdTimer = 0; }
                 } else { updateUI(0); holdTimer = 0; }
             } 
-            else if (livenessState === 1) { // Ø±Ø§Ø³Øª
+            else if (livenessState === 1) { // راست
                 if (distRight > distLeft * 1.3) {
                     holdTimer++;
-                    instructionBox.innerText = `Ù†Ú¯Ù‡ Ø¯Ø§Ø±ÛŒØ¯... (${holdTimer}/3)`;
+                    instructionBox.innerText = `نگه دارید... (${holdTimer}/3)`;
                     if (holdTimer >= 3) { livenessState = 2; updateUI(2); holdTimer = 0; }
                 } else { updateUI(1); holdTimer = 0; }
             }
-            else if (livenessState === 2) { // Ú†Ù¾
+            else if (livenessState === 2) { // چپ
                 if (distLeft > distRight * 1.3) {
                     holdTimer++;
-                    instructionBox.innerText = `Ù†Ú¯Ù‡ Ø¯Ø§Ø±ÛŒØ¯... (${holdTimer}/3)`;
+                    instructionBox.innerText = `نگه دارید... (${holdTimer}/3)`;
                     if (holdTimer >= 3) { livenessState = 3; updateUI(3); holdTimer = 0; }
                 } else { updateUI(2); holdTimer = 0; }
             }
-            else if (livenessState === 3) { // Ø¨Ø§Ù„Ø§
+            else if (livenessState === 3) { // بالا
                 if (distDown > distUp * 2.2) { 
                     holdTimer++;
-                    instructionBox.innerText = `Ù†Ú¯Ù‡ Ø¯Ø§Ø±ÛŒØ¯... (${holdTimer}/3)`;
+                    instructionBox.innerText = `نگه دارید... (${holdTimer}/3)`;
                     if (holdTimer >= 3) { livenessState = 4; updateUI(4); holdTimer = 0; }
                 } else { updateUI(3); holdTimer = 0; }
             }
-            else if (livenessState === 4) { // Ù¾Ø§ÛŒÛŒÙ†
+            else if (livenessState === 4) { // پایین
                 if (distUp > distDown * 0.9) { 
                     holdTimer++;
-                    instructionBox.innerText = `Ù†Ú¯Ù‡ Ø¯Ø§Ø±ÛŒØ¯... (${holdTimer}/3)`;
+                    instructionBox.innerText = `نگه دارید... (${holdTimer}/3)`;
                     if (holdTimer >= 3) { 
                         livenessState = 5; 
                         updateUI(5); 
@@ -336,38 +336,38 @@
 
             if (fullReset) {
                 cameraRing.classList.add('ring-warning');
-                instructionBox.innerText = "Ø¯ÙˆØ¨Ø§Ø±Ù‡ Ø±ÙˆØ¨Ø±Ùˆ Ø¨Ø§ÛŒØ³ØªÛŒØ¯";
+                instructionBox.innerText = "دوباره روبرو بایستید";
                 instructionBox.className = baseInstructionClass + "bg-red-500/10 border border-red-500/20 text-red-400 pulse-text";
                 return;
             }
 
             if (state === 0) {
                 cameraRing.classList.add('ring-scanning');
-                instructionBox.innerText = "Ù…Ø³ØªÙ‚ÛŒÙ… Ù†Ú¯Ø§Ù‡ Ú©Ù†ÛŒØ¯";
+                instructionBox.innerText = "مستقیم نگاه کنید";
                 instructionBox.className = baseInstructionClass + "bg-blue-500/10 border border-blue-500/20 text-blue-400";
             } 
             else if (state === 1) {
                 cameraRing.classList.add('ring-right');
                 arrowRight.classList.remove('opacity-0', 'translate-x-2');
-                instructionBox.innerText = "Ø³Ø± Ø±Ø§ Ø¨Ù‡ Ø±Ø§Ø³Øª Ø¨Ú†Ø±Ø®Ø§Ù†ÛŒØ¯ âž”";
+                instructionBox.innerText = "سر را به راست بچرخانید ➔";
                 instructionBox.className = baseInstructionClass + "bg-violet-500/10 border border-violet-500/20 text-violet-300";
             }
             else if (state === 2) {
                 cameraRing.classList.add('ring-left');
                 arrowLeft.classList.remove('opacity-0', '-translate-x-2');
-                instructionBox.innerText = "Ø­Ø§Ù„Ø§ Ø¨Ù‡ Ú†Ù¾ Ø¨Ú†Ø±Ø®Ø§Ù†ÛŒØ¯ â¬…";
+                instructionBox.innerText = "حالا به چپ بچرخانید ⬅";
                 instructionBox.className = baseInstructionClass + "bg-amber-500/10 border border-amber-500/20 text-amber-300";
             }
             else if (state === 3) {
                 cameraRing.classList.add('ring-up');
                 arrowUp.classList.remove('opacity-0', '-translate-y-2');
-                instructionBox.innerText = "Ø³Ø± Ø±Ø§ Ø¨Ù‡ Ø¨Ø§Ù„Ø§ Ø¨Ø¨Ø±ÛŒØ¯ â¬†";
+                instructionBox.innerText = "سر را به بالا ببرید ⬆";
                 instructionBox.className = baseInstructionClass + "bg-pink-500/10 border border-pink-500/20 text-pink-300";
             }
             else if (state === 4) {
                 cameraRing.classList.add('ring-down');
                 arrowDown.classList.remove('opacity-0', 'translate-y-2');
-                instructionBox.innerText = "Ø¨Ù‡ Ù¾Ø§ÛŒÛŒÙ† Ù†Ú¯Ø§Ù‡ Ú©Ù†ÛŒØ¯ â¬‡";
+                instructionBox.innerText = "به پایین نگاه کنید ⬇";
                 instructionBox.className = baseInstructionClass + "bg-sky-500/10 border border-sky-500/20 text-sky-300";
             }
         }
@@ -375,18 +375,18 @@
         function triggerSuccess() {
             clearInterval(detectionInterval);
             
-            // Ø®Ø§Ù…ÙˆØ´ Ú©Ø±Ø¯Ù† Ø¯ÙˆØ±Ø¨ÛŒÙ†
+            // خاموش کردن دوربین
             const stream = video.srcObject;
             if(stream) stream.getTracks().forEach(track => track.stop());
 
             cameraRing.className = "camera-wrapper ring-success";
             successLayer.classList.remove('hidden');
             
-            // Ù…ØªÙ† Ø³ÙØ§Ø±Ø´ÛŒ Ø´Ù…Ø§
-            instructionBox.innerText = "ØªØ§ÛŒÛŒØ¯ Ø´Ø¯!";
+            // متن سفارشی شما
+            instructionBox.innerText = "تایید شد!";
             instructionBox.className = "px-5 py-2 rounded-xl text-xs font-bold transition-all text-center bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 pulse-text";
 
-            // Ù†Ù…Ø§ÛŒØ´ Ø¯Ú©Ù…Ù‡ Ù‡Ø¯Ø§ÛŒØª Ø´ÙˆÙ†Ø¯Ù‡
+            // نمایش دکمه هدایت شونده
             redirectAction.classList.remove('hidden');
             redirectAction.classList.add('flex');
         }
