@@ -1,21 +1,21 @@
-
+﻿
 <!DOCTYPE html>
-<!-- دارک مود به صورت پیش‌فرض فعال است -->
+
 <html lang="fa" dir="rtl" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تعرفه‌ها و اشتراک‌های هوش مصنوعی | SPONSORACB</title>
+    <title>ØªØ¹Ø±ÙÙ‡â€ŒÙ‡Ø§ Ùˆ Ø§Ø´ØªØ±Ø§Ú©â€ŒÙ‡Ø§ÛŒ Ù‡ÙˆØ´ Ù…ØµÙ†ÙˆØ¹ÛŒ | SPONSORACB</title>
     
-    <!-- فونت Vazirmatn -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
+    
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Lucide Icons -->
+    
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
@@ -44,7 +44,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* پس‌زمینه محو و زیبا */
+        /* Ù¾Ø³â€ŒØ²Ù…ÛŒÙ†Ù‡ Ù…Ø­Ùˆ Ùˆ Ø²ÛŒØ¨Ø§ */
         .ambient-bg {
             background-color: #f4f4f5;
             background-image: 
@@ -64,7 +64,7 @@
             -webkit-backdrop-filter: blur(20px);
         }
 
-        /* انیمیشن لود شدن کارت‌ها */
+        /* Ø§Ù†ÛŒÙ…ÛŒØ´Ù† Ù„ÙˆØ¯ Ø´Ø¯Ù† Ú©Ø§Ø±Øªâ€ŒÙ‡Ø§ */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -75,7 +75,7 @@
             animation: fadeInUp 0.6s ease-out forwards;
         }
 
-        /* کاستوم اسکرول‌بار پریمیوم */
+        /* Ú©Ø§Ø³ØªÙˆÙ… Ø§Ø³Ú©Ø±ÙˆÙ„â€ŒØ¨Ø§Ø± Ù¾Ø±ÛŒÙ…ÛŒÙˆÙ… */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { 
@@ -88,18 +88,18 @@
 </head>
 <body class="ambient-bg text-zinc-900 dark:text-white min-h-screen flex flex-col relative transition-colors duration-500">
 
-    <!-- هدر (Navbar) -->
+    
     <nav class="w-full h-16 sm:h-20 flex items-center justify-between px-4 sm:px-8 border-b glass-base sticky top-0 z-40 
         bg-white/40 border-zinc-200/50 
         dark:bg-zinc-950/40 dark:border-zinc-800/50 transition-colors">
         
-        <!-- فضای خالی برای تراز وسط (در RTL راست قرار می‌گیرد) -->
+        
         <div class="w-10 sm:w-12"></div>
 
-        <!-- عنوان وسط -->
+        
         <span class="font-black text-lg sm:text-xl tracking-[0.2em] dir-ltr text-zinc-900 dark:text-white">SPONSORACB</span>
         
-        <!-- دکمه تغییر تم (در RTL چپ قرار می‌گیرد) -->
+        
         <button onclick="toggleTheme()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all border shadow-sm
             bg-white/70 border-zinc-200/80 hover:bg-white
             dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 group">
@@ -108,10 +108,10 @@
         </button>
     </nav>
 
-    <!-- محتوای اصلی -->
+    
     <main class="flex-1 w-full max-w-[1450px] mx-auto flex flex-col gap-8 py-10 px-4 sm:px-6 lg:px-8">
         
-        <!-- بخش عنوان -->
+        
         <header class="text-center flex flex-col items-center gap-4 mb-4 sm:mb-8">
             <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center border shadow-sm transition-colors
                 bg-white/70 border-zinc-200/80 
@@ -120,349 +120,349 @@
             </div>
             
             <h1 class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight text-zinc-900 dark:text-white">
-                قابلیت‌ها و <span class="text-transparent bg-clip-text bg-gradient-to-l from-indigo-500 to-emerald-500 dark:from-indigo-400 dark:to-emerald-400">قیمت اشتراک‌ها</span>
+                Ù‚Ø§Ø¨Ù„ÛŒØªâ€ŒÙ‡Ø§ Ùˆ <span class="text-transparent bg-clip-text bg-gradient-to-l from-indigo-500 to-emerald-500 dark:from-indigo-400 dark:to-emerald-400">Ù‚ÛŒÙ…Øª Ø§Ø´ØªØ±Ø§Ú©â€ŒÙ‡Ø§</span>
             </h1>
             
             <p class="text-sm sm:text-base font-medium max-w-2xl mx-auto text-zinc-500 dark:text-zinc-400 leading-relaxed px-4">
-                بسته به نیاز خود، بهترین پلن را برای استفاده از ابزارها و مدل‌های پیشرفته هوش مصنوعی انتخاب کنید.
+                Ø¨Ø³ØªÙ‡ Ø¨Ù‡ Ù†ÛŒØ§Ø² Ø®ÙˆØ¯ØŒ Ø¨Ù‡ØªØ±ÛŒÙ† Ù¾Ù„Ù† Ø±Ø§ Ø¨Ø±Ø§ÛŒ Ø§Ø³ØªÙØ§Ø¯Ù‡ Ø§Ø² Ø§Ø¨Ø²Ø§Ø±Ù‡Ø§ Ùˆ Ù…Ø¯Ù„â€ŒÙ‡Ø§ÛŒ Ù¾ÛŒØ´Ø±ÙØªÙ‡ Ù‡ÙˆØ´ Ù…ØµÙ†ÙˆØ¹ÛŒ Ø§Ù†ØªØ®Ø§Ø¨ Ú©Ù†ÛŒØ¯.
             </p>
         </header>
 
-        <!-- گرید کارت‌های قیمت -->
+        
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 sm:gap-8 items-stretch">
             
-            <!-- ======================= PRO PLAN ======================= -->
+            
             <div class="animate-fade-in-up flex flex-col rounded-[28px] border glass-base p-6 transition-all duration-300 relative group
                 bg-white/70 border-zinc-200/80 hover:bg-white hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/10 hover:border-blue-300
                 dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 dark:hover:border-blue-500/50 dark:hover:shadow-blue-500/10"
                 style="animation-delay: 0.1s;">
                 
                 <div class="flex justify-between items-start mb-6">
-                    <h2 class="text-2xl font-black text-zinc-900 dark:text-white">پرو</h2>
+                    <h2 class="text-2xl font-black text-zinc-900 dark:text-white">Ù¾Ø±Ùˆ</h2>
                     <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold border
                         bg-blue-50 text-blue-600 border-blue-200
                         dark:bg-blue-500/10 dark:text-blue-400 dark:border-blue-500/20">
-                        <i data-lucide="send" class="w-3.5 h-3.5"></i> پایه
+                        <i data-lucide="send" class="w-3.5 h-3.5"></i> Ù¾Ø§ÛŒÙ‡
                     </div>
                 </div>
                 
                 <div class="mb-6 pb-6 border-b border-zinc-200 dark:border-zinc-800/80">
                     <div class="flex items-baseline gap-2 mb-1">
-                        <span class="text-3xl sm:text-4xl font-black tracking-tight text-zinc-900 dark:text-white">۴۲۰,۰۰۰</span>
-                        <span class="text-sm font-bold text-zinc-500 dark:text-zinc-400">تومان</span>
+                        <span class="text-3xl sm:text-4xl font-black tracking-tight text-zinc-900 dark:text-white">Û´Û²Û°,Û°Û°Û°</span>
+                        <span class="text-sm font-bold text-zinc-500 dark:text-zinc-400">ØªÙˆÙ…Ø§Ù†</span>
                     </div>
-                    <div class="text-xs font-bold text-blue-600 dark:text-blue-400">پرداخت ماهانه</div>
+                    <div class="text-xs font-bold text-blue-600 dark:text-blue-400">Ù¾Ø±Ø¯Ø§Ø®Øª Ù…Ø§Ù‡Ø§Ù†Ù‡</div>
                 </div>
 
                 <div class="flex items-center gap-2 mb-6 p-3 rounded-xl border
                     bg-zinc-50 border-zinc-200 text-zinc-800
                     dark:bg-zinc-800/50 dark:border-zinc-700 dark:text-zinc-200">
                     <i data-lucide="coins" class="w-5 h-5 text-amber-500"></i>
-                    <span class="text-sm font-bold">۶۰۰ کوین</span>
+                    <span class="text-sm font-bold">Û¶Û°Û° Ú©ÙˆÛŒÙ†</span>
                 </div>
 
                 <ul class="flex flex-col gap-4 flex-1 mb-8">
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="medal" class="w-4 h-4 mt-0.5 flex-shrink-0 text-amber-500"></i>
-                        <span>دسترسی آزاد به منوهای پرو</span>
+                        <span>Ø¯Ø³ØªØ±Ø³ÛŒ Ø¢Ø²Ø§Ø¯ Ø¨Ù‡ Ù…Ù†ÙˆÙ‡Ø§ÛŒ Ù¾Ø±Ùˆ</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="check-circle-2" class="w-4 h-4 mt-0.5 flex-shrink-0 text-blue-500"></i>
-                        <span>محدودیت کمتر</span>
+                        <span>Ù…Ø­Ø¯ÙˆØ¯ÛŒØª Ú©Ù…ØªØ±</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="arrow-left-right" class="w-4 h-4 mt-0.5 flex-shrink-0 text-sky-500"></i>
-                        <span>قابلیت انتقال کوین به اکانت‌های دیگران</span>
+                        <span>Ù‚Ø§Ø¨Ù„ÛŒØª Ø§Ù†ØªÙ‚Ø§Ù„ Ú©ÙˆÛŒÙ† Ø¨Ù‡ Ø§Ú©Ø§Ù†Øªâ€ŒÙ‡Ø§ÛŒ Ø¯ÛŒÚ¯Ø±Ø§Ù†</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="users" class="w-4 h-4 mt-0.5 flex-shrink-0 text-pink-500"></i>
-                        <span>تغییر جایزه ریفرال از ۲ کوین به ۵ کوین</span>
+                        <span>ØªØºÛŒÛŒØ± Ø¬Ø§ÛŒØ²Ù‡ Ø±ÛŒÙØ±Ø§Ù„ Ø§Ø² Û² Ú©ÙˆÛŒÙ† Ø¨Ù‡ Ûµ Ú©ÙˆÛŒÙ†</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="sparkles" class="w-4 h-4 mt-0.5 flex-shrink-0 text-violet-500"></i>
-                        <span>دسترسی به مدل هوش مصنوعی Flash</span>
+                        <span>Ø¯Ø³ØªØ±Ø³ÛŒ Ø¨Ù‡ Ù…Ø¯Ù„ Ù‡ÙˆØ´ Ù…ØµÙ†ÙˆØ¹ÛŒ Flash</span>
                     </li>
                 </ul>
 
                 <button class="w-full py-3.5 rounded-xl text-sm font-bold text-white transition-all active:scale-[0.98]
                     bg-blue-600 hover:bg-blue-700 shadow-[0_4px_14px_rgba(37,99,235,0.3)]">
-                    خرید اشتراک پرو
+                    Ø®Ø±ÛŒØ¯ Ø§Ø´ØªØ±Ø§Ú© Ù¾Ø±Ùˆ
                 </button>
             </div>
 
-            <!-- ======================= PLUS PLAN ======================= -->
+            
             <div class="animate-fade-in-up flex flex-col rounded-[28px] border glass-base p-6 transition-all duration-300 relative group
                 bg-white/70 border-zinc-200/80 hover:bg-white hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-500/10 hover:border-emerald-300
                 dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 dark:hover:border-emerald-500/50 dark:hover:shadow-emerald-500/10"
                 style="animation-delay: 0.2s;">
                 
                 <div class="flex justify-between items-start mb-6">
-                    <h2 class="text-2xl font-black text-zinc-900 dark:text-white">پلاس</h2>
+                    <h2 class="text-2xl font-black text-zinc-900 dark:text-white">Ù¾Ù„Ø§Ø³</h2>
                     <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold border
                         bg-emerald-50 text-emerald-600 border-emerald-200
                         dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20">
-                        <i data-lucide="flame" class="w-3.5 h-3.5"></i> محبوب
+                        <i data-lucide="flame" class="w-3.5 h-3.5"></i> Ù…Ø­Ø¨ÙˆØ¨
                     </div>
                 </div>
                 
                 <div class="mb-6 pb-6 border-b border-zinc-200 dark:border-zinc-800/80">
                     <div class="flex items-baseline gap-2 mb-1">
-                        <span class="text-3xl sm:text-4xl font-black tracking-tight text-zinc-900 dark:text-white">۸۴۰,۰۰۰</span>
-                        <span class="text-sm font-bold text-zinc-500 dark:text-zinc-400">تومان</span>
+                        <span class="text-3xl sm:text-4xl font-black tracking-tight text-zinc-900 dark:text-white">Û¸Û´Û°,Û°Û°Û°</span>
+                        <span class="text-sm font-bold text-zinc-500 dark:text-zinc-400">ØªÙˆÙ…Ø§Ù†</span>
                     </div>
-                    <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400">پرداخت ماهانه</div>
+                    <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400">Ù¾Ø±Ø¯Ø§Ø®Øª Ù…Ø§Ù‡Ø§Ù†Ù‡</div>
                 </div>
 
                 <div class="flex items-center gap-2 mb-6 p-3 rounded-xl border
                     bg-zinc-50 border-zinc-200 text-zinc-800
                     dark:bg-zinc-800/50 dark:border-zinc-700 dark:text-zinc-200">
                     <i data-lucide="coins" class="w-5 h-5 text-amber-500"></i>
-                    <span class="text-sm font-bold">۱,۲۰۰ کوین</span>
+                    <span class="text-sm font-bold">Û±,Û²Û°Û° Ú©ÙˆÛŒÙ†</span>
                 </div>
 
                 <ul class="flex flex-col gap-4 flex-1 mb-8">
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="medal" class="w-4 h-4 mt-0.5 flex-shrink-0 text-amber-500"></i>
-                        <span>دسترسی آزاد به تمامی قابلیت‌های بات</span>
+                        <span>Ø¯Ø³ØªØ±Ø³ÛŒ Ø¢Ø²Ø§Ø¯ Ø¨Ù‡ ØªÙ…Ø§Ù…ÛŒ Ù‚Ø§Ø¨Ù„ÛŒØªâ€ŒÙ‡Ø§ÛŒ Ø¨Ø§Øª</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="check-circle-2" class="w-4 h-4 mt-0.5 flex-shrink-0 text-emerald-500"></i>
-                        <span>بدون محدودیت</span>
+                        <span>Ø¨Ø¯ÙˆÙ† Ù…Ø­Ø¯ÙˆØ¯ÛŒØª</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="bot" class="w-4 h-4 mt-0.5 flex-shrink-0 text-emerald-400"></i>
-                        <span>پشتیبانی فعال بات</span>
+                        <span>Ù¾Ø´ØªÛŒØ¨Ø§Ù†ÛŒ ÙØ¹Ø§Ù„ Ø¨Ø§Øª</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="headset" class="w-4 h-4 mt-0.5 flex-shrink-0 text-emerald-400"></i>
-                        <span>پشتیبانی فعال سایت</span>
+                        <span>Ù¾Ø´ØªÛŒØ¨Ø§Ù†ÛŒ ÙØ¹Ø§Ù„ Ø³Ø§ÛŒØª</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="life-buoy" class="w-4 h-4 mt-0.5 flex-shrink-0 text-emerald-400"></i>
-                        <span>پشتیبانی اختصاصی از تمامی سایت‌ها</span>
+                        <span>Ù¾Ø´ØªÛŒØ¨Ø§Ù†ÛŒ Ø§Ø®ØªØµØ§ØµÛŒ Ø§Ø² ØªÙ…Ø§Ù…ÛŒ Ø³Ø§ÛŒØªâ€ŒÙ‡Ø§</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="arrow-left-right" class="w-4 h-4 mt-0.5 flex-shrink-0 text-sky-500"></i>
-                        <span>قابلیت انتقال کوین به اکانت‌های دیگران</span>
+                        <span>Ù‚Ø§Ø¨Ù„ÛŒØª Ø§Ù†ØªÙ‚Ø§Ù„ Ú©ÙˆÛŒÙ† Ø¨Ù‡ Ø§Ú©Ø§Ù†Øªâ€ŒÙ‡Ø§ÛŒ Ø¯ÛŒÚ¯Ø±Ø§Ù†</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="badge-check" class="w-4 h-4 mt-0.5 flex-shrink-0 text-amber-300"></i>
-                        <span>دریافت لایسنس اختصاصی اپ‌های Monsmain</span>
+                        <span>Ø¯Ø±ÛŒØ§ÙØª Ù„Ø§ÛŒØ³Ù†Ø³ Ø§Ø®ØªØµØ§ØµÛŒ Ø§Ù¾â€ŒÙ‡Ø§ÛŒ Monsmain</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="users" class="w-4 h-4 mt-0.5 flex-shrink-0 text-pink-500"></i>
-                        <span>تغییر جایزه ریفرال از ۲ کوین به ۶ کوین</span>
+                        <span>ØªØºÛŒÛŒØ± Ø¬Ø§ÛŒØ²Ù‡ Ø±ÛŒÙØ±Ø§Ù„ Ø§Ø² Û² Ú©ÙˆÛŒÙ† Ø¨Ù‡ Û¶ Ú©ÙˆÛŒÙ†</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="sparkles" class="w-4 h-4 mt-0.5 flex-shrink-0 text-violet-500"></i>
-                        <span>دسترسی به مدل‌های ACBAI Flash و 2.2</span>
+                        <span>Ø¯Ø³ØªØ±Ø³ÛŒ Ø¨Ù‡ Ù…Ø¯Ù„â€ŒÙ‡Ø§ÛŒ ACBAI Flash Ùˆ 2.2</span>
                     </li>
                 </ul>
 
                 <button class="w-full py-3.5 rounded-xl text-sm font-bold text-white transition-all active:scale-[0.98]
                     bg-emerald-500 hover:bg-emerald-600 shadow-[0_4px_14px_rgba(16,185,129,0.3)]">
-                    خرید اشتراک پلاس
+                    Ø®Ø±ÛŒØ¯ Ø§Ø´ØªØ±Ø§Ú© Ù¾Ù„Ø§Ø³
                 </button>
             </div>
 
-            <!-- ======================= PREMIUM PLAN ======================= -->
+            
             <div class="animate-fade-in-up flex flex-col rounded-[28px] border glass-base p-6 transition-all duration-300 relative group
                 bg-white/70 border-zinc-200/80 hover:bg-white hover:-translate-y-2 hover:shadow-xl hover:shadow-violet-500/10 hover:border-violet-300
                 dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 dark:hover:border-violet-500/50 dark:hover:shadow-violet-500/10"
                 style="animation-delay: 0.3s;">
                 
                 <div class="flex justify-between items-start mb-6">
-                    <h2 class="text-2xl font-black text-zinc-900 dark:text-white">پریمیوم</h2>
+                    <h2 class="text-2xl font-black text-zinc-900 dark:text-white">Ù¾Ø±ÛŒÙ…ÛŒÙˆÙ…</h2>
                     <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold border
                         bg-violet-50 text-violet-600 border-violet-200
                         dark:bg-violet-500/10 dark:text-violet-400 dark:border-violet-500/20">
-                        <i data-lucide="gem" class="w-3.5 h-3.5"></i> حرفه‌ای
+                        <i data-lucide="gem" class="w-3.5 h-3.5"></i> Ø­Ø±ÙÙ‡â€ŒØ§ÛŒ
                     </div>
                 </div>
                 
                 <div class="mb-6 pb-6 border-b border-zinc-200 dark:border-zinc-800/80">
                     <div class="flex items-baseline gap-2 mb-1">
-                        <span class="text-3xl sm:text-4xl font-black tracking-tight text-zinc-900 dark:text-white">۱,۴۰۰,۰۰۰</span>
-                        <span class="text-sm font-bold text-zinc-500 dark:text-zinc-400">تومان</span>
+                        <span class="text-3xl sm:text-4xl font-black tracking-tight text-zinc-900 dark:text-white">Û±,Û´Û°Û°,Û°Û°Û°</span>
+                        <span class="text-sm font-bold text-zinc-500 dark:text-zinc-400">ØªÙˆÙ…Ø§Ù†</span>
                     </div>
-                    <div class="text-xs font-bold text-violet-600 dark:text-violet-400">پرداخت ماهانه</div>
+                    <div class="text-xs font-bold text-violet-600 dark:text-violet-400">Ù¾Ø±Ø¯Ø§Ø®Øª Ù…Ø§Ù‡Ø§Ù†Ù‡</div>
                 </div>
 
                 <div class="flex items-center gap-2 mb-6 p-3 rounded-xl border
                     bg-zinc-50 border-zinc-200 text-zinc-800
                     dark:bg-zinc-800/50 dark:border-zinc-700 dark:text-zinc-200">
                     <i data-lucide="coins" class="w-5 h-5 text-amber-500"></i>
-                    <span class="text-sm font-bold">۲,۰۰۰ کوین</span>
+                    <span class="text-sm font-bold">Û²,Û°Û°Û° Ú©ÙˆÛŒÙ†</span>
                 </div>
 
                 <ul class="flex flex-col gap-4 flex-1 mb-8">
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="medal" class="w-4 h-4 mt-0.5 flex-shrink-0 text-amber-500"></i>
-                        <span>دسترسی آزاد به تمامی قابلیت‌های بات</span>
+                        <span>Ø¯Ø³ØªØ±Ø³ÛŒ Ø¢Ø²Ø§Ø¯ Ø¨Ù‡ ØªÙ…Ø§Ù…ÛŒ Ù‚Ø§Ø¨Ù„ÛŒØªâ€ŒÙ‡Ø§ÛŒ Ø¨Ø§Øª</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="check-circle-2" class="w-4 h-4 mt-0.5 flex-shrink-0 text-violet-500"></i>
-                        <span>بدون محدودیت</span>
+                        <span>Ø¨Ø¯ÙˆÙ† Ù…Ø­Ø¯ÙˆØ¯ÛŒØª</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="bot" class="w-4 h-4 mt-0.5 flex-shrink-0 text-emerald-400"></i>
-                        <span>پشتیبانی فعال بات</span>
+                        <span>Ù¾Ø´ØªÛŒØ¨Ø§Ù†ÛŒ ÙØ¹Ø§Ù„ Ø¨Ø§Øª</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="headset" class="w-4 h-4 mt-0.5 flex-shrink-0 text-emerald-400"></i>
-                        <span>پشتیبانی فعال سایت</span>
+                        <span>Ù¾Ø´ØªÛŒØ¨Ø§Ù†ÛŒ ÙØ¹Ø§Ù„ Ø³Ø§ÛŒØª</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="life-buoy" class="w-4 h-4 mt-0.5 flex-shrink-0 text-emerald-400"></i>
-                        <span>پشتیبانی اختصاصی از تمامی سایت‌ها</span>
+                        <span>Ù¾Ø´ØªÛŒØ¨Ø§Ù†ÛŒ Ø§Ø®ØªØµØ§ØµÛŒ Ø§Ø² ØªÙ…Ø§Ù…ÛŒ Ø³Ø§ÛŒØªâ€ŒÙ‡Ø§</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="message-circle" class="w-4 h-4 mt-0.5 flex-shrink-0 text-emerald-400"></i>
-                        <span>گپ اختصاصی پشتیبانی Monsmain</span>
+                        <span>Ú¯Ù¾ Ø§Ø®ØªØµØ§ØµÛŒ Ù¾Ø´ØªÛŒØ¨Ø§Ù†ÛŒ Monsmain</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="arrow-left-right" class="w-4 h-4 mt-0.5 flex-shrink-0 text-sky-500"></i>
-                        <span>انتقال کوین تا سقف ۵ میلیون در روز</span>
+                        <span>Ø§Ù†ØªÙ‚Ø§Ù„ Ú©ÙˆÛŒÙ† ØªØ§ Ø³Ù‚Ù Ûµ Ù…ÛŒÙ„ÛŒÙˆÙ† Ø¯Ø± Ø±ÙˆØ²</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="badge-check" class="w-4 h-4 mt-0.5 flex-shrink-0 text-amber-300"></i>
-                        <span>دریافت لایسنس اختصاصی اپ‌های Monsmain</span>
+                        <span>Ø¯Ø±ÛŒØ§ÙØª Ù„Ø§ÛŒØ³Ù†Ø³ Ø§Ø®ØªØµØ§ØµÛŒ Ø§Ù¾â€ŒÙ‡Ø§ÛŒ Monsmain</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="users" class="w-4 h-4 mt-0.5 flex-shrink-0 text-pink-500"></i>
-                        <span>تغییر جایزه ریفرال از ۲ کوین به ۱۰ کوین</span>
+                        <span>ØªØºÛŒÛŒØ± Ø¬Ø§ÛŒØ²Ù‡ Ø±ÛŒÙØ±Ø§Ù„ Ø§Ø² Û² Ú©ÙˆÛŒÙ† Ø¨Ù‡ Û±Û° Ú©ÙˆÛŒÙ†</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="sparkles" class="w-4 h-4 mt-0.5 flex-shrink-0 text-violet-500"></i>
-                        <span>دسترسی به مدل‌های ACBAI Flash، 2.2، 5.1</span>
+                        <span>Ø¯Ø³ØªØ±Ø³ÛŒ Ø¨Ù‡ Ù…Ø¯Ù„â€ŒÙ‡Ø§ÛŒ ACBAI FlashØŒ 2.2ØŒ 5.1</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="cloud-download" class="w-4 h-4 mt-0.5 flex-shrink-0 text-blue-400"></i>
-                        <span>دانلودر مخصوص تا 8K و ۴ گیگابایت</span>
+                        <span>Ø¯Ø§Ù†Ù„ÙˆØ¯Ø± Ù…Ø®ØµÙˆØµ ØªØ§ 8K Ùˆ Û´ Ú¯ÛŒÚ¯Ø§Ø¨Ø§ÛŒØª</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="handshake" class="w-4 h-4 mt-0.5 flex-shrink-0 text-rose-400"></i>
-                        <span>دریافت پنل همکاری در فروش</span>
+                        <span>Ø¯Ø±ÛŒØ§ÙØª Ù¾Ù†Ù„ Ù‡Ù…Ú©Ø§Ø±ÛŒ Ø¯Ø± ÙØ±ÙˆØ´</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="sliders-horizontal" class="w-4 h-4 mt-0.5 flex-shrink-0 text-rose-400"></i>
-                        <span>پنل ساخت کانفیگ ویتوری (V2ray)</span>
+                        <span>Ù¾Ù†Ù„ Ø³Ø§Ø®Øª Ú©Ø§Ù†ÙÛŒÚ¯ ÙˆÛŒØªÙˆØ±ÛŒ (V2ray)</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-600 dark:text-zinc-300 font-medium">
                         <i data-lucide="code" class="w-4 h-4 mt-0.5 flex-shrink-0 text-zinc-400 dark:text-zinc-400"></i>
-                        <span>دریافت API هوش مصنوعی</span>
+                        <span>Ø¯Ø±ÛŒØ§ÙØª API Ù‡ÙˆØ´ Ù…ØµÙ†ÙˆØ¹ÛŒ</span>
                     </li>
                 </ul>
 
                 <button class="w-full py-3.5 rounded-xl text-sm font-bold text-white transition-all active:scale-[0.98]
                     bg-violet-600 hover:bg-violet-700 shadow-[0_4px_14px_rgba(139,92,246,0.3)]">
-                    خرید اشتراک پریمیوم
+                    Ø®Ø±ÛŒØ¯ Ø§Ø´ØªØ±Ø§Ú© Ù¾Ø±ÛŒÙ…ÛŒÙˆÙ…
                 </button>
             </div>
 
-            <!-- ======================= ULTRA PLAN (VIP) ======================= -->
+            
             <div class="animate-fade-in-up flex flex-col rounded-[28px] border glass-base p-6 transition-all duration-300 relative group
                 bg-white/90 border-amber-300 shadow-[0_0_30px_rgba(245,158,11,0.15)] ring-1 ring-amber-500/20 hover:-translate-y-2
                 dark:bg-zinc-900/80 dark:border-amber-500/40"
                 style="animation-delay: 0.4s;">
                 
-                <!-- هاله نورانی اختصاصی برای اولترا در دارک مود -->
+                
                 <div class="absolute inset-0 bg-gradient-to-b from-amber-500/10 to-transparent rounded-[28px] pointer-events-none hidden dark:block"></div>
 
                 <div class="flex justify-between items-start mb-6 relative z-10">
-                    <h2 class="text-2xl font-black text-zinc-900 dark:text-white">اولترا</h2>
+                    <h2 class="text-2xl font-black text-zinc-900 dark:text-white">Ø§ÙˆÙ„ØªØ±Ø§</h2>
                     <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold border shadow-sm
                         bg-amber-100 text-amber-700 border-amber-300
                         dark:bg-amber-500/20 dark:text-amber-300 dark:border-amber-500/30">
-                        <i data-lucide="crown" class="w-3.5 h-3.5"></i> ویژه (VIP)
+                        <i data-lucide="crown" class="w-3.5 h-3.5"></i> ÙˆÛŒÚ˜Ù‡ (VIP)
                     </div>
                 </div>
                 
                 <div class="mb-6 pb-6 border-b border-zinc-200 dark:border-zinc-800/80 relative z-10">
                     <div class="flex items-baseline gap-2 mb-1">
-                        <span class="text-3xl sm:text-4xl font-black tracking-tight text-zinc-900 dark:text-white">۶,۸۰۰,۰۰۰</span>
-                        <span class="text-sm font-bold text-zinc-500 dark:text-zinc-400">تومان</span>
+                        <span class="text-3xl sm:text-4xl font-black tracking-tight text-zinc-900 dark:text-white">Û¶,Û¸Û°Û°,Û°Û°Û°</span>
+                        <span class="text-sm font-bold text-zinc-500 dark:text-zinc-400">ØªÙˆÙ…Ø§Ù†</span>
                     </div>
-                    <div class="text-xs font-bold text-amber-600 dark:text-amber-400">پرداخت سه ماهه</div>
+                    <div class="text-xs font-bold text-amber-600 dark:text-amber-400">Ù¾Ø±Ø¯Ø§Ø®Øª Ø³Ù‡ Ù…Ø§Ù‡Ù‡</div>
                 </div>
 
                 <div class="flex items-center gap-2 mb-6 p-3 rounded-xl border relative z-10
                     bg-amber-50 border-amber-200 text-amber-800
                     dark:bg-amber-500/10 dark:border-amber-500/20 dark:text-amber-200">
                     <i data-lucide="gift" class="w-5 h-5 text-amber-500"></i>
-                    <span class="text-sm font-bold">۱۰,۰۰۰ کوین شارژ</span>
+                    <span class="text-sm font-bold">Û±Û°,Û°Û°Û° Ú©ÙˆÛŒÙ† Ø´Ø§Ø±Ú˜</span>
                 </div>
 
                 <ul class="flex flex-col gap-4 flex-1 mb-8 relative z-10">
                     <li class="flex items-start gap-3 text-[13px] text-zinc-700 dark:text-zinc-200 font-medium">
                         <i data-lucide="medal" class="w-4 h-4 mt-0.5 flex-shrink-0 text-amber-500"></i>
-                        <span>دسترسی آزاد به تمامی قابلیت‌های بات</span>
+                        <span>Ø¯Ø³ØªØ±Ø³ÛŒ Ø¢Ø²Ø§Ø¯ Ø¨Ù‡ ØªÙ…Ø§Ù…ÛŒ Ù‚Ø§Ø¨Ù„ÛŒØªâ€ŒÙ‡Ø§ÛŒ Ø¨Ø§Øª</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-700 dark:text-zinc-200 font-medium">
                         <i data-lucide="check-circle-2" class="w-4 h-4 mt-0.5 flex-shrink-0 text-amber-500"></i>
-                        <span>دسترسی به ابزارهای اولترا</span>
+                        <span>Ø¯Ø³ØªØ±Ø³ÛŒ Ø¨Ù‡ Ø§Ø¨Ø²Ø§Ø±Ù‡Ø§ÛŒ Ø§ÙˆÙ„ØªØ±Ø§</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-700 dark:text-zinc-200 font-medium">
                         <i data-lucide="bot" class="w-4 h-4 mt-0.5 flex-shrink-0 text-emerald-400"></i>
-                        <span>پشتیبانی فعال بات و سایت</span>
+                        <span>Ù¾Ø´ØªÛŒØ¨Ø§Ù†ÛŒ ÙØ¹Ø§Ù„ Ø¨Ø§Øª Ùˆ Ø³Ø§ÛŒØª</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-700 dark:text-zinc-200 font-medium">
                         <i data-lucide="life-buoy" class="w-4 h-4 mt-0.5 flex-shrink-0 text-emerald-400"></i>
-                        <span>پشتیبانی اختصاصی از تمامی سایت‌ها</span>
+                        <span>Ù¾Ø´ØªÛŒØ¨Ø§Ù†ÛŒ Ø§Ø®ØªØµØ§ØµÛŒ Ø§Ø² ØªÙ…Ø§Ù…ÛŒ Ø³Ø§ÛŒØªâ€ŒÙ‡Ø§</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-700 dark:text-zinc-200 font-medium">
                         <i data-lucide="message-circle" class="w-4 h-4 mt-0.5 flex-shrink-0 text-emerald-400"></i>
-                        <span>گپ اختصاصی پشتیبانی Monsmain</span>
+                        <span>Ú¯Ù¾ Ø§Ø®ØªØµØ§ØµÛŒ Ù¾Ø´ØªÛŒØ¨Ø§Ù†ÛŒ Monsmain</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-700 dark:text-zinc-200 font-medium">
                         <i data-lucide="arrow-left-right" class="w-4 h-4 mt-0.5 flex-shrink-0 text-sky-500"></i>
-                        <span>انتقال کوین تا سقف ۱۵ میلیون در روز</span>
+                        <span>Ø§Ù†ØªÙ‚Ø§Ù„ Ú©ÙˆÛŒÙ† ØªØ§ Ø³Ù‚Ù Û±Ûµ Ù…ÛŒÙ„ÛŒÙˆÙ† Ø¯Ø± Ø±ÙˆØ²</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-700 dark:text-zinc-200 font-medium">
                         <i data-lucide="badge-check" class="w-4 h-4 mt-0.5 flex-shrink-0 text-amber-400"></i>
-                        <span>لایسنس اپ‌های Monsmain و بات‌های ریفرالی</span>
+                        <span>Ù„Ø§ÛŒØ³Ù†Ø³ Ø§Ù¾â€ŒÙ‡Ø§ÛŒ Monsmain Ùˆ Ø¨Ø§Øªâ€ŒÙ‡Ø§ÛŒ Ø±ÛŒÙØ±Ø§Ù„ÛŒ</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-700 dark:text-zinc-200 font-medium">
                         <i data-lucide="users" class="w-4 h-4 mt-0.5 flex-shrink-0 text-pink-500"></i>
-                        <span>تغییر جایزه ریفرال به ۱۲ کوین</span>
+                        <span>ØªØºÛŒÛŒØ± Ø¬Ø§ÛŒØ²Ù‡ Ø±ÛŒÙØ±Ø§Ù„ Ø¨Ù‡ Û±Û² Ú©ÙˆÛŒÙ†</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-700 dark:text-zinc-200 font-medium">
                         <i data-lucide="sparkles" class="w-4 h-4 mt-0.5 flex-shrink-0 text-violet-500"></i>
-                        <span>دسترسی به تمامی مدل‌های ACBAI و APIهای GPT و Gemini</span>
+                        <span>Ø¯Ø³ØªØ±Ø³ÛŒ Ø¨Ù‡ ØªÙ…Ø§Ù…ÛŒ Ù…Ø¯Ù„â€ŒÙ‡Ø§ÛŒ ACBAI Ùˆ APIÙ‡Ø§ÛŒ GPT Ùˆ Gemini</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-700 dark:text-zinc-200 font-medium">
                         <i data-lucide="image" class="w-4 h-4 mt-0.5 flex-shrink-0 text-violet-400"></i>
-                        <span>تولید تصاویر با کیفیت HD</span>
+                        <span>ØªÙˆÙ„ÛŒØ¯ ØªØµØ§ÙˆÛŒØ± Ø¨Ø§ Ú©ÛŒÙÛŒØª HD</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-700 dark:text-zinc-200 font-medium">
                         <i data-lucide="users" class="w-4 h-4 mt-0.5 flex-shrink-0 text-rose-400"></i>
-                        <span>همکاری و فروش مشترک با SPONSORACB</span>
+                        <span>Ù‡Ù…Ú©Ø§Ø±ÛŒ Ùˆ ÙØ±ÙˆØ´ Ù…Ø´ØªØ±Ú© Ø¨Ø§ SPONSORACB</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-700 dark:text-zinc-200 font-medium">
                         <i data-lucide="trending-up" class="w-4 h-4 mt-0.5 flex-shrink-0 text-amber-500"></i>
-                        <span>سودگیری از سفارشات، ۲۰ کوین رایگان روزانه</span>
+                        <span>Ø³ÙˆØ¯Ú¯ÛŒØ±ÛŒ Ø§Ø² Ø³ÙØ§Ø±Ø´Ø§ØªØŒ Û²Û° Ú©ÙˆÛŒÙ† Ø±Ø§ÛŒÚ¯Ø§Ù† Ø±ÙˆØ²Ø§Ù†Ù‡</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-700 dark:text-zinc-200 font-medium">
                         <i data-lucide="cloud-download" class="w-4 h-4 mt-0.5 flex-shrink-0 text-blue-400"></i>
-                        <span>دانلودر مخصوص تا 8K و ۴ گیگابایت</span>
+                        <span>Ø¯Ø§Ù†Ù„ÙˆØ¯Ø± Ù…Ø®ØµÙˆØµ ØªØ§ 8K Ùˆ Û´ Ú¯ÛŒÚ¯Ø§Ø¨Ø§ÛŒØª</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-700 dark:text-zinc-200 font-medium">
                         <i data-lucide="server" class="w-4 h-4 mt-0.5 flex-shrink-0 text-rose-400"></i>
-                        <span>امکانات ساخت بات، پنل مدیریت، سرور ویژه</span>
+                        <span>Ø§Ù…Ú©Ø§Ù†Ø§Øª Ø³Ø§Ø®Øª Ø¨Ø§ØªØŒ Ù¾Ù†Ù„ Ù…Ø¯ÛŒØ±ÛŒØªØŒ Ø³Ø±ÙˆØ± ÙˆÛŒÚ˜Ù‡</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-700 dark:text-zinc-200 font-medium">
                         <i data-lucide="sliders-horizontal" class="w-4 h-4 mt-0.5 flex-shrink-0 text-rose-400"></i>
-                        <span>پنل همکاری، پنل ساخت کانفیگ V2ray</span>
+                        <span>Ù¾Ù†Ù„ Ù‡Ù…Ú©Ø§Ø±ÛŒØŒ Ù¾Ù†Ù„ Ø³Ø§Ø®Øª Ú©Ø§Ù†ÙÛŒÚ¯ V2ray</span>
                     </li>
                     <li class="flex items-start gap-3 text-[13px] text-zinc-700 dark:text-zinc-200 font-medium">
                         <i data-lucide="code" class="w-4 h-4 mt-0.5 flex-shrink-0 text-zinc-400 dark:text-zinc-400"></i>
-                        <span>دریافت API کامل هوش مصنوعی</span>
+                        <span>Ø¯Ø±ÛŒØ§ÙØª API Ú©Ø§Ù…Ù„ Ù‡ÙˆØ´ Ù…ØµÙ†ÙˆØ¹ÛŒ</span>
                     </li>
                 </ul>
 
                 <button class="w-full py-3.5 rounded-xl text-sm font-bold text-white transition-all active:scale-[0.98] relative z-10
                     bg-amber-500 hover:bg-amber-600 shadow-[0_4px_14px_rgba(245,158,11,0.3)]">
-                    خرید اشتراک اولترا
+                    Ø®Ø±ÛŒØ¯ Ø§Ø´ØªØ±Ø§Ú© Ø§ÙˆÙ„ØªØ±Ø§
                 </button>
             </div>
 
@@ -470,26 +470,27 @@
 
     </main>
 
-    <!-- فوتر -->
+    
     <footer class="w-full py-6 mt-auto border-t glass-base flex flex-col items-center justify-center gap-2 transition-colors
         bg-white/40 border-zinc-200/50 
         dark:bg-zinc-950/40 dark:border-zinc-800/50">
-        <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400">© تمامی حقوق برای مجموعه محفوظ است</p>
+        <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400">Â© ØªÙ…Ø§Ù…ÛŒ Ø­Ù‚ÙˆÙ‚ Ø¨Ø±Ø§ÛŒ Ù…Ø¬Ù…ÙˆØ¹Ù‡ Ù…Ø­ÙÙˆØ¸ Ø§Ø³Øª</p>
         <a href="https://AMT-IR.github.io" target="_blank" class="flex items-center gap-1.5 text-sm font-bold transition-colors text-zinc-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400">
             <i data-lucide="external-link" class="w-4 h-4"></i>
-            <span>پورتال جامع AMT-IR</span>
+            <span>Ù¾ÙˆØ±ØªØ§Ù„ Ø¬Ø§Ù…Ø¹ AMT-IR</span>
         </a>
     </footer>
 
-    <!-- Scripts -->
+    
     <script>
-        // مقداردهی و ساخت آیکون‌ها
+        // Ù…Ù‚Ø¯Ø§Ø±Ø¯Ù‡ÛŒ Ùˆ Ø³Ø§Ø®Øª Ø¢ÛŒÚ©ÙˆÙ†â€ŒÙ‡Ø§
         lucide.createIcons();
 
-        // منطق تغییر تم
+        // Ù…Ù†Ø·Ù‚ ØªØºÛŒÛŒØ± ØªÙ…
         function toggleTheme() {
             document.documentElement.classList.toggle('dark');
         }
     </script>
 </body>
 </html>
+

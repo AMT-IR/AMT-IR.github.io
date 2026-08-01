@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>NOXEDITR | Official Links</title>
-    <!-- Tailwind CSS -->
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter & Outfit -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome 6 Icons CDN -->
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <script>
@@ -113,33 +113,33 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between items-center px-3 sm:px-4 py-6 sm:py-8 relative">
 
-    <!-- Subtle Ambient Backdrop Glow -->
+    
     <div class="ambient-glow"></div>
 
-    <!-- Notification Toast -->
+    
     <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 bg-zinc-900 text-zinc-100 border border-zinc-700/60 px-4 sm:px-5 py-2.5 rounded-xl shadow-2xl text-xs font-semibold transition-all duration-300 opacity-0 pointer-events-none z-50 flex items-center gap-2 backdrop-blur-md max-w-[90vw]">
         <i class="fa-solid fa-circle-check text-violet-400"></i>
         <span id="toast-msg">Notification</span>
     </div>
 
-    <!-- Main Container -->
+    
     <main class="w-full max-w-[calc(100vw-1.5rem)] xs:max-w-sm sm:max-w-md mx-auto flex flex-col items-center gap-3.5 sm:gap-4 relative z-10 my-auto">
         
-        <!-- Profile Header Card -->
+        
         <div class="minimal-card w-full rounded-2xl p-4 sm:p-6 text-center flex flex-col items-center relative overflow-hidden">
             
-            <!-- Top Subtle Accent Highlight -->
+            
             <div class="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-violet-500/60 to-transparent"></div>
 
-            <!-- Profile Avatar with Cyber Glowing Ring -->
+            
             <div class="relative mb-3 sm:mb-4 mt-1 sm:mt-2 group">
-                <!-- Glowing Glow Ring -->
+                
                 <div class="absolute -inset-1.5 rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-600 to-violet-500 opacity-70 blur-md group-hover:opacity-100 transition duration-500 animate-pulse"></div>
                 
-                <!-- Rotating Dashed Ring -->
+                
                 <div class="absolute -inset-2.5 rounded-full border-2 border-dashed border-violet-500/40 animate-[spin_12s_linear_infinite]"></div>
                 
-                <!-- Main Avatar Image Container -->
+                
                 <div class="relative w-20 h-20 xs:w-24 xs:h-24 sm:w-28 sm:h-28 rounded-full p-[3px] bg-gradient-to-tr from-violet-500 via-fuchsia-500 to-violet-400 shadow-2xl">
                     <div class="w-full h-full rounded-full overflow-hidden bg-zinc-950 border-2 border-zinc-900">
                         <img 
@@ -152,7 +152,7 @@
                 </div>
             </div>
 
-            <!-- Profile Name & Badge -->
+            
             <div class="flex items-center justify-center gap-1.5 mb-0.5 sm:mb-1">
                 <h1 class="font-heading text-xl xs:text-2xl font-bold tracking-wide text-white">
                     NOXEDITR
@@ -163,7 +163,7 @@
             <p class="text-[10px] sm:text-[11px] font-medium text-zinc-400 tracking-wider uppercase">Video Creator & Editor</p>
         </div>
 
-        <!-- Navigation Tabs (Links & About) -->
+        
         <div class="w-full bg-zinc-900/80 p-1 rounded-xl border border-zinc-800/80 flex items-center gap-1 backdrop-blur-md">
             <button onclick="switchTab('links')" id="tab-links-btn" class="tab-btn active flex-1 py-2 rounded-lg text-xs font-bold transition-all text-zinc-400 hover:text-white flex items-center justify-center gap-2">
                 <i class="fa-solid fa-link text-xs"></i>
@@ -175,10 +175,10 @@
             </button>
         </div>
 
-        <!-- TAB 1: LINKS SECTION -->
+        
         <div id="tab-links" class="w-full flex flex-col gap-2.5 sm:gap-3 transition-all duration-300">
             
-            <!-- YOUTUBE LINK -->
+            
             <a href="https://youtube.com/@noxeditr?si=aslYip3obuIUBXOy" target="_blank" rel="noopener noreferrer" 
                class="minimal-btn rounded-xl p-3 sm:p-3.5 flex items-center justify-between group">
                 
@@ -197,7 +197,7 @@
                 </div>
             </a>
 
-            <!-- TELEGRAM CHANNEL -->
+            
             <a href="https://t.me/NOXEDITR" target="_blank" rel="noopener noreferrer" 
                class="minimal-btn rounded-xl p-3 sm:p-3.5 flex items-center justify-between group">
                 
@@ -216,7 +216,7 @@
                 </div>
             </a>
 
-            <!-- TELEGRAM ADMIN -->
+            
             <a href="https://t.me/NOXEDITR_admin" target="_blank" rel="noopener noreferrer" 
                class="minimal-btn rounded-xl p-3 sm:p-3.5 flex items-center justify-between group">
                 
@@ -235,7 +235,7 @@
                 </div>
             </a>
 
-            <!-- TIKTOK (COMING SOON) -->
+            
             <div class="minimal-btn rounded-xl p-3 sm:p-3.5 flex items-center justify-between opacity-50 cursor-not-allowed">
                 <div class="flex items-center gap-3 sm:gap-3.5 min-w-0">
                     <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-zinc-800/80 border border-zinc-700/50 flex-shrink-0 flex items-center justify-center text-zinc-500">
@@ -252,7 +252,7 @@
                 </span>
             </div>
 
-            <!-- SHARE BUTTON -->
+            
             <div class="w-full pt-1">
                 <button onclick="handleShare()" 
                         class="w-full minimal-btn py-2.5 sm:py-3 rounded-xl text-xs font-bold text-zinc-300 hover:text-white flex items-center justify-center gap-2">
@@ -263,7 +263,7 @@
 
         </div>
 
-        <!-- TAB 2: ABOUT SECTION -->
+        
         <div id="tab-about" class="w-full hidden flex-col gap-3 transition-all duration-300">
             <div class="minimal-card rounded-2xl p-4 sm:p-6 text-center space-y-4">
                 <div class="space-y-2">
@@ -272,11 +272,11 @@
                         About NOXEDITR
                     </h3>
                     
-                    <!-- Bio Lines -->
+                    
                     <div class="space-y-1.5 pt-1 sm:pt-2">
                         <p class="text-xs text-zinc-300 font-medium">Welcome to NOXEDITR.</p>
                         <p class="text-xs font-bold text-violet-400 tracking-wider">Dark Phonk Edits.</p>
-                        <p class="text-xs text-zinc-300 font-medium">Anime • Sigma Cinematic.</p>
+                        <p class="text-xs text-zinc-300 font-medium">Anime â€¢ Sigma Cinematic.</p>
                         <p class="text-xs text-zinc-400 font-medium">New Shorts Every Week.</p>
                         <p class="text-xs font-bold text-zinc-200 pt-2 flex items-center justify-center gap-1.5">
                             <i class="fa-brands fa-youtube text-red-500 text-sm"></i>
@@ -285,7 +285,7 @@
                     </div>
                 </div>
 
-                <!-- Specs Grid -->
+                
                 <div class="pt-3 border-t border-zinc-800/80 space-y-2 text-[11px] sm:text-xs text-left">
                     <div class="flex items-center justify-between gap-2">
                         <span class="text-zinc-400 flex-shrink-0">Content Focus:</span>
@@ -293,7 +293,7 @@
                     </div>
                     <div class="flex items-center justify-between gap-2">
                         <span class="text-zinc-400 flex-shrink-0">Software Used:</span>
-                        <span class="text-zinc-200 font-semibold text-right truncate">After Effects • Premiere • CapCut</span>
+                        <span class="text-zinc-200 font-semibold text-right truncate">After Effects â€¢ Premiere â€¢ CapCut</span>
                     </div>
                     <div class="flex items-center justify-between gap-2">
                         <span class="text-zinc-400 flex-shrink-0">Schedule:</span>
@@ -309,11 +309,11 @@
 
     </main>
 
-    <!-- Footer -->
+    
     <footer class="w-full text-center text-zinc-500 text-xs py-5 sm:py-6 relative z-10 flex flex-col items-center gap-2 sm:gap-2.5">
-        <!-- Verified Badge -->
+        
         <div class="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-zinc-900/90 border border-violet-500/30 text-[10px] sm:text-[11px] text-zinc-300 shadow-lg backdrop-blur-md max-w-[92vw]">
-            <!-- Custom Verified Shield SVG Icon -->
+            
             <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 flex-shrink-0 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
             </svg>
@@ -322,7 +322,7 @@
         <p class="text-zinc-600 text-[10px] sm:text-[11px]">NOXEDITR &copy; <span id="year"></span> | All Rights Reserved</p>
     </footer>
 
-    <!-- Scripts -->
+    
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -394,3 +394,4 @@
     </script>
 </body>
 </html>
+

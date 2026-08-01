@@ -1,24 +1,24 @@
-
+﻿
 <!DOCTYPE html>
 <html lang="fa" dir="rtl" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>کلودفلر (Cloudflare) چیست؟ آموزش جامع امنیت و سرعت سایت | وبلاگ SPONSORACB</title>
+    <title>Ú©Ù„ÙˆØ¯ÙÙ„Ø± (Cloudflare) Ú†ÛŒØ³ØªØŸ Ø¢Ù…ÙˆØ²Ø´ Ø¬Ø§Ù…Ø¹ Ø§Ù…Ù†ÛŒØª Ùˆ Ø³Ø±Ø¹Øª Ø³Ø§ÛŒØª | ÙˆØ¨Ù„Ø§Ú¯ SPONSORACB</title>
     
-    <!-- سئو متا تگ‌ها (SEO Meta Tags) -->
-    <meta name="description" content="آموزش جامع کلودفلر (Cloudflare)، نحوه کارکرد شبکه توزیع محتوا (CDN)، مقابله با حملات DDoS، تنظیمات Brotli و Polish، و نقش آن در پایداری پلتفرم SPONSORACB.">
-    <meta name="keywords" content="کلودفلر چیست, آموزش Cloudflare, شبکه توزیع محتوا CDN, افزایش سرعت سایت, امنیت وبسایت, جلوگیری از DDoS, گواهی SSL رایگان, SPONSORACB, سئو فنی">
     
-    <!-- فونت Vazirmatn -->
+    <meta name="description" content="Ø¢Ù…ÙˆØ²Ø´ Ø¬Ø§Ù…Ø¹ Ú©Ù„ÙˆØ¯ÙÙ„Ø± (Cloudflare)ØŒ Ù†Ø­ÙˆÙ‡ Ú©Ø§Ø±Ú©Ø±Ø¯ Ø´Ø¨Ú©Ù‡ ØªÙˆØ²ÛŒØ¹ Ù…Ø­ØªÙˆØ§ (CDN)ØŒ Ù…Ù‚Ø§Ø¨Ù„Ù‡ Ø¨Ø§ Ø­Ù…Ù„Ø§Øª DDoSØŒ ØªÙ†Ø¸ÛŒÙ…Ø§Øª Brotli Ùˆ PolishØŒ Ùˆ Ù†Ù‚Ø´ Ø¢Ù† Ø¯Ø± Ù¾Ø§ÛŒØ¯Ø§Ø±ÛŒ Ù¾Ù„ØªÙØ±Ù… SPONSORACB.">
+    <meta name="keywords" content="Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ú†ÛŒØ³Øª, Ø¢Ù…ÙˆØ²Ø´ Cloudflare, Ø´Ø¨Ú©Ù‡ ØªÙˆØ²ÛŒØ¹ Ù…Ø­ØªÙˆØ§ CDN, Ø§ÙØ²Ø§ÛŒØ´ Ø³Ø±Ø¹Øª Ø³Ø§ÛŒØª, Ø§Ù…Ù†ÛŒØª ÙˆØ¨Ø³Ø§ÛŒØª, Ø¬Ù„ÙˆÚ¯ÛŒØ±ÛŒ Ø§Ø² DDoS, Ú¯ÙˆØ§Ù‡ÛŒ SSL Ø±Ø§ÛŒÚ¯Ø§Ù†, SPONSORACB, Ø³Ø¦Ùˆ ÙÙ†ÛŒ">
+    
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
+    
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Lucide Icons -->
+    
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
@@ -47,7 +47,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* پس‌زمینه محو و استاندارد اصلی سایت (ترکیب زمردی و آبی) */
+        /* Ù¾Ø³â€ŒØ²Ù…ÛŒÙ†Ù‡ Ù…Ø­Ùˆ Ùˆ Ø§Ø³ØªØ§Ù†Ø¯Ø§Ø±Ø¯ Ø§ØµÙ„ÛŒ Ø³Ø§ÛŒØª (ØªØ±Ú©ÛŒØ¨ Ø²Ù…Ø±Ø¯ÛŒ Ùˆ Ø¢Ø¨ÛŒ) */
         .ambient-bg {
             background-color: #f4f4f5;
             background-image: 
@@ -67,7 +67,7 @@
             -webkit-backdrop-filter: blur(20px);
         }
 
-        /* کاستوم اسکرول‌بار استاندارد */
+        /* Ú©Ø§Ø³ØªÙˆÙ… Ø§Ø³Ú©Ø±ÙˆÙ„â€ŒØ¨Ø§Ø± Ø§Ø³ØªØ§Ù†Ø¯Ø§Ø±Ø¯ */
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { 
@@ -77,7 +77,7 @@
         .dark ::-webkit-scrollbar-thumb { background: #27272a; }
         ::-webkit-scrollbar-thumb:hover { background: #10b981; }
 
-        /* استایل‌های تایپوگرافی مقاله مطابق قالب اصلی */
+        /* Ø§Ø³ØªØ§ÛŒÙ„â€ŒÙ‡Ø§ÛŒ ØªØ§ÛŒÙ¾ÙˆÚ¯Ø±Ø§ÙÛŒ Ù…Ù‚Ø§Ù„Ù‡ Ù…Ø·Ø§Ø¨Ù‚ Ù‚Ø§Ù„Ø¨ Ø§ØµÙ„ÛŒ */
         .article-content p {
             margin-bottom: 1.5rem;
             line-height: 2;
@@ -93,7 +93,7 @@
             position: relative;
         }
         .article-content li::before {
-            content: '•';
+            content: 'â€¢';
             color: #8b5cf6; /* Violet-500 */
             position: absolute;
             right: -1.2rem;
@@ -108,18 +108,18 @@
 </head>
 <body class="ambient-bg text-zinc-900 dark:text-white min-h-screen flex flex-col relative transition-colors duration-500">
 
-    <!-- هدر (Navbar) -->
+    
     <nav class="w-full h-16 sm:h-20 flex items-center justify-between px-4 sm:px-8 border-b glass-base sticky top-0 z-40 
         bg-white/40 border-zinc-200/50 
         dark:bg-zinc-950/40 dark:border-zinc-800/50 transition-colors">
         
-        <!-- فضای خالی برای تراز وسط -->
+        
         <div class="w-10 sm:w-12"></div>
 
-        <!-- عنوان وسط -->
+        
         <span class="font-black text-lg sm:text-xl tracking-[0.2em] dir-ltr text-zinc-900 dark:text-white">SPONSORACB</span>
         
-        <!-- دکمه تغییر تم -->
+        
         <button onclick="toggleTheme()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all border shadow-sm
             bg-white/70 border-zinc-200/80 hover:bg-white
             dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 group">
@@ -128,191 +128,191 @@
         </button>
     </nav>
 
-    <!-- محتوای اصلی مقاله -->
+    
     <main class="flex-1 w-full max-w-4xl mx-auto flex flex-col py-10 px-4 sm:px-6 lg:px-8">
         
-        <!-- بخش عنوان مقاله -->
+        
         <header class="mb-10 text-center sm:text-right border-b border-zinc-200 dark:border-zinc-800 pb-8">
             <div class="flex items-center justify-center sm:justify-start gap-3 mb-4 text-violet-600 dark:text-violet-400">
                 <i data-lucide="cloud" class="w-5 h-5"></i>
-                <span class="text-sm font-bold tracking-wide">زیرساخت ابری، CDN و امنیت وب</span>
+                <span class="text-sm font-bold tracking-wide">Ø²ÛŒØ±Ø³Ø§Ø®Øª Ø§Ø¨Ø±ÛŒØŒ CDN Ùˆ Ø§Ù…Ù†ÛŒØª ÙˆØ¨</span>
             </div>
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-zinc-900 dark:text-white leading-[1.4] tracking-tight mb-6">
-                کلودفلر (Cloudflare) چیست؟ آموزش جامع تامین امنیت و سرعت سایت
+                Ú©Ù„ÙˆØ¯ÙÙ„Ø± (Cloudflare) Ú†ÛŒØ³ØªØŸ Ø¢Ù…ÙˆØ²Ø´ Ø¬Ø§Ù…Ø¹ ØªØ§Ù…ÛŒÙ† Ø§Ù…Ù†ÛŒØª Ùˆ Ø³Ø±Ø¹Øª Ø³Ø§ÛŒØª
             </h1>
             
             <div class="flex items-center justify-center sm:justify-start gap-4 text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400">
                 <div class="flex items-center gap-1.5">
                     <i data-lucide="calendar" class="w-4 h-4"></i>
-                    <span>تاریخ انتشار: ۱۴ مرداد ۱۴۰۵</span>
+                    <span>ØªØ§Ø±ÛŒØ® Ø§Ù†ØªØ´Ø§Ø±: Û±Û´ Ù…Ø±Ø¯Ø§Ø¯ Û±Û´Û°Ûµ</span>
                 </div>
                 <div class="flex items-center gap-1.5">
                     <i data-lucide="clock" class="w-4 h-4"></i>
-                    <span>زمان مطالعه: ۱۲ دقیقه</span>
+                    <span>Ø²Ù…Ø§Ù† Ù…Ø·Ø§Ù„Ø¹Ù‡: Û±Û² Ø¯Ù‚ÛŒÙ‚Ù‡</span>
                 </div>
             </div>
         </header>
 
-        <!-- متن مقاله -->
+        
         <article class="article-content text-base sm:text-lg text-zinc-700 dark:text-zinc-300">
             
             <p>
-                در دنیای رقابتی وب امروز، دو فاکتور «سرعت بارگذاری» و «امنیت داده‌ها» حرف اول را در موفقیت یک کسب‌وکار اینترنتی می‌زنند. موتور جستجوی گوگل به طور مداوم معیارهای تجربه کاربری (به‌ویژه شاخص‌های Core Web Vitals) را رصد می‌کند و سایت‌های کند یا ناامن را به رتبه‌های پایین‌تر می‌فرستد. 
+                Ø¯Ø± Ø¯Ù†ÛŒØ§ÛŒ Ø±Ù‚Ø§Ø¨ØªÛŒ ÙˆØ¨ Ø§Ù…Ø±ÙˆØ²ØŒ Ø¯Ùˆ ÙØ§Ú©ØªÙˆØ± Â«Ø³Ø±Ø¹Øª Ø¨Ø§Ø±Ú¯Ø°Ø§Ø±ÛŒÂ» Ùˆ Â«Ø§Ù…Ù†ÛŒØª Ø¯Ø§Ø¯Ù‡â€ŒÙ‡Ø§Â» Ø­Ø±Ù Ø§ÙˆÙ„ Ø±Ø§ Ø¯Ø± Ù…ÙˆÙÙ‚ÛŒØª ÛŒÚ© Ú©Ø³Ø¨â€ŒÙˆÚ©Ø§Ø± Ø§ÛŒÙ†ØªØ±Ù†ØªÛŒ Ù…ÛŒâ€ŒØ²Ù†Ù†Ø¯. Ù…ÙˆØªÙˆØ± Ø¬Ø³ØªØ¬ÙˆÛŒ Ú¯ÙˆÚ¯Ù„ Ø¨Ù‡ Ø·ÙˆØ± Ù…Ø¯Ø§ÙˆÙ… Ù…Ø¹ÛŒØ§Ø±Ù‡Ø§ÛŒ ØªØ¬Ø±Ø¨Ù‡ Ú©Ø§Ø±Ø¨Ø±ÛŒ (Ø¨Ù‡â€ŒÙˆÛŒÚ˜Ù‡ Ø´Ø§Ø®Øµâ€ŒÙ‡Ø§ÛŒ Core Web Vitals) Ø±Ø§ Ø±ØµØ¯ Ù…ÛŒâ€ŒÚ©Ù†Ø¯ Ùˆ Ø³Ø§ÛŒØªâ€ŒÙ‡Ø§ÛŒ Ú©Ù†Ø¯ ÛŒØ§ Ù†Ø§Ø§Ù…Ù† Ø±Ø§ Ø¨Ù‡ Ø±ØªØ¨Ù‡â€ŒÙ‡Ø§ÛŒ Ù¾Ø§ÛŒÛŒÙ†â€ŒØªØ± Ù…ÛŒâ€ŒÙØ±Ø³ØªØ¯. 
             </p>
             <p>
-                در این میان، فناوری <strong>کلودفلر (Cloudflare)</strong> به عنوان فرشته نجات وب‌سایت‌ها شناخته می‌شود. در این مقاله، به زبان ساده بررسی می‌کنیم که کلودفلر چیست، چگونه کار می‌کند و چطور می‌توانید از آن برای افزایش چشمگیر سرعت و امنیت سایت خود استفاده کنید.
+                Ø¯Ø± Ø§ÛŒÙ† Ù…ÛŒØ§Ù†ØŒ ÙÙ†Ø§ÙˆØ±ÛŒ <strong>Ú©Ù„ÙˆØ¯ÙÙ„Ø± (Cloudflare)</strong> Ø¨Ù‡ Ø¹Ù†ÙˆØ§Ù† ÙØ±Ø´ØªÙ‡ Ù†Ø¬Ø§Øª ÙˆØ¨â€ŒØ³Ø§ÛŒØªâ€ŒÙ‡Ø§ Ø´Ù†Ø§Ø®ØªÙ‡ Ù…ÛŒâ€ŒØ´ÙˆØ¯. Ø¯Ø± Ø§ÛŒÙ† Ù…Ù‚Ø§Ù„Ù‡ØŒ Ø¨Ù‡ Ø²Ø¨Ø§Ù† Ø³Ø§Ø¯Ù‡ Ø¨Ø±Ø±Ø³ÛŒ Ù…ÛŒâ€ŒÚ©Ù†ÛŒÙ… Ú©Ù‡ Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ú†ÛŒØ³ØªØŒ Ú†Ú¯ÙˆÙ†Ù‡ Ú©Ø§Ø± Ù…ÛŒâ€ŒÚ©Ù†Ø¯ Ùˆ Ú†Ø·ÙˆØ± Ù…ÛŒâ€ŒØªÙˆØ§Ù†ÛŒØ¯ Ø§Ø² Ø¢Ù† Ø¨Ø±Ø§ÛŒ Ø§ÙØ²Ø§ÛŒØ´ Ú†Ø´Ù…Ú¯ÛŒØ± Ø³Ø±Ø¹Øª Ùˆ Ø§Ù…Ù†ÛŒØª Ø³Ø§ÛŒØª Ø®ÙˆØ¯ Ø§Ø³ØªÙØ§Ø¯Ù‡ Ú©Ù†ÛŒØ¯.
             </p>
 
             <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
                 <i data-lucide="network" class="w-6 h-6 text-violet-500"></i>
-                کلودفلر چیست و چگونه کار می‌کند؟
+                Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ú†ÛŒØ³Øª Ùˆ Ú†Ú¯ÙˆÙ†Ù‡ Ú©Ø§Ø± Ù…ÛŒâ€ŒÚ©Ù†Ø¯ØŸ
             </h2>
             <p>
-                کلودفلر بزرگ‌ترین ارائه‌دهنده خدمات <strong>شبکه توزیع محتوا (CDN)</strong> و امنیت ابری در سراسر جهان است. این پلتفرم قدرتمند که در سال ۲۰۰۷ راه‌اندازی شد، امروزه میزبان ترافیک بخش بزرگی از اینترنت جهانی است.
+                Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ø¨Ø²Ø±Ú¯â€ŒØªØ±ÛŒÙ† Ø§Ø±Ø§Ø¦Ù‡â€ŒØ¯Ù‡Ù†Ø¯Ù‡ Ø®Ø¯Ù…Ø§Øª <strong>Ø´Ø¨Ú©Ù‡ ØªÙˆØ²ÛŒØ¹ Ù…Ø­ØªÙˆØ§ (CDN)</strong> Ùˆ Ø§Ù…Ù†ÛŒØª Ø§Ø¨Ø±ÛŒ Ø¯Ø± Ø³Ø±Ø§Ø³Ø± Ø¬Ù‡Ø§Ù† Ø§Ø³Øª. Ø§ÛŒÙ† Ù¾Ù„ØªÙØ±Ù… Ù‚Ø¯Ø±ØªÙ…Ù†Ø¯ Ú©Ù‡ Ø¯Ø± Ø³Ø§Ù„ Û²Û°Û°Û· Ø±Ø§Ù‡â€ŒØ§Ù†Ø¯Ø§Ø²ÛŒ Ø´Ø¯ØŒ Ø§Ù…Ø±ÙˆØ²Ù‡ Ù…ÛŒØ²Ø¨Ø§Ù† ØªØ±Ø§ÙÛŒÚ© Ø¨Ø®Ø´ Ø¨Ø²Ø±Ú¯ÛŒ Ø§Ø² Ø§ÛŒÙ†ØªØ±Ù†Øª Ø¬Ù‡Ø§Ù†ÛŒ Ø§Ø³Øª.
             </p>
             <p>
-                از نظر فنی، کلودفلر به عنوان یک <strong>پروکسی معکوس (Reverse Proxy)</strong> عمل می‌کند. در حالت عادی، وقتی کاربری آدرس سایت شما را وارد می‌کند، مرورگر او مستقیماً به سرور اصلی (هاست شما) متصل می‌شود. اما با فعال‌سازی کلودفلر، این پلتفرم مانند یک واسطه هوشمند بین کاربر و سرور اصلی قرار می‌گیرد. 
+                Ø§Ø² Ù†Ø¸Ø± ÙÙ†ÛŒØŒ Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ø¨Ù‡ Ø¹Ù†ÙˆØ§Ù† ÛŒÚ© <strong>Ù¾Ø±ÙˆÚ©Ø³ÛŒ Ù…Ø¹Ú©ÙˆØ³ (Reverse Proxy)</strong> Ø¹Ù…Ù„ Ù…ÛŒâ€ŒÚ©Ù†Ø¯. Ø¯Ø± Ø­Ø§Ù„Øª Ø¹Ø§Ø¯ÛŒØŒ ÙˆÙ‚ØªÛŒ Ú©Ø§Ø±Ø¨Ø±ÛŒ Ø¢Ø¯Ø±Ø³ Ø³Ø§ÛŒØª Ø´Ù…Ø§ Ø±Ø§ ÙˆØ§Ø±Ø¯ Ù…ÛŒâ€ŒÚ©Ù†Ø¯ØŒ Ù…Ø±ÙˆØ±Ú¯Ø± Ø§Ùˆ Ù…Ø³ØªÙ‚ÛŒÙ…Ø§Ù‹ Ø¨Ù‡ Ø³Ø±ÙˆØ± Ø§ØµÙ„ÛŒ (Ù‡Ø§Ø³Øª Ø´Ù…Ø§) Ù…ØªØµÙ„ Ù…ÛŒâ€ŒØ´ÙˆØ¯. Ø§Ù…Ø§ Ø¨Ø§ ÙØ¹Ø§Ù„â€ŒØ³Ø§Ø²ÛŒ Ú©Ù„ÙˆØ¯ÙÙ„Ø±ØŒ Ø§ÛŒÙ† Ù¾Ù„ØªÙØ±Ù… Ù…Ø§Ù†Ù†Ø¯ ÛŒÚ© ÙˆØ§Ø³Ø·Ù‡ Ù‡ÙˆØ´Ù…Ù†Ø¯ Ø¨ÛŒÙ† Ú©Ø§Ø±Ø¨Ø± Ùˆ Ø³Ø±ÙˆØ± Ø§ØµÙ„ÛŒ Ù‚Ø±Ø§Ø± Ù…ÛŒâ€ŒÚ¯ÛŒØ±Ø¯. 
             </p>
             <p>
-                از این پس، تمام درخواست‌های ورودی ابتدا به سرورهای لبه (Edge Servers) کلودفلر که در بیش از ۲۰۰ شهر جهان توزیع شده‌اند فرستاده شده و پس از بررسی و بهینه‌سازی، به سرور شما هدایت می‌شوند.
+                Ø§Ø² Ø§ÛŒÙ† Ù¾Ø³ØŒ ØªÙ…Ø§Ù… Ø¯Ø±Ø®ÙˆØ§Ø³Øªâ€ŒÙ‡Ø§ÛŒ ÙˆØ±ÙˆØ¯ÛŒ Ø§Ø¨ØªØ¯Ø§ Ø¨Ù‡ Ø³Ø±ÙˆØ±Ù‡Ø§ÛŒ Ù„Ø¨Ù‡ (Edge Servers) Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ú©Ù‡ Ø¯Ø± Ø¨ÛŒØ´ Ø§Ø² Û²Û°Û° Ø´Ù‡Ø± Ø¬Ù‡Ø§Ù† ØªÙˆØ²ÛŒØ¹ Ø´Ø¯Ù‡â€ŒØ§Ù†Ø¯ ÙØ±Ø³ØªØ§Ø¯Ù‡ Ø´Ø¯Ù‡ Ùˆ Ù¾Ø³ Ø§Ø² Ø¨Ø±Ø±Ø³ÛŒ Ùˆ Ø¨Ù‡ÛŒÙ†Ù‡â€ŒØ³Ø§Ø²ÛŒØŒ Ø¨Ù‡ Ø³Ø±ÙˆØ± Ø´Ù…Ø§ Ù‡Ø¯Ø§ÛŒØª Ù…ÛŒâ€ŒØ´ÙˆÙ†Ø¯.
             </p>
 
             <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
                 <i data-lucide="zap" class="w-6 h-6 text-amber-500"></i>
-                چگونه کلودفلر سرعت سایت و سئو را دگرگون می‌کند؟
+                Ú†Ú¯ÙˆÙ†Ù‡ Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ø³Ø±Ø¹Øª Ø³Ø§ÛŒØª Ùˆ Ø³Ø¦Ùˆ Ø±Ø§ Ø¯Ú¯Ø±Ú¯ÙˆÙ† Ù…ÛŒâ€ŒÚ©Ù†Ø¯ØŸ
             </h2>
             <p>
-                بهبود سرعت بارگذاری وب‌سایت تأثیر مستقیمی بر کاهش نرخ پرش (Bounce Rate)، افزایش رضایت مشتریان و در نهایت ارتقای رتبه سئو دارد. کلودفلر با استفاده از ابزارهای زیر سرعت لود صفحات شما را به حداقل می‌رساند:
+                Ø¨Ù‡Ø¨ÙˆØ¯ Ø³Ø±Ø¹Øª Ø¨Ø§Ø±Ú¯Ø°Ø§Ø±ÛŒ ÙˆØ¨â€ŒØ³Ø§ÛŒØª ØªØ£Ø«ÛŒØ± Ù…Ø³ØªÙ‚ÛŒÙ…ÛŒ Ø¨Ø± Ú©Ø§Ù‡Ø´ Ù†Ø±Ø® Ù¾Ø±Ø´ (Bounce Rate)ØŒ Ø§ÙØ²Ø§ÛŒØ´ Ø±Ø¶Ø§ÛŒØª Ù…Ø´ØªØ±ÛŒØ§Ù† Ùˆ Ø¯Ø± Ù†Ù‡Ø§ÛŒØª Ø§Ø±ØªÙ‚Ø§ÛŒ Ø±ØªØ¨Ù‡ Ø³Ø¦Ùˆ Ø¯Ø§Ø±Ø¯. Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ø¨Ø§ Ø§Ø³ØªÙØ§Ø¯Ù‡ Ø§Ø² Ø§Ø¨Ø²Ø§Ø±Ù‡Ø§ÛŒ Ø²ÛŒØ± Ø³Ø±Ø¹Øª Ù„ÙˆØ¯ ØµÙØ­Ø§Øª Ø´Ù…Ø§ Ø±Ø§ Ø¨Ù‡ Ø­Ø¯Ø§Ù‚Ù„ Ù…ÛŒâ€ŒØ±Ø³Ø§Ù†Ø¯:
             </p>
             <ol class="list-decimal pr-5 space-y-4 font-medium text-zinc-800 dark:text-zinc-200 mb-6 marker:text-violet-500 marker:font-bold">
                 <li>
-                    <strong>سیستم ذخیره‌سازی موقت (Caching پیشرفته):</strong> کلودفلر کدهای HTML، فایل‌های CSS، جاوا اسکریپت و تصاویر ثابت سایت شما را روی سرورهای جهانی خود ذخیره (کش) می‌کند. وقتی کاربری از یک کشور خاص وارد سایت شود، این اطلاعات از نزدیک‌ترین دیتاسنتر به او تحویل داده می‌شود که تاخیر شبکه را به شدت کاهش می‌دهد.
+                    <strong>Ø³ÛŒØ³ØªÙ… Ø°Ø®ÛŒØ±Ù‡â€ŒØ³Ø§Ø²ÛŒ Ù…ÙˆÙ‚Øª (Caching Ù¾ÛŒØ´Ø±ÙØªÙ‡):</strong> Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ú©Ø¯Ù‡Ø§ÛŒ HTMLØŒ ÙØ§ÛŒÙ„â€ŒÙ‡Ø§ÛŒ CSSØŒ Ø¬Ø§ÙˆØ§ Ø§Ø³Ú©Ø±ÛŒÙ¾Øª Ùˆ ØªØµØ§ÙˆÛŒØ± Ø«Ø§Ø¨Øª Ø³Ø§ÛŒØª Ø´Ù…Ø§ Ø±Ø§ Ø±ÙˆÛŒ Ø³Ø±ÙˆØ±Ù‡Ø§ÛŒ Ø¬Ù‡Ø§Ù†ÛŒ Ø®ÙˆØ¯ Ø°Ø®ÛŒØ±Ù‡ (Ú©Ø´) Ù…ÛŒâ€ŒÚ©Ù†Ø¯. ÙˆÙ‚ØªÛŒ Ú©Ø§Ø±Ø¨Ø±ÛŒ Ø§Ø² ÛŒÚ© Ú©Ø´ÙˆØ± Ø®Ø§Øµ ÙˆØ§Ø±Ø¯ Ø³Ø§ÛŒØª Ø´ÙˆØ¯ØŒ Ø§ÛŒÙ† Ø§Ø·Ù„Ø§Ø¹Ø§Øª Ø§Ø² Ù†Ø²Ø¯ÛŒÚ©â€ŒØªØ±ÛŒÙ† Ø¯ÛŒØªØ§Ø³Ù†ØªØ± Ø¨Ù‡ Ø§Ùˆ ØªØ­ÙˆÛŒÙ„ Ø¯Ø§Ø¯Ù‡ Ù…ÛŒâ€ŒØ´ÙˆØ¯ Ú©Ù‡ ØªØ§Ø®ÛŒØ± Ø´Ø¨Ú©Ù‡ Ø±Ø§ Ø¨Ù‡ Ø´Ø¯Øª Ú©Ø§Ù‡Ø´ Ù…ÛŒâ€ŒØ¯Ù‡Ø¯.
                 </li>
                 <li>
-                    <strong>فشرده‌سازی خودکار کدهای فرانت‌اند (Minification):</strong> کلودفلر با حذف فضاهای خالی، خطوط اضافی و کاراکترهای بیهوده از کدهای CSS ،HTML و جاوا اسکریپت، بدون تغییر در عملکرد، حجم آن‌ها را سبک‌تر می‌کند. همچنین با فعال‌سازی پروتکل مدرن <strong>Brotli</strong> در بخش تنظیمات Speed، فایل‌ها با الگوریتم‌های فوق‌پیشرفته فشرده و ارسال می‌شوند.
+                    <strong>ÙØ´Ø±Ø¯Ù‡â€ŒØ³Ø§Ø²ÛŒ Ø®ÙˆØ¯Ú©Ø§Ø± Ú©Ø¯Ù‡Ø§ÛŒ ÙØ±Ø§Ù†Øªâ€ŒØ§Ù†Ø¯ (Minification):</strong> Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ø¨Ø§ Ø­Ø°Ù ÙØ¶Ø§Ù‡Ø§ÛŒ Ø®Ø§Ù„ÛŒØŒ Ø®Ø·ÙˆØ· Ø§Ø¶Ø§ÙÛŒ Ùˆ Ú©Ø§Ø±Ø§Ú©ØªØ±Ù‡Ø§ÛŒ Ø¨ÛŒÙ‡ÙˆØ¯Ù‡ Ø§Ø² Ú©Ø¯Ù‡Ø§ÛŒ CSS ØŒHTML Ùˆ Ø¬Ø§ÙˆØ§ Ø§Ø³Ú©Ø±ÛŒÙ¾ØªØŒ Ø¨Ø¯ÙˆÙ† ØªØºÛŒÛŒØ± Ø¯Ø± Ø¹Ù…Ù„Ú©Ø±Ø¯ØŒ Ø­Ø¬Ù… Ø¢Ù†â€ŒÙ‡Ø§ Ø±Ø§ Ø³Ø¨Ú©â€ŒØªØ± Ù…ÛŒâ€ŒÚ©Ù†Ø¯. Ù‡Ù…Ú†Ù†ÛŒÙ† Ø¨Ø§ ÙØ¹Ø§Ù„â€ŒØ³Ø§Ø²ÛŒ Ù¾Ø±ÙˆØªÚ©Ù„ Ù…Ø¯Ø±Ù† <strong>Brotli</strong> Ø¯Ø± Ø¨Ø®Ø´ ØªÙ†Ø¸ÛŒÙ…Ø§Øª SpeedØŒ ÙØ§ÛŒÙ„â€ŒÙ‡Ø§ Ø¨Ø§ Ø§Ù„Ú¯ÙˆØ±ÛŒØªÙ…â€ŒÙ‡Ø§ÛŒ ÙÙˆÙ‚â€ŒÙ¾ÛŒØ´Ø±ÙØªÙ‡ ÙØ´Ø±Ø¯Ù‡ Ùˆ Ø§Ø±Ø³Ø§Ù„ Ù…ÛŒâ€ŒØ´ÙˆÙ†Ø¯.
                 </li>
                 <li>
-                    <strong>بهینه‌سازی تصاویر (Cloudflare Polish):</strong> تصاویر بخش عمده‌ای از پهنای باند را مصرف می‌کنند. ابزار اختصاصی Polish تصاویر سایت شما را فشرده کرده و در صورت امکان آن‌ها را به فرمت فوق‌سریع و مدرن <strong>WebP</strong> تبدیل می‌کند.
+                    <strong>Ø¨Ù‡ÛŒÙ†Ù‡â€ŒØ³Ø§Ø²ÛŒ ØªØµØ§ÙˆÛŒØ± (Cloudflare Polish):</strong> ØªØµØ§ÙˆÛŒØ± Ø¨Ø®Ø´ Ø¹Ù…Ø¯Ù‡â€ŒØ§ÛŒ Ø§Ø² Ù¾Ù‡Ù†Ø§ÛŒ Ø¨Ø§Ù†Ø¯ Ø±Ø§ Ù…ØµØ±Ù Ù…ÛŒâ€ŒÚ©Ù†Ù†Ø¯. Ø§Ø¨Ø²Ø§Ø± Ø§Ø®ØªØµØ§ØµÛŒ Polish ØªØµØ§ÙˆÛŒØ± Ø³Ø§ÛŒØª Ø´Ù…Ø§ Ø±Ø§ ÙØ´Ø±Ø¯Ù‡ Ú©Ø±Ø¯Ù‡ Ùˆ Ø¯Ø± ØµÙˆØ±Øª Ø§Ù…Ú©Ø§Ù† Ø¢Ù†â€ŒÙ‡Ø§ Ø±Ø§ Ø¨Ù‡ ÙØ±Ù…Øª ÙÙˆÙ‚â€ŒØ³Ø±ÛŒØ¹ Ùˆ Ù…Ø¯Ø±Ù† <strong>WebP</strong> ØªØ¨Ø¯ÛŒÙ„ Ù…ÛŒâ€ŒÚ©Ù†Ø¯.
                 </li>
                 <li>
-                    <strong>ایندکس آنی صفحات با Crawler Hints:</strong> با همکاری کلودفلر و موتورهای جستجو (مانند مایکروسافت بینگ)، پروتکل IndexNow تغییرات سایت شما را فوراً به ربات‌های جستجوگر اعلام می‌کند تا صفحات جدید شما در سریع‌ترین زمان ممکن ایندکس شوند.
+                    <strong>Ø§ÛŒÙ†Ø¯Ú©Ø³ Ø¢Ù†ÛŒ ØµÙØ­Ø§Øª Ø¨Ø§ Crawler Hints:</strong> Ø¨Ø§ Ù‡Ù…Ú©Ø§Ø±ÛŒ Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ùˆ Ù…ÙˆØªÙˆØ±Ù‡Ø§ÛŒ Ø¬Ø³ØªØ¬Ùˆ (Ù…Ø§Ù†Ù†Ø¯ Ù…Ø§ÛŒÚ©Ø±ÙˆØ³Ø§ÙØª Ø¨ÛŒÙ†Ú¯)ØŒ Ù¾Ø±ÙˆØªÚ©Ù„ IndexNow ØªØºÛŒÛŒØ±Ø§Øª Ø³Ø§ÛŒØª Ø´Ù…Ø§ Ø±Ø§ ÙÙˆØ±Ø§Ù‹ Ø¨Ù‡ Ø±Ø¨Ø§Øªâ€ŒÙ‡Ø§ÛŒ Ø¬Ø³ØªØ¬ÙˆÚ¯Ø± Ø§Ø¹Ù„Ø§Ù… Ù…ÛŒâ€ŒÚ©Ù†Ø¯ ØªØ§ ØµÙØ­Ø§Øª Ø¬Ø¯ÛŒØ¯ Ø´Ù…Ø§ Ø¯Ø± Ø³Ø±ÛŒØ¹â€ŒØªØ±ÛŒÙ† Ø²Ù…Ø§Ù† Ù…Ù…Ú©Ù† Ø§ÛŒÙ†Ø¯Ú©Ø³ Ø´ÙˆÙ†Ø¯.
                 </li>
             </ol>
 
             <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
                 <i data-lucide="shield-check" class="w-6 h-6 text-emerald-500"></i>
-                سپر دفاعی کلودفلر در برابر تهدیدات سایبری
+                Ø³Ù¾Ø± Ø¯ÙØ§Ø¹ÛŒ Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ø¯Ø± Ø¨Ø±Ø§Ø¨Ø± ØªÙ‡Ø¯ÛŒØ¯Ø§Øª Ø³Ø§ÛŒØ¨Ø±ÛŒ
             </h2>
             <p>
-                امنیت یکی از ارکان اصلی اعتماد کاربران است. کلودفلر با فیلتر کردن ترافیک‌های مخرب، از سایت شما در برابر خطرات زیر محافظت می‌کند:
+                Ø§Ù…Ù†ÛŒØª ÛŒÚ©ÛŒ Ø§Ø² Ø§Ø±Ú©Ø§Ù† Ø§ØµÙ„ÛŒ Ø§Ø¹ØªÙ…Ø§Ø¯ Ú©Ø§Ø±Ø¨Ø±Ø§Ù† Ø§Ø³Øª. Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ø¨Ø§ ÙÛŒÙ„ØªØ± Ú©Ø±Ø¯Ù† ØªØ±Ø§ÙÛŒÚ©â€ŒÙ‡Ø§ÛŒ Ù…Ø®Ø±Ø¨ØŒ Ø§Ø² Ø³Ø§ÛŒØª Ø´Ù…Ø§ Ø¯Ø± Ø¨Ø±Ø§Ø¨Ø± Ø®Ø·Ø±Ø§Øª Ø²ÛŒØ± Ù…Ø­Ø§ÙØ¸Øª Ù…ÛŒâ€ŒÚ©Ù†Ø¯:
             </p>
             <ul class="list-none space-y-3">
                 <li>
-                    <strong>دفاع در برابر حملات DDoS:</strong> در این نوع حملات، هکرها با ارسال میلیون‌ها درخواست همزمان تلاش می‌کنند سرور شما را از کار بیندازند. کلودفلر با توزیع این حجم از ترافیک روی شبکه عظیم سرورهای خود، حملات را در نطفه خفه کرده و سایت شما را همیشه آنلاین نگه می‌دارد.
+                    <strong>Ø¯ÙØ§Ø¹ Ø¯Ø± Ø¨Ø±Ø§Ø¨Ø± Ø­Ù…Ù„Ø§Øª DDoS:</strong> Ø¯Ø± Ø§ÛŒÙ† Ù†ÙˆØ¹ Ø­Ù…Ù„Ø§ØªØŒ Ù‡Ú©Ø±Ù‡Ø§ Ø¨Ø§ Ø§Ø±Ø³Ø§Ù„ Ù…ÛŒÙ„ÛŒÙˆÙ†â€ŒÙ‡Ø§ Ø¯Ø±Ø®ÙˆØ§Ø³Øª Ù‡Ù…Ø²Ù…Ø§Ù† ØªÙ„Ø§Ø´ Ù…ÛŒâ€ŒÚ©Ù†Ù†Ø¯ Ø³Ø±ÙˆØ± Ø´Ù…Ø§ Ø±Ø§ Ø§Ø² Ú©Ø§Ø± Ø¨ÛŒÙ†Ø¯Ø§Ø²Ù†Ø¯. Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ø¨Ø§ ØªÙˆØ²ÛŒØ¹ Ø§ÛŒÙ† Ø­Ø¬Ù… Ø§Ø² ØªØ±Ø§ÙÛŒÚ© Ø±ÙˆÛŒ Ø´Ø¨Ú©Ù‡ Ø¹Ø¸ÛŒÙ… Ø³Ø±ÙˆØ±Ù‡Ø§ÛŒ Ø®ÙˆØ¯ØŒ Ø­Ù…Ù„Ø§Øª Ø±Ø§ Ø¯Ø± Ù†Ø·ÙÙ‡ Ø®ÙÙ‡ Ú©Ø±Ø¯Ù‡ Ùˆ Ø³Ø§ÛŒØª Ø´Ù…Ø§ Ø±Ø§ Ù‡Ù…ÛŒØ´Ù‡ Ø¢Ù†Ù„Ø§ÛŒÙ† Ù†Ú¯Ù‡ Ù…ÛŒâ€ŒØ¯Ø§Ø±Ø¯.
                 </li>
                 <li>
-                    <strong>فایروال هوشمند اپلیکیشن وب (WAF):</strong> دیواره آتش کلودفلر به طور مداوم رفتارهای ربات‌ها را آنالیز کرده و تلاش برای هک، نفوذ به پایگاه داده (SQL Injection) یا کدهای مخرب (XSS) را شناسایی و مسدود می‌کند.
+                    <strong>ÙØ§ÛŒØ±ÙˆØ§Ù„ Ù‡ÙˆØ´Ù…Ù†Ø¯ Ø§Ù¾Ù„ÛŒÚ©ÛŒØ´Ù† ÙˆØ¨ (WAF):</strong> Ø¯ÛŒÙˆØ§Ø±Ù‡ Ø¢ØªØ´ Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ø¨Ù‡ Ø·ÙˆØ± Ù…Ø¯Ø§ÙˆÙ… Ø±ÙØªØ§Ø±Ù‡Ø§ÛŒ Ø±Ø¨Ø§Øªâ€ŒÙ‡Ø§ Ø±Ø§ Ø¢Ù†Ø§Ù„ÛŒØ² Ú©Ø±Ø¯Ù‡ Ùˆ ØªÙ„Ø§Ø´ Ø¨Ø±Ø§ÛŒ Ù‡Ú©ØŒ Ù†ÙÙˆØ° Ø¨Ù‡ Ù¾Ø§ÛŒÚ¯Ø§Ù‡ Ø¯Ø§Ø¯Ù‡ (SQL Injection) ÛŒØ§ Ú©Ø¯Ù‡Ø§ÛŒ Ù…Ø®Ø±Ø¨ (XSS) Ø±Ø§ Ø´Ù†Ø§Ø³Ø§ÛŒÛŒ Ùˆ Ù…Ø³Ø¯ÙˆØ¯ Ù…ÛŒâ€ŒÚ©Ù†Ø¯.
                 </li>
                 <li>
-                    <strong>فعال‌سازی SSL/TLS رایگان:</strong> این گواهی داده‌های رد و بدل شده میان کاربر و سایت را رمزنگاری می‌کند تا اطلاعات شخصی و بانکی کاربران از خطر شنود در امان بماند.
+                    <strong>ÙØ¹Ø§Ù„â€ŒØ³Ø§Ø²ÛŒ SSL/TLS Ø±Ø§ÛŒÚ¯Ø§Ù†:</strong> Ø§ÛŒÙ† Ú¯ÙˆØ§Ù‡ÛŒ Ø¯Ø§Ø¯Ù‡â€ŒÙ‡Ø§ÛŒ Ø±Ø¯ Ùˆ Ø¨Ø¯Ù„ Ø´Ø¯Ù‡ Ù…ÛŒØ§Ù† Ú©Ø§Ø±Ø¨Ø± Ùˆ Ø³Ø§ÛŒØª Ø±Ø§ Ø±Ù…Ø²Ù†Ú¯Ø§Ø±ÛŒ Ù…ÛŒâ€ŒÚ©Ù†Ø¯ ØªØ§ Ø§Ø·Ù„Ø§Ø¹Ø§Øª Ø´Ø®ØµÛŒ Ùˆ Ø¨Ø§Ù†Ú©ÛŒ Ú©Ø§Ø±Ø¨Ø±Ø§Ù† Ø§Ø² Ø®Ø·Ø± Ø´Ù†ÙˆØ¯ Ø¯Ø± Ø§Ù…Ø§Ù† Ø¨Ù…Ø§Ù†Ø¯.
                 </li>
             </ul>
 
             <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
                 <i data-lucide="sliders" class="w-6 h-6 text-blue-500"></i>
-                آموزش گام‌به‌گام راه‌اندازی و کانفیگ کلودفلر
+                Ø¢Ù…ÙˆØ²Ø´ Ú¯Ø§Ù…â€ŒØ¨Ù‡â€ŒÚ¯Ø§Ù… Ø±Ø§Ù‡â€ŒØ§Ù†Ø¯Ø§Ø²ÛŒ Ùˆ Ú©Ø§Ù†ÙÛŒÚ¯ Ú©Ù„ÙˆØ¯ÙÙ„Ø±
             </h2>
             <p>
-                راه‌اندازی کلودفلر بسیار آسان است و در کمتر از ۱۰ دقیقه انجام می‌شود:
+                Ø±Ø§Ù‡â€ŒØ§Ù†Ø¯Ø§Ø²ÛŒ Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ø¨Ø³ÛŒØ§Ø± Ø¢Ø³Ø§Ù† Ø§Ø³Øª Ùˆ Ø¯Ø± Ú©Ù…ØªØ± Ø§Ø² Û±Û° Ø¯Ù‚ÛŒÙ‚Ù‡ Ø§Ù†Ø¬Ø§Ù… Ù…ÛŒâ€ŒØ´ÙˆØ¯:
             </p>
 
-            <!-- مراحل راه اندازی -->
+            
             <div class="space-y-4 my-8">
                 <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 flex gap-4 items-start">
-                    <div class="w-8 h-8 rounded-xl bg-violet-600 text-white font-black flex items-center justify-center shrink-0">۱</div>
+                    <div class="w-8 h-8 rounded-xl bg-violet-600 text-white font-black flex items-center justify-center shrink-0">Û±</div>
                     <div>
-                        <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-1">ثبت‌نام در پلتفرم</h3>
-                        <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">به سایت رسمی کلودفلر مراجعه کرده، بر روی دکمه "Start for free" کلیک کنید و با ایمیل خود یک حساب کاربری بسازید.</p>
+                        <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-1">Ø«Ø¨Øªâ€ŒÙ†Ø§Ù… Ø¯Ø± Ù¾Ù„ØªÙØ±Ù…</h3>
+                        <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Ø¨Ù‡ Ø³Ø§ÛŒØª Ø±Ø³Ù…ÛŒ Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ù…Ø±Ø§Ø¬Ø¹Ù‡ Ú©Ø±Ø¯Ù‡ØŒ Ø¨Ø± Ø±ÙˆÛŒ Ø¯Ú©Ù…Ù‡ "Start for free" Ú©Ù„ÛŒÚ© Ú©Ù†ÛŒØ¯ Ùˆ Ø¨Ø§ Ø§ÛŒÙ…ÛŒÙ„ Ø®ÙˆØ¯ ÛŒÚ© Ø­Ø³Ø§Ø¨ Ú©Ø§Ø±Ø¨Ø±ÛŒ Ø¨Ø³Ø§Ø²ÛŒØ¯.</p>
                     </div>
                 </div>
 
                 <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 flex gap-4 items-start">
-                    <div class="w-8 h-8 rounded-xl bg-violet-600 text-white font-black flex items-center justify-center shrink-0">۲</div>
+                    <div class="w-8 h-8 rounded-xl bg-violet-600 text-white font-black flex items-center justify-center shrink-0">Û²</div>
                     <div>
-                        <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-1">ثبت وب‌سایت</h3>
-                        <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">آدرس دامنه خود (مثلاً <code class="bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block">mysite.com</code>) را وارد کنید تا کلودفلر شروع به اسکن رکوردهای DNS فعلی شما کند.</p>
+                        <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-1">Ø«Ø¨Øª ÙˆØ¨â€ŒØ³Ø§ÛŒØª</h3>
+                        <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Ø¢Ø¯Ø±Ø³ Ø¯Ø§Ù…Ù†Ù‡ Ø®ÙˆØ¯ (Ù…Ø«Ù„Ø§Ù‹ <code class="bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block">mysite.com</code>) Ø±Ø§ ÙˆØ§Ø±Ø¯ Ú©Ù†ÛŒØ¯ ØªØ§ Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ø´Ø±ÙˆØ¹ Ø¨Ù‡ Ø§Ø³Ú©Ù† Ø±Ú©ÙˆØ±Ø¯Ù‡Ø§ÛŒ DNS ÙØ¹Ù„ÛŒ Ø´Ù…Ø§ Ú©Ù†Ø¯.</p>
                     </div>
                 </div>
 
                 <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 flex gap-4 items-start">
-                    <div class="w-8 h-8 rounded-xl bg-violet-600 text-white font-black flex items-center justify-center shrink-0">۳</div>
+                    <div class="w-8 h-8 rounded-xl bg-violet-600 text-white font-black flex items-center justify-center shrink-0">Û³</div>
                     <div>
-                        <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-1">انتخاب پلن رایگان (Free Plan)</h3>
-                        <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">برای شروع، پلن رایگان کلودفلر کاملاً کافیست و امکانات فوق‌العاده‌ای برای بهینه‌سازی سرعت و امنیت اولیه در اختیارتان قرار می‌دهد.</p>
+                        <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-1">Ø§Ù†ØªØ®Ø§Ø¨ Ù¾Ù„Ù† Ø±Ø§ÛŒÚ¯Ø§Ù† (Free Plan)</h3>
+                        <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Ø¨Ø±Ø§ÛŒ Ø´Ø±ÙˆØ¹ØŒ Ù¾Ù„Ù† Ø±Ø§ÛŒÚ¯Ø§Ù† Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ú©Ø§Ù…Ù„Ø§Ù‹ Ú©Ø§ÙÛŒØ³Øª Ùˆ Ø§Ù…Ú©Ø§Ù†Ø§Øª ÙÙˆÙ‚â€ŒØ§Ù„Ø¹Ø§Ø¯Ù‡â€ŒØ§ÛŒ Ø¨Ø±Ø§ÛŒ Ø¨Ù‡ÛŒÙ†Ù‡â€ŒØ³Ø§Ø²ÛŒ Ø³Ø±Ø¹Øª Ùˆ Ø§Ù…Ù†ÛŒØª Ø§ÙˆÙ„ÛŒÙ‡ Ø¯Ø± Ø§Ø®ØªÛŒØ§Ø±ØªØ§Ù† Ù‚Ø±Ø§Ø± Ù…ÛŒâ€ŒØ¯Ù‡Ø¯.</p>
                     </div>
                 </div>
 
                 <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 flex gap-4 items-start">
-                    <div class="w-8 h-8 rounded-xl bg-violet-600 text-white font-black flex items-center justify-center shrink-0">۴</div>
+                    <div class="w-8 h-8 rounded-xl bg-violet-600 text-white font-black flex items-center justify-center shrink-0">Û´</div>
                     <div>
-                        <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-1">تغییر دی‌ان‌اس‌ها (Nameservers)</h3>
-                        <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">کلودفلر به شما دو آدرس DNS اختصاصی می‌دهد. کافیست به پنل مدیریت دامنه خود بروید و دی‌ان‌اس‌های قدیمی را با دی‌ان‌اس‌های جدید کلودفلر جایگزین کنید.</p>
+                        <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-1">ØªØºÛŒÛŒØ± Ø¯ÛŒâ€ŒØ§Ù†â€ŒØ§Ø³â€ŒÙ‡Ø§ (Nameservers)</h3>
+                        <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ø¨Ù‡ Ø´Ù…Ø§ Ø¯Ùˆ Ø¢Ø¯Ø±Ø³ DNS Ø§Ø®ØªØµØ§ØµÛŒ Ù…ÛŒâ€ŒØ¯Ù‡Ø¯. Ú©Ø§ÙÛŒØ³Øª Ø¨Ù‡ Ù¾Ù†Ù„ Ù…Ø¯ÛŒØ±ÛŒØª Ø¯Ø§Ù…Ù†Ù‡ Ø®ÙˆØ¯ Ø¨Ø±ÙˆÛŒØ¯ Ùˆ Ø¯ÛŒâ€ŒØ§Ù†â€ŒØ§Ø³â€ŒÙ‡Ø§ÛŒ Ù‚Ø¯ÛŒÙ…ÛŒ Ø±Ø§ Ø¨Ø§ Ø¯ÛŒâ€ŒØ§Ù†â€ŒØ§Ø³â€ŒÙ‡Ø§ÛŒ Ø¬Ø¯ÛŒØ¯ Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ø¬Ø§ÛŒÚ¯Ø²ÛŒÙ† Ú©Ù†ÛŒØ¯.</p>
                     </div>
                 </div>
 
                 <div class="p-5 rounded-2xl border glass-base bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 flex gap-4 items-start">
-                    <div class="w-8 h-8 rounded-xl bg-violet-600 text-white font-black flex items-center justify-center shrink-0">۵</div>
+                    <div class="w-8 h-8 rounded-xl bg-violet-600 text-white font-black flex items-center justify-center shrink-0">Ûµ</div>
                     <div>
-                        <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-1">تنظیمات نهایی</h3>
-                        <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">پس از تأیید اتصال، به تب SSL/TLS رفته و حالت آن را روی Flexible یا Full قرار دهید و در تب Speed، گزینه Brotli را فعال کنید.</p>
+                        <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-1">ØªÙ†Ø¸ÛŒÙ…Ø§Øª Ù†Ù‡Ø§ÛŒÛŒ</h3>
+                        <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">Ù¾Ø³ Ø§Ø² ØªØ£ÛŒÛŒØ¯ Ø§ØªØµØ§Ù„ØŒ Ø¨Ù‡ ØªØ¨ SSL/TLS Ø±ÙØªÙ‡ Ùˆ Ø­Ø§Ù„Øª Ø¢Ù† Ø±Ø§ Ø±ÙˆÛŒ Flexible ÛŒØ§ Full Ù‚Ø±Ø§Ø± Ø¯Ù‡ÛŒØ¯ Ùˆ Ø¯Ø± ØªØ¨ SpeedØŒ Ú¯Ø²ÛŒÙ†Ù‡ Brotli Ø±Ø§ ÙØ¹Ø§Ù„ Ú©Ù†ÛŒØ¯.</p>
                     </div>
                 </div>
             </div>
 
             <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 flex items-center gap-3">
                 <i data-lucide="cpu" class="w-6 h-6 text-indigo-500"></i>
-                نقش کلودفلر در پایداری پلتفرم‌های مدرن؛ الگوبرداری از SPONSORACB
+                Ù†Ù‚Ø´ Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ø¯Ø± Ù¾Ø§ÛŒØ¯Ø§Ø±ÛŒ Ù¾Ù„ØªÙØ±Ù…â€ŒÙ‡Ø§ÛŒ Ù…Ø¯Ø±Ù†Ø› Ø§Ù„Ú¯ÙˆØ¨Ø±Ø¯Ø§Ø±ÛŒ Ø§Ø² SPONSORACB
             </h2>
             <p>
-                اهمیت کلودفلر تنها به وب‌سایت‌های فروشگاهی یا شرکتی محدود نمی‌شود، بلکه پلتفرم‌های نوین تکنولوژی نیز پایداری خود را مدیون این زیرساخت هستند. به عنوان یک نمونه موفق بومی، مجموعه فناوری و هوش مصنوعی <strong>SPONSORACB</strong> را در نظر بگیرید.
+                Ø§Ù‡Ù…ÛŒØª Ú©Ù„ÙˆØ¯ÙÙ„Ø± ØªÙ†Ù‡Ø§ Ø¨Ù‡ ÙˆØ¨â€ŒØ³Ø§ÛŒØªâ€ŒÙ‡Ø§ÛŒ ÙØ±ÙˆØ´Ú¯Ø§Ù‡ÛŒ ÛŒØ§ Ø´Ø±Ú©ØªÛŒ Ù…Ø­Ø¯ÙˆØ¯ Ù†Ù…ÛŒâ€ŒØ´ÙˆØ¯ØŒ Ø¨Ù„Ú©Ù‡ Ù¾Ù„ØªÙØ±Ù…â€ŒÙ‡Ø§ÛŒ Ù†ÙˆÛŒÙ† ØªÚ©Ù†ÙˆÙ„ÙˆÚ˜ÛŒ Ù†ÛŒØ² Ù¾Ø§ÛŒØ¯Ø§Ø±ÛŒ Ø®ÙˆØ¯ Ø±Ø§ Ù…Ø¯ÛŒÙˆÙ† Ø§ÛŒÙ† Ø²ÛŒØ±Ø³Ø§Ø®Øª Ù‡Ø³ØªÙ†Ø¯. Ø¨Ù‡ Ø¹Ù†ÙˆØ§Ù† ÛŒÚ© Ù†Ù…ÙˆÙ†Ù‡ Ù…ÙˆÙÙ‚ Ø¨ÙˆÙ…ÛŒØŒ Ù…Ø¬Ù…ÙˆØ¹Ù‡ ÙÙ†Ø§ÙˆØ±ÛŒ Ùˆ Ù‡ÙˆØ´ Ù…ØµÙ†ÙˆØ¹ÛŒ <strong>SPONSORACB</strong> Ø±Ø§ Ø¯Ø± Ù†Ø¸Ø± Ø¨Ú¯ÛŒØ±ÛŒØ¯.
             </p>
 
-            <!-- کیس استدی SPONSORACB -->
+            
             <div class="my-8 p-6 rounded-3xl border glass-base bg-gradient-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-950/30 dark:to-purple-950/30 border-indigo-200 dark:border-indigo-800/50 shadow-sm">
                 <div class="flex items-center gap-3 mb-4 text-indigo-600 dark:text-indigo-400 font-black text-xl">
                     <i data-lucide="server" class="w-6 h-6"></i>
-                    کیس‌استدی زیرساختی پلتفرم SPONSORACB
+                    Ú©ÛŒØ³â€ŒØ§Ø³ØªØ¯ÛŒ Ø²ÛŒØ±Ø³Ø§Ø®ØªÛŒ Ù¾Ù„ØªÙØ±Ù… SPONSORACB
                 </div>
                 <p class="text-sm sm:text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
-                    پورتال رسمی این مجموعه به آدرس <code class="bg-white/60 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block text-indigo-500 font-bold">SPONSORACB.IR</code> و بستر فروشگاهی آن در <code class="bg-white/60 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block text-indigo-500 font-bold">sponsoracb.mydigify.app</code> که هدف دسترسی بدون محدودیت ایرانیان به برترین مدل‌های هوش مصنوعی جهان (مانند ChatGPT، Gemini و Claude) را دنبال می‌کند، از قوی‌ترین کانفیگ‌های شبکه‌ای کلودفلر بهره می‌برند.
+                    Ù¾ÙˆØ±ØªØ§Ù„ Ø±Ø³Ù…ÛŒ Ø§ÛŒÙ† Ù…Ø¬Ù…ÙˆØ¹Ù‡ Ø¨Ù‡ Ø¢Ø¯Ø±Ø³ <code class="bg-white/60 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block text-indigo-500 font-bold">SPONSORACB.IR</code> Ùˆ Ø¨Ø³ØªØ± ÙØ±ÙˆØ´Ú¯Ø§Ù‡ÛŒ Ø¢Ù† Ø¯Ø± <code class="bg-white/60 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block text-indigo-500 font-bold">sponsoracb.mydigify.app</code> Ú©Ù‡ Ù‡Ø¯Ù Ø¯Ø³ØªØ±Ø³ÛŒ Ø¨Ø¯ÙˆÙ† Ù…Ø­Ø¯ÙˆØ¯ÛŒØª Ø§ÛŒØ±Ø§Ù†ÛŒØ§Ù† Ø¨Ù‡ Ø¨Ø±ØªØ±ÛŒÙ† Ù…Ø¯Ù„â€ŒÙ‡Ø§ÛŒ Ù‡ÙˆØ´ Ù…ØµÙ†ÙˆØ¹ÛŒ Ø¬Ù‡Ø§Ù† (Ù…Ø§Ù†Ù†Ø¯ ChatGPTØŒ Gemini Ùˆ Claude) Ø±Ø§ Ø¯Ù†Ø¨Ø§Ù„ Ù…ÛŒâ€ŒÚ©Ù†Ø¯ØŒ Ø§Ø² Ù‚ÙˆÛŒâ€ŒØªØ±ÛŒÙ† Ú©Ø§Ù†ÙÛŒÚ¯â€ŒÙ‡Ø§ÛŒ Ø´Ø¨Ú©Ù‡â€ŒØ§ÛŒ Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ø¨Ù‡Ø±Ù‡ Ù…ÛŒâ€ŒØ¨Ø±Ù†Ø¯.
                 </p>
                 <p class="text-sm sm:text-base leading-relaxed text-zinc-700 dark:text-zinc-300 mt-3 mb-0">
-                    پلتفرم <strong>SPONSORACB</strong> برای تضمین پایداری ربات تلگرامی فوق‌سریع خود (<code class="bg-white/60 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block font-bold">SPONSORACB_BOT</code>) و محافظت از تراکنش‌های مالی و درگاه‌های حمایتی ریالی کاربران (سیستم دونیت monsmain)، از پروکسی‌های معکوس و فایروال‌های پیشرفته کلودفلر استفاده می‌کند تا ابزارهای هوشمند این مجموعه همیشه بدون قطعی در دسترس باشند.
+                    Ù¾Ù„ØªÙØ±Ù… <strong>SPONSORACB</strong> Ø¨Ø±Ø§ÛŒ ØªØ¶Ù…ÛŒÙ† Ù¾Ø§ÛŒØ¯Ø§Ø±ÛŒ Ø±Ø¨Ø§Øª ØªÙ„Ú¯Ø±Ø§Ù…ÛŒ ÙÙˆÙ‚â€ŒØ³Ø±ÛŒØ¹ Ø®ÙˆØ¯ (<code class="bg-white/60 dark:bg-zinc-800 px-2 py-0.5 rounded dir-ltr inline-block font-bold">SPONSORACB_BOT</code>) Ùˆ Ù…Ø­Ø§ÙØ¸Øª Ø§Ø² ØªØ±Ø§Ú©Ù†Ø´â€ŒÙ‡Ø§ÛŒ Ù…Ø§Ù„ÛŒ Ùˆ Ø¯Ø±Ú¯Ø§Ù‡â€ŒÙ‡Ø§ÛŒ Ø­Ù…Ø§ÛŒØªÛŒ Ø±ÛŒØ§Ù„ÛŒ Ú©Ø§Ø±Ø¨Ø±Ø§Ù† (Ø³ÛŒØ³ØªÙ… Ø¯ÙˆÙ†ÛŒØª monsmain)ØŒ Ø§Ø² Ù¾Ø±ÙˆÚ©Ø³ÛŒâ€ŒÙ‡Ø§ÛŒ Ù…Ø¹Ú©ÙˆØ³ Ùˆ ÙØ§ÛŒØ±ÙˆØ§Ù„â€ŒÙ‡Ø§ÛŒ Ù¾ÛŒØ´Ø±ÙØªÙ‡ Ú©Ù„ÙˆØ¯ÙÙ„Ø± Ø§Ø³ØªÙØ§Ø¯Ù‡ Ù…ÛŒâ€ŒÚ©Ù†Ø¯ ØªØ§ Ø§Ø¨Ø²Ø§Ø±Ù‡Ø§ÛŒ Ù‡ÙˆØ´Ù…Ù†Ø¯ Ø§ÛŒÙ† Ù…Ø¬Ù…ÙˆØ¹Ù‡ Ù‡Ù…ÛŒØ´Ù‡ Ø¨Ø¯ÙˆÙ† Ù‚Ø·Ø¹ÛŒ Ø¯Ø± Ø¯Ø³ØªØ±Ø³ Ø¨Ø§Ø´Ù†Ø¯.
                 </p>
             </div>
 
             <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mt-12 mb-6 border-t border-zinc-200 dark:border-zinc-800 pt-8 flex items-center gap-3">
                 <i data-lucide="check-circle" class="w-6 h-6 text-violet-500"></i>
-                جمع‌بندی
+                Ø¬Ù…Ø¹â€ŒØ¨Ù†Ø¯ÛŒ
             </h2>
             <p>
-                استفاده از کلودفلر یک انتخاب لوکس نیست، بلکه یک ضرورت دفاعی و فنی برای هر وب‌سایتی است که سودای رتبه‌های برتر گوگل و امنیت همه‌جانبه را دارد. با راه‌اندازی این سیستم، نه‌تنها تجربه کاربری مخاطبان خود را بهبود می‌دهید، بلکه هزینه‌های پهنای باند و فشار روی هاست خود را نیز به حداقل خواهید رساند.
+                Ø§Ø³ØªÙØ§Ø¯Ù‡ Ø§Ø² Ú©Ù„ÙˆØ¯ÙÙ„Ø± ÛŒÚ© Ø§Ù†ØªØ®Ø§Ø¨ Ù„ÙˆÚ©Ø³ Ù†ÛŒØ³ØªØŒ Ø¨Ù„Ú©Ù‡ ÛŒÚ© Ø¶Ø±ÙˆØ±Øª Ø¯ÙØ§Ø¹ÛŒ Ùˆ ÙÙ†ÛŒ Ø¨Ø±Ø§ÛŒ Ù‡Ø± ÙˆØ¨â€ŒØ³Ø§ÛŒØªÛŒ Ø§Ø³Øª Ú©Ù‡ Ø³ÙˆØ¯Ø§ÛŒ Ø±ØªØ¨Ù‡â€ŒÙ‡Ø§ÛŒ Ø¨Ø±ØªØ± Ú¯ÙˆÚ¯Ù„ Ùˆ Ø§Ù…Ù†ÛŒØª Ù‡Ù…Ù‡â€ŒØ¬Ø§Ù†Ø¨Ù‡ Ø±Ø§ Ø¯Ø§Ø±Ø¯. Ø¨Ø§ Ø±Ø§Ù‡â€ŒØ§Ù†Ø¯Ø§Ø²ÛŒ Ø§ÛŒÙ† Ø³ÛŒØ³ØªÙ…ØŒ Ù†Ù‡â€ŒØªÙ†Ù‡Ø§ ØªØ¬Ø±Ø¨Ù‡ Ú©Ø§Ø±Ø¨Ø±ÛŒ Ù…Ø®Ø§Ø·Ø¨Ø§Ù† Ø®ÙˆØ¯ Ø±Ø§ Ø¨Ù‡Ø¨ÙˆØ¯ Ù…ÛŒâ€ŒØ¯Ù‡ÛŒØ¯ØŒ Ø¨Ù„Ú©Ù‡ Ù‡Ø²ÛŒÙ†Ù‡â€ŒÙ‡Ø§ÛŒ Ù¾Ù‡Ù†Ø§ÛŒ Ø¨Ø§Ù†Ø¯ Ùˆ ÙØ´Ø§Ø± Ø±ÙˆÛŒ Ù‡Ø§Ø³Øª Ø®ÙˆØ¯ Ø±Ø§ Ù†ÛŒØ² Ø¨Ù‡ Ø­Ø¯Ø§Ù‚Ù„ Ø®ÙˆØ§Ù‡ÛŒØ¯ Ø±Ø³Ø§Ù†Ø¯.
             </p>
 
-            <!-- باکس ویژه CTA برای SPONSORACB -->
+            
             <div class="mt-12 p-8 rounded-3xl border glass-base bg-gradient-to-br from-violet-50 to-indigo-50 dark:from-violet-900/20 dark:to-indigo-900/20 border-violet-200 dark:border-violet-800/50 shadow-lg shadow-violet-500/5 relative overflow-hidden group">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-violet-500/10 dark:bg-violet-400/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
                 <div class="relative z-10 flex flex-col items-center text-center gap-4">
                     <div class="w-16 h-16 bg-violet-600 text-white rounded-2xl flex items-center justify-center shadow-md mb-2">
                         <i data-lucide="shield" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-2xl font-black text-violet-900 dark:text-violet-100">تنظیم تخصصی شبکه ابری و CDN با SPONSORACB</h3>
+                    <h3 class="text-2xl font-black text-violet-900 dark:text-violet-100">ØªÙ†Ø¸ÛŒÙ… ØªØ®ØµØµÛŒ Ø´Ø¨Ú©Ù‡ Ø§Ø¨Ø±ÛŒ Ùˆ CDN Ø¨Ø§ SPONSORACB</h3>
                     <p class="text-sm sm:text-base font-medium text-violet-800/80 dark:text-violet-200/80 max-w-2xl leading-relaxed">
-                        جهت مشاوره کانفیگ حرفه‌ای کلودفلر، فعال‌سازی SSL کامل، رفع خطاهای ۵۰۲ و ۵۰۴ سرور، و اتصال امن ربات‌ها و اپلیکیشن‌ها به زیرساخت ابری، با متخصصان شبکه **SPONSORACB** در ارتباط باشید.
+                        Ø¬Ù‡Øª Ù…Ø´Ø§ÙˆØ±Ù‡ Ú©Ø§Ù†ÙÛŒÚ¯ Ø­Ø±ÙÙ‡â€ŒØ§ÛŒ Ú©Ù„ÙˆØ¯ÙÙ„Ø±ØŒ ÙØ¹Ø§Ù„â€ŒØ³Ø§Ø²ÛŒ SSL Ú©Ø§Ù…Ù„ØŒ Ø±ÙØ¹ Ø®Ø·Ø§Ù‡Ø§ÛŒ ÛµÛ°Û² Ùˆ ÛµÛ°Û´ Ø³Ø±ÙˆØ±ØŒ Ùˆ Ø§ØªØµØ§Ù„ Ø§Ù…Ù† Ø±Ø¨Ø§Øªâ€ŒÙ‡Ø§ Ùˆ Ø§Ù¾Ù„ÛŒÚ©ÛŒØ´Ù†â€ŒÙ‡Ø§ Ø¨Ù‡ Ø²ÛŒØ±Ø³Ø§Ø®Øª Ø§Ø¨Ø±ÛŒØŒ Ø¨Ø§ Ù…ØªØ®ØµØµØ§Ù† Ø´Ø¨Ú©Ù‡ **SPONSORACB** Ø¯Ø± Ø§Ø±ØªØ¨Ø§Ø· Ø¨Ø§Ø´ÛŒØ¯.
                     </p>
                     <a href="https://t.me/sponsoracb_bot" target="_blank" rel="noopener noreferrer" class="mt-4 flex items-center gap-3 px-8 py-4 bg-violet-600 hover:bg-violet-700 text-white rounded-xl font-bold transition-all shadow-lg shadow-violet-600/30 hover:shadow-violet-600/50 hover:-translate-y-1">
                         <i data-lucide="bot" class="w-5 h-5"></i>
-                        <span>ارتباط با ربات رسمی (sponsoracb_bot@)</span>
+                        <span>Ø§Ø±ØªØ¨Ø§Ø· Ø¨Ø§ Ø±Ø¨Ø§Øª Ø±Ø³Ù…ÛŒ (sponsoracb_bot@)</span>
                     </a>
                 </div>
             </div>
@@ -321,24 +321,25 @@
 
     </main>
 
-    <!-- فوتر -->
+    
     <footer class="w-full py-6 mt-auto border-t glass-base bg-zinc-950/40 border-zinc-800/50 flex flex-col items-center justify-center gap-2 transition-colors" id="footer">
-        <p class="text-xs text-zinc-400" id="footer-text">تمامی حقوق برای مجموعه محفوظ است</p>
+        <p class="text-xs text-zinc-400" id="footer-text">ØªÙ…Ø§Ù…ÛŒ Ø­Ù‚ÙˆÙ‚ Ø¨Ø±Ø§ÛŒ Ù…Ø¬Ù…ÙˆØ¹Ù‡ Ù…Ø­ÙÙˆØ¸ Ø§Ø³Øª</p>
         <a href="https://AMT-IR.github.io" target="_blank" class="flex items-center gap-1.5 text-sm font-bold transition-colors hover:text-emerald-500 text-white" id="footer-link">
             <i data-lucide="external-link" class="w-4 h-4"></i>
-            <span>پورتال جامع AMT-IR</span>
+            <span>Ù¾ÙˆØ±ØªØ§Ù„ Ø¬Ø§Ù…Ø¹ AMT-IR</span>
         </a>
     </footer>
 
-    <!-- Scripts -->
+    
     <script>
-        // مقداردهی و ساخت آیکون‌ها
+        // Ù…Ù‚Ø¯Ø§Ø±Ø¯Ù‡ÛŒ Ùˆ Ø³Ø§Ø®Øª Ø¢ÛŒÚ©ÙˆÙ†â€ŒÙ‡Ø§
         lucide.createIcons();
 
-        // منطق تغییر تم
+        // Ù…Ù†Ø·Ù‚ ØªØºÛŒÛŒØ± ØªÙ…
         function toggleTheme() {
             document.documentElement.classList.toggle('dark');
         }
     </script>
 </body>
 </html>
+
