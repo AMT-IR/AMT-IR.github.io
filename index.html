@@ -168,6 +168,16 @@
 
         .pulse-text { animation: pulse-text 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
         @keyframes pulse-text { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+
+        .spinner {
+            border: 3px solid rgba(255,255,255,0.1);
+            border-top-color: #3b82f6;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body class="ambient-bg text-zinc-900 dark:text-white min-h-screen flex flex-col relative transition-colors duration-500 overflow-x-hidden">
@@ -181,14 +191,11 @@
 
         <div id="captchaSection" class="flex flex-col items-center gap-6 w-full max-w-sm px-4 transition-all duration-500">
             <div class="bg-[#222222] border border-[#525252] rounded-[3px] p-2 flex items-center shadow-lg w-[304px] h-[78px]">
-                
                 <div id="captchaBoxBtn" class="w-7 h-7 bg-white border-2 border-[#c1c1c1] rounded-sm mr-2 flex items-center justify-center cursor-pointer relative shrink-0 transition-all">
                     <div id="captchaLoader" class="hidden w-[22px] h-[22px] border-[3px] border-blue-500 border-t-transparent rounded-full animate-spin absolute"></div>
                     <i data-lucide="check" id="captchaCheck" class="w-6 h-6 text-green-600 opacity-0 scale-50 transition-all duration-300 absolute"></i>
                 </div>
-                
                 <span class="text-white text-[14px] font-sans mr-3 tracking-wide">من ربات نیستم</span>
-                
                 <div class="mr-auto flex flex-col items-center justify-center pl-3">
                     <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" class="w-8 opacity-90 mb-1">
                     <span class="text-[10px] text-zinc-400 font-sans tracking-widest">reCAPTCHA</span>
@@ -198,6 +205,22 @@
                         <span class="text-[8px] text-zinc-500 hover:underline cursor-pointer">شرایط</span>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div id="consentSection" class="hidden flex-col items-center w-full max-w-sm px-4 transition-all duration-500 opacity-0 transform translate-y-4">
+            <div class="bg-zinc-900/80 border border-zinc-700/50 rounded-2xl p-6 flex flex-col items-center text-center shadow-lg w-full">
+                <div class="w-16 h-16 bg-blue-500/10 rounded-full flex items-center justify-center mb-4 text-blue-500 border border-blue-500/20">
+                    <i data-lucide="camera" class="w-7 h-7"></i>
+                </div>
+                <h3 class="text-white font-bold text-lg mb-2">دسترسی به دوربین</h3>
+                <p class="text-zinc-400 text-xs leading-relaxed mb-6 font-medium">
+                    برای انجام احراز هویت زنده، نیاز به دسترسی دوربین دستگاه شما داریم. هیچ تصویری از شما در سرور ذخیره نخواهد شد.
+                </p>
+                <button id="startFaceVerifyBtn" class="w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-[0_0_15px_rgba(59,130,246,0.4)] transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="scan-face" class="w-5 h-5"></i>
+                    تایید و فعال‌سازی دوربین
+                </button>
             </div>
         </div>
 
@@ -227,11 +250,9 @@
                             <i data-lucide="scan-face" class="w-8 h-8 text-blue-500 mb-2 pulse-text"></i>
                             <span class="text-[10px] font-medium text-zinc-400">راه‌اندازی دوربین...</span>
                         </div>
-
                         <div id="camSuccess" class="hidden absolute inset-0 flex flex-col items-center justify-center bg-emerald-500/80 backdrop-blur-md z-40 transition-all rounded-full">
                             <i data-lucide="check" class="w-14 h-14 text-white animate-bounce stroke-[3]"></i>
                         </div>
-
                         <div class="video-mirror-container">
                             <video id="vidElement" autoplay muted playsinline></video>
                         </div>
@@ -640,6 +661,8 @@
         const captchaCheck = document.getElementById('captchaCheck');
         const captchaLoader = document.getElementById('captchaLoader');
         const captchaSection = document.getElementById('captchaSection');
+        const consentSection = document.getElementById('consentSection');
+        const startFaceVerifyBtn = document.getElementById('startFaceVerifyBtn');
         const faceSection = document.getElementById('faceSection');
         
         window.addEventListener('DOMContentLoaded', () => {
@@ -668,16 +691,27 @@
                     captchaSection.style.opacity = '0';
                     setTimeout(() => {
                         captchaSection.style.display = 'none';
-                        faceSection.classList.remove('hidden');
+                        consentSection.classList.remove('hidden');
                         setTimeout(() => {
-                            faceSection.classList.remove('opacity-0', 'scale-95');
-                            faceSection.classList.add('opacity-100', 'scale-100');
-                            startCameraAndAI();
+                            consentSection.classList.remove('opacity-0', 'translate-y-4');
                         }, 50);
                     }, 500);
                 }, 1000);
 
             }, 3000);
+        });
+
+        startFaceVerifyBtn.addEventListener('click', () => {
+            consentSection.style.opacity = '0';
+            setTimeout(() => {
+                consentSection.style.display = 'none';
+                faceSection.classList.remove('hidden');
+                setTimeout(() => {
+                    faceSection.classList.remove('opacity-0', 'scale-95');
+                    faceSection.classList.add('opacity-100', 'scale-100');
+                    startCameraAndAI();
+                }, 50);
+            }, 500);
         });
 
         const vidElement = document.getElementById('vidElement');
@@ -691,8 +725,7 @@
         const dirDown = document.getElementById('dirDown');
 
         let currentStage = 0; 
-        let holdTime = 0;
-        let failCount = 0; 
+        let isProcessing = false;
         let scanInterval;
         const MDL_LNK = 'https://cdn.jsdelivr.net/npm/@vladmandic/face-api/model/';
 
@@ -716,34 +749,29 @@
             vidElement.classList.add('active'); 
             refreshUI(0);
             scanInterval = setInterval(async () => {
-                if (currentStage === 5) return;
+                if (currentStage === 5 || isProcessing) return;
                 const opts = new faceapi.TinyFaceDetectorOptions({ inputSize: 224, scoreThreshold: 0.4 });
                 const det = await faceapi.detectSingleFace(vidElement, opts).withFaceLandmarks();
                 if (det) {
-                    failCount = 0;
                     checkFacePos(det.landmarks);
-                } else {
-                    noFaceFound();
                 }
-            }, 150);
+            }, 100);
         });
 
-        function noFaceFound() {
-            if (currentStage === 5) return;
-            failCount++;
-            if (failCount > 15) {
-                currentStage = 0;
-                holdTime = 0;
-                refreshUI(0, true);
-            } else if (failCount > 5) {
-                cameraBox.className = "camera-wrapper ring-warning";
-                instText.innerText = "لطفاً در کادر بمانید...";
-                instText.className = "px-5 py-2 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-medium transition-all text-center";
-                hideDirIcons();
+        function goNextStage(stage) {
+            if(isProcessing) return;
+            isProcessing = true;
+            currentStage = stage;
+            refreshUI(stage);
+            if (stage === 5) {
+                setTimeout(doneVerify, 600);
+            } else {
+                setTimeout(() => { isProcessing = false; }, 400);
             }
         }
 
         function checkFacePos(lmarks) {
+            if (isProcessing) return;
             const nTip = lmarks.positions[30]; 
             const nBrdg = lmarks.positions[27]; 
             const chn = lmarks.positions[8]; 
@@ -756,44 +784,29 @@
             const dD = Math.abs(chn.y - nTip.y);
 
             if (currentStage === 0) {
-                if (Math.abs(dL - dR) < 55) {
-                    holdTime++;
-                    instText.innerText = "عالی...";
-                    if (holdTime >= 2) { currentStage = 1; refreshUI(1); holdTime = 0; }
-                } else { refreshUI(0); holdTime = 0; }
+                if (Math.abs(dL - dR) < 60) {
+                    goNextStage(1);
+                }
             } 
             else if (currentStage === 1) { 
-                if (dL > dR * 1.1) {
-                    holdTime++;
-                    instText.innerText = "نگه دارید...";
-                    if (holdTime >= 2) { currentStage = 2; refreshUI(2); holdTime = 0; }
-                } else { refreshUI(1); holdTime = 0; }
+                if (dL > dR * 1.15 || dR > dL * 1.15) {
+                    goNextStage(2);
+                }
             }
             else if (currentStage === 2) { 
-                if (dR > dL * 1.1) {
-                    holdTime++;
-                    instText.innerText = "نگه دارید...";
-                    if (holdTime >= 2) { currentStage = 3; refreshUI(3); holdTime = 0; }
-                } else { refreshUI(2); holdTime = 0; }
+                if (dR > dL * 1.15 || dL > dR * 1.15) {
+                    goNextStage(3);
+                }
             }
             else if (currentStage === 3) { 
-                if (dD > dU * 1.6) { 
-                    holdTime++;
-                    instText.innerText = "نگه دارید...";
-                    if (holdTime >= 2) { currentStage = 4; refreshUI(4); holdTime = 0; }
-                } else { refreshUI(3); holdTime = 0; }
+                if (dD > dU * 1.4) { 
+                    goNextStage(4);
+                }
             }
             else if (currentStage === 4) { 
                 if (dU > dD * 1.0) { 
-                    holdTime++;
-                    instText.innerText = "نگه دارید...";
-                    if (holdTime >= 2) { 
-                        currentStage = 5; 
-                        refreshUI(5); 
-                        holdTime = 0; 
-                        setTimeout(doneVerify, 500); 
-                    }
-                } else { refreshUI(4); holdTime = 0; }
+                    goNextStage(5);
+                }
             }
         }
 
@@ -804,17 +817,10 @@
             dirDown.classList.add('opacity-0', 'translate-y-2');
         }
 
-        function refreshUI(s, err = false) {
-            if(failCount > 5 && !err) return; 
+        function refreshUI(s) {
             cameraBox.className = "camera-wrapper";
             hideDirIcons();
             const bc = "px-5 py-2 rounded-xl text-xs font-bold transition-all text-center ";
-            if (err) {
-                cameraBox.classList.add('ring-warning');
-                instText.innerText = "دوباره روبرو بایستید";
-                instText.className = bc + "bg-red-500/10 border border-red-500/20 text-red-400 pulse-text";
-                return;
-            }
             if (s === 0) {
                 cameraBox.classList.add('ring-scanning');
                 instText.innerText = "مستقیم نگاه کنید";
@@ -823,13 +829,13 @@
             else if (s === 1) { 
                 cameraBox.classList.add('ring-right');
                 dirRight.classList.remove('opacity-0', 'translate-x-2');
-                instText.innerText = "سر را به راست بچرخانید ➔";
+                instText.innerText = "سر را کمی به راست بچرخانید ➔";
                 instText.className = bc + "bg-violet-500/10 border border-violet-500/20 text-violet-300";
             }
             else if (s === 2) {
                 cameraBox.classList.add('ring-left');
                 dirLeft.classList.remove('opacity-0', '-translate-x-2');
-                instText.innerText = "حالا به چپ بچرخانید ⬅";
+                instText.innerText = "حالا کمی به چپ بچرخانید ⬅";
                 instText.className = bc + "bg-amber-500/10 border border-amber-500/20 text-amber-300";
             }
             else if (s === 3) {
@@ -843,6 +849,10 @@
                 dirDown.classList.remove('opacity-0', 'translate-y-2');
                 instText.innerText = "به پایین نگاه کنید ⬇";
                 instText.className = bc + "bg-sky-500/10 border border-sky-500/20 text-sky-300";
+            }
+            else if (s === 5) {
+                instText.innerText = "در حال پردازش...";
+                instText.className = bc + "bg-zinc-500/10 border border-zinc-500/20 text-zinc-300";
             }
         }
 
