@@ -21,6 +21,14 @@
     <meta name="twitter:description" content="از طریق منوی زیر می‌توانید به سرعت به بخش‌های کلیدی سایت، تعرفه‌ها، محصولات و راه‌های ارتباطی دسترسی پیدا کنید.">
     <meta name="twitter:image" content="https://sponsoracb.ir/20474.png">
 
+    <!-- اضافه شدن تگ‌های PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f4f4f5" media="(prefers-color-scheme: light)">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SPONSORACB">
+
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
     <link rel="shortcut icon" href="/favicon.png">
     <link rel="apple-touch-icon" href="/favicon.png">
@@ -306,6 +314,36 @@
                 </div>
             </div>
         </div>
+
+        <!-- اضافه شدن مودال نصب PWA -->
+        <div id="pwaInstallModal" class="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+            <div id="pwaModalContent" class="w-full max-w-sm rounded-3xl border border-zinc-200/50 dark:border-zinc-800/80 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl p-6 shadow-2xl relative flex flex-col gap-5 text-right transform translate-y-8 transition-all duration-300">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/30 flex items-center justify-center shrink-0 shadow-inner">
+                        <img src="https://sponsoracb.ir/20474.png" alt="App Icon" class="w-8 h-8 object-contain">
+                    </div>
+                    <div class="flex flex-col">
+                        <h2 class="text-lg font-black text-zinc-900 dark:text-white">نصب برنامه SPONSORACB</h2>
+                        <span class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400">دسترسی سریع‌تر در حالت تمام‌صفحه</span>
+                    </div>
+                </div>
+                
+                <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed font-medium bg-zinc-50 dark:bg-zinc-900/60 p-4 rounded-2xl border border-zinc-200/60 dark:border-zinc-800/80">
+                    با افزودن این برنامه به صفحه اصلی (Home Screen)، تجربه‌ای سریع‌تر، روان‌تر و مشابه یک اپلیکیشن بومی داشته باشید.
+                </p>
+
+                <div class="flex items-center gap-3 mt-1">
+                    <button id="pwaInstallBtn" class="flex-1 py-3.5 px-5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-lg shadow-blue-500/25 transition-all flex items-center justify-center gap-2 group">
+                        <i data-lucide="download" class="w-5 h-5 transition-transform group-hover:-translate-y-1"></i>
+                        نصب برنامه
+                    </button>
+                    <button id="pwaCancelBtn" class="py-3.5 px-5 rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-semibold text-sm transition-colors border border-zinc-200 dark:border-zinc-800">
+                        بعداً
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- پایان مودال نصب PWA -->
         
         <div id="sidebarOverlay" class="fixed inset-0 bg-zinc-900/40 dark:bg-black/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleSidebar()"></div>
 
@@ -683,6 +721,72 @@
         const startFaceVerifyBtn = document.getElementById('startFaceVerifyBtn');
         const faceSection = document.getElementById('faceSection');
         
+        // --- بخش منطق مربوط به PWA ---
+        let deferredPrompt;
+        const pwaInstallModal = document.getElementById('pwaInstallModal');
+        const pwaModalContent = document.getElementById('pwaModalContent');
+        const pwaInstallBtn = document.getElementById('pwaInstallBtn');
+        const pwaCancelBtn = document.getElementById('pwaCancelBtn');
+
+        // ثبت Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('Service Worker با موفقیت ثبت شد: ', reg.scope))
+                    .catch(err => console.log('خطا در ثبت Service Worker: ', err));
+            });
+        }
+
+        // شنیدن رویداد قابلیت نصب برنامه
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // جلوگیری از نمایش پاپ‌آپ نصب دیفالت مرورگر
+            e.preventDefault();
+            // ذخیره رویداد برای استفاده در زمان کلیک کاربر
+            deferredPrompt = e;
+            
+            // نمایش مودال زیبای Glassmorphism ما (پس از 2.5 ثانیه برای تجربه بهتر)
+            setTimeout(() => {
+                pwaInstallModal.classList.remove('opacity-0', 'pointer-events-none');
+                pwaInstallModal.classList.add('opacity-100', 'pointer-events-auto');
+                pwaModalContent.classList.remove('translate-y-8');
+                pwaModalContent.classList.add('translate-y-0');
+            }, 2500); 
+        });
+
+        // اکشن کلیک دکمه نصب
+        pwaInstallBtn.addEventListener('click', async () => {
+            if (!deferredPrompt) return;
+            // نمایش پاپ‌آپ اصلی نصب سیستم عامل
+            deferredPrompt.prompt();
+            // منتظر پاسخ کاربر می‌مانیم
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log(`نتیجه درخواست نصب: ${outcome}`);
+            
+            // حذف رویداد و بستن مودال
+            deferredPrompt = null;
+            closePwaModal();
+        });
+
+        // اکشن دکمه بعدا
+        pwaCancelBtn.addEventListener('click', () => {
+            closePwaModal();
+        });
+
+        function closePwaModal() {
+            pwaInstallModal.classList.remove('opacity-100', 'pointer-events-auto');
+            pwaInstallModal.classList.add('opacity-0', 'pointer-events-none');
+            pwaModalContent.classList.remove('translate-y-0');
+            pwaModalContent.classList.add('translate-y-8');
+        }
+
+        // اگر کاربر برنامه را از جای دیگری (یا تنظیمات مرورگر) نصب کرد، مودال را مخفی کن
+        window.addEventListener('appinstalled', () => {
+            closePwaModal();
+            deferredPrompt = null;
+            console.log('PWA با موفقیت روی دستگاه نصب شد.');
+        });
+        // --- پایان بخش منطق PWA ---
+
         window.addEventListener('DOMContentLoaded', () => {
             const isVerified = getCookie('user_verified');
             const ua = navigator.userAgent.toLowerCase();
