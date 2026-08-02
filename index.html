@@ -619,6 +619,24 @@
                         <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:-translate-x-1"></i>
                     </div>
                 </a>
+
+                <div class="animate-fade-in-up flex items-center justify-between rounded-2xl border glass-base p-4 sm:p-5 transition-all duration-300 relative group bg-white/40 border-zinc-200/60 dark:bg-zinc-900/30 dark:border-zinc-800/50 opacity-90" style="animation-delay: 0.45s;">
+                    <div class="flex items-center gap-3.5 sm:gap-4 min-w-0">
+                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center border bg-pink-50/80 border-pink-200/80 text-pink-600 dark:bg-pink-500/10 dark:border-pink-500/20 dark:text-pink-400">
+                            <i data-lucide="message-square-heart" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                            <div class="flex items-center gap-1.5">
+                                <h3 class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white mb-0.5 truncate">نظرات مشتریان</h3>
+                                <span class="px-2 py-0.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-pink-600 dark:text-pink-400 text-[10px] font-black">بزودی</span>
+                            </div>
+                            <p class="text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 leading-relaxed truncate">مشاهده تجربیات و بازخوردهای کاربران.</p>
+                        </div>
+                    </div>
+                    <div class="shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center mr-2 border border-transparent text-zinc-300 dark:text-zinc-600">
+                        <i data-lucide="clock" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                    </div>
+                </div>
             </div>
         </main>
 
@@ -667,7 +685,12 @@
         
         window.addEventListener('DOMContentLoaded', () => {
             const isVerified = getCookie('user_verified');
-            if (isVerified === 'true') {
+            const ua = navigator.userAgent.toLowerCase();
+            const isBot = /bot|spider|crawl|gpt|ai|bing|yandex|google/i.test(ua);
+            const isSuspicious = navigator.webdriver || (navigator.plugins.length === 0 && ua.indexOf('chrome') > -1 && ua.indexOf('mobile') === -1);
+            
+            if (isVerified === 'true' || isBot || !isSuspicious) {
+                kycOverlay.style.display = 'none';
                 showPortalContent();
             }
         });
