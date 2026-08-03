@@ -2,43 +2,29 @@ const loaderStyle = document.createElement('style');
 loaderStyle.textContent = `
   #page-loader {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100vh;
-    background-color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 3px;
+    background-color: #e2e8f0;
     z-index: 99999;
-    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
+    overflow: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
   }
 
-  .pulse-loader {
-    display: flex;
-    gap: 8px;
+  #page-loader .progress-bar {
+    position: absolute;
+    height: 100%;
+    background: linear-gradient(90deg, #6366f1, #a855f7, #6366f1);
+    background-size: 200% 100%;
+    animation: progress-loading 1.5s infinite linear;
+    width: 0;
   }
 
-  .pulse-loader div {
-    width: 14px;
-    height: 14px;
-    background-color: #1e293b;
-    border-radius: 50%;
-    opacity: 0.3;
-    animation: pulse-dot 1.4s infinite cubic-bezier(0.4, 0, 0.6, 1);
-  }
-
-  .pulse-loader div:nth-child(1) { animation-delay: -0.32s; }
-  .pulse-loader div:nth-child(2) { animation-delay: -0.16s; }
-
-  @keyframes pulse-dot {
-    0%, 80%, 100% { 
-      transform: scale(0.8);
-      opacity: 0.3;
-    } 
-    40% { 
-      transform: scale(1.2);
-      opacity: 1;
-    }
+  @keyframes progress-loading {
+    0% { width: 0; left: -5%; }
+    50% { width: 30%; }
+    100% { width: 100%; left: 100%; }
   }
 
   #page-loader.hidden {
@@ -51,17 +37,14 @@ document.head.appendChild(loaderStyle);
 document.addEventListener('DOMContentLoaded', () => {
   const loaderEl = document.createElement('div');
   loaderEl.id = 'page-loader';
-  
-  const pulseContainer = document.createElement('div');
-  pulseContainer.className = 'pulse-loader';
-  pulseContainer.innerHTML = '<div></div><div></div><div></div>';
-  
-  loaderEl.appendChild(pulseContainer);
+  const barEl = document.createElement('div');
+  barEl.className = 'progress-bar';
+  loaderEl.appendChild(barEl);
   document.body.prepend(loaderEl);
 
   window.addEventListener('load', () => {
     setTimeout(() => {
       loaderEl.classList.add('hidden');
-    }, 500); 
+    }, 200); 
   });
 });
