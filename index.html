@@ -1,28 +1,31 @@
+```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- تنظیمات دقیق سئو طبق درخواست شما -->
     <title>SPONSORACB | PORTAL</title>
-
     <meta name="description" content="Official portal of SPONSORACB company">
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="SPONSORACB | PORTAL">
-    <meta property="og:description" content=<از رسی پیدا کنید.">
+    <meta property="og:description" content="Official portal of SPONSORACB company">
     <meta property="og:image" content="https://sponsoracb.ir/20474.png">
     <meta property="og:image:secure_url" content="https://sponsoracb.ir/20474.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1024">
     <meta property="og:image:height" content="1024">
     <meta property="og:url" content="https://sponsoracb.ir">
-    <meta property="og:site_name" content="Official portal of SPONSORACB company">
+    <meta property="og:site_name" content="SPONSORACB">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="مخزن اصلی | پورتال لینک‌ها">
+    <meta name="twitter:title" content="SPONSORACB | PORTAL">
     <meta name="twitter:description" content="Official portal of SPONSORACB company">
     <meta name="twitter:image" content="https://sponsoracb.ir/20474.png">
 
+    <!-- تگ‌های PWA -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)">
     <meta name="theme-color" content="#f4f4f5" media="(prefers-color-scheme: light)">
@@ -316,11 +319,12 @@
             </div>
         </div>
 
-        <!-- مودال نصب PWA با لوگوی اصلاح شده -->
+        <!-- مودال نصب PWA با لوگوی بدون کادر سفید -->
         <div id="pwaInstallModal" class="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
             <div id="pwaModalContent" class="w-full max-w-sm rounded-3xl border border-zinc-200/50 dark:border-zinc-800/80 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl p-6 shadow-2xl relative flex flex-col gap-5 text-right transform translate-y-8 transition-all duration-300">
                 <div class="flex items-center gap-4">
-                    <div class="w-14 h-14 rounded-2xl shrink-0 shadow-sm overflow-hidden border border-zinc-200 dark:border-zinc-800/80">
+                    <!-- پس‌زمینه کادر اینجا روی حالت تیره (مشکی/خاکستری) تنظیم شده تا حاشیه سفید حذف شود -->
+                    <div class="w-14 h-14 rounded-2xl shrink-0 shadow-sm overflow-hidden flex items-center justify-center bg-zinc-900 border border-zinc-800">
                         <img src="https://sponsoracb.ir/20474.png" alt="App Icon" class="w-full h-full object-cover">
                     </div>
                     <div class="flex flex-col">
@@ -722,69 +726,67 @@
         const startFaceVerifyBtn = document.getElementById('startFaceVerifyBtn');
         const faceSection = document.getElementById('faceSection');
         
-        // --- بخش منطق مربوط به PWA ---
-        let deferredPrompt;
-        const pwaInstallModal = document.getElementById('pwaInstallModal');
-        const pwaModalContent = document.getElementById('pwaModalContent');
-        const pwaInstallBtn = document.getElementById('pwaInstallBtn');
-        const pwaCancelBtn = document.getElementById('pwaCancelBtn');
+        // --- بخش منطق مربوط به PWA و مدیریت یکپارچه مودال‌ها ---
+        let deferredPrompt = null;
+        let isMainAppReady = false;
 
         // ثبت Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./sw.js')
-                    .then(reg => console.log('Service Worker با موفقیت ثبت شد: ', reg.scope))
+                    .then(reg => console.log('Service Worker با موفقیت ثبت شد.'))
                     .catch(err => console.log('خطا در ثبت Service Worker: ', err));
             });
         }
 
         // شنیدن رویداد قابلیت نصب برنامه
         window.addEventListener('beforeinstallprompt', (e) => {
-            // جلوگیری از نمایش پاپ‌آپ نصب دیفالت مرورگر
             e.preventDefault();
-            // ذخیره رویداد برای استفاده در زمان کلیک کاربر
             deferredPrompt = e;
-            
-            // نمایش مودال زیبای Glassmorphism ما (پس از 2.5 ثانیه برای تجربه بهتر)
-            setTimeout(() => {
+            // اگر کاربر قبلاً اطلاعیه را بسته و صفحه اصلی آماده است، مودال PWA را نمایش بده
+            if (isMainAppReady && getCookie('notice_seen') === 'true') {
+                setTimeout(showPwaModal, 1500);
+            }
+        });
+
+        function showPwaModal() {
+            if(!deferredPrompt) return; // اگر قابلیت نصب وجود ندارد یا قبلاً نصب شده، کاری نکن
+            const pwaInstallModal = document.getElementById('pwaInstallModal');
+            const pwaModalContent = document.getElementById('pwaModalContent');
+            if(pwaInstallModal && pwaModalContent) {
                 pwaInstallModal.classList.remove('opacity-0', 'pointer-events-none');
                 pwaInstallModal.classList.add('opacity-100', 'pointer-events-auto');
                 pwaModalContent.classList.remove('translate-y-8');
                 pwaModalContent.classList.add('translate-y-0');
-            }, 2500); 
-        });
+            }
+        }
 
-        // اکشن کلیک دکمه نصب
-        pwaInstallBtn.addEventListener('click', async () => {
+        function closePwaModal() {
+            const pwaInstallModal = document.getElementById('pwaInstallModal');
+            const pwaModalContent = document.getElementById('pwaModalContent');
+            if(pwaInstallModal && pwaModalContent) {
+                pwaInstallModal.classList.remove('opacity-100', 'pointer-events-auto');
+                pwaInstallModal.classList.add('opacity-0', 'pointer-events-none');
+                pwaModalContent.classList.remove('translate-y-0');
+                pwaModalContent.classList.add('translate-y-8');
+            }
+        }
+
+        document.getElementById('pwaInstallBtn').addEventListener('click', async () => {
             if (!deferredPrompt) return;
-            // نمایش پاپ‌آپ اصلی نصب سیستم عامل
             deferredPrompt.prompt();
-            // منتظر پاسخ کاربر می‌مانیم
             const { outcome } = await deferredPrompt.userChoice;
-            console.log(`نتیجه درخواست نصب: ${outcome}`);
-            
-            // حذف رویداد و بستن مودال
             deferredPrompt = null;
             closePwaModal();
         });
 
-        // اکشن دکمه بعدا
-        pwaCancelBtn.addEventListener('click', () => {
+        document.getElementById('pwaCancelBtn').addEventListener('click', () => {
             closePwaModal();
         });
 
-        function closePwaModal() {
-            pwaInstallModal.classList.remove('opacity-100', 'pointer-events-auto');
-            pwaInstallModal.classList.add('opacity-0', 'pointer-events-none');
-            pwaModalContent.classList.remove('translate-y-0');
-            pwaModalContent.classList.add('translate-y-8');
-        }
-
-        // اگر کاربر برنامه را از جای دیگری (یا تنظیمات مرورگر) نصب کرد، مودال را مخفی کن
         window.addEventListener('appinstalled', () => {
             closePwaModal();
             deferredPrompt = null;
-            console.log('PWA با موفقیت روی دستگاه نصب شد.');
         });
         // --- پایان بخش منطق PWA ---
 
@@ -1025,17 +1027,19 @@
             }
         }
 
-        // تابع نمایش مودال تلگرام با بررسی کوکی
         function showAppModal() {
+            isMainAppReady = true;
             const m = document.getElementById('noticeModal');
-            // اگر کاربر قبلاً مودال را ندیده باشد، آن را نمایش بده
+            // اگر کاربر قبلاً اطلاعیه را ندیده باشد، آن را نمایش بده
             if (m && getCookie('notice_seen') !== 'true') {
                 m.classList.remove('opacity-0', 'pointer-events-none');
                 m.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                // اگر اطلاعیه قبلاً بسته شده، حالا اجازه بده PWA در صورت آماده بودن باز شود
+                if(deferredPrompt) setTimeout(showPwaModal, 1500);
             }
         }
 
-        // بستن مودال و ثبت کوکی برای یک سال (تا دیگر نمایش داده نشود)
         function closeNoticeModal() {
             const m = document.getElementById('noticeModal');
             if (m) {
@@ -1043,8 +1047,16 @@
                 m.classList.add('opacity-0', 'pointer-events-none');
                 // ثبت کوکی برای 365 روز
                 setCookie('notice_seen', 'true', 365);
+                
+                // بعد از بستن این مودال، حالا اگر PWA قابلیت نصب داشت، مودال آن را نمایش بده
+                if(deferredPrompt) {
+                    setTimeout(showPwaModal, 800);
+                }
             }
         }
     </script>
 </body>
 </html>
+
+
+```
