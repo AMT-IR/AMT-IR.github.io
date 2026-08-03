@@ -1,27 +1,19 @@
-```javascript
-const CACHE_NAME = 'sponsoracb-pwa-v1';
+const CACHE_NAME = 'sponsoracb-pwa-v2';
 
-// لیست فایل‌هایی که برای اجرای آفلاین باید کش شوند
 const urlsToCache = [
-  './',
-  './index.html',
-  './manifest.json',
-  'https://sponsoracb.ir/20474.png'
+  '/',
+  '/index.html',
+  '/manifest.json'
 ];
 
-// مرحله نصب: فایل‌های ضروری را کش می‌کنیم
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => {
-        return cache.addAll(urlsToCache);
-      })
+      .then(cache => cache.addAll(urlsToCache))
   );
-  // فعالسازی سریع سرویس ورکر
   self.skipWaiting();
 });
 
-// مرحله فعال‌سازی: کش‌های قدیمی را پاک می‌کنیم
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
@@ -37,24 +29,19 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
-// مدیریت درخواست‌ها: اگر آفلاین بودیم از کش می‌خوانیم
 self.addEventListener('fetch', event => {
+  if (event.request.method !== 'GET') return;
+  
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // بازگرداندن فایل کش شده در صورت وجود
+    fetch(event.request).catch(() => {
+      return caches.match(event.request).then(response => {
         if (response) {
           return response;
         }
-        // اگر در کش نبود، از شبکه می‌گیریم
-        return fetch(event.request).catch(() => {
-          // اگر کاربر کاملا آفلاین بود و درخواستی برای صفحه داشت، صفحه اصلی کش شده را نمایش می‌دهیم
-          if (event.request.mode === 'navigate') {
-            return caches.match('./index.html');
-          }
-        });
-      })
+        if (event.request.mode === 'navigate') {
+          return caches.match('/index.html');
+        }
+      });
+    })
   );
 });
-
-```
