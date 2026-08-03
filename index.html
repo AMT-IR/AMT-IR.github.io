@@ -41,7 +41,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
 
-    <script src="global-loader.js"></script>
+    <!-- <script src="global-loader.js"></script> -->
 
     <script>
         tailwind.config = {
@@ -502,7 +502,7 @@
         </nav>
 
         <main class="flex-1 w-full max-w-5xl mx-auto flex flex-col gap-8 py-10 px-4 sm:px-6 lg:px-8">
-            <header class="text-center flex flex-col items-center gap-3.5 mb-4 sm:mb-8">
+            <header class="text-center flex flex-col items-center gap-3.5 mb-2 sm:mb-4">
                 <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center border shadow-sm transition-colors bg-white/70 border-zinc-200/80 dark:bg-zinc-900/60 dark:border-zinc-800">
                     <i data-lucide="layers" class="w-8 h-8 sm:w-10 sm:h-10 text-zinc-800 dark:text-indigo-400"></i>
                 </div>
@@ -516,7 +516,23 @@
                 </p>
             </header>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-5 items-stretch">
+            <!-- Red Banner Notice -->
+            <div onclick="openNoticeModal()" class="animate-fade-in-up w-full cursor-pointer bg-red-50/80 hover:bg-red-100 dark:bg-red-900/20 dark:hover:bg-red-900/40 border border-red-200/80 dark:border-red-800/50 rounded-2xl p-3.5 sm:p-4 flex items-center justify-between transition-all duration-300 shadow-sm hover:shadow-md group" style="animation-delay: 0.02s;">
+                <div class="flex items-center gap-3.5 min-w-0">
+                    <div class="shrink-0 w-10 h-10 rounded-xl flex items-center justify-center bg-red-100 dark:bg-red-500/20 text-red-600 dark:text-red-400">
+                        <i data-lucide="alert-circle" class="w-5 h-5 animate-pulse"></i>
+                    </div>
+                    <div class="flex flex-col min-w-0">
+                        <h3 class="text-sm sm:text-base font-bold text-red-800 dark:text-red-400 truncate">اطلاعیه مهم ربات تلگرام</h3>
+                        <p class="text-[10px] sm:text-xs font-medium text-red-600/80 dark:text-red-400/80 truncate">جهت مشاهده وضعیت فعالیت ربات کلیک کنید</p>
+                    </div>
+                </div>
+                <div class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-red-500 dark:text-red-400 group-hover:bg-red-100 dark:group-hover:bg-red-500/20 transition-colors">
+                    <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:-translate-x-1"></i>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-5 items-stretch mt-2">
                 <a href="https://sponsoracb.mydigify.app" target="_blank" rel="noopener noreferrer" class="animate-fade-in-up flex items-center justify-between rounded-2xl border glass-base p-4 sm:p-5 transition-all duration-300 relative group cursor-pointer bg-white/70 border-zinc-200/80 hover:bg-white hover:-translate-y-1 hover:shadow-lg hover:shadow-rose-500/10 hover:border-rose-400 dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 dark:hover:border-rose-500/50 dark:hover:shadow-rose-500/10" style="animation-delay: 0.05s;">
                     <div class="flex items-center gap-3.5 sm:gap-4 min-w-0">
                         <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center transition-colors border bg-rose-50 border-rose-200 text-rose-600 group-hover:bg-rose-500 group-hover:text-white group-hover:border-rose-500 dark:bg-rose-500/10 dark:border-rose-500/20 dark:text-rose-400 dark:group-hover:bg-rose-500 dark:group-hover:text-white">
@@ -984,7 +1000,6 @@
             kycOverlay.classList.add('opacity-0', 'pointer-events-none');
             mainApp.classList.remove('opacity-0', 'pointer-events-none');
             mainApp.classList.add('opacity-100', 'pointer-events-auto');
-            setTimeout(showAppModal, 800);
         }
 
         function toggleTheme() {
@@ -1007,9 +1022,10 @@
             }
         }
 
-        function showAppModal() {
+        // Changed from automatic to manual trigger via the red banner
+        function openNoticeModal() {
             const m = document.getElementById('noticeModal');
-            if (m && getCookie('notice_seen') !== 'true') {
+            if (m) {
                 m.classList.remove('opacity-0', 'pointer-events-none');
                 m.classList.add('opacity-100', 'pointer-events-auto');
             }
@@ -1020,7 +1036,6 @@
             if (m) {
                 m.classList.remove('opacity-100', 'pointer-events-auto');
                 m.classList.add('opacity-0', 'pointer-events-none');
-                setCookie('notice_seen', 'true', 365);
             }
         }
     </script>
