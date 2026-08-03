@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>SPONSORACB | PORTAL</title>
     <meta name="description" content="Official portal of SPONSORACB company">
 
@@ -316,12 +315,10 @@
             </div>
         </div>
 
-        <!-- مودال نصب PWA با لوگوی بدون کادر سفید -->
         <div id="pwaInstallModal" class="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
             <div id="pwaModalContent" class="w-full max-w-sm rounded-3xl border border-zinc-200/50 dark:border-zinc-800/80 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl p-6 shadow-2xl relative flex flex-col gap-5 text-right transform translate-y-8 transition-all duration-300">
                 <div class="flex items-center gap-4">
-                    <!-- پس‌زمینه کادر اینجا روی حالت تیره (مشکی/خاکستری) تنظیم شده تا حاشیه سفید حذف شود -->
-                    <div class="w-14 h-14 rounded-2xl shrink-0 shadow-sm overflow-hidden flex items-center justify-center bg-zinc-900 border border-zinc-800">
+                    <div class="w-14 h-14 rounded-2xl shrink-0 shadow-sm overflow-hidden flex items-center justify-center bg-transparent">
                         <img src="https://sponsoracb.ir/20474.png" alt="App Icon" class="w-full h-full object-cover">
                     </div>
                     <div class="flex flex-col">
@@ -331,7 +328,7 @@
                 </div>
                 
                 <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed font-medium bg-zinc-50 dark:bg-zinc-900/60 p-4 rounded-2xl border border-zinc-200/60 dark:border-zinc-800/80">
-                    با افزودن این برنامه به صفحه اصلی (Home Screen)، تجربه‌ای سریع‌تر، روان‌تر و مشابه یک اپلیکیشن بومی داشته باشید.
+                    با افزودن این برنامه به صفحه اصلی، تجربه‌ای سریع‌تر، روان‌تر و مشابه یک اپلیکیشن بومی داشته باشید.
                 </p>
 
                 <div class="flex items-center gap-3 mt-1">
@@ -345,7 +342,6 @@
                 </div>
             </div>
         </div>
-        <!-- پایان مودال نصب PWA -->
         
         <div id="sidebarOverlay" class="fixed inset-0 bg-zinc-900/40 dark:bg-black/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleSidebar()"></div>
 
@@ -723,51 +719,28 @@
         const startFaceVerifyBtn = document.getElementById('startFaceVerifyBtn');
         const faceSection = document.getElementById('faceSection');
         
-        // --- بخش منطق مربوط به PWA و مدیریت یکپارچه مودال‌ها ---
-        let deferredPrompt = null;
-        let isMainAppReady = false;
+        let deferredPrompt;
 
-        // ثبت Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
-                    .then(reg => console.log('Service Worker با موفقیت ثبت شد.'))
-                    .catch(err => console.log('خطا در ثبت Service Worker: ', err));
+                navigator.serviceWorker.register('sw.js').catch(() => {});
             });
         }
 
-        // شنیدن رویداد قابلیت نصب برنامه
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            // اگر کاربر قبلاً اطلاعیه را بسته و صفحه اصلی آماده است، مودال PWA را نمایش بده
-            if (isMainAppReady && getCookie('notice_seen') === 'true') {
-                setTimeout(showPwaModal, 1500);
+            const pwaInstallModal = document.getElementById('pwaInstallModal');
+            const pwaModalContent = document.getElementById('pwaModalContent');
+            if (pwaInstallModal && pwaModalContent) {
+                setTimeout(() => {
+                    pwaInstallModal.classList.remove('opacity-0', 'pointer-events-none');
+                    pwaInstallModal.classList.add('opacity-100', 'pointer-events-auto');
+                    pwaModalContent.classList.remove('translate-y-8');
+                    pwaModalContent.classList.add('translate-y-0');
+                }, 2000);
             }
         });
-
-        function showPwaModal() {
-            if(!deferredPrompt) return; // اگر قابلیت نصب وجود ندارد یا قبلاً نصب شده، کاری نکن
-            const pwaInstallModal = document.getElementById('pwaInstallModal');
-            const pwaModalContent = document.getElementById('pwaModalContent');
-            if(pwaInstallModal && pwaModalContent) {
-                pwaInstallModal.classList.remove('opacity-0', 'pointer-events-none');
-                pwaInstallModal.classList.add('opacity-100', 'pointer-events-auto');
-                pwaModalContent.classList.remove('translate-y-8');
-                pwaModalContent.classList.add('translate-y-0');
-            }
-        }
-
-        function closePwaModal() {
-            const pwaInstallModal = document.getElementById('pwaInstallModal');
-            const pwaModalContent = document.getElementById('pwaModalContent');
-            if(pwaInstallModal && pwaModalContent) {
-                pwaInstallModal.classList.remove('opacity-100', 'pointer-events-auto');
-                pwaInstallModal.classList.add('opacity-0', 'pointer-events-none');
-                pwaModalContent.classList.remove('translate-y-0');
-                pwaModalContent.classList.add('translate-y-8');
-            }
-        }
 
         document.getElementById('pwaInstallBtn').addEventListener('click', async () => {
             if (!deferredPrompt) return;
@@ -777,15 +750,23 @@
             closePwaModal();
         });
 
-        document.getElementById('pwaCancelBtn').addEventListener('click', () => {
-            closePwaModal();
-        });
+        document.getElementById('pwaCancelBtn').addEventListener('click', closePwaModal);
 
         window.addEventListener('appinstalled', () => {
             closePwaModal();
             deferredPrompt = null;
         });
-        // --- پایان بخش منطق PWA ---
+
+        function closePwaModal() {
+            const pwaInstallModal = document.getElementById('pwaInstallModal');
+            const pwaModalContent = document.getElementById('pwaModalContent');
+            if (pwaInstallModal && pwaModalContent) {
+                pwaInstallModal.classList.remove('opacity-100', 'pointer-events-auto');
+                pwaInstallModal.classList.add('opacity-0', 'pointer-events-none');
+                pwaModalContent.classList.remove('translate-y-0');
+                pwaModalContent.classList.add('translate-y-8');
+            }
+        }
 
         window.addEventListener('DOMContentLoaded', () => {
             const isVerified = getCookie('user_verified');
@@ -1025,15 +1006,10 @@
         }
 
         function showAppModal() {
-            isMainAppReady = true;
             const m = document.getElementById('noticeModal');
-            
             if (m && getCookie('notice_seen') !== 'true') {
                 m.classList.remove('opacity-0', 'pointer-events-none');
                 m.classList.add('opacity-100', 'pointer-events-auto');
-            } else {
-                
-                if(deferredPrompt) setTimeout(showPwaModal, 1500);
             }
         }
 
@@ -1042,13 +1018,7 @@
             if (m) {
                 m.classList.remove('opacity-100', 'pointer-events-auto');
                 m.classList.add('opacity-0', 'pointer-events-none');
-                
-                setCookie('notice_seen', 'true', 12);
-                
-                
-                if(deferredPrompt) {
-                    setTimeout(showPwaModal, 800);
-                }
+                setCookie('notice_seen', 'true', 365);
             }
         }
     </script>
