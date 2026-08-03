@@ -5,24 +5,42 @@ loaderStyle.textContent = `
     inset: 0;
     width: 100%;
     height: 100vh;
-    background-color: #0f172a;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 99999;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
   }
-  .page-spinner {
-    width: 45px;
-    height: 45px;
-    border: 4px solid rgba(255, 255, 255, 0.1);
-    border-top-color: #6366f1;
+
+  .pulse-loader {
+    display: flex;
+    gap: 8px;
+  }
+
+  .pulse-loader div {
+    width: 14px;
+    height: 14px;
+    background-color: #1e293b;
     border-radius: 50%;
-    animation: loader-spin 0.8s linear infinite;
+    opacity: 0.3;
+    animation: pulse-dot 1.4s infinite cubic-bezier(0.4, 0, 0.6, 1);
   }
-  @keyframes loader-spin {
-    to { transform: rotate(360deg); }
+
+  .pulse-loader div:nth-child(1) { animation-delay: -0.32s; }
+  .pulse-loader div:nth-child(2) { animation-delay: -0.16s; }
+
+  @keyframes pulse-dot {
+    0%, 80%, 100% { 
+      transform: scale(0.8);
+      opacity: 0.3;
+    } 
+    40% { 
+      transform: scale(1.2);
+      opacity: 1;
+    }
   }
+
   #page-loader.hidden {
     opacity: 0;
     visibility: hidden;
@@ -33,10 +51,17 @@ document.head.appendChild(loaderStyle);
 document.addEventListener('DOMContentLoaded', () => {
   const loaderEl = document.createElement('div');
   loaderEl.id = 'page-loader';
-  loaderEl.innerHTML = '<div class="page-spinner"></div>';
+  
+  const pulseContainer = document.createElement('div');
+  pulseContainer.className = 'pulse-loader';
+  pulseContainer.innerHTML = '<div></div><div></div><div></div>';
+  
+  loaderEl.appendChild(pulseContainer);
   document.body.prepend(loaderEl);
 
   window.addEventListener('load', () => {
-    loaderEl.classList.add('hidden');
+    setTimeout(() => {
+      loaderEl.classList.add('hidden');
+    }, 500); 
   });
 });
