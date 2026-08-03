@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- تنظیمات دقیق سئو طبق درخواست شما -->
     <title>SPONSORACB | PORTAL</title>
     <meta name="description" content="Official portal of SPONSORACB company">
 
@@ -25,7 +24,6 @@
     <meta name="twitter:description" content="Official portal of SPONSORACB company">
     <meta name="twitter:image" content="https://sponsoracb.ir/20474.png">
 
-    <!-- تگ‌های PWA -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)">
     <meta name="theme-color" content="#f4f4f5" media="(prefers-color-scheme: light)">
@@ -1030,12 +1028,12 @@
         function showAppModal() {
             isMainAppReady = true;
             const m = document.getElementById('noticeModal');
-            // اگر کاربر قبلاً اطلاعیه را ندیده باشد، آن را نمایش بده
+            
             if (m && getCookie('notice_seen') !== 'true') {
                 m.classList.remove('opacity-0', 'pointer-events-none');
                 m.classList.add('opacity-100', 'pointer-events-auto');
             } else {
-                // اگر اطلاعیه قبلاً بسته شده، حالا اجازه بده PWA در صورت آماده بودن باز شود
+                
                 if(deferredPrompt) setTimeout(showPwaModal, 1500);
             }
         }
@@ -1045,10 +1043,10 @@
             if (m) {
                 m.classList.remove('opacity-100', 'pointer-events-auto');
                 m.classList.add('opacity-0', 'pointer-events-none');
-                // ثبت کوکی برای 365 روز
-                setCookie('notice_seen', 'true', 365);
                 
-                // بعد از بستن این مودال، حالا اگر PWA قابلیت نصب داشت، مودال آن را نمایش بده
+                setCookie('notice_seen', 'true', 12);
+                
+                
                 if(deferredPrompt) {
                     setTimeout(showPwaModal, 800);
                 }
