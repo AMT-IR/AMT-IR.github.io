@@ -2,7 +2,7 @@
 <html lang="fa" dir="rtl" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SPONSORACB | PORTAL</title>
     <meta name="description" content="Official portal of SPONSORACB company">
 
@@ -35,6 +35,7 @@
             font-family: 'Vazirmatn', sans-serif;
             transition: background-color 0.4s ease, color 0.4s ease;
             -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .ambient-bg {
@@ -210,14 +211,17 @@
                     </div>
                     <div class="flex flex-col">
                         <h2 class="text-base font-black text-zinc-900 dark:text-white">نصب برنامه SPONSORACB</h2>
-                        <span class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 mt-0.5">دسترسی سریع در حالت تمام‌صفحه</span>
+                        <span id="pwaStatusText" class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 mt-0.5">دسترسی سریع در حالت تمام‌صفحه</span>
                     </div>
+                </div>
+                <div id="pwaManualInstructions" class="hidden text-[10px] sm:text-xs text-zinc-600 dark:text-zinc-300 bg-blue-50 dark:bg-blue-900/20 p-3 rounded-xl border border-blue-100 dark:border-blue-800/30 leading-relaxed font-medium">
+                    برای نصب، در دستگاه‌های iOS گزینه <span class="font-bold text-blue-600 dark:text-blue-400">Share</span> و سپس <span class="font-bold text-blue-600 dark:text-blue-400">Add to Home Screen</span> را انتخاب کنید. در اندروید از منوی مرورگر (سه نقطه) گزینه <span class="font-bold text-blue-600 dark:text-blue-400">Install App</span> را بزنید.
                 </div>
                 <div class="flex items-center gap-3 mt-2">
                     <button id="pwaInstallBtn" class="flex-1 py-3 px-4 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-lg shadow-blue-500/30 transition-all flex items-center justify-center gap-2">
                         <i data-lucide="download" class="w-4 h-4 stroke-[2.5] pointer-events-none"></i> نصب برنامه
                     </button>
-                    <button id="pwaCancelBtn" onclick="closePwaModal()" class="py-3 px-6 rounded-2xl bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 font-bold text-xs transition-colors">بعداً</button>
+                    <button id="pwaCancelBtn" onclick="closePwaModal()" class="py-3 px-6 rounded-2xl bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 font-bold text-xs transition-colors">بستن</button>
                 </div>
             </div>
         </div>
@@ -230,8 +234,8 @@
                     <i data-lucide="layers" class="w-4 h-4 text-zinc-500 stroke-[2.5]"></i>
                     <span class="font-bold text-[13px] text-zinc-800 dark:text-zinc-100">منوی دسترسی</span>
                 </div>
-                <button onclick="toggleSidebar()" class="w-8 h-8 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors text-zinc-500 z-50 relative flex items-center justify-center">
-                    <i data-lucide="x" class="w-4 h-4 stroke-[2.5] pointer-events-none"></i>
+                <button onclick="toggleSidebar()" class="w-10 h-10 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors text-zinc-500 z-[60] relative flex items-center justify-center cursor-pointer">
+                    <i data-lucide="x" class="w-5 h-5 stroke-[2.5] pointer-events-none"></i>
                 </button>
             </div>
 
@@ -585,7 +589,11 @@
         });
 
         document.getElementById('pwaInstallBtn').addEventListener('click', async () => {
-            if (!deferredPrompt) return;
+            if (!deferredPrompt) {
+                document.getElementById('pwaStatusText').innerText = "نصب دستی برنامه";
+                document.getElementById('pwaManualInstructions').classList.remove('hidden');
+                return;
+            }
             deferredPrompt.prompt();
             const { outcome } = await deferredPrompt.userChoice;
             deferredPrompt = null;
@@ -618,6 +626,13 @@
                 pwaInstallModal.classList.remove('opacity-100', 'pointer-events-auto');
                 pwaInstallModal.classList.add('opacity-0', 'pointer-events-none');
                 pwaModalContent.removeAttribute('data-open');
+                
+                setTimeout(() => {
+                    const instructions = document.getElementById('pwaManualInstructions');
+                    if(instructions) instructions.classList.add('hidden');
+                    const statusText = document.getElementById('pwaStatusText');
+                    if(statusText) statusText.innerText = "دسترسی سریع در حالت تمام‌صفحه";
+                }, 400);
             }
         }
 
