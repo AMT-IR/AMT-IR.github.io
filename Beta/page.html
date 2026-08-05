@@ -933,6 +933,49 @@
                 content.removeAttribute('data-open');
             }
         }
+
+        function animateSidebarDownload(btnId, callback) {
+            const btn = document.getElementById(btnId);
+            if (!btn || btn.classList.contains('is-loading')) return;
+
+            btn.classList.add('is-loading');
+            const originalHTML = btn.innerHTML;
+            
+            // جایگزینی دکمه با نوار پیشرفت
+            btn.innerHTML = `
+                <div class="absolute right-0 top-0 bottom-0 bg-blue-700/50 w-0 transition-all duration-[1500ms] ease-out rounded-[14px]" id="${btnId}-progress"></div>
+                <div class="relative z-10 flex items-center justify-center gap-1.5 w-full h-full">
+                    <span class="text-[12px] font-bold text-white" id="${btnId}-text">آماده‌سازی... 0%</span>
+                </div>
+            `;
+
+            const progressBar = document.getElementById(`${btnId}-progress`);
+            const textSpan = document.getElementById(`${btnId}-text`);
+
+            // اجرای انیمیشن پر شدن
+            setTimeout(() => {
+                progressBar.style.width = '100%';
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += 10;
+                    if (progress <= 100) {
+                        textSpan.innerText = `دریافت فایل... ${progress}%`;
+                    }
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                        textSpan.innerHTML = `<i data-lucide="check-circle" class="w-3.5 h-3.5 stroke-[2.5] pointer-events-none text-white"></i> <span class="text-white">کامل شد</span>`;
+                        lucide.createIcons();
+                        
+                        setTimeout(() => {
+                            btn.innerHTML = originalHTML;
+                            btn.classList.remove('is-loading');
+                            lucide.createIcons();
+                            if(callback) callback();
+                        }, 600);
+                    }
+                }, 150);
+            }, 50);
+        }
     </script>
 </body>
 </html>
