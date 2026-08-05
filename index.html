@@ -2,36 +2,13 @@
 <html lang="fa" dir="rtl" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SPONSORACB | PORTAL</title>
     <meta name="description" content="Official portal of SPONSORACB company">
-
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="SPONSORACB | PORTAL">
-    <meta property="og:description" content="Official portal of SPONSORACB company">
-    <meta property="og:image" content="https://sponsoracb.ir/20474.png">
-    <meta property="og:image:secure_url" content="https://sponsoracb.ir/20474.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1024">
-    <meta property="og:image:height" content="1024">
-    <meta property="og:url" content="https://sponsoracb.ir">
-    <meta property="og:site_name" content="SPONSORACB">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="SPONSORACB | PORTAL">
-    <meta name="twitter:description" content="Official portal of SPONSORACB company">
-    <meta name="twitter:image" content="https://sponsoracb.ir/20474.png">
 
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)">
     <meta name="theme-color" content="#f4f4f5" media="(prefers-color-scheme: light)">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="SPONSORACB">
-
-    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
-    <link rel="shortcut icon" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/favicon.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,9 +16,6 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
-
-    <!-- <script src="global-loader.js"></script> -->
 
     <script>
         tailwind.config = {
@@ -51,12 +25,6 @@
                     fontFamily: {
                         sans: ['Vazirmatn', 'sans-serif'],
                     },
-                    colors: {
-                        pro: '#3b82f6',      
-                        plus: '#10b981',     
-                        premium: '#8b5cf6',  
-                        ultra: '#f59e0b',    
-                    }
                 }
             }
         }
@@ -65,945 +33,672 @@
     <style>
         body {
             font-family: 'Vazirmatn', sans-serif;
-            transition: background-color 0.4s ease;
+            transition: background-color 0.4s ease, color 0.4s ease;
             -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .ambient-bg {
             background-color: #f4f4f5;
             background-image: 
-                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05), transparent 25%);
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.08), transparent 30%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.08), transparent 30%);
         }
         
         .dark .ambient-bg {
             background-color: #09090b;
             background-image: 
-                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.04), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.04), transparent 25%);
-        }
-
-        .glass-base {
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.06), transparent 30%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.06), transparent 30%);
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
         .animate-fade-in-up {
             opacity: 0;
-            animation: fadeInUp 0.5s ease-out forwards;
+            animation: fadeInUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
         }
 
-        @keyframes blueGlowPulse {
-            0%, 100% {
-                border-color: #3b82f6;
-                box-shadow: 0 0 15px rgba(59, 130, 246, 0.4), inset 0 0 10px rgba(59, 130, 246, 0.15);
-            }
-            50% {
-                border-color: #60a5fa;
-                box-shadow: 0 0 32px rgba(59, 130, 246, 0.8), inset 0 0 18px rgba(59, 130, 246, 0.3);
-            }
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+            animation: blob 15s infinite alternate ease-in-out;
+        }
+        .animation-delay-2000 { animation-delay: 2s; }
+        .animation-delay-4000 { animation-delay: 4s; }
+
+        .base-card {
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            border-radius: 24px;
         }
 
-        .animated-blue-border {
-            animation: blueGlowPulse 2.5s infinite ease-in-out;
+        body:not(.theme-solid) .base-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.15) 100%);
+            backdrop-filter: blur(50px) saturate(250%) contrast(1.1);
+            -webkit-backdrop-filter: blur(50px) saturate(250%) contrast(1.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-top-color: rgba(255, 255, 255, 0.7);
+            border-left-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.06), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+        }
+        
+        .dark body:not(.theme-solid) .base-card {
+            background: linear-gradient(135deg, rgba(60, 60, 67, 0.35) 0%, rgba(28, 28, 30, 0.15) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-top-color: rgba(255, 255, 255, 0.18);
+            border-left-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+        }
+        
+        body:not(.theme-solid) .base-card:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.25) 100%);
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.7);
+        }
+        
+        .dark body:not(.theme-solid) .base-card:hover {
+            background: linear-gradient(135deg, rgba(72, 72, 80, 0.45) 0%, rgba(36, 36, 40, 0.25) 100%);
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15);
         }
 
-        @keyframes modalZoomIn {
-            from { opacity: 0; transform: scale(0.92) translateY(10px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+        body.theme-solid .base-card {
+            background: #ffffff;
+            border: 1px solid rgba(161, 161, 170, 0.2);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        .dark body.theme-solid .base-card {
+            background: #18181b;
+            border: 1px solid rgba(63, 63, 70, 0.4);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        body.theme-solid .base-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        .dark body.theme-solid .base-card:hover {
+            background: #27272a;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
         }
 
-        .animate-modal-in {
-            animation: modalZoomIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        body.theme-solid #ambient-blobs {
+            display: none !important;
         }
 
-        ::-webkit-scrollbar { width: 6px; }
+        .app-icon {
+            border-radius: 26%; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15), inset 0 1px 1px rgba(255,255,255,0.3);
+        }
+
+        .line-clamp-1 {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 10px; }
-        .dark ::-webkit-scrollbar-thumb { background: #27272a; }
-        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
-
-        .glass-panel {
-            background: rgba(24, 24, 27, 0.4);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .camera-wrapper {
-            position: relative;
-            width: 220px; 
-            height: 220px;
-            border-radius: 50%;
-            margin: 0 auto;
-            overflow: hidden;
-            background-color: #000; 
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.08), inset 0 0 20px rgba(0,0,0,0.8);
-            z-index: 10;
-        }
-
-        .ring-scanning { box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.6), 0 0 20px rgba(59, 130, 246, 0.2); }
-        .ring-right { box-shadow: 3px 0 0 2px rgba(139, 92, 246, 0.7), 15px 0 30px rgba(139, 92, 246, 0.3); }
-        .ring-left { box-shadow: -3px 0 0 2px rgba(245, 158, 11, 0.7), -15px 0 30px rgba(245, 158, 11, 0.3); }
-        .ring-up { box-shadow: 0 -3px 0 2px rgba(236, 72, 153, 0.7), 0 -15px 30px rgba(236, 72, 153, 0.3); }
-        .ring-down { box-shadow: 0 3px 0 2px rgba(14, 165, 233, 0.7), 0 15px 30px rgba(14, 165, 233, 0.3); }
-        .ring-success { box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.8), 0 0 30px rgba(16, 185, 129, 0.4); }
-        .ring-warning { box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.6), 0 0 20px rgba(239, 68, 68, 0.2); }
-
-        .video-mirror-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            transform: scaleX(-1);
-        }
-
-        video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; 
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        video.active { opacity: 1; }
-
-        .pulse-text { animation: pulse-text 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
-        @keyframes pulse-text { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
-
-        .spinner {
-            border: 3px solid rgba(255,255,255,0.1);
-            border-top-color: #3b82f6;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .dark ::-webkit-scrollbar-thumb { background: #3f3f46; }
     </style>
 </head>
-<body class="ambient-bg text-zinc-900 dark:text-white min-h-screen flex flex-col relative transition-colors duration-500 overflow-x-hidden">
 
-    <div id="kycOverlay" class="fixed inset-0 z-[100] bg-[#09090b] flex flex-col items-center justify-center transition-opacity duration-700">
-        <nav class="absolute top-0 w-full h-14 flex items-center justify-center px-4 border-b border-white/5 bg-transparent z-40">
-            <span class="font-black text-lg tracking-[0.2em] dir-ltr text-zinc-100">
-                SPONSORACB
-            </span>
-        </nav>
+<body class="ambient-bg text-zinc-900 dark:text-zinc-100 min-h-screen flex flex-col relative transition-colors duration-500 overflow-x-hidden">
 
-        <div id="captchaSection" class="flex flex-col items-center gap-6 w-full max-w-sm px-4 transition-all duration-500">
-            <div class="bg-[#222222] border border-[#525252] rounded-[3px] p-2 flex items-center shadow-lg w-[304px] h-[78px]">
-                <div id="captchaBoxBtn" class="w-7 h-7 bg-white border-2 border-[#c1c1c1] rounded-sm mr-2 flex items-center justify-center cursor-pointer relative shrink-0 transition-all">
-                    <div id="captchaLoader" class="hidden w-[22px] h-[22px] border-[3px] border-blue-500 border-t-transparent rounded-full animate-spin absolute"></div>
-                    <i data-lucide="check" id="captchaCheck" class="w-6 h-6 text-green-600 opacity-0 scale-50 transition-all duration-300 absolute"></i>
-                </div>
-                <span class="text-white text-[14px] font-sans mr-3 tracking-wide">من ربات نیستم</span>
-                <div class="mr-auto flex flex-col items-center justify-center pl-3">
-                    <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" class="w-8 opacity-90 mb-1">
-                    <span class="text-[10px] text-zinc-400 font-sans tracking-widest">reCAPTCHA</span>
-                    <div class="flex items-center gap-1 mt-0.5">
-                        <span class="text-[8px] text-zinc-500 hover:underline cursor-pointer">حریم خصوصی</span>
-                        <span class="text-[8px] text-zinc-500">-</span>
-                        <span class="text-[8px] text-zinc-500 hover:underline cursor-pointer">شرایط</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <script>
+        (function() {
+            if(localStorage.getItem('ui_theme') === 'standard') {
+                document.body.classList.add('theme-solid');
+            }
+            if (localStorage.getItem('color_theme') === 'light') {
+                document.documentElement.classList.remove('dark');
+            } else {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
 
-        <div id="consentSection" class="hidden flex-col items-center w-full max-w-sm px-4 transition-all duration-500 opacity-0 transform translate-y-4">
-            <div class="bg-zinc-900/80 border border-zinc-700/50 rounded-2xl p-6 flex flex-col items-center text-center shadow-lg w-full">
-                <div class="w-16 h-16 bg-blue-500/10 rounded-full flex items-center justify-center mb-4 text-blue-500 border border-blue-500/20">
-                    <i data-lucide="camera" class="w-7 h-7"></i>
-                </div>
-                <h3 class="text-white font-bold text-lg mb-2">دسترسی به دوربین</h3>
-                <p class="text-zinc-400 text-xs leading-relaxed mb-6 font-medium">
-                    برای انجام احراز هویت زنده، نیاز به دسترسی دوربین دستگاه شما داریم. هیچ تصویری از شما در سرور ذخیره نخواهد شد.
-                </p>
-                <button id="startFaceVerifyBtn" class="w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-[0_0_15px_rgba(59,130,246,0.4)] transition-all flex items-center justify-center gap-2">
-                    <i data-lucide="scan-face" class="w-5 h-5"></i>
-                    تایید و فعال‌سازی دوربین
-                </button>
-            </div>
-        </div>
-
-        <article id="faceSection" class="hidden w-full max-w-sm mx-auto flex-col items-center rounded-[28px] glass-panel p-6 relative overflow-hidden transition-all duration-500 opacity-0 transform scale-95">
-            <div class="mb-6 relative z-10 text-center">
-                <h1 class="text-xl font-bold mb-1.5 text-zinc-100">تایید هویت</h1>
-                <p class="text-xs text-zinc-400 font-medium">چهره خود را در مرکز کادر قرار دهید</p>
-            </div>
-
-            <div class="w-full flex flex-col items-center z-10">
-                <div class="relative mb-6 w-full flex justify-center items-center">
-                    <div id="dirRight" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-violet-500/80 backdrop-blur-sm text-white flex items-center justify-center opacity-0 transition-all duration-300 transform translate-x-2 z-0">
-                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                    </div>
-                    <div id="dirLeft" class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-amber-500/80 backdrop-blur-sm text-white flex items-center justify-center opacity-0 transition-all duration-300 transform -translate-x-2 z-0">
-                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
-                    </div>
-                    <div id="dirUp" class="absolute top-[-5px] left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-pink-500/80 backdrop-blur-sm text-white flex items-center justify-center opacity-0 transition-all duration-300 transform -translate-y-2 z-20">
-                        <i data-lucide="chevron-up" class="w-4 h-4"></i>
-                    </div>
-                    <div id="dirDown" class="absolute bottom-[-5px] left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-sky-500/80 backdrop-blur-sm text-white flex items-center justify-center opacity-0 transition-all duration-300 transform translate-y-2 z-20">
-                        <i data-lucide="chevron-down" class="w-4 h-4"></i>
-                    </div>
-
-                    <div id="cameraBox" class="camera-wrapper">
-                        <div id="camLoading" class="absolute inset-0 flex flex-col items-center justify-center bg-zinc-900 z-30">
-                            <i data-lucide="scan-face" class="w-8 h-8 text-blue-500 mb-2 pulse-text"></i>
-                            <span class="text-[10px] font-medium text-zinc-400">راه‌اندازی دوربین...</span>
-                        </div>
-                        <div id="camSuccess" class="hidden absolute inset-0 flex flex-col items-center justify-center bg-emerald-500/80 backdrop-blur-md z-40 transition-all rounded-full">
-                            <i data-lucide="check" class="w-14 h-14 text-white animate-bounce stroke-[3]"></i>
-                        </div>
-                        <div class="video-mirror-container">
-                            <video id="vidElement" autoplay muted playsinline></video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="h-10 flex items-center justify-center w-full">
-                    <div id="instText" class="px-5 py-2 rounded-xl bg-zinc-800/40 border border-white/5 backdrop-blur-md text-xs font-medium text-white transition-all duration-300 text-center">
-                        در حال اتصال...
-                    </div>
-                </div>
-            </div>
-        </article>
+    <div id="ambient-blobs" class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="absolute -top-[10%] -right-[10%] w-[450px] h-[450px] rounded-full bg-blue-500/40 dark:bg-blue-600/30 filter blur-[100px] animate-blob"></div>
+        <div class="absolute top-[20%] -left-[10%] w-[350px] h-[350px] rounded-full bg-purple-500/40 dark:bg-purple-600/30 filter blur-[100px] animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-[10%] left-[10%] w-[550px] h-[550px] rounded-full bg-emerald-500/40 dark:bg-emerald-600/30 filter blur-[100px] animate-blob animation-delay-4000"></div>
     </div>
 
-    <div id="mainApp" class="flex-1 flex flex-col min-h-screen opacity-0 pointer-events-none transition-opacity duration-700 w-full relative">
-        <div id="noticeModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
-            <div class="w-full max-w-lg rounded-3xl border-2 animated-blue-border bg-white dark:bg-zinc-950 p-6 sm:p-8 shadow-2xl relative flex flex-col gap-5 text-right transition-all transform animate-modal-in">
+    <div id="mainApp" class="flex-1 flex flex-col min-h-screen w-full relative z-10 transition-opacity duration-700">
+        
+        <div id="noticeModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-900/40 dark:bg-black/60 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-400">
+            <div class="w-full max-w-lg rounded-[28px] base-card p-6 relative flex flex-col gap-5 text-right transition-all transform scale-95 data-[open=true]:scale-100">
                 <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 rounded-2xl bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/30 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
-                        <i data-lucide="bot-off" class="w-6 h-6"></i>
+                    <div class="w-12 h-12 rounded-[14px] bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
+                        <i data-lucide="bot-off" class="w-6 h-6 stroke-[2.5]"></i>
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-xs font-bold text-blue-600 dark:text-blue-400 tracking-wider">اطلاعیه مهم</span>
-                        <h2 class="text-lg sm:text-xl font-extrabold text-zinc-900 dark:text-white">وضعیت فعالیت ربات تلگرام</h2>
+                        <span class="text-[10px] font-bold text-blue-600 dark:text-blue-400 tracking-wider">اطلاعیه مهم</span>
+                        <h2 class="text-lg font-extrabold text-zinc-900 dark:text-white mt-0.5">وضعیت فعالیت ربات تلگرام</h2>
                     </div>
                 </div>
-
-                <div class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed font-medium space-y-3 bg-zinc-50 dark:bg-zinc-900/60 p-4 rounded-2xl border border-zinc-200/60 dark:border-zinc-800/80">
-                    <p>
-                        به اطلاع کاربران گرامی می‌رسانیم که ربات 
-                        <span class="font-bold dir-ltr inline-block text-blue-600 dark:text-blue-400">@sponsoracb_bot</span> 
-                        به دلیل ارتقای فنی و توسعه زیرساخت‌ها، در حال حاضر موقتاً غیرفعال گردیده است.
-                    </p>
-                    <p>
-                        با توجه به گسترده بودن فرایند به‌روزرسانی، تکمیل کامل آن ممکن است تا چند ماه آینده به طول بینجامد.
-                    </p>
-                    <p class="text-zinc-500 dark:text-zinc-400 text-[11px] sm:text-xs">
-                        جهت پیگیری آخرین اخبار و اطلاعیه‌ها می‌توانید در کانال تلگرام همراه ما باشید.
-                    </p>
+                <div class="text-xs text-zinc-700 dark:text-zinc-300 leading-relaxed font-medium space-y-2 bg-zinc-100/50 dark:bg-zinc-800/50 p-4 rounded-[20px] border border-zinc-200/50 dark:border-zinc-700/50">
+                    <p>ربات <span class="font-bold dir-ltr inline-block text-blue-600 dark:text-blue-400">@sponsoracb_bot</span> به دلیل ارتقای فنی موقتاً غیرفعال است.</p>
+                    <p>جهت پیگیری آخرین اخبار در کانال تلگرام همراه ما باشید.</p>
                 </div>
-
-                <div class="flex flex-col sm:flex-row items-center gap-3 mt-1">
-                    <a href="https://t.me/sponsoracb" target="_blank" onclick="closeNoticeModal()" class="w-full flex-1 py-3.5 px-5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm transition-all shadow-lg shadow-blue-500/25 flex items-center justify-center gap-2.5 group">
-                        <i data-lucide="send" class="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:-translate-x-1"></i>
-                        <span>عضویت در کانال اطلاع‌رسانی</span>
+                <div class="flex flex-col sm:flex-row items-center gap-3 mt-2">
+                    <a href="https://t.me/sponsoracb" target="_blank" onclick="closeNoticeModal()" class="w-full flex-1 py-3 px-4 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-lg shadow-blue-500/30 transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="send" class="w-4 h-4 stroke-[2.5] pointer-events-none"></i> عضویت در کانال
                     </a>
-                    <button onclick="closeNoticeModal()" class="w-full sm:w-auto py-3.5 px-5 rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-semibold text-xs sm:text-sm transition-colors border border-zinc-200 dark:border-zinc-800">
-                        متوجه شدم
-                    </button>
+                    <button onclick="closeNoticeModal()" class="w-full sm:w-auto py-3 px-6 rounded-2xl bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 font-bold text-xs transition-colors">متوجه شدم</button>
                 </div>
             </div>
         </div>
 
-        <div id="pwaInstallModal" class="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
-            <div id="pwaModalContent" class="w-full max-w-sm rounded-3xl border border-zinc-200/50 dark:border-zinc-800/80 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl p-6 shadow-2xl relative flex flex-col gap-5 text-right transform translate-y-8 transition-all duration-300">
+        <div id="pwaInstallModal" class="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-zinc-900/40 dark:bg-black/60 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-400">
+            <div id="pwaModalContent" class="w-full max-w-sm rounded-[28px] base-card p-6 relative flex flex-col gap-5 text-right transform translate-y-10 transition-all duration-400 data-[open=true]:translate-y-0">
                 <div class="flex items-center gap-4">
-                    <div class="w-14 h-14 rounded-2xl shrink-0 shadow-sm overflow-hidden flex items-center justify-center bg-transparent">
-                        <img src="https://sponsoracb.ir/20474.png" alt="App Icon" class="w-full h-full object-cover">
+                    <div class="w-14 h-14 rounded-2xl shrink-0 overflow-hidden border border-zinc-200 dark:border-zinc-700 shadow-md flex items-center justify-center bg-white">
+                        <img src="https://sponsoracb.ir/20474.png" alt="App Icon" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/3b82f6/ffffff?text=App';">
                     </div>
                     <div class="flex flex-col">
-                        <h2 class="text-lg font-black text-zinc-900 dark:text-white">نصب برنامه SPONSORACB</h2>
-                        <span class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400">دسترسی سریع‌تر در حالت تمام‌صفحه</span>
+                        <h2 class="text-base font-black text-zinc-900 dark:text-white">نصب برنامه SPONSORACB</h2>
+                        <span id="pwaStatusText" class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 mt-0.5">دسترسی سریع در حالت تمام‌صفحه</span>
                     </div>
                 </div>
                 
-                <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed font-medium bg-zinc-50 dark:bg-zinc-900/60 p-4 rounded-2xl border border-zinc-200/60 dark:border-zinc-800/80">
-                    با افزودن این برنامه به صفحه اصلی، تجربه‌ای سریع‌تر، روان‌تر و مشابه یک اپلیکیشن بومی داشته باشید.
-                </p>
+                <div id="pwaManualInstructions" class="hidden text-[11px] sm:text-xs text-zinc-600 dark:text-zinc-300 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-2xl border border-blue-100 dark:border-blue-800/30 leading-relaxed font-medium">
+                    <!-- محتوای راهنما توسط جاوااسکریپت تزریق می‌شود -->
+                </div>
 
-                <div class="flex items-center gap-3 mt-1">
-                    <button id="pwaInstallBtn" class="flex-1 py-3.5 px-5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-lg shadow-blue-500/25 transition-all flex items-center justify-center gap-2 group">
-                        <i data-lucide="download" class="w-5 h-5 transition-transform group-hover:-translate-y-1"></i>
-                        نصب برنامه
+                <div class="flex items-center gap-3 mt-2">
+                    <button id="pwaInstallBtn" class="flex-1 py-3 px-4 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-lg shadow-blue-500/30 transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="download" class="w-4 h-4 stroke-[2.5] pointer-events-none"></i> نصب اپلیکیشن
                     </button>
-                    <button id="pwaCancelBtn" class="py-3.5 px-5 rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-semibold text-sm transition-colors border border-zinc-200 dark:border-zinc-800">
-                        بعداً
-                    </button>
+                    <button onclick="closePwaModal()" class="py-3 px-6 rounded-2xl bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 font-bold text-xs transition-colors">بستن</button>
                 </div>
             </div>
         </div>
         
-        <div id="sidebarOverlay" class="fixed inset-0 bg-zinc-900/40 dark:bg-black/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleSidebar()"></div>
+        <div id="sidebarOverlay" class="fixed inset-0 bg-zinc-900/40 dark:bg-black/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-400" onclick="toggleSidebar()"></div>
 
-        <aside id="sidebarPanel" class="fixed top-0 right-0 w-64 sm:w-72 h-full z-50 glass-base border-l border-zinc-200/80 dark:border-zinc-800/80 bg-white/90 dark:bg-zinc-950/90 transform translate-x-full transition-transform duration-300 flex flex-col shadow-2xl">
-            <div class="h-14 flex items-center justify-between px-4 border-b border-zinc-100 dark:border-zinc-800/60 shrink-0">
+        <aside id="sidebarPanel" class="fixed top-0 right-0 w-[260px] h-full z-50 base-card !rounded-none !border-y-0 !border-r-0 border-l transform translate-x-full transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col">
+            <div class="h-16 flex items-center justify-between px-4 border-b border-zinc-200/50 dark:border-zinc-700/50 shrink-0">
                 <div class="flex items-center gap-2">
-                    <i data-lucide="layers" class="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500"></i>
-                    <span class="font-bold text-xs text-zinc-800 dark:text-zinc-100">دسترسی سریع</span>
+                    <i data-lucide="layers" class="w-4 h-4 text-zinc-500 stroke-[2.5]"></i>
+                    <span class="font-bold text-[13px] text-zinc-800 dark:text-zinc-100">منوی دسترسی</span>
                 </div>
-                <button onclick="toggleSidebar()" class="p-1 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200">
-                    <i data-lucide="x" class="w-4 h-4"></i>
+                <button onclick="toggleSidebar()" class="w-10 h-10 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors text-zinc-500 z-[60] relative flex items-center justify-center cursor-pointer">
+                    <i data-lucide="x" class="w-5 h-5 stroke-[2.5] pointer-events-none"></i>
                 </button>
             </div>
 
-            <div class="flex-1 overflow-y-auto py-2 px-2.5 flex flex-col gap-1">
-                <a href="https://Sponsoracb.ir" target="_blank" class="flex items-center gap-2.5 p-1.5 rounded-lg hover:bg-zinc-100/80 dark:hover:bg-zinc-900/50 transition-colors group">
-                    <div class="w-7 h-7 rounded-md flex items-center justify-center text-indigo-600 bg-indigo-50 dark:text-indigo-400 dark:bg-indigo-500/10 transition-colors shrink-0">
-                        <i data-lucide="layout-template" class="w-3.5 h-3.5"></i>
-                    </div>
-                    <div class="flex flex-col min-w-0">
-                        <span class="font-semibold text-zinc-800 dark:text-zinc-200 text-xs truncate">پورتال مجموعه</span>
-                        <span class="text-[10px] text-zinc-500 dark:text-zinc-400 leading-tight truncate">ورود به وب‌سایت اصلی</span>
-                    </div>
-                </a>
-
-                <a href="https://t.me/Sponsoracb" target="_blank" class="flex items-center gap-2.5 p-1.5 rounded-lg hover:bg-zinc-100/80 dark:hover:bg-zinc-900/50 transition-colors group">
-                    <div class="w-7 h-7 rounded-md flex items-center justify-center text-sky-600 bg-sky-50 dark:text-sky-400 dark:bg-sky-500/10 transition-colors shrink-0">
-                        <i data-lucide="radio" class="w-3.5 h-3.5"></i>
-                    </div>
-                    <div class="flex flex-col min-w-0">
-                        <span class="font-semibold text-zinc-800 dark:text-zinc-200 text-xs truncate">کانال رسمی</span>
-                        <span class="text-[10px] text-zinc-500 dark:text-zinc-400 leading-tight truncate">اخبار و اطلاعیه‌ها</span>
-                    </div>
-                </a>
-
-                <a href="https://t.me/Sponsoracb_bot" target="_blank" class="flex items-center gap-2.5 p-1.5 rounded-lg hover:bg-zinc-100/80 dark:hover:bg-zinc-900/50 transition-colors group">
-                    <div class="w-7 h-7 rounded-md flex items-center justify-center text-fuchsia-600 bg-fuchsia-50 dark:text-fuchsia-400 dark:bg-fuchsia-500/10 transition-colors shrink-0">
-                        <i data-lucide="terminal-square" class="w-3.5 h-3.5"></i>
-                    </div>
-                    <div class="flex flex-col min-w-0">
-                        <span class="font-semibold text-zinc-800 dark:text-zinc-200 text-xs truncate">بات رسمی</span>
-                        <span class="text-[10px] text-zinc-500 dark:text-zinc-400 leading-tight truncate">خدمات هوشمند</span>
-                    </div>
-                </a>
-
-                <a href="https://t.me/Sponsoracbbot" target="_blank" class="flex items-center gap-2.5 p-1.5 rounded-lg hover:bg-zinc-100/80 dark:hover:bg-zinc-900/50 transition-colors group">
-                    <div class="w-7 h-7 rounded-md flex items-center justify-center text-orange-600 bg-orange-50 dark:text-orange-400 dark:bg-orange-500/10 transition-colors shrink-0">
-                        <i data-lucide="test-tube-2" class="w-3.5 h-3.5"></i>
-                    </div>
-                    <div class="flex flex-col min-w-0">
-                        <span class="font-semibold text-zinc-800 dark:text-zinc-200 text-xs truncate">بتا بات</span>
-                        <span class="text-[10px] text-zinc-500 dark:text-zinc-400 leading-tight truncate">نسخه آزمایشی</span>
-                    </div>
-                </a>
-
-                <a href="https://www.aparat.com/shorts/user/Sponsoracb/shorts" target="_blank" class="flex items-center gap-2.5 p-1.5 rounded-lg hover:bg-zinc-100/80 dark:hover:bg-zinc-900/50 transition-colors group">
-                    <div class="w-7 h-7 rounded-md flex items-center justify-center text-red-600 bg-red-50 dark:text-red-400 dark:bg-red-500/10 transition-colors shrink-0">
-                        <i data-lucide="play-square" class="w-3.5 h-3.5"></i>
-                    </div>
-                    <div class="flex flex-col min-w-0">
-                        <span class="font-semibold text-zinc-800 dark:text-zinc-200 text-xs truncate">آپارات</span>
-                        <span class="text-[10px] text-zinc-500 dark:text-zinc-400 leading-tight truncate">ویدیوهای آموزشی</span>
-                    </div>
-                </a>
-
-                <a href="https://T7sds.github.io" target="_blank" class="flex items-center gap-2.5 p-1.5 rounded-lg hover:bg-zinc-100/80 dark:hover:bg-zinc-900/50 transition-colors group">
-                    <div class="w-7 h-7 rounded-md flex items-center justify-center text-cyan-600 bg-cyan-50 dark:text-cyan-400 dark:bg-cyan-500/10 transition-colors shrink-0">
-                        <i data-lucide="messages-square" class="w-3.5 h-3.5"></i>
-                    </div>
-                    <div class="flex flex-col min-w-0">
-                        <span class="font-semibold text-zinc-800 dark:text-zinc-200 text-xs truncate">ارتباط با مدیریت</span>
-                        <span class="text-[10px] text-zinc-500 dark:text-zinc-400 leading-tight truncate">ارتباط با مدیر پروژه</span>
-                    </div>
-                </a>
-
-                <div class="mt-3 mb-1 px-2">
-                    <div class="flex items-center gap-2">
-                        <div class="h-px bg-zinc-200/60 dark:bg-zinc-800/60 flex-1"></div>
-                        <span class="text-[9px] font-bold text-fuchsia-500 dark:text-fuchsia-400 uppercase tracking-widest flex items-center gap-1">
-                            <i data-lucide="sparkles" class="w-3 h-3"></i>
-                            تبلیغات
-                        </span>
-                        <div class="h-px bg-zinc-200/60 dark:bg-zinc-800/60 flex-1"></div>
-                    </div>
-                </div>
-
-                <div class="px-1 flex flex-col gap-1.5">
-                    <a href="https://www.youtube.com/404" target="_blank" class="flex items-center gap-2.5 p-2 rounded-xl bg-gradient-to-r from-purple-600/20 via-fuchsia-600/15 to-transparent border border-purple-500/30 hover:border-fuchsia-500/60 transition-all group relative overflow-hidden">
-                        <img src="https://sponsoracb.ir/image/72833.png" alt="جایگاه 1" class="w-9 h-9 rounded-lg object-cover shrink-0 border border-fuchsia-500/30 shadow-sm" onerror="this.onerror=null; this.src='https://sponsoracb.ir/20474.png'">
-                        <div class="flex flex-col min-w-0 flex-1">
-                            <span class="font-bold text-zinc-800 dark:text-zinc-100 text-xs truncate group-hover:text-purple-500 dark:group-hover:text-fuchsia-400 transition-colors">جایگاه 1</span>
-                            <p class="text-[10px] text-zinc-500 dark:text-zinc-400 mt-0.5 leading-tight truncate">این جایگاه آزاد میباشد</p>
-                        </div>
-                    </a>
-
-                    <a href="https://www.aparat.com/Crashwtfe" target="_blank" class="flex items-center gap-2.5 p-2 rounded-xl bg-gradient-to-r from-orange-500/15 via-amber-500/10 to-transparent border border-orange-500/25 hover:border-orange-500/50 transition-all group relative overflow-hidden">
-                        <img src="https://sponsoracb.ir/image/82072.png" alt="Crashwtfe" class="w-9 h-9 rounded-lg object-cover shrink-0 border border-orange-500/30 shadow-sm" onerror="this.onerror=null; this.src='https://sponsoracb.ir/20474.png'">
-                        <div class="flex flex-col min-w-0 flex-1">
-                            <span class="font-bold text-zinc-800 dark:text-zinc-100 text-xs truncate group-hover:text-orange-500 transition-colors">Crashwtfe</span>
-                            <p class="text-[10px] text-zinc-500 dark:text-zinc-400 mt-0.5 leading-tight truncate">با ورود به این کانال از محتوای اختصاصی بهره‌مند شوید</p>
-                        </div>
-                    </a>
-
-                    <a href="https://t.me/Monsmain" target="_blank" class="flex items-center gap-2.5 p-2 rounded-xl bg-gradient-to-r from-emerald-600/20 via-zinc-900/60 to-transparent border border-emerald-500/30 hover:border-emerald-500/60 transition-all group relative overflow-hidden">
-                        <img src="https://sponsoracb.ir/image/91792.png" alt="Monsmain" class="w-9 h-9 rounded-lg object-cover shrink-0 border border-emerald-500/30 shadow-sm" onerror="this.onerror=null; this.src='https://sponsoracb.ir/20474.png'">
-                        <div class="flex flex-col min-w-0 flex-1">
-                            <span class="font-bold text-zinc-800 dark:text-zinc-100 text-xs truncate group-hover:text-emerald-400 transition-colors">Monsmain</span>
-                            <p class="text-[10px] text-zinc-500 dark:text-zinc-400 mt-0.5 leading-tight truncate">اس‌ام‌اس بمبر رایگان و محتوای اختصاصی</p>
-                        </div>
+            <div class="flex-1 overflow-y-auto py-4 px-3 flex flex-col gap-1.5">
+                <div class="flex flex-col gap-2 mb-3 px-1">
+                    <button id="sidebarPwaBtn" class="w-full py-2.5 rounded-[14px] bg-blue-600 text-white font-bold text-[12px] shadow-md shadow-blue-500/20 flex items-center justify-center gap-1.5 hover:bg-blue-500 transition-colors">
+                        <i data-lucide="download" class="w-3.5 h-3.5 stroke-[2.5] pointer-events-none"></i> دانلود اپلیکیشن
+                    </button>
+                    <a href="https://sponsoracb.ir/beta/page" class="w-full py-2.5 rounded-[14px] bg-zinc-800 dark:bg-white text-white dark:text-zinc-900 font-bold text-[12px] shadow-sm flex items-center justify-center gap-1.5 hover:bg-zinc-700 dark:hover:bg-zinc-100 transition-colors">
+                        <i data-lucide="rocket" class="w-3.5 h-3.5 stroke-[2.5] pointer-events-none"></i> ورود به بتا مود
                     </a>
                 </div>
 
-                <div class="mt-3 mb-1 px-2">
-                    <div class="flex items-center gap-2">
-                        <div class="h-px bg-zinc-200/60 dark:bg-zinc-800/60 flex-1"></div>
-                        <span class="text-[9px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">همکاری‌ها</span>
-                        <div class="h-px bg-zinc-200/60 dark:bg-zinc-800/60 flex-1"></div>
+                <div class="my-2 border-t border-zinc-200/50 dark:border-zinc-700/50"></div>
+
+                <a href="https://Sponsoracb.ir" target="_blank" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-white/50 dark:hover:bg-zinc-800/50 transition-colors group">
+                    <div class="w-9 h-9 app-icon bg-blue-500">
+                        <i data-lucide="layout-template" class="w-4 h-4 stroke-[2.5]"></i>
+                    </div>
+                    <div class="flex flex-col min-w-0">
+                        <span class="font-bold text-zinc-800 dark:text-zinc-200 text-xs truncate">پورتال مجموعه</span>
+                        <span class="text-[10px] text-zinc-500 leading-tight truncate mt-0.5">وب‌سایت اصلی</span>
+                    </div>
+                </a>
+
+                <a href="https://t.me/Sponsoracb" target="_blank" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-white/50 dark:hover:bg-zinc-800/50 transition-colors group">
+                    <div class="w-9 h-9 app-icon bg-sky-500">
+                        <i data-lucide="radio" class="w-4 h-4 stroke-[2.5]"></i>
+                    </div>
+                    <div class="flex flex-col min-w-0">
+                        <span class="font-bold text-zinc-800 dark:text-zinc-200 text-xs truncate">کانال رسمی</span>
+                        <span class="text-[10px] text-zinc-500 leading-tight truncate mt-0.5">اخبار مجموعه</span>
+                    </div>
+                </a>
+
+                <a href="https://t.me/Sponsoracb_bot" target="_blank" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-white/50 dark:hover:bg-zinc-800/50 transition-colors group">
+                    <div class="w-9 h-9 app-icon bg-violet-500">
+                        <i data-lucide="terminal-square" class="w-4 h-4 stroke-[2.5]"></i>
+                    </div>
+                    <div class="flex flex-col min-w-0">
+                        <span class="font-bold text-zinc-800 dark:text-zinc-200 text-xs truncate">بات رسمی</span>
+                        <span class="text-[10px] text-zinc-500 leading-tight truncate mt-0.5">خدمات هوشمند</span>
+                    </div>
+                </a>
+
+                <a href="https://t.me/Sponsoracbbot" target="_blank" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-white/50 dark:hover:bg-zinc-800/50 transition-colors group">
+                    <div class="w-9 h-9 app-icon bg-orange-500">
+                        <i data-lucide="test-tube-2" class="w-4 h-4 stroke-[2.5]"></i>
+                    </div>
+                    <div class="flex flex-col min-w-0">
+                        <span class="font-bold text-zinc-800 dark:text-zinc-200 text-xs truncate">بتا بات</span>
+                        <span class="text-[10px] text-zinc-500 leading-tight truncate mt-0.5">نسخه آزمایشی</span>
+                    </div>
+                </a>
+
+                <a href="https://www.aparat.com/shorts/user/Sponsoracb/shorts" target="_blank" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-white/50 dark:hover:bg-zinc-800/50 transition-colors group">
+                    <div class="w-9 h-9 app-icon bg-red-500">
+                        <i data-lucide="play-square" class="w-4 h-4 stroke-[2.5]"></i>
+                    </div>
+                    <div class="flex flex-col min-w-0">
+                        <span class="font-bold text-zinc-800 dark:text-zinc-200 text-xs truncate">آپارات</span>
+                        <span class="text-[10px] text-zinc-500 leading-tight truncate mt-0.5">ویدیوهای آموزشی</span>
+                    </div>
+                </a>
+
+                <div class="mt-4 mb-2 px-1">
+                    <span class="text-[10px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest block mb-2">تنظیمات ظاهر</span>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="setUITheme('liquid')" id="btn-theme-liquid" class="py-2.5 px-2 rounded-xl border border-blue-500 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-bold transition-all">Liquid Glass</button>
+                        <button onclick="setUITheme('standard')" id="btn-theme-standard" class="py-2.5 px-2 rounded-xl border border-transparent bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-[10px] font-bold transition-all hover:bg-zinc-200 dark:hover:bg-zinc-700">Solid Modern</button>
                     </div>
                 </div>
 
-                <div class="px-1 pb-3 flex flex-col gap-0.5">
-                    <a href="https://t.me/Monsmain" target="_blank" class="flex items-center justify-between p-1.5 rounded-lg hover:bg-zinc-100/80 dark:hover:bg-zinc-900/50 transition-colors group">
-                        <div class="flex items-center gap-2">
-                            <div class="w-6 h-6 rounded-md flex items-center justify-center text-blue-600 bg-blue-50 dark:text-blue-400 dark:bg-blue-500/10 transition-colors shrink-0">
-                                <i data-lucide="send" class="w-3 h-3"></i>
-                            </div>
-                            <span class="font-medium text-zinc-700 dark:text-zinc-300 text-[11px] group-hover:text-zinc-900 dark:group-hover:text-white transition-colors">کانال Monsmain</span>
+                <div class="mt-4 mb-2 px-1">
+                    <span class="text-[10px] font-bold text-fuchsia-600 dark:text-fuchsia-400 uppercase tracking-widest block mb-1.5">همکاری‌ها و تبلیغات</span>
+                </div>
+
+                <div class="flex flex-col gap-1.5 px-1">
+                    <a href="https://www.youtube.com/404" target="_blank" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-white/50 dark:hover:bg-zinc-800/50 transition-all group">
+                        <img src="https://sponsoracb.ir/image/72833.png" alt="Ads" class="w-9 h-9 rounded-xl object-cover border border-zinc-200 dark:border-zinc-700 shadow-sm" onerror="this.onerror=null; this.src='https://placehold.co/100x100/d946ef/ffffff?text=Ads';">
+                        <div class="flex flex-col min-w-0">
+                            <span class="font-bold text-zinc-800 dark:text-zinc-100 text-[11px] truncate group-hover:text-fuchsia-500 transition-colors">جایگاه 1</span>
+                            <p class="text-[9px] text-zinc-500 mt-0.5 truncate">این جایگاه آزاد میباشد</p>
                         </div>
-                        <i data-lucide="external-link" class="w-3 h-3 text-zinc-300 dark:text-zinc-600 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors"></i>
                     </a>
 
-                    <a href="https://github.com/Monsmain" target="_blank" class="flex items-center justify-between p-1.5 rounded-lg hover:bg-zinc-100/80 dark:hover:bg-zinc-900/50 transition-colors group">
-                        <div class="flex items-center gap-2">
-                            <div class="w-6 h-6 rounded-md flex items-center justify-center text-zinc-700 bg-zinc-100 dark:text-zinc-300 dark:bg-zinc-800 transition-colors shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.02c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A4.8 4.8 0 0 0 8 18v4"></path><path d="M12 18h.01"></path></svg>
-                            </div>
-                            <span class="font-medium text-zinc-700 dark:text-zinc-300 text-[11px] group-hover:text-zinc-900 dark:group-hover:text-white transition-colors">گیت‌هاب Monsmain</span>
+                    <a href="https://t.me/Monsmain" target="_blank" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-white/50 dark:hover:bg-zinc-800/50 transition-all group">
+                        <img src="https://sponsoracb.ir/image/91792.png" alt="Monsmain" class="w-9 h-9 rounded-xl object-cover border border-zinc-200 dark:border-zinc-700 shadow-sm" onerror="this.onerror=null; this.src='https://placehold.co/100x100/10b981/ffffff?text=Ad';">
+                        <div class="flex flex-col min-w-0">
+                            <span class="font-bold text-zinc-800 dark:text-zinc-100 text-[11px] truncate group-hover:text-emerald-500 transition-colors">Monsmain</span>
+                            <p class="text-[9px] text-zinc-500 mt-0.5 truncate">اس‌ام‌اس بمبر رایگان</p>
                         </div>
-                        <i data-lucide="external-link" class="w-3 h-3 text-zinc-300 dark:text-zinc-600 group-hover:text-zinc-800 dark:group-hover:text-zinc-200 transition-colors"></i>
                     </a>
                 </div>
+            </div>
+
+            <div class="py-3 text-center border-t border-zinc-200/50 dark:border-zinc-700/50 shrink-0">
+                <span class="text-[10px] font-bold text-zinc-400 tracking-widest dir-ltr">v 3.2.0 (Premium)</span>
             </div>
         </aside>
 
-        <nav class="w-full h-16 sm:h-20 flex items-center justify-between px-4 sm:px-8 border-b glass-base sticky top-0 z-30 bg-white/40 border-zinc-200/50 dark:bg-zinc-950/40 dark:border-zinc-800/50 transition-colors">
-            <button onclick="toggleSidebar()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all border shadow-sm bg-white/70 border-zinc-200/80 hover:bg-white dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 group">
-                <i data-lucide="menu" class="w-5 h-5 text-zinc-600 dark:text-zinc-400 group-hover:text-indigo-500 transition-colors"></i>
+        <nav class="w-full h-16 sm:h-20 flex items-center justify-between px-5 sm:px-8 border-b base-card !rounded-none !border-x-0 !border-t-0 sticky top-0 z-30 transition-colors">
+            <button onclick="toggleSidebar()" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-all border border-zinc-200/50 dark:border-zinc-700/50 bg-white/40 dark:bg-zinc-800/40 hover:bg-white/80 dark:hover:bg-zinc-700 shadow-sm relative z-50">
+                <i data-lucide="menu" class="w-5 h-5 text-zinc-800 dark:text-zinc-200 stroke-[2.5] pointer-events-none"></i>
             </button>
 
-            <span class="font-black text-lg sm:text-xl tracking-[0.2em] dir-ltr text-zinc-900 dark:text-white">SPONSORACB</span>
+            <span class="font-black text-lg sm:text-xl tracking-[0.25em] dir-ltr text-zinc-900 dark:text-white">SPONSORACB</span>
             
-            <button onclick="toggleTheme()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all border shadow-sm bg-white/70 border-zinc-200/80 hover:bg-white dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 group">
-                <i data-lucide="sun" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-600 hidden dark:block group-hover:text-amber-400 transition-colors"></i>
-                <i data-lucide="moon" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 block dark:hidden group-hover:text-indigo-500 transition-colors"></i>
+            <button onclick="toggleTheme()" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-all border border-zinc-200/50 dark:border-zinc-700/50 bg-white/40 dark:bg-zinc-800/40 hover:bg-white/80 dark:hover:bg-zinc-700 shadow-sm">
+                <i data-lucide="sun" class="w-5 h-5 text-zinc-200 hidden dark:block stroke-[2.5] pointer-events-none"></i>
+                <i data-lucide="moon" class="w-5 h-5 text-zinc-800 block dark:hidden stroke-[2.5] pointer-events-none"></i>
             </button>
         </nav>
 
-        <main class="flex-1 w-full max-w-5xl mx-auto flex flex-col gap-8 py-10 px-4 sm:px-6 lg:px-8">
-            <header class="text-center flex flex-col items-center gap-3.5 mb-2 sm:mb-4">
-                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center border shadow-sm transition-colors bg-white/70 border-zinc-200/80 dark:bg-zinc-900/60 dark:border-zinc-800">
-                    <i data-lucide="layers" class="w-8 h-8 sm:w-10 sm:h-10 text-zinc-800 dark:text-indigo-400"></i>
+        <main class="flex-1 w-full max-w-4xl mx-auto flex flex-col gap-5 sm:gap-6 py-8 px-5 sm:px-8">
+            <header class="text-center flex flex-col items-center gap-3 mb-4">
+                <div class="w-20 h-20 app-icon bg-blue-600 shadow-xl shadow-blue-600/30">
+                    <i data-lucide="layers" class="w-10 h-10 text-white stroke-[2.5]"></i>
                 </div>
                 
-                <h1 class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight text-zinc-900 dark:text-white">
-                    پورتال و مخزن اصلی لینک‌ها
+                <h1 class="text-3xl sm:text-4xl font-black tracking-tight text-zinc-900 dark:text-white mt-2">
+                    پورتال و مخزن اصلی
                 </h1>
                 
-                <p class="text-xs sm:text-base font-medium max-w-2xl mx-auto text-zinc-500 dark:text-zinc-400 leading-relaxed px-2">
-                    از طریق منوی زیر می‌توانید به سرعت به بخش‌های کلیدی سایت، تعرفه‌ها، محصولات و راه‌های ارتباطی دسترسی پیدا کنید.
+                <p class="text-xs sm:text-sm font-medium max-w-md mx-auto text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                    دسترسی سریع به بخش‌های کلیدی، محصولات، آموزش‌ها و پشتیبانی.
                 </p>
             </header>
 
-            <!-- Red Banner Notice -->
-            <div onclick="openNoticeModal()" class="animate-fade-in-up w-full cursor-pointer bg-red-50/80 hover:bg-red-100 dark:bg-red-900/20 dark:hover:bg-red-900/40 border border-red-200/80 dark:border-red-800/50 rounded-2xl p-3.5 sm:p-4 flex items-center justify-between transition-all duration-300 shadow-sm hover:shadow-md group" style="animation-delay: 0.02s;">
-                <div class="flex items-center gap-3.5 min-w-0">
-                    <div class="shrink-0 w-10 h-10 rounded-xl flex items-center justify-center bg-red-100 dark:bg-red-500/20 text-red-600 dark:text-red-400">
-                        <i data-lucide="alert-circle" class="w-5 h-5 animate-pulse"></i>
+            <div onclick="openNoticeModal()" class="animate-fade-in-up w-full cursor-pointer base-card p-4 flex items-center justify-between transition-all group !border-red-300 dark:!border-red-900/50" style="background-color: rgba(239, 68, 68, 0.08); animation-delay: 0.05s;">
+                <div class="flex items-center gap-4 min-w-0">
+                    <div class="shrink-0 w-12 h-12 app-icon bg-red-500 shadow-md shadow-red-500/20">
+                        <i data-lucide="alert-circle" class="w-6 h-6 animate-pulse stroke-[2.5] text-white"></i>
                     </div>
                     <div class="flex flex-col min-w-0">
-                        <h3 class="text-sm sm:text-base font-bold text-red-800 dark:text-red-400 truncate">اطلاعیه مهم ربات تلگرام</h3>
-                        <p class="text-[10px] sm:text-xs font-medium text-red-600/80 dark:text-red-400/80 truncate">جهت مشاهده وضعیت فعالیت ربات کلیک کنید</p>
+                        <h3 class="text-sm font-bold text-red-700 dark:text-red-400 truncate mb-1">اطلاعیه مهم ربات</h3>
+                        <p class="text-[10px] sm:text-[11px] font-medium text-red-600/90 dark:text-red-400/80 truncate">مشاهده وضعیت فعالیت و بروزرسانی</p>
                     </div>
                 </div>
-                <div class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-red-500 dark:text-red-400 group-hover:bg-red-100 dark:group-hover:bg-red-500/20 transition-colors">
-                    <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:-translate-x-1"></i>
-                </div>
+                <i data-lucide="chevron-left" class="w-5 h-5 text-red-500 group-hover:-translate-x-1.5 transition-transform mr-2"></i>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-5 items-stretch mt-2">
-                <a href="https://sponsoracb.mydigify.app" target="_blank" rel="noopener noreferrer" class="animate-fade-in-up flex items-center justify-between rounded-2xl border glass-base p-4 sm:p-5 transition-all duration-300 relative group cursor-pointer bg-white/70 border-zinc-200/80 hover:bg-white hover:-translate-y-1 hover:shadow-lg hover:shadow-rose-500/10 hover:border-rose-400 dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 dark:hover:border-rose-500/50 dark:hover:shadow-rose-500/10" style="animation-delay: 0.05s;">
-                    <div class="flex items-center gap-3.5 sm:gap-4 min-w-0">
-                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center transition-colors border bg-rose-50 border-rose-200 text-rose-600 group-hover:bg-rose-500 group-hover:text-white group-hover:border-rose-500 dark:bg-rose-500/10 dark:border-rose-500/20 dark:text-rose-400 dark:group-hover:bg-rose-500 dark:group-hover:text-white">
-                            <i data-lucide="shopping-bag" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
+                
+                <a href="https://sponsoracb.mydigify.app" target="_blank" class="animate-fade-in-up flex items-center justify-between p-4 base-card group cursor-pointer" style="animation-delay: 0.1s;">
+                    <div class="flex items-center gap-4 min-w-0">
+                        <div class="shrink-0 w-12 h-12 app-icon bg-blue-500 group-hover:scale-105 transition-transform">
+                            <i data-lucide="shopping-bag" class="w-6 h-6 stroke-[2.5]"></i>
                         </div>
                         <div class="flex flex-col min-w-0">
-                            <h3 class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white mb-0.5 truncate">فروشگاه محصولات</h3>
-                            <p class="text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 leading-relaxed truncate">خرید مستقیم و امن خدمات اختصاصی.</p>
+                            <h3 class="text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">فروشگاه محصولات</h3>
+                            <p class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">خرید مستقیم و امن خدمات پورتال.</p>
                         </div>
                     </div>
-                    <div class="shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center mr-2 transition-colors border border-transparent text-zinc-400 group-hover:bg-rose-50 group-hover:text-rose-600 group-hover:border-rose-200 dark:text-zinc-500 dark:group-hover:bg-rose-500/10 dark:group-hover:text-rose-400 dark:group-hover:border-rose-500/30">
-                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:-translate-x-1"></i>
-                    </div>
+                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
                 </a>
 
-                <a href="https://sponsoracb.ir/ads" class="animate-fade-in-up flex items-center justify-between rounded-2xl border glass-base p-4 sm:p-5 transition-all duration-300 relative group cursor-pointer bg-white/70 border-zinc-200/80 hover:bg-white hover:-translate-y-1 hover:shadow-lg hover:shadow-fuchsia-500/10 hover:border-fuchsia-400 dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 dark:hover:border-fuchsia-500/50 dark:hover:shadow-fuchsia-500/10" style="animation-delay: 0.1s;">
-                    <div class="flex items-center gap-3.5 sm:gap-4 min-w-0">
-                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center transition-colors border bg-fuchsia-50 border-fuchsia-200 text-fuchsia-600 group-hover:bg-fuchsia-600 group-hover:text-white group-hover:border-fuchsia-600 dark:bg-fuchsia-500/10 dark:border-fuchsia-500/20 dark:text-fuchsia-400 dark:group-hover:bg-fuchsia-600 dark:group-hover:text-white">
-                            <i data-lucide="megaphone" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                <a href="https://AMT-IR.github.io/Support.html" class="animate-fade-in-up flex items-center justify-between p-4 base-card group cursor-pointer" style="animation-delay: 0.15s;">
+                    <div class="flex items-center gap-4 min-w-0">
+                        <div class="shrink-0 w-12 h-12 app-icon bg-violet-500 group-hover:scale-105 transition-transform">
+                            <i data-lucide="headset" class="w-6 h-6 stroke-[2.5]"></i>
                         </div>
                         <div class="flex flex-col min-w-0">
-                            <div class="flex items-center gap-1.5">
-                                <h3 class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white mb-0.5 truncate">تبلیغات و اسپانسری</h3>
-                                <span class="px-2 py-0.5 rounded-full bg-fuchsia-500/15 border border-fuchsia-500/30 text-fuchsia-600 dark:text-fuchsia-400 text-[10px] font-black">جدید</span>
-                            </div>
-                            <p class="text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 leading-relaxed truncate">تعرفه‌های رسمی، سوپر Ads و تبلیغات پورتال.</p>
+                            <h3 class="text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">پشتیبانی</h3>
+                            <p class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">تماس با تیم فنی و حل مشکلات.</p>
                         </div>
                     </div>
-                    <div class="shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center mr-2 transition-colors border border-transparent text-zinc-400 group-hover:bg-fuchsia-50 group-hover:text-fuchsia-600 group-hover:border-fuchsia-200 dark:text-zinc-500 dark:group-hover:bg-fuchsia-500/10 dark:group-hover:text-fuchsia-400 dark:group-hover:border-fuchsia-500/30">
-                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:-translate-x-1"></i>
-                    </div>
+                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
                 </a>
 
-                <div class="animate-fade-in-up flex items-center justify-between rounded-2xl border glass-base p-4 sm:p-5 transition-all duration-300 relative group bg-white/40 border-zinc-200/60 dark:bg-zinc-900/30 dark:border-zinc-800/50 opacity-90" style="animation-delay: 0.12s;">
-                    <div class="flex items-center gap-3.5 sm:gap-4 min-w-0">
-                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center border bg-amber-50/80 border-amber-200/80 text-amber-600 dark:bg-amber-500/10 dark:border-amber-500/20 dark:text-amber-400">
-                            <i data-lucide="file-signature" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                <a href="https://sponsoracb.ir/ads" class="animate-fade-in-up flex items-center justify-between p-4 base-card group cursor-pointer" style="animation-delay: 0.2s;">
+                    <div class="flex items-center gap-4 min-w-0">
+                        <div class="shrink-0 w-12 h-12 app-icon bg-orange-500 group-hover:scale-105 transition-transform">
+                            <i data-lucide="megaphone" class="w-6 h-6 stroke-[2.5]"></i>
                         </div>
                         <div class="flex flex-col min-w-0">
-                            <div class="flex items-center gap-1.5">
-                                <h3 class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white mb-0.5 truncate">قرارداد اسپانسری</h3>
-                                <span class="px-2 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-600 dark:text-amber-400 text-[10px] font-black">به‌زودی</span>
+                            <div class="flex items-center gap-2 mb-0.5">
+                                <h3 class="text-[14px] font-bold text-zinc-900 dark:text-zinc-100 truncate">تبلیغات</h3>
+                                <span class="px-2 py-0.5 rounded-md text-[9px] font-bold bg-orange-100 text-orange-600 dark:bg-orange-500/20 dark:text-orange-400 shrink-0">جدید</span>
                             </div>
-                            <p class="text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 leading-relaxed truncate">تنظیم توافق‌نامه‌های رسمی و اختصاصی حامی مالی.</p>
+                            <p class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">تعرفه‌های رسمی و جایگاه‌ها.</p>
                         </div>
                     </div>
-                    <div class="shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center mr-2 border border-transparent text-zinc-300 dark:text-zinc-600">
-                        <i data-lucide="clock" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
+                </a>
+
+                <a href="https://AMT-IR.github.io/pricing.html" class="animate-fade-in-up flex items-center justify-between p-4 base-card group cursor-pointer" style="animation-delay: 0.25s;">
+                    <div class="flex items-center gap-4 min-w-0">
+                        <div class="shrink-0 w-12 h-12 app-icon bg-rose-500 group-hover:scale-105 transition-transform">
+                            <i data-lucide="credit-card" class="w-6 h-6 stroke-[2.5]"></i>
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                            <h3 class="text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">قیمت اشتراک‌ها</h3>
+                            <p class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">شرایط خرید اشتراک ویژه ربات.</p>
+                        </div>
                     </div>
+                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
+                </a>
+
+                <a href="https://sponsoracb.ir/aboutus" class="animate-fade-in-up flex items-center justify-between p-4 base-card group cursor-pointer" style="animation-delay: 0.3s;">
+                    <div class="flex items-center gap-4 min-w-0">
+                        <div class="shrink-0 w-12 h-12 app-icon bg-teal-500 group-hover:scale-105 transition-transform">
+                            <i data-lucide="info" class="w-6 h-6 stroke-[2.5]"></i>
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                            <h3 class="text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">درباره ما</h3>
+                            <p class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">آشنایی بیشتر با تیم و اهداف مجموعه.</p>
+                        </div>
+                    </div>
+                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
+                </a>
+
+                <a href="https://Sponsoracb.ir/blog" target="_blank" class="animate-fade-in-up flex items-center justify-between p-4 base-card group cursor-pointer" style="animation-delay: 0.35s;">
+                    <div class="flex items-center gap-4 min-w-0">
+                        <div class="shrink-0 w-12 h-12 app-icon bg-amber-500 group-hover:scale-105 transition-transform">
+                            <i data-lucide="newspaper" class="w-6 h-6 stroke-[2.5]"></i>
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                            <h3 class="text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">وبلاگ آموزشی</h3>
+                            <p class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">مقالات، اخبار و آموزش‌های کاربردی.</p>
+                        </div>
+                    </div>
+                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
+                </a>
+
+                <a href="https://AMT-IR.github.io/Symbol.html" class="animate-fade-in-up flex items-center justify-between p-4 base-card group cursor-pointer" style="animation-delay: 0.4s;">
+                    <div class="flex items-center gap-4 min-w-0">
+                        <div class="shrink-0 w-12 h-12 app-icon bg-cyan-500 group-hover:scale-105 transition-transform">
+                            <i data-lucide="shield-check" class="w-6 h-6 stroke-[2.5]"></i>
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                            <h3 class="text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">نمادهای اعتماد</h3>
+                            <p class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">مجوزها و تاییدیه‌های رسمی وب‌سایت.</p>
+                        </div>
+                    </div>
+                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
+                </a>
+
+                <a href="https://sponsoracb.ir/legal" class="animate-fade-in-up flex items-center justify-between p-4 base-card group cursor-pointer" style="animation-delay: 0.45s;">
+                    <div class="flex items-center gap-4 min-w-0">
+                        <div class="shrink-0 w-12 h-12 app-icon bg-indigo-500 group-hover:scale-105 transition-transform">
+                            <i data-lucide="scale" class="w-6 h-6 stroke-[2.5]"></i>
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                            <h3 class="text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">قوانین و مقررات</h3>
+                            <p class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">حقوق کاربران و حریم خصوصی.</p>
+                        </div>
+                    </div>
+                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
+                </a>
+
+                <div class="animate-fade-in-up flex items-center justify-between p-4 base-card opacity-60 grayscale-[30%]" style="animation-delay: 0.5s;">
+                    <div class="flex items-center gap-4 min-w-0">
+                        <div class="shrink-0 w-12 h-12 app-icon bg-pink-500">
+                            <i data-lucide="message-square" class="w-6 h-6 stroke-[2.5]"></i>
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                            <div class="flex items-center gap-2 mb-0.5">
+                                <h3 class="text-[14px] font-bold text-zinc-900 dark:text-zinc-100 truncate">نظرات مشتریان</h3>
+                                <span class="px-2 py-0.5 rounded-md text-[9px] font-bold bg-pink-100 text-pink-600 dark:bg-pink-500/20 dark:text-pink-400 shrink-0">بزودی</span>
+                            </div>
+                            <p class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">تجربیات کاربران از خدمات.</p>
+                        </div>
+                    </div>
+                    <i data-lucide="clock" class="w-5 h-5 text-zinc-400 shrink-0"></i>
                 </div>
 
-                <a href="https://AMT-IR.github.io/pricing.html" class="animate-fade-in-up flex items-center justify-between rounded-2xl border glass-base p-4 sm:p-5 transition-all duration-300 relative group cursor-pointer bg-white/70 border-zinc-200/80 hover:bg-white hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/10 hover:border-blue-400 dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 dark:hover:border-blue-500/50 dark:hover:shadow-blue-500/10" style="animation-delay: 0.15s;">
-                    <div class="flex items-center gap-3.5 sm:gap-4 min-w-0">
-                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center transition-colors border bg-blue-50 border-blue-200 text-blue-600 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 dark:bg-blue-500/10 dark:border-blue-500/20 dark:text-blue-400 dark:group-hover:bg-blue-600 dark:group-hover:text-white">
-                            <i data-lucide="credit-card" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                <div class="animate-fade-in-up flex items-center justify-between p-4 base-card opacity-60 grayscale-[30%]" style="animation-delay: 0.55s;">
+                    <div class="flex items-center gap-4 min-w-0">
+                        <div class="shrink-0 w-12 h-12 app-icon bg-emerald-500">
+                            <i data-lucide="file-signature" class="w-6 h-6 stroke-[2.5]"></i>
                         </div>
                         <div class="flex flex-col min-w-0">
-                            <h3 class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white mb-0.5 truncate">قیمت اشتراک‌ها</h3>
-                            <p class="text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 leading-relaxed truncate">پلن‌ها و شرایط خرید اشتراک ربات.</p>
-                        </div>
-                    </div>
-                    <div class="shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center mr-2 transition-colors border border-transparent text-zinc-400 group-hover:bg-blue-50 group-hover:text-blue-600 group-hover:border-blue-200 dark:text-zinc-500 dark:group-hover:bg-blue-500/10 dark:group-hover:text-blue-400 dark:group-hover:border-blue-500/30">
-                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:-translate-x-1"></i>
-                    </div>
-                </a>
-
-                <a href="https://sponsoracb.ir/legal" class="animate-fade-in-up flex items-center justify-between rounded-2xl border glass-base p-4 sm:p-5 transition-all duration-300 relative group cursor-pointer bg-white/70 border-zinc-200/80 hover:bg-white hover:-translate-y-1 hover:shadow-lg hover:shadow-indigo-500/10 hover:border-indigo-400 dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 dark:hover:border-indigo-500/50 dark:hover:shadow-indigo-500/10" style="animation-delay: 0.2s;">
-                    <div class="flex items-center gap-3.5 sm:gap-4 min-w-0">
-                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center transition-colors border bg-indigo-50 border-indigo-200 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white group-hover:border-indigo-600 dark:bg-indigo-500/10 dark:border-indigo-500/20 dark:text-indigo-400 dark:group-hover:bg-indigo-600 dark:group-hover:text-white">
-                            <i data-lucide="scale" class="w-5 h-5 sm:w-6 sm:h-6"></i>
-                        </div>
-                        <div class="flex flex-col min-w-0">
-                            <h3 class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white mb-0.5 truncate">قوانین و مقررات</h3>
-                            <p class="text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 leading-relaxed truncate">حقوق کاربران، حریم خصوصی و استرداد وجه.</p>
-                        </div>
-                    </div>
-                    <div class="shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center mr-2 transition-colors border border-transparent text-zinc-400 group-hover:bg-indigo-50 group-hover:text-indigo-600 group-hover:border-indigo-200 dark:text-zinc-500 dark:group-hover:bg-indigo-500/10 dark:group-hover:text-indigo-400 dark:group-hover:border-indigo-500/30">
-                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:-translate-x-1"></i>
-                    </div>
-                </a>
-
-                <a href="https://AMT-IR.github.io/Symbol.html" class="animate-fade-in-up flex items-center justify-between rounded-2xl border glass-base p-4 sm:p-5 transition-all duration-300 relative group cursor-pointer bg-white/70 border-zinc-200/80 hover:bg-white hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-500/10 hover:border-emerald-400 dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 dark:hover:border-emerald-500/50 dark:hover:shadow-emerald-500/10" style="animation-delay: 0.25s;">
-                    <div class="flex items-center gap-3.5 sm:gap-4 min-w-0">
-                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center transition-colors border bg-emerald-50 border-emerald-200 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white group-hover:border-emerald-600 dark:bg-emerald-500/10 dark:border-emerald-500/20 dark:text-emerald-400 dark:group-hover:bg-emerald-600 dark:group-hover:text-white">
-                            <i data-lucide="shield-check" class="w-5 h-5 sm:w-6 sm:h-6"></i>
-                        </div>
-                        <div class="flex flex-col min-w-0">
-                            <h3 class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white mb-0.5 truncate">نمادهای اعتماد</h3>
-                            <p class="text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 leading-relaxed truncate">مجوزها و تاییدیه‌های رسمی مجموعه.</p>
-                        </div>
-                    </div>
-                    <div class="shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center mr-2 transition-colors border border-transparent text-zinc-400 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:border-emerald-200 dark:text-zinc-500 dark:group-hover:bg-emerald-500/10 dark:group-hover:text-emerald-400 dark:group-hover:border-emerald-500/30">
-                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:-translate-x-1"></i>
-                    </div>
-                </a>
-
-                <a href="https://AMT-IR.github.io/Support.html" class="animate-fade-in-up flex items-center justify-between rounded-2xl border glass-base p-4 sm:p-5 transition-all duration-300 relative group cursor-pointer bg-white/70 border-zinc-200/80 hover:bg-white hover:-translate-y-1 hover:shadow-lg hover:shadow-violet-500/10 hover:border-violet-400 dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 dark:hover:border-violet-500/50 dark:hover:shadow-violet-500/10" style="animation-delay: 0.3s;">
-                    <div class="flex items-center gap-3.5 sm:gap-4 min-w-0">
-                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center transition-colors border bg-violet-50 border-violet-200 text-violet-600 group-hover:bg-violet-600 group-hover:text-white group-hover:border-violet-600 dark:bg-violet-500/10 dark:border-violet-500/20 dark:text-violet-400 dark:group-hover:bg-violet-600 dark:group-hover:text-white">
-                            <i data-lucide="headset" class="w-5 h-5 sm:w-6 sm:h-6"></i>
-                        </div>
-                        <div class="flex flex-col min-w-0">
-                            <h3 class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white mb-0.5 truncate">راه‌های ارتباطی</h3>
-                            <p class="text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 leading-relaxed truncate">تماس با تیم پشتیبانی فنی و شبکه آنلاین.</p>
-                        </div>
-                    </div>
-                    <div class="shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center mr-2 transition-colors border border-transparent text-zinc-400 group-hover:bg-violet-50 group-hover:text-violet-600 group-hover:border-violet-200 dark:text-zinc-500 dark:group-hover:bg-violet-500/10 dark:group-hover:text-violet-400 dark:group-hover:border-violet-500/30">
-                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:-translate-x-1"></i>
-                    </div>
-                </a>
-
-                <a href="https://Sponsoracb.ir/blog" target="_blank" rel="noopener noreferrer" class="animate-fade-in-up flex items-center justify-between rounded-2xl border glass-base p-4 sm:p-5 transition-all duration-300 relative group cursor-pointer bg-white/70 border-zinc-200/80 hover:bg-white hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/10 hover:border-cyan-400 dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 dark:hover:border-cyan-500/50 dark:hover:shadow-cyan-500/10" style="animation-delay: 0.35s;">
-                    <div class="flex items-center gap-3.5 sm:gap-4 min-w-0">
-                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center transition-colors border bg-cyan-50 border-cyan-200 text-cyan-600 group-hover:bg-cyan-600 group-hover:text-white group-hover:border-cyan-600 dark:bg-cyan-500/10 dark:border-cyan-500/20 dark:text-cyan-400 dark:group-hover:bg-cyan-600 dark:group-hover:text-white">
-                            <i data-lucide="newspaper" class="w-5 h-5 sm:w-6 sm:h-6"></i>
-                        </div>
-                        <div class="flex flex-col min-w-0">
-                            <h3 class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white mb-0.5 truncate">وبلاگ آموزشی</h3>
-                            <p class="text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 leading-relaxed truncate">مطالعه مقالات، اخبار و آموزش‌های کاربردی.</p>
-                        </div>
-                    </div>
-                    <div class="shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center mr-2 transition-colors border border-transparent text-zinc-400 group-hover:bg-cyan-50 group-hover:text-cyan-600 group-hover:border-cyan-200 dark:text-zinc-500 dark:group-hover:bg-cyan-500/10 dark:group-hover:text-cyan-400 dark:group-hover:border-cyan-500/30">
-                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:-translate-x-1"></i>
-                    </div>
-                </a>
-
-                <a href="https://AMT-IR.github.io/AboutUs.html" class="animate-fade-in-up flex items-center justify-between rounded-2xl border glass-base p-4 sm:p-5 transition-all duration-300 relative group cursor-pointer bg-white/70 border-zinc-200/80 hover:bg-white hover:-translate-y-1 hover:shadow-lg hover:shadow-amber-500/10 hover:border-amber-400 dark:bg-zinc-900/60 dark:border-zinc-800 dark:hover:bg-zinc-800/80 dark:hover:border-amber-500/50 dark:hover:shadow-amber-500/10" style="animation-delay: 0.4s;">
-                    <div class="flex items-center gap-3.5 sm:gap-4 min-w-0">
-                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center transition-colors border bg-amber-50 border-amber-200 text-amber-600 group-hover:bg-amber-500 group-hover:text-white group-hover:border-amber-500 dark:bg-amber-500/10 dark:border-amber-500/20 dark:text-amber-400 dark:group-hover:bg-amber-500 dark:group-hover:text-white">
-                            <i data-lucide="users" class="w-5 h-5 sm:w-6 sm:h-6"></i>
-                        </div>
-                        <div class="flex flex-col min-w-0">
-                            <h3 class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white mb-0.5 truncate">درباره ما</h3>
-                            <p class="text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 leading-relaxed truncate">آشنایی با تیم، اهداف و تاریخچه مجموعه.</p>
-                        </div>
-                    </div>
-                    <div class="shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center mr-2 transition-colors border border-transparent text-zinc-400 group-hover:bg-amber-50 group-hover:text-amber-600 group-hover:border-amber-200 dark:text-zinc-500 dark:group-hover:bg-amber-500/10 dark:group-hover:text-amber-400 dark:group-hover:border-amber-500/30">
-                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:-translate-x-1"></i>
-                    </div>
-                </a>
-
-                <div class="animate-fade-in-up flex items-center justify-between rounded-2xl border glass-base p-4 sm:p-5 transition-all duration-300 relative group bg-white/40 border-zinc-200/60 dark:bg-zinc-900/30 dark:border-zinc-800/50 opacity-90" style="animation-delay: 0.45s;">
-                    <div class="flex items-center gap-3.5 sm:gap-4 min-w-0">
-                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center border bg-pink-50/80 border-pink-200/80 text-pink-600 dark:bg-pink-500/10 dark:border-pink-500/20 dark:text-pink-400">
-                            <i data-lucide="message-square-heart" class="w-5 h-5 sm:w-6 sm:h-6"></i>
-                        </div>
-                        <div class="flex flex-col min-w-0">
-                            <div class="flex items-center gap-1.5">
-                                <h3 class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white mb-0.5 truncate">نظرات مشتریان</h3>
-                                <span class="px-2 py-0.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-pink-600 dark:text-pink-400 text-[10px] font-black">بزودی</span>
+                            <div class="flex items-center gap-2 mb-0.5">
+                                <h3 class="text-[14px] font-bold text-zinc-900 dark:text-zinc-100 truncate">قرارداد اسپانسری</h3>
+                                <span class="px-2 py-0.5 rounded-md text-[9px] font-bold bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 shrink-0">بزودی</span>
                             </div>
-                            <p class="text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 leading-relaxed truncate">مشاهده تجربیات و بازخوردهای کاربران.</p>
+                            <p class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">تنظیم توافق‌نامه‌های رسمی.</p>
                         </div>
                     </div>
-                    <div class="shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center mr-2 border border-transparent text-zinc-300 dark:text-zinc-600">
-                        <i data-lucide="clock" class="w-4 h-4 sm:w-5 sm:h-5"></i>
-                    </div>
+                    <i data-lucide="clock" class="w-5 h-5 text-zinc-400 shrink-0"></i>
                 </div>
             </div>
         </main>
 
-        <footer class="w-full py-6 mt-auto border-t glass-base flex flex-col items-center justify-center gap-2 transition-colors bg-white/40 border-zinc-200/50 dark:bg-zinc-950/40 dark:border-zinc-800/50">
-            <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400">© تمامی حقوق برای مجموعه محفوظ است</p>
-            <div class="flex items-center gap-1.5 text-sm font-bold text-zinc-900 dark:text-white">
-                <i data-lucide="fingerprint" class="w-4 h-4 text-emerald-500"></i>
+        <footer class="w-full py-6 mt-auto base-card !border-x-0 !border-b-0 !rounded-none flex flex-col items-center justify-center gap-1.5">
+            <div class="flex items-center gap-2 text-[14px] font-black tracking-wider text-zinc-900 dark:text-white">
+                <i data-lucide="fingerprint" class="w-5 h-5 text-blue-500 stroke-[2.5]"></i>
                 <span>AMT-IR</span>
             </div>
+            <p class="text-[10px] text-zinc-500 font-medium">تمامی حقوق محفوظ است</p>
         </footer>
     </div>
 
     <script>
         lucide.createIcons();
 
-        function setCookie(n, v, d) {
-            let e = "";
-            if (d) {
-                let dt = new Date();
-                dt.setTime(dt.getTime() + (d * 24 * 60 * 60 * 1000));
-                e = "; expires=" + dt.toUTCString();
+        function setUITheme(theme) {
+            const btnLiquid = document.getElementById('btn-theme-liquid');
+            const btnStandard = document.getElementById('btn-theme-standard');
+
+            if(theme === 'liquid') {
+                document.body.classList.remove('theme-solid');
+                if(btnLiquid) {
+                    btnLiquid.classList.add('border-blue-500', 'bg-blue-500/10', 'text-blue-600', 'dark:text-blue-400');
+                    btnLiquid.classList.remove('border-transparent', 'bg-zinc-100', 'dark:bg-zinc-800', 'text-zinc-600', 'dark:text-zinc-400');
+                }
+                if(btnStandard) {
+                    btnStandard.classList.remove('border-blue-500', 'bg-blue-500/10', 'text-blue-600', 'dark:text-blue-400');
+                    btnStandard.classList.add('border-transparent', 'bg-zinc-100', 'dark:bg-zinc-800', 'text-zinc-600', 'dark:text-zinc-400');
+                }
+            } else {
+                document.body.classList.add('theme-solid');
+                if(btnStandard) {
+                    btnStandard.classList.add('border-blue-500', 'bg-blue-500/10', 'text-blue-600', 'dark:text-blue-400');
+                    btnStandard.classList.remove('border-transparent', 'bg-zinc-100', 'dark:bg-zinc-800', 'text-zinc-600', 'dark:text-zinc-400');
+                }
+                if(btnLiquid) {
+                    btnLiquid.classList.remove('border-blue-500', 'bg-blue-500/10', 'text-blue-600', 'dark:text-blue-400');
+                    btnLiquid.classList.add('border-transparent', 'bg-zinc-100', 'dark:bg-zinc-800', 'text-zinc-600', 'dark:text-zinc-400');
+                }
             }
-            document.cookie = n + "=" + (v || "") + e + "; path=/";
+            localStorage.setItem('ui_theme', theme);
         }
 
-        function getCookie(n) {
-            let neq = n + "=";
-            let ca = document.cookie.split(';');
-            for(let i=0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0)==' ') c = c.substring(1,c.length);
-                if (c.indexOf(neq) == 0) return c.substring(neq.length,c.length);
-            }
-            return null;
-        }
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('ui_theme') || 'liquid';
+            setUITheme(savedTheme);
+        });
 
-        const kycOverlay = document.getElementById('kycOverlay');
-        const mainApp = document.getElementById('mainApp');
-        const captchaBoxBtn = document.getElementById('captchaBoxBtn');
-        const captchaCheck = document.getElementById('captchaCheck');
-        const captchaLoader = document.getElementById('captchaLoader');
-        const captchaSection = document.getElementById('captchaSection');
-        const consentSection = document.getElementById('consentSection');
-        const startFaceVerifyBtn = document.getElementById('startFaceVerifyBtn');
-        const faceSection = document.getElementById('faceSection');
+        /* --- سیستم پیشرفته و هوشمند نصب PWA --- */
+        let deferredPrompt = null;
         
-        let deferredPrompt;
+        // تشخیص سیستم‌عامل و وضعیت نصب
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
 
+        // ثبت سرویس ورکر (الزامی برای PWA در اندروید)
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js').catch(() => {});
+                navigator.serviceWorker.register('sw.js').catch((err) => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
             });
         }
 
+        // دریافت رویداد نصب (فقط در مرورگرهای پشتیبانی‌کننده مثل کروم اندروید)
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            const pwaInstallModal = document.getElementById('pwaInstallModal');
-            const pwaModalContent = document.getElementById('pwaModalContent');
-            if (pwaInstallModal && pwaModalContent) {
-                setTimeout(() => {
-                    pwaInstallModal.classList.remove('opacity-0', 'pointer-events-none');
-                    pwaInstallModal.classList.add('opacity-100', 'pointer-events-auto');
-                    pwaModalContent.classList.remove('translate-y-8');
-                    pwaModalContent.classList.add('translate-y-0');
-                }, 2000);
+        });
+
+        // باز کردن مدال نصب با منطق هوشمند دستگاه
+        function openPwaModal() {
+            const modal = document.getElementById('pwaInstallModal');
+            const content = document.getElementById('pwaModalContent');
+            const installBtn = document.getElementById('pwaInstallBtn');
+            const instructions = document.getElementById('pwaManualInstructions');
+            const statusText = document.getElementById('pwaStatusText');
+
+            if (!modal || !content) return;
+
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100', 'pointer-events-auto');
+            content.setAttribute('data-open', 'true');
+
+            if (isStandalone) {
+                // اپلیکیشن از قبل نصب شده است
+                statusText.innerText = "اپلیکیشن نصب شده است";
+                instructions.innerHTML = "شما هم‌اکنون در حال استفاده از نسخه نصب‌شده (وب‌اپلیکیشن) هستید و نیازی به نصب مجدد ندارید.";
+                instructions.classList.remove('hidden');
+                installBtn.style.display = 'none';
+            } else if (deferredPrompt) {
+                // دستگاه اندروید/کروم با قابلیت نصب مستقیم
+                statusText.innerText = "نصب سریع و خودکار";
+                instructions.classList.add('hidden');
+                installBtn.style.display = 'flex';
+            } else if (isIOS) {
+                // دستگاه iOS (آیفون/آیپد) نیازمند نصب دستی
+                statusText.innerText = "راهنمای نصب در iOS";
+                instructions.innerHTML = `
+                    <div class="flex flex-col gap-3">
+                        <p class="flex items-start gap-2">
+                            <span class="w-4 shrink-0 text-blue-500 font-black">۱.</span>
+                            <span>در نوار پایین مرورگر سافاری، روی دکمه <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="inline text-blue-500 mx-0.5"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg> (Share) ضربه بزنید.</span>
+                        </p>
+                        <p class="flex items-start gap-2">
+                            <span class="w-4 shrink-0 text-blue-500 font-black">۲.</span>
+                            <span>منو را به پایین بکشید و گزینه <br><span class="font-bold text-blue-600 dark:text-blue-400 flex items-center gap-1.5 mt-1.5 bg-blue-500/10 w-max px-2 py-1 rounded-lg border border-blue-500/20"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M12 8v8"/><path d="M8 12h8"/></svg> Add to Home Screen</span> را انتخاب کنید.</span>
+                        </p>
+                        <p class="flex items-start gap-2">
+                            <span class="w-4 shrink-0 text-blue-500 font-black">۳.</span>
+                            <span>در بالا سمت راست روی گزینه <strong>Add</strong> ضربه بزنید.</span>
+                        </p>
+                    </div>`;
+                instructions.classList.remove('hidden');
+                installBtn.style.display = 'none';
+            } else {
+                // سایر مرورگرها یا رد شدن پرامپت
+                statusText.innerText = "نصب دستی برنامه";
+                instructions.innerHTML = 'از منوی مرورگر خود (سه نقطه)، گزینه <span class="font-bold text-blue-600 dark:text-blue-400">Install App</span> یا <span class="font-bold text-blue-600 dark:text-blue-400">Add to Home Screen</span> را انتخاب کنید.';
+                instructions.classList.remove('hidden');
+                installBtn.style.display = 'none';
             }
-        });
+        }
 
-        document.getElementById('pwaInstallBtn').addEventListener('click', async () => {
-            if (!deferredPrompt) return;
-            deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            deferredPrompt = null;
-            closePwaModal();
-        });
+        // عملکرد دکمه نصب خودکار
+        const pwaInstallBtn = document.getElementById('pwaInstallBtn');
+        if (pwaInstallBtn) {
+            pwaInstallBtn.addEventListener('click', async () => {
+                if (!deferredPrompt) return;
+                
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                
+                if (outcome === 'accepted') {
+                    deferredPrompt = null;
+                    closePwaModal();
+                }
+            });
+        }
 
-        document.getElementById('pwaCancelBtn').addEventListener('click', closePwaModal);
+        // اتصال دکمه دانلود سایدبار به سیستم جدید مدال
+        const sidebarPwaBtn = document.getElementById('sidebarPwaBtn');
+        if (sidebarPwaBtn) {
+            sidebarPwaBtn.addEventListener('click', () => {
+                toggleSidebar();
+                setTimeout(openPwaModal, 300);
+            });
+        }
 
+        // بستن مدال پس از نصب موفق
         window.addEventListener('appinstalled', () => {
             closePwaModal();
             deferredPrompt = null;
         });
 
         function closePwaModal() {
-            const pwaInstallModal = document.getElementById('pwaInstallModal');
-            const pwaModalContent = document.getElementById('pwaModalContent');
-            if (pwaInstallModal && pwaModalContent) {
-                pwaInstallModal.classList.remove('opacity-100', 'pointer-events-auto');
-                pwaInstallModal.classList.add('opacity-0', 'pointer-events-none');
-                pwaModalContent.classList.remove('translate-y-0');
-                pwaModalContent.classList.add('translate-y-8');
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const isVerified = getCookie('user_verified');
-            const ua = navigator.userAgent.toLowerCase();
-            const isBot = /bot|spider|crawl|gpt|ai|bing|yandex|google/i.test(ua);
-            const isSuspicious = navigator.webdriver || (navigator.plugins.length === 0 && ua.indexOf('chrome') > -1 && ua.indexOf('mobile') === -1);
-            
-            if (isVerified === 'true' || isBot || !isSuspicious) {
-                kycOverlay.style.display = 'none';
-                showPortalContent();
-            }
-        });
-
-        let captchaDone = false;
-        captchaBoxBtn.addEventListener('click', () => {
-            if(captchaDone) return;
-            captchaDone = true;
-            
-            captchaBoxBtn.classList.remove('bg-white', 'border-[#c1c1c1]');
-            captchaBoxBtn.classList.add('bg-transparent', 'border-transparent');
-            captchaLoader.classList.remove('hidden');
-
-            setTimeout(() => {
-                captchaLoader.classList.add('hidden');
-                captchaBoxBtn.classList.add('bg-white');
-                captchaCheck.classList.remove('opacity-0', 'scale-50');
-                captchaCheck.classList.add('opacity-100', 'scale-100');
+            const modal = document.getElementById('pwaInstallModal');
+            const content = document.getElementById('pwaModalContent');
+            if (modal && content) {
+                modal.classList.remove('opacity-100', 'pointer-events-auto');
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                content.removeAttribute('data-open');
                 
+                // ریست کردن فرم بعد از بسته شدن انیمیشن
                 setTimeout(() => {
-                    captchaSection.style.opacity = '0';
-                    setTimeout(() => {
-                        captchaSection.style.display = 'none';
-                        consentSection.classList.remove('hidden');
-                        setTimeout(() => {
-                            consentSection.classList.remove('opacity-0', 'translate-y-4');
-                        }, 50);
-                    }, 500);
-                }, 1000);
-
-            }, 3000);
-        });
-
-        startFaceVerifyBtn.addEventListener('click', () => {
-            consentSection.style.opacity = '0';
-            setTimeout(() => {
-                consentSection.style.display = 'none';
-                faceSection.classList.remove('hidden');
-                setTimeout(() => {
-                    faceSection.classList.remove('opacity-0', 'scale-95');
-                    faceSection.classList.add('opacity-100', 'scale-100');
-                    startCameraAndAI();
-                }, 50);
-            }, 500);
-        });
-
-        const vidElement = document.getElementById('vidElement');
-        const cameraBox = document.getElementById('cameraBox');
-        const instText = document.getElementById('instText');
-        const camLoading = document.getElementById('camLoading');
-        const camSuccess = document.getElementById('camSuccess');
-        const dirRight = document.getElementById('dirRight');
-        const dirLeft = document.getElementById('dirLeft');
-        const dirUp = document.getElementById('dirUp');
-        const dirDown = document.getElementById('dirDown');
-
-        let currentStage = 0; 
-        let isProcessing = false;
-        let scanInterval;
-        const MDL_LNK = 'https://cdn.jsdelivr.net/npm/@vladmandic/face-api/model/';
-
-        async function startCameraAndAI() {
-            try {
-                camLoading.querySelector('span').innerText = "دانلود مدل هوش مصنوعی...";
-                await faceapi.nets.tinyFaceDetector.loadFromUri(MDL_LNK);
-                await faceapi.nets.faceLandmark68Net.loadFromUri(MDL_LNK);
-                camLoading.querySelector('span').innerText = "دسترسی به دوربین...";
-                const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 480 }, height: { ideal: 480 } }, audio: false });
-                vidElement.srcObject = stream;
-            } catch (e) {
-                camLoading.querySelector('span').innerText = "خطا در دسترسی";
-                camLoading.querySelector('span').classList.add('text-red-400');
-                instText.innerText = "لطفاً دسترسی دوربین را بدهید";
+                    const instructions = document.getElementById('pwaManualInstructions');
+                    if(instructions) instructions.classList.add('hidden');
+                    const statusText = document.getElementById('pwaStatusText');
+                    if(statusText) statusText.innerText = "دسترسی سریع در حالت تمام‌صفحه";
+                    const installBtn = document.getElementById('pwaInstallBtn');
+                    if(installBtn) installBtn.style.display = 'flex';
+                }, 400);
             }
         }
-
-        vidElement.addEventListener('play', () => {
-            camLoading.classList.add('hidden');
-            vidElement.classList.add('active'); 
-            refreshUI(0);
-            scanInterval = setInterval(async () => {
-                if (currentStage === 5 || isProcessing) return;
-                const opts = new faceapi.TinyFaceDetectorOptions({ inputSize: 224, scoreThreshold: 0.4 });
-                const det = await faceapi.detectSingleFace(vidElement, opts).withFaceLandmarks();
-                if (det) {
-                    checkFacePos(det.landmarks);
-                }
-            }, 100);
-        });
-
-        function goNextStage(stage) {
-            if(isProcessing) return;
-            isProcessing = true;
-            currentStage = stage;
-            refreshUI(stage);
-            if (stage === 5) {
-                setTimeout(doneVerify, 600);
-            } else {
-                setTimeout(() => { isProcessing = false; }, 400);
-            }
-        }
-
-        function checkFacePos(lmarks) {
-            if (isProcessing) return;
-            const nTip = lmarks.positions[30]; 
-            const nBrdg = lmarks.positions[27]; 
-            const chn = lmarks.positions[8]; 
-            const lJaw = lmarks.positions[0];  
-            const rJaw = lmarks.positions[16]; 
-
-            const dL = Math.abs(nTip.x - lJaw.x);
-            const dR = Math.abs(nTip.x - rJaw.x);
-            const dU = Math.abs(nTip.y - nBrdg.y);
-            const dD = Math.abs(chn.y - nTip.y);
-
-            if (currentStage === 0) {
-                if (Math.abs(dL - dR) < 60) {
-                    goNextStage(1);
-                }
-            } 
-            else if (currentStage === 1) { 
-                if (dL > dR * 1.15 || dR > dL * 1.15) {
-                    goNextStage(2);
-                }
-            }
-            else if (currentStage === 2) { 
-                if (dR > dL * 1.15 || dL > dR * 1.15) {
-                    goNextStage(3);
-                }
-            }
-            else if (currentStage === 3) { 
-                if (dD > dU * 1.4) { 
-                    goNextStage(4);
-                }
-            }
-            else if (currentStage === 4) { 
-                if (dU > dD * 1.0) { 
-                    goNextStage(5);
-                }
-            }
-        }
-
-        function hideDirIcons() {
-            dirRight.classList.add('opacity-0', 'translate-x-2');
-            dirLeft.classList.add('opacity-0', '-translate-x-2');
-            dirUp.classList.add('opacity-0', '-translate-y-2');
-            dirDown.classList.add('opacity-0', 'translate-y-2');
-        }
-
-        function refreshUI(s) {
-            cameraBox.className = "camera-wrapper";
-            hideDirIcons();
-            const bc = "px-5 py-2 rounded-xl text-xs font-bold transition-all text-center ";
-            if (s === 0) {
-                cameraBox.classList.add('ring-scanning');
-                instText.innerText = "مستقیم نگاه کنید";
-                instText.className = bc + "bg-blue-500/10 border border-blue-500/20 text-blue-400";
-            } 
-            else if (s === 1) { 
-                cameraBox.classList.add('ring-right');
-                dirRight.classList.remove('opacity-0', 'translate-x-2');
-                instText.innerText = "سر را کمی به راست بچرخانید ➔";
-                instText.className = bc + "bg-violet-500/10 border border-violet-500/20 text-violet-300";
-            }
-            else if (s === 2) {
-                cameraBox.classList.add('ring-left');
-                dirLeft.classList.remove('opacity-0', '-translate-x-2');
-                instText.innerText = "حالا کمی به چپ بچرخانید ⬅";
-                instText.className = bc + "bg-amber-500/10 border border-amber-500/20 text-amber-300";
-            }
-            else if (s === 3) {
-                cameraBox.classList.add('ring-up');
-                dirUp.classList.remove('opacity-0', '-translate-y-2');
-                instText.innerText = "سر را به بالا ببرید ⬆";
-                instText.className = bc + "bg-pink-500/10 border border-pink-500/20 text-pink-300";
-            }
-            else if (s === 4) {
-                cameraBox.classList.add('ring-down');
-                dirDown.classList.remove('opacity-0', 'translate-y-2');
-                instText.innerText = "به پایین نگاه کنید ⬇";
-                instText.className = bc + "bg-sky-500/10 border border-sky-500/20 text-sky-300";
-            }
-            else if (s === 5) {
-                instText.innerText = "در حال پردازش...";
-                instText.className = bc + "bg-zinc-500/10 border border-zinc-500/20 text-zinc-300";
-            }
-        }
-
-        function doneVerify() {
-            clearInterval(scanInterval);
-            const str = vidElement.srcObject;
-            if(str) str.getTracks().forEach(t => t.stop());
-            cameraBox.className = "camera-wrapper ring-success";
-            camSuccess.classList.remove('hidden');
-            instText.innerText = "تایید شد!";
-            instText.className = "px-5 py-2 rounded-xl text-xs font-bold transition-all text-center bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 pulse-text";
-            setCookie('user_verified', 'true', 30);
-            setTimeout(() => {
-                showPortalContent();
-            }, 1000);
-        }
-
-        function showPortalContent() {
-            kycOverlay.classList.add('opacity-0', 'pointer-events-none');
-            mainApp.classList.remove('opacity-0', 'pointer-events-none');
-            mainApp.classList.add('opacity-100', 'pointer-events-auto');
-        }
+        /* ------------------------------------------- */
 
         function toggleTheme() {
-            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('color_theme', isDark ? 'dark' : 'light');
         }
 
         function toggleSidebar() {
@@ -1022,20 +717,23 @@
             }
         }
 
-        // Changed from automatic to manual trigger via the red banner
         function openNoticeModal() {
             const m = document.getElementById('noticeModal');
+            const content = m.querySelector('div');
             if (m) {
                 m.classList.remove('opacity-0', 'pointer-events-none');
                 m.classList.add('opacity-100', 'pointer-events-auto');
+                content.setAttribute('data-open', 'true');
             }
         }
 
         function closeNoticeModal() {
             const m = document.getElementById('noticeModal');
+            const content = m.querySelector('div');
             if (m) {
                 m.classList.remove('opacity-100', 'pointer-events-auto');
                 m.classList.add('opacity-0', 'pointer-events-none');
+                content.removeAttribute('data-open');
             }
         }
     </script>
