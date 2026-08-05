@@ -11,6 +11,7 @@ self.addEventListener('install', event => {
     caches.open(CACHE_NAME)
       .then(cache => cache.addAll(urlsToCache))
   );
+  // اجبار به فعال‌سازی فوری نسخه جدید
   self.skipWaiting();
 });
 
@@ -30,14 +31,18 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
+  // فقط درخواست‌های GET را مدیریت می‌کنیم
   if (event.request.method !== 'GET') return;
   
   event.respondWith(
+    // ابتدا تلاش برای دریافت از شبکه (اینترنت)
     fetch(event.request).catch(() => {
+      // اگر اینترنت قطع بود، بررسی در کش
       return caches.match(event.request).then(response => {
         if (response) {
           return response;
         }
+        // اگر صفحه درخواستی HTML بود و در کش نبود، صفحه اصلی را برگردان
         if (event.request.mode === 'navigate') {
           return caches.match('/index.html');
         }
