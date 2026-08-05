@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl" class="dark scroll-smooth">
+<html lang="fa" dir="rtl" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SPONSORACB | Official Portal</title>
+    <title>SPONSORACB | PORTAL</title>
     <meta name="description" content="Official portal of SPONSORACB company. Fast access to products, support, news, and smart services.">
     <meta name="keywords" content="sponsoracb, official portal, telegram bot, online services, support, company">
     <link rel="canonical" href="https://sponsoracb.ir/">
     
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sponsoracb.ir/">
-    <meta property="og:title" content="SPONSORACB | Official Portal">
+    <meta property="og:title" content="SPONSORACB | PORTAL">
     <meta property="og:description" content="Official portal of SPONSORACB company. Fast access to products, support, and smart services.">
     <meta property="og:image" content="https://sponsoracb.ir/20474.png">
     
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="SPONSORACB | Official Portal">
+    <meta name="twitter:title" content="SPONSORACB | PORTAL">
     <meta name="twitter:description" content="Official portal of SPONSORACB company. Fast access to products, support, and smart services.">
     <meta name="twitter:image" content="https://sponsoracb.ir/20474.png">
 
@@ -121,15 +121,12 @@
             transition: border-radius 0.4s ease;
         }
 
-        /* --- CSS for View Modes (Refactored for Perfect Responsiveness) --- */
-        
         .portal-card {
             position: relative;
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* List (Rectangular/Old) Mode Variables */
         body:not(.shape-square) main #cardsContainer {
             display: grid;
             grid-template-columns: 1fr;
@@ -189,7 +186,6 @@
             font-weight: 700;
         }
 
-        /* Grid (Square) Mode Variables */
         body.shape-square main #cardsContainer {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -254,7 +250,6 @@
             font-weight: 700;
         }
         
-        /* General Card Transition Styles */
         body:not(.theme-solid) .base-card {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.15) 100%);
             backdrop-filter: blur(24px) saturate(180%);
@@ -334,11 +329,32 @@
             }
             
             const cardShape = localStorage.getItem('card_shape');
-            if(cardShape === 'rect' || !cardShape) {
-                document.body.classList.add('shape-rect');
+            if(cardShape === 'square') {
+                document.body.classList.add('shape-square');
             }
         })();
     </script>
+
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="fixed inset-0 z-[99999] bg-[#f4f4f5] dark:bg-[#09090b] flex flex-col items-center justify-center transition-all duration-700 ease-in-out">
+        <div class="relative w-24 h-24 mb-6">
+            <div class="absolute inset-0 bg-blue-500 rounded-[26%] animate-ping opacity-20"></div>
+            <img src="https://sponsoracb.ir/20474.png" alt="Logo" class="relative z-10 w-full h-full object-cover rounded-[26%] shadow-2xl">
+        </div>
+        <h1 class="text-xl font-black tracking-[0.3em] dir-ltr text-zinc-900 dark:text-white mb-2 animate-pulse">SPONSORACB</h1>
+        <p class="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-8">Official Portal</p>
+        <div class="flex items-center gap-1.5">
+            <div class="w-2 h-2 rounded-full bg-blue-500 animate-bounce" style="animation-delay: 0s;"></div>
+            <div class="w-2 h-2 rounded-full bg-purple-500 animate-bounce" style="animation-delay: 0.15s;"></div>
+            <div class="w-2 h-2 rounded-full bg-emerald-500 animate-bounce" style="animation-delay: 0.3s;"></div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-[120] bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 px-5 py-3 rounded-2xl shadow-2xl text-[12px] font-bold opacity-0 translate-y-10 transition-all duration-400 pointer-events-none flex items-center gap-2 min-w-max">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span id="toastMessage"></span>
+    </div>
 
     <div id="ambient-blobs" class="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <div class="absolute -top-[10%] -right-[10%] w-[450px] h-[450px] rounded-full bg-blue-500/40 dark:bg-blue-600/30 filter blur-[100px] animate-blob"></div>
@@ -483,14 +499,14 @@
                     
                     <span class="text-[9px] font-bold text-zinc-500 dark:text-zinc-400 block mb-1.5">تم پس‌زمینه</span>
                     <div class="grid grid-cols-2 gap-2 mb-3">
-                        <button onclick="setUITheme('liquid')" id="btn-theme-liquid" class="py-2.5 px-2 rounded-xl border border-blue-500 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-bold transition-all">Liquid Glass</button>
-                        <button onclick="setUITheme('standard')" id="btn-theme-standard" class="py-2.5 px-2 rounded-xl border border-transparent bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-[10px] font-bold transition-all hover:bg-zinc-200 dark:hover:bg-zinc-700">Solid Modern</button>
+                        <button onclick="setUITheme('liquid', true)" id="btn-theme-liquid" class="py-2.5 px-2 rounded-xl border border-blue-500 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-bold transition-all">Liquid Glass</button>
+                        <button onclick="setUITheme('standard', true)" id="btn-theme-standard" class="py-2.5 px-2 rounded-xl border border-transparent bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-[10px] font-bold transition-all hover:bg-zinc-200 dark:hover:bg-zinc-700">Solid Modern</button>
                     </div>
 
                     <span class="text-[9px] font-bold text-zinc-500 dark:text-zinc-400 block mb-1.5">شکل کارت‌ها</span>
                     <div class="grid grid-cols-2 gap-2">
-                        <button onclick="setCardShape('square')" id="btn-shape-square" class="py-2.5 px-2 rounded-xl border border-blue-500 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-bold transition-all">مربعی</button>
-                        <button onclick="setCardShape('rect')" id="btn-shape-rect" class="py-2.5 px-2 rounded-xl border border-transparent bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-[10px] font-bold transition-all hover:bg-zinc-200 dark:hover:bg-zinc-700">مستطیلی</button>
+                        <button onclick="setCardShape('square', true)" id="btn-shape-square" class="py-2.5 px-2 rounded-xl border border-transparent bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-[10px] font-bold transition-all hover:bg-zinc-200 dark:hover:bg-zinc-700">مربعی</button>
+                        <button onclick="setCardShape('rect', true)" id="btn-shape-rect" class="py-2.5 px-2 rounded-xl border border-blue-500 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-bold transition-all">مستطیلی</button>
                     </div>
                 </div>
 
@@ -711,10 +727,47 @@
         </footer>
     </div>
 
+    <!-- Goftino Script -->
+    <script type="text/javascript">
+      ["keydown","touchmove","touchstart","mouseover"].forEach(function(v){window.addEventListener(v,function(){if(!window.isGoftinoAdded){window.isGoftinoAdded=1;var i="sDMeys",d=document,g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.type="text/javascript",g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}})});
+    </script>
+
     <script>
         lucide.createIcons();
 
-        function setUITheme(theme) {
+        // Splash Screen Logic
+        window.addEventListener('load', () => {
+            const splash = document.getElementById('splash-screen');
+            if (splash) {
+                setTimeout(() => {
+                    splash.style.opacity = '0';
+                    splash.style.pointerEvents = 'none';
+                    setTimeout(() => {
+                        splash.remove();
+                    }, 700);
+                }, 1000);
+            }
+        });
+
+        // Toast Message Logic
+        let toastTimeout;
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMessage');
+            if (!toast || !toastMsg) return;
+            
+            toastMsg.innerText = message;
+            toast.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+            toast.classList.add('opacity-100', 'translate-y-0');
+            
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+            }, 3000);
+        }
+
+        function setUITheme(theme, isUserAction = false) {
             const btnLiquid = document.getElementById('btn-theme-liquid');
             const btnStandard = document.getElementById('btn-theme-standard');
 
@@ -740,9 +793,12 @@
                 }
             }
             localStorage.setItem('ui_theme', theme);
+            if (isUserAction) {
+                showToast('تنظیمات تم با موفقیت ذخیره شد');
+            }
         }
 
-        function setCardShape(shape) {
+        function setCardShape(shape, isUserAction = false) {
             const btnSquare = document.getElementById('btn-shape-square');
             const btnRect = document.getElementById('btn-shape-rect');
 
@@ -768,14 +824,17 @@
                 }
             }
             localStorage.setItem('card_shape', shape);
+            if (isUserAction) {
+                showToast('شکل کارت‌ها با موفقیت تغییر کرد');
+            }
         }
 
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('ui_theme') || 'standard';
-            setUITheme(savedTheme);
+            setUITheme(savedTheme, false);
             
             const savedShape = localStorage.getItem('card_shape') || 'rect';
-            setCardShape(savedShape);
+            setCardShape(savedShape, false);
         });
 
         let deferredPrompt = null;
@@ -941,7 +1000,6 @@
             btn.classList.add('is-loading');
             const originalHTML = btn.innerHTML;
             
-            // جایگزینی دکمه با نوار پیشرفت
             btn.innerHTML = `
                 <div class="absolute right-0 top-0 bottom-0 bg-blue-700/50 w-0 transition-all duration-[1500ms] ease-out rounded-[14px]" id="${btnId}-progress"></div>
                 <div class="relative z-10 flex items-center justify-center gap-1.5 w-full h-full">
@@ -952,7 +1010,6 @@
             const progressBar = document.getElementById(`${btnId}-progress`);
             const textSpan = document.getElementById(`${btnId}-text`);
 
-            // اجرای انیمیشن پر شدن
             setTimeout(() => {
                 progressBar.style.width = '100%';
                 let progress = 0;
