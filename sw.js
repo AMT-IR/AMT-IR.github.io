@@ -1,17 +1,22 @@
-const CACHE_NAME = 'sponsoracb-pwa-v2';
-
+const CACHE_NAME = 'sponsoracb-pwa-v3';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/manifest.json'
+  './',
+  './index.html',
+  './manifest.json'
 ];
 
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
+    caches.open(CACHE_NAME).then(cache => {
+      return Promise.all(
+        urlsToCache.map(url => {
+          return cache.add(url).catch(err => {
+            console.log('Cache skipped for:', url, err);
+          });
+        })
+      );
+    })
   );
-  // اجبار به فعال‌سازی فوری نسخه جدید
   self.skipWaiting();
 });
 
@@ -31,22 +36,19 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  // فقط درخواست‌های GET را مدیریت می‌کنیم
   if (event.request.method !== 'GET') return;
   
   event.respondWith(
-    // ابتدا تلاش برای دریافت از شبکه (اینترنت)
-    fetch(event.request).catch(() => {
-      // اگر اینترنت قطع بود، بررسی در کش
-      return caches.match(event.request).then(response => {
-        if (response) {
-          return response;
-        }
-        // اگر صفحه درخواستی HTML بود و در کش نبود، صفحه اصلی را برگردان
-        if (event.request.mode === 'navigate') {
-          return caches.match('/index.html');
-        }
-      });
-    })
+    fetch(event.request)
+      .catch(() => {
+        return caches.match(event.request).then(response => {
+          if (response) {
+            return response;
+          }
+          if (event.request.mode === 'navigate') {
+            return caches.match('./index.html');
+          }
+        });
+      })
   );
 });
