@@ -121,8 +121,74 @@
             transition: border-radius 0.4s ease;
         }
 
-        /* --- CSS for View Modes --- */
+        /* --- CSS for View Modes (Refactored for Perfect Responsiveness) --- */
         
+        .portal-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* List (Rectangular/Old) Mode Variables */
+        body:not(.shape-square) main #cardsContainer {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+        @media (min-width: 640px) {
+            body:not(.shape-square) main #cardsContainer {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        body:not(.shape-square) .portal-card {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 16px;
+            gap: 16px;
+            border-radius: 24px;
+        }
+        body:not(.shape-square) .portal-card .app-icon {
+            width: 48px;
+            height: 48px;
+        }
+        body:not(.shape-square) .portal-card .card-content {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        body:not(.shape-square) .portal-card .card-title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        body:not(.shape-square) .portal-card .card-title {
+            font-size: 14px;
+            font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        body:not(.shape-square) .portal-card .card-desc {
+            font-size: 11px;
+            font-weight: 500;
+            color: #71717a;
+            margin-top: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .dark body:not(.shape-square) .portal-card .card-desc {
+            color: #a1a1aa;
+        }
+        body:not(.shape-square) .card-badge {
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-size: 9px;
+            font-weight: 700;
+        }
+
         /* Grid (Square) Mode Variables */
         body.shape-square main #cardsContainer {
             display: grid;
@@ -139,65 +205,56 @@
                 grid-template-columns: repeat(5, minmax(0, 1fr));
             }
         }
-        
         body.shape-square .portal-card {
-            aspect-ratio: 1 / 1;
+            display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            aspect-ratio: 1 / 1;
             padding: 12px;
+            gap: 12px;
             text-align: center;
-            gap: 10px;
+            border-radius: 20px;
         }
-        body.shape-square .portal-card .card-desc {
-            display: none;
+        body.shape-square .portal-card .app-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 30%;
         }
+        body.shape-square .portal-card .card-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        body.shape-square .portal-card .card-title {
+            font-size: 11px;
+            font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+        @media (min-width: 640px) {
+            body.shape-square .portal-card .card-title {
+                font-size: 13px;
+            }
+        }
+        body.shape-square .portal-card .card-desc,
         body.shape-square .portal-card .card-chevron {
             display: none;
         }
-        body.shape-square .portal-card .card-content {
-            flex: none;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-        body.shape-square .portal-card .card-badge {
+        body.shape-square .card-badge {
             position: absolute;
-            top: 6px;
-            right: 6px;
-        }
-
-        /* List (Rect/Old) Mode Variables */
-        body:not(.shape-square) main #cardsContainer {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 14px;
-        }
-        @media (min-width: 640px) {
-            body:not(.shape-square) main #cardsContainer {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-        body:not(.shape-square) .portal-card {
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 16px;
-            border-radius: 24px;
-        }
-        body:not(.shape-square) .portal-card .card-content {
-            display: flex;
-            flex-direction: column;
-            min-width: 0;
-            flex: 1;
+            top: 8px;
+            right: 8px;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-size: 8px;
+            font-weight: 700;
         }
         
         /* General Card Transition Styles */
-        .portal-card {
-            display: flex;
-            position: relative;
-        }
-
         body:not(.theme-solid) .base-card {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.15) 100%);
             backdrop-filter: blur(24px) saturate(180%);
@@ -511,142 +568,136 @@
             <div id="cardsContainer" class="mt-2">
                 
                 <a href="https://sponsoracb.mydigify.app" target="_blank" class="animate-fade-in-up portal-card base-card group cursor-pointer hover:-translate-y-1 transition-all duration-300" style="animation-delay: 0.1s;">
-                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full portal-card-inner flex-1">
-                        <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 app-icon bg-blue-500 group-hover:scale-110 transition-transform duration-300">
-                            <i data-lucide="shopping-bag" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3 class="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate text-center sm:text-right w-full">فروشگاه</h3>
-                            <p class="card-desc text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1 text-right">خرید مستقیم و امن خدمات پورتال.</p>
-                        </div>
+                    <div class="app-icon bg-blue-500 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="shopping-bag" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
                     </div>
-                    <i data-lucide="chevron-left" class="card-chevron w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
+                    <div class="card-content">
+                        <div class="card-title-wrapper">
+                            <h3 class="card-title text-zinc-900 dark:text-zinc-100">فروشگاه</h3>
+                        </div>
+                        <p class="card-desc">خرید مستقیم و امن خدمات پورتال.</p>
+                    </div>
+                    <i data-lucide="chevron-left" class="card-chevron w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
                 </a>
 
                 <a href="https://AMT-IR.github.io/Support.html" class="animate-fade-in-up portal-card base-card group cursor-pointer hover:-translate-y-1 transition-all duration-300" style="animation-delay: 0.15s;">
-                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full portal-card-inner flex-1">
-                        <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 app-icon bg-violet-500 group-hover:scale-110 transition-transform duration-300">
-                            <i data-lucide="headset" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3 class="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate text-center sm:text-right w-full">پشتیبانی</h3>
-                            <p class="card-desc text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1 text-right">تماس با تیم فنی و حل مشکلات.</p>
-                        </div>
+                    <div class="app-icon bg-violet-500 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="headset" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
                     </div>
-                    <i data-lucide="chevron-left" class="card-chevron w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
+                    <div class="card-content">
+                        <div class="card-title-wrapper">
+                            <h3 class="card-title text-zinc-900 dark:text-zinc-100">پشتیبانی</h3>
+                        </div>
+                        <p class="card-desc">تماس با تیم فنی و حل مشکلات.</p>
+                    </div>
+                    <i data-lucide="chevron-left" class="card-chevron w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
                 </a>
 
                 <a href="https://sponsoracb.ir/ads" class="animate-fade-in-up portal-card base-card group cursor-pointer hover:-translate-y-1 transition-all duration-300" style="animation-delay: 0.2s;">
-                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full portal-card-inner flex-1 relative">
-                        <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 app-icon bg-orange-500 group-hover:scale-110 transition-transform duration-300">
-                            <i data-lucide="megaphone" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
-                        </div>
-                        <div class="card-content relative">
-                            <div class="flex items-center justify-center sm:justify-start gap-2 mb-0.5 w-full">
-                                <h3 class="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-zinc-100 truncate">تبلیغات</h3>
-                                <span class="card-badge px-1 py-0.5 rounded text-[8px] sm:text-[9px] font-bold bg-orange-100 text-orange-600 dark:bg-orange-500/20 dark:text-orange-400 shrink-0">جدید</span>
-                            </div>
-                            <p class="card-desc text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1 text-right">تعرفه‌های رسمی و جایگاه‌ها.</p>
-                        </div>
+                    <div class="app-icon bg-orange-500 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="megaphone" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
                     </div>
-                    <i data-lucide="chevron-left" class="card-chevron w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
+                    <div class="card-content">
+                        <div class="card-title-wrapper">
+                            <h3 class="card-title text-zinc-900 dark:text-zinc-100">تبلیغات</h3>
+                            <span class="card-badge bg-orange-100 text-orange-600 dark:bg-orange-500/20 dark:text-orange-400">جدید</span>
+                        </div>
+                        <p class="card-desc">تعرفه‌های رسمی و جایگاه‌ها.</p>
+                    </div>
+                    <i data-lucide="chevron-left" class="card-chevron w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
                 </a>
 
                 <a href="https://AMT-IR.github.io/pricing.html" class="animate-fade-in-up portal-card base-card group cursor-pointer hover:-translate-y-1 transition-all duration-300" style="animation-delay: 0.25s;">
-                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full portal-card-inner flex-1">
-                        <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 app-icon bg-rose-500 group-hover:scale-110 transition-transform duration-300">
-                            <i data-lucide="credit-card" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3 class="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate text-center sm:text-right w-full">اشتراک‌ها</h3>
-                            <p class="card-desc text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1 text-right">شرایط خرید اشتراک ویژه ربات.</p>
-                        </div>
+                    <div class="app-icon bg-rose-500 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="credit-card" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
                     </div>
-                    <i data-lucide="chevron-left" class="card-chevron w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
+                    <div class="card-content">
+                        <div class="card-title-wrapper">
+                            <h3 class="card-title text-zinc-900 dark:text-zinc-100">اشتراک‌ها</h3>
+                        </div>
+                        <p class="card-desc">شرایط خرید اشتراک ویژه ربات.</p>
+                    </div>
+                    <i data-lucide="chevron-left" class="card-chevron w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
                 </a>
 
                 <a href="https://sponsoracb.ir/legal" class="animate-fade-in-up portal-card base-card group cursor-pointer hover:-translate-y-1 transition-all duration-300" style="animation-delay: 0.3s;">
-                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full portal-card-inner flex-1">
-                        <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 app-icon bg-indigo-500 group-hover:scale-110 transition-transform duration-300">
-                            <i data-lucide="scale" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3 class="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate text-center sm:text-right w-full">قوانین</h3>
-                            <p class="card-desc text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1 text-right">حقوق کاربران و حریم خصوصی.</p>
-                        </div>
+                    <div class="app-icon bg-indigo-500 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="scale" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
                     </div>
-                    <i data-lucide="chevron-left" class="card-chevron w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
+                    <div class="card-content">
+                        <div class="card-title-wrapper">
+                            <h3 class="card-title text-zinc-900 dark:text-zinc-100">قوانین</h3>
+                        </div>
+                        <p class="card-desc">حقوق کاربران و حریم خصوصی.</p>
+                    </div>
+                    <i data-lucide="chevron-left" class="card-chevron w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
                 </a>
 
                 <a href="https://sponsoracb.ir/AboutUs.html" class="animate-fade-in-up portal-card base-card group cursor-pointer hover:-translate-y-1 transition-all duration-300" style="animation-delay: 0.35s;">
-                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full portal-card-inner flex-1">
-                        <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 app-icon bg-teal-500 group-hover:scale-110 transition-transform duration-300">
-                            <i data-lucide="info" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3 class="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate text-center sm:text-right w-full">درباره ما</h3>
-                            <p class="card-desc text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1 text-right">آشنایی بیشتر با تیم و اهداف مجموعه.</p>
-                        </div>
+                    <div class="app-icon bg-teal-500 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="info" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
                     </div>
-                    <i data-lucide="chevron-left" class="card-chevron w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
+                    <div class="card-content">
+                        <div class="card-title-wrapper">
+                            <h3 class="card-title text-zinc-900 dark:text-zinc-100">درباره ما</h3>
+                        </div>
+                        <p class="card-desc">آشنایی بیشتر با تیم و اهداف مجموعه.</p>
+                    </div>
+                    <i data-lucide="chevron-left" class="card-chevron w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
                 </a>
 
                 <a href="https://Sponsoracb.ir/blog" target="_blank" class="animate-fade-in-up portal-card base-card group cursor-pointer hover:-translate-y-1 transition-all duration-300" style="animation-delay: 0.4s;">
-                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full portal-card-inner flex-1">
-                        <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 app-icon bg-amber-500 group-hover:scale-110 transition-transform duration-300">
-                            <i data-lucide="newspaper" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3 class="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate text-center sm:text-right w-full">وبلاگ</h3>
-                            <p class="card-desc text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1 text-right">مقالات، اخبار و آموزش‌های کاربردی.</p>
-                        </div>
+                    <div class="app-icon bg-amber-500 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="newspaper" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
                     </div>
-                    <i data-lucide="chevron-left" class="card-chevron w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
+                    <div class="card-content">
+                        <div class="card-title-wrapper">
+                            <h3 class="card-title text-zinc-900 dark:text-zinc-100">وبلاگ</h3>
+                        </div>
+                        <p class="card-desc">مقالات، اخبار و آموزش‌های کاربردی.</p>
+                    </div>
+                    <i data-lucide="chevron-left" class="card-chevron w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
                 </a>
 
                 <a href="https://AMT-IR.github.io/Symbol.html" class="animate-fade-in-up portal-card base-card group cursor-pointer hover:-translate-y-1 transition-all duration-300" style="animation-delay: 0.45s;">
-                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full portal-card-inner flex-1">
-                        <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 app-icon bg-cyan-500 group-hover:scale-110 transition-transform duration-300">
-                            <i data-lucide="shield-check" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3 class="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate text-center sm:text-right w-full">نماد اعتماد</h3>
-                            <p class="card-desc text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1 text-right">مجوزها و تاییدیه‌های رسمی وب‌سایت.</p>
-                        </div>
+                    <div class="app-icon bg-cyan-500 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="shield-check" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
                     </div>
-                    <i data-lucide="chevron-left" class="card-chevron w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
+                    <div class="card-content">
+                        <div class="card-title-wrapper">
+                            <h3 class="card-title text-zinc-900 dark:text-zinc-100">نماد اعتماد</h3>
+                        </div>
+                        <p class="card-desc">مجوزها و تاییدیه‌های رسمی وب‌سایت.</p>
+                    </div>
+                    <i data-lucide="chevron-left" class="card-chevron w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
                 </a>
 
                 <div class="animate-fade-in-up portal-card base-card opacity-60 grayscale-[30%] pointer-events-none" style="animation-delay: 0.5s;">
-                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full portal-card-inner flex-1 relative">
-                        <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 app-icon bg-pink-500">
-                            <i data-lucide="message-square" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
-                        </div>
-                        <div class="card-content relative">
-                            <div class="flex items-center justify-center sm:justify-start gap-2 mb-0.5 w-full">
-                                <h3 class="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-zinc-100 truncate">نظرات</h3>
-                                <span class="card-badge px-1 py-0.5 rounded text-[8px] sm:text-[9px] font-bold bg-pink-100 text-pink-600 dark:bg-pink-500/20 dark:text-pink-400 shrink-0">بزودی</span>
-                            </div>
-                            <p class="card-desc text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1 text-right">تجربیات کاربران از خدمات.</p>
-                        </div>
+                    <div class="app-icon bg-pink-500">
+                        <i data-lucide="message-square" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
                     </div>
-                    <i data-lucide="clock" class="card-chevron w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 shrink-0 ml-1"></i>
+                    <div class="card-content">
+                        <div class="card-title-wrapper">
+                            <h3 class="card-title text-zinc-900 dark:text-zinc-100">نظرات</h3>
+                            <span class="card-badge bg-pink-100 text-pink-600 dark:bg-pink-500/20 dark:text-pink-400">بزودی</span>
+                        </div>
+                        <p class="card-desc">تجربیات کاربران از خدمات.</p>
+                    </div>
+                    <i data-lucide="clock" class="card-chevron w-5 h-5 text-zinc-400 shrink-0"></i>
                 </div>
 
                 <div class="animate-fade-in-up portal-card base-card opacity-60 grayscale-[30%] pointer-events-none" style="animation-delay: 0.55s;">
-                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full portal-card-inner flex-1 relative">
-                        <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 app-icon bg-emerald-500">
-                            <i data-lucide="file-signature" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
-                        </div>
-                        <div class="card-content relative">
-                            <div class="flex items-center justify-center sm:justify-start gap-2 mb-0.5 w-full">
-                                <h3 class="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-zinc-100 truncate">اسپانسر</h3>
-                                <span class="card-badge px-1 py-0.5 rounded text-[8px] sm:text-[9px] font-bold bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 shrink-0">بزودی</span>
-                            </div>
-                            <p class="card-desc text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1 text-right">تنظیم توافق‌نامه‌های رسمی.</p>
-                        </div>
+                    <div class="app-icon bg-emerald-500">
+                        <i data-lucide="file-signature" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
                     </div>
-                    <i data-lucide="clock" class="card-chevron w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 shrink-0 ml-1"></i>
+                    <div class="card-content">
+                        <div class="card-title-wrapper">
+                            <h3 class="card-title text-zinc-900 dark:text-zinc-100">اسپانسر</h3>
+                            <span class="card-badge bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400">بزودی</span>
+                        </div>
+                        <p class="card-desc">تنظیم توافق‌نامه‌های رسمی.</p>
+                    </div>
+                    <i data-lucide="clock" class="card-chevron w-5 h-5 text-zinc-400 shrink-0"></i>
                 </div>
             </div>
         </main>
