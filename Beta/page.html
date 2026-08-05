@@ -1,14 +1,45 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl" class="dark scroll-smooth">
+<html lang="en" dir="rtl" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SPONSORACB | PORTAL</title>
-    <meta name="description" content="Official portal of SPONSORACB company">
+    <title>SPONSORACB | Official Portal</title>
+    <meta name="description" content="Official portal of SPONSORACB company. Fast access to products, support, news, and smart services.">
+    <meta name="keywords" content="sponsoracb, official portal, telegram bot, online services, support, company">
+    <link rel="canonical" href="https://sponsoracb.ir/">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sponsoracb.ir/">
+    <meta property="og:title" content="SPONSORACB | Official Portal">
+    <meta property="og:description" content="Official portal of SPONSORACB company. Fast access to products, support, and smart services.">
+    <meta property="og:image" content="https://sponsoracb.ir/20474.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SPONSORACB | Official Portal">
+    <meta name="twitter:description" content="Official portal of SPONSORACB company. Fast access to products, support, and smart services.">
+    <meta name="twitter:image" content="https://sponsoracb.ir/20474.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "SPONSORACB Portal",
+      "url": "https://sponsoracb.ir/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://sponsoracb.ir/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
 
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)">
     <meta name="theme-color" content="#f4f4f5" media="(prefers-color-scheme: light)">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SPONSORACB">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -78,6 +109,94 @@
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             border-radius: 24px;
         }
+        
+        .app-icon {
+            border-radius: 26%; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15), inset 0 1px 1px rgba(255,255,255,0.3);
+            transition: border-radius 0.4s ease;
+        }
+
+        /* --- CSS for View Modes --- */
+        
+        /* Grid (Square) Mode Variables */
+        body.shape-square main #cardsContainer {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+        }
+        @media (min-width: 640px) {
+            body.shape-square main #cardsContainer {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+        @media (min-width: 1024px) {
+            body.shape-square main #cardsContainer {
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+            }
+        }
+        
+        body.shape-square .portal-card {
+            aspect-ratio: 1 / 1;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 12px;
+            text-align: center;
+            gap: 10px;
+        }
+        body.shape-square .portal-card .card-desc {
+            display: none;
+        }
+        body.shape-square .portal-card .card-chevron {
+            display: none;
+        }
+        body.shape-square .portal-card .card-content {
+            flex: none;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        body.shape-square .portal-card .card-badge {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+        }
+
+        /* List (Rect/Old) Mode Variables */
+        body:not(.shape-square) main #cardsContainer {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+        @media (min-width: 640px) {
+            body:not(.shape-square) main #cardsContainer {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        body:not(.shape-square) .portal-card {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 16px;
+            border-radius: 24px;
+        }
+        body:not(.shape-square) .portal-card .card-content {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            flex: 1;
+        }
+        
+        /* General Card Transition Styles */
+        .portal-card {
+            display: flex;
+            position: relative;
+        }
 
         body:not(.theme-solid) .base-card {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.15) 100%);
@@ -99,13 +218,11 @@
         
         body:not(.theme-solid) .base-card:hover {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.25) 100%);
-            transform: translateY(-3px) scale(1.01);
             box-shadow: 0 15px 50px -10px rgba(0, 0, 0, 0.1), inset 0 1px 2px rgba(255, 255, 255, 0.9);
         }
         
         .dark body:not(.theme-solid) .base-card:hover {
             background: linear-gradient(135deg, rgba(70, 70, 75, 0.35) 0%, rgba(35, 35, 40, 0.15) 100%);
-            transform: translateY(-3px) scale(1.01);
             box-shadow: 0 15px 50px -10px rgba(0, 0, 0, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.15);
         }
 
@@ -120,7 +237,6 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         body.theme-solid .base-card:hover {
-            transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.06);
         }
         .dark body.theme-solid .base-card:hover {
@@ -130,16 +246,6 @@
 
         body.theme-solid #ambient-blobs {
             display: none !important;
-        }
-
-        .app-icon {
-            border-radius: 26%; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            color: white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15), inset 0 1px 1px rgba(255,255,255,0.3);
         }
 
         .line-clamp-1 {
@@ -169,6 +275,11 @@
             } else {
                 document.documentElement.classList.add('dark');
             }
+            
+            const cardShape = localStorage.getItem('card_shape');
+            if(cardShape === 'rect' || !cardShape) {
+                document.body.classList.add('shape-rect');
+            }
         })();
     </script>
 
@@ -180,27 +291,25 @@
 
     <div id="mainApp" class="flex-1 flex flex-col min-h-screen w-full relative z-10">
         
-        <!-- Notice Modal (Red theme) -->
         <div id="noticeModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-900/40 dark:bg-black/60 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-400">
-            <div class="w-full max-w-[400px] rounded-[28px] base-card !bg-white dark:!bg-[#09090b] !border-zinc-200 dark:!border-zinc-800 p-6 relative flex flex-col gap-5 text-right transition-all transform scale-95 data-[open=true]:scale-100 shadow-2xl">
+            <div class="w-full max-w-[400px] rounded-[28px] base-card !bg-white dark:!bg-[#09090b] !border-zinc-200 dark:!border-zinc-800 p-6 relative flex flex-col gap-5 text-right transition-all transform scale-95 data-[open=true]:scale-100 shadow-2xl max-h-[90vh] overflow-hidden">
                 
-                <div class="flex items-center justify-between gap-3">
+                <i data-lucide="bot-off" class="absolute -left-6 -top-6 w-36 h-36 text-red-500/10 dark:text-red-500/10 stroke-[2] -rotate-12 pointer-events-none z-0"></i>
+
+                <div class="flex items-center justify-between gap-3 relative z-10">
                     <div class="flex flex-col">
                         <span class="text-[11px] font-bold text-red-600 dark:text-red-500 tracking-wider">اطلاعیه مهم</span>
                         <h2 class="text-lg font-black text-zinc-900 dark:text-white mt-0.5">وضعیت فعالیت ربات تلگرام</h2>
                     </div>
-                    <div class="w-12 h-12 rounded-[14px] bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-500 flex items-center justify-center shrink-0 border border-red-100 dark:border-red-500/20">
-                        <i data-lucide="bot-off" class="w-6 h-6 stroke-[2.5]"></i>
-                    </div>
                 </div>
 
-                <div class="text-[13px] text-zinc-700 dark:text-zinc-300 leading-[1.8] font-medium space-y-4 bg-zinc-50 dark:bg-[#121214] p-5 rounded-[20px] border border-zinc-100 dark:border-zinc-800/80 text-justify">
+                <div class="text-[13px] overflow-y-auto text-zinc-700 dark:text-zinc-300 leading-[1.8] font-medium space-y-4 bg-zinc-50 dark:bg-[#121214] p-5 rounded-[20px] border border-zinc-100 dark:border-zinc-800/80 text-justify relative z-10">
                     <p>به اطلاع کاربران گرامی می‌رسانیم که ربات <span class="font-bold dir-ltr inline-block text-red-600 dark:text-red-400">@sponsoracb_bot</span> به دلیل ارتقای فنی و توسعه زیرساخت‌ها، در حال حاضر موقتاً غیرفعال گردیده است.</p>
                     <p>با توجه به گسترده بودن فرایند به‌روزرسانی، تکمیل کامل آن ممکن است تا چند ماه آینده به طول بینجامد.</p>
                     <p>جهت پیگیری آخرین اخبار و اطلاعیه‌ها می‌توانید در کانال تلگرام همراه ما باشید.</p>
                 </div>
                 
-                <div class="flex flex-col gap-3 mt-1">
+                <div class="flex flex-col gap-3 mt-1 shrink-0 relative z-10">
                     <a href="https://t.me/sponsoracb" target="_blank" onclick="closeNoticeModal()" class="w-full py-3.5 px-4 rounded-[16px] bg-red-600 hover:bg-red-500 text-white font-bold text-[13px] shadow-lg shadow-red-500/20 transition-all flex items-center justify-center gap-2">
                          عضویت در کانال اطلاع‌رسانی
                     </a>
@@ -209,7 +318,6 @@
             </div>
         </div>
 
-        <!-- PWA Install Modal -->
         <div id="pwaInstallModal" class="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-zinc-900/40 dark:bg-black/60 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-400">
             <div id="pwaModalContent" class="w-full max-w-sm rounded-[28px] base-card p-6 relative flex flex-col gap-5 text-right transform translate-y-10 transition-all duration-400 data-[open=true]:translate-y-0">
                 <div class="flex items-center gap-4">
@@ -218,7 +326,7 @@
                     </div>
                     <div class="flex flex-col">
                         <h2 class="text-base font-black text-zinc-900 dark:text-white">نصب برنامه SPONSORACB</h2>
-                        <span id="pwaStatusText" class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 mt-0.5">اجرا به صورت اپلیکیشن مستقل PWA</span>
+                        <span id="pwaStatusText" class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 mt-0.5">دسترسی سریع در حالت تمام‌صفحه</span>
                     </div>
                 </div>
                 
@@ -311,13 +419,25 @@
                     </div>
                 </a>
 
+                <div class="my-3 border-t border-zinc-200/50 dark:border-zinc-700/50"></div>
+
                 <div class="mt-4 mb-2 px-1">
-                    <span class="text-[10px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest block mb-2">تنظیمات ظاهر</span>
-                    <div class="grid grid-cols-2 gap-2">
+                    <span class="text-[10px] font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest block mb-3">شخصی‌سازی</span>
+                    
+                    <span class="text-[9px] font-bold text-zinc-500 dark:text-zinc-400 block mb-1.5">تم پس‌زمینه</span>
+                    <div class="grid grid-cols-2 gap-2 mb-3">
                         <button onclick="setUITheme('liquid')" id="btn-theme-liquid" class="py-2.5 px-2 rounded-xl border border-blue-500 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-bold transition-all">Liquid Glass</button>
                         <button onclick="setUITheme('standard')" id="btn-theme-standard" class="py-2.5 px-2 rounded-xl border border-transparent bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-[10px] font-bold transition-all hover:bg-zinc-200 dark:hover:bg-zinc-700">Solid Modern</button>
                     </div>
+
+                    <span class="text-[9px] font-bold text-zinc-500 dark:text-zinc-400 block mb-1.5">شکل کارت‌ها</span>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="setCardShape('square')" id="btn-shape-square" class="py-2.5 px-2 rounded-xl border border-blue-500 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-bold transition-all">مربعی</button>
+                        <button onclick="setCardShape('rect')" id="btn-shape-rect" class="py-2.5 px-2 rounded-xl border border-transparent bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-[10px] font-bold transition-all hover:bg-zinc-200 dark:hover:bg-zinc-700">مستطیلی</button>
+                    </div>
                 </div>
+
+                <div class="my-3 border-t border-zinc-200/50 dark:border-zinc-700/50"></div>
 
                 <div class="mt-4 mb-2 px-1">
                     <span class="text-[10px] font-bold text-fuchsia-600 dark:text-fuchsia-400 uppercase tracking-widest block mb-1.5">همکاری‌ها و تبلیغات</span>
@@ -343,11 +463,10 @@
             </div>
 
             <div class="py-3 text-center border-t border-zinc-200/50 dark:border-zinc-700/50 shrink-0">
-                <span class="text-[10px] font-bold text-zinc-400 tracking-widest dir-ltr">v 3.7.12</span>
+                <span class="text-[10px] font-bold text-zinc-400 tracking-widest dir-ltr">v 3.7.15</span>
             </div>
         </aside>
 
-        <!-- Navbar -->
         <nav class="fixed top-0 w-full h-16 sm:h-20 flex items-center justify-between px-5 sm:px-8 border-b border-zinc-200/60 dark:border-zinc-800/60 bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl z-50 transition-colors">
             <button onclick="toggleSidebar()" class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center transition-all border border-zinc-200/50 dark:border-zinc-700/50 bg-white/40 dark:bg-zinc-800/40 hover:bg-white/80 dark:hover:bg-zinc-700 shadow-sm relative z-[51] touch-manipulation cursor-pointer">
                 <i data-lucide="menu" class="w-5 h-5 text-zinc-800 dark:text-zinc-200 stroke-[2.5] pointer-events-none"></i>
@@ -361,7 +480,6 @@
             </button>
         </nav>
 
-        <!-- Main Content -->
         <main class="flex-1 w-full max-w-4xl mx-auto flex flex-col gap-4 sm:gap-6 pt-24 pb-8 px-4 sm:px-8">
             <header class="text-center flex flex-col items-center gap-3 mb-2 sm:mb-4">
                 <div class="w-20 h-20 app-icon bg-blue-600 shadow-xl shadow-blue-600/30">
@@ -383,121 +501,153 @@
                         <i data-lucide="alert-circle" class="w-6 h-6 animate-pulse stroke-[2.5] text-white pointer-events-none"></i>
                     </div>
                     <div class="flex flex-col min-w-0">
-                        <h3 class="text-[13px] sm:text-sm font-bold text-red-700 dark:text-red-400 truncate mb-1">وضعیت فعالیت ربات تلگرام</h3>
-                        <p class="text-[10px] sm:text-[11px] font-medium text-red-600/90 dark:text-red-400/80 truncate">مشاهده آخرین وضعیت و اطلاعیه مهم</p>
+                        <h3 class="text-[13px] sm:text-sm font-bold text-red-700 dark:text-red-400 truncate mb-1">اطلاعیه مهم ربات</h3>
+                        <p class="text-[10px] sm:text-[11px] font-medium text-red-600/90 dark:text-red-400/80 truncate">مشاهده وضعیت فعالیت و بروزرسانی</p>
                     </div>
                 </div>
                 <i data-lucide="chevron-left" class="w-5 h-5 text-red-500 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 items-stretch">
+            <div id="cardsContainer" class="mt-2">
                 
-                <a href="https://sponsoracb.mydigify.app" target="_blank" class="animate-fade-in-up flex items-center justify-between p-3.5 sm:p-4 base-card group cursor-pointer" style="animation-delay: 0.1s;">
-                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full">
-                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 app-icon bg-blue-500 group-hover:scale-105 transition-transform">
-                            <i data-lucide="shopping-bag" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]"></i>
+                <a href="https://sponsoracb.mydigify.app" target="_blank" class="animate-fade-in-up portal-card base-card group cursor-pointer hover:-translate-y-1 transition-all duration-300" style="animation-delay: 0.1s;">
+                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full portal-card-inner flex-1">
+                        <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 app-icon bg-blue-500 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="shopping-bag" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
                         </div>
-                        <div class="flex flex-col min-w-0 flex-1">
-                            <h3 class="text-[13px] sm:text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">فروشگاه محصولات</h3>
-                            <p class="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">خرید مستقیم و امن خدمات پورتال.</p>
+                        <div class="card-content">
+                            <h3 class="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate text-center sm:text-right w-full">فروشگاه</h3>
+                            <p class="card-desc text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1 text-right">خرید مستقیم و امن خدمات پورتال.</p>
                         </div>
-                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                     </div>
+                    <i data-lucide="chevron-left" class="card-chevron w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                 </a>
 
-                <a href="https://AMT-IR.github.io/Support.html" class="animate-fade-in-up flex items-center justify-between p-3.5 sm:p-4 base-card group cursor-pointer" style="animation-delay: 0.15s;">
-                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full">
-                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 app-icon bg-violet-500 group-hover:scale-105 transition-transform">
-                            <i data-lucide="headset" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]"></i>
+                <a href="https://AMT-IR.github.io/Support.html" class="animate-fade-in-up portal-card base-card group cursor-pointer hover:-translate-y-1 transition-all duration-300" style="animation-delay: 0.15s;">
+                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full portal-card-inner flex-1">
+                        <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 app-icon bg-violet-500 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="headset" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
                         </div>
-                        <div class="flex flex-col min-w-0 flex-1">
-                            <h3 class="text-[13px] sm:text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">پشتیبانی</h3>
-                            <p class="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">تماس با تیم فنی و حل مشکلات.</p>
+                        <div class="card-content">
+                            <h3 class="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate text-center sm:text-right w-full">پشتیبانی</h3>
+                            <p class="card-desc text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1 text-right">تماس با تیم فنی و حل مشکلات.</p>
                         </div>
-                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                     </div>
+                    <i data-lucide="chevron-left" class="card-chevron w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                 </a>
 
-                <a href="https://sponsoracb.ir/ads" class="animate-fade-in-up flex items-center justify-between p-3.5 sm:p-4 base-card group cursor-pointer" style="animation-delay: 0.2s;">
-                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full">
-                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 app-icon bg-orange-500 group-hover:scale-105 transition-transform">
-                            <i data-lucide="megaphone" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]"></i>
+                <a href="https://sponsoracb.ir/ads" class="animate-fade-in-up portal-card base-card group cursor-pointer hover:-translate-y-1 transition-all duration-300" style="animation-delay: 0.2s;">
+                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full portal-card-inner flex-1 relative">
+                        <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 app-icon bg-orange-500 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="megaphone" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
                         </div>
-                        <div class="flex flex-col min-w-0 flex-1">
-                            <div class="flex items-center gap-2 mb-0.5">
-                                <h3 class="text-[13px] sm:text-[14px] font-bold text-zinc-900 dark:text-zinc-100 truncate">تبلیغات</h3>
-                                <span class="px-1.5 py-0.5 rounded-md text-[9px] font-bold bg-orange-100 text-orange-600 dark:bg-orange-500/20 dark:text-orange-400 shrink-0">جدید</span>
+                        <div class="card-content relative">
+                            <div class="flex items-center justify-center sm:justify-start gap-2 mb-0.5 w-full">
+                                <h3 class="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-zinc-100 truncate">تبلیغات</h3>
+                                <span class="card-badge px-1 py-0.5 rounded text-[8px] sm:text-[9px] font-bold bg-orange-100 text-orange-600 dark:bg-orange-500/20 dark:text-orange-400 shrink-0">جدید</span>
                             </div>
-                            <p class="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">تعرفه‌های رسمی و جایگاه‌ها.</p>
+                            <p class="card-desc text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1 text-right">تعرفه‌های رسمی و جایگاه‌ها.</p>
                         </div>
-                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                     </div>
+                    <i data-lucide="chevron-left" class="card-chevron w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                 </a>
 
-                <a href="https://AMT-IR.github.io/pricing.html" class="animate-fade-in-up flex items-center justify-between p-3.5 sm:p-4 base-card group cursor-pointer" style="animation-delay: 0.25s;">
-                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full">
-                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 app-icon bg-rose-500 group-hover:scale-105 transition-transform">
-                            <i data-lucide="credit-card" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]"></i>
+                <a href="https://AMT-IR.github.io/pricing.html" class="animate-fade-in-up portal-card base-card group cursor-pointer hover:-translate-y-1 transition-all duration-300" style="animation-delay: 0.25s;">
+                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full portal-card-inner flex-1">
+                        <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 app-icon bg-rose-500 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="credit-card" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
                         </div>
-                        <div class="flex flex-col min-w-0 flex-1">
-                            <h3 class="text-[13px] sm:text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">قیمت اشتراک‌ها</h3>
-                            <p class="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">شرایط خرید اشتراک ویژه ربات.</p>
+                        <div class="card-content">
+                            <h3 class="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate text-center sm:text-right w-full">اشتراک‌ها</h3>
+                            <p class="card-desc text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1 text-right">شرایط خرید اشتراک ویژه ربات.</p>
                         </div>
-                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                     </div>
+                    <i data-lucide="chevron-left" class="card-chevron w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                 </a>
 
-                <a href="https://sponsoracb.ir/legal" class="animate-fade-in-up flex items-center justify-between p-3.5 sm:p-4 base-card group cursor-pointer" style="animation-delay: 0.3s;">
-                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full">
-                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 app-icon bg-indigo-500 group-hover:scale-105 transition-transform">
-                            <i data-lucide="scale" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]"></i>
+                <a href="https://sponsoracb.ir/legal" class="animate-fade-in-up portal-card base-card group cursor-pointer hover:-translate-y-1 transition-all duration-300" style="animation-delay: 0.3s;">
+                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full portal-card-inner flex-1">
+                        <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 app-icon bg-indigo-500 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="scale" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
                         </div>
-                        <div class="flex flex-col min-w-0 flex-1">
-                            <h3 class="text-[13px] sm:text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">قوانین و مقررات</h3>
-                            <p class="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">حقوق کاربران و حریم خصوصی.</p>
+                        <div class="card-content">
+                            <h3 class="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate text-center sm:text-right w-full">قوانین</h3>
+                            <p class="card-desc text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1 text-right">حقوق کاربران و حریم خصوصی.</p>
                         </div>
-                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                     </div>
+                    <i data-lucide="chevron-left" class="card-chevron w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                 </a>
 
-                <a href="https://sponsoracb.ir/AboutUs.html" class="animate-fade-in-up flex items-center justify-between p-3.5 sm:p-4 base-card group cursor-pointer" style="animation-delay: 0.35s;">
-                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full">
-                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 app-icon bg-teal-500 group-hover:scale-105 transition-transform">
-                            <i data-lucide="info" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]"></i>
+                <a href="https://sponsoracb.ir/AboutUs.html" class="animate-fade-in-up portal-card base-card group cursor-pointer hover:-translate-y-1 transition-all duration-300" style="animation-delay: 0.35s;">
+                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full portal-card-inner flex-1">
+                        <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 app-icon bg-teal-500 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="info" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
                         </div>
-                        <div class="flex flex-col min-w-0 flex-1">
-                            <h3 class="text-[13px] sm:text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">درباره ما</h3>
-                            <p class="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">آشنایی بیشتر با تیم و اهداف مجموعه.</p>
+                        <div class="card-content">
+                            <h3 class="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate text-center sm:text-right w-full">درباره ما</h3>
+                            <p class="card-desc text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1 text-right">آشنایی بیشتر با تیم و اهداف مجموعه.</p>
                         </div>
-                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                     </div>
+                    <i data-lucide="chevron-left" class="card-chevron w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                 </a>
 
-                <a href="https://Sponsoracb.ir/blog" target="_blank" class="animate-fade-in-up flex items-center justify-between p-3.5 sm:p-4 base-card group cursor-pointer" style="animation-delay: 0.4s;">
-                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full">
-                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 app-icon bg-amber-500 group-hover:scale-105 transition-transform">
-                            <i data-lucide="newspaper" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]"></i>
+                <a href="https://Sponsoracb.ir/blog" target="_blank" class="animate-fade-in-up portal-card base-card group cursor-pointer hover:-translate-y-1 transition-all duration-300" style="animation-delay: 0.4s;">
+                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full portal-card-inner flex-1">
+                        <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 app-icon bg-amber-500 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="newspaper" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
                         </div>
-                        <div class="flex flex-col min-w-0 flex-1">
-                            <h3 class="text-[13px] sm:text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">وبلاگ آموزشی</h3>
-                            <p class="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">مقالات، اخبار و آموزش‌های کاربردی.</p>
+                        <div class="card-content">
+                            <h3 class="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate text-center sm:text-right w-full">وبلاگ</h3>
+                            <p class="card-desc text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1 text-right">مقالات، اخبار و آموزش‌های کاربردی.</p>
                         </div>
-                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                     </div>
+                    <i data-lucide="chevron-left" class="card-chevron w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                 </a>
 
-                <a href="https://AMT-IR.github.io/Symbol.html" class="animate-fade-in-up flex items-center justify-between p-3.5 sm:p-4 base-card group cursor-pointer" style="animation-delay: 0.45s;">
-                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full">
-                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 app-icon bg-cyan-500 group-hover:scale-105 transition-transform">
-                            <i data-lucide="shield-check" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]"></i>
+                <a href="https://AMT-IR.github.io/Symbol.html" class="animate-fade-in-up portal-card base-card group cursor-pointer hover:-translate-y-1 transition-all duration-300" style="animation-delay: 0.45s;">
+                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full portal-card-inner flex-1">
+                        <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 app-icon bg-cyan-500 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="shield-check" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
                         </div>
-                        <div class="flex flex-col min-w-0 flex-1">
-                            <h3 class="text-[13px] sm:text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">نمادهای اعتماد</h3>
-                            <p class="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">مجوزها و تاییدیه‌های رسمی وب‌سایت.</p>
+                        <div class="card-content">
+                            <h3 class="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate text-center sm:text-right w-full">نماد اعتماد</h3>
+                            <p class="card-desc text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1 text-right">مجوزها و تاییدیه‌های رسمی وب‌سایت.</p>
                         </div>
-                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                     </div>
+                    <i data-lucide="chevron-left" class="card-chevron w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                 </a>
+
+                <div class="animate-fade-in-up portal-card base-card opacity-60 grayscale-[30%] pointer-events-none" style="animation-delay: 0.5s;">
+                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full portal-card-inner flex-1 relative">
+                        <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 app-icon bg-pink-500">
+                            <i data-lucide="message-square" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
+                        </div>
+                        <div class="card-content relative">
+                            <div class="flex items-center justify-center sm:justify-start gap-2 mb-0.5 w-full">
+                                <h3 class="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-zinc-100 truncate">نظرات</h3>
+                                <span class="card-badge px-1 py-0.5 rounded text-[8px] sm:text-[9px] font-bold bg-pink-100 text-pink-600 dark:bg-pink-500/20 dark:text-pink-400 shrink-0">بزودی</span>
+                            </div>
+                            <p class="card-desc text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1 text-right">تجربیات کاربران از خدمات.</p>
+                        </div>
+                    </div>
+                    <i data-lucide="clock" class="card-chevron w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 shrink-0 ml-1"></i>
+                </div>
+
+                <div class="animate-fade-in-up portal-card base-card opacity-60 grayscale-[30%] pointer-events-none" style="animation-delay: 0.55s;">
+                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full portal-card-inner flex-1 relative">
+                        <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 app-icon bg-emerald-500">
+                            <i data-lucide="file-signature" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
+                        </div>
+                        <div class="card-content relative">
+                            <div class="flex items-center justify-center sm:justify-start gap-2 mb-0.5 w-full">
+                                <h3 class="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-zinc-100 truncate">اسپانسر</h3>
+                                <span class="card-badge px-1 py-0.5 rounded text-[8px] sm:text-[9px] font-bold bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 shrink-0">بزودی</span>
+                            </div>
+                            <p class="card-desc text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1 text-right">تنظیم توافق‌نامه‌های رسمی.</p>
+                        </div>
+                    </div>
+                    <i data-lucide="clock" class="card-chevron w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 shrink-0 ml-1"></i>
+                </div>
             </div>
         </main>
 
@@ -506,11 +656,10 @@
                 <i data-lucide="fingerprint" class="w-5 h-5 text-blue-500 stroke-[2.5]"></i>
                 <span>AMT-IR</span>
             </div>
-            <p class="text-[10px] text-zinc-500 font-medium">تمامی حقوق محفوظ است</p>
+            <p class="text-[10px] text-zinc-500 font-medium">All Rights Reserved</p>
         </footer>
     </div>
 
-    <!-- Scripts -->
     <script>
         lucide.createIcons();
 
@@ -542,73 +691,58 @@
             localStorage.setItem('ui_theme', theme);
         }
 
+        function setCardShape(shape) {
+            const btnSquare = document.getElementById('btn-shape-square');
+            const btnRect = document.getElementById('btn-shape-rect');
+
+            if(shape === 'square') {
+                document.body.classList.add('shape-square');
+                if(btnSquare) {
+                    btnSquare.classList.add('border-blue-500', 'bg-blue-500/10', 'text-blue-600', 'dark:text-blue-400');
+                    btnSquare.classList.remove('border-transparent', 'bg-zinc-100', 'dark:bg-zinc-800', 'text-zinc-600', 'dark:text-zinc-400');
+                }
+                if(btnRect) {
+                    btnRect.classList.remove('border-blue-500', 'bg-blue-500/10', 'text-blue-600', 'dark:text-blue-400');
+                    btnRect.classList.add('border-transparent', 'bg-zinc-100', 'dark:bg-zinc-800', 'text-zinc-600', 'dark:text-zinc-400');
+                }
+            } else {
+                document.body.classList.remove('shape-square');
+                if(btnRect) {
+                    btnRect.classList.add('border-blue-500', 'bg-blue-500/10', 'text-blue-600', 'dark:text-blue-400');
+                    btnRect.classList.remove('border-transparent', 'bg-zinc-100', 'dark:bg-zinc-800', 'text-zinc-600', 'dark:text-zinc-400');
+                }
+                if(btnSquare) {
+                    btnSquare.classList.remove('border-blue-500', 'bg-blue-500/10', 'text-blue-600', 'dark:text-blue-400');
+                    btnSquare.classList.add('border-transparent', 'bg-zinc-100', 'dark:bg-zinc-800', 'text-zinc-600', 'dark:text-zinc-400');
+                }
+            }
+            localStorage.setItem('card_shape', shape);
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('ui_theme') || 'standard';
             setUITheme(savedTheme);
-            setTimeout(openNoticeModal, 400);
+            
+            const savedShape = localStorage.getItem('card_shape') || 'rect';
+            setCardShape(savedShape);
         });
-
-        // Service Worker Registration for PWA
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(reg => console.log('SW registered! Scope:', reg.scope))
-                    .catch(err => console.log('SW registration failed:', err));
-            });
-        }
 
         let deferredPrompt = null;
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
 
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').catch((err) => {
+                    console.log('SW failed', err);
+                });
+            });
+        }
+
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
         });
-
-        function animateSidebarDownload(buttonId, successCallback) {
-            const btn = document.getElementById(buttonId);
-            if(!btn || btn.classList.contains('btn-download-progress')) return;
-            
-            const originalHTML = btn.innerHTML;
-            const textElement = btn.querySelector('.btn-text');
-            const iconElement = btn.querySelector('i');
-            
-            btn.classList.add('btn-download-progress');
-            if(textElement) textElement.innerText = "0%";
-            if(iconElement) {
-                iconElement.setAttribute('data-lucide', 'loader-2');
-                iconElement.classList.add('animate-spin');
-                lucide.createIcons();
-            }
-            
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += (Math.random() * 25) + 10;
-                if(progress >= 100) progress = 100;
-                
-                if(textElement) textElement.innerText = `${Math.floor(progress)}%`;
-                
-                if(progress === 100) {
-                    clearInterval(interval);
-                    if(textElement) textElement.innerText = "کامل شد";
-                    if(iconElement) {
-                        iconElement.setAttribute('data-lucide', 'check-circle-2');
-                        iconElement.classList.remove('animate-spin');
-                        lucide.createIcons();
-                    }
-                    
-                    setTimeout(() => {
-                        if(successCallback) successCallback();
-                        setTimeout(() => {
-                            btn.classList.remove('btn-download-progress');
-                            btn.innerHTML = originalHTML;
-                            lucide.createIcons();
-                        }, 500);
-                    }, 500);
-                }
-            }, 120);
-        }
 
         function openPwaModal() {
             const modal = document.getElementById('pwaInstallModal');
@@ -625,25 +759,35 @@
 
             if (isStandalone) {
                 statusText.innerText = "اپلیکیشن نصب شده است";
-                instructions.innerHTML = "شما هم‌اکنون در حال استفاده از نسخه نصب‌شده هستید.";
+                instructions.innerHTML = "شما هم‌اکنون در حال استفاده از نسخه نصب‌شده هستید و نیازی به نصب مجدد ندارید.";
                 instructions.classList.remove('hidden');
                 installBtn.style.display = 'none';
             } else if (deferredPrompt) {
-                statusText.innerText = "آماده برای نصب PWA";
+                statusText.innerText = "نصب سریع و خودکار";
                 instructions.classList.add('hidden');
                 installBtn.style.display = 'flex';
             } else if (isIOS) {
                 statusText.innerText = "راهنمای نصب در iOS";
                 instructions.innerHTML = `
-                    <div class="flex flex-col gap-2 text-right">
-                        <p>۱. در مرورگر سافاری روی دکمه <strong>Share</strong> ضربه بزنید.</p>
-                        <p>۲. گزینه <strong>Add to Home Screen</strong> را انتخاب کنید.</p>
+                    <div class="flex flex-col gap-3">
+                        <p class="flex items-start gap-2">
+                            <span class="w-4 shrink-0 text-blue-500 font-black">۱.</span>
+                            <span>در نوار پایین مرورگر سافاری، روی دکمه <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="inline text-blue-500 mx-0.5"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg> (Share) ضربه بزنید.</span>
+                        </p>
+                        <p class="flex items-start gap-2">
+                            <span class="w-4 shrink-0 text-blue-500 font-black">۲.</span>
+                            <span>منو را به پایین بکشید و گزینه <br><span class="font-bold text-blue-600 dark:text-blue-400 flex items-center gap-1.5 mt-1.5 bg-blue-500/10 w-max px-2 py-1 rounded-lg border border-blue-500/20"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M12 8v8"/><path d="M8 12h8"/></svg> Add to Home Screen</span> را انتخاب کنید.</span>
+                        </p>
+                        <p class="flex items-start gap-2">
+                            <span class="w-4 shrink-0 text-blue-500 font-black">۳.</span>
+                            <span>در بالا سمت راست روی گزینه <strong>Add</strong> ضربه بزنید.</span>
+                        </p>
                     </div>`;
                 instructions.classList.remove('hidden');
                 installBtn.style.display = 'none';
             } else {
-                statusText.innerText = "افزودن به صفحه اصلی";
-                instructions.innerHTML = 'از منوی مرورگر خود گزینه <strong>Install App</strong> را انتخاب کنید.';
+                statusText.innerText = "نصب دستی برنامه";
+                instructions.innerHTML = 'از منوی مرورگر خود، گزینه <span class="font-bold text-blue-600 dark:text-blue-400">Install App</span> یا <span class="font-bold text-blue-600 dark:text-blue-400">Add to Home Screen</span> را انتخاب کنید.';
                 instructions.classList.remove('hidden');
                 installBtn.style.display = 'none';
             }
@@ -653,8 +797,10 @@
         if (pwaInstallBtn) {
             pwaInstallBtn.addEventListener('click', async () => {
                 if (!deferredPrompt) return;
+                
                 deferredPrompt.prompt();
                 const { outcome } = await deferredPrompt.userChoice;
+                
                 if (outcome === 'accepted') {
                     deferredPrompt = null;
                     closePwaModal();
@@ -672,6 +818,11 @@
             });
         }
 
+        window.addEventListener('appinstalled', () => {
+            closePwaModal();
+            deferredPrompt = null;
+        });
+
         function closePwaModal() {
             const modal = document.getElementById('pwaInstallModal');
             const content = document.getElementById('pwaModalContent');
@@ -679,6 +830,15 @@
                 modal.classList.remove('opacity-100', 'pointer-events-auto');
                 modal.classList.add('opacity-0', 'pointer-events-none');
                 content.removeAttribute('data-open');
+                
+                setTimeout(() => {
+                    const instructions = document.getElementById('pwaManualInstructions');
+                    if(instructions) instructions.classList.add('hidden');
+                    const statusText = document.getElementById('pwaStatusText');
+                    if(statusText) statusText.innerText = "دسترسی سریع در حالت تمام‌صفحه";
+                    const installBtn = document.getElementById('pwaInstallBtn');
+                    if(installBtn) installBtn.style.display = 'flex';
+                }, 400);
             }
         }
 
@@ -705,21 +865,21 @@
 
         function openNoticeModal() {
             const m = document.getElementById('noticeModal');
+            const content = m.querySelector('div');
             if (m) {
                 m.classList.remove('opacity-0', 'pointer-events-none');
                 m.classList.add('opacity-100', 'pointer-events-auto');
-                const content = m.querySelector('div');
-                if(content) content.setAttribute('data-open', 'true');
+                content.setAttribute('data-open', 'true');
             }
         }
 
         function closeNoticeModal() {
             const m = document.getElementById('noticeModal');
+            const content = m.querySelector('div');
             if (m) {
                 m.classList.remove('opacity-100', 'pointer-events-auto');
                 m.classList.add('opacity-0', 'pointer-events-none');
-                const content = m.querySelector('div');
-                if(content) content.removeAttribute('data-open');
+                content.removeAttribute('data-open');
             }
         }
     </script>
