@@ -160,7 +160,8 @@
 
     <script>
         (function() {
-            if(localStorage.getItem('ui_theme') === 'standard') {
+            const uiTheme = localStorage.getItem('ui_theme');
+            if(uiTheme === 'standard' || !uiTheme) {
                 document.body.classList.add('theme-solid');
             }
             if (localStorage.getItem('color_theme') === 'light') {
@@ -563,7 +564,7 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('ui_theme') || 'liquid';
+            const savedTheme = localStorage.getItem('ui_theme') || 'standard';
             setUITheme(savedTheme);
         });
 
