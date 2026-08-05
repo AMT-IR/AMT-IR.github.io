@@ -80,52 +80,52 @@
         }
 
         body:not(.theme-solid) .base-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.15) 100%);
-            backdrop-filter: blur(50px) saturate(250%) contrast(1.1);
-            -webkit-backdrop-filter: blur(50px) saturate(250%) contrast(1.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-top-color: rgba(255, 255, 255, 0.7);
-            border-left-color: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.06), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.15) 100%);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-top-color: rgba(255, 255, 255, 0.8);
+            border-left-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.8);
         }
         
         .dark body:not(.theme-solid) .base-card {
-            background: linear-gradient(135deg, rgba(60, 60, 67, 0.35) 0%, rgba(28, 28, 30, 0.15) 100%);
+            background: linear-gradient(135deg, rgba(60, 60, 65, 0.3) 0%, rgba(25, 25, 30, 0.1) 100%);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-top-color: rgba(255, 255, 255, 0.18);
+            border-top-color: rgba(255, 255, 255, 0.15);
             border-left-color: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.1);
         }
         
         body:not(.theme-solid) .base-card:hover {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.25) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.25) 100%);
             transform: translateY(-3px) scale(1.01);
-            box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.7);
+            box-shadow: 0 15px 50px -10px rgba(0, 0, 0, 0.1), inset 0 1px 2px rgba(255, 255, 255, 0.9);
         }
         
         .dark body:not(.theme-solid) .base-card:hover {
-            background: linear-gradient(135deg, rgba(72, 72, 80, 0.45) 0%, rgba(36, 36, 40, 0.25) 100%);
+            background: linear-gradient(135deg, rgba(70, 70, 75, 0.35) 0%, rgba(35, 35, 40, 0.15) 100%);
             transform: translateY(-3px) scale(1.01);
-            box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 50px -10px rgba(0, 0, 0, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.15);
         }
 
         body.theme-solid .base-card {
             background: #ffffff;
-            border: 1px solid rgba(161, 161, 170, 0.2);
+            border: 1px solid rgba(228, 228, 231, 0.8);
             box-shadow: 0 2px 10px rgba(0,0,0,0.03);
         }
         .dark body.theme-solid .base-card {
             background: #18181b;
-            border: 1px solid rgba(63, 63, 70, 0.4);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            border: 1px solid rgba(63, 63, 70, 0.5);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         body.theme-solid .base-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
         }
         .dark body.theme-solid .base-card:hover {
             background: #27272a;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
         }
 
         body.theme-solid #ambient-blobs {
@@ -177,7 +177,7 @@
         <div class="absolute -bottom-[10%] left-[10%] w-[550px] h-[550px] rounded-full bg-emerald-500/40 dark:bg-emerald-600/30 filter blur-[100px] animate-blob animation-delay-4000"></div>
     </div>
 
-    <div id="mainApp" class="flex-1 flex flex-col min-h-screen w-full relative z-10 transition-opacity duration-700">
+    <div id="mainApp" class="flex-1 flex flex-col min-h-screen w-full relative z-10">
         
         <div id="noticeModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-900/40 dark:bg-black/60 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-400">
             <div class="w-full max-w-lg rounded-[28px] base-card p-6 relative flex flex-col gap-5 text-right transition-all transform scale-95 data-[open=true]:scale-100">
@@ -216,7 +216,6 @@
                 </div>
                 
                 <div id="pwaManualInstructions" class="hidden text-[11px] sm:text-xs text-zinc-600 dark:text-zinc-300 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-2xl border border-blue-100 dark:border-blue-800/30 leading-relaxed font-medium">
-                    <!-- محتوای راهنما توسط جاوااسکریپت تزریق می‌شود -->
                 </div>
 
                 <div class="flex items-center gap-3 mt-2">
@@ -228,15 +227,15 @@
             </div>
         </div>
         
-        <div id="sidebarOverlay" class="fixed inset-0 bg-zinc-900/40 dark:bg-black/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-400" onclick="toggleSidebar()"></div>
+        <div id="sidebarOverlay" class="fixed inset-0 bg-zinc-900/40 dark:bg-black/60 backdrop-blur-sm z-[55] opacity-0 pointer-events-none transition-opacity duration-400" onclick="toggleSidebar()"></div>
 
-        <aside id="sidebarPanel" class="fixed top-0 right-0 w-[260px] h-full z-50 base-card !rounded-none !border-y-0 !border-r-0 border-l transform translate-x-full transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col">
+        <aside id="sidebarPanel" class="fixed top-0 right-0 w-[260px] h-full z-[60] base-card !rounded-none !border-y-0 !border-r-0 border-l transform translate-x-full transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col">
             <div class="h-16 flex items-center justify-between px-4 border-b border-zinc-200/50 dark:border-zinc-700/50 shrink-0">
                 <div class="flex items-center gap-2">
                     <i data-lucide="layers" class="w-4 h-4 text-zinc-500 stroke-[2.5]"></i>
                     <span class="font-bold text-[13px] text-zinc-800 dark:text-zinc-100">منوی دسترسی</span>
                 </div>
-                <button onclick="toggleSidebar()" class="w-10 h-10 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors text-zinc-500 z-[60] relative flex items-center justify-center cursor-pointer">
+                <button onclick="toggleSidebar()" class="w-10 h-10 rounded-xl hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors text-zinc-500 z-[70] flex items-center justify-center cursor-pointer touch-manipulation">
                     <i data-lucide="x" class="w-5 h-5 stroke-[2.5] pointer-events-none"></i>
                 </button>
             </div>
@@ -253,7 +252,7 @@
 
                 <div class="my-2 border-t border-zinc-200/50 dark:border-zinc-700/50"></div>
 
-                <a href="https://Sponsoracb.ir" target="_blank" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-white/50 dark:hover:bg-zinc-800/50 transition-colors group">
+                <a href="https://Sponsoracb.ir" target="_blank" class="flex items-center gap-2 py-1.5 px-2 rounded-2xl hover:bg-white/50 dark:hover:bg-zinc-800/50 transition-colors group">
                     <div class="w-9 h-9 app-icon bg-blue-500">
                         <i data-lucide="layout-template" class="w-4 h-4 stroke-[2.5]"></i>
                     </div>
@@ -263,7 +262,7 @@
                     </div>
                 </a>
 
-                <a href="https://t.me/Sponsoracb" target="_blank" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-white/50 dark:hover:bg-zinc-800/50 transition-colors group">
+                <a href="https://t.me/Sponsoracb" target="_blank" class="flex items-center gap-2 py-1.5 px-2 rounded-2xl hover:bg-white/50 dark:hover:bg-zinc-800/50 transition-colors group">
                     <div class="w-9 h-9 app-icon bg-sky-500">
                         <i data-lucide="radio" class="w-4 h-4 stroke-[2.5]"></i>
                     </div>
@@ -273,7 +272,7 @@
                     </div>
                 </a>
 
-                <a href="https://t.me/Sponsoracb_bot" target="_blank" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-white/50 dark:hover:bg-zinc-800/50 transition-colors group">
+                <a href="https://t.me/Sponsoracb_bot" target="_blank" class="flex items-center gap-2 py-1.5 px-2 rounded-2xl hover:bg-white/50 dark:hover:bg-zinc-800/50 transition-colors group">
                     <div class="w-9 h-9 app-icon bg-violet-500">
                         <i data-lucide="terminal-square" class="w-4 h-4 stroke-[2.5]"></i>
                     </div>
@@ -283,7 +282,7 @@
                     </div>
                 </a>
 
-                <a href="https://t.me/Sponsoracbbot" target="_blank" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-white/50 dark:hover:bg-zinc-800/50 transition-colors group">
+                <a href="https://t.me/Sponsoracbbot" target="_blank" class="flex items-center gap-2 py-1.5 px-2 rounded-2xl hover:bg-white/50 dark:hover:bg-zinc-800/50 transition-colors group">
                     <div class="w-9 h-9 app-icon bg-orange-500">
                         <i data-lucide="test-tube-2" class="w-4 h-4 stroke-[2.5]"></i>
                     </div>
@@ -293,7 +292,7 @@
                     </div>
                 </a>
 
-                <a href="https://www.aparat.com/shorts/user/Sponsoracb/shorts" target="_blank" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-white/50 dark:hover:bg-zinc-800/50 transition-colors group">
+                <a href="https://www.aparat.com/shorts/user/Sponsoracb/shorts" target="_blank" class="flex items-center gap-2 py-1.5 px-2 rounded-2xl hover:bg-white/50 dark:hover:bg-zinc-800/50 transition-colors group">
                     <div class="w-9 h-9 app-icon bg-red-500">
                         <i data-lucide="play-square" class="w-4 h-4 stroke-[2.5]"></i>
                     </div>
@@ -316,7 +315,7 @@
                 </div>
 
                 <div class="flex flex-col gap-1.5 px-1">
-                    <a href="https://www.youtube.com/404" target="_blank" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-white/50 dark:hover:bg-zinc-800/50 transition-all group">
+                    <a href="https://www.youtube.com/404" target="_blank" class="flex items-center gap-2 py-1.5 px-2 rounded-2xl hover:bg-white/50 dark:hover:bg-zinc-800/50 transition-all group">
                         <img src="https://sponsoracb.ir/image/72833.png" alt="Ads" class="w-9 h-9 rounded-xl object-cover border border-zinc-200 dark:border-zinc-700 shadow-sm" onerror="this.onerror=null; this.src='https://placehold.co/100x100/d946ef/ffffff?text=Ads';">
                         <div class="flex flex-col min-w-0">
                             <span class="font-bold text-zinc-800 dark:text-zinc-100 text-[11px] truncate group-hover:text-fuchsia-500 transition-colors">جایگاه 1</span>
@@ -324,7 +323,7 @@
                         </div>
                     </a>
 
-                    <a href="https://t.me/Monsmain" target="_blank" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-white/50 dark:hover:bg-zinc-800/50 transition-all group">
+                    <a href="https://t.me/Monsmain" target="_blank" class="flex items-center gap-2 py-1.5 px-2 rounded-2xl hover:bg-white/50 dark:hover:bg-zinc-800/50 transition-all group">
                         <img src="https://sponsoracb.ir/image/91792.png" alt="Monsmain" class="w-9 h-9 rounded-xl object-cover border border-zinc-200 dark:border-zinc-700 shadow-sm" onerror="this.onerror=null; this.src='https://placehold.co/100x100/10b981/ffffff?text=Ad';">
                         <div class="flex flex-col min-w-0">
                             <span class="font-bold text-zinc-800 dark:text-zinc-100 text-[11px] truncate group-hover:text-emerald-500 transition-colors">Monsmain</span>
@@ -339,21 +338,21 @@
             </div>
         </aside>
 
-        <nav class="w-full h-16 sm:h-20 flex items-center justify-between px-5 sm:px-8 border-b base-card !rounded-none !border-x-0 !border-t-0 sticky top-0 z-30 transition-colors">
-            <button onclick="toggleSidebar()" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-all border border-zinc-200/50 dark:border-zinc-700/50 bg-white/40 dark:bg-zinc-800/40 hover:bg-white/80 dark:hover:bg-zinc-700 shadow-sm relative z-50">
+        <nav class="fixed top-0 w-full h-16 sm:h-20 flex items-center justify-between px-5 sm:px-8 border-b border-zinc-200/60 dark:border-zinc-800/60 bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl z-50 transition-colors">
+            <button onclick="toggleSidebar()" class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center transition-all border border-zinc-200/50 dark:border-zinc-700/50 bg-white/40 dark:bg-zinc-800/40 hover:bg-white/80 dark:hover:bg-zinc-700 shadow-sm relative z-[51] touch-manipulation cursor-pointer">
                 <i data-lucide="menu" class="w-5 h-5 text-zinc-800 dark:text-zinc-200 stroke-[2.5] pointer-events-none"></i>
             </button>
 
-            <span class="font-black text-lg sm:text-xl tracking-[0.25em] dir-ltr text-zinc-900 dark:text-white">SPONSORACB</span>
+            <span class="font-black text-lg sm:text-xl tracking-[0.25em] dir-ltr text-zinc-900 dark:text-white pointer-events-none select-none">SPONSORACB</span>
             
-            <button onclick="toggleTheme()" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-all border border-zinc-200/50 dark:border-zinc-700/50 bg-white/40 dark:bg-zinc-800/40 hover:bg-white/80 dark:hover:bg-zinc-700 shadow-sm">
+            <button onclick="toggleTheme()" class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center transition-all border border-zinc-200/50 dark:border-zinc-700/50 bg-white/40 dark:bg-zinc-800/40 hover:bg-white/80 dark:hover:bg-zinc-700 shadow-sm touch-manipulation cursor-pointer">
                 <i data-lucide="sun" class="w-5 h-5 text-zinc-200 hidden dark:block stroke-[2.5] pointer-events-none"></i>
                 <i data-lucide="moon" class="w-5 h-5 text-zinc-800 block dark:hidden stroke-[2.5] pointer-events-none"></i>
             </button>
         </nav>
 
-        <main class="flex-1 w-full max-w-4xl mx-auto flex flex-col gap-5 sm:gap-6 py-8 px-5 sm:px-8">
-            <header class="text-center flex flex-col items-center gap-3 mb-4">
+        <main class="flex-1 w-full max-w-4xl mx-auto flex flex-col gap-4 sm:gap-6 pt-24 pb-8 px-4 sm:px-8">
+            <header class="text-center flex flex-col items-center gap-3 mb-2 sm:mb-4">
                 <div class="w-20 h-20 app-icon bg-blue-600 shadow-xl shadow-blue-600/30">
                     <i data-lucide="layers" class="w-10 h-10 text-white stroke-[2.5]"></i>
                 </div>
@@ -370,160 +369,160 @@
             <div onclick="openNoticeModal()" class="animate-fade-in-up w-full cursor-pointer base-card p-4 flex items-center justify-between transition-all group !border-red-300 dark:!border-red-900/50" style="background-color: rgba(239, 68, 68, 0.08); animation-delay: 0.05s;">
                 <div class="flex items-center gap-4 min-w-0">
                     <div class="shrink-0 w-12 h-12 app-icon bg-red-500 shadow-md shadow-red-500/20">
-                        <i data-lucide="alert-circle" class="w-6 h-6 animate-pulse stroke-[2.5] text-white"></i>
+                        <i data-lucide="alert-circle" class="w-6 h-6 animate-pulse stroke-[2.5] text-white pointer-events-none"></i>
                     </div>
                     <div class="flex flex-col min-w-0">
-                        <h3 class="text-sm font-bold text-red-700 dark:text-red-400 truncate mb-1">اطلاعیه مهم ربات</h3>
+                        <h3 class="text-[13px] sm:text-sm font-bold text-red-700 dark:text-red-400 truncate mb-1">اطلاعیه مهم ربات</h3>
                         <p class="text-[10px] sm:text-[11px] font-medium text-red-600/90 dark:text-red-400/80 truncate">مشاهده وضعیت فعالیت و بروزرسانی</p>
                     </div>
                 </div>
-                <i data-lucide="chevron-left" class="w-5 h-5 text-red-500 group-hover:-translate-x-1.5 transition-transform mr-2"></i>
+                <i data-lucide="chevron-left" class="w-5 h-5 text-red-500 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 items-stretch">
                 
-                <a href="https://sponsoracb.mydigify.app" target="_blank" class="animate-fade-in-up flex items-center justify-between p-4 base-card group cursor-pointer" style="animation-delay: 0.1s;">
-                    <div class="flex items-center gap-4 min-w-0">
-                        <div class="shrink-0 w-12 h-12 app-icon bg-blue-500 group-hover:scale-105 transition-transform">
-                            <i data-lucide="shopping-bag" class="w-6 h-6 stroke-[2.5]"></i>
+                <a href="https://sponsoracb.mydigify.app" target="_blank" class="animate-fade-in-up flex items-center justify-between p-3.5 sm:p-4 base-card group cursor-pointer" style="animation-delay: 0.1s;">
+                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full">
+                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 app-icon bg-blue-500 group-hover:scale-105 transition-transform">
+                            <i data-lucide="shopping-bag" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]"></i>
                         </div>
-                        <div class="flex flex-col min-w-0">
-                            <h3 class="text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">فروشگاه محصولات</h3>
-                            <p class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">خرید مستقیم و امن خدمات پورتال.</p>
+                        <div class="flex flex-col min-w-0 flex-1">
+                            <h3 class="text-[13px] sm:text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">فروشگاه محصولات</h3>
+                            <p class="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">خرید مستقیم و امن خدمات پورتال.</p>
                         </div>
+                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                     </div>
-                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
                 </a>
 
-                <a href="https://AMT-IR.github.io/Support.html" class="animate-fade-in-up flex items-center justify-between p-4 base-card group cursor-pointer" style="animation-delay: 0.15s;">
-                    <div class="flex items-center gap-4 min-w-0">
-                        <div class="shrink-0 w-12 h-12 app-icon bg-violet-500 group-hover:scale-105 transition-transform">
-                            <i data-lucide="headset" class="w-6 h-6 stroke-[2.5]"></i>
+                <a href="https://AMT-IR.github.io/Support.html" class="animate-fade-in-up flex items-center justify-between p-3.5 sm:p-4 base-card group cursor-pointer" style="animation-delay: 0.15s;">
+                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full">
+                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 app-icon bg-violet-500 group-hover:scale-105 transition-transform">
+                            <i data-lucide="headset" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]"></i>
                         </div>
-                        <div class="flex flex-col min-w-0">
-                            <h3 class="text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">پشتیبانی</h3>
-                            <p class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">تماس با تیم فنی و حل مشکلات.</p>
+                        <div class="flex flex-col min-w-0 flex-1">
+                            <h3 class="text-[13px] sm:text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">پشتیبانی</h3>
+                            <p class="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">تماس با تیم فنی و حل مشکلات.</p>
                         </div>
+                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                     </div>
-                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
                 </a>
 
-                <a href="https://sponsoracb.ir/ads" class="animate-fade-in-up flex items-center justify-between p-4 base-card group cursor-pointer" style="animation-delay: 0.2s;">
-                    <div class="flex items-center gap-4 min-w-0">
-                        <div class="shrink-0 w-12 h-12 app-icon bg-orange-500 group-hover:scale-105 transition-transform">
-                            <i data-lucide="megaphone" class="w-6 h-6 stroke-[2.5]"></i>
+                <a href="https://sponsoracb.ir/ads" class="animate-fade-in-up flex items-center justify-between p-3.5 sm:p-4 base-card group cursor-pointer" style="animation-delay: 0.2s;">
+                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full">
+                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 app-icon bg-orange-500 group-hover:scale-105 transition-transform">
+                            <i data-lucide="megaphone" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]"></i>
                         </div>
-                        <div class="flex flex-col min-w-0">
+                        <div class="flex flex-col min-w-0 flex-1">
                             <div class="flex items-center gap-2 mb-0.5">
-                                <h3 class="text-[14px] font-bold text-zinc-900 dark:text-zinc-100 truncate">تبلیغات</h3>
-                                <span class="px-2 py-0.5 rounded-md text-[9px] font-bold bg-orange-100 text-orange-600 dark:bg-orange-500/20 dark:text-orange-400 shrink-0">جدید</span>
+                                <h3 class="text-[13px] sm:text-[14px] font-bold text-zinc-900 dark:text-zinc-100 truncate">تبلیغات</h3>
+                                <span class="px-1.5 py-0.5 rounded-md text-[9px] font-bold bg-orange-100 text-orange-600 dark:bg-orange-500/20 dark:text-orange-400 shrink-0">جدید</span>
                             </div>
-                            <p class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">تعرفه‌های رسمی و جایگاه‌ها.</p>
+                            <p class="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">تعرفه‌های رسمی و جایگاه‌ها.</p>
                         </div>
+                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                     </div>
-                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
                 </a>
 
-                <a href="https://AMT-IR.github.io/pricing.html" class="animate-fade-in-up flex items-center justify-between p-4 base-card group cursor-pointer" style="animation-delay: 0.25s;">
-                    <div class="flex items-center gap-4 min-w-0">
-                        <div class="shrink-0 w-12 h-12 app-icon bg-rose-500 group-hover:scale-105 transition-transform">
-                            <i data-lucide="credit-card" class="w-6 h-6 stroke-[2.5]"></i>
+                <a href="https://AMT-IR.github.io/pricing.html" class="animate-fade-in-up flex items-center justify-between p-3.5 sm:p-4 base-card group cursor-pointer" style="animation-delay: 0.25s;">
+                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full">
+                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 app-icon bg-rose-500 group-hover:scale-105 transition-transform">
+                            <i data-lucide="credit-card" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]"></i>
                         </div>
-                        <div class="flex flex-col min-w-0">
-                            <h3 class="text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">قیمت اشتراک‌ها</h3>
-                            <p class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">شرایط خرید اشتراک ویژه ربات.</p>
+                        <div class="flex flex-col min-w-0 flex-1">
+                            <h3 class="text-[13px] sm:text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">قیمت اشتراک‌ها</h3>
+                            <p class="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">شرایط خرید اشتراک ویژه ربات.</p>
                         </div>
+                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                     </div>
-                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
                 </a>
 
-                <a href="https://sponsoracb.ir/aboutus" class="animate-fade-in-up flex items-center justify-between p-4 base-card group cursor-pointer" style="animation-delay: 0.3s;">
-                    <div class="flex items-center gap-4 min-w-0">
-                        <div class="shrink-0 w-12 h-12 app-icon bg-teal-500 group-hover:scale-105 transition-transform">
-                            <i data-lucide="info" class="w-6 h-6 stroke-[2.5]"></i>
+                <a href="https://sponsoracb.ir/legal" class="animate-fade-in-up flex items-center justify-between p-3.5 sm:p-4 base-card group cursor-pointer" style="animation-delay: 0.3s;">
+                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full">
+                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 app-icon bg-indigo-500 group-hover:scale-105 transition-transform">
+                            <i data-lucide="scale" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]"></i>
                         </div>
-                        <div class="flex flex-col min-w-0">
-                            <h3 class="text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">درباره ما</h3>
-                            <p class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">آشنایی بیشتر با تیم و اهداف مجموعه.</p>
+                        <div class="flex flex-col min-w-0 flex-1">
+                            <h3 class="text-[13px] sm:text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">قوانین و مقررات</h3>
+                            <p class="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">حقوق کاربران و حریم خصوصی.</p>
                         </div>
+                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                     </div>
-                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
                 </a>
 
-                <a href="https://Sponsoracb.ir/blog" target="_blank" class="animate-fade-in-up flex items-center justify-between p-4 base-card group cursor-pointer" style="animation-delay: 0.35s;">
-                    <div class="flex items-center gap-4 min-w-0">
-                        <div class="shrink-0 w-12 h-12 app-icon bg-amber-500 group-hover:scale-105 transition-transform">
-                            <i data-lucide="newspaper" class="w-6 h-6 stroke-[2.5]"></i>
+                <a href="https://sponsoracb.ir/aboutus" class="animate-fade-in-up flex items-center justify-between p-3.5 sm:p-4 base-card group cursor-pointer" style="animation-delay: 0.35s;">
+                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full">
+                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 app-icon bg-teal-500 group-hover:scale-105 transition-transform">
+                            <i data-lucide="info" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]"></i>
                         </div>
-                        <div class="flex flex-col min-w-0">
-                            <h3 class="text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">وبلاگ آموزشی</h3>
-                            <p class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">مقالات، اخبار و آموزش‌های کاربردی.</p>
+                        <div class="flex flex-col min-w-0 flex-1">
+                            <h3 class="text-[13px] sm:text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">درباره ما</h3>
+                            <p class="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">آشنایی بیشتر با تیم و اهداف مجموعه.</p>
                         </div>
+                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                     </div>
-                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
                 </a>
 
-                <a href="https://AMT-IR.github.io/Symbol.html" class="animate-fade-in-up flex items-center justify-between p-4 base-card group cursor-pointer" style="animation-delay: 0.4s;">
-                    <div class="flex items-center gap-4 min-w-0">
-                        <div class="shrink-0 w-12 h-12 app-icon bg-cyan-500 group-hover:scale-105 transition-transform">
-                            <i data-lucide="shield-check" class="w-6 h-6 stroke-[2.5]"></i>
+                <a href="https://Sponsoracb.ir/blog" target="_blank" class="animate-fade-in-up flex items-center justify-between p-3.5 sm:p-4 base-card group cursor-pointer" style="animation-delay: 0.4s;">
+                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full">
+                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 app-icon bg-amber-500 group-hover:scale-105 transition-transform">
+                            <i data-lucide="newspaper" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]"></i>
                         </div>
-                        <div class="flex flex-col min-w-0">
-                            <h3 class="text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">نمادهای اعتماد</h3>
-                            <p class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">مجوزها و تاییدیه‌های رسمی وب‌سایت.</p>
+                        <div class="flex flex-col min-w-0 flex-1">
+                            <h3 class="text-[13px] sm:text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">وبلاگ آموزشی</h3>
+                            <p class="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">مقالات، اخبار و آموزش‌های کاربردی.</p>
                         </div>
+                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                     </div>
-                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
                 </a>
 
-                <a href="https://sponsoracb.ir/legal" class="animate-fade-in-up flex items-center justify-between p-4 base-card group cursor-pointer" style="animation-delay: 0.45s;">
-                    <div class="flex items-center gap-4 min-w-0">
-                        <div class="shrink-0 w-12 h-12 app-icon bg-indigo-500 group-hover:scale-105 transition-transform">
-                            <i data-lucide="scale" class="w-6 h-6 stroke-[2.5]"></i>
+                <a href="https://AMT-IR.github.io/Symbol.html" class="animate-fade-in-up flex items-center justify-between p-3.5 sm:p-4 base-card group cursor-pointer" style="animation-delay: 0.45s;">
+                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full">
+                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 app-icon bg-cyan-500 group-hover:scale-105 transition-transform">
+                            <i data-lucide="shield-check" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]"></i>
                         </div>
-                        <div class="flex flex-col min-w-0">
-                            <h3 class="text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">قوانین و مقررات</h3>
-                            <p class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">حقوق کاربران و حریم خصوصی.</p>
+                        <div class="flex flex-col min-w-0 flex-1">
+                            <h3 class="text-[13px] sm:text-[14px] font-bold text-zinc-900 dark:text-zinc-100 mb-0.5 truncate">نمادهای اعتماد</h3>
+                            <p class="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">مجوزها و تاییدیه‌های رسمی وب‌سایت.</p>
                         </div>
+                        <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0 ml-1"></i>
                     </div>
-                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
                 </a>
 
-                <div class="animate-fade-in-up flex items-center justify-between p-4 base-card opacity-60 grayscale-[30%]" style="animation-delay: 0.5s;">
-                    <div class="flex items-center gap-4 min-w-0">
-                        <div class="shrink-0 w-12 h-12 app-icon bg-pink-500">
-                            <i data-lucide="message-square" class="w-6 h-6 stroke-[2.5]"></i>
+                <div class="animate-fade-in-up flex items-center justify-between p-3.5 sm:p-4 base-card opacity-60 grayscale-[30%]" style="animation-delay: 0.5s;">
+                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full">
+                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 app-icon bg-pink-500">
+                            <i data-lucide="message-square" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]"></i>
                         </div>
-                        <div class="flex flex-col min-w-0">
+                        <div class="flex flex-col min-w-0 flex-1">
                             <div class="flex items-center gap-2 mb-0.5">
-                                <h3 class="text-[14px] font-bold text-zinc-900 dark:text-zinc-100 truncate">نظرات مشتریان</h3>
-                                <span class="px-2 py-0.5 rounded-md text-[9px] font-bold bg-pink-100 text-pink-600 dark:bg-pink-500/20 dark:text-pink-400 shrink-0">بزودی</span>
+                                <h3 class="text-[13px] sm:text-[14px] font-bold text-zinc-900 dark:text-zinc-100 truncate">نظرات مشتریان</h3>
+                                <span class="px-1.5 py-0.5 rounded-md text-[9px] font-bold bg-pink-100 text-pink-600 dark:bg-pink-500/20 dark:text-pink-400 shrink-0">بزودی</span>
                             </div>
-                            <p class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">تجربیات کاربران از خدمات.</p>
+                            <p class="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">تجربیات کاربران از خدمات.</p>
                         </div>
+                        <i data-lucide="clock" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 shrink-0 ml-1"></i>
                     </div>
-                    <i data-lucide="clock" class="w-5 h-5 text-zinc-400 shrink-0"></i>
                 </div>
 
-                <div class="animate-fade-in-up flex items-center justify-between p-4 base-card opacity-60 grayscale-[30%]" style="animation-delay: 0.55s;">
-                    <div class="flex items-center gap-4 min-w-0">
-                        <div class="shrink-0 w-12 h-12 app-icon bg-emerald-500">
-                            <i data-lucide="file-signature" class="w-6 h-6 stroke-[2.5]"></i>
+                <div class="animate-fade-in-up flex items-center justify-between p-3.5 sm:p-4 base-card opacity-60 grayscale-[30%]" style="animation-delay: 0.55s;">
+                    <div class="flex items-center gap-3 sm:gap-4 min-w-0 w-full">
+                        <div class="shrink-0 w-11 h-11 sm:w-12 sm:h-12 app-icon bg-emerald-500">
+                            <i data-lucide="file-signature" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]"></i>
                         </div>
-                        <div class="flex flex-col min-w-0">
+                        <div class="flex flex-col min-w-0 flex-1">
                             <div class="flex items-center gap-2 mb-0.5">
-                                <h3 class="text-[14px] font-bold text-zinc-900 dark:text-zinc-100 truncate">قرارداد اسپانسری</h3>
-                                <span class="px-2 py-0.5 rounded-md text-[9px] font-bold bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 shrink-0">بزودی</span>
+                                <h3 class="text-[13px] sm:text-[14px] font-bold text-zinc-900 dark:text-zinc-100 truncate">قرارداد اسپانسری</h3>
+                                <span class="px-1.5 py-0.5 rounded-md text-[9px] font-bold bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 shrink-0">بزودی</span>
                             </div>
-                            <p class="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">تنظیم توافق‌نامه‌های رسمی.</p>
+                            <p class="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 line-clamp-1">تنظیم توافق‌نامه‌های رسمی.</p>
                         </div>
+                        <i data-lucide="clock" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 shrink-0 ml-1"></i>
                     </div>
-                    <i data-lucide="clock" class="w-5 h-5 text-zinc-400 shrink-0"></i>
                 </div>
             </div>
         </main>
 
-        <footer class="w-full py-6 mt-auto base-card !border-x-0 !border-b-0 !rounded-none flex flex-col items-center justify-center gap-1.5">
+        <footer class="w-full py-6 mt-auto border-t border-zinc-200/50 dark:border-zinc-800/50 bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl flex flex-col items-center justify-center gap-1.5 relative z-10 transition-colors">
             <div class="flex items-center gap-2 text-[14px] font-black tracking-wider text-zinc-900 dark:text-white">
                 <i data-lucide="fingerprint" class="w-5 h-5 text-blue-500 stroke-[2.5]"></i>
                 <span>AMT-IR</span>
@@ -568,29 +567,24 @@
             setUITheme(savedTheme);
         });
 
-        /* --- سیستم پیشرفته و هوشمند نصب PWA --- */
         let deferredPrompt = null;
         
-        // تشخیص سیستم‌عامل و وضعیت نصب
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
 
-        // ثبت سرویس ورکر (الزامی برای PWA در اندروید)
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js').catch((err) => {
-                    console.log('ServiceWorker registration failed: ', err);
+                    console.log('SW failed: ', err);
                 });
             });
         }
 
-        // دریافت رویداد نصب (فقط در مرورگرهای پشتیبانی‌کننده مثل کروم اندروید)
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
         });
 
-        // باز کردن مدال نصب با منطق هوشمند دستگاه
         function openPwaModal() {
             const modal = document.getElementById('pwaInstallModal');
             const content = document.getElementById('pwaModalContent');
@@ -605,18 +599,15 @@
             content.setAttribute('data-open', 'true');
 
             if (isStandalone) {
-                // اپلیکیشن از قبل نصب شده است
                 statusText.innerText = "اپلیکیشن نصب شده است";
-                instructions.innerHTML = "شما هم‌اکنون در حال استفاده از نسخه نصب‌شده (وب‌اپلیکیشن) هستید و نیازی به نصب مجدد ندارید.";
+                instructions.innerHTML = "شما هم‌اکنون در حال استفاده از نسخه نصب‌شده هستید و نیازی به نصب مجدد ندارید.";
                 instructions.classList.remove('hidden');
                 installBtn.style.display = 'none';
             } else if (deferredPrompt) {
-                // دستگاه اندروید/کروم با قابلیت نصب مستقیم
                 statusText.innerText = "نصب سریع و خودکار";
                 instructions.classList.add('hidden');
                 installBtn.style.display = 'flex';
             } else if (isIOS) {
-                // دستگاه iOS (آیفون/آیپد) نیازمند نصب دستی
                 statusText.innerText = "راهنمای نصب در iOS";
                 instructions.innerHTML = `
                     <div class="flex flex-col gap-3">
@@ -636,15 +627,13 @@
                 instructions.classList.remove('hidden');
                 installBtn.style.display = 'none';
             } else {
-                // سایر مرورگرها یا رد شدن پرامپت
                 statusText.innerText = "نصب دستی برنامه";
-                instructions.innerHTML = 'از منوی مرورگر خود (سه نقطه)، گزینه <span class="font-bold text-blue-600 dark:text-blue-400">Install App</span> یا <span class="font-bold text-blue-600 dark:text-blue-400">Add to Home Screen</span> را انتخاب کنید.';
+                instructions.innerHTML = 'از منوی مرورگر خود، گزینه <span class="font-bold text-blue-600 dark:text-blue-400">Install App</span> یا <span class="font-bold text-blue-600 dark:text-blue-400">Add to Home Screen</span> را انتخاب کنید.';
                 instructions.classList.remove('hidden');
                 installBtn.style.display = 'none';
             }
         }
 
-        // عملکرد دکمه نصب خودکار
         const pwaInstallBtn = document.getElementById('pwaInstallBtn');
         if (pwaInstallBtn) {
             pwaInstallBtn.addEventListener('click', async () => {
@@ -660,7 +649,6 @@
             });
         }
 
-        // اتصال دکمه دانلود سایدبار به سیستم جدید مدال
         const sidebarPwaBtn = document.getElementById('sidebarPwaBtn');
         if (sidebarPwaBtn) {
             sidebarPwaBtn.addEventListener('click', () => {
@@ -669,7 +657,6 @@
             });
         }
 
-        // بستن مدال پس از نصب موفق
         window.addEventListener('appinstalled', () => {
             closePwaModal();
             deferredPrompt = null;
@@ -683,7 +670,6 @@
                 modal.classList.add('opacity-0', 'pointer-events-none');
                 content.removeAttribute('data-open');
                 
-                // ریست کردن فرم بعد از بسته شدن انیمیشن
                 setTimeout(() => {
                     const instructions = document.getElementById('pwaManualInstructions');
                     if(instructions) instructions.classList.add('hidden');
@@ -694,7 +680,6 @@
                 }, 400);
             }
         }
-        /* ------------------------------------------- */
 
         function toggleTheme() {
             const isDark = document.documentElement.classList.toggle('dark');
