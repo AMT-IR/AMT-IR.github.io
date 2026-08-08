@@ -14,6 +14,13 @@
                 extend: {
                     fontFamily: {
                         sans: ['Vazirmatn', 'sans-serif'],
+                    },
+                    colors: {
+                        amber: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
                     }
                 }
             }
@@ -33,6 +40,124 @@
         .glass-base {
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* --- Star Rating Custom Styles --- */
+        .radio {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            /* جهت را برعکس میکنیم تا منطق CSS همپوشانی ستاره ها درست کار کند */
+            flex-direction: row-reverse;
+        }
+
+        .radio > input {
+            position: absolute;
+            appearance: none;
+            opacity: 0;
+        }
+
+        .radio > label {
+            cursor: pointer;
+            font-size: 30px;
+            position: relative;
+            display: inline-block;
+            transition: transform 0.3s ease;
+            width: 32px;
+            height: 32px;
+        }
+
+        .radio > label > svg {
+            fill: #71717a; /* zinc-500 */
+            width: 100%;
+            height: 100%;
+            transition: fill 0.3s ease, filter 0.3s ease;
+        }
+
+        .dark .radio > label > svg {
+            fill: #52525b; /* zinc-600 */
+        }
+
+        .radio > label::before,
+        .radio > label::after {
+            content: "";
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: #ff9e0b;
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(0);
+            transition:
+                transform 0.4s ease,
+                opacity 0.4s ease;
+        }
+
+        .radio > label::before {
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+        }
+
+        .radio > label::after {
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+        }
+
+        .radio > label:hover::before,
+        .radio > label:hover::after {
+            opacity: 1;
+            transform: translateX(-50%) scale(1.5);
+            animation: particle-explosion 1s ease-out;
+        }
+
+        .radio > label:hover {
+            transform: scale(1.2);
+            animation: pulse 0.6s infinite alternate;
+        }
+
+        /* Star glow and animation on hover */
+        .radio > label:hover > svg,
+        .radio > label:hover ~ label > svg {
+            fill: #ff9e0b;
+            filter: drop-shadow(0 0 10px rgba(255, 158, 11, 0.6));
+        }
+
+        .radio > label:hover > svg {
+            animation: shimmer 1s ease infinite alternate;
+        }
+
+        .radio > input:checked + label > svg {
+            fill: #ff9e0b;
+            filter: drop-shadow(0 0 15px rgba(255, 158, 11, 0.9));
+            animation: pulse 0.8s infinite alternate;
+        }
+
+        .radio > input:checked + label ~ label > svg,
+        .radio > input:checked + label > svg {
+            fill: #ff9e0b; /* Highlight the stars */
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
+        }
+
+        @keyframes particle-explosion {
+            0% { opacity: 0; transform: translateX(-50%) scale(0.5); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.2); }
+            100% { opacity: 0; transform: translateX(-50%) scale(0.5); }
+        }
+
+        @keyframes shimmer {
+            0% { filter: drop-shadow(0 0 5px rgba(255, 158, 11, 0.3)); }
+            100% { filter: drop-shadow(0 0 20px rgba(255, 158, 11, 1)); }
+        }
+        
+        /* Progress bar animation */
+        .progress-bar-fill {
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
     </style>
 </head>
@@ -82,7 +207,7 @@
             </a>
         </div>
 
-        <div class="flex flex-col gap-3 pb-8">
+        <div class="flex flex-col gap-3">
             <h3 class="text-xs font-bold px-2 mb-1 text-zinc-500 dark:text-zinc-400">سایر روش‌های ارتباطی</h3>
 
             <div class="w-full rounded-[20px] border glass-base p-3 flex items-center justify-between gap-2 transition-colors duration-300 bg-white/70 dark:bg-zinc-900/60 border-zinc-200/80 dark:border-zinc-800 hover:bg-white dark:hover:bg-zinc-800/80">
@@ -145,6 +270,77 @@
                 <a href="sms:" class="flex-shrink-0 w-[110px] sm:w-[130px] justify-center px-2 py-2.5 rounded-[12px] text-[11px] sm:text-xs font-bold flex items-center gap-1.5 transition-all active:scale-95 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-900 dark:text-white border border-zinc-200/50 dark:border-zinc-700/50 opacity-60 cursor-not-allowed" onclick="event.preventDefault();">ارسال پیامک</a>
             </div>
         </div>
+
+        <div class="w-full rounded-[24px] border glass-base p-5 sm:p-6 flex flex-col gap-6 transition-all duration-300 shadow-md bg-white/80 dark:bg-zinc-900/80 border-zinc-200/80 dark:border-zinc-800 mb-4 relative overflow-hidden">
+            
+            <div class="flex flex-col items-center justify-center text-center gap-2">
+                <div class="w-12 h-12 rounded-full bg-amber-50 dark:bg-amber-500/10 flex items-center justify-center text-amber-500 mb-2">
+                    <i data-lucide="star" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-extrabold text-zinc-900 dark:text-white">از خدمات ما راضی هستید؟</h3>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400">به کیفیت پشتیبانی و پاسخگویی ما امتیاز دهید.</p>
+            </div>
+
+            <!-- Star Rating Input (HTML structured carefully for CSS logic) -->
+            <div class="radio dir-ltr" dir="ltr" id="rating-container">
+                <!-- 5 -->
+                <input value="5" name="rating" type="radio" id="rating-5" />
+                <label title="5 star" for="rating-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                        <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
+                    </svg>
+                </label>
+
+                <!-- 4 -->
+                <input value="4" name="rating" type="radio" id="rating-4" />
+                <label title="4 stars" for="rating-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                        <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
+                    </svg>
+                </label>
+
+                <!-- 3 -->
+                <input value="3" name="rating" type="radio" id="rating-3" />
+                <label title="3 stars" for="rating-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                        <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
+                    </svg>
+                </label>
+
+                <!-- 2 -->
+                <input value="2" name="rating" type="radio" id="rating-2" />
+                <label title="2 stars" for="rating-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                        <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
+                    </svg>
+                </label>
+
+                <!-- 1 -->
+                <input value="1" name="rating" type="radio" id="rating-1" />
+                <label title="1 stars" for="rating-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                        <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
+                    </svg>
+                </label>
+            </div>
+
+            <!-- Success Message (Hidden by default) -->
+            <div id="thank-you-msg" class="hidden text-center text-emerald-600 dark:text-emerald-400 font-bold text-sm animate-pulse">
+                رای شما با موفقیت ثبت شد. متشکریم!
+            </div>
+
+            <div class="w-full h-px bg-zinc-200 dark:bg-zinc-800 my-2"></div>
+
+            <!-- Chart Section -->
+            <div class="flex flex-col gap-3 w-full" id="stats-chart">
+                <!-- Rows will be injected via JS for dynamic animation -->
+            </div>
+            
+            <div class="text-center mt-1">
+                <span class="text-xs text-zinc-400 dark:text-zinc-500 font-medium bg-zinc-100 dark:bg-zinc-800/50 px-2 py-1 rounded-md">مجموع آراء: <span id="total-votes" class="font-bold text-zinc-600 dark:text-zinc-300">۱,۲۴۵</span></span>
+            </div>
+
+        </div>
     </main>
 
     <footer class="w-full py-6 mt-auto border-t glass-base bg-white/40 dark:bg-zinc-950/40 border-zinc-200/50 dark:border-zinc-800/50 flex flex-col items-center justify-center gap-2 transition-colors duration-300">
@@ -156,8 +352,10 @@
     </footer>
 
     <script>
+        // Initialize Lucide Icons
         lucide.createIcons();
 
+        // Theme Toggle
         function toggleTheme() {
             const htmlElement = document.documentElement;
             const themeBtn = document.getElementById('theme-btn');
@@ -169,6 +367,109 @@
             
             lucide.createIcons();
         }
+
+        // ----------------------------------------------------
+        // Rating and Chart Logic
+        // ----------------------------------------------------
+        
+        // Mock data for initial chart (Votes per star: 5 to 1)
+        let chartData = [
+            { star: 5, votes: 850, color: 'bg-amber-500' },
+            { star: 4, votes: 200, color: 'bg-amber-400' },
+            { star: 3, votes: 120, color: 'bg-yellow-400' },
+            { star: 2, votes: 45, color: 'bg-orange-400' },
+            { star: 1, votes: 30, color: 'bg-red-400' }
+        ];
+
+        // Convert English numbers to Persian
+        function toPersianNum(num) {
+            const persianDigits = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+            return num.toString().replace(/\d/g, x => persianDigits[x]);
+        }
+
+        // Format number with commas (Persian)
+        function formatNumber(num) {
+            return toPersianNum(num.toLocaleString('en-US'));
+        }
+
+        function renderChart(animate = false) {
+            const container = document.getElementById('stats-chart');
+            const totalVotesEl = document.getElementById('total-votes');
+            
+            const totalVotes = chartData.reduce((acc, curr) => acc + curr.votes, 0);
+            totalVotesEl.innerText = formatNumber(totalVotes);
+            
+            container.innerHTML = '';
+
+            chartData.forEach((item, index) => {
+                const percentage = totalVotes === 0 ? 0 : Math.round((item.votes / totalVotes) * 100);
+                
+                // Determine initial width for animation
+                const displayWidth = animate ? '0%' : `${percentage}%`;
+
+                const rowHtml = `
+                    <div class="flex items-center gap-3 text-sm">
+                        <div class="w-[50px] text-zinc-600 dark:text-zinc-400 font-medium flex items-center gap-1 justify-end">
+                            ${toPersianNum(item.star)} <i data-lucide="star" class="w-3.5 h-3.5 fill-current opacity-70"></i>
+                        </div>
+                        <div class="flex-1 h-2.5 bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden shadow-inner">
+                            <div class="h-full ${item.color} rounded-full progress-bar-fill shadow-[0_0_10px_rgba(251,191,36,0.3)]" style="width: ${displayWidth}" id="bar-${item.star}"></div>
+                        </div>
+                        <div class="w-10 text-left text-zinc-700 dark:text-zinc-300 font-bold text-xs" id="perc-${item.star}">
+                            ${toPersianNum(percentage)}٪
+                        </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', rowHtml);
+            });
+
+            lucide.createIcons();
+
+            // Trigger animation after a slight delay
+            if(animate) {
+                setTimeout(() => {
+                    chartData.forEach(item => {
+                        const percentage = totalVotes === 0 ? 0 : Math.round((item.votes / totalVotes) * 100);
+                        const bar = document.getElementById(`bar-${item.star}`);
+                        if(bar) bar.style.width = `${percentage}%`;
+                    });
+                }, 100);
+            }
+        }
+
+        // Initial render
+        renderChart(true);
+
+        // Handle user vote
+        let hasVoted = false;
+        const radioInputs = document.querySelectorAll('input[name="rating"]');
+        const thankYouMsg = document.getElementById('thank-you-msg');
+
+        radioInputs.forEach(input => {
+            input.addEventListener('change', (e) => {
+                if(hasVoted) return; // Prevent multiple votes for demo
+                
+                const selectedStar = parseInt(e.target.value);
+                
+                // Update mock data
+                const dataIndex = chartData.findIndex(d => d.star === selectedStar);
+                if(dataIndex > -1) {
+                    chartData[dataIndex].votes += 1;
+                }
+                
+                // Show success message
+                thankYouMsg.classList.remove('hidden');
+                
+                // Re-render chart to show new stats and trigger animation
+                renderChart(true);
+                
+                hasVoted = true;
+                
+                // Optional: Disable inputs after voting
+                // radioInputs.forEach(i => i.disabled = true);
+            });
+        });
+
     </script>
 </body>
 </html>
