@@ -47,7 +47,6 @@
             display: flex;
             justify-content: center;
             gap: 10px;
-            /* جهت را برعکس میکنیم تا منطق CSS همپوشانی ستاره ها درست کار کند */
             flex-direction: row-reverse;
         }
 
@@ -117,7 +116,6 @@
             animation: pulse 0.6s infinite alternate;
         }
 
-        /* Star glow and animation on hover */
         .radio > label:hover > svg,
         .radio > label:hover ~ label > svg {
             fill: #ff9e0b;
@@ -136,7 +134,7 @@
 
         .radio > input:checked + label ~ label > svg,
         .radio > input:checked + label > svg {
-            fill: #ff9e0b; /* Highlight the stars */
+            fill: #ff9e0b;
         }
 
         @keyframes pulse {
@@ -155,9 +153,25 @@
             100% { filter: drop-shadow(0 0 20px rgba(255, 158, 11, 1)); }
         }
         
-        /* Progress bar animation */
         .progress-bar-fill {
             transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Skeleton Loading styles */
+        .skeleton {
+            background: #e4e4e7;
+            background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+            background-size: 200% 100%;
+            animation: 1.5s shine linear infinite;
+        }
+        .dark .skeleton {
+            background: #27272a;
+            background: linear-gradient(110deg, #27272a 8%, #3f3f46 18%, #27272a 33%);
+            background-size: 200% 100%;
+            animation: 1.5s shine linear infinite;
+        }
+        @keyframes shine {
+            to { background-position-x: -200%; }
         }
     </style>
 </head>
@@ -281,63 +295,39 @@
                 <p class="text-sm text-zinc-500 dark:text-zinc-400">به کیفیت پشتیبانی و پاسخگویی ما امتیاز دهید.</p>
             </div>
 
-            <!-- Star Rating Input (HTML structured carefully for CSS logic) -->
             <div class="radio dir-ltr" dir="ltr" id="rating-container">
-                <!-- 5 -->
                 <input value="5" name="rating" type="radio" id="rating-5" />
-                <label title="5 star" for="rating-5">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                        <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
-                    </svg>
-                </label>
+                <label title="5 star" for="rating-5"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path></svg></label>
 
-                <!-- 4 -->
                 <input value="4" name="rating" type="radio" id="rating-4" />
-                <label title="4 stars" for="rating-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                        <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
-                    </svg>
-                </label>
+                <label title="4 stars" for="rating-4"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path></svg></label>
 
-                <!-- 3 -->
                 <input value="3" name="rating" type="radio" id="rating-3" />
-                <label title="3 stars" for="rating-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                        <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
-                    </svg>
-                </label>
+                <label title="3 stars" for="rating-3"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path></svg></label>
 
-                <!-- 2 -->
                 <input value="2" name="rating" type="radio" id="rating-2" />
-                <label title="2 stars" for="rating-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                        <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
-                    </svg>
-                </label>
+                <label title="2 stars" for="rating-2"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path></svg></label>
 
-                <!-- 1 -->
                 <input value="1" name="rating" type="radio" id="rating-1" />
-                <label title="1 stars" for="rating-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                        <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
-                    </svg>
-                </label>
+                <label title="1 stars" for="rating-1"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path></svg></label>
             </div>
 
-            <!-- Success Message (Hidden by default) -->
             <div id="thank-you-msg" class="hidden text-center text-emerald-600 dark:text-emerald-400 font-bold text-sm animate-pulse">
-                رای شما با موفقیت ثبت شد. متشکریم!
+                رای شما با موفقیت ثبت شد! آمار در حال بروزرسانی...
             </div>
 
             <div class="w-full h-px bg-zinc-200 dark:bg-zinc-800 my-2"></div>
 
-            <!-- Chart Section -->
             <div class="flex flex-col gap-3 w-full" id="stats-chart">
-                <!-- Rows will be injected via JS for dynamic animation -->
+                <div class="w-full h-4 rounded-full skeleton"></div>
+                <div class="w-full h-4 rounded-full skeleton"></div>
+                <div class="w-full h-4 rounded-full skeleton"></div>
+                <div class="w-full h-4 rounded-full skeleton"></div>
+                <div class="w-full h-4 rounded-full skeleton"></div>
             </div>
             
             <div class="text-center mt-1">
-                <span class="text-xs text-zinc-400 dark:text-zinc-500 font-medium bg-zinc-100 dark:bg-zinc-800/50 px-2 py-1 rounded-md">مجموع آراء: <span id="total-votes" class="font-bold text-zinc-600 dark:text-zinc-300">۱,۲۴۵</span></span>
+                <span class="text-xs text-zinc-400 dark:text-zinc-500 font-medium bg-zinc-100 dark:bg-zinc-800/50 px-2 py-1 rounded-md">مجموع آراء: <span id="total-votes" class="font-bold text-zinc-600 dark:text-zinc-300">...</span></span>
             </div>
 
         </div>
@@ -352,42 +342,35 @@
     </footer>
 
     <script>
-        // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Theme Toggle
         function toggleTheme() {
             const htmlElement = document.documentElement;
             const themeBtn = document.getElementById('theme-btn');
-            
             htmlElement.classList.toggle('dark');
             const isDark = htmlElement.classList.contains('dark');
-            
             themeBtn.innerHTML = `<i data-lucide="${isDark ? 'sun' : 'moon'}" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-600 dark:text-zinc-300"></i>`;
-            
             lucide.createIcons();
         }
 
-        // ----------------------------------------------------
-        // Rating and Chart Logic
-        // ----------------------------------------------------
+        // =========================================================================
+        // مهم: آدرسی که از کلود فلر ورکر کپی کردید را جایگزین آدرس زیر کنید!
+        // =========================================================================
+        const API_URL = 'https://YOUR_WORKER_URL_HERE.workers.dev/api/ratings';
         
-        // Mock data for initial chart (Votes per star: 5 to 1)
         let chartData = [
-            { star: 5, votes: 850, color: 'bg-amber-500' },
-            { star: 4, votes: 200, color: 'bg-amber-400' },
-            { star: 3, votes: 120, color: 'bg-yellow-400' },
-            { star: 2, votes: 45, color: 'bg-orange-400' },
-            { star: 1, votes: 30, color: 'bg-red-400' }
+            { star: 5, votes: 0, color: 'bg-amber-500' },
+            { star: 4, votes: 0, color: 'bg-amber-400' },
+            { star: 3, votes: 0, color: 'bg-yellow-400' },
+            { star: 2, votes: 0, color: 'bg-orange-400' },
+            { star: 1, votes: 0, color: 'bg-red-400' }
         ];
 
-        // Convert English numbers to Persian
         function toPersianNum(num) {
             const persianDigits = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
             return num.toString().replace(/\d/g, x => persianDigits[x]);
         }
 
-        // Format number with commas (Persian)
         function formatNumber(num) {
             return toPersianNum(num.toLocaleString('en-US'));
         }
@@ -398,13 +381,10 @@
             
             const totalVotes = chartData.reduce((acc, curr) => acc + curr.votes, 0);
             totalVotesEl.innerText = formatNumber(totalVotes);
-            
             container.innerHTML = '';
 
-            chartData.forEach((item, index) => {
+            chartData.forEach(item => {
                 const percentage = totalVotes === 0 ? 0 : Math.round((item.votes / totalVotes) * 100);
-                
-                // Determine initial width for animation
                 const displayWidth = animate ? '0%' : `${percentage}%`;
 
                 const rowHtml = `
@@ -415,7 +395,7 @@
                         <div class="flex-1 h-2.5 bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden shadow-inner">
                             <div class="h-full ${item.color} rounded-full progress-bar-fill shadow-[0_0_10px_rgba(251,191,36,0.3)]" style="width: ${displayWidth}" id="bar-${item.star}"></div>
                         </div>
-                        <div class="w-10 text-left text-zinc-700 dark:text-zinc-300 font-bold text-xs" id="perc-${item.star}">
+                        <div class="w-10 text-left text-zinc-700 dark:text-zinc-300 font-bold text-xs">
                             ${toPersianNum(percentage)}٪
                         </div>
                     </div>
@@ -425,7 +405,6 @@
 
             lucide.createIcons();
 
-            // Trigger animation after a slight delay
             if(animate) {
                 setTimeout(() => {
                     chartData.forEach(item => {
@@ -437,39 +416,81 @@
             }
         }
 
-        // Initial render
-        renderChart(true);
+        // Fetch Data from Server
+        if (API_URL.includes('YOUR_WORKER_URL_HERE')) {
+            console.warn("آدرس کلودفلر هنوز جایگزین نشده است. در حال نمایش داده‌های تستی...");
+            renderChart(true);
+        } else {
+            fetch(API_URL)
+                .then(res => res.json())
+                .then(data => {
+                    chartData.forEach(item => {
+                        item.votes = data[item.star.toString()] || 0;
+                    });
+                    renderChart(true);
+                })
+                .catch(err => {
+                    console.error("Connection error. Ensure the API URL is correct.", err);
+                    renderChart(true); 
+                });
+        }
 
-        // Handle user vote
+        // Handle Voting
         let hasVoted = false;
         const radioInputs = document.querySelectorAll('input[name="rating"]');
         const thankYouMsg = document.getElementById('thank-you-msg');
 
         radioInputs.forEach(input => {
             input.addEventListener('change', (e) => {
-                if(hasVoted) return; // Prevent multiple votes for demo
-                
+                if(hasVoted) return; 
+                hasVoted = true;
                 const selectedStar = parseInt(e.target.value);
                 
-                // Update mock data
+                // Show instant local feedback
                 const dataIndex = chartData.findIndex(d => d.star === selectedStar);
-                if(dataIndex > -1) {
-                    chartData[dataIndex].votes += 1;
-                }
+                if(dataIndex > -1) chartData[dataIndex].votes += 1;
                 
-                // Show success message
                 thankYouMsg.classList.remove('hidden');
-                
-                // Re-render chart to show new stats and trigger animation
                 renderChart(true);
                 
-                hasVoted = true;
-                
-                // Optional: Disable inputs after voting
-                // radioInputs.forEach(i => i.disabled = true);
+                // Disable inputs
+                radioInputs.forEach(i => i.disabled = true);
+
+                // Send to Server
+                if (API_URL.includes('YOUR_WORKER_URL_HERE')) {
+                    // حالت شبیه‌سازی (تستی) وقتی آدرس واقعی ثبت نشده است
+                    setTimeout(() => {
+                        thankYouMsg.innerText = "رای شما (حالت تستی) ثبت شد! برای ثبت واقعی، آدرس API را تغییر دهید.";
+                        thankYouMsg.classList.remove('animate-pulse');
+                    }, 500);
+                } else {
+                    // ارسال درخواست به سرور کلودفلر شما
+                    fetch(API_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ star: selectedStar })
+                    })
+                    .then(res => res.json())
+                    .then(resData => {
+                        if(resData.success) {
+                            chartData.forEach(item => {
+                                item.votes = resData.data[item.star.toString()] || 0;
+                            });
+                            renderChart(false);
+                            thankYouMsg.innerText = "رای شما ثبت شد و آمار با موفقیت بروزرسانی گردید.";
+                            thankYouMsg.classList.remove('animate-pulse');
+                        }
+                    })
+                    .catch(err => {
+                        console.error("خطا در ارسال رای:", err);
+                        thankYouMsg.innerText = "خطا در ارتباط با سرور. لطفا مجددا تلاش کنید.";
+                        thankYouMsg.classList.remove('animate-pulse');
+                        thankYouMsg.classList.replace('text-emerald-600', 'text-red-500');
+                        thankYouMsg.classList.replace('dark:text-emerald-400', 'dark:text-red-400');
+                    });
+                }
             });
         });
-
     </script>
 </body>
 </html>
