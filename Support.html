@@ -353,10 +353,7 @@
             lucide.createIcons();
         }
 
-        // =========================================================================
-        // مهم: آدرسی که از کلود فلر ورکر کپی کردید را جایگزین آدرس زیر کنید!
-        // =========================================================================
-        const API_URL = 'https://YOUR_WORKER_URL_HERE.workers.dev/api/ratings';
+        const API_URL = 'https://jolly-dust-9ac6sponsoracb.zeus-6gwt0u.workers.dev/api/ratings';
         
         let chartData = [
             { star: 5, votes: 0, color: 'bg-amber-500' },
@@ -458,13 +455,10 @@
 
                 // Send to Server
                 if (API_URL.includes('YOUR_WORKER_URL_HERE')) {
-                    // حالت شبیه‌سازی (تستی) وقتی آدرس واقعی ثبت نشده است
-                    setTimeout(() => {
                         thankYouMsg.innerText = "رای شما (حالت تستی) ثبت شد! برای ثبت واقعی، آدرس API را تغییر دهید.";
                         thankYouMsg.classList.remove('animate-pulse');
                     }, 500);
                 } else {
-                    // ارسال درخواست به سرور کلودفلر شما
                     fetch(API_URL, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
