@@ -441,9 +441,28 @@ const API_URL = 'https://silent-credit-0bc4.supportsponsoracb.workers.dev/api/ra
                 hasVoted = true;
                 const selectedStar = parseInt(e.target.value);
                 
-                // Show instant local feedback
+ // Show instant local feedback
                 const dataIndex = chartData.findIndex(d => d.star === selectedStar);
                 if(dataIndex > -1) chartData[dataIndex].votes += 1;
+
+                // Send request to Worker
+                try {
+                    const response = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ rating: String(selectedStar) })
+                    });
+
+                    const result = await response.json();
+                    if (response.ok && result.success) {
+                        // Refresh data from server to keep UI in sync
+                        fetchRatings();
+                    } else {
+                        console.error('Server response error:', result);
+                    }
+                } catch (err) {
+                    console.error('Network or server error:', err);
+                }
                 
                 thankYouMsg.classList.remove('hidden');
                 renderChart(true);
