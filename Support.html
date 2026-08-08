@@ -86,9 +86,7 @@
             border-radius: 50%;
             opacity: 0;
             transform: scale(0);
-            transition:
-                transform 0.4s ease,
-                opacity 0.4s ease;
+            transition: transform 0.4s ease, opacity 0.4s ease;
         }
 
         .radio > label::before {
@@ -251,7 +249,7 @@
                 </div>
                 <a href="https://t.me/Sponsoracb_supportbot" target="_blank" class="flex-shrink-0 w-[110px] sm:w-[130px] justify-center px-2 py-2.5 rounded-[12px] text-[11px] sm:text-xs font-bold flex items-center gap-1.5 transition-all active:scale-95 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-900 dark:text-white border border-zinc-200/50 dark:border-zinc-700/50">شروع با ربات</a>
             </div>
-            
+
             <div class="w-full rounded-[20px] border glass-base p-3 flex items-center justify-between gap-2 transition-colors duration-300 bg-white/70 dark:bg-zinc-900/60 border-zinc-200/80 dark:border-zinc-800 hover:bg-white dark:hover:bg-zinc-800/80">
                 <div class="flex items-center gap-3 overflow-hidden">
                     <div class="w-10 h-10 rounded-[14px] flex items-center justify-center flex-shrink-0 bg-zinc-100 dark:bg-zinc-800/50 text-zinc-600 dark:text-zinc-300">
@@ -331,6 +329,40 @@
         </div>
     </main>
 
+    <div id="feedback-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+        <div class="w-full max-w-md bg-white dark:bg-zinc-900 rounded-3xl p-6 border border-zinc-200 dark:border-zinc-800 shadow-2xl transform scale-95 transition-transform duration-300 flex flex-col gap-5">
+            <div class="flex justify-between items-center border-b border-zinc-100 dark:border-zinc-800 pb-3">
+                <h3 class="font-extrabold text-base text-zinc-900 dark:text-white flex items-center gap-2">
+                    <span id="modal-badge" class="px-2.5 py-1 rounded-lg text-xs font-bold"></span>
+                    <span id="modal-title">ثبت نظر</span>
+                </h3>
+                <button onclick="closeModal()" class="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <div class="flex flex-col gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-zinc-600 dark:text-zinc-400 mb-1.5">نام شما (اختیاری):</label>
+                    <input type="text" id="user-name-input" placeholder="مثلاً: علی رضایی" class="w-full px-3.5 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800/50 text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/50">
+                </div>
+
+                <div>
+                    <label id="comment-label" class="block text-xs font-bold text-zinc-600 dark:text-zinc-400 mb-1.5"></label>
+                    <textarea id="user-comment-input" rows="4" class="w-full px-3.5 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800/50 text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/50 resize-none"></textarea>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-end gap-2 pt-2">
+                <button onclick="closeModal()" class="px-4 py-2.5 rounded-xl text-xs font-bold text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800">انصراف</button>
+                <button id="submit-feedback-btn" onclick="submitFinalVote()" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-md active:scale-95 transition-all flex items-center gap-1.5">
+                    <span>ثبت و ارسال</span>
+                    <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <footer class="w-full py-6 mt-auto border-t glass-base bg-white/40 dark:bg-zinc-950/40 border-zinc-200/50 dark:border-zinc-800/50 flex flex-col items-center justify-center gap-2 transition-colors duration-300">
         <p class="text-xs text-zinc-500 dark:text-zinc-400">تمامی حقوق برای مجموعه محفوظ است</p>
         <a href="https://AMT-IR.github.io" target="_blank" class="flex items-center gap-1.5 text-sm font-bold transition-colors text-zinc-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-500">
@@ -354,12 +386,14 @@
         const API_URL = 'https://silent-credit-0bc4.supportsponsoracb.workers.dev/api/ratings';
 
         let chartData = [
-            { star: 5, votes: 0, color: 'bg-amber-500' },
-            { star: 4, votes: 0, color: 'bg-amber-400' },
-            { star: 3, votes: 0, color: 'bg-yellow-400' },
-            { star: 2, votes: 0, color: 'bg-orange-400' },
-            { star: 1, votes: 0, color: 'bg-red-400' }
+            { star: 5, votes: 235, color: 'bg-amber-500' },
+            { star: 4, votes: 70, color: 'bg-amber-400' },
+            { star: 3, votes: 30, color: 'bg-yellow-400' },
+            { star: 2, votes: 12, color: 'bg-orange-400' },
+            { star: 1, votes: 8, color: 'bg-red-400' }
         ];
+
+        let pendingStar = null;
 
         function toPersianNum(num) {
             const persianDigits = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
@@ -416,7 +450,7 @@
                 .then(res => res.json())
                 .then(data => {
                     chartData.forEach(item => {
-                        item.votes = data[item.star.toString()] || 0;
+                        item.votes = data[item.star.toString()] !== undefined ? data[item.star.toString()] : item.votes;
                     });
                     renderChart(true);
                 })
@@ -430,46 +464,102 @@
         let hasVoted = false;
         const radioInputs = document.querySelectorAll('input[name="rating"]');
         const thankYouMsg = document.getElementById('thank-you-msg');
+        const modal = document.getElementById('feedback-modal');
 
         radioInputs.forEach(input => {
-            input.addEventListener('change', async (e) => {
+            input.addEventListener('change', (e) => {
                 if(hasVoted) return; 
-                hasVoted = true;
-                const selectedStar = parseInt(e.target.value);
-                
-                const dataIndex = chartData.findIndex(d => d.star === selectedStar);
-                if(dataIndex > -1) chartData[dataIndex].votes += 1;
-                
-                thankYouMsg.classList.remove('hidden');
-                renderChart(true);
-                radioInputs.forEach(i => i.disabled = true);
-
-                try {
-                    const response = await fetch(API_URL, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ rating: String(selectedStar) })
-                    });
-
-                    const resData = await response.json();
-                    if(response.ok && resData.success) {
-                        chartData.forEach(item => {
-                            item.votes = resData.data[item.star.toString()] || 0;
-                        });
-                        renderChart(false);
-                        thankYouMsg.innerText = "رای شما ثبت شد و آمار با موفقیت بروزرسانی گردید.";
-                        thankYouMsg.classList.remove('animate-pulse');
-                    } else {
-                        throw new Error('Server error');
-                    }
-                } catch (err) {
-                    thankYouMsg.innerText = "خطا در ارتباط با سرور. لطفا مجددا تلاش کنید.";
-                    thankYouMsg.classList.remove('animate-pulse');
-                    thankYouMsg.classList.replace('text-emerald-600', 'text-red-500');
-                    thankYouMsg.classList.replace('dark:text-emerald-400', 'dark:text-red-400');
-                }
+                pendingStar = parseInt(e.target.value);
+                openModal(pendingStar);
             });
         });
+
+        function openModal(star) {
+            const badge = document.getElementById('modal-badge');
+            const commentLabel = document.getElementById('comment-label');
+            const commentInput = document.getElementById('user-comment-input');
+            
+            if (star <= 3) {
+                badge.className = "px-2.5 py-1 rounded-lg text-xs font-bold bg-red-100 text-red-600 dark:bg-red-950/50 dark:text-red-400";
+                badge.innerText = `${star} ستاره (نارضایتی)`;
+                commentLabel.innerText = "دلیل نارضایتی و پیشنهاد شما جهت بهبود کیفیت:";
+                commentInput.placeholder = "لطفاً علت عدم رضایت خود را شرح دهید تا سریعاً رسیدگی شود...";
+            } else {
+                badge.className = "px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-100 text-emerald-600 dark:bg-emerald-950/50 dark:text-emerald-400";
+                badge.innerText = `${star} ستاره (رضایت‌بخش)`;
+                commentLabel.innerText = "نظر یا پیشنهاد شما (اختیاری):";
+                commentInput.placeholder = "دیدگاه یا پیشنهادی اگر دارید بنویسید...";
+            }
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modal.firstElementChild.classList.remove('scale-95');
+                modal.firstElementChild.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modal.firstElementChild.classList.remove('scale-100');
+            modal.firstElementChild.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+            
+            if (!hasVoted) {
+                radioInputs.forEach(i => i.checked = false);
+            }
+        }
+
+        async function submitFinalVote() {
+            if(!pendingStar || hasVoted) return;
+            hasVoted = true;
+
+            const nameVal = document.getElementById('user-name-input').value;
+            const commentVal = document.getElementById('user-comment-input').value;
+            const btn = document.getElementById('submit-feedback-btn');
+
+            btn.disabled = true;
+            btn.innerHTML = `<span>در حال ارسال...</span>`;
+
+            const dataIndex = chartData.findIndex(d => d.star === pendingStar);
+            if(dataIndex > -1) chartData[dataIndex].votes += 1;
+            
+            closeModal();
+            thankYouMsg.classList.remove('hidden');
+            renderChart(true);
+            radioInputs.forEach(i => i.disabled = true);
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        rating: String(pendingStar),
+                        name: nameVal,
+                        comment: commentVal
+                    })
+                });
+
+                const resData = await response.json();
+                if(response.ok && resData.success) {
+                    chartData.forEach(item => {
+                        item.votes = resData.data[item.star.toString()] || item.votes;
+                    });
+                    renderChart(false);
+                    thankYouMsg.innerText = "رای و نظر شما با موفقیت ثبت گردید. با تشکر!";
+                    thankYouMsg.classList.remove('animate-pulse');
+                } else {
+                    throw new Error('Server response error');
+                }
+            } catch (err) {
+                thankYouMsg.innerText = "خطا در ارتباط با سرور. لطفاً مجدداً تلاش کنید.";
+                thankYouMsg.classList.remove('animate-pulse');
+                thankYouMsg.classList.replace('text-emerald-600', 'text-red-500');
+                thankYouMsg.classList.replace('dark:text-emerald-400', 'dark:text-red-400');
+            }
+        }
     </script>
 </body>
 </html>
