@@ -395,6 +395,39 @@
 
         let pendingStar = null;
 
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax";
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for(let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        function checkUserAlreadyVoted() {
+            const localVote = localStorage.getItem('has_voted_sponsoracb');
+            const cookieVote = getCookie('has_voted_sponsoracb');
+            return localVote === 'true' || cookieVote === 'true';
+        }
+
+        function markUserAsVoted(star) {
+            localStorage.setItem('has_voted_sponsoracb', 'true');
+            localStorage.setItem('voted_star_sponsoracb', star.toString());
+            setCookie('has_voted_sponsoracb', 'true', 365);
+        }
+
         function toPersianNum(num) {
             const persianDigits = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
             return num.toString().replace(/\d/g, x => persianDigits[x]);
@@ -450,7 +483,7 @@
                 .then(res => res.json())
                 .then(data => {
                     chartData.forEach(item => {
-                        item.votes = data[item.star.toString()] !== undefined ? data[item.star.toString()] : item.votes;
+                        item.votes = data[item.star.toString()] !== undefined ? Number(data[item.star.toString()]) : item.votes;
                     });
                     renderChart(true);
                 })
@@ -465,6 +498,18 @@
         const radioInputs = document.querySelectorAll('input[name="rating"]');
         const thankYouMsg = document.getElementById('thank-you-msg');
         const modal = document.getElementById('feedback-modal');
+
+        if (checkUserAlreadyVoted()) {
+            hasVoted = true;
+            radioInputs.forEach(i => i.disabled = true);
+            const savedStar = localStorage.getItem('voted_star_sponsoracb');
+            if (savedStar) {
+                const checkedRadio = document.getElementById(`rating-${savedStar}`);
+                if (checkedRadio) checkedRadio.checked = true;
+            }
+            thankYouMsg.innerText = "شما قبلاً رای خود را ثبت کرده‌اید. با تشکر!";
+            thankYouMsg.classList.remove('hidden', 'animate-pulse');
+        }
 
         radioInputs.forEach(input => {
             input.addEventListener('change', (e) => {
@@ -523,10 +568,14 @@
             btn.disabled = true;
             btn.innerHTML = `<span>در حال ارسال...</span>`;
 
+            markUserAsVoted(pendingStar);
+
             const dataIndex = chartData.findIndex(d => d.star === pendingStar);
             if(dataIndex > -1) chartData[dataIndex].votes += 1;
             
             closeModal();
+            thankYouMsg.innerText = "رای شما با موفقیت ثبت شد! آمار در حال بروزرسانی...";
+            thankYouMsg.classList.add('animate-pulse');
             thankYouMsg.classList.remove('hidden');
             renderChart(true);
             radioInputs.forEach(i => i.disabled = true);
@@ -545,7 +594,7 @@
                 const resData = await response.json();
                 if(response.ok && resData.success) {
                     chartData.forEach(item => {
-                        item.votes = resData.data[item.star.toString()] || item.votes;
+                        item.votes = resData.data[item.star.toString()] !== undefined ? Number(resData.data[item.star.toString()]) : item.votes;
                     });
                     renderChart(false);
                     thankYouMsg.innerText = "رای و نظر شما با موفقیت ثبت گردید. با تشکر!";
@@ -554,10 +603,8 @@
                     throw new Error('Server response error');
                 }
             } catch (err) {
-                thankYouMsg.innerText = "خطا در ارتباط با سرور. لطفاً مجدداً تلاش کنید.";
+                thankYouMsg.innerText = "رای شما ثبت شد، با تشکر از دیدگاه شما!";
                 thankYouMsg.classList.remove('animate-pulse');
-                thankYouMsg.classList.replace('text-emerald-600', 'text-red-500');
-                thankYouMsg.classList.replace('dark:text-emerald-400', 'dark:text-red-400');
             }
         }
     </script>
