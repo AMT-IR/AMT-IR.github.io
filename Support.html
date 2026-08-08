@@ -42,7 +42,6 @@
             -webkit-backdrop-filter: blur(20px);
         }
 
-        /* --- Star Rating Custom Styles --- */
         .radio {
             display: flex;
             justify-content: center;
@@ -67,14 +66,14 @@
         }
 
         .radio > label > svg {
-            fill: #71717a; /* zinc-500 */
+            fill: #71717a;
             width: 100%;
             height: 100%;
             transition: fill 0.3s ease, filter 0.3s ease;
         }
 
         .dark .radio > label > svg {
-            fill: #52525b; /* zinc-600 */
+            fill: #52525b;
         }
 
         .radio > label::before,
@@ -157,7 +156,6 @@
             transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Skeleton Loading styles */
         .skeleton {
             background: #e4e4e7;
             background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
@@ -353,7 +351,9 @@
             lucide.createIcons();
         }
 
-const API_URL = 'https://silent-credit-0bc4.supportsponsoracb.workers.dev/api/ratings';        let chartData = [
+        const API_URL = 'https://silent-credit-0bc4.supportsponsoracb.workers.dev/api/ratings';
+
+        let chartData = [
             { star: 5, votes: 0, color: 'bg-amber-500' },
             { star: 4, votes: 0, color: 'bg-amber-400' },
             { star: 3, votes: 0, color: 'bg-yellow-400' },
@@ -411,11 +411,7 @@ const API_URL = 'https://silent-credit-0bc4.supportsponsoracb.workers.dev/api/ra
             }
         }
 
-        // Fetch Data from Server
-        if (API_URL.includes('YOUR_WORKER_URL_HERE')) {
-            console.warn("آدرس کلودفلر هنوز جایگزین نشده است. در حال نمایش داده‌های تستی...");
-            renderChart(true);
-        } else {
+        function loadRatings() {
             fetch(API_URL)
                 .then(res => res.json())
                 .then(data => {
@@ -425,27 +421,29 @@ const API_URL = 'https://silent-credit-0bc4.supportsponsoracb.workers.dev/api/ra
                     renderChart(true);
                 })
                 .catch(err => {
-                    console.error("Connection error. Ensure the API URL is correct.", err);
-                    renderChart(true); 
+                    renderChart(true);
                 });
         }
 
-        // Handle Voting
+        loadRatings();
+
         let hasVoted = false;
         const radioInputs = document.querySelectorAll('input[name="rating"]');
         const thankYouMsg = document.getElementById('thank-you-msg');
 
         radioInputs.forEach(input => {
-            input.addEventListener('change', (e) => {
+            input.addEventListener('change', async (e) => {
                 if(hasVoted) return; 
                 hasVoted = true;
                 const selectedStar = parseInt(e.target.value);
                 
- // Show instant local feedback
                 const dataIndex = chartData.findIndex(d => d.star === selectedStar);
                 if(dataIndex > -1) chartData[dataIndex].votes += 1;
+                
+                thankYouMsg.classList.remove('hidden');
+                renderChart(true);
+                radioInputs.forEach(i => i.disabled = true);
 
-                // Send request to Worker
                 try {
                     const response = await fetch(API_URL, {
                         method: 'POST',
@@ -453,55 +451,22 @@ const API_URL = 'https://silent-credit-0bc4.supportsponsoracb.workers.dev/api/ra
                         body: JSON.stringify({ rating: String(selectedStar) })
                     });
 
-                    const result = await response.json();
-                    if (response.ok && result.success) {
-                        // Refresh data from server to keep UI in sync
-                        fetchRatings();
+                    const resData = await response.json();
+                    if(response.ok && resData.success) {
+                        chartData.forEach(item => {
+                            item.votes = resData.data[item.star.toString()] || 0;
+                        });
+                        renderChart(false);
+                        thankYouMsg.innerText = "رای شما ثبت شد و آمار با موفقیت بروزرسانی گردید.";
+                        thankYouMsg.classList.remove('animate-pulse');
                     } else {
-                        console.error('Server response error:', result);
+                        throw new Error('Server error');
                     }
                 } catch (err) {
-                    console.error('Network or server error:', err);
-                }
-                
-                thankYouMsg.classList.remove('hidden');
-                renderChart(true);
-                
-                // Disable inputs
-                radioInputs.forEach(i => i.disabled = true);
-
-                // Send to Server
-                if (API_URL.includes('YOUR_WORKER_URL_HERE')) {
-                    // حالت شبیه‌سازی (تستی) وقتی آدرس واقعی ثبت نشده است
-                    setTimeout(() => {
-                        thankYouMsg.innerText = "رای شما (حالت تستی) ثبت شد! برای ثبت واقعی، آدرس API را تغییر دهید.";
-                        thankYouMsg.classList.remove('animate-pulse');
-                    }, 500);
-                } else {
-                    // ارسال درخواست به سرور کلودفلر شما
-                    fetch(API_URL, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ star: selectedStar })
-                    })
-                    .then(res => res.json())
-                    .then(resData => {
-                        if(resData.success) {
-                            chartData.forEach(item => {
-                                item.votes = resData.data[item.star.toString()] || 0;
-                            });
-                            renderChart(false);
-                            thankYouMsg.innerText = "رای شما ثبت شد و آمار با موفقیت بروزرسانی گردید.";
-                            thankYouMsg.classList.remove('animate-pulse');
-                        }
-                    })
-                    .catch(err => {
-                        console.error("خطا در ارسال رای:", err);
-                        thankYouMsg.innerText = "خطا در ارتباط با سرور. لطفا مجددا تلاش کنید.";
-                        thankYouMsg.classList.remove('animate-pulse');
-                        thankYouMsg.classList.replace('text-emerald-600', 'text-red-500');
-                        thankYouMsg.classList.replace('dark:text-emerald-400', 'dark:text-red-400');
-                    });
+                    thankYouMsg.innerText = "خطا در ارتباط با سرور. لطفا مجددا تلاش کنید.";
+                    thankYouMsg.classList.remove('animate-pulse');
+                    thankYouMsg.classList.replace('text-emerald-600', 'text-red-500');
+                    thankYouMsg.classList.replace('dark:text-emerald-400', 'dark:text-red-400');
                 }
             });
         });
