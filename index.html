@@ -1,35 +1,132 @@
 <!DOCTYPE html>
+<!-- Chosen Palette: Zinc & Blue Minimalist Dark/Light -->
+<!-- Application Structure Plan: Single-page portal hub with clear categories, interactive modal notifications, PWA support, drawer menu, and theme toggling for SPONSORACB services. -->
+<!-- Visualization & Content Choices: Styled HTML cards with Lucide icons, status badges, CSS animations, and interactive JS modals. NO SVG or Mermaid JS used. -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 <html lang="fa" dir="rtl" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SPONSORACB | PORTAL</title>
-    <meta name="description" content="Official portal of SPONSORACB company. Fast access to products, support, news, and smart services.">
-    <meta name="keywords" content="sponsoracb, official portal, telegram bot, online services, support, company">
+    <title>پورتال رسمی SPONSORACB | خدمات، پشتیبانی و محصولات</title>
+    <meta name="description" content="پورتال رسمی مجموعه SPONSORACB. دسترسی سریع و یکپارچه به فروشگاه، پشتیبانی آنلاین، ربات تلگرام، قوانین، تبلیغات و خدمات هوشمند.">
+    <meta name="keywords" content="اسپانسر ای‌سی‌بی, SPONSORACB, پورتال sponsoracb, ربات تلگرام اسپانسر, پشتیبانی sponsoracb, خرید اشتراک, خدمات آنلاین">
     <link rel="canonical" href="https://sponsoracb.ir/">
+    
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="author" content="SPONSORACB / AMT-IR">
+    <meta name="publisher" content="SPONSORACB">
+    <meta name="copyright" content="SPONSORACB">
+    <meta name="revisit-after" content="2 days">
+    <meta name="language" content="Persian">
     
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sponsoracb.ir/">
-    <meta property="og:title" content="SPONSORACB | PORTAL">
-    <meta property="og:description" content="Official portal of SPONSORACB company. Fast access to products, support, and smart services.">
+    <meta property="og:title" content="پورتال رسمی SPONSORACB | خدمات، پشتیبانی و محصولات">
+    <meta property="og:description" content="دسترسی سریع و یکپارچه به فروشگاه، پشتیبانی، بات تلگرام و خدمات مجازی SPONSORACB.">
     <meta property="og:image" content="https://sponsoracb.ir/20474.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="SPONSORACB Official Logo">
+    <meta property="og:locale" content="fa_IR">
+    <meta property="og:site_name" content="SPONSORACB PORTAL">
     
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="SPONSORACB | PORTAL">
-    <meta name="twitter:description" content="Official portal of SPONSORACB company. Fast access to products, support, and smart services.">
+    <meta name="twitter:site" content="@sponsoracb">
+    <meta name="twitter:creator" content="@sponsoracb">
+    <meta name="twitter:title" content="پورتال رسمی SPONSORACB">
+    <meta name="twitter:description" content="دسترسی سریع به آخرین محصولات، پشتیبانی و بات‌های رسمی SPONSORACB.">
     <meta name="twitter:image" content="https://sponsoracb.ir/20474.png">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="https://sponsoracb.ir/20474.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://sponsoracb.ir/20474.png">
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "SPONSORACB Portal",
-      "url": "https://sponsoracb.ir/",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://sponsoracb.ir/?s={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://sponsoracb.ir/#organization",
+          "name": "SPONSORACB",
+          "alternateName": "اسپانسر ای‌سی‌بی",
+          "url": "https://sponsoracb.ir/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://sponsoracb.ir/20474.png",
+            "caption": "SPONSORACB Logo"
+          },
+          "sameAs": [
+            "https://t.me/sponsoracb",
+            "https://www.aparat.com/shorts/user/Sponsoracb/shorts"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://sponsoracb.ir/#website",
+          "url": "https://sponsoracb.ir/",
+          "name": "SPONSORACB PORTAL",
+          "description": "پورتال و مخزن رسمی مجموعه SPONSORACB",
+          "publisher": {
+            "@id": "https://sponsoracb.ir/#organization"
+          },
+          "inLanguage": "fa-IR"
+        },
+        {
+          "@type": "ItemList",
+          "name": "بخش‌های اصلی پورتال SPONSORACB",
+          "itemListElement": [
+            {
+              "@type": "SiteNavigationElement",
+              "position": 1,
+              "name": "فروشگاه",
+              "url": "https://sponsoracb.mydigify.app"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 2,
+              "name": "پشتیبانی",
+              "url": "https://AMT-IR.github.io/Support.html"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 3,
+              "name": "تبلیغات",
+              "url": "https://sponsoracb.ir/ads"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 4,
+              "name": "اشتراک‌ها",
+              "url": "https://AMT-IR.github.io/pricing.html"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 5,
+              "name": "قوانین",
+              "url": "https://sponsoracb.ir/legal"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 6,
+              "name": "درباره ما",
+              "url": "https://sponsoracb.ir/AboutUs.html"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 7,
+              "name": "وبلاگ",
+              "url": "https://Sponsoracb.ir/blog"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 8,
+              "name": "نماد اعتماد",
+              "url": "https://AMT-IR.github.io/Symbol.html"
+            }
+          ]
+        }
+      ]
     }
     </script>
 
@@ -40,6 +137,11 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="SPONSORACB">
+    
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="//unpkg.com">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -84,7 +186,6 @@
             animation: fadeInUp 0.35s ease-out forwards;
         }
 
-        /* Highly optimized card styles */
         .base-card {
             border-radius: 20px;
             background: #ffffff;
@@ -241,7 +342,7 @@
     </div>
 
     <div id="toast" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-[120] bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 px-5 py-3 rounded-2xl shadow-2xl text-[12px] font-bold opacity-0 translate-y-10 transition-all duration-300 pointer-events-none flex items-center gap-2 min-w-max">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 stroke-[2.5]"></i>
         <span id="toastMessage"></span>
     </div>
 
@@ -269,7 +370,7 @@
                     <a href="https://t.me/sponsoracb" target="_blank" onclick="closeNoticeModal()" class="w-full py-3.5 px-4 rounded-[16px] bg-red-600 hover:bg-red-500 text-white font-bold text-[13px] shadow-lg shadow-red-500/20 transition-all flex items-center justify-center gap-2">
                          عضویت در کانال اطلاع‌رسانی
                     </a>
-                    <button onclick="closeNoticeModal()" class="w-full py-3.5 px-6 rounded-[16px] bg-zinc-100 dark:bg-[#1c1c1e] hover:bg-zinc-200 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-300 font-bold text-[13px] transition-colors">متوجه شدم</button>
+                    <button onclick="closeNoticeModal()" aria-label="بستن اطلاعیه" class="w-full py-3.5 px-6 rounded-[16px] bg-zinc-100 dark:bg-[#1c1c1e] hover:bg-zinc-200 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-300 font-bold text-[13px] transition-colors">متوجه شدم</button>
                 </div>
             </div>
         </div>
@@ -290,10 +391,10 @@
                 </div>
 
                 <div class="flex items-center gap-3 mt-2">
-                    <button id="pwaInstallBtn" class="flex-1 py-3 px-4 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-lg shadow-blue-500/30 transition-all flex items-center justify-center gap-2">
+                    <button id="pwaInstallBtn" aria-label="نصب اپلیکیشن" class="flex-1 py-3 px-4 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-lg shadow-blue-500/30 transition-all flex items-center justify-center gap-2">
                         <i data-lucide="download" class="w-4 h-4 stroke-[2.5] pointer-events-none"></i> نصب اپلیکیشن
                     </button>
-                    <button onclick="closePwaModal()" class="py-3 px-6 rounded-2xl bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 font-bold text-xs transition-colors">بستن</button>
+                    <button onclick="closePwaModal()" aria-label="بستن پنجره نصب" class="py-3 px-6 rounded-2xl bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 font-bold text-xs transition-colors">بستن</button>
                 </div>
             </div>
         </div>
@@ -306,14 +407,14 @@
                     <i data-lucide="layers" class="w-4 h-4 text-zinc-500 stroke-[2.5]"></i>
                     <span class="font-bold text-[13px] text-zinc-800 dark:text-zinc-100">منوی دسترسی</span>
                 </div>
-                <button onclick="toggleSidebar()" class="w-10 h-10 rounded-xl hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors text-zinc-500 z-[70] flex items-center justify-center cursor-pointer touch-manipulation">
+                <button onclick="toggleSidebar()" aria-label="بستن منو" class="w-10 h-10 rounded-xl hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors text-zinc-500 z-[70] flex items-center justify-center cursor-pointer touch-manipulation">
                     <i data-lucide="x" class="w-5 h-5 stroke-[2.5] pointer-events-none"></i>
                 </button>
             </div>
 
             <div class="flex-1 overflow-y-auto py-4 px-3 flex flex-col gap-1.5">
                 <div class="flex flex-col gap-2 mb-3 px-1">
-                    <button id="sidebarPwaBtn" class="w-full py-2.5 rounded-[14px] bg-blue-600 text-white font-bold text-[12px] shadow-md shadow-blue-500/20 hover:bg-blue-500 transition-colors relative overflow-hidden">
+                    <button id="sidebarPwaBtn" aria-label="دانلود اپلیکیشن" class="w-full py-2.5 rounded-[14px] bg-blue-600 text-white font-bold text-[12px] shadow-md shadow-blue-500/20 hover:bg-blue-500 transition-colors relative overflow-hidden">
                         <div class="content-wrapper flex items-center justify-center gap-1.5">
                             <i data-lucide="download" class="w-3.5 h-3.5 stroke-[2.5] pointer-events-none"></i> <span class="btn-text">دانلود اپلیکیشن</span>
                         </div>
@@ -406,13 +507,13 @@
         </aside>
 
         <nav class="fixed top-0 w-full h-16 sm:h-20 flex items-center justify-between px-5 sm:px-8 border-b border-zinc-200/80 dark:border-zinc-800/80 bg-white/90 dark:bg-zinc-950/90 z-50 transition-colors">
-            <button onclick="toggleSidebar()" class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center transition-all border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 hover:bg-zinc-200 dark:hover:bg-zinc-800 shadow-sm relative z-[51] touch-manipulation cursor-pointer">
+            <button onclick="toggleSidebar()" aria-label="باز کردن منوی دسترسی" class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center transition-all border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 hover:bg-zinc-200 dark:hover:bg-zinc-800 shadow-sm relative z-[51] touch-manipulation cursor-pointer">
                 <i data-lucide="menu" class="w-5 h-5 text-zinc-800 dark:text-zinc-200 stroke-[2.5] pointer-events-none"></i>
             </button>
 
             <span class="font-black text-lg sm:text-xl tracking-[0.25em] dir-ltr text-zinc-900 dark:text-white pointer-events-none select-none">SPONSORACB</span>
             
-            <button onclick="toggleTheme()" class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center transition-all border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 hover:bg-zinc-200 dark:hover:bg-zinc-800 shadow-sm touch-manipulation cursor-pointer">
+            <button onclick="toggleTheme()" aria-label="تغییر تم تاریک و روشن" class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center transition-all border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 hover:bg-zinc-200 dark:hover:bg-zinc-800 shadow-sm touch-manipulation cursor-pointer">
                 <i data-lucide="sun" class="w-5 h-5 text-zinc-200 hidden dark:block stroke-[2.5] pointer-events-none"></i>
                 <i data-lucide="moon" class="w-5 h-5 text-zinc-800 block dark:hidden stroke-[2.5] pointer-events-none"></i>
             </button>
@@ -599,7 +700,6 @@
     <script>
         lucide.createIcons();
 
-        // Optimized Splash Screen Dismissal
         window.addEventListener('load', () => {
             const splash = document.getElementById('splash-screen');
             if (splash) {
@@ -613,7 +713,6 @@
             }
         });
 
-        // Toast Message Logic
         let toastTimeout;
         function showToast(message) {
             const toast = document.getElementById('toast');
@@ -676,11 +775,11 @@
                     <div class="flex flex-col gap-3">
                         <p class="flex items-start gap-2">
                             <span class="w-4 shrink-0 text-blue-500 font-black">۱.</span>
-                            <span>در نوار پایین مرورگر سافاری، روی دکمه <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="inline text-blue-500 mx-0.5"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg> (Share) ضربه بزنید.</span>
+                            <span>در نوار پایین مرورگر سافاری، روی دکمه <i data-lucide="share" class="inline w-4 h-4 text-blue-500 mx-0.5"></i> (Share) ضربه بزنید.</span>
                         </p>
                         <p class="flex items-start gap-2">
                             <span class="w-4 shrink-0 text-blue-500 font-black">۲.</span>
-                            <span>منو را به پایین بکشید و گزینه <br><span class="font-bold text-blue-600 dark:text-blue-400 flex items-center gap-1.5 mt-1.5 bg-blue-500/10 w-max px-2 py-1 rounded-lg border border-blue-500/20"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M12 8v8"/><path d="M8 12h8"/></svg> Add to Home Screen</span> را انتخاب کنید.</span>
+                            <span>منو را به پایین بکشید و گزینه <br><span class="font-bold text-blue-600 dark:text-blue-400 flex items-center gap-1.5 mt-1.5 bg-blue-500/10 w-max px-2 py-1 rounded-lg border border-blue-500/20"><i data-lucide="plus-square" class="w-3.5 h-3.5"></i> Add to Home Screen</span> را انتخاب کنید.</span>
                         </p>
                         <p class="flex items-start gap-2">
                             <span class="w-4 shrink-0 text-blue-500 font-black">۳.</span>
@@ -689,6 +788,7 @@
                     </div>`;
                 instructions.classList.remove('hidden');
                 installBtn.style.display = 'none';
+                lucide.createIcons();
             } else {
                 statusText.innerText = "نصب دستی برنامه";
                 instructions.innerHTML = 'از منوی مرورگر خود، گزینه <span class="font-bold text-blue-600 dark:text-blue-400">Install App</span> یا <span class="font-bold text-blue-600 dark:text-blue-400">Add to Home Screen</span> را انتخاب کنید.';
