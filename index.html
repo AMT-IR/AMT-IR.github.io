@@ -21,8 +21,8 @@
     </script>
 
     <style>
-        /* استفاده از CDN مطمئن برای لود قطعی فونت وزیری‌متن */
-        @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v3.3.0/Vazirmatn-font-face.css');
+        /* استفاده از سرورهای اصلی گوگل برای لود قطعی فونت وزیری‌متن با تمامی وزن‌ها */
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap');
 
         /* اعمال اجباری فونت روی تمام عناصر سایت */
         * {
@@ -409,14 +409,21 @@
         </nav>
 
         <main class="flex-1 w-full max-w-3xl mx-auto flex flex-col gap-4 pt-20 pb-8 px-4 sm:px-6">
-            <header class="text-center flex flex-col items-center gap-3 mb-2">
-                <div class="w-16 h-16 app-icon bg-gradient-to-br from-blue-600 to-indigo-500 shadow-lg shadow-blue-600/20">
-                    <svg class="w-8 h-8 text-white"><use href="#ic-layers"></use></svg>
+            <header class="text-center flex flex-col items-center justify-center gap-3 mb-3">
+                <div class="w-16 h-16 rounded-[20px] flex items-center justify-center bg-gradient-to-br from-blue-600 to-indigo-500 shadow-lg shadow-blue-600/30">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+                        <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+                        <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+                        <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+                    </svg>
                 </div>
                 
-                <h1 class="text-2xl sm:text-3xl font-black tracking-tight text-zinc-900 dark:text-white mt-1">
-                    پورتال و مخزن اصلی
-                </h1>
+                <div class="flex flex-col items-center mt-1">
+                    <h1 class="text-2xl sm:text-3xl font-black tracking-tight text-zinc-900 dark:text-white" style="font-weight: 900;">
+                        پورتال و مخزن اصلی
+                    </h1>
+                </div>
                 
                 <p class="text-[11px] sm:text-xs font-medium max-w-sm mx-auto text-zinc-600 dark:text-zinc-400 leading-relaxed">
                     دسترسی یکپارچه به تمامی محصولات، آموزش‌ها، خدمات اسپانسرشیپ و تیم پشتیبانی.
