@@ -342,13 +342,22 @@
             </div>
 
             <div class="flex flex-col gap-4">
+                <!-- Validation Error Message (Hidden by default) -->
+                <div id="modal-error-msg" class="hidden px-3 py-2 rounded-lg bg-red-100 dark:bg-red-900/30 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 text-xs font-bold text-center">
+                    لطفاً نام و توضیحات خود را به صورت کامل وارد کنید.
+                </div>
+
                 <div>
-                    <label class="block text-xs font-bold text-zinc-600 dark:text-zinc-400 mb-1.5">نام شما (اختیاری):</label>
+                    <label class="block text-xs font-bold text-zinc-600 dark:text-zinc-400 mb-1.5">
+                        نام شما <span class="text-red-500">*</span>:
+                    </label>
                     <input type="text" id="user-name-input" placeholder="مثلاً: علی رضایی" class="w-full px-3.5 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800/50 text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/50">
                 </div>
 
                 <div>
-                    <label id="comment-label" class="block text-xs font-bold text-zinc-600 dark:text-zinc-400 mb-1.5"></label>
+                    <label id="comment-label" class="block text-xs font-bold text-zinc-600 dark:text-zinc-400 mb-1.5">
+                        <span id="comment-label-text"></span> <span class="text-red-500">*</span>:
+                    </label>
                     <textarea id="user-comment-input" rows="4" class="w-full px-3.5 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800/50 text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/50 resize-none"></textarea>
                 </div>
             </div>
@@ -521,18 +530,22 @@
 
         function openModal(star) {
             const badge = document.getElementById('modal-badge');
-            const commentLabel = document.getElementById('comment-label');
+            const commentLabelText = document.getElementById('comment-label-text');
             const commentInput = document.getElementById('user-comment-input');
+            const errorMsg = document.getElementById('modal-error-msg');
             
+            // Hide error message on new open
+            errorMsg.classList.add('hidden');
+
             if (star <= 3) {
                 badge.className = "px-2.5 py-1 rounded-lg text-xs font-bold bg-red-100 text-red-600 dark:bg-red-950/50 dark:text-red-400";
                 badge.innerText = `${star} ستاره (نارضایتی)`;
-                commentLabel.innerText = "دلیل نارضایتی و پیشنهاد شما جهت بهبود کیفیت:";
+                commentLabelText.innerText = "دلیل نارضایتی و پیشنهاد شما جهت بهبود کیفیت";
                 commentInput.placeholder = "لطفاً علت عدم رضایت خود را شرح دهید تا سریعاً رسیدگی شود...";
             } else {
                 badge.className = "px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-100 text-emerald-600 dark:bg-emerald-950/50 dark:text-emerald-400";
                 badge.innerText = `${star} ستاره (رضایت‌بخش)`;
-                commentLabel.innerText = "نظر یا پیشنهاد شما (اختیاری):";
+                commentLabelText.innerText = "نظر یا پیشنهاد شما";
                 commentInput.placeholder = "دیدگاه یا پیشنهادی اگر دارید بنویسید...";
             }
 
@@ -550,6 +563,10 @@
             modal.firstElementChild.classList.add('scale-95');
             setTimeout(() => {
                 modal.classList.add('hidden');
+                // Clear inputs and hide error when closing
+                document.getElementById('user-name-input').value = '';
+                document.getElementById('user-comment-input').value = '';
+                document.getElementById('modal-error-msg').classList.add('hidden');
             }, 300);
             
             if (!hasVoted) {
@@ -559,12 +576,22 @@
 
         async function submitFinalVote() {
             if(!pendingStar || hasVoted) return;
+
+            const nameVal = document.getElementById('user-name-input').value.trim();
+            const commentVal = document.getElementById('user-comment-input').value.trim();
+            const errorMsg = document.getElementById('modal-error-msg');
+
+            // Validation logic for Mandatory fields
+            if (!nameVal || !commentVal) {
+                errorMsg.classList.remove('hidden');
+                // Adding a quick shake effect using Tailwind wouldn't hurt but a simple reveal is sufficient
+                return;
+            }
+            errorMsg.classList.add('hidden');
+
             hasVoted = true;
 
-            const nameVal = document.getElementById('user-name-input').value;
-            const commentVal = document.getElementById('user-comment-input').value;
             const btn = document.getElementById('submit-feedback-btn');
-
             btn.disabled = true;
             btn.innerHTML = `<span>در حال ارسال...</span>`;
 
