@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <!-- Chosen Palette: Zinc & Blue Minimalist Dark/Light -->
 <!-- Application Structure Plan: Single-page portal hub with clear categories, interactive modal notifications, PWA support, drawer menu, and theme toggling for SPONSORACB services. -->
-<!-- Visualization & Content Choices: Styled HTML cards with Lucide icons, status badges, CSS animations, and interactive JS modals. NO SVG or Mermaid JS used. -->
-<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 <html lang="fa" dir="rtl" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -71,60 +69,6 @@
             "@id": "https://sponsoracb.ir/#organization"
           },
           "inLanguage": "fa-IR"
-        },
-        {
-          "@type": "ItemList",
-          "name": "بخش‌های اصلی پورتال SPONSORACB",
-          "itemListElement": [
-            {
-              "@type": "SiteNavigationElement",
-              "position": 1,
-              "name": "فروشگاه",
-              "url": "https://sponsoracb.mydigify.app"
-            },
-            {
-              "@type": "SiteNavigationElement",
-              "position": 2,
-              "name": "پشتیبانی",
-              "url": "https://AMT-IR.github.io/Support.html"
-            },
-            {
-              "@type": "SiteNavigationElement",
-              "position": 3,
-              "name": "تبلیغات",
-              "url": "https://sponsoracb.ir/ads"
-            },
-            {
-              "@type": "SiteNavigationElement",
-              "position": 4,
-              "name": "اشتراک‌ها",
-              "url": "https://AMT-IR.github.io/pricing.html"
-            },
-            {
-              "@type": "SiteNavigationElement",
-              "position": 5,
-              "name": "قوانین",
-              "url": "https://sponsoracb.ir/legal"
-            },
-            {
-              "@type": "SiteNavigationElement",
-              "position": 6,
-              "name": "درباره ما",
-              "url": "https://sponsoracb.ir/AboutUs.html"
-            },
-            {
-              "@type": "SiteNavigationElement",
-              "position": 7,
-              "name": "وبلاگ",
-              "url": "https://Sponsoracb.ir/blog"
-            },
-            {
-              "@type": "SiteNavigationElement",
-              "position": 8,
-              "name": "نماد اعتماد",
-              "url": "https://AMT-IR.github.io/Symbol.html"
-            }
-          ]
         }
       ]
     }
@@ -138,20 +82,17 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="SPONSORACB">
     
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
-    <link rel="dns-prefetch" href="//unpkg.com">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- OPTIMIZATION: Deferred loading of heavy scripts to unblock rendering -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
 
     <script>
-        tailwind.config = {
+        window.tailwind = window.tailwind || {};
+        window.tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
@@ -164,15 +105,33 @@
     </script>
 
     <style>
+        /* OPTIMIZATION: Critical inline styles extracted to prevent FOUC while Tailwind loads */
         body {
             font-family: 'Vazirmatn', sans-serif;
             transition: background-color 0.2s ease, color 0.2s ease;
             -webkit-tap-highlight-color: transparent;
             touch-action: manipulation;
             background-color: #f4f4f5;
+            margin: 0;
         }
 
-        .dark body {
+        html.dark body {
+            background-color: #09090b;
+        }
+
+        #splash-screen {
+            position: fixed;
+            top: 0; right: 0; bottom: 0; left: 0;
+            z-index: 99999;
+            background-color: #f4f4f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        html.dark #splash-screen {
             background-color: #09090b;
         }
 
@@ -194,7 +153,7 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .dark .base-card {
+        html.dark .base-card {
             background: #18181b;
             border: 1px solid rgba(63, 63, 70, 0.6);
             box-shadow: 0 4px 12px rgba(0,0,0,0.25);
@@ -204,7 +163,7 @@
             box-shadow: 0 6px 20px rgba(0,0,0,0.06);
         }
 
-        .dark .base-card:hover {
+        html.dark .base-card:hover {
             background: #232326;
             box-shadow: 0 8px 24px rgba(0,0,0,0.4);
         }
@@ -277,7 +236,7 @@
             text-overflow: ellipsis;
         }
 
-        .dark .portal-card .card-desc {
+        html.dark .portal-card .card-desc {
             color: #a1a1aa;
         }
 
@@ -291,7 +250,7 @@
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 10px; }
-        .dark ::-webkit-scrollbar-thumb { background: #3f3f46; }
+        html.dark ::-webkit-scrollbar-thumb { background: #3f3f46; }
 
         .spinner {
             width: 3em;
@@ -335,7 +294,7 @@
         })();
     </script>
 
-    <div id="splash-screen" class="fixed inset-0 z-[99999] bg-[#f4f4f5] dark:bg-[#09090b] flex flex-col items-center justify-center transition-opacity duration-300 ease-in-out">
+    <div id="splash-screen">
         <div class="spinner">
             <div class="spinnerin"></div>
         </div>
@@ -379,7 +338,8 @@
             <div id="pwaModalContent" class="w-full max-w-sm rounded-[28px] base-card p-6 relative flex flex-col gap-5 text-right transform translate-y-10 transition-all duration-300 data-[open=true]:translate-y-0">
                 <div class="flex items-center gap-4">
                     <div class="w-14 h-14 rounded-2xl shrink-0 overflow-hidden border border-zinc-200 dark:border-zinc-700 shadow-md flex items-center justify-center bg-white">
-                        <img src="https://sponsoracb.ir/20474.png" alt="App Icon" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/3b82f6/ffffff?text=App';">
+                        <!-- OPTIMIZATION: Added loading, dimensions and decoding -->
+                        <img src="https://sponsoracb.ir/20474.png" alt="App Icon" class="w-full h-full object-cover" width="56" height="56" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='https://placehold.co/150x150/3b82f6/ffffff?text=App';">
                     </div>
                     <div class="flex flex-col">
                         <h2 class="text-base font-black text-zinc-900 dark:text-white">نصب برنامه SPONSORACB</h2>
@@ -484,7 +444,8 @@
 
                 <div class="flex flex-col gap-1.5 px-1">
                     <a href="https://www.youtube.com/404" target="_blank" class="flex items-center gap-2 py-1.5 px-2 rounded-2xl hover:bg-zinc-100 dark:hover:bg-zinc-800/80 transition-all group">
-                        <img src="https://sponsoracb.ir/image/72833.png" alt="Ads" class="w-9 h-9 rounded-xl object-cover border border-zinc-200 dark:border-zinc-700 shadow-sm" onerror="this.onerror=null; this.src='https://placehold.co/100x100/d946ef/ffffff?text=Ads';">
+                        <!-- OPTIMIZATION: Added loading, dimensions and decoding -->
+                        <img src="https://sponsoracb.ir/image/72833.png" alt="Ads" class="w-9 h-9 rounded-xl object-cover border border-zinc-200 dark:border-zinc-700 shadow-sm" width="36" height="36" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='https://placehold.co/100x100/d946ef/ffffff?text=Ads';">
                         <div class="flex flex-col min-w-0">
                             <span class="font-bold text-zinc-800 dark:text-zinc-100 text-[11px] truncate group-hover:text-fuchsia-500 transition-colors">جایگاه 1</span>
                             <p class="text-[9px] text-zinc-500 mt-0.5 truncate">این جایگاه آزاد میباشد</p>
@@ -492,7 +453,8 @@
                     </a>
 
                     <a href="https://t.me/Monsmain" target="_blank" class="flex items-center gap-2 py-1.5 px-2 rounded-2xl hover:bg-zinc-100 dark:hover:bg-zinc-800/80 transition-all group">
-                        <img src="https://sponsoracb.ir/image/91792.png" alt="Monsmain" class="w-9 h-9 rounded-xl object-cover border border-zinc-200 dark:border-zinc-700 shadow-sm" onerror="this.onerror=null; this.src='https://placehold.co/100x100/10b981/ffffff?text=Ad';">
+                        <!-- OPTIMIZATION: Added loading, dimensions and decoding -->
+                        <img src="https://sponsoracb.ir/image/91792.png" alt="Monsmain" class="w-9 h-9 rounded-xl object-cover border border-zinc-200 dark:border-zinc-700 shadow-sm" width="36" height="36" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='https://placehold.co/100x100/10b981/ffffff?text=Ad';">
                         <div class="flex flex-col min-w-0">
                             <span class="font-bold text-zinc-800 dark:text-zinc-100 text-[11px] truncate group-hover:text-emerald-500 transition-colors">Monsmain</span>
                             <p class="text-[9px] text-zinc-500 mt-0.5 truncate">اس‌ام‌اس بمبر رایگان</p>
@@ -693,12 +655,21 @@
         </footer>
     </div>
 
+    <!-- OPTIMIZATION: Deferred chat widget loading is maintained correctly -->
     <script type="text/javascript">
       ["keydown","touchmove","touchstart","mouseover"].forEach(function(v){window.addEventListener(v,function(){if(!window.isGoftinoAdded){window.isGoftinoAdded=1;var i="sDMeys",d=document,g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.type="text/javascript",g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}}, {once: true})});
     </script>
 
     <script>
-        lucide.createIcons();
+        // OPTIMIZATION: Safe icon initialization handling deferred script
+        function initIcons() {
+            if (window.lucide) {
+                lucide.createIcons();
+            } else {
+                setTimeout(initIcons, 50);
+            }
+        }
+        initIcons();
 
         window.addEventListener('load', () => {
             const splash = document.getElementById('splash-screen');
@@ -788,7 +759,7 @@
                     </div>`;
                 instructions.classList.remove('hidden');
                 installBtn.style.display = 'none';
-                lucide.createIcons();
+                if(window.lucide) lucide.createIcons();
             } else {
                 statusText.innerText = "نصب دستی برنامه";
                 instructions.innerHTML = 'از منوی مرورگر خود، گزینه <span class="font-bold text-blue-600 dark:text-blue-400">Install App</span> یا <span class="font-bold text-blue-600 dark:text-blue-400">Add to Home Screen</span> را انتخاب کنید.';
@@ -915,12 +886,12 @@
                     if (progress >= 100) {
                         clearInterval(interval);
                         textSpan.innerHTML = `<i data-lucide="check-circle" class="w-3.5 h-3.5 stroke-[2.5] pointer-events-none text-white"></i> <span class="text-white">کامل شد</span>`;
-                        lucide.createIcons();
+                        if(window.lucide) lucide.createIcons();
                         
                         setTimeout(() => {
                             btn.innerHTML = originalHTML;
                             btn.classList.remove('is-loading');
-                            lucide.createIcons();
+                            if(window.lucide) lucide.createIcons();
                             if(callback) callback();
                         }, 400);
                     }
