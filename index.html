@@ -3,9 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SPONSORACB | Advanced Cloud Base</title>
-    <meta name="description" content="SPONSORACB ارائه‌دهنده دسترسی آسان به سرویس‌های هوش مصنوعی، ربات‌های تلگرامی، وب‌سرویس و کانفیگ‌های شبکه‌ای قدرتمند.">
-    <meta name="theme-color" content="#10b981">
+    <title>SPONSORACB | Official website</title>
+    
+    <meta name="description" content="SPONSORACB پایگاه ابری پیشرفته و ارائه‌دهنده دسترسی استاندارد به مدل‌های هوش مصنوعی، ربات‌های تلگرام، وب‌سرویس‌ها، ابزارهای توسعه و زیرساخت‌های محاسباتی ایمن.">
+    <meta name="keywords" content="SPONSORACB, هوش مصنوعی, ربات تلگرام, بات بیلدر, API هوش مصنوعی, سرویس ابری, رایانش ابری, اشتراک هوش مصنوعی, پورتال کاربری, توسعه نرم افزار, ChatGPT, Claude, AI Tools">
+    <meta name="author" content="SPONSORACB">
+    <meta name="application-name" content="SPONSORACB">
+    <meta name="creator" content="SPONSORACB Team">
+    <meta name="publisher" content="SPONSORACB">
+    <meta name="theme-color" content="#18181b">
+    <meta name="color-scheme" content="dark light">
+    <link rel="canonical" href="https://sponsoracb.ir/">
+    
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="ai-content-declarations" content="ai-assisted">
+    <meta name="rating" content="General">
+    <meta name="format-detection" content="telephone=no">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fa_IR">
+    <meta property="og:site_name" content="SPONSORACB">
+    <meta property="og:title" content="SPONSORACB | Advanced Cloud Base">
+    <meta property="og:description" content="ارائه‌دهنده دسترسی به سرویس‌های هوش مصنوعی، ربات‌های تلگرام، وب‌سرویس و زیرساخت‌های ابری.">
+    <meta property="og:url" content="https://sponsoracb.ir/">
+    <meta property="og:image" content="https://sponsoracb.ir/20474.png">
+    <meta property="og:image:secure_url" content="https://sponsoracb.ir/20474.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="SPONSORACB - Advanced Cloud Base">
+    <meta property="og:image:type" content="image/png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@Sponsoracb">
+    <meta name="twitter:creator" content="@Sponsoracb">
+    <meta name="twitter:title" content="SPONSORACB | پایگاه ابری پیشرفته و هوش مصنوعی">
+    <meta name="twitter:description" content="پلتفرم یکپارچه دسترسی به برترین مدل‌های هوش مصنوعی، ربات‌های تلگرام و فناوری‌های ابری.">
+    <meta name="twitter:image" content="https://sponsoracb.ir/20474.png">
+    <meta name="twitter:image:alt" content="SPONSORACB Platform">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://sponsoracb.ir/#organization",
+          "name": "SPONSORACB",
+          "alternateName": "Advanced Cloud Base",
+          "url": "https://sponsoracb.ir",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://sponsoracb.ir/20474.png",
+            "caption": "SPONSORACB Logo"
+          },
+          "description": "پایگاه ابری پیشرفته و ارائه‌دهنده دسترسی استاندارد به مدل‌های هوش مصنوعی، ربات‌های تلگرام و وب‌سرویس‌ها.",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "info@sponsoracb.ir",
+            "contactType": "Customer Support",
+            "availableLanguage": ["Persian", "English"]
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://sponsoracb.ir/#website",
+          "url": "https://sponsoracb.ir",
+          "name": "SPONSORACB",
+          "publisher": {
+            "@id": "https://sponsoracb.ir/#organization"
+          },
+          "inLanguage": "fa-IR",
+          "description": "سامانه مدیریت سرویس‌های هوش مصنوعی و زیرساخت ابری SPONSORACB"
+        }
+      ]
+    }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,6 +95,11 @@
                 extend: {
                     fontFamily: {
                         sans: ['Vazirmatn', 'sans-serif']
+                    },
+                    borderRadius: {
+                        '2xl': '1rem',
+                        '3xl': '1.5rem',
+                        '4xl': '2rem',
                     }
                 }
             }
@@ -33,14 +112,16 @@
             font-family: 'Vazirmatn', sans-serif !important; 
         }
         
-        html {
+        html, body {
+            overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
         body {
             -webkit-tap-highlight-color: transparent;
-            background-color: #f4f4f5; 
-            color: #18181b;
+            background-color: #f8fafc; 
+            color: #0f172a;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .dark body {
@@ -48,165 +129,137 @@
             color: #f4f4f5;
         }
 
+        .halo-ambient-container {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .top-halo-ambient {
+            position: absolute;
+            top: -160px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 85vw;
+            max-width: 960px;
+            height: 380px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(203, 213, 225, 0.45) 0%, rgba(248, 250, 252, 0) 70%);
+            filter: blur(80px);
+        }
+
+        .dark .top-halo-ambient {
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.055) 0%, rgba(9, 9, 11, 0) 70%);
+            filter: blur(85px);
+        }
+
+        .edge-halo-r {
+            position: absolute;
+            top: 25%;
+            right: -100px;
+            width: 280px;
+            height: 520px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(226, 232, 240, 0.5) 0%, rgba(248, 250, 252, 0) 70%);
+            filter: blur(75px);
+        }
+
+        .edge-halo-l {
+            position: absolute;
+            top: 58%;
+            left: -100px;
+            width: 280px;
+            height: 520px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(226, 232, 240, 0.5) 0%, rgba(248, 250, 252, 0) 70%);
+            filter: blur(75px);
+        }
+
+        .dark .edge-halo-r,
+        .dark .edge-halo-l {
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.035) 0%, rgba(9, 9, 11, 0) 70%);
+            filter: blur(75px);
+        }
+
         .glass-panel {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.95);
+            box-shadow: 0 4px 20px -3px rgba(15, 23, 42, 0.04), 0 2px 6px -2px rgba(15, 23, 42, 0.02);
             position: relative;
-            z-index: 10;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
         }
         
         .dark .glass-panel {
-            background: rgba(24, 24, 27, 0.45); 
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+            background: rgba(18, 18, 21, 0.72); 
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 20px -3px rgba(0, 0, 0, 0.45);
         }
 
         .glass-button {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            color: #0f172a;
             transition: all 0.2s ease;
         }
 
         .glass-button:hover {
-            background: rgba(255, 255, 255, 0.8);
+            background: #ffffff;
+            border-color: rgba(203, 213, 225, 1);
+            transform: translateY(-1px);
         }
 
         .dark .glass-button {
-            background: rgba(39, 39, 42, 0.4); 
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(39, 39, 42, 0.5); 
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            color: #f4f4f5;
         }
 
         .dark .glass-button:hover {
-            background: rgba(39, 39, 42, 0.7);
+            background: rgba(48, 48, 53, 0.85);
+            border-color: rgba(255, 255, 255, 0.16);
         }
 
-        /* استایل لیکوئید گلس (شیشه‌ای) برای آیکون‌ها */
         .glass-icon {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.5), 0 4px 8px rgba(0, 0, 0, 0.05);
+            background: rgba(241, 245, 249, 0.85);
+            border: 1px solid rgba(226, 232, 240, 0.95);
+            box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.7), 0 2px 4px rgba(15, 23, 42, 0.03);
         }
         
         .dark .glass-icon {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.05), 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.05), 0 2px 5px rgba(0, 0, 0, 0.25);
         }
 
-        .glass-image-wrapper {
-            background: rgba(0, 0, 0, 0.02);
+        .recommended-card {
+            border: 1.5px solid #0f172a !important;
+            box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.12) !important;
         }
-        
-        .dark .glass-image-wrapper {
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .top-halo {
-            position: absolute;
-            top: -20vh;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120vw;
-            height: 40vh;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(161,161,170,0.5) 0%, rgba(255,255,255,0) 70%);
-            pointer-events: none;
-            z-index: -1;
-            filter: blur(40px);
+        .dark .recommended-card {
+            border: 1.5px solid rgba(255, 255, 255, 0.45) !important;
+            box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.5) !important;
         }
 
-        .dark .top-halo {
-            background: radial-gradient(circle, rgba(82,82,91,0.5) 0%, rgba(24,24,27,0) 70%);
-        }
-
-        .halo-container {
-            position: relative;
-        }
-
-        /* تصحیح شکل هاله‌ها به حالت دایره‌ای ملایم */
-        .halo-left::before, .halo-right::before, .halo-both::before, .halo-both::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 40vw; /* دایره متناسب با صفحه */
-            height: 40vw;
-            max-width: 400px;
-            max-height: 400px;
-            border-radius: 50%;
-            background: radial-gradient(circle at center, rgba(161, 161, 170, 0.25) 0%, transparent 60%);
-            filter: blur(40px);
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .dark .halo-left::before, .dark .halo-right::before, .dark .halo-both::before, .dark .halo-both::after {
-            background: radial-gradient(circle at center, rgba(82, 82, 91, 0.3) 0%, transparent 60%);
-        }
-
-        .halo-left::before, .halo-both::before {
-            left: -150px;
-        }
-
-        .halo-right::before, .halo-both::after {
-            right: -150px;
-        }
-
-        /* حل مشکل باگ کارت پیشنهاد ویژه با استایل استاندارد */
-        .green-glow-card {
-            border-color: rgba(16, 185, 129, 0.6) !important;
-            box-shadow: 0 0 25px -2px rgba(16, 185, 129, 0.3) !important;
-            transition: all 0.3s ease;
-        }
-        
-        .dark .green-glow-card {
-            border-color: rgba(16, 185, 129, 0.4) !important;
-            box-shadow: 0 0 25px -2px rgba(16, 185, 129, 0.2) !important;
-        }
-
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #d4d4d8;
-            border-radius: 10px;
-        }
-        .dark ::-webkit-scrollbar-thumb {
-            background: #3f3f46;
-        }
-        
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .banner-container {
-            position: relative;
+        .banner-container-frame {
+            border-radius: 1.5rem;
             overflow: hidden;
-            border-radius: 20px;
-            z-index: 10;
+            box-shadow: 0 8px 30px -4px rgba(15, 23, 42, 0.08);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            background: #f1f5f9;
         }
-        
-        .banner-track {
-            position: relative;
-            width: 100%;
-            height: 100%;
+        .dark .banner-container-frame {
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #121215;
+            box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.45);
         }
 
         .banner-slide {
@@ -219,8 +272,10 @@
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.4s ease-in-out;
             z-index: 1;
+            border-radius: 1.25rem;
+            overflow: hidden;
         }
 
         .banner-slide.active {
@@ -228,453 +283,1247 @@
             z-index: 2;
         }
 
-        @keyframes paperSlice {
-            0% {
-                clip-path: polygon(0 0, 0 0, -30% 100%, -30% 100%);
-                transform: scale(1.05);
-            }
-            100% {
-                clip-path: polygon(0 0, 150% 0, 150% 100%, -30% 100%);
-                transform: scale(1);
-            }
-        }
-
-        .banner-slide.slice-animate {
-            z-index: 3;
-            animation: paperSlice 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            opacity: 1;
-        }
-        
         .banner-slide img {
+            border-radius: 1.25rem;
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            border-radius: 16px;
+            object-fit: cover;
         }
 
         .dot {
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
         }
         .dot.active {
-            background-color: #18181b;
-            transform: scale(1.2);
+            background-color: #0f172a;
+            width: 18px;
+            border-radius: 9999px;
         }
         .dark .dot.active {
             background-color: #f4f4f5;
+            width: 18px;
+            border-radius: 9999px;
         }
 
-        .btn-primary {
-            background-color: #10b981;
-            color: white;
+        .btn-formal {
+            background-color: #0f172a;
+            color: #ffffff;
             transition: all 0.2s ease;
         }
-        .btn-primary:hover {
-            background-color: #059669;
+        .btn-formal:hover {
+            background-color: #1e293b;
+            transform: translateY(-1px);
+        }
+        .dark .btn-formal {
+            background-color: #f4f4f5;
+            color: #09090b;
+        }
+        .dark .btn-formal:hover {
+            background-color: #e4e4e7;
+            transform: translateY(-1px);
         }
         
-        /* تولتیپ اختصاصی */
         .tooltip-text {
             visibility: hidden;
             opacity: 0;
             transition: opacity 0.2s ease, transform 0.2s ease;
-            transform: translateY(5px);
+            transform: translateY(4px);
         }
         .group:hover .tooltip-text {
             visibility: visible;
             opacity: 1;
             transform: translateY(0);
         }
+
+        .tag-pill {
+            font-size: 10.5px;
+            padding: 2.5px 8px;
+            border-radius: 6px;
+            background: rgba(241, 245, 249, 0.9);
+            border: 1px solid rgba(226, 232, 240, 0.95);
+            font-weight: 500;
+            color: #334155;
+        }
+        .dark .tag-pill {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #d4d4d8;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
 
-<body class="min-h-screen flex flex-col relative overflow-x-hidden">
+<body class="min-h-screen flex flex-col relative text-zinc-900 dark:text-zinc-100">
 
-    <div class="top-halo"></div>
+    <div class="halo-ambient-container">
+        <div class="top-halo-ambient"></div>
+        <div class="edge-halo-r"></div>
+        <div class="edge-halo-l"></div>
+    </div>
 
-    <nav class="w-full h-16 flex items-center justify-between px-4 sm:px-8 border-b border-x border-zinc-200 dark:border-zinc-800 glass-panel sticky top-0 z-50 rounded-b-3xl shadow-sm">
-        <a href="#home" class="flex items-center gap-3">
-            <img src="https://sponsoracb.ir/20474.png" alt="SponsorACB Logo" class="w-9 h-9 rounded-xl object-cover border border-zinc-200 dark:border-zinc-700 shadow-sm">
-            <span class="font-black text-lg tracking-widest text-zinc-900 dark:text-white">
+    <button id="scrollToTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="اسکرول به بالا" class="fixed bottom-6 left-6 z-50 p-3 rounded-xl glass-panel shadow-lg border border-zinc-200/90 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 hover:scale-105 active:scale-95 transition-all duration-300 opacity-0 pointer-events-none translate-y-4 flex items-center justify-center">
+        <i data-lucide="arrow-up" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+    </button>
+
+    <nav class="w-full h-14 sm:h-16 flex items-center justify-between px-4 sm:px-8 border-b border-zinc-200/90 dark:border-zinc-800/80 glass-panel sticky top-0 z-50 rounded-b-2xl shadow-xs">
+        <a href="#home" class="flex items-center gap-2.5">
+            <img src="https://sponsoracb.ir/20474.png" alt="SponsorACB Logo" class="w-8 h-8 rounded-xl object-cover border border-zinc-200 dark:border-zinc-700 shadow-xs">
+            <span class="font-black text-sm sm:text-base tracking-wider text-zinc-900 dark:text-white">
                 SPONSORACB
             </span>
         </a>
 
-        <div class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-600 dark:text-zinc-400">
+        <div class="hidden md:flex items-center gap-5 text-xs font-medium text-zinc-600 dark:text-zinc-400">
+            <a href="#about" class="hover:text-zinc-900 dark:hover:text-white transition-colors">درباره مجموعه</a>
             <a href="#subscriptions" class="hover:text-zinc-900 dark:hover:text-white transition-colors">اشتراک‌ها</a>
             <a href="#banners" class="hover:text-zinc-900 dark:hover:text-white transition-colors">اطلاعیه‌ها</a>
-            <a href="#portal" class="hover:text-zinc-900 dark:hover:text-white transition-colors">پورتال</a>
+            <a href="#ecosystem" class="hover:text-zinc-900 dark:hover:text-white font-semibold transition-colors">اکوسیستم</a>
+            <a href="#portal" class="hover:text-zinc-900 dark:hover:text-white transition-colors">پورتال کاربری</a>
         </div>
 
-        <div class="flex items-center gap-2 sm:gap-3">
-            <!-- آیکون ورود به پورتال اصلی با تولتیپ -->
-            <a href="https://sponsoracb.ir/portal" target="_blank" class="w-9 h-9 rounded-xl flex items-center justify-center glass-button text-zinc-700 dark:text-zinc-300 transition group relative">
+        <div class="flex items-center gap-2">
+            <a href="https://sponsoracb.ir/portal" target="_blank" class="w-9 h-9 rounded-xl flex items-center justify-center glass-button text-zinc-700 dark:text-zinc-300 transition group relative" aria-label="پورتال اصلی">
                 <i data-lucide="log-in" class="w-4 h-4"></i>
-                <span class="tooltip-text absolute top-12 left-1/2 -translate-x-1/2 bg-zinc-800 dark:bg-zinc-200 text-white dark:text-zinc-900 text-[10px] font-bold px-2.5 py-1.5 rounded-lg pointer-events-none whitespace-nowrap shadow-lg">وارد پورتال اصلی شوید</span>
+                <span class="tooltip-text absolute top-11 left-1/2 -translate-x-1/2 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 text-[10.5px] font-bold px-2.5 py-1 rounded-lg pointer-events-none whitespace-nowrap shadow-md">پورتال اصلی</span>
             </a>
-            <button onclick="toggleTheme()" class="w-9 h-9 rounded-xl flex items-center justify-center glass-button text-zinc-700 dark:text-zinc-300 transition">
-                <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
-                <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+            <button onclick="toggleTheme()" class="w-9 h-9 rounded-xl flex items-center justify-center glass-button text-zinc-700 dark:text-zinc-300 transition" aria-label="تغییر تم">
+                <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-amber-400"></i>
+                <i data-lucide="moon" class="w-4 h-4 block dark:hidden text-zinc-700"></i>
             </button>
         </div>
     </nav>
 
-    <main id="home" class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+    <main id="home" class="flex-1 w-full max-w-6xl mx-auto px-3.5 sm:px-6 relative z-10">
 
-        <section class="flex flex-col items-center justify-center text-center py-20 sm:py-28 relative">
-            <h1 class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-zinc-900 dark:text-white">
+        <section class="flex flex-col items-center justify-center text-center pt-8 pb-5 sm:pt-12 sm:pb-7 relative">
+            <h1 class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight text-zinc-900 dark:text-white">
                 SPONSORACB WEBSITE
             </h1>
             
-            <p class="text-sm sm:text-lg md:text-xl tracking-[0.2em] font-medium mt-4 text-zinc-500 dark:text-zinc-400 uppercase">
+            <p class="text-[11px] sm:text-xs tracking-[0.25em] font-medium mt-2 text-zinc-500 dark:text-zinc-400 uppercase">
                 Advanced Cloud Base
             </p>
 
-            <p class="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mt-8 leading-8">
-                به سایت رسمی SPONSORACB خوش آمدید. می‌توانید به بخش‌های مورد نظر رفته و سرویس دلخواه خود را انتخاب کنید.
+            <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 max-w-xl mt-3 leading-6 text-center">
+                به وب‌سایت رسمی SPONSORACB خوش آمدید. می‌توانید بخش‌های مختلف سیستم، خدمات ابری و هوش مصنوعی را در این درگاه مدیریت و انتخاب کنید.
             </p>
         </section>
 
-        <section id="subscriptions" class="mb-12 scroll-mt-24 halo-container halo-left">
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-2 gap-4 px-2">
-                <div>
-                    <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white">اشتراک‌های ویژه</h2>
-                    <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-2">سرویس مورد نظر خود را انتخاب کنید.</p>
+        <section id="about" class="mb-8 scroll-mt-20">
+            <div class="glass-panel rounded-2xl p-4 sm:p-6 border border-zinc-200/90 dark:border-zinc-800">
+                <div class="flex flex-col sm:flex-row gap-4 sm:gap-5 items-start">
+                    <div class="w-10 h-10 shrink-0 rounded-xl glass-icon flex items-center justify-center text-zinc-800 dark:text-zinc-200">
+                        <i data-lucide="building-2" class="w-5 h-5"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex flex-wrap items-center gap-2 mb-2">
+                            <h2 class="text-sm sm:text-base font-black text-zinc-900 dark:text-white">درباره مجموعه SPONSORACB</h2>
+                            <span class="text-[9.5px] font-mono px-2 py-0.5 rounded-md bg-zinc-200/80 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-bold">ADVANCED CLOUD BASE</span>
+                        </div>
+                        <p class="text-xs sm:text-[13px] leading-6 sm:leading-7 text-zinc-600 dark:text-zinc-300 text-right">
+                            مجموعه SPONSORACB به عنوان یک پلتفرم فناوری‌محور و پایگاه ابری پیشرفته، با هدف تسهیل، استانداردسازی و تسریع دسترسی کاربران، پژوهشگران و توسعه‌دهندگان به برترین فناوری‌های محاسباتی و مدل‌های هوش مصنوعی بین‌المللی پایه‌گذاری شده است. ما با اتکا بر استانداردهای مهندسی نرم‌افزار، زیرساخت‌های شبکه‌ای پایدار، بات‌های اتوماسیون قدرتمند تلگرام و وب‌سرویس‌های قابل اطمینان، محیطی یکپارچه فراهم آورده‌ایم تا فاصله میان ایده اولیه تا انتشار نهایی محصول به کمترین زمان ممکن برسد.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-4 pt-3 border-t border-zinc-200/80 dark:border-zinc-800/80 text-[11px] sm:text-xs">
+                            <div class="flex items-center gap-2 text-zinc-700 dark:text-zinc-300">
+                                <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0"></i>
+                                <span>زیرساخت پایدار و امن</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-zinc-700 dark:text-zinc-300">
+                                <i data-lucide="cpu" class="w-4 h-4 text-indigo-600 dark:text-indigo-400 shrink-0"></i>
+                                <span>مدل‌های نوین هوش مصنوعی</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-zinc-700 dark:text-zinc-300">
+                                <i data-lucide="network" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 shrink-0"></i>
+                                <span>اتوماسیون و وب‌سرویس یکپارچه</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex items-center gap-2 hidden sm:flex">
-                    <button onclick="scrollSubs(1)" class="w-10 h-10 rounded-xl glass-button flex items-center justify-center text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition">
-                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+            </div>
+        </section>
+
+        <section id="subscriptions" class="mb-8 scroll-mt-20">
+            <div class="flex items-center justify-between mb-3 px-1">
+                <div>
+                    <h2 class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white">اشتراک‌های ویژه</h2>
+                    <p class="text-[11px] sm:text-xs text-zinc-500 dark:text-zinc-400">سرویس مورد نظر خود را بر اساس نیاز انتخاب کنید.</p>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <button onclick="scrollSubs(1)" class="w-8 h-8 rounded-xl glass-button flex items-center justify-center text-zinc-700 dark:text-zinc-300" aria-label="اسلاید بعدی">
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
                     </button>
-                    <button onclick="scrollSubs(-1)" class="w-10 h-10 rounded-xl glass-button flex items-center justify-center text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition">
-                        <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                    <button onclick="scrollSubs(-1)" class="w-8 h-8 rounded-xl glass-button flex items-center justify-center text-zinc-700 dark:text-zinc-300" aria-label="اسلاید قبلی">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
                     </button>
                 </div>
             </div>
 
             <div class="relative w-full">
-                <div id="subsSlider" class="flex overflow-x-auto gap-5 pb-12 pt-4 hide-scrollbar w-full snap-x snap-mandatory px-2">
+                <div id="subsSlider" class="flex overflow-x-auto gap-4 pt-6 pb-4 hide-scrollbar w-full snap-x snap-mandatory px-1 items-stretch">
                     
-                    <div class="snap-center shrink-0 w-[270px] sm:w-[300px] rounded-2xl glass-panel flex flex-col transition duration-300">
-                        <div class="w-full h-[160px] rounded-t-2xl overflow-hidden glass-image-wrapper p-1.5">
-                            <img src="https://digifycdn.com/media/item_images/15433.jpg" alt="اشتراک پرو" class="w-full h-full object-cover rounded-xl">
-                        </div>
-                        <div class="p-6 flex flex-col flex-1">
-                            <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-4">اشتراک پرو</h3>
-                            <div class="mt-auto">
-                                <div class="flex items-end gap-1 mb-6">
-                                    <span class="text-2xl font-black text-zinc-900 dark:text-white" dir="ltr">420,000</span>
-                                    <span class="text-xs text-zinc-500 font-medium pb-1">تومان</span>
-                                </div>
-                                <a href="https://sponsoracb.mydigify.app/product/3062251/%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%DA%A9-%D9%BE%D8%B1%D9%88" target="_blank" class="w-full py-2.5 rounded-xl glass-button text-zinc-900 dark:text-white font-bold text-sm flex items-center justify-center transition">
-                                    خرید سرویس
-                                </a>
+                    <div class="snap-center shrink-0 w-[225px] sm:w-[245px] rounded-2xl glass-panel flex flex-col justify-between overflow-hidden">
+                        <div>
+                            <div class="w-full h-[125px] rounded-t-2xl overflow-hidden p-1.5 bg-zinc-100/50 dark:bg-zinc-900/40">
+                                <img src="https://digifycdn.com/media/item_images/15433.jpg" alt="اشتراک پرو" class="w-full h-full object-cover rounded-xl">
+                            </div>
+                            <div class="p-3.5">
+                                <h3 class="text-xs sm:text-sm font-bold text-zinc-900 dark:text-white mb-1.5">اشتراک پرو</h3>
+                                <p class="text-[10.5px] text-zinc-500 dark:text-zinc-400">پلن پایه با دسترسی‌های منتخب</p>
                             </div>
                         </div>
+                        <div class="p-3.5 pt-0 mt-auto">
+                            <div class="flex items-baseline gap-1 mb-3">
+                                <span class="text-lg font-black text-zinc-900 dark:text-white" dir="ltr">420,000</span>
+                                <span class="text-[10px] font-medium text-zinc-500">تومان</span>
+                            </div>
+                            <a href="https://sponsoracb.mydigify.app/product/3062251/%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%DA%A9-%D9%BE%D8%B1%D9%88" target="_blank" class="w-full py-2 rounded-xl glass-button text-zinc-900 dark:text-white font-bold text-xs flex items-center justify-center shadow-xs">
+                                خرید سرویس
+                            </a>
+                        </div>
                     </div>
 
-                    <div class="snap-center shrink-0 w-[270px] sm:w-[300px] rounded-2xl glass-panel flex flex-col transition duration-300 transform sm:-translate-y-2 green-glow-card">
-                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white text-[12px] font-black px-5 py-1.5 rounded-full z-20 whitespace-nowrap shadow-md">
-                            پیشنهاد ویژه
+                    <div class="snap-center shrink-0 w-[225px] sm:w-[245px] rounded-2xl glass-panel flex flex-col justify-between recommended-card relative">
+                        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-zinc-900 text-white dark:bg-white dark:text-zinc-950 text-[10.5px] font-black px-3.5 py-1 rounded-full z-30 shadow-md border border-zinc-700 dark:border-zinc-200 flex items-center gap-1.5 whitespace-nowrap">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400 fill-amber-400"></i>
+                            <span>پیشنهاد ویژه</span>
                         </div>
-                        <div class="w-full h-[160px] rounded-t-2xl overflow-hidden glass-image-wrapper p-1.5">
-                            <img src="https://digifycdn.com/media/item_images/15434_bj0I8b9.jpg?x-img=v1/optimize,q_95/resize,w_500,force_true" alt="اشتراک پلاس" class="w-full h-full object-cover rounded-xl">
-                        </div>
-                        <div class="p-6 flex flex-col flex-1 relative z-10">
-                            <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-4">اشتراک پلاس</h3>
-                            <div class="mt-auto">
-                                <div class="flex items-end gap-1 mb-6">
-                                    <span class="text-2xl font-black text-zinc-900 dark:text-white" dir="ltr">840,000</span>
-                                    <span class="text-xs text-zinc-500 font-medium pb-1">تومان</span>
-                                </div>
-                                <a href="https://sponsoracb.mydigify.app/product/3062253/%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%DA%A9-%D9%BE%D9%84%D8%A7%D8%B3" target="_blank" class="btn-primary w-full py-2.5 rounded-xl text-white font-bold text-sm flex items-center justify-center transition shadow-lg shadow-emerald-500/30">
-                                    خرید سرویس
-                                </a>
+                        
+                        <div>
+                            <div class="w-full h-[125px] rounded-t-2xl overflow-hidden p-1.5 bg-zinc-100/50 dark:bg-zinc-900/40">
+                                <img src="https://digifycdn.com/media/item_images/15434_bj0I8b9.jpg?x-img=v1/optimize,q_95/resize,w_500,force_true" alt="اشتراک پلاس" class="w-full h-full object-cover rounded-xl">
+                            </div>
+                            <div class="p-3.5">
+                                <h3 class="text-xs sm:text-sm font-bold text-zinc-900 dark:text-white mb-1.5">اشتراک پلاس</h3>
+                                <p class="text-[10.5px] text-zinc-500 dark:text-zinc-400">محبوب‌ترین پلن با حداکثر کارایی</p>
                             </div>
                         </div>
+                        <div class="p-3.5 pt-0 mt-auto">
+                            <div class="flex items-baseline gap-1 mb-3">
+                                <span class="text-lg font-black text-zinc-900 dark:text-white" dir="ltr">840,000</span>
+                                <span class="text-[10px] font-medium text-zinc-500">تومان</span>
+                            </div>
+                            <a href="https://sponsoracb.mydigify.app/product/3062253/%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%DA%A9-%D9%BE%D9%84%D8%A7%D8%B3" target="_blank" class="btn-formal w-full py-2 rounded-xl font-bold text-xs flex items-center justify-center shadow-sm">
+                                خرید سرویس
+                            </a>
+                        </div>
                     </div>
 
-                    <div class="snap-center shrink-0 w-[270px] sm:w-[300px] rounded-2xl glass-panel flex flex-col transition duration-300">
-                        <div class="w-full h-[160px] rounded-t-2xl overflow-hidden glass-image-wrapper p-1.5">
-                            <img src="https://digifycdn.com/media/item_images/15435.jpg" alt="اشتراک پریمیوم" class="w-full h-full object-cover rounded-xl">
-                        </div>
-                        <div class="p-6 flex flex-col flex-1">
-                            <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-4">اشتراک پریمیوم</h3>
-                            <div class="mt-auto">
-                                <div class="flex items-end gap-1 mb-6">
-                                    <span class="text-2xl font-black text-zinc-900 dark:text-white" dir="ltr">1,400,000</span>
-                                    <span class="text-xs text-zinc-500 font-medium pb-1">تومان</span>
-                                </div>
-                                <a href="https://sponsoracb.mydigify.app/product/3062255/%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%DA%A9-%D9%BE%D8%B1%DB%8C%D9%85%DB%8C%D9%88%D9%85" target="_blank" class="w-full py-2.5 rounded-xl glass-button text-zinc-900 dark:text-white font-bold text-sm flex items-center justify-center transition">
-                                    خرید سرویس
-                                </a>
+                    <div class="snap-center shrink-0 w-[225px] sm:w-[245px] rounded-2xl glass-panel flex flex-col justify-between overflow-hidden">
+                        <div>
+                            <div class="w-full h-[125px] rounded-t-2xl overflow-hidden p-1.5 bg-zinc-100/50 dark:bg-zinc-900/40">
+                                <img src="https://digifycdn.com/media/item_images/15435.jpg" alt="اشتراک پریمیوم" class="w-full h-full object-cover rounded-xl">
+                            </div>
+                            <div class="p-3.5">
+                                <h3 class="text-xs sm:text-sm font-bold text-zinc-900 dark:text-white mb-1.5">اشتراک پریمیوم</h3>
+                                <p class="text-[10.5px] text-zinc-500 dark:text-zinc-400">امکانات ویژه جهت استفاده حرفه‌ای</p>
                             </div>
                         </div>
+                        <div class="p-3.5 pt-0 mt-auto">
+                            <div class="flex items-baseline gap-1 mb-3">
+                                <span class="text-lg font-black text-zinc-900 dark:text-white" dir="ltr">1,400,000</span>
+                                <span class="text-[10px] font-medium text-zinc-500">تومان</span>
+                            </div>
+                            <a href="https://sponsoracb.mydigify.app/product/3062255/%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%DA%A9-%D9%BE%D8%B1%DB%8C%D9%85%DB%8C%D9%88%D9%85" target="_blank" class="w-full py-2 rounded-xl glass-button text-zinc-900 dark:text-white font-bold text-xs flex items-center justify-center shadow-xs">
+                                خرید سرویس
+                            </a>
+                        </div>
                     </div>
 
-                    <div class="snap-center shrink-0 w-[270px] sm:w-[300px] rounded-2xl glass-panel flex flex-col transition duration-300">
-                        <div class="w-full h-[160px] rounded-t-2xl overflow-hidden glass-image-wrapper p-1.5">
-                            <img src="https://digifycdn.com/media/item_images/15436_yo1vl94.jpg" alt="اشتراک اولترا" class="w-full h-full object-cover rounded-xl">
-                        </div>
-                        <div class="p-6 flex flex-col flex-1">
-                            <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-4">اشتراک اولترا</h3>
-                            <div class="mt-auto">
-                                <div class="flex items-end gap-1 mb-6">
-                                    <span class="text-2xl font-black text-zinc-900 dark:text-white" dir="ltr">6,800,000</span>
-                                    <span class="text-xs text-zinc-500 font-medium pb-1">تومان</span>
-                                </div>
-                                <a href="https://sponsoracb.mydigify.app/product/3062257/%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%DA%A9-%D8%A7%D9%88%D9%84%D8%AA%D8%B1%D8%A7" target="_blank" class="w-full py-2.5 rounded-xl glass-button text-zinc-900 dark:text-white font-bold text-sm flex items-center justify-center transition">
-                                    خرید سرویس
-                                </a>
+                    <div class="snap-center shrink-0 w-[225px] sm:w-[245px] rounded-2xl glass-panel flex flex-col justify-between overflow-hidden">
+                        <div>
+                            <div class="w-full h-[125px] rounded-t-2xl overflow-hidden p-1.5 bg-zinc-100/50 dark:bg-zinc-900/40">
+                                <img src="https://digifycdn.com/media/item_images/15436_yo1vl94.jpg" alt="اشتراک اولترا" class="w-full h-full object-cover rounded-xl">
+                            </div>
+                            <div class="p-3.5">
+                                <h3 class="text-xs sm:text-sm font-bold text-zinc-900 dark:text-white mb-1.5">اشتراک اولترا</h3>
+                                <p class="text-[10.5px] text-zinc-500 dark:text-zinc-400">بالاترین سقف منابع و دسترسی نامحدود</p>
                             </div>
                         </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section id="banners" class="mb-24 scroll-mt-24 halo-container halo-right">
-            <div class="banner-container w-full h-[250px] sm:h-[400px] md:h-[500px] lg:h-[600px] glass-panel p-2">
-                <div class="w-full h-full rounded-2xl overflow-hidden relative">
-                    <div class="banner-track" id="bannerTrack">
-                        <a href="https://t.me/Sponsoracb_bot" target="_blank" class="banner-slide">
-                            <img src="https://sponsoracb.ir/file_00000000312881f4a337291239a9586f.png" alt="Banner 1">
-                        </a>
-                        <a href="https://t.me/Sponsoracb_bot" target="_blank" class="banner-slide">
-                            <img src="https://sponsoracb.ir/file_00000000d8c08243afdd3b30ebc7fe8b%20(1).png" alt="Banner 2">
-                        </a>
-                        <a href="https://t.me/Sponsoracb_bot" target="_blank" class="banner-slide">
-                            <img src="https://sponsoracb.ir/file_00000000f404820cb297e82d4a948b2e.png" alt="Banner 3">
-                        </a>
-                        <a href="https://t.me/monsmain/263" target="_blank" class="banner-slide">
-                            <img src="https://sponsoracb.ir/file_00000000af608210b5c445de43c68220.png" alt="Banner 4">
-                        </a>
-                    </div>
-
-                    <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-20" id="bannerDots">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Integrated Portal Links Section (Glassmorphic) -->
-        <section id="portal" class="mb-24 scroll-mt-24 halo-container halo-both">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-5 px-2">
-                <div>
-                    <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white">پورتال کاربری</h2>
-                    <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-2 font-medium">این یک دسترسی جامع است، برای استفاده از تمامی امکانات وارد پورتال اصلی شوید.</p>
-                </div>
-                <a href="https://sponsoracb.ir/portal" target="_blank" class="w-full md:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition shadow-lg shadow-blue-500/30 whitespace-nowrap">
-                    ورود به پورتال اصلی
-                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
-                </a>
-            </div>
-
-            <!-- Quick Access Links (Responsive 4 cols, Glass Icons) -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
-                <a href="https://t.me/iBotBuilderbot" target="_blank" class="glass-panel rounded-2xl py-5 flex flex-col items-center justify-center gap-3 text-center group hover:bg-white/40 dark:hover:bg-zinc-800/40 hover:-translate-y-1 transition duration-300">
-                    <div class="w-12 h-12 rounded-[14px] glass-icon flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
-                        <i data-lucide="bot" class="w-6 h-6 text-blue-500 dark:text-blue-400 stroke-[2]"></i>
-                    </div>
-                    <h3 class="text-xs font-black text-zinc-900 dark:text-white leading-tight">بات بیلدر</h3>
-                </a>
-
-                <a href="https://t.me/iOnlinerbot" target="_blank" class="glass-panel rounded-2xl py-5 flex flex-col items-center justify-center gap-3 text-center group hover:bg-white/40 dark:hover:bg-zinc-800/40 hover:-translate-y-1 transition duration-300">
-                    <div class="w-12 h-12 rounded-[14px] glass-icon flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
-                        <i data-lucide="cpu" class="w-6 h-6 text-cyan-500 dark:text-cyan-400 stroke-[2]"></i>
-                    </div>
-                    <h3 class="text-xs font-black text-zinc-900 dark:text-white leading-tight">بات ساز</h3>
-                </a>
-
-                <a href="https://sponsoracb.ir/panel/login/Bonus/redof/game/openbogu" target="_blank" class="glass-panel rounded-2xl py-5 flex flex-col items-center justify-center gap-3 text-center group hover:bg-white/40 dark:hover:bg-zinc-800/40 hover:-translate-y-1 transition duration-300">
-                    <div class="w-12 h-12 rounded-[14px] glass-icon flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
-                        <i data-lucide="coins" class="w-6 h-6 text-amber-500 dark:text-amber-400 stroke-[2]"></i>
-                    </div>
-                    <h3 class="text-xs font-black text-zinc-900 dark:text-white leading-tight">بونوس</h3>
-                </a>
-
-                <a href="https://sponsoracb.ir/panel/" target="_blank" class="glass-panel rounded-2xl py-5 flex flex-col items-center justify-center gap-3 text-center group hover:bg-white/40 dark:hover:bg-zinc-800/40 hover:-translate-y-1 transition duration-300">
-                    <div class="w-12 h-12 rounded-[14px] glass-icon flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
-                        <i data-lucide="server" class="w-6 h-6 text-purple-500 dark:text-purple-400 stroke-[2]"></i>
-                    </div>
-                    <h3 class="text-xs font-black text-zinc-900 dark:text-white leading-tight">ساخت پنل</h3>
-                </a>
-            </div>
-
-            <!-- Main Portal Grid (Glassmorphic) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                
-                <a href="https://sponsoracb.mydigify.app/" target="_blank" class="glass-panel rounded-2xl p-4 flex items-center gap-4 hover:bg-white/50 dark:hover:bg-zinc-800/50 transition duration-300 group">
-                    <div class="w-12 h-12 rounded-[14px] glass-icon flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
-                        <i data-lucide="shopping-bag" class="w-6 h-6 text-sky-500 dark:text-sky-400 stroke-[2]"></i>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-sm font-bold text-zinc-900 dark:text-white mb-1">فروشگاه رسمی</h3>
-                        <p class="text-[11px] text-zinc-500 dark:text-zinc-400 leading-tight">خرید سریع و امن محصولات با تضمین کیفیت</p>
-                    </div>
-                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
-                </a>
-
-                <a href="https://AMT-IR.github.io/Support.html" class="glass-panel rounded-2xl p-4 flex items-center gap-4 hover:bg-white/50 dark:hover:bg-zinc-800/50 transition duration-300 group">
-                    <div class="w-12 h-12 rounded-[14px] glass-icon flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
-                        <i data-lucide="headset" class="w-6 h-6 text-violet-500 dark:text-violet-400 stroke-[2]"></i>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-sm font-bold text-zinc-900 dark:text-white mb-1">تیم پشتیبانی</h3>
-                        <p class="text-[11px] text-zinc-500 dark:text-zinc-400 leading-tight">ارتباط مستقیم با کارشناسان فنی برای حل مشکلات</p>
-                    </div>
-                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
-                </a>
-
-                <a href="https://sponsoracb.ir/ads" class="glass-panel rounded-2xl p-4 flex items-center gap-4 hover:bg-white/50 dark:hover:bg-zinc-800/50 transition duration-300 group">
-                    <div class="w-12 h-12 rounded-[14px] glass-icon flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
-                        <i data-lucide="target" class="w-6 h-6 text-orange-500 dark:text-orange-400 stroke-[2]"></i>
-                    </div>
-                    <div class="flex-1">
-                        <div class="flex items-center gap-2 mb-1">
-                            <h3 class="text-sm font-bold text-zinc-900 dark:text-white">کمپین تبلیغات</h3>
-                            <span class="text-[9px] font-bold bg-orange-100 text-orange-600 dark:bg-orange-500/20 dark:text-orange-400 px-2 py-0.5 rounded-md">بازدهی بالا</span>
+                        <div class="p-3.5 pt-0 mt-auto">
+                            <div class="flex items-baseline gap-1 mb-3">
+                                <span class="text-lg font-black text-zinc-900 dark:text-white" dir="ltr">6,800,000</span>
+                                <span class="text-[10px] font-medium text-zinc-500">تومان</span>
+                            </div>
+                            <a href="https://sponsoracb.mydigify.app/product/3062257/%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%DA%A9-%D8%A7%D9%88%D9%84%D8%AA%D8%B1%D8%A7" target="_blank" class="w-full py-2 rounded-xl glass-button text-zinc-900 dark:text-white font-bold text-xs flex items-center justify-center shadow-xs">
+                                خرید سرویس
+                            </a>
                         </div>
-                        <p class="text-[11px] text-zinc-500 dark:text-zinc-400 leading-tight">مشاهده تعرفه‌های رسمی و رزرو جایگاه‌ها</p>
                     </div>
-                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
-                </a>
 
-                <a href="https://AMT-IR.github.io/pricing.html" class="glass-panel rounded-2xl p-4 flex items-center gap-4 hover:bg-white/50 dark:hover:bg-zinc-800/50 transition duration-300 group">
-                    <div class="w-12 h-12 rounded-[14px] glass-icon flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
-                        <i data-lucide="crown" class="w-6 h-6 text-rose-500 dark:text-rose-400 stroke-[2]"></i>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-sm font-bold text-zinc-900 dark:text-white mb-1">اشتراک ویژه (VIP)</h3>
-                        <p class="text-[11px] text-zinc-500 dark:text-zinc-400 leading-tight">دسترسی نامحدود به امکانات اختصاصی</p>
-                    </div>
-                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
-                </a>
-
-                <a href="https://sponsoracb.ir/legal" class="glass-panel rounded-2xl p-4 flex items-center gap-4 hover:bg-white/50 dark:hover:bg-zinc-800/50 transition duration-300 group">
-                    <div class="w-12 h-12 rounded-[14px] glass-icon flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
-                        <i data-lucide="scale" class="w-6 h-6 text-indigo-500 dark:text-indigo-400 stroke-[2]"></i>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-sm font-bold text-zinc-900 dark:text-white mb-1">قوانین و مقررات</h3>
-                        <p class="text-[11px] text-zinc-500 dark:text-zinc-400 leading-tight">شرایط استفاده از خدمات و حریم خصوصی</p>
-                    </div>
-                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
-                </a>
-
-                <a href="https://sponsoracb.ir/AboutUs.html" class="glass-panel rounded-2xl p-4 flex items-center gap-4 hover:bg-white/50 dark:hover:bg-zinc-800/50 transition duration-300 group">
-                    <div class="w-12 h-12 rounded-[14px] glass-icon flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
-                        <i data-lucide="users" class="w-6 h-6 text-teal-500 dark:text-teal-400 stroke-[2]"></i>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-sm font-bold text-zinc-900 dark:text-white mb-1">درباره مجموعه</h3>
-                        <p class="text-[11px] text-zinc-500 dark:text-zinc-400 leading-tight">آشنایی با تاریخچه شکل‌گیری تیم و اهداف</p>
-                    </div>
-                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
-                </a>
-
-                <a href="https://Sponsoracb.ir/blog" target="_blank" class="glass-panel rounded-2xl p-4 flex items-center gap-4 hover:bg-white/50 dark:hover:bg-zinc-800/50 transition duration-300 group">
-                    <div class="w-12 h-12 rounded-[14px] glass-icon flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
-                        <i data-lucide="newspaper" class="w-6 h-6 text-emerald-500 dark:text-emerald-400 stroke-[2]"></i>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-sm font-bold text-zinc-900 dark:text-white mb-1">مجله و وبلاگ</h3>
-                        <p class="text-[11px] text-zinc-500 dark:text-zinc-400 leading-tight">آخرین مقالات آموزشی و اخبار فناوری</p>
-                    </div>
-                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
-                </a>
-
-                <a href="https://AMT-IR.github.io/Symbol.html" class="glass-panel rounded-2xl p-4 flex items-center gap-4 hover:bg-white/50 dark:hover:bg-zinc-800/50 transition duration-300 group">
-                    <div class="w-12 h-12 rounded-[14px] glass-icon flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
-                        <i data-lucide="shield-check" class="w-6 h-6 text-zinc-600 dark:text-zinc-300 stroke-[2]"></i>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-sm font-bold text-zinc-900 dark:text-white mb-1">نماد و اعتبارنامه</h3>
-                        <p class="text-[11px] text-zinc-500 dark:text-zinc-400 leading-tight">استعلام نمادهای اعتماد و گواهی‌های امنیت</p>
-                    </div>
-                    <i data-lucide="chevron-left" class="w-5 h-5 text-zinc-400 group-hover:-translate-x-1.5 transition-transform shrink-0"></i>
-                </a>
-
-                <div class="glass-panel rounded-2xl p-4 flex items-center gap-4 opacity-60 grayscale-[50%] pointer-events-none">
-                    <div class="w-12 h-12 rounded-[14px] glass-icon flex items-center justify-center shrink-0">
-                        <i data-lucide="message-square" class="w-6 h-6 text-zinc-500 stroke-[2]"></i>
-                    </div>
-                    <div class="flex-1">
-                        <div class="flex items-center gap-2 mb-1">
-                            <h3 class="text-sm font-bold text-zinc-900 dark:text-white">نظرات کاربران</h3>
-                            <span class="text-[9px] font-bold bg-zinc-200 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400 px-2 py-0.5 rounded-md">بزودی</span>
-                        </div>
-                        <p class="text-[11px] text-zinc-500 dark:text-zinc-400 leading-tight">بستری برای اشتراک‌گذاری تجربیات و ثبت بازخورد</p>
-                    </div>
                 </div>
-
-                <div class="glass-panel rounded-2xl p-4 flex items-center gap-4 opacity-60 grayscale-[50%] pointer-events-none">
-                    <div class="w-12 h-12 rounded-[14px] glass-icon flex items-center justify-center shrink-0">
-                        <i data-lucide="gem" class="w-6 h-6 text-zinc-500 stroke-[2]"></i>
-                    </div>
-                    <div class="flex-1">
-                        <div class="flex items-center gap-2 mb-1">
-                            <h3 class="text-sm font-bold text-zinc-900 dark:text-white">اسپانسرشیپ</h3>
-                            <span class="text-[9px] font-bold bg-zinc-200 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400 px-2 py-0.5 rounded-md">بزودی</span>
-                        </div>
-                        <p class="text-[11px] text-zinc-500 dark:text-zinc-400 leading-tight">پلتفرمی برای ثبت درخواست حمایت مالی</p>
-                    </div>
-                </div>
-
             </div>
-        </section>
 
-        <section id="about" class="mb-24 scroll-mt-24 halo-container halo-left">
-            <div class="glass-panel rounded-2xl p-8 sm:p-10 mb-6">
-                <div class="flex flex-col md:flex-row gap-8 items-start relative z-10">
-                    <div class="w-14 h-14 shrink-0 rounded-[14px] glass-icon flex items-center justify-center">
-                        <i data-lucide="building-2" class="w-6 h-6 text-zinc-600 dark:text-zinc-300"></i>
+            <div class="mt-4 p-4 sm:p-5 rounded-2xl glass-panel flex flex-col sm:flex-row items-center justify-between gap-3.5 border border-zinc-200/90 dark:border-zinc-800 shadow-sm">
+                <div class="flex items-center gap-3 w-full sm:w-auto">
+                    <div class="w-10 h-10 rounded-xl glass-icon flex items-center justify-center shrink-0 text-zinc-800 dark:text-zinc-200">
+                        <i data-lucide="layers" class="w-5 h-5 text-indigo-600 dark:text-indigo-400"></i>
                     </div>
                     <div>
-                        <h2 class="text-xl sm:text-2xl font-black mb-4 text-zinc-900 dark:text-white">درباره SPONSORACB</h2>
-                        <p class="text-sm leading-8 text-zinc-600 dark:text-zinc-400 text-justify">
-                            مجموعه SPONSORACB (اسپانسراِی‌سی‌بی) با هدف دسترسی آسان، ارزان و بدون محدودیت کاربران ایرانی به برترین مدل‌های هوش مصنوعی جهان (مانند ChatGPT, Gemini, Claude و ...) شکل گرفته است. ما در Sponsor acb باور داریم که تکنولوژی مرز نمی‌شناسد. در همین راستا، در تلاشیم تا با ارائه ربات‌های تلگرامی پیشرفته، وب‌سرویس‌های (API) پایدار، کانفیگ‌های شبکه‌ای قدرتمند و پلتفرم‌های جامع، مرزهای فناوری را برای توسعه‌دهندگان، دانشجویان و کاربران عادی جابجا کنیم.
-                        </p>
+                        <h4 class="text-xs sm:text-sm font-bold text-zinc-900 dark:text-white">مشاهده و مقایسه امکانات کامل اشتراک‌ها</h4>
+                        <p class="text-[11px] sm:text-xs text-zinc-600 dark:text-zinc-400 mt-0.5">برای دیدن قابلیت‌ها و جزئیات دقیق هر یک از اشتراک‌ها وارد بخش زیر شوید:</p>
                     </div>
                 </div>
+                <a href="https://sponsoracb.ir/pricing" target="_blank" class="w-full sm:w-auto shrink-0 px-4 py-2.5 rounded-xl btn-formal text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition">
+                    <span>مشاهده قابلیت‌های هر اشتراک</span>
+                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+            </div>
+        </section>
+
+        <section id="banners" class="mb-9 scroll-mt-20">
+            <div class="w-full h-[200px] sm:h-[300px] md:h-[400px] banner-container-frame p-2 sm:p-3 relative">
+                <div class="w-full h-full rounded-2xl overflow-hidden relative" id="bannerTrack">
+                    <a href="https://t.me/Sponsoracb_bot" target="_blank" class="banner-slide">
+                        <img src="https://sponsoracb.ir/file_00000000312881f4a337291239a9586f.png" alt="اطلاعیه اول" class="w-full h-full object-cover rounded-xl sm:rounded-2xl">
+                    </a>
+                    <a href="https://t.me/Sponsoracb_bot" target="_blank" class="banner-slide">
+                        <img src="https://sponsoracb.ir/file_00000000d8c08243afdd3b30ebc7fe8b%20(1).png" alt="اطلاعیه دوم" class="w-full h-full object-cover rounded-xl sm:rounded-2xl">
+                    </a>
+                    <a href="https://t.me/Sponsoracb_bot" target="_blank" class="banner-slide">
+                        <img src="https://sponsoracb.ir/file_00000000f404820cb297e82d4a948b2e.png" alt="اطلاعیه سوم" class="w-full h-full object-cover rounded-xl sm:rounded-2xl">
+                    </a>
+                    <a href="https://t.me/monsmain/263" target="_blank" class="banner-slide">
+                        <img src="https://sponsoracb.ir/file_00000000af608210b5c445de43c68220.png" alt="اطلاعیه چهارم" class="w-full h-full object-cover rounded-xl sm:rounded-2xl">
+                    </a>
+                </div>
+                <div class="absolute bottom-4 left-0 right-0 flex justify-center items-center gap-1.5 z-20" id="bannerDots"></div>
+            </div>
+        </section>
+
+        <section id="ecosystem" class="mb-10 scroll-mt-20">
+            
+            <div class="text-center max-w-2xl mx-auto mb-6">
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-black text-zinc-900 dark:text-white tracking-tight">
+                    اکوسیستم SPONSORACB
+                </h2>
+                <p class="text-xs sm:text-sm font-bold text-zinc-700 dark:text-zinc-300 mt-1">
+                    یک برند، چند مسیر برای ساختن
+                </p>
+                <p class="text-xs sm:text-[13px] leading-6 text-zinc-600 dark:text-zinc-300 mt-2 text-center">
+                    SPONSORACB فقط یک سرویس نیست؛ مجموعه‌ای از محصولات، فناوری‌ها و خدمات دیجیتال است که هرکدام برای یک هدف مشخص توسعه پیدا می‌کنند.
+                </p>
+                <p class="text-[11.5px] sm:text-xs leading-5 text-zinc-500 dark:text-zinc-400 mt-1 text-center">
+                    از هوش مصنوعی و ربات‌های تلگرام گرفته تا توسعه نرم‌افزار، زیرساخت ابری، ابزارهای توسعه‌دهندگان و محصولات دیجیتال؛ همه در یک اکوسیستم و تحت یک استاندارد قرار می‌گیرند.
+                </p>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-4 sm:p-5 mb-4 border border-zinc-200/90 dark:border-zinc-800">
+                <div class="flex items-center justify-between mb-3.5 pb-2.5 border-b border-zinc-200/80 dark:border-zinc-800">
+                    <div>
+                        <h3 class="text-xs sm:text-sm font-bold text-zinc-900 dark:text-white">با هدف توسعه پروژه‌های:</h3>
+                        <p class="text-[10.5px] text-zinc-500 dark:text-zinc-400">حوزه‌ها و تمرکزهای اصلی اکوسیستم</p>
+                    </div>
+                    <span class="text-[10.5px] font-mono font-bold px-2.5 py-0.5 rounded-md border border-zinc-200 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
+                        9 DOMAINS
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+                    
+                    <div class="p-3 rounded-xl bg-zinc-50/80 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg glass-icon flex items-center justify-center shrink-0 text-zinc-700 dark:text-zinc-300">
+                            <i data-lucide="cpu" class="w-4 h-4"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <span class="text-xs font-mono font-bold text-zinc-900 dark:text-white block truncate">ACBAI</span>
+                            <span class="text-[11px] text-zinc-600 dark:text-zinc-400 block truncate">هوش مصنوعی و ابزارهای هوشمند</span>
+                        </div>
+                    </div>
+
+                    <div class="p-3 rounded-xl bg-zinc-50/80 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg glass-icon flex items-center justify-center shrink-0 text-zinc-700 dark:text-zinc-300">
+                            <i data-lucide="bot" class="w-4 h-4"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <span class="text-xs font-mono font-bold text-zinc-900 dark:text-white block truncate">ACBBOT</span>
+                            <span class="text-[11px] text-zinc-600 dark:text-zinc-400 block truncate">ربات‌های Telegram و اتوماسیون</span>
+                        </div>
+                    </div>
+
+                    <div class="p-3 rounded-xl bg-zinc-50/80 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg glass-icon flex items-center justify-center shrink-0 text-zinc-700 dark:text-zinc-300">
+                            <i data-lucide="code-2" class="w-4 h-4"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <span class="text-xs font-mono font-bold text-zinc-900 dark:text-white block truncate">ACB Services</span>
+                            <span class="text-[11px] text-zinc-600 dark:text-zinc-400 block truncate">توسعه نرم‌افزار و پروژه‌های اختصاصی</span>
+                        </div>
+                    </div>
+
+                    <div class="p-3 rounded-xl bg-zinc-50/80 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg glass-icon flex items-center justify-center shrink-0 text-zinc-700 dark:text-zinc-300">
+                            <i data-lucide="cloud" class="w-4 h-4"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <span class="text-xs font-mono font-bold text-zinc-900 dark:text-white block truncate">ACB Cloud</span>
+                            <span class="text-[11px] text-zinc-600 dark:text-zinc-400 block truncate">زیرساخت و فناوری ابری</span>
+                        </div>
+                    </div>
+
+                    <div class="p-3 rounded-xl bg-zinc-50/80 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg glass-icon flex items-center justify-center shrink-0 text-zinc-700 dark:text-zinc-300">
+                            <i data-lucide="terminal" class="w-4 h-4"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <span class="text-xs font-mono font-bold text-zinc-900 dark:text-white block truncate">ACB Dev</span>
+                            <span class="text-[11px] text-zinc-600 dark:text-zinc-400 block truncate">ابزارها و سرویس‌های توسعه‌دهندگان</span>
+                        </div>
+                    </div>
+
+                    <div class="p-3 rounded-xl bg-zinc-50/80 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg glass-icon flex items-center justify-center shrink-0 text-zinc-700 dark:text-zinc-300">
+                            <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <span class="text-xs font-mono font-bold text-zinc-900 dark:text-white block truncate">ACB Store</span>
+                            <span class="text-[11px] text-zinc-600 dark:text-zinc-400 block truncate">فروشگاه رسمی محصولات و سرویس‌ها</span>
+                        </div>
+                    </div>
+
+                    <div class="p-3 rounded-xl bg-zinc-50/80 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg glass-icon flex items-center justify-center shrink-0 text-zinc-700 dark:text-zinc-300">
+                            <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <span class="text-xs font-mono font-bold text-zinc-900 dark:text-white block truncate">ACB Shop</span>
+                            <span class="text-[11px] text-zinc-600 dark:text-zinc-400 block truncate">خرید سریع، آفرها و پیشنهادهای ویژه</span>
+                        </div>
+                    </div>
+
+                    <div class="p-3 rounded-xl bg-zinc-50/80 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg glass-icon flex items-center justify-center shrink-0 text-zinc-700 dark:text-zinc-300">
+                            <i data-lucide="palette" class="w-4 h-4"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <span class="text-xs font-mono font-bold text-zinc-900 dark:text-white block truncate">ACB Media</span>
+                            <span class="text-[11px] text-zinc-600 dark:text-zinc-400 block truncate">طراحی و محتوای دیجیتال</span>
+                        </div>
+                    </div>
+
+                    <div class="p-3 rounded-xl bg-zinc-50/80 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg glass-icon flex items-center justify-center shrink-0 text-zinc-700 dark:text-zinc-300">
+                            <i data-lucide="flask-conical" class="w-4 h-4"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <span class="text-xs font-mono font-bold text-zinc-900 dark:text-white block truncate">ACB Labs</span>
+                            <span class="text-[11px] text-zinc-600 dark:text-zinc-400 block truncate">تحقیق، آزمایش و توسعه فناوری</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                
+                <div id="acb-ai" class="glass-panel rounded-2xl p-4 sm:p-6 scroll-mt-20">
+                    <div class="flex flex-col md:flex-row gap-5 items-start">
+                        <div class="md:w-5/12">
+                            <div class="w-9 h-9 rounded-xl glass-icon flex items-center justify-center text-zinc-800 dark:text-zinc-200 mb-2.5">
+                                <i data-lucide="cpu" class="w-4.5 h-4.5 text-indigo-600 dark:text-indigo-400"></i>
+                            </div>
+                            <span class="text-[9.5px] font-mono font-bold text-zinc-500 tracking-wider">ARTIFICIAL INTELLIGENCE</span>
+                            <h3 class="text-base sm:text-lg font-black text-zinc-900 dark:text-white mt-0.5">ACBAI</h3>
+                            <p class="text-xs font-bold text-zinc-700 dark:text-zinc-300 mt-0.5">هوش مصنوعی، فراتر از یک چت</p>
+                            <p class="text-xs leading-6 text-zinc-600 dark:text-zinc-400 mt-2.5 text-right">
+                                ACBAI مرکز محصولات و سرویس‌های هوش مصنوعی SPONSORACB است. هدف ACBAI ساخت ابزارهایی است که بتوانند بخشی از کارهای پیچیده را ساده‌تر، سریع‌تر و هوشمندتر کنند.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 mt-3.5">
+                                <span class="tag-pill font-mono">AI</span>
+                                <span class="tag-pill font-mono">Agents</span>
+                                <span class="tag-pill font-mono">Automation</span>
+                                <span class="tag-pill font-mono">Tools</span>
+                            </div>
+                        </div>
+
+                        <div class="md:w-7/12 w-full space-y-3.5">
+                            <div>
+                                <h4 class="text-xs font-bold text-zinc-900 dark:text-white mb-2">حوزه‌های ACBAI</h4>
+                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 text-[11px] font-medium text-zinc-700 dark:text-zinc-300">
+                                    <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center font-mono">AI Chat</div>
+                                    <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center font-mono">AI Agents</div>
+                                    <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center font-mono">AI Coding</div>
+                                    <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center font-mono">AI Tools</div>
+                                    <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center font-mono">AI Automation</div>
+                                    <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center font-mono">AI API</div>
+                                    <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center col-span-2 sm:col-span-1">پردازش و تحلیل اطلاعات</div>
+                                    <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center col-span-2 sm:col-span-1">راهکارهای هوشمند اختصاصی</div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-zinc-100/70 dark:bg-zinc-900/40 border border-zinc-200/90 dark:border-zinc-800">
+                                <span class="text-xs font-bold text-zinc-900 dark:text-white block mb-1">یک مثال:</span>
+                                <p class="text-xs leading-6 text-zinc-600 dark:text-zinc-400 text-right">
+                                    فرض کنید یک کسب‌وکار روزانه با تعداد زیادی سؤال تکراری روبه‌رو می‌شود. به‌جای پاسخ‌گویی دستی، می‌توان یک سیستم هوشمند طراحی کرد که اطلاعات موردنیاز را دریافت، پردازش و پاسخ مناسب را ارائه کند. این نوع راهکارها در خانواده ACBAI قرار می‌گیرند.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="acb-bot" class="glass-panel rounded-2xl p-4 sm:p-6 scroll-mt-20">
+                    <div class="flex flex-col md:flex-row gap-5 items-start pb-4 border-b border-zinc-200/80 dark:border-zinc-800">
+                        <div class="md:w-5/12">
+                            <div class="w-9 h-9 rounded-xl glass-icon flex items-center justify-center text-zinc-800 dark:text-zinc-200 mb-2.5">
+                                <i data-lucide="bot" class="w-4.5 h-4.5 text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <span class="text-[9.5px] font-mono font-bold text-zinc-500 tracking-wider">TELEGRAM & AUTOMATION</span>
+                            <h3 class="text-base sm:text-lg font-black text-zinc-900 dark:text-white mt-0.5">ACBBOT</h3>
+                            <p class="text-xs font-bold text-zinc-700 dark:text-zinc-300 mt-0.5">ربات‌هایی که فقط پیام نمی‌دهند؛ کار انجام می‌دهند.</p>
+                            <p class="text-xs leading-6 text-zinc-600 dark:text-zinc-400 mt-2.5 text-right">
+                                ACBBOT خانواده پروژه‌ها و سرویس‌های مبتنی بر Telegram Bot در اکوسیستم SPONSORACB است. از ربات‌های ساده گرفته تا سیستم‌های پیشرفته مدیریت، اتوماسیون، فایل، لینک، عضویت، API و پروژه‌های اختصاصی.
+                            </p>
+                            <div class="mt-3 inline-block px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 text-[10.5px] font-mono font-bold text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700">
+                                Powered by SPONSORACB
+                            </div>
+                        </div>
+
+                        <div class="md:w-7/12 w-full">
+                            <h4 class="text-xs font-bold text-zinc-900 dark:text-white mb-2">نمونه پروژه‌ها</h4>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                                <div class="p-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800">BotBuilder</div>
+                                <div class="p-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800">File & Link Bots</div>
+                                <div class="p-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800">Automation Bots</div>
+                                <div class="p-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800">Management Bots</div>
+                                <div class="p-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800">Membership Systems</div>
+                                <div class="p-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800">Telegram Services</div>
+                                <div class="p-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 col-span-2 sm:col-span-3">Custom Telegram Projects</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <div class="flex items-center gap-2 mb-1.5">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+                            <h4 class="text-xs sm:text-sm font-bold text-zinc-900 dark:text-white">مزایای خرید اشتراک بات</h4>
+                        </div>
+                        <p class="text-[11.5px] text-zinc-600 dark:text-zinc-400 mb-3 leading-5 text-right">
+                            اشتراک یک Bot فقط به معنی «دسترسی به یک ربات» نیست. بسته به نوع سرویس، اشتراک می‌تواند امکان استفاده از مجموعه‌ای از قابلیت‌ها، منابع و امکانات اختصاصی را فراهم کند.
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">
+                            <div class="p-3 rounded-xl bg-zinc-50/90 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800">
+                                <h5 class="text-xs font-bold text-zinc-900 dark:text-white mb-1">امکانات بیشتر</h5>
+                                <p class="text-[11px] leading-5 text-zinc-600 dark:text-zinc-400 text-right">بسته‌های اشتراکی می‌توانند نسبت به حالت پایه، قابلیت‌های بیشتری در اختیار کاربر قرار دهند.</p>
+                            </div>
+                            <div class="p-3 rounded-xl bg-zinc-50/90 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800">
+                                <h5 class="text-xs font-bold text-zinc-900 dark:text-white mb-1">محدودیت‌های بالاتر</h5>
+                                <p class="text-[11px] leading-5 text-zinc-600 dark:text-zinc-400 text-right">بسته به محصول، ممکن است سقف استفاده، تعداد عملیات، فضای قابل استفاده یا امکانات در پلن‌های مختلف متفاوت باشد.</p>
+                            </div>
+                            <div class="p-3 rounded-xl bg-zinc-50/90 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800">
+                                <h5 class="text-xs font-bold text-zinc-900 dark:text-white mb-1">دسترسی کنترل‌شده</h5>
+                                <p class="text-[11px] leading-5 text-zinc-600 dark:text-zinc-400 text-right">سیستم اشتراک می‌تواند دسترسی کاربران را بر اساس پلن خریداری‌شده مدیریت کند.</p>
+                            </div>
+                            <div class="p-3 rounded-xl bg-zinc-50/90 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800">
+                                <h5 class="text-xs font-bold text-zinc-900 dark:text-white mb-1">امکانات مدیریتی</h5>
+                                <p class="text-[11px] leading-5 text-zinc-600 dark:text-zinc-400 text-right">در سرویس‌هایی که پنل مدیریت دارند، امکاناتی مانند آمار، تنظیمات، مدیریت کاربران و مدیریت سرویس می‌تواند در اختیار کاربر قرار گیرد.</p>
+                            </div>
+                            <div class="p-3 rounded-xl bg-zinc-50/90 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800">
+                                <h5 class="text-xs font-bold text-zinc-900 dark:text-white mb-1">به‌روزرسانی</h5>
+                                <p class="text-[11px] leading-5 text-zinc-600 dark:text-zinc-400 text-right">محصولات نرم‌افزاری می‌توانند در طول زمان بهبود پیدا کنند و قابلیت‌های جدید دریافت کنند.</p>
+                            </div>
+                            <div class="p-3 rounded-xl bg-zinc-50/90 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800">
+                                <h5 class="text-xs font-bold text-zinc-900 dark:text-white mb-1">پشتیبانی و نگهداری</h5>
+                                <p class="text-[11px] leading-5 text-zinc-600 dark:text-zinc-400 text-right">سرویس‌های اشتراکی، در صورت تعریف در شرایط همان محصول، می‌توانند شامل پشتیبانی، رفع مشکلات و نگهداری سرویس باشند.</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 p-2.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 text-[11.5px] text-zinc-700 dark:text-zinc-300">
+                            <strong>نکته مهم:</strong> امکانات هر اشتراک به محصول و پلن انتخاب‌شده بستگی دارد و همه قابلیت‌ها در همه سرویس‌ها یکسان نیستند.
+                        </div>
+                    </div>
+                </div>
+
+                <div id="acb-services" class="glass-panel rounded-2xl p-4 sm:p-6">
+                    <div class="flex flex-col md:flex-row gap-5 items-start">
+                        <div class="md:w-5/12">
+                            <div class="w-9 h-9 rounded-xl glass-icon flex items-center justify-center text-zinc-800 dark:text-zinc-200 mb-2.5">
+                                <i data-lucide="code-2" class="w-4.5 h-4.5 text-violet-600 dark:text-violet-400"></i>
+                            </div>
+                            <span class="text-[9.5px] font-mono font-bold text-zinc-500 tracking-wider">CUSTOM DEVELOPMENT</span>
+                            <h3 class="text-base sm:text-lg font-black text-zinc-900 dark:text-white mt-0.5">ACB Services</h3>
+                            <p class="text-xs font-bold text-zinc-700 dark:text-zinc-300 mt-0.5">ایده‌ات را به یک محصول واقعی تبدیل کن.</p>
+                            <p class="text-xs leading-6 text-zinc-600 dark:text-zinc-400 mt-2.5 text-right">
+                                ACB Services بخش توسعه و اجرای پروژه‌های اختصاصی SPONSORACB است. اگر محصول آماده‌ای که نیاز دارید وجود نداشته باشد، می‌توان یک راهکار متناسب با نیاز پروژه طراحی و توسعه داد.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 mt-3.5 font-mono">
+                                <span class="tag-pill">Design</span>
+                                <span class="tag-pill">Development</span>
+                                <span class="tag-pill">Software</span>
+                                <span class="tag-pill">Integration</span>
+                            </div>
+                        </div>
+
+                        <div class="md:w-7/12 w-full space-y-3.5">
+                            <div>
+                                <h4 class="text-xs font-bold text-zinc-900 dark:text-white mb-2">خدمات</h4>
+                                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-[11px] font-medium text-zinc-700 dark:text-zinc-300">
+                                    <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800">طراحی و توسعه وب‌سایت</div>
+                                    <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 font-mono">Web Application</div>
+                                    <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 font-mono">Backend</div>
+                                    <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 font-mono">API</div>
+                                    <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 font-mono">Telegram Bot</div>
+                                    <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800">اتوماسیون</div>
+                                    <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 font-mono">Integration</div>
+                                    <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 font-mono">Database</div>
+                                    <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800">سیستم‌های اختصاصی</div>
+                                    <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 font-mono">Cloud Deployment</div>
+                                    <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 col-span-2">توسعه نرم‌افزار</div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-zinc-100/70 dark:bg-zinc-900/40 border border-zinc-200/90 dark:border-zinc-800">
+                                <span class="text-xs font-bold text-zinc-900 dark:text-white block mb-1">مثال:</span>
+                                <p class="text-[11.5px] leading-5 text-zinc-600 dark:text-zinc-400 mb-2.5 text-right">
+                                    یک کسب‌وکار نیاز دارد کاربران از طریق Telegram ثبت‌نام کنند، پرداخت انجام دهند و پس از پرداخت به امکانات مشخصی دسترسی داشته باشند. می‌توان این سیستم را به‌صورت یک پروژه اختصاصی طراحی کرد:
+                                </p>
+                                <div class="flex flex-wrap items-center justify-center gap-1.5 text-[10.5px] font-mono font-bold text-zinc-700 dark:text-zinc-300" dir="ltr">
+                                    <span class="px-2 py-0.5 rounded-md bg-zinc-200 dark:bg-zinc-800">Bot</span>
+                                    <span>→</span>
+                                    <span class="px-2 py-0.5 rounded-md bg-zinc-200 dark:bg-zinc-800">API</span>
+                                    <span>→</span>
+                                    <span class="px-2 py-0.5 rounded-md bg-zinc-200 dark:bg-zinc-800">Backend</span>
+                                    <span>→</span>
+                                    <span class="px-2 py-0.5 rounded-md bg-zinc-200 dark:bg-zinc-800">Database</span>
+                                    <span>→</span>
+                                    <span class="px-2 py-0.5 rounded-md bg-zinc-200 dark:bg-zinc-800">Payment</span>
+                                    <span>→</span>
+                                    <span class="px-2 py-0.5 rounded-md bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900">Access Control</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    
+                    <div class="glass-panel rounded-2xl p-4 sm:p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="w-9 h-9 rounded-xl glass-icon flex items-center justify-center mb-2.5 text-zinc-800 dark:text-zinc-200">
+                                <i data-lucide="cloud" class="w-4.5 h-4.5 text-sky-600 dark:text-sky-400"></i>
+                            </div>
+                            <span class="text-[9.5px] font-mono font-bold text-zinc-500 tracking-wider">INFRASTRUCTURE</span>
+                            <h3 class="text-base font-black text-zinc-900 dark:text-white mt-0.5">ACB Cloud</h3>
+                            <p class="text-xs font-bold text-zinc-700 dark:text-zinc-300 mt-0.5">زیرساخت برای اجرای ایده‌ها</p>
+                            <p class="text-xs leading-6 text-zinc-600 dark:text-zinc-400 mt-2 text-right">
+                                ACB Cloud بخش زیرساخت و فناوری ابری اکوسیستم SPONSORACB است. تمرکز آن روی فراهم‌کردن زیرساخت مناسب برای اجرای سرویس‌ها و محصولات دیجیتال است.
+                            </p>
+                            
+                            <div class="grid grid-cols-3 gap-1.5 mt-3.5 text-[10.5px] font-mono font-medium text-zinc-700 dark:text-zinc-300">
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center">Cloud Infra</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center">Deployment</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center">Workers</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center">Database</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center">API Infra</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center">CDN</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center">Storage</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center">Monitoring</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center">Scalability</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-2.5 border-t border-zinc-200/80 dark:border-zinc-800 text-[10.5px] font-mono text-zinc-500">
+                            Cloud • Infrastructure • Deployment • Database
+                        </div>
+                    </div>
+
+                    <div class="glass-panel rounded-2xl p-4 sm:p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="w-9 h-9 rounded-xl glass-icon flex items-center justify-center mb-2.5 text-zinc-800 dark:text-zinc-200">
+                                <i data-lucide="terminal" class="w-4.5 h-4.5 text-emerald-600 dark:text-emerald-400"></i>
+                            </div>
+                            <span class="text-[9.5px] font-mono font-bold text-zinc-500 tracking-wider">DEVELOPER PLATFORM</span>
+                            <h3 class="text-base font-black text-zinc-900 dark:text-white mt-0.5">ACB Dev</h3>
+                            <p class="text-xs font-bold text-zinc-700 dark:text-zinc-300 mt-0.5">ابزارهایی برای ساختن</p>
+                            <p class="text-xs leading-6 text-zinc-600 dark:text-zinc-400 mt-2 text-right">
+                                ACB Dev فضای مخصوص توسعه‌دهندگان است. هدف آن ساخت و ارائه ابزارها و سرویس‌هایی است که فرآیند توسعه نرم‌افزار را ساده‌تر کنند.
+                            </p>
+                            
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 mt-3.5 text-[10.5px] font-mono font-medium text-zinc-700 dark:text-zinc-300">
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center">API</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center">SDK</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center">Dev Tools</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center">CLI</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center">Documentation</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center">Testing Tools</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center">Integrations</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-center">Platform</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-2.5 border-t border-zinc-200/80 dark:border-zinc-800 text-[10.5px] font-mono text-zinc-500">
+                            API • SDK • Developer Tools
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="glass-panel rounded-2xl p-4 sm:p-6">
+                    <div class="mb-4 pb-2.5 border-b border-zinc-200/80 dark:border-zinc-800">
+                        <span class="text-[9.5px] font-mono font-bold text-zinc-500 tracking-wider">COMMERCE & SHOPPING</span>
+                        <h3 class="text-base font-black text-zinc-900 dark:text-white mt-0.5">بخش تجاری اکوسیستم</h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl bg-zinc-50/90 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-2.5 mb-2">
+                                    <div class="w-8 h-8 rounded-lg glass-icon flex items-center justify-center text-zinc-800 dark:text-zinc-200">
+                                        <i data-lucide="shopping-bag" class="w-4 h-4 text-amber-600 dark:text-amber-400"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xs sm:text-sm font-bold text-zinc-900 dark:text-white">ACB Store</h4>
+                                        <span class="text-[10.5px] text-zinc-500">فروشگاه اصلی و رسمی SPONSORACB</span>
+                                    </div>
+                                </div>
+                                <p class="text-xs leading-6 text-zinc-600 dark:text-zinc-400 mt-1 text-right">
+                                    ACB Store محل ارائه محصولات، سرویس‌ها و راهکارهای قابل خرید اکوسیستم SPONSORACB است. در این بخش کاربر می‌تواند محصول موردنظر خود را بررسی، انتخاب و تهیه کند.
+                                </p>
+                                
+                                <div class="mt-3">
+                                    <span class="text-[11px] font-bold text-zinc-900 dark:text-white block mb-1">در ACB Store می‌توان ارائه کرد:</span>
+                                    <ul class="text-[11px] leading-5 text-zinc-600 dark:text-zinc-400 list-disc list-inside">
+                                        <li>محصولات دیجیتال</li>
+                                        <li>سرویس‌ها و اشتراک‌ها</li>
+                                        <li>محصولات نرم‌افزاری</li>
+                                        <li>ابزارهای کاربردی</li>
+                                        <li>سرویس‌های فنی</li>
+                                        <li>محصولات و راهکارهای SPONSORACB</li>
+                                    </ul>
+                                </div>
+
+                                <div class="mt-3">
+                                    <span class="text-[11px] font-bold text-zinc-900 dark:text-white block mb-1">امکانات فروشگاه:</span>
+                                    <p class="text-[11px] leading-5 text-zinc-600 dark:text-zinc-400 text-right">
+                                        صفحه اختصاصی محصول، توضیحات و مشخصات، انتخاب پلن، سبد خرید، پرداخت، مدیریت سفارش، دسترسی به محصولات خریداری‌شده.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="mt-4 pt-2.5 border-t border-zinc-200/80 dark:border-zinc-800 text-[11px] font-semibold text-zinc-700 dark:text-zinc-300">
+                                جایگاه: فروشگاه رسمی و کامل
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-zinc-50/90 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-2.5 mb-2">
+                                    <div class="w-8 h-8 rounded-lg glass-icon flex items-center justify-center text-zinc-800 dark:text-zinc-200">
+                                        <i data-lucide="shopping-cart" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xs sm:text-sm font-bold text-zinc-900 dark:text-white">ACB Shop</h4>
+                                        <span class="text-[10.5px] text-zinc-500">خرید سریع، آفرهای ویژه</span>
+                                    </div>
+                                </div>
+                                <p class="text-xs leading-6 text-zinc-600 dark:text-zinc-400 mt-1 text-right">
+                                    ACB Shop بخش سریع‌تر و تجاری‌تر اکوسیستم است. در این قسمت تمرکز روی محصولاتی است که کاربر می‌تواند با سرعت بیشتری بررسی و تهیه کند.
+                                </p>
+                                
+                                <div class="mt-3">
+                                    <span class="text-[11px] font-bold text-zinc-900 dark:text-white block mb-1">مناسب برای:</span>
+                                    <ul class="text-[11px] leading-5 text-zinc-600 dark:text-zinc-400 list-disc list-inside">
+                                        <li>آفرها و تخفیف‌ها</li>
+                                        <li>محصولات اقتصادی</li>
+                                        <li>فروش‌های محدود</li>
+                                        <li>بسته‌های ویژه</li>
+                                        <li>پیشنهادهای دوره‌ای</li>
+                                        <li>خرید سریع</li>
+                                    </ul>
+                                </div>
+
+                                <div class="mt-3 p-3 rounded-xl bg-zinc-100/90 dark:bg-zinc-800/70 text-[11px] text-zinc-700 dark:text-zinc-300 leading-5">
+                                    <span class="font-bold block mb-1">تفاوت با ACB Store:</span>
+                                    <span>ACB Store: فروشگاه اصلی و کامل.</span><br>
+                                    <span>ACB Shop: بخش خرید سریع و پیشنهادهای ویژه.</span><br>
+                                    <span class="mt-1 block text-zinc-500 dark:text-zinc-400 font-medium">به زبان ساده: «Store = فروشگاه» | «Shop = خرید سریع و آفر»</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 pt-2.5 border-t border-zinc-200/80 dark:border-zinc-800 text-[11px] font-semibold text-zinc-700 dark:text-zinc-300">
+                                جایگاه: بخش خرید سریع و پیشنهادهای ویژه
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    
+                    <div class="glass-panel rounded-2xl p-4 sm:p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="w-9 h-9 rounded-xl glass-icon flex items-center justify-center mb-2.5 text-zinc-800 dark:text-zinc-200">
+                                <i data-lucide="palette" class="w-4.5 h-4.5 text-pink-600 dark:text-pink-400"></i>
+                            </div>
+                            <span class="text-[9.5px] font-mono font-bold text-zinc-500 tracking-wider">CREATIVE STUDIO</span>
+                            <h3 class="text-base font-black text-zinc-900 dark:text-white mt-0.5">ACB Media</h3>
+                            <p class="text-xs font-bold text-zinc-700 dark:text-zinc-300 mt-0.5">فناوری فقط کد نیست.</p>
+                            <p class="text-xs leading-6 text-zinc-600 dark:text-zinc-400 mt-2 text-right">
+                                ACB Media بخش طراحی و محتوای دیجیتال اکوسیستم SPONSORACB است. هدف این بخش، ایجاد تجربه بصری حرفه‌ای برای محصولات و پروژه‌های دیجیتال است.
+                            </p>
+                            
+                            <div class="flex flex-wrap gap-1.5 mt-3.5 text-[10px] font-mono text-zinc-700 dark:text-zinc-300">
+                                <span class="tag-pill">UI/UX</span>
+                                <span class="tag-pill">Graphic Design</span>
+                                <span class="tag-pill">Brand Identity</span>
+                                <span class="tag-pill">Logo Design</span>
+                                <span class="tag-pill">Digital Content</span>
+                                <span class="tag-pill">Marketing Assets</span>
+                                <span class="tag-pill">Product Media</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-2.5 border-t border-zinc-200/80 dark:border-zinc-800 text-[10.5px] font-mono text-zinc-500">
+                            Design • Branding • Digital Media
+                        </div>
+                    </div>
+
+                    <div class="glass-panel rounded-2xl p-4 sm:p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="w-9 h-9 rounded-xl glass-icon flex items-center justify-center mb-2.5 text-zinc-800 dark:text-zinc-200">
+                                <i data-lucide="flask-conical" class="w-4.5 h-4.5 text-teal-600 dark:text-teal-400"></i>
+                            </div>
+                            <span class="text-[9.5px] font-mono font-bold text-zinc-500 tracking-wider">R&D AND EXPERIMENTS</span>
+                            <h3 class="text-base font-black text-zinc-900 dark:text-white mt-0.5">ACB Labs</h3>
+                            <p class="text-xs font-bold text-zinc-700 dark:text-zinc-300 mt-0.5">جایی برای ایده‌هایی که هنوز اسم ندارند.</p>
+                            <p class="text-xs leading-6 text-zinc-600 dark:text-zinc-400 mt-2 text-right">
+                                هر ایده‌ای از روز اول یک محصول کامل نیست. ACB Labs فضای تحقیق، آزمایش، Prototype و توسعه فناوری‌های جدید SPONSORACB است. ایده می‌تواند وارد مرحله آزمایش شود، نمونه اولیه ساخته شود، مورد بررسی قرار گیرد و در صورت موفقیت به یک محصول یا سرویس مستقل تبدیل شود.
+                            </p>
+                            
+                            <div class="mt-3 p-2 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 text-[10.5px] font-mono flex items-center justify-between text-zinc-700 dark:text-zinc-300" dir="ltr">
+                                <span>Idea</span> <span>→</span>
+                                <span>Prototype</span> <span>→</span>
+                                <span>Test</span> <span>→</span>
+                                <span>Improve</span> <span>→</span>
+                                <span class="font-bold text-zinc-900 dark:text-white">Product</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-2.5 border-t border-zinc-200/80 dark:border-zinc-800 text-[10.5px] font-mono text-zinc-500">
+                            Research • Experiments • Innovation
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    
+                    <div class="glass-panel rounded-2xl p-4 sm:p-5 border border-zinc-200/90 dark:border-zinc-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-2.5 mb-2.5">
+                                <div class="w-9 h-9 rounded-xl glass-icon flex items-center justify-center text-zinc-800 dark:text-zinc-200">
+                                    <i data-lucide="shield-check" class="w-4.5 h-4.5 text-emerald-600 dark:text-emerald-400"></i>
+                                </div>
+                                <div>
+                                    <span class="text-[9.5px] font-mono font-bold text-zinc-500 tracking-wider">SECURITY BY DESIGN</span>
+                                    <h3 class="text-sm sm:text-base font-black text-zinc-900 dark:text-white">امنیت در تمام اکوسیستم</h3>
+                                </div>
+                            </div>
+                            
+                            <p class="text-xs leading-6 text-zinc-600 dark:text-zinc-400 mb-3 text-right">
+                                امنیت یک برند جدا از محصولات نیست؛ یک استاندارد مشترک در تمام اکوسیستم SPONSORACB است. در طراحی سرویس‌ها، بسته به نوع پروژه، مواردی مانند:
+                            </p>
+
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-1.5 text-[10.5px] font-medium text-zinc-700 dark:text-zinc-300 mb-3">
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-center font-mono">Authentication</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-center font-mono">Authorization</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-center font-mono">Access Control</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-center">مدیریت Secretها</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-center">اعتبارسنجی ورودی</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-center font-mono">Rate Limiting</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-center">محافظت از API</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-center">جداسازی دسترسی‌ها</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-center">ثبت رویدادهای مهم</div>
+                                <div class="p-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-center col-span-2 sm:col-span-3">مدیریت دسترسی مدیران از ابتدا مورد توجه قرار می‌گیرند.</div>
+                            </div>
+                        </div>
+
+                        <div class="p-3 rounded-xl bg-zinc-100/90 dark:bg-zinc-800/80 border-r-3 border-zinc-700 dark:border-zinc-400 text-xs">
+                            <span class="font-bold text-zinc-900 dark:text-white">اصل ساده:</span>
+                            <span class="text-zinc-600 dark:text-zinc-300"> «هر بخش فقط باید به چیزی دسترسی داشته باشد که واقعاً به آن نیاز دارد.»</span>
+                            <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-1">
+                                امنیت نیز یک ویژگی با ادعای «۱۰۰٪» نیست؛ بلکه فرآیندی مداوم برای کاهش ریسک، شناسایی مشکل و بهبود سیستم است.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel rounded-2xl p-4 sm:p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="mb-2.5">
+                                <span class="text-[9.5px] font-mono font-bold text-zinc-500 tracking-wider">CORE PILLARS</span>
+                                <h3 class="text-sm sm:text-base font-black text-zinc-900 dark:text-white mt-0.5">چرا SPONSORACB؟</h3>
+                                <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-1 text-right">
+                                    چون یک محصول فقط با ظاهر خوب ساخته نمی‌شود. ما هنگام طراحی و توسعه محصولات به چند موضوع اصلی توجه می‌کنیم:
+                                </p>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                <div class="p-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800">
+                                    <h5 class="text-xs font-bold text-zinc-900 dark:text-white mb-0.5">امنیت</h5>
+                                    <p class="text-[10.5px] leading-4 text-zinc-600 dark:text-zinc-400 text-right">طراحی دسترسی‌ها، محافظت از اطلاعات حساس و کاهش سطح دسترسی غیرضروری.</p>
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800">
+                                    <h5 class="text-xs font-bold text-zinc-900 dark:text-white mb-0.5">عملکرد</h5>
+                                    <p class="text-[10.5px] leading-4 text-zinc-600 dark:text-zinc-400 text-right">تلاش برای ساخت سیستم‌هایی که متناسب با نیاز پروژه، سریع و پایدار باشند.</p>
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800">
+                                    <h5 class="text-xs font-bold text-zinc-900 dark:text-white mb-0.5">معماری</h5>
+                                    <p class="text-[10.5px] leading-4 text-zinc-600 dark:text-zinc-400 text-right">ساختار پروژه باید قابل نگهداری و توسعه باشد.</p>
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800">
+                                    <h5 class="text-xs font-bold text-zinc-900 dark:text-white mb-0.5">مقیاس‌پذیری</h5>
+                                    <p class="text-[10.5px] leading-4 text-zinc-600 dark:text-zinc-400 text-right">محصول باید بتواند در صورت رشد، قابلیت توسعه داشته باشد.</p>
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800">
+                                    <h5 class="text-xs font-bold text-zinc-900 dark:text-white mb-0.5">تست</h5>
+                                    <p class="text-[10.5px] leading-4 text-zinc-600 dark:text-zinc-400 text-right">قابلیت‌ها و مسیرهای مهم قبل و بعد از انتشار بررسی می‌شوند.</p>
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800">
+                                    <h5 class="text-xs font-bold text-zinc-900 dark:text-white mb-0.5">تجربه کاربری</h5>
+                                    <p class="text-[10.5px] leading-4 text-zinc-600 dark:text-zinc-400 text-right">کاربر نباید برای انجام یک کار ساده با یک سیستم پیچیده و گیج‌کننده مواجه شود.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-2.5 p-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800">
+                            <h5 class="text-xs font-bold text-zinc-900 dark:text-white mb-0.5">توسعه مداوم</h5>
+                            <p class="text-[10.5px] leading-4 text-zinc-600 dark:text-zinc-400 text-right">محصول دیجیتال بعد از انتشار تمام نمی‌شود؛ می‌تواند براساس نیاز کاربران و شرایط فنی بهبود پیدا کند.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    
+                    <div class="glass-panel rounded-2xl p-4 sm:p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="mb-2.5">
+                                <span class="text-[9.5px] font-mono font-bold text-zinc-500 tracking-wider">GENUINE ENGINEERING</span>
+                                <h3 class="text-sm sm:text-base font-black text-zinc-900 dark:text-white mt-0.5">کیفیت را با عدد ساختگی نمی‌سنجیم</h3>
+                                <p class="text-xs leading-6 text-zinc-600 dark:text-zinc-400 mt-1 text-right">
+                                    ما ادعای «۱۰۰٪ بدون خطا» یا «۱۰۰٪ امن» را به‌عنوان شعار تبلیغاتی استفاده نمی‌کنیم. کیفیت واقعی باید با معیار و شرایط مشخص اندازه‌گیری شود. برای مثال:
+                                </p>
+                            </div>
+
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-1.5 text-[10.5px] font-medium text-zinc-700 dark:text-zinc-300">
+                                <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-center">تست عملکرد</div>
+                                <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-center">تست قابلیت‌ها</div>
+                                <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-center">بررسی Errorها</div>
+                                <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-center">بررسی دسترسی‌ها</div>
+                                <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-center">تست API</div>
+                                <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-center">رفتار در شرایط غیرعادی</div>
+                                <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-center font-mono">Monitoring</div>
+                                <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-center">بررسی Logها</div>
+                                <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-center">رفع مشکلات</div>
+                                <div class="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-center col-span-2 sm:col-span-3">بهبود مستمر</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 text-center text-xs font-bold text-zinc-800 dark:text-zinc-200 py-2 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/40">
+                            هدف: ساخت محصولی قابل استفاده، قابل اعتماد و قابل توسعه.
+                        </div>
+                    </div>
+
+                    <div class="glass-panel rounded-2xl p-4 sm:p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="mb-2.5">
+                                <span class="text-[9.5px] font-mono font-bold text-zinc-500 tracking-wider">LIFECYCLE</span>
+                                <h3 class="text-sm sm:text-base font-black text-zinc-900 dark:text-white mt-0.5">از ایده تا محصول</h3>
+                                <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">فرآیند توسعه یک پروژه می‌تواند به این شکل باشد:</p>
+                            </div>
+
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                                <div class="p-2 rounded-xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800 text-center">
+                                    <span class="text-[9.5px] font-mono font-bold text-zinc-500">01</span>
+                                    <h6 class="text-xs font-bold text-zinc-900 dark:text-white">Discover</h6>
+                                    <p class="text-[10px] text-zinc-500 dark:text-zinc-400">شناخت نیاز و هدف</p>
+                                </div>
+                                <div class="p-2 rounded-xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800 text-center">
+                                    <span class="text-[9.5px] font-mono font-bold text-zinc-500">02</span>
+                                    <h6 class="text-xs font-bold text-zinc-900 dark:text-white">Plan</h6>
+                                    <p class="text-[10px] text-zinc-500 dark:text-zinc-400">تعیین قابلیت‌ها و ساختار</p>
+                                </div>
+                                <div class="p-2 rounded-xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800 text-center">
+                                    <span class="text-[9.5px] font-mono font-bold text-zinc-500">03</span>
+                                    <h6 class="text-xs font-bold text-zinc-900 dark:text-white">Design</h6>
+                                    <p class="text-[10px] text-zinc-500 dark:text-zinc-400">طراحی تجربه و معماری</p>
+                                </div>
+                                <div class="p-2 rounded-xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800 text-center">
+                                    <span class="text-[9.5px] font-mono font-bold text-zinc-500">04</span>
+                                    <h6 class="text-xs font-bold text-zinc-900 dark:text-white">Build</h6>
+                                    <p class="text-[10px] text-zinc-500 dark:text-zinc-400">توسعه و پیاده‌سازی</p>
+                                </div>
+                                <div class="p-2 rounded-xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800 text-center">
+                                    <span class="text-[9.5px] font-mono font-bold text-zinc-500">05</span>
+                                    <h6 class="text-xs font-bold text-zinc-900 dark:text-white">Test</h6>
+                                    <p class="text-[10px] text-zinc-500 dark:text-zinc-400">بررسی عملکرد و امنیت</p>
+                                </div>
+                                <div class="p-2 rounded-xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800 text-center">
+                                    <span class="text-[9.5px] font-mono font-bold text-zinc-500">06</span>
+                                    <h6 class="text-xs font-bold text-zinc-900 dark:text-white">Deploy</h6>
+                                    <p class="text-[10px] text-zinc-500 dark:text-zinc-400">استقرار محصول</p>
+                                </div>
+                                <div class="p-2 rounded-xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800 text-center col-span-2">
+                                    <span class="text-[9.5px] font-mono font-bold text-zinc-500">07</span>
+                                    <h6 class="text-xs font-bold text-zinc-900 dark:text-white">Improve</h6>
+                                    <p class="text-[10px] text-zinc-500 dark:text-zinc-400">بهبود و توسعه قابلیت‌ها</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-3 text-center text-[10.5px] font-mono text-zinc-500">
+                            Discover → Plan → Design → Build → Test → Deploy → Improve
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="glass-panel rounded-2xl p-5 sm:p-7 text-center">
+                    <span class="text-[11px] font-bold text-zinc-500 tracking-wider">یک اکوسیستم، یک استاندارد</span>
+                    <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+                        هر محصول ممکن است مسیر متفاوتی داشته باشد؛ اما همه آن‌ها یک نقطه مشترک دارند:
+                    </p>
+                    <h3 class="text-lg sm:text-2xl font-black text-zinc-900 dark:text-white mt-1.5">
+                        ساخته‌شده با SPONSORACB
+                    </h3>
+                    <p class="text-[11.5px] font-mono text-zinc-500 mt-1" dir="ltr">
+                        AI · Bots · Software · Cloud · Developer Tools · Digital Products
+                    </p>
+                    <p class="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 mt-1.5">
+                        از یک ایده کوچک تا یک محصول کامل.
+                    </p>
+                    <p class="text-[11px] font-mono font-bold text-zinc-400 dark:text-zinc-500 mt-1" dir="ltr">
+                        SPONSORACB — Build. Secure. Scale.
+                    </p>
+
+                    <div class="flex flex-wrap items-center justify-center gap-2 mt-5">
+                        <a href="https://sponsoracb.mydigify.app/" target="_blank" class="px-3.5 py-2 rounded-xl btn-formal text-xs font-bold shadow-xs">
+                            مشاهده محصولات
+                        </a>
+                        <a href="#portal" class="px-3.5 py-2 rounded-xl glass-button text-xs font-bold text-zinc-900 dark:text-white">
+                            آشنایی با خدمات
+                        </a>
+                        <a href="#acb-ai" class="px-3.5 py-2 rounded-xl glass-button text-xs font-bold text-zinc-900 dark:text-white">
+                            مشاهده ACBAI
+                        </a>
+                        <a href="https://t.me/Sponsoracb_bot" target="_blank" class="px-3.5 py-2 rounded-xl glass-button text-xs font-bold text-zinc-900 dark:text-white">
+                            مشاهده ACBBOT
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="portal" class="mb-10 scroll-mt-20">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-4 gap-2.5 px-1">
+                <div>
+                    <h2 class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white">پورتال کاربری</h2>
+                    <p class="text-[11px] sm:text-xs text-zinc-500 dark:text-zinc-400">این یک دسترسی جامع است، برای استفاده از تمامی امکانات وارد پورتال اصلی شوید.</p>
+                </div>
+                <a href="https://sponsoracb.ir/portal" target="_blank" class="px-3.5 py-2 btn-formal rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition w-fit shadow-xs">
+                    ورود به پورتال اصلی
+                    <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                
+                <a href="https://t.me/iBotBuilderbot" target="_blank" class="glass-panel rounded-xl p-3 flex items-center gap-3 hover:bg-white dark:hover:bg-zinc-800/80 transition group">
+                    <div class="w-9 h-9 rounded-lg glass-icon flex items-center justify-center shrink-0">
+                        <i data-lucide="bot" class="w-4.5 h-4.5 text-zinc-700 dark:text-zinc-300"></i>
+                    </div>
+                    <div class="flex-1 min-w-0 text-right">
+                        <h3 class="text-xs font-bold text-zinc-900 dark:text-white truncate">بات بیلدر</h3>
+                        <p class="text-[10.5px] text-zinc-500 dark:text-zinc-400 truncate">ساخت و مدیریت ربات‌های تلگرام</p>
+                    </div>
+                    <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:-translate-x-1 transition-transform shrink-0"></i>
+                </a>
+
+                <a href="https://t.me/iOnlinerbot" target="_blank" class="glass-panel rounded-xl p-3 flex items-center gap-3 hover:bg-white dark:hover:bg-zinc-800/80 transition group">
+                    <div class="w-9 h-9 rounded-lg glass-icon flex items-center justify-center shrink-0">
+                        <i data-lucide="cpu" class="w-4.5 h-4.5 text-zinc-700 dark:text-zinc-300"></i>
+                    </div>
+                    <div class="flex-1 min-w-0 text-right">
+                        <h3 class="text-xs font-bold text-zinc-900 dark:text-white truncate">بات ساز</h3>
+                        <p class="text-[10.5px] text-zinc-500 dark:text-zinc-400 truncate">راه‌اندازی بات‌های آنلاین</p>
+                    </div>
+                    <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:-translate-x-1 transition-transform shrink-0"></i>
+                </a>
+
+                <a href="https://sponsoracb.ir/panel/login/Bonus/redof/game/openbogu" target="_blank" class="glass-panel rounded-xl p-3 flex items-center gap-3 hover:bg-white dark:hover:bg-zinc-800/80 transition group">
+                    <div class="w-9 h-9 rounded-lg glass-icon flex items-center justify-center shrink-0">
+                        <i data-lucide="coins" class="w-4.5 h-4.5 text-zinc-700 dark:text-zinc-300"></i>
+                    </div>
+                    <div class="flex-1 min-w-0 text-right">
+                        <h3 class="text-xs font-bold text-zinc-900 dark:text-white truncate">بونوس</h3>
+                        <p class="text-[10.5px] text-zinc-500 dark:text-zinc-400 truncate">پاداش و اعتبار دوره‌ای</p>
+                    </div>
+                    <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:-translate-x-1 transition-transform shrink-0"></i>
+                </a>
+
+                <a href="https://sponsoracb.ir/panel/" target="_blank" class="glass-panel rounded-xl p-3 flex items-center gap-3 hover:bg-white dark:hover:bg-zinc-800/80 transition group">
+                    <div class="w-9 h-9 rounded-lg glass-icon flex items-center justify-center shrink-0">
+                        <i data-lucide="server" class="w-4.5 h-4.5 text-zinc-700 dark:text-zinc-300"></i>
+                    </div>
+                    <div class="flex-1 min-w-0 text-right">
+                        <h3 class="text-xs font-bold text-zinc-900 dark:text-white truncate">ساخت پنل</h3>
+                        <p class="text-[10.5px] text-zinc-500 dark:text-zinc-400 truncate">مدیریت زیرساخت و دسترسی</p>
+                    </div>
+                    <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:-translate-x-1 transition-transform shrink-0"></i>
+                </a>
+
+                <a href="https://sponsoracb.mydigify.app/" target="_blank" class="glass-panel rounded-xl p-3 flex items-center gap-3 hover:bg-white dark:hover:bg-zinc-800/80 transition group">
+                    <div class="w-9 h-9 rounded-lg glass-icon flex items-center justify-center shrink-0">
+                        <i data-lucide="shopping-bag" class="w-4.5 h-4.5 text-zinc-700 dark:text-zinc-300"></i>
+                    </div>
+                    <div class="flex-1 min-w-0 text-right">
+                        <h3 class="text-xs font-bold text-zinc-900 dark:text-white truncate">فروشگاه رسمی</h3>
+                        <p class="text-[10.5px] text-zinc-500 dark:text-zinc-400 truncate">خرید محصولات با تضمین کیفیت</p>
+                    </div>
+                    <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:-translate-x-1 transition-transform shrink-0"></i>
+                </a>
+
+                <a href="https://AMT-IR.github.io/Support.html" class="glass-panel rounded-xl p-3 flex items-center gap-3 hover:bg-white dark:hover:bg-zinc-800/80 transition group">
+                    <div class="w-9 h-9 rounded-lg glass-icon flex items-center justify-center shrink-0">
+                        <i data-lucide="headset" class="w-4.5 h-4.5 text-zinc-700 dark:text-zinc-300"></i>
+                    </div>
+                    <div class="flex-1 min-w-0 text-right">
+                        <h3 class="text-xs font-bold text-zinc-900 dark:text-white truncate">تیم پشتیبانی</h3>
+                        <p class="text-[10.5px] text-zinc-500 dark:text-zinc-400 truncate">ارتباط مستقیم با کارشناسان</p>
+                    </div>
+                    <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:-translate-x-1 transition-transform shrink-0"></i>
+                </a>
+
+                <a href="https://sponsoracb.ir/ads" class="glass-panel rounded-xl p-3 flex items-center gap-3 hover:bg-white dark:hover:bg-zinc-800/80 transition group">
+                    <div class="w-9 h-9 rounded-lg glass-icon flex items-center justify-center shrink-0">
+                        <i data-lucide="target" class="w-4.5 h-4.5 text-zinc-700 dark:text-zinc-300"></i>
+                    </div>
+                    <div class="flex-1 min-w-0 text-right">
+                        <h3 class="text-xs font-bold text-zinc-900 dark:text-white truncate">کمپین تبلیغات</h3>
+                        <p class="text-[10.5px] text-zinc-500 dark:text-zinc-400 truncate">تعرفه‌های رسمی و رزرو جایگاه</p>
+                    </div>
+                    <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:-translate-x-1 transition-transform shrink-0"></i>
+                </a>
+
+                <a href="https://AMT-IR.github.io/pricing.html" class="glass-panel rounded-xl p-3 flex items-center gap-3 hover:bg-white dark:hover:bg-zinc-800/80 transition group">
+                    <div class="w-9 h-9 rounded-lg glass-icon flex items-center justify-center shrink-0">
+                        <i data-lucide="shield-alert" class="w-4.5 h-4.5 text-zinc-700 dark:text-zinc-300"></i>
+                    </div>
+                    <div class="flex-1 min-w-0 text-right">
+                        <h3 class="text-xs font-bold text-zinc-900 dark:text-white truncate">اشتراک ویژه (VIP)</h3>
+                        <p class="text-[10.5px] text-zinc-500 dark:text-zinc-400 truncate">دسترسی به امکانات اختصاصی</p>
+                    </div>
+                    <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:-translate-x-1 transition-transform shrink-0"></i>
+                </a>
+
+                <a href="https://sponsoracb.ir/legal" class="glass-panel rounded-xl p-3 flex items-center gap-3 hover:bg-white dark:hover:bg-zinc-800/80 transition group">
+                    <div class="w-9 h-9 rounded-lg glass-icon flex items-center justify-center shrink-0">
+                        <i data-lucide="scale" class="w-4.5 h-4.5 text-zinc-700 dark:text-zinc-300"></i>
+                    </div>
+                    <div class="flex-1 min-w-0 text-right">
+                        <h3 class="text-xs font-bold text-zinc-900 dark:text-white truncate">قوانین و مقررات</h3>
+                        <p class="text-[10.5px] text-zinc-500 dark:text-zinc-400 truncate">شرایط خدمات و حریم خصوصی</p>
+                    </div>
+                    <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:-translate-x-1 transition-transform shrink-0"></i>
+                </a>
+
+                <a href="https://sponsoracb.ir/AboutUs.html" class="glass-panel rounded-xl p-3 flex items-center gap-3 hover:bg-white dark:hover:bg-zinc-800/80 transition group">
+                    <div class="w-9 h-9 rounded-lg glass-icon flex items-center justify-center shrink-0">
+                        <i data-lucide="users" class="w-4.5 h-4.5 text-zinc-700 dark:text-zinc-300"></i>
+                    </div>
+                    <div class="flex-1 min-w-0 text-right">
+                        <h3 class="text-xs font-bold text-zinc-900 dark:text-white truncate">درباره مجموعه</h3>
+                        <p class="text-[10.5px] text-zinc-500 dark:text-zinc-400 truncate">تاریخچه شکل‌گیری تیم و اهداف</p>
+                    </div>
+                    <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:-translate-x-1 transition-transform shrink-0"></i>
+                </a>
+
+                <a href="https://Sponsoracb.ir/blog" target="_blank" class="glass-panel rounded-xl p-3 flex items-center gap-3 hover:bg-white dark:hover:bg-zinc-800/80 transition group">
+                    <div class="w-9 h-9 rounded-lg glass-icon flex items-center justify-center shrink-0">
+                        <i data-lucide="newspaper" class="w-4.5 h-4.5 text-zinc-700 dark:text-zinc-300"></i>
+                    </div>
+                    <div class="flex-1 min-w-0 text-right">
+                        <h3 class="text-xs font-bold text-zinc-900 dark:text-white truncate">مجله و وبلاگ</h3>
+                        <p class="text-[10.5px] text-zinc-500 dark:text-zinc-400 truncate">مقالات و اخبار فناوری</p>
+                    </div>
+                    <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:-translate-x-1 transition-transform shrink-0"></i>
+                </a>
+
+                <a href="https://AMT-IR.github.io/Symbol.html" class="glass-panel rounded-xl p-3 flex items-center gap-3 hover:bg-white dark:hover:bg-zinc-800/80 transition group">
+                    <div class="w-9 h-9 rounded-lg glass-icon flex items-center justify-center shrink-0">
+                        <i data-lucide="shield-check" class="w-4.5 h-4.5 text-zinc-700 dark:text-zinc-300"></i>
+                    </div>
+                    <div class="flex-1 min-w-0 text-right">
+                        <h3 class="text-xs font-bold text-zinc-900 dark:text-white truncate">نماد و اعتبارنامه</h3>
+                        <p class="text-[10.5px] text-zinc-500 dark:text-zinc-400 truncate">استعلام نمادهای اعتماد</p>
+                    </div>
+                    <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-400 group-hover:-translate-x-1 transition-transform shrink-0"></i>
+                </a>
+
+                <div class="glass-panel rounded-xl p-3 flex items-center gap-3 opacity-65 pointer-events-none">
+                    <div class="w-9 h-9 rounded-lg glass-icon flex items-center justify-center shrink-0">
+                        <i data-lucide="message-square" class="w-4.5 h-4.5 text-zinc-500"></i>
+                    </div>
+                    <div class="flex-1 min-w-0 text-right">
+                        <div class="flex items-center gap-1.5">
+                            <h3 class="text-xs font-bold text-zinc-900 dark:text-white truncate">نظرات کاربران</h3>
+                            <span class="text-[9px] font-bold bg-zinc-200 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-300 px-1.5 py-0.5 rounded">بزودی</span>
+                        </div>
+                        <p class="text-[10.5px] text-zinc-500 dark:text-zinc-400 truncate">اشتراک تجربیات کاربران</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-xl p-3 flex items-center gap-3 opacity-65 pointer-events-none">
+                    <div class="w-9 h-9 rounded-lg glass-icon flex items-center justify-center shrink-0">
+                        <i data-lucide="heart-handshake" class="w-4.5 h-4.5 text-zinc-500"></i>
+                    </div>
+                    <div class="flex-1 min-w-0 text-right">
+                        <div class="flex items-center gap-1.5">
+                            <h3 class="text-xs font-bold text-zinc-900 dark:text-white truncate">اسپانسرشیپ</h3>
+                            <span class="text-[9px] font-bold bg-zinc-200 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-300 px-1.5 py-0.5 rounded">بزودی</span>
+                        </div>
+                        <p class="text-[10.5px] text-zinc-500 dark:text-zinc-400 truncate">درخواست حمایت مالی</p>
+                    </div>
+                </div>
+
             </div>
         </section>
 
     </main>
 
-    <footer class="w-full border-t border-zinc-200 dark:border-zinc-800 glass-panel rounded-t-3xl mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <footer class="w-full border-t border-zinc-200/90 dark:border-zinc-800/80 glass-panel rounded-t-2xl mt-auto z-10 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-7">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                 
-                <div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="https://sponsoracb.ir/20474.png" alt="SponsorACB Logo" class="w-9 h-9 rounded-xl object-cover border border-zinc-200 dark:border-zinc-700 shadow-sm">
-                        <span class="font-black tracking-widest text-zinc-900 dark:text-white">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-2.5 mb-2.5">
+                        <img src="https://sponsoracb.ir/20474.png" alt="SponsorACB Logo" class="w-8 h-8 rounded-xl object-cover border border-zinc-200 dark:border-zinc-700">
+                        <span class="font-black tracking-wider text-zinc-900 dark:text-white text-sm sm:text-base">
                             SPONSORACB
                         </span>
                     </div>
-                    <p class="text-sm leading-7 text-zinc-500 dark:text-zinc-400">
-                        ارائه‌دهنده دسترسی آسان به سرویس‌های هوش مصنوعی، ربات‌های تلگرامی و زیرساخت.
+                    <p class="text-xs leading-6 text-zinc-600 dark:text-zinc-400 max-w-sm text-right">
+                        ارائه‌دهنده دسترسی به سرویس‌های هوش مصنوعی، ربات‌های تلگرامی، ابزارهای توسعه و فناوری‌های ابری تحت یک استاندارد یکپارچه.
                     </p>
                 </div>
 
                 <div>
-                    <h3 class="font-bold text-sm mb-4 text-zinc-900 dark:text-white">دسترسی سریع</h3>
-                    <div class="flex flex-col gap-3 text-sm text-zinc-500 dark:text-zinc-400">
+                    <h4 class="font-bold text-xs sm:text-sm mb-2.5 text-zinc-900 dark:text-white">دسترسی سریع</h4>
+                    <div class="flex flex-col gap-2 text-xs text-zinc-600 dark:text-zinc-400">
+                        <a href="#about" class="hover:text-zinc-900 dark:hover:text-white transition">درباره ما</a>
                         <a href="#subscriptions" class="hover:text-zinc-900 dark:hover:text-white transition">اشتراک‌ها</a>
-                        <a href="#banners" class="hover:text-zinc-900 dark:hover:text-white transition">اطلاعیه‌ها</a>
+                        <a href="#ecosystem" class="hover:text-zinc-900 dark:hover:text-white transition">اکوسیستم SPONSORACB</a>
                         <a href="#portal" class="hover:text-zinc-900 dark:hover:text-white transition">پورتال کاربری</a>
                     </div>
                 </div>
 
                 <div>
-                    <h3 class="font-bold text-sm mb-4 text-zinc-900 dark:text-white">ارتباط با ما</h3>
-                    <div class="flex flex-col gap-3 text-sm text-zinc-500 dark:text-zinc-400">
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="mail" class="w-4 h-4"></i>
+                    <h4 class="font-bold text-xs sm:text-sm mb-2.5 text-zinc-900 dark:text-white">ارتباط با ما</h4>
+                    <div class="flex flex-col gap-2 text-xs text-zinc-600 dark:text-zinc-400">
+                        <div class="flex items-center gap-2 font-mono text-xs">
+                            <i data-lucide="mail" class="w-4 h-4 text-zinc-500"></i>
                             <span dir="ltr">info@sponsoracb.ir</span>
                         </div>
                         <a href="https://sponsoracb.ir/Support" target="_blank" class="flex items-center gap-2 hover:text-zinc-900 dark:hover:text-white transition">
-                            <i data-lucide="send" class="w-4 h-4"></i>
+                            <i data-lucide="send" class="w-4 h-4 text-zinc-500"></i>
                             پشتیبانی تلگرام
                         </a>
                     </div>
@@ -682,13 +1531,13 @@
 
             </div>
 
-            <div class="border-t border-zinc-200 dark:border-zinc-800 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-                <p class="text-xs text-zinc-400 dark:text-zinc-500">
+            <div class="border-t border-zinc-200/90 dark:border-zinc-800 mt-6 pt-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <p class="text-[11px] text-zinc-500 dark:text-zinc-400">
                     تمامی حقوق مادی و معنوی متعلق به SPONSORACB می‌باشد © ۲۰۲۶
                 </p>
-                <div class="glass-panel p-2 rounded-xl">
+                <div class="glass-panel p-1.5 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-xs">
                     <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=6139106&Code=t2X8IcCgnr0JJHWlphWD4HI04YA3jtkG">
-                        <img referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=6139106&Code=t2X8IcCgnr0JJHWlphWD4HI04YA3jtkG" alt="نماد اعتماد" style="cursor:pointer;max-height:50px;width:auto;" code="t2X8IcCgnr0JJHWlphWD4HI04YA3jtkG">
+                        <img referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=6139106&Code=t2X8IcCgnr0JJHWlphWD4HI04YA3jtkG" alt="نماد اعتماد" style="cursor:pointer;max-height:38px;width:auto;" code="t2X8IcCgnr0JJHWlphWD4HI04YA3jtkG">
                     </a>
                 </div>
             </div>
@@ -707,72 +1556,63 @@
         const slideCount = slides.length;
         let currentSlide = 0;
         let slideInterval;
-        let bannerTimeout;
 
-        // ساخت نقطه‌های اسلایدر
-        for(let i=0; i<slideCount; i++) {
+        for (let i = 0; i < slideCount; i++) {
             const dot = document.createElement('button');
-            dot.className = `dot h-1.5 w-1.5 rounded-full bg-zinc-400/50 dark:bg-zinc-600/50 ${i === 0 ? 'active' : ''}`;
-            dot.onclick = () => goToSlide(i, true);
+            dot.className = `dot h-2 w-2 rounded-full bg-zinc-400/70 dark:bg-zinc-600/70 ${i === 0 ? 'active' : ''}`;
+            dot.setAttribute('aria-label', `رفتن به اسلاید ${i + 1}`);
+            dot.onclick = () => goToSlide(i);
             dotsContainer.appendChild(dot);
         }
 
         const dots = document.querySelectorAll('.dot');
 
-        function updateSlider(isManual = false) {
+        function updateSlider() {
             slides.forEach((slide, index) => {
-                slide.classList.remove('active', 'slice-animate');
+                slide.classList.remove('active');
                 if (index === currentSlide) {
-                    if (isManual) {
-                        slide.classList.add('slice-animate');
-                    } else {
-                        slide.classList.add('active');
-                    }
+                    slide.classList.add('active');
                 }
             });
-            
             dots.forEach(d => d.classList.remove('active'));
-            if(dots[currentSlide]) dots[currentSlide].classList.add('active');
+            if (dots[currentSlide]) dots[currentSlide].classList.add('active');
         }
 
-        function moveBanner(direction, isManual = false) {
+        function moveBanner(direction) {
             currentSlide = (currentSlide + direction + slideCount) % slideCount;
-            updateSlider(isManual);
-            
-            // در صورتی که کاربر دستی تغییر داد، 3 ثانیه صبر کند
-            if (isManual) {
-                clearInterval(slideInterval);
-                clearTimeout(bannerTimeout);
-                bannerTimeout = setTimeout(() => {
-                    slideInterval = setInterval(() => moveBanner(1, false), 1000);
-                }, 3000);
-            }
+            updateSlider();
         }
 
-        function goToSlide(index, isManual = false) {
-            if (currentSlide === index) return; 
+        function goToSlide(index) {
             currentSlide = index;
-            updateSlider(isManual);
-            
-            // مکث 3 ثانیه‌ای هنگام کلیک روی نقطه
-            if (isManual) {
-                clearInterval(slideInterval);
-                clearTimeout(bannerTimeout);
-                bannerTimeout = setTimeout(() => {
-                    slideInterval = setInterval(() => moveBanner(1, false), 1000);
-                }, 3000);
-            }
+            updateSlider();
+            resetInterval();
         }
 
-        // راه‌اندازی اولیه اسلایدر با زمان 1 ثانیه
-        if(slides.length > 0) slides[0].classList.add('active');
-        slideInterval = setInterval(() => moveBanner(1, false), 1000);
+        function resetInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(() => moveBanner(1), 3800);
+        }
+
+        if (slides.length > 0) slides[0].classList.add('active');
+        slideInterval = setInterval(() => moveBanner(1), 3800);
 
         function scrollSubs(direction) {
             const slider = document.getElementById('subsSlider');
-            const scrollAmount = window.innerWidth < 640 ? 270 + 20 : 300 + 20; 
+            const scrollAmount = window.innerWidth < 640 ? 225 + 16 : 245 + 16; 
             slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
         }
+
+        const scrollBtn = document.getElementById('scrollToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+                scrollBtn.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            } else {
+                scrollBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                scrollBtn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            }
+        });
     </script>
 </body>
 </html>
