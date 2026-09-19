@@ -785,5 +785,238 @@
             slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
         }
     </script>
+<!-- Mobile Bottom Navigation -->
+<nav class="mobile-bottom-nav" aria-label="ناوبری اصلی">
+
+    <a href="/" class="nav-item" data-path="/">
+        <span class="nav-icon">
+            <i data-lucide="home"></i>
+        </span>
+        <span class="nav-label">خانه</span>
+    </a>
+
+    <a href="/store" class="nav-item" data-path="/store">
+        <span class="nav-icon">
+            <i data-lucide="shopping-bag"></i>
+        </span>
+        <span class="nav-label">فروشگاه</span>
+    </a>
+
+    <a href="/services" class="nav-item" data-path="/services">
+        <span class="nav-icon">
+            <i data-lucide="zap"></i>
+        </span>
+        <span class="nav-label">خدمات</span>
+    </a>
+
+    <a href="/dashboard" class="nav-item" data-path="/dashboard">
+        <span class="nav-icon">
+            <i data-lucide="layout-dashboard"></i>
+        </span>
+        <span class="nav-label">داشبورد</span>
+    </a>
+
+    <a href="/account" class="nav-item" data-path="/account">
+        <span class="nav-icon">
+            <i data-lucide="user-circle"></i>
+        </span>
+        <span class="nav-label">حساب من</span>
+    </a>
+
+</nav>
+
+<style>
+    /* Mobile Bottom Navigation */
+
+    .mobile-bottom-nav {
+        display: none;
+    }
+
+    @media (max-width: 768px) {
+
+        .mobile-bottom-nav {
+            position: fixed;
+            z-index: 99999;
+
+            left: 12px;
+            right: 12px;
+            bottom: max(12px, env(safe-area-inset-bottom));
+
+            height: 68px;
+            padding: 5px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+            direction: rtl;
+
+            background: rgba(20, 30, 40, 0.94);
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 22px;
+
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+
+            box-shadow:
+                0 12px 35px rgba(0, 0, 0, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-item {
+            width: 20%;
+            height: 58px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            gap: 3px;
+
+            color: #9ca8b5;
+            text-decoration: none;
+
+            border-radius: 18px;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease,
+                transform 0.15s ease;
+        }
+
+        .nav-icon {
+            width: 27px;
+            height: 27px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-icon svg {
+            width: 23px;
+            height: 23px;
+            stroke-width: 2.1;
+        }
+
+        .nav-label {
+            font-size: 11px;
+            line-height: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* Active */
+        .nav-item.active {
+            color: #35a9ff;
+            background: rgba(53, 169, 255, 0.13);
+        }
+
+        .nav-item.active .nav-icon svg {
+            stroke-width: 2.5;
+        }
+
+        /* Touch */
+        .nav-item:active {
+            transform: scale(0.94);
+        }
+
+        /* Hover */
+        @media (hover: hover) {
+            .nav-item:not(.active):hover {
+                color: #d7e0e8;
+                background: rgba(255, 255, 255, 0.045);
+            }
+        }
+
+        /*
+         * فضای پایین صفحه برای جلوگیری
+         * از پوشیده شدن محتوا توسط نوار
+         */
+        body {
+            padding-bottom: 92px;
+        }
+    }
+
+    @media (min-width: 769px) {
+        body {
+            padding-bottom: 0;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        /*
+         * فعال‌سازی آیکن‌های Lucide
+         * Lucide قبلاً در <head> سایت لود شده است.
+         */
+        if (typeof lucide !== "undefined") {
+            lucide.createIcons();
+        }
+
+        /*
+         * مسیر فعلی صفحه
+         *
+         * مثال:
+         * /
+         * /store
+         * /store/product
+         * /services
+         */
+        const currentPath =
+            window.location.pathname.replace(/\/+$/, "") || "/";
+
+        const navItems =
+            document.querySelectorAll(".mobile-bottom-nav .nav-item");
+
+        navItems.forEach(function (item) {
+
+            const path = item.getAttribute("data-path");
+
+            if (!path) return;
+
+            const itemPath =
+                path.replace(/\/+$/, "") || "/";
+
+            // حذف active قبلی
+            item.classList.remove("active");
+
+            /*
+             * صفحه اصلی
+             */
+            if (itemPath === "/") {
+
+                if (currentPath === "/") {
+                    item.classList.add("active");
+                }
+
+                return;
+            }
+
+            /*
+             * تشخیص خود صفحه و زیرصفحه‌ها
+             *
+             * /store
+             * /store/
+             * /store/product
+             *
+             * همگی Store را فعال می‌کنند.
+             */
+            if (
+                currentPath === itemPath ||
+                currentPath.startsWith(itemPath + "/")
+            ) {
+                item.classList.add("active");
+            }
+
+        });
+
+    });
+</script>
+
 </body>
 </html>
