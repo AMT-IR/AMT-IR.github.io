@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>SPONSORACB | وب‌سایت رسمی پایگاه ابری پیشرفته</title>
+    <title>SPONSORACB | Official site</title>
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="SPONSORACB پایگاه ابری پیشرفته و ارائه‌دهنده دسترسی استاندارد به مدل‌های هوش مصنوعی، ربات‌های تلگرام، وب‌سرویس‌ها، ابزارهای توسعه و زیرساخت‌های محاسباتی ایمن.">
@@ -153,7 +153,7 @@
             background-color: #f8fafc; 
             color: #0f172a;
             transition: background-color 0.3s ease, color 0.3s ease;
-            overflow-x: clip; /* Fix for position: sticky to work properly */
+            overflow-x: clip; 
         }
 
         .dark body {
@@ -231,7 +231,7 @@
             -webkit-backdrop-filter: blur(18px);
             border-bottom: 1px solid rgba(226, 232, 240, 0.85);
             box-shadow: 0 4px 20px -3px rgba(15, 23, 42, 0.04);
-            transform: translateZ(0); /* Hardware acceleration for sticky */
+            transform: translateZ(0); 
         }
 
         .dark .main-sticky-nav {
@@ -472,6 +472,222 @@
             opacity: 1 !important;
             transform: translate(0, 0) !important;
         }
+
+        /* Mobile Bottom Nav Styles - Optimized for Light & Dark modes */
+        .mobile-bottom-nav {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-bottom-nav {
+                position: fixed;
+                z-index: 99999;
+                left: 15px;
+                right: 15px;
+                bottom: calc(21px + env(safe-area-inset-bottom));
+                height: 64px;
+                padding: 4px;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                direction: rtl;
+                
+                /* Default Light Mode Styling */
+                background: rgba(255, 255, 255, 0.85);
+                border: 1px solid rgba(226, 232, 240, 0.9);
+                box-shadow: 0 12px 30px rgba(15, 23, 42, 0.1), 0 24px 55px rgba(15, 23, 42, 0.1);
+
+                border-radius: 999px;
+                backdrop-filter: blur(30px) saturate(145%);
+                -webkit-backdrop-filter: blur(30px) saturate(145%);
+                transform-origin: center bottom;
+                opacity: 0;
+                transform: translateY(90px) scaleX(.55) scaleY(.35);
+                animation: navEntrance .8s cubic-bezier(.16,1,.3,1) .25s forwards;
+                overflow: visible;
+                font-family: "Vazirmatn", Tahoma, sans-serif;
+                transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            /* Dark Mode Overrides for Mobile Nav Wrapper */
+            .dark .mobile-bottom-nav {
+                background: rgba(19,20,23,.75);
+                border: 1px solid rgba(255,255,255,.19);
+                box-shadow:
+                    0 2px 4px rgba(255,255,255,.06) inset,
+                    0 -1px 2px rgba(0,0,0,.2) inset,
+                    0 12px 30px rgba(0,0,0,.28),
+                    0 24px 55px rgba(0,0,0,.35);
+            }
+
+            .mobile-bottom-nav::before {
+                content: "";
+                position: absolute;
+                inset: 1px;
+                border-radius: inherit;
+                
+                /* Default Light Mode Gradient */
+                background: linear-gradient(110deg, rgba(255,255,255,.6), rgba(255,255,255,.2) 35%, transparent 65%, rgba(255,255,255,.3));
+                pointer-events: none;
+            }
+
+            /* Dark Mode Overrides for Before */
+            .dark .mobile-bottom-nav::before {
+                background: linear-gradient(110deg, rgba(255,255,255,.16), rgba(255,255,255,.035) 35%, transparent 65%, rgba(255,255,255,.055));
+            }
+
+            .mobile-bottom-nav::after {
+                content: "";
+                position: absolute;
+                left: 8%;
+                right: 8%;
+                bottom: -19px;
+                height: 32px;
+                
+                /* Default Light Mode Glow */
+                background: radial-gradient(ellipse, rgba(15,23,42,.1), rgba(15,23,42,.05) 38%, transparent 72%);
+                
+                filter: blur(17px);
+                border-radius: 50%;
+                z-index: -1;
+                pointer-events: none;
+            }
+
+            /* Dark Mode Overrides for After */
+            .dark .mobile-bottom-nav::after {
+                background: radial-gradient(ellipse, rgba(255,255,255,.15), rgba(255,255,255,.055) 38%, transparent 72%);
+            }
+
+            .mobile-bottom-nav .nav-item {
+                position: relative;
+                z-index: 2;
+                flex: 1;
+                height: 56px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 1px;
+                
+                /* Default Light Mode Text/Icon Color */
+                color: rgba(15, 23, 42, 0.5);
+                
+                text-decoration: none;
+                border-radius: 999px;
+                opacity: 0;
+                transform: translateY(12px);
+                transition: color .22s ease, transform .18s ease, background .22s ease, box-shadow .22s ease, opacity .35s ease;
+            }
+
+            /* Dark Mode Overrides for Nav Items */
+            .dark .mobile-bottom-nav .nav-item {
+                color: rgba(235,235,238,.54);
+            }
+
+            .mobile-bottom-nav.nav-ready .nav-item {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .mobile-bottom-nav.nav-ready .nav-item:nth-child(1) { transition-delay: .12s; }
+            .mobile-bottom-nav.nav-ready .nav-item:nth-child(2) { transition-delay: .16s; }
+            .mobile-bottom-nav.nav-ready .nav-item:nth-child(3) { transition-delay: .20s; }
+            .mobile-bottom-nav.nav-ready .nav-item:nth-child(4) { transition-delay: .24s; }
+            .mobile-bottom-nav.nav-ready .nav-item:nth-child(5) { transition-delay: .28s; }
+
+            .mobile-bottom-nav .nav-icon {
+                width: 24px;
+                height: 24px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: transform .22s ease, filter .22s ease;
+            }
+
+            .mobile-bottom-nav .nav-icon svg {
+                width: 20px;
+                height: 20px;
+                stroke-width: 1.5;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                transition: stroke-width .22s ease, filter .22s ease;
+            }
+
+            .mobile-bottom-nav .nav-label {
+                font-size: 10.5px;
+                line-height: 13px;
+                font-weight: 500;
+                white-space: nowrap;
+                opacity: .72;
+                transition: opacity .22s ease, transform .22s ease;
+            }
+
+            /* Active State - Light Mode Default */
+            .mobile-bottom-nav .nav-item.active {
+                color: rgba(15, 23, 42, 0.98);
+                background: linear-gradient(135deg, rgba(15, 23, 42, 0.08), rgba(15, 23, 42, 0.03));
+                box-shadow: inset 0 1px 1px rgba(255,255,255,.8), inset 0 -1px 1px rgba(0,0,0,.05), 0 0 12px rgba(15,23,42,.08);
+            }
+
+            /* Active State - Dark Mode Override */
+            .dark .mobile-bottom-nav .nav-item.active {
+                color: rgba(255,255,255,.98);
+                background: linear-gradient(135deg, rgba(255,255,255,.13), rgba(255,255,255,.045));
+                box-shadow: inset 0 1px 1px rgba(255,255,255,.16), inset 0 -1px 1px rgba(0,0,0,.12), 0 0 18px rgba(255,255,255,.05);
+            }
+
+            /* Nav Icon Filtering - Light Mode Default */
+            .mobile-bottom-nav .nav-item.active .nav-icon {
+                transform: translateY(-1px);
+                filter: drop-shadow(0 0 4px rgba(15, 23, 42, 0.15));
+            }
+
+            /* Nav Icon Filtering - Dark Mode Override */
+            .dark .mobile-bottom-nav .nav-item.active .nav-icon {
+                filter: drop-shadow(0 0 4px rgba(255,255,255,.25));
+            }
+
+            .mobile-bottom-nav .nav-item.active .nav-icon svg {
+                stroke-width: 1.75;
+            }
+
+            .mobile-bottom-nav .nav-item.active .nav-label {
+                opacity: .98;
+                transform: translateY(-.2px);
+            }
+
+            .mobile-bottom-nav .nav-item:active {
+                transform: scale(.92);
+            }
+
+            @media (hover: hover) {
+                .mobile-bottom-nav .nav-item:not(.active):hover {
+                    color: rgba(15, 23, 42, 0.8);
+                    background: rgba(15, 23, 42, 0.04);
+                }
+                .dark .mobile-bottom-nav .nav-item:not(.active):hover {
+                    color: rgba(255,255,255,.9);
+                    background: rgba(255,255,255,.04);
+                }
+            }
+
+            body {
+                padding-bottom: 94px;
+            }
+
+            @keyframes navEntrance {
+                0% { opacity: 0; transform: translateY(90px) scaleX(.55) scaleY(.35); }
+                55% { opacity: 1; transform: translateY(-5px) scaleX(.98) scaleY(.96); }
+                78% { transform: translateY(2px) scaleX(1.015) scaleY(1.02); }
+                100% { opacity: 1; transform: translateY(0) scaleX(1) scaleY(1); }
+            }
+        }
+
+        @media (min-width: 769px) {
+            body {
+                padding-bottom: 0;
+            }
+        }
     </style>
 </head>
 
@@ -492,9 +708,10 @@
     <!-- Header Navigation -->
     <header class="main-sticky-nav w-full rounded-b-3xl">
         <nav class="w-full h-16 flex items-center justify-between px-3 sm:px-8 max-w-6xl mx-auto gap-2">
+            <!-- سایز لوگو و عنوان در اینجا بزرگ‌تر شده‌اند -->
             <a href="#home" class="flex items-center gap-2 sm:gap-2.5 shrink-0">
-                <img src="https://sponsoracb.ir/20474.png" alt="SponsorACB Logo" class="w-8 h-8 sm:w-9 sm:h-9 rounded-2xl object-cover border border-zinc-200 dark:border-zinc-700 dark:brightness-110 shadow-xs shrink-0 transition">
-                <span class="font-black text-xs sm:text-base tracking-wider text-zinc-900 dark:text-white truncate">
+                <img src="https://sponsoracb.ir/20474.png" alt="SponsorACB Logo" class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl object-cover border border-zinc-200 dark:border-zinc-700 dark:brightness-110 shadow-xs shrink-0 transition">
+                <span class="font-black text-sm sm:text-lg tracking-wider text-zinc-900 dark:text-white truncate">
                     SPONSORACB
                 </span>
             </a>
@@ -617,7 +834,8 @@
                 </div>
             </div>
 
-            <div class="relative w-full py-2 flex justify-center items-center overflow-hidden">
+            <!-- تغییر مهم برای رفع مشکل بریدگی کارت‌ها: استفاده از py-6 و overflow-visible -->
+            <div class="relative w-full py-6 flex justify-center items-center overflow-visible">
                 <div id="deckStage" class="deck-stage">
                     
                     <!-- 1. Pro Plan Card -->
@@ -658,11 +876,10 @@
                         </div>
                     </div>
 
-                    <!-- 2. Plus Plan Card (Fixed Special Offer Badge) -->
-                    <div id="planCard1" onclick="selectSubPlan(1)" class="deck-card active-sub-card rounded-3xl glass-panel flex flex-col justify-between p-3.5 relative mt-3">
-                        <!-- The badge is now positioned nicely within bounds to prevent clipping issues -->
-                        <div class="absolute -top-3.5 inset-x-0 mx-auto w-max bg-zinc-900 text-white dark:bg-white dark:text-zinc-950 text-[10px] font-black px-3 py-1 rounded-full z-30 shadow-lg border border-zinc-700 dark:border-zinc-300 flex items-center gap-1.5 whitespace-nowrap">
-                            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400 dark:text-amber-600 fill-current"></i>
+                    <!-- 2. Plus Plan Card (تغییر موقعیت Badge به -top-3.5 و تنظیم py-1 جهت قرارگیری تمیز روی مرز کارت) -->
+                    <div id="planCard1" onclick="selectSubPlan(1)" class="deck-card active-sub-card rounded-3xl glass-panel flex flex-col justify-between p-3.5 relative">
+                        <div class="absolute -top-3.5 left-0 right-0 mx-auto w-max bg-zinc-900 text-white dark:bg-white dark:text-zinc-950 text-[10px] font-black px-3 py-1 rounded-full z-[100] shadow-md border border-zinc-700 dark:border-zinc-300 flex items-center gap-1 whitespace-nowrap">
+                            <i data-lucide="sparkles" class="w-3 h-3 text-amber-400 dark:text-amber-600 fill-current"></i>
                             <span>پیشنهاد ویژه</span>
                         </div>
 
@@ -706,9 +923,9 @@
                     </div>
 
                     <!-- 3. Premium Plan Card -->
-                    <div id="planCard2" onclick="selectSubPlan(2)" class="deck-card rounded-3xl glass-panel flex flex-col justify-between p-3.5 mt-3">
+                    <div id="planCard2" onclick="selectSubPlan(2)" class="deck-card rounded-3xl glass-panel flex flex-col justify-between p-3.5">
                         <div>
-                            <div class="w-full h-[110px] rounded-2xl overflow-hidden p-1 bg-zinc-100/60 dark:bg-zinc-900/50 mt-1">
+                            <div class="w-full h-[110px] rounded-2xl overflow-hidden p-1 bg-zinc-100/60 dark:bg-zinc-900/50">
                                 <img src="https://digifycdn.com/media/item_images/15435.jpg" alt="اشتراک پریمیوم" class="w-full h-full object-cover rounded-xl pointer-events-none">
                             </div>
                             
@@ -744,9 +961,9 @@
                     </div>
 
                     <!-- 4. Ultra Plan Card -->
-                    <div id="planCard3" onclick="selectSubPlan(3)" class="deck-card rounded-3xl glass-panel flex flex-col justify-between p-3.5 mt-3">
+                    <div id="planCard3" onclick="selectSubPlan(3)" class="deck-card rounded-3xl glass-panel flex flex-col justify-between p-3.5">
                         <div>
-                            <div class="w-full h-[110px] rounded-2xl overflow-hidden p-1 bg-zinc-100/60 dark:bg-zinc-900/50 mt-1">
+                            <div class="w-full h-[110px] rounded-2xl overflow-hidden p-1 bg-zinc-100/60 dark:bg-zinc-900/50">
                                 <img src="https://digifycdn.com/media/item_images/15436_yo1vl94.jpg" alt="اشتراک اولترا" class="w-full h-full object-cover rounded-xl pointer-events-none">
                             </div>
                             
@@ -784,7 +1001,7 @@
                 </div>
             </div>
 
-            <!-- کارت مقایسه اشتراک‌ها (بدون متن اضافه درخواست شده) -->
+            <!-- کارت مقایسه اشتراک‌ها -->
             <div class="mt-3 p-4 sm:p-5 rounded-3xl glass-panel border border-zinc-200/90 dark:border-zinc-800 shadow-xs">
                 <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-right">
                     
@@ -797,7 +1014,6 @@
                                 <h4 class="text-xs sm:text-sm font-bold text-zinc-900 dark:text-white">
                                     مشاهده و مقایسه امکانات کامل اشتراک ها
                                 </h4>
-                                <!-- متن 'دسترسی سریع . پایدار امن' طبق درخواست کاربر حذف گردید -->
                             </div>
                             <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
                                 برای دیدن قابلیتها و جزئیات دقیق هر یک از اشتراک ها وارد بخش زیر شوید
@@ -814,7 +1030,7 @@
             </div>
 
         </section>
-
+        
         <!-- Banners Section -->
         <section id="banners" class="mb-9 scroll-mt-24 reveal-left">
             <div class="w-full h-[200px] sm:h-[300px] md:h-[380px] banner-container-frame p-2 sm:p-2.5 relative">
@@ -836,7 +1052,7 @@
             </div>
         </section>
 
-        <!-- Ecosystem Section -->
+        <!-- Ecosystem Section (بدون هیچ حذفیات و خلاصه‌سازی) -->
         <section id="ecosystem" class="mb-10 scroll-mt-24">
             
             <div class="text-center max-w-2xl mx-auto mb-6 reveal-up">
@@ -868,7 +1084,7 @@
                     </div>
                 </div>
 
-                <!-- Unified 11-item Grid (Applied h-full to cards for balanced height) -->
+                <!-- Unified 11-item Grid (متون و ارتفاع متعادل) -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
                     
                     <!-- 1. ACBAI -->
@@ -1011,18 +1227,16 @@
                         <i data-lucide="chevron-left" class="w-3.5 h-3.5 text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white group-hover:-translate-x-1 transition-all shrink-0"></i>
                     </a>
 
-                    <!-- 11. ACB Sponsorship (اصلاح متن به «بزودی» و تنظیم فلکس) -->
+                    <!-- 11. ACB Sponsorship -->
                     <a href="#acb-sponsorship" class="p-3 h-full rounded-2xl bg-zinc-50/80 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 flex items-center justify-between gap-3 hover:border-zinc-400 dark:hover:border-zinc-600 hover:bg-zinc-100/90 dark:hover:bg-zinc-800/80 hover:-translate-y-0.5 transition-all duration-200 group shadow-xs sm:col-span-2 lg:col-span-2">
                         <div class="flex items-center gap-3 min-w-0 w-full">
                             <div class="w-8 h-8 rounded-xl glass-icon flex items-center justify-center shrink-0 text-zinc-700 dark:text-zinc-300">
                                 <i data-lucide="heart-handshake" class="w-4 h-4"></i>
                             </div>
                             <div class="min-w-0 flex-1">
-                                <div class="flex items-center justify-between gap-2 w-full">
-                                    <div class="flex items-center gap-2 min-w-0">
-                                        <span class="text-xs font-mono font-bold text-zinc-900 dark:text-white block truncate">ACB Sponsorship</span>
-                                        <span class="text-[9.5px] font-bold bg-zinc-200/80 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-300 dark:border-zinc-700 px-2 py-0.5 rounded-full shrink-0">بزودی</span>
-                                    </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs font-mono font-bold text-zinc-900 dark:text-white block truncate">ACB Sponsorship</span>
+                                    <span class="text-[9.5px] font-bold bg-zinc-200/80 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-300 dark:border-zinc-700 px-2 py-0.5 rounded-full shrink-0">بزودی</span>
                                 </div>
                                 <span class="text-[11px] text-zinc-600 dark:text-zinc-400 block truncate mt-0.5">حمایت مالی، گرنت شتاب‌دهی و سرمایه‌گذاری استارتاپ‌ها</span>
                             </div>
@@ -1033,7 +1247,7 @@
                 </div>
             </div>
             
-            <!-- Detailed Ecosystem Components (بدون هیچ حذفیات در متون) -->
+            <!-- Detailed Ecosystem Components -->
             <div class="space-y-4">
                 
                 <!-- ACBAI Detailed Card -->
@@ -1267,7 +1481,6 @@
                         </div>
                     </div>
 
-                    <!-- ACB Sponsorship (اصلاح کلمه بزودی و تراز متون) -->
                     <div id="acb-sponsorship" class="glass-panel rounded-3xl p-5 flex flex-col justify-between scroll-mt-24 h-full reveal-right">
                         <div>
                             <div class="flex items-center justify-between mb-2.5">
@@ -2095,625 +2308,310 @@
         </div>
     </footer>
 
+    <!-- Mobile Bottom Navigation (کد اصلاح شده جهت سازگاری با دارک/لایت مود) -->
+    <nav class="mobile-bottom-nav" aria-label="ناوبری اصلی">
+        <a href="https://sponsoracb.ir/" class="nav-item" data-key="home">
+            <span class="nav-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M3.5 10.8 12 3.5l8.5 7.3"/>
+                    <path d="M5.5 9.5V20h13V9.5"/>
+                    <path d="M9.5 20v-5.5h5V20"/>
+                </svg>
+            </span>
+            <span class="nav-label">خانه</span>
+        </a>
+
+        <a href="https://sponsoracb.mydigify.app/" class="nav-item" data-key="store">
+            <span class="nav-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M5 9h14l-1 11H6L5 9Z"/>
+                    <path d="M8 9V7a4 4 0 0 1 8 0v2"/>
+                </svg>
+            </span>
+            <span class="nav-label">فروشگاه</span>
+        </a>
+
+        <a href="https://sponsoracb.ir/#ecosystem" class="nav-item" data-key="services">
+            <span class="nav-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="m13 2-9 11h7l-1 9 9-11h-7l1-9Z"/>
+                </svg>
+            </span>
+            <span class="nav-label">خدمات</span>
+        </a>
+
+        <a href="https://sponsoracb.ir/portal" class="nav-item" data-key="portal">
+            <span class="nav-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <rect x="4" y="4" width="6" height="6" rx="1"/>
+                    <rect x="14" y="4" width="6" height="6" rx="1"/>
+                    <rect x="4" y="14" width="6" height="6" rx="1"/>
+                    <rect x="14" y="14" width="6" height="6" rx="1"/>
+                </svg>
+            </span>
+            <span class="nav-label">پورتال</span>
+        </a>
+
+        <a href="https://sponsoracb.ir/" class="nav-item" data-key="account">
+            <span class="nav-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="8" r="3"/>
+                    <path d="M5 20a7 7 0 0 1 14 0"/>
+                </svg>
+            </span>
+            <span class="nav-label">حساب من</span>
+        </a>
+    </nav>
+
     <!-- Scripts and Interactivity -->
     <script>
-<style>
-.mobile-bottom-nav {
-    display: none;
-}
-
-@media (max-width: 768px) {
-
-    .mobile-bottom-nav {
-        position: fixed;
-        z-index: 99999;
-
-        left: 15px;
-        right: 15px;
-        bottom: calc(21px + env(safe-area-inset-bottom));
-
-        height: 64px;
-        padding: 4px;
-
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-
-        direction: rtl;
-
-        background: rgba(19,20,23,.58);
-
-        border: 1px solid rgba(255,255,255,.19);
-        border-radius: 999px;
-
-        backdrop-filter: blur(30px) saturate(145%);
-        -webkit-backdrop-filter: blur(30px) saturate(145%);
-
-        box-shadow:
-            0 2px 4px rgba(255,255,255,.06) inset,
-            0 -1px 2px rgba(0,0,0,.2) inset,
-            0 12px 30px rgba(0,0,0,.28),
-            0 24px 55px rgba(0,0,0,.35);
-
-        transform-origin: center bottom;
-
-        opacity: 0;
-
-        transform:
-            translateY(90px)
-            scaleX(.55)
-            scaleY(.35);
-
-        animation:
-            navEntrance .8s cubic-bezier(.16,1,.3,1) .25s forwards;
-
-        overflow: visible;
-
-        font-family: "Vazirmatn", Tahoma, sans-serif;
-    }
-
-    .mobile-bottom-nav::before {
-        content: "";
-
-        position: absolute;
-        inset: 1px;
-
-        border-radius: inherit;
-
-        background:
-            linear-gradient(
-                110deg,
-                rgba(255,255,255,.16),
-                rgba(255,255,255,.035) 35%,
-                transparent 65%,
-                rgba(255,255,255,.055)
-            );
-
-        pointer-events: none;
-    }
-
-    .mobile-bottom-nav::after {
-        content: "";
-
-        position: absolute;
-
-        left: 8%;
-        right: 8%;
-        bottom: -19px;
-
-        height: 32px;
-
-        background:
-            radial-gradient(
-                ellipse,
-                rgba(255,255,255,.15),
-                rgba(255,255,255,.055) 38%,
-                transparent 72%
-            );
-
-        filter: blur(17px);
-
-        border-radius: 50%;
-
-        z-index: -1;
-
-        pointer-events: none;
-    }
-
-    .mobile-bottom-nav .nav-item {
-        position: relative;
-        z-index: 2;
-
-        flex: 1;
-        height: 56px;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        gap: 1px;
-
-        color: rgba(235,235,238,.54);
-
-        text-decoration: none;
-
-        border-radius: 999px;
-
-        opacity: 0;
-
-        transform: translateY(12px);
-
-        transition:
-            color .22s ease,
-            transform .18s ease,
-            background .22s ease,
-            box-shadow .22s ease,
-            opacity .35s ease;
-    }
-
-    .mobile-bottom-nav.nav-ready .nav-item {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .mobile-bottom-nav.nav-ready .nav-item:nth-child(1) {
-        transition-delay: .12s;
-    }
-
-    .mobile-bottom-nav.nav-ready .nav-item:nth-child(2) {
-        transition-delay: .16s;
-    }
-
-    .mobile-bottom-nav.nav-ready .nav-item:nth-child(3) {
-        transition-delay: .20s;
-    }
-
-    .mobile-bottom-nav.nav-ready .nav-item:nth-child(4) {
-        transition-delay: .24s;
-    }
-
-    .mobile-bottom-nav.nav-ready .nav-item:nth-child(5) {
-        transition-delay: .28s;
-    }
-
-    .mobile-bottom-nav .nav-icon {
-        width: 24px;
-        height: 24px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        transition:
-            transform .22s ease,
-            filter .22s ease;
-    }
-
-    .mobile-bottom-nav .nav-icon svg {
-        width: 20px;
-        height: 20px;
-
-        stroke-width: 1.5;
-
-        stroke-linecap: round;
-        stroke-linejoin: round;
-
-        transition:
-            stroke-width .22s ease,
-            filter .22s ease;
-    }
-
-    .mobile-bottom-nav .nav-label {
-        font-size: 10.5px;
-        line-height: 13px;
-
-        font-weight: 500;
-
-        white-space: nowrap;
-
-        opacity: .72;
-
-        transition:
-            opacity .22s ease,
-            transform .22s ease;
-    }
-
-    .mobile-bottom-nav .nav-item.active {
-        color: rgba(255,255,255,.98);
-
-        background:
-            linear-gradient(
-                135deg,
-                rgba(255,255,255,.13),
-                rgba(255,255,255,.045)
-            );
-
-        box-shadow:
-            inset 0 1px 1px rgba(255,255,255,.16),
-            inset 0 -1px 1px rgba(0,0,0,.12),
-            0 0 18px rgba(255,255,255,.05);
-    }
-
-    .mobile-bottom-nav .nav-item.active .nav-icon {
-        transform: translateY(-1px);
-
-        filter:
-            drop-shadow(0 0 4px rgba(255,255,255,.25));
-    }
-
-    .mobile-bottom-nav .nav-item.active .nav-icon svg {
-        stroke-width: 1.75;
-    }
-
-    .mobile-bottom-nav .nav-item.active .nav-label {
-        opacity: .98;
-        transform: translateY(-.2px);
-    }
-
-    .mobile-bottom-nav .nav-item:active {
-        transform: scale(.92);
-    }
-
-    @media (hover: hover) {
-        .mobile-bottom-nav .nav-item:not(.active):hover {
-            color: rgba(255,255,255,.9);
-            background: rgba(255,255,255,.04);
-        }
-    }
-
-    body {
-        padding-bottom: 94px;
-    }
-
-    @keyframes navEntrance {
-
-        0% {
-            opacity: 0;
-
-            transform:
-                translateY(90px)
-                scaleX(.55)
-                scaleY(.35);
+        lucide.createIcons();
+
+        function getCookie(name) {
+            const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            return match ? decodeURIComponent(match[2]) : null;
         }
 
-        55% {
-            opacity: 1;
-
-            transform:
-                translateY(-5px)
-                scaleX(.98)
-                scaleY(.96);
+        function setCookie(name, value, days = 365) {
+            const d = new Date();
+            d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = name + "=" + encodeURIComponent(value) + ";path=/;expires=" + d.toUTCString() + ";SameSite=Lax";
         }
 
-        78% {
-            transform:
-                translateY(2px)
-                scaleX(1.015)
-                scaleY(1.02);
+        // Theme Toggle Setup
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            setCookie('sp_theme', isDark ? 'dark' : 'light', 365);
+            lucide.createIcons();
+            update3DDeck();
         }
 
-        100% {
-            opacity: 1;
+        /* Banner Carousel */
+        const slides = document.querySelectorAll('.banner-slide');
+        const dotsContainer = document.getElementById('bannerDots');
+        const slideCount = slides.length;
+        let currentSlide = 0;
+        let slideInterval;
 
-            transform:
-                translateY(0)
-                scaleX(1)
-                scaleY(1);
-        }
-    }
-}
-
-@media (min-width: 769px) {
-
-    body {
-        padding-bottom: 0;
-    }
-}
-</style>
-
-
-<nav class="mobile-bottom-nav" aria-label="ناوبری اصلی">
-
-    <a
-        href="https://sponsoracb.ir/"
-        class="nav-item"
-        data-key="home"
-    >
-        <span class="nav-icon">
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-            >
-                <path d="M3.5 10.8 12 3.5l8.5 7.3"/>
-                <path d="M5.5 9.5V20h13V9.5"/>
-                <path d="M9.5 20v-5.5h5V20"/>
-            </svg>
-        </span>
-
-        <span class="nav-label">
-            خانه
-        </span>
-    </a>
-
-
-    <a
-        href="https://sponsoracb.mydigify.app/"
-        class="nav-item"
-        data-key="store"
-    >
-        <span class="nav-icon">
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-            >
-                <path d="M5 9h14l-1 11H6L5 9Z"/>
-                <path d="M8 9V7a4 4 0 0 1 8 0v2"/>
-            </svg>
-        </span>
-
-        <span class="nav-label">
-            فروشگاه
-        </span>
-    </a>
-
-
-    <a
-        href="https://sponsoracb.ir/#ecosystem"
-        class="nav-item"
-        data-key="services"
-    >
-        <span class="nav-icon">
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-            >
-                <path d="m13 2-9 11h7l-1 9 9-11h-7l1-9Z"/>
-            </svg>
-        </span>
-
-        <span class="nav-label">
-            خدمات
-        </span>
-    </a>
-
-
-    <a
-        href="https://sponsoracb.ir/portal"
-        class="nav-item"
-        data-key="portal"
-    >
-        <span class="nav-icon">
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-            >
-                <rect
-                    x="4"
-                    y="4"
-                    width="6"
-                    height="6"
-                    rx="1"
-                />
-
-                <rect
-                    x="14"
-                    y="4"
-                    width="6"
-                    height="6"
-                    rx="1"
-                />
-
-                <rect
-                    x="4"
-                    y="14"
-                    width="6"
-                    height="6"
-                    rx="1"
-                />
-
-                <rect
-                    x="14"
-                    y="14"
-                    width="6"
-                    height="6"
-                    rx="1"
-                />
-            </svg>
-        </span>
-
-        <span class="nav-label">
-            پورتال
-        </span>
-    </a>
-
-
-    <a
-        href="https://sponsoracb.ir/"
-        class="nav-item"
-        data-key="account"
-    >
-        <span class="nav-icon">
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-            >
-                <circle
-                    cx="12"
-                    cy="8"
-                    r="3"
-                />
-
-                <path d="M5 20a7 7 0 0 1 14 0"/>
-            </svg>
-        </span>
-
-        <span class="nav-label">
-            حساب من
-        </span>
-    </a>
-
-</nav>
-
-
-<script>
-(function () {
-
-    function initMobileNav() {
-
-        const nav =
-            document.querySelector(".mobile-bottom-nav");
-
-        if (!nav) {
-            return;
+        for (let i = 0; i < slideCount; i++) {
+            const dot = document.createElement('button');
+            dot.className = `dot h-2 w-2 rounded-full bg-zinc-400/70 dark:bg-zinc-600/70 ${i === 0 ? 'active' : ''}`;
+            dot.setAttribute('aria-label', `اسلاید ${i + 1}`);
+            dot.onclick = () => goToSlide(i);
+            dotsContainer.appendChild(dot);
         }
 
-        const navItems =
-            nav.querySelectorAll(".nav-item");
+        const dots = document.querySelectorAll('.dot');
 
-        const currentPath =
-            window.location.pathname
-                .replace(/\/+$/, "") || "/";
-
-        const currentHash =
-            window.location.hash;
-
-        const currentHost =
-            window.location.hostname;
-
-        navItems.forEach(function (item) {
-
-            item.classList.remove("active");
-
-        });
-
-        let activeItem = null;
-
-
-        if (
-            currentHost ===
-            "sponsoracb.mydigify.app"
-        ) {
-
-            activeItem =
-                nav.querySelector(
-                    '[data-key="store"]'
-                );
-
+        function updateSlider() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                }
+            });
+            dots.forEach(d => d.classList.remove('active'));
+            if (dots[currentSlide]) dots[currentSlide].classList.add('active');
         }
 
-
-        else if (
-            currentPath === "/portal" ||
-            currentPath.startsWith("/portal/")
-        ) {
-
-            activeItem =
-                nav.querySelector(
-                    '[data-key="portal"]'
-                );
-
+        function moveBanner(direction) {
+            currentSlide = (currentSlide + direction + slideCount) % slideCount;
+            updateSlider();
         }
 
-
-        else if (
-            currentPath === "/" &&
-            currentHash === "#ecosystem"
-        ) {
-
-            activeItem =
-                nav.querySelector(
-                    '[data-key="services"]'
-                );
-
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+            resetInterval();
         }
 
-
-        else if (
-            currentPath === "/"
-        ) {
-
-            activeItem =
-                nav.querySelector(
-                    '[data-key="home"]'
-                );
-
+        function resetInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(() => moveBanner(1), 3800);
         }
 
+        if (slides.length > 0) slides[0].classList.add('active');
+        slideInterval = setInterval(() => moveBanner(1), 3800);
 
-        if (activeItem) {
+        /* 3D Stacked Card Deck */
+        const planCards = [
+            document.getElementById('planCard0'),
+            document.getElementById('planCard1'),
+            document.getElementById('planCard2'),
+            document.getElementById('planCard3')
+        ];
 
-            activeItem.classList.add("active");
+        const planTabs = [
+            document.getElementById('planTab0'),
+            document.getElementById('planTab1'),
+            document.getElementById('planTab2'),
+            document.getElementById('planTab3')
+        ];
 
-        }
+        let selectedPlanIndex = 1; // Default to Plus
 
+        function update3DDeck() {
+            const isMobile = window.innerWidth < 640;
+            const stepX = isMobile ? 60 : 120;
 
-        requestAnimationFrame(function () {
+            planCards.forEach((card, idx) => {
+                if (!card) return;
+                const diff = idx - selectedPlanIndex;
 
-            requestAnimationFrame(function () {
+                if (diff === 0) {
+                    card.style.transform = `translateX(0px) translateZ(40px) translateY(-6px) scale(1.02)`;
+                    card.style.zIndex = '35';
+                    card.style.opacity = '1';
+                    card.style.filter = 'none';
+                    card.style.pointerEvents = 'auto';
+                    card.classList.add('active-sub-card');
+                } else {
+                    card.classList.remove('active-sub-card');
+                    const dirX = diff > 0 ? 1 : -1;
+                    const absDiff = Math.abs(diff);
+                    const transX = dirX * (absDiff * stepX);
+                    const transZ = -40 * absDiff;
+                    const rotY = -dirX * (absDiff === 1 ? 6 : 11);
+                    const scale = Math.max(0.86, 1 - (absDiff * 0.06));
+                    const opacity = Math.max(0.45, 1 - (absDiff * 0.25));
+                    const zIndex = 30 - absDiff * 6;
 
-                nav.classList.add(
-                    "nav-ready"
-                );
-
+                    card.style.transform = `translateX(${transX}px) translateZ(${transZ}px) rotateY(${rotY}deg) scale(${scale})`;
+                    card.style.zIndex = `${zIndex}`;
+                    card.style.opacity = `${opacity}`;
+                    card.style.filter = absDiff > 1 ? 'blur(0.6px)' : 'none';
+                    card.style.pointerEvents = 'auto';
+                }
             });
 
-        });
-
-
-        navItems.forEach(function (item) {
-
-            item.addEventListener(
-                "click",
-                function (event) {
-
-                    const href =
-                        item.getAttribute("href");
-
-                    if (!href) {
-                        return;
-                    }
-
-                    event.preventDefault();
-
-
-                    navItems.forEach(
-                        function (navItem) {
-
-                            navItem.classList.remove(
-                                "active"
-                            );
-
-                        }
-                    );
-
-
-                    item.classList.add(
-                        "active"
-                    );
-
-
-                    setTimeout(
-                        function () {
-
-                            window.location.href =
-                                href;
-
-                        },
-                        140
-                    );
-
+            // Update Tab states
+            planTabs.forEach((tab, idx) => {
+                if (!tab) return;
+                if (idx === selectedPlanIndex) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
                 }
-            );
+            });
+        }
 
+        function selectSubPlan(index) {
+            if (index < 0) index = 0;
+            if (index >= planCards.length) index = planCards.length - 1;
+            selectedPlanIndex = index;
+            update3DDeck();
+        }
+
+        function scrollSubs(direction) {
+            let nextIndex = selectedPlanIndex + direction;
+            if (nextIndex < 0) nextIndex = planCards.length - 1;
+            if (nextIndex >= planCards.length) nextIndex = 0;
+            selectSubPlan(nextIndex);
+        }
+
+        // Swipe support for cards
+        const deckStage = document.getElementById('deckStage');
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        if (deckStage) {
+            deckStage.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            deckStage.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                const diff = touchEndX - touchStartX;
+                if (Math.abs(diff) > 40) {
+                    if (diff > 0) {
+                        scrollSubs(-1); // Swipe Right
+                    } else {
+                        scrollSubs(1); // Swipe Left
+                    }
+                }
+            }, { passive: true });
+        }
+
+        window.addEventListener('resize', update3DDeck);
+        update3DDeck(); // Init 3D Deck display
+
+        /* Scroll To Top and Intersection Observer for Reveal animations */
+        const scrollBtn = document.getElementById('scrollToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+                scrollBtn.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            } else {
+                scrollBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                scrollBtn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            }
         });
 
-    }
+        // Intersection Observer for smooth reveal from left/right/up
+        const revealElements = document.querySelectorAll('.reveal-left, .reveal-right, .reveal-up');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, {
+            threshold: 0.08,
+            rootMargin: '0px 0px -40px 0px'
+        });
 
+        revealElements.forEach(el => revealObserver.observe(el));
 
-    if (
-        document.readyState ===
-        "loading"
-    ) {
+        // Mobile Bottom Nav Script
+        (function () {
+            function initMobileNav() {
+                const nav = document.querySelector(".mobile-bottom-nav");
+                if (!nav) return;
+                
+                const navItems = nav.querySelectorAll(".nav-item");
+                const currentPath = window.location.pathname.replace(/\/+$/, "") || "/";
+                const currentHash = window.location.hash;
+                const currentHost = window.location.hostname;
 
-        document.addEventListener(
-            "DOMContentLoaded",
-            initMobileNav
-        );
+                navItems.forEach(item => item.classList.remove("active"));
+                let activeItem = null;
 
-    } else {
+                if (currentHost === "sponsoracb.mydigify.app") {
+                    activeItem = nav.querySelector('[data-key="store"]');
+                } else if (currentPath === "/portal" || currentPath.startsWith("/portal/")) {
+                    activeItem = nav.querySelector('[data-key="portal"]');
+                } else if (currentPath === "/" && currentHash === "#ecosystem") {
+                    activeItem = nav.querySelector('[data-key="services"]');
+                } else if (currentPath === "/") {
+                    activeItem = nav.querySelector('[data-key="home"]');
+                }
 
-        initMobileNav();
+                if (activeItem) activeItem.classList.add("active");
 
-    }
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => nav.classList.add("nav-ready"));
+                });
 
-})();
-</script>
-        
+                navItems.forEach(item => {
+                    item.addEventListener("click", function (event) {
+                        const href = item.getAttribute("href");
+                        if (!href) return;
+                        
+                        event.preventDefault();
+                        navItems.forEach(navItem => navItem.classList.remove("active"));
+                        item.classList.add("active");
+                        
+                        setTimeout(() => window.location.href = href, 140);
+                    });
+                });
+            }
+
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", initMobileNav);
+            } else {
+                initMobileNav();
+            }
+        })();
+    </script>
 </body>
 </html>
