@@ -2294,6 +2294,114 @@
         });
 
         revealElements.forEach(el => revealObserver.observe(el));
+   </script>
+
+    <script>
+(function () {
+
+    function initMobileNav() {
+
+        const navItems = document.querySelectorAll(
+            ".mobile-bottom-nav .nav-item"
+        );
+
+        const currentPath =
+            window.location.pathname.replace(/\/+$/, "") || "/";
+
+        const currentHash =
+            window.location.hash;
+
+        const currentHost =
+            window.location.hostname;
+
+        navItems.forEach(function (item) {
+            item.classList.remove("active");
+        });
+
+        let activeItem = null;
+
+        if (
+            currentHost === "sponsoracb.mydigify.app"
+        ) {
+            activeItem = document.querySelector(
+                '.nav-item[data-key="store"]'
+            );
+        }
+
+        else if (
+            currentPath === "/portal" ||
+            currentPath.startsWith("/portal/")
+        ) {
+            activeItem = document.querySelector(
+                '.nav-item[data-key="portal"]'
+            );
+        }
+
+        else if (
+            currentPath === "/" &&
+            currentHash === "#ecosystem"
+        ) {
+            activeItem = document.querySelector(
+                '.nav-item[data-key="services"]'
+            );
+        }
+
+        else if (
+            currentPath === "/"
+        ) {
+            activeItem = document.querySelector(
+                '.nav-item[data-key="home"]'
+            );
+        }
+
+        if (activeItem) {
+            activeItem.classList.add("active");
+        }
+    }
+
+    function setupNavigation() {
+
+        initMobileNav();
+
+        document.querySelectorAll(
+            ".mobile-bottom-nav .nav-item"
+        ).forEach(function (item) {
+
+            item.addEventListener("click", function (event) {
+
+                const href = item.getAttribute("href");
+
+                if (!href) return;
+
+                event.preventDefault();
+
+                document.querySelectorAll(
+                    ".mobile-bottom-nav .nav-item"
+                ).forEach(function (nav) {
+                    nav.classList.remove("active");
+                });
+
+                item.classList.add("active");
+
+                setTimeout(function () {
+                    window.location.href = href;
+                }, 140);
+
+            });
+
+        });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener(
+            "DOMContentLoaded",
+            setupNavigation
+        );
+    } else {
+        setupNavigation();
+    }
+
+})();
     </script>
 </body>
 </html>
