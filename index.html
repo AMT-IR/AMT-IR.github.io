@@ -2097,216 +2097,468 @@
 
     <!-- Scripts and Interactivity -->
     <script>
-        // Create initial Lucide icons
-        lucide.createIcons();
+<style>
+.mobile-bottom-nav {
+    display: none;
+}
 
-        function getCookie(name) {
-            const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-            return match ? decodeURIComponent(match[2]) : null;
+@media (max-width: 768px) {
+
+    .mobile-bottom-nav {
+        position: fixed;
+        z-index: 99999;
+
+        left: 15px;
+        right: 15px;
+        bottom: calc(21px + env(safe-area-inset-bottom));
+
+        height: 64px;
+        padding: 4px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        direction: rtl;
+
+        background: rgba(19,20,23,.58);
+
+        border: 1px solid rgba(255,255,255,.19);
+        border-radius: 999px;
+
+        backdrop-filter: blur(30px) saturate(145%);
+        -webkit-backdrop-filter: blur(30px) saturate(145%);
+
+        box-shadow:
+            0 2px 4px rgba(255,255,255,.06) inset,
+            0 -1px 2px rgba(0,0,0,.2) inset,
+            0 12px 30px rgba(0,0,0,.28),
+            0 24px 55px rgba(0,0,0,.35);
+
+        transform-origin: center bottom;
+
+        opacity: 0;
+
+        transform:
+            translateY(90px)
+            scaleX(.55)
+            scaleY(.35);
+
+        animation:
+            navEntrance .8s cubic-bezier(.16,1,.3,1) .25s forwards;
+
+        overflow: visible;
+
+        font-family: "Vazirmatn", Tahoma, sans-serif;
+    }
+
+    .mobile-bottom-nav::before {
+        content: "";
+
+        position: absolute;
+        inset: 1px;
+
+        border-radius: inherit;
+
+        background:
+            linear-gradient(
+                110deg,
+                rgba(255,255,255,.16),
+                rgba(255,255,255,.035) 35%,
+                transparent 65%,
+                rgba(255,255,255,.055)
+            );
+
+        pointer-events: none;
+    }
+
+    .mobile-bottom-nav::after {
+        content: "";
+
+        position: absolute;
+
+        left: 8%;
+        right: 8%;
+        bottom: -19px;
+
+        height: 32px;
+
+        background:
+            radial-gradient(
+                ellipse,
+                rgba(255,255,255,.15),
+                rgba(255,255,255,.055) 38%,
+                transparent 72%
+            );
+
+        filter: blur(17px);
+
+        border-radius: 50%;
+
+        z-index: -1;
+
+        pointer-events: none;
+    }
+
+    .mobile-bottom-nav .nav-item {
+        position: relative;
+        z-index: 2;
+
+        flex: 1;
+        height: 56px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        gap: 1px;
+
+        color: rgba(235,235,238,.54);
+
+        text-decoration: none;
+
+        border-radius: 999px;
+
+        opacity: 0;
+
+        transform: translateY(12px);
+
+        transition:
+            color .22s ease,
+            transform .18s ease,
+            background .22s ease,
+            box-shadow .22s ease,
+            opacity .35s ease;
+    }
+
+    .mobile-bottom-nav.nav-ready .nav-item {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .mobile-bottom-nav.nav-ready .nav-item:nth-child(1) {
+        transition-delay: .12s;
+    }
+
+    .mobile-bottom-nav.nav-ready .nav-item:nth-child(2) {
+        transition-delay: .16s;
+    }
+
+    .mobile-bottom-nav.nav-ready .nav-item:nth-child(3) {
+        transition-delay: .20s;
+    }
+
+    .mobile-bottom-nav.nav-ready .nav-item:nth-child(4) {
+        transition-delay: .24s;
+    }
+
+    .mobile-bottom-nav.nav-ready .nav-item:nth-child(5) {
+        transition-delay: .28s;
+    }
+
+    .mobile-bottom-nav .nav-icon {
+        width: 24px;
+        height: 24px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        transition:
+            transform .22s ease,
+            filter .22s ease;
+    }
+
+    .mobile-bottom-nav .nav-icon svg {
+        width: 20px;
+        height: 20px;
+
+        stroke-width: 1.5;
+
+        stroke-linecap: round;
+        stroke-linejoin: round;
+
+        transition:
+            stroke-width .22s ease,
+            filter .22s ease;
+    }
+
+    .mobile-bottom-nav .nav-label {
+        font-size: 10.5px;
+        line-height: 13px;
+
+        font-weight: 500;
+
+        white-space: nowrap;
+
+        opacity: .72;
+
+        transition:
+            opacity .22s ease,
+            transform .22s ease;
+    }
+
+    .mobile-bottom-nav .nav-item.active {
+        color: rgba(255,255,255,.98);
+
+        background:
+            linear-gradient(
+                135deg,
+                rgba(255,255,255,.13),
+                rgba(255,255,255,.045)
+            );
+
+        box-shadow:
+            inset 0 1px 1px rgba(255,255,255,.16),
+            inset 0 -1px 1px rgba(0,0,0,.12),
+            0 0 18px rgba(255,255,255,.05);
+    }
+
+    .mobile-bottom-nav .nav-item.active .nav-icon {
+        transform: translateY(-1px);
+
+        filter:
+            drop-shadow(0 0 4px rgba(255,255,255,.25));
+    }
+
+    .mobile-bottom-nav .nav-item.active .nav-icon svg {
+        stroke-width: 1.75;
+    }
+
+    .mobile-bottom-nav .nav-item.active .nav-label {
+        opacity: .98;
+        transform: translateY(-.2px);
+    }
+
+    .mobile-bottom-nav .nav-item:active {
+        transform: scale(.92);
+    }
+
+    @media (hover: hover) {
+        .mobile-bottom-nav .nav-item:not(.active):hover {
+            color: rgba(255,255,255,.9);
+            background: rgba(255,255,255,.04);
+        }
+    }
+
+    body {
+        padding-bottom: 94px;
+    }
+
+    @keyframes navEntrance {
+
+        0% {
+            opacity: 0;
+
+            transform:
+                translateY(90px)
+                scaleX(.55)
+                scaleY(.35);
         }
 
-        function setCookie(name, value, days = 365) {
-            const d = new Date();
-            d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
-            document.cookie = name + "=" + encodeURIComponent(value) + ";path=/;expires=" + d.toUTCString() + ";SameSite=Lax";
+        55% {
+            opacity: 1;
+
+            transform:
+                translateY(-5px)
+                scaleX(.98)
+                scaleY(.96);
         }
 
-        // Theme Toggle Setup
-        function toggleTheme() {
-            const isDark = document.documentElement.classList.toggle('dark');
-            setCookie('sp_theme', isDark ? 'dark' : 'light', 365);
-            lucide.createIcons();
-            update3DDeck();
+        78% {
+            transform:
+                translateY(2px)
+                scaleX(1.015)
+                scaleY(1.02);
         }
 
-        /* Banner Carousel */
-        const slides = document.querySelectorAll('.banner-slide');
-        const dotsContainer = document.getElementById('bannerDots');
-        const slideCount = slides.length;
-        let currentSlide = 0;
-        let slideInterval;
+        100% {
+            opacity: 1;
 
-        for (let i = 0; i < slideCount; i++) {
-            const dot = document.createElement('button');
-            dot.className = `dot h-2 w-2 rounded-full bg-zinc-400/70 dark:bg-zinc-600/70 ${i === 0 ? 'active' : ''}`;
-            dot.setAttribute('aria-label', `اسلاید ${i + 1}`);
-            dot.onclick = () => goToSlide(i);
-            dotsContainer.appendChild(dot);
+            transform:
+                translateY(0)
+                scaleX(1)
+                scaleY(1);
         }
+    }
+}
 
-        const dots = document.querySelectorAll('.dot');
+@media (min-width: 769px) {
 
-        function updateSlider() {
-            slides.forEach((slide, index) => {
-                slide.classList.remove('active');
-                if (index === currentSlide) {
-                    slide.classList.add('active');
-                }
-            });
-            dots.forEach(d => d.classList.remove('active'));
-            if (dots[currentSlide]) dots[currentSlide].classList.add('active');
-        }
+    body {
+        padding-bottom: 0;
+    }
+}
+</style>
 
-        function moveBanner(direction) {
-            currentSlide = (currentSlide + direction + slideCount) % slideCount;
-            updateSlider();
-        }
 
-        function goToSlide(index) {
-            currentSlide = index;
-            updateSlider();
-            resetInterval();
-        }
+<nav class="mobile-bottom-nav" aria-label="ناوبری اصلی">
 
-        function resetInterval() {
-            clearInterval(slideInterval);
-            slideInterval = setInterval(() => moveBanner(1), 3800);
-        }
+    <a
+        href="https://sponsoracb.ir/"
+        class="nav-item"
+        data-key="home"
+    >
+        <span class="nav-icon">
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+            >
+                <path d="M3.5 10.8 12 3.5l8.5 7.3"/>
+                <path d="M5.5 9.5V20h13V9.5"/>
+                <path d="M9.5 20v-5.5h5V20"/>
+            </svg>
+        </span>
 
-        if (slides.length > 0) slides[0].classList.add('active');
-        slideInterval = setInterval(() => moveBanner(1), 3800);
+        <span class="nav-label">
+            خانه
+        </span>
+    </a>
 
-        /* 3D Stacked Card Deck */
-        const planCards = [
-            document.getElementById('planCard0'),
-            document.getElementById('planCard1'),
-            document.getElementById('planCard2'),
-            document.getElementById('planCard3')
-        ];
 
-        const planTabs = [
-            document.getElementById('planTab0'),
-            document.getElementById('planTab1'),
-            document.getElementById('planTab2'),
-            document.getElementById('planTab3')
-        ];
+    <a
+        href="https://sponsoracb.mydigify.app/"
+        class="nav-item"
+        data-key="store"
+    >
+        <span class="nav-icon">
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+            >
+                <path d="M5 9h14l-1 11H6L5 9Z"/>
+                <path d="M8 9V7a4 4 0 0 1 8 0v2"/>
+            </svg>
+        </span>
 
-        let selectedPlanIndex = 1; // Default to Plus
+        <span class="nav-label">
+            فروشگاه
+        </span>
+    </a>
 
-        function update3DDeck() {
-            const isMobile = window.innerWidth < 640;
-            const stepX = isMobile ? 60 : 120;
 
-            planCards.forEach((card, idx) => {
-                if (!card) return;
-                const diff = idx - selectedPlanIndex;
+    <a
+        href="https://sponsoracb.ir/#ecosystem"
+        class="nav-item"
+        data-key="services"
+    >
+        <span class="nav-icon">
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+            >
+                <path d="m13 2-9 11h7l-1 9 9-11h-7l1-9Z"/>
+            </svg>
+        </span>
 
-                if (diff === 0) {
-                    card.style.transform = `translateX(0px) translateZ(40px) translateY(-6px) scale(1.02)`;
-                    card.style.zIndex = '35';
-                    card.style.opacity = '1';
-                    card.style.filter = 'none';
-                    card.style.pointerEvents = 'auto';
-                    card.classList.add('active-sub-card');
-                } else {
-                    card.classList.remove('active-sub-card');
-                    const dirX = diff > 0 ? 1 : -1;
-                    const absDiff = Math.abs(diff);
-                    const transX = dirX * (absDiff * stepX);
-                    const transZ = -40 * absDiff;
-                    const rotY = -dirX * (absDiff === 1 ? 6 : 11);
-                    const scale = Math.max(0.86, 1 - (absDiff * 0.06));
-                    const opacity = Math.max(0.45, 1 - (absDiff * 0.25));
-                    const zIndex = 30 - absDiff * 6;
+        <span class="nav-label">
+            خدمات
+        </span>
+    </a>
 
-                    card.style.transform = `translateX(${transX}px) translateZ(${transZ}px) rotateY(${rotY}deg) scale(${scale})`;
-                    card.style.zIndex = `${zIndex}`;
-                    card.style.opacity = `${opacity}`;
-                    card.style.filter = absDiff > 1 ? 'blur(0.6px)' : 'none';
-                    card.style.pointerEvents = 'auto';
-                }
-            });
 
-            // Update Tab states
-            planTabs.forEach((tab, idx) => {
-                if (!tab) return;
-                if (idx === selectedPlanIndex) {
-                    tab.classList.add('active');
-                } else {
-                    tab.classList.remove('active');
-                }
-            });
-        }
+    <a
+        href="https://sponsoracb.ir/portal"
+        class="nav-item"
+        data-key="portal"
+    >
+        <span class="nav-icon">
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+            >
+                <rect
+                    x="4"
+                    y="4"
+                    width="6"
+                    height="6"
+                    rx="1"
+                />
 
-        function selectSubPlan(index) {
-            if (index < 0) index = 0;
-            if (index >= planCards.length) index = planCards.length - 1;
-            selectedPlanIndex = index;
-            update3DDeck();
-        }
+                <rect
+                    x="14"
+                    y="4"
+                    width="6"
+                    height="6"
+                    rx="1"
+                />
 
-        function scrollSubs(direction) {
-            let nextIndex = selectedPlanIndex + direction;
-            if (nextIndex < 0) nextIndex = planCards.length - 1;
-            if (nextIndex >= planCards.length) nextIndex = 0;
-            selectSubPlan(nextIndex);
-        }
+                <rect
+                    x="4"
+                    y="14"
+                    width="6"
+                    height="6"
+                    rx="1"
+                />
 
-        // Swipe support for cards
-        const deckStage = document.getElementById('deckStage');
-        let touchStartX = 0;
-        let touchEndX = 0;
+                <rect
+                    x="14"
+                    y="14"
+                    width="6"
+                    height="6"
+                    rx="1"
+                />
+            </svg>
+        </span>
 
-        if (deckStage) {
-            deckStage.addEventListener('touchstart', e => {
-                touchStartX = e.changedTouches[0].screenX;
-            }, { passive: true });
+        <span class="nav-label">
+            پورتال
+        </span>
+    </a>
 
-            deckStage.addEventListener('touchend', e => {
-                touchEndX = e.changedTouches[0].screenX;
-                const diff = touchEndX - touchStartX;
-                if (Math.abs(diff) > 40) {
-                    if (diff > 0) {
-                        scrollSubs(-1); // Swipe Right
-                    } else {
-                        scrollSubs(1); // Swipe Left
-                    }
-                }
-            }, { passive: true });
-        }
 
-        window.addEventListener('resize', update3DDeck);
-        update3DDeck(); // Init 3D Deck display
+    <a
+        href="https://sponsoracb.ir/"
+        class="nav-item"
+        data-key="account"
+    >
+        <span class="nav-icon">
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+            >
+                <circle
+                    cx="12"
+                    cy="8"
+                    r="3"
+                />
 
-        /* Scroll To Top and Intersection Observer for Reveal animations */
-        const scrollBtn = document.getElementById('scrollToTopBtn');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                scrollBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
-                scrollBtn.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
-            } else {
-                scrollBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
-                scrollBtn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
-            }
-        });
+                <path d="M5 20a7 7 0 0 1 14 0"/>
+            </svg>
+        </span>
 
-        // Intersection Observer for smooth reveal from left/right/up
-        const revealElements = document.querySelectorAll('.reveal-left, .reveal-right, .reveal-up');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                }
-            });
-        }, {
-            threshold: 0.08,
-            rootMargin: '0px 0px -40px 0px'
-        });
+        <span class="nav-label">
+            حساب من
+        </span>
+    </a>
 
-        revealElements.forEach(el => revealObserver.observe(el));
-   </script>
+</nav>
 
-    <script>
+
+<script>
 (function () {
 
     function initMobileNav() {
 
-        const navItems = document.querySelectorAll(
-            ".mobile-bottom-nav .nav-item"
-        );
+        const nav =
+            document.querySelector(".mobile-bottom-nav");
+
+        if (!nav) {
+            return;
+        }
+
+        const navItems =
+            nav.querySelectorAll(".nav-item");
 
         const currentPath =
-            window.location.pathname.replace(/\/+$/, "") || "/";
+            window.location.pathname
+                .replace(/\/+$/, "") || "/";
 
         const currentHash =
             window.location.hash;
@@ -2315,93 +2567,153 @@
             window.location.hostname;
 
         navItems.forEach(function (item) {
+
             item.classList.remove("active");
+
         });
 
         let activeItem = null;
 
+
         if (
-            currentHost === "sponsoracb.mydigify.app"
+            currentHost ===
+            "sponsoracb.mydigify.app"
         ) {
-            activeItem = document.querySelector(
-                '.nav-item[data-key="store"]'
-            );
+
+            activeItem =
+                nav.querySelector(
+                    '[data-key="store"]'
+                );
+
         }
+
 
         else if (
             currentPath === "/portal" ||
             currentPath.startsWith("/portal/")
         ) {
-            activeItem = document.querySelector(
-                '.nav-item[data-key="portal"]'
-            );
+
+            activeItem =
+                nav.querySelector(
+                    '[data-key="portal"]'
+                );
+
         }
+
 
         else if (
             currentPath === "/" &&
             currentHash === "#ecosystem"
         ) {
-            activeItem = document.querySelector(
-                '.nav-item[data-key="services"]'
-            );
+
+            activeItem =
+                nav.querySelector(
+                    '[data-key="services"]'
+                );
+
         }
+
 
         else if (
             currentPath === "/"
         ) {
-            activeItem = document.querySelector(
-                '.nav-item[data-key="home"]'
-            );
+
+            activeItem =
+                nav.querySelector(
+                    '[data-key="home"]'
+                );
+
         }
+
 
         if (activeItem) {
+
             activeItem.classList.add("active");
+
         }
-    }
 
-    function setupNavigation() {
 
-        initMobileNav();
+        requestAnimationFrame(function () {
 
-        document.querySelectorAll(
-            ".mobile-bottom-nav .nav-item"
-        ).forEach(function (item) {
+            requestAnimationFrame(function () {
 
-            item.addEventListener("click", function (event) {
-
-                const href = item.getAttribute("href");
-
-                if (!href) return;
-
-                event.preventDefault();
-
-                document.querySelectorAll(
-                    ".mobile-bottom-nav .nav-item"
-                ).forEach(function (nav) {
-                    nav.classList.remove("active");
-                });
-
-                item.classList.add("active");
-
-                setTimeout(function () {
-                    window.location.href = href;
-                }, 140);
+                nav.classList.add(
+                    "nav-ready"
+                );
 
             });
 
         });
+
+
+        navItems.forEach(function (item) {
+
+            item.addEventListener(
+                "click",
+                function (event) {
+
+                    const href =
+                        item.getAttribute("href");
+
+                    if (!href) {
+                        return;
+                    }
+
+                    event.preventDefault();
+
+
+                    navItems.forEach(
+                        function (navItem) {
+
+                            navItem.classList.remove(
+                                "active"
+                            );
+
+                        }
+                    );
+
+
+                    item.classList.add(
+                        "active"
+                    );
+
+
+                    setTimeout(
+                        function () {
+
+                            window.location.href =
+                                href;
+
+                        },
+                        140
+                    );
+
+                }
+            );
+
+        });
+
     }
 
-    if (document.readyState === "loading") {
+
+    if (
+        document.readyState ===
+        "loading"
+    ) {
+
         document.addEventListener(
             "DOMContentLoaded",
-            setupNavigation
+            initMobileNav
         );
+
     } else {
-        setupNavigation();
+
+        initMobileNav();
+
     }
 
 })();
-    </script>
+</script>
+        
 </body>
 </html>
