@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SPONSORACB | پورتال رسمی</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Vazirmatn Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100dvh;
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #050507;
+            color: #FAFAFA;
+            overflow-x: hidden;
+        }
+
+        /* Pitch Black Background with Subtle Dot Pattern */
+        .luxury-bg {
+            background-color: #050507;
+            background-image: 
+                radial-gradient(at 50% 0%, rgba(220, 38, 38, 0.12) 0px, transparent 55%),
+                radial-gradient(at 85% 15%, rgba(249, 115, 22, 0.08) 0px, transparent 50%),
+                radial-gradient(#1f1f24 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 18px 18px;
+        }
+
+        .app-shell {
+            background: rgba(13, 13, 17, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 
+                0 20px 45px -10px rgba(0, 0, 0, 0.8),
+                0 0 0 1px rgba(255, 255, 255, 0.04),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .fire-stage {
+            position: relative;
+            z-index: 10;
+            border-radius: 18px;
+        }
+
+        .fire-aura-outer {
+            position: absolute;
+            inset: -6px;
+            border-radius: 22px;
+            background: conic-gradient(
+                from 0deg,
+                #dc2626,
+                #f97316,
+                #facc15,
+                #ea580c,
+                #b91c1c,
+                #f97316,
+                #fde047,
+                #dc2626
+            );
+            filter: blur(11px);
+            opacity: 0.85;
+            z-index: -2;
+            animation: firePulse 2.2s ease-in-out infinite alternate;
+        }
+
+        .fire-aura-inner {
+            position: absolute;
+            inset: -2px;
+            border-radius: 19px;
+            background: linear-gradient(90deg, #dc2626, #f97316, #fde047, #ea580c, #dc2626);
+            background-size: 300% 100%;
+            z-index: -1;
+            animation: magmaFlow 2.8s linear infinite;
+            box-shadow: 
+                0 -4px 16px -2px rgba(249, 115, 22, 0.65),
+                0 6px 18px -3px rgba(220, 38, 38, 0.6);
+        }
+
+        @keyframes magmaFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 300% 50%; }
+        }
+
+        @keyframes firePulse {
+            0% {
+                transform: scale(0.98) translateY(1px);
+                filter: blur(9px);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.015, 1.05) translateY(-2px);
+                filter: blur(13px);
+                opacity: 0.95;
+            }
+            100% {
+                transform: scale(1.0, 1.03) translateY(-1px);
+                filter: blur(11px);
+                opacity: 0.85;
+            }
+        }
+
+        .giga-card-inner {
+            background: radial-gradient(120% 140% at 0% 0%, #2b0909 0%, #120808 55%, #050507 100%);
+            border-radius: 17px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fire-stage:hover .giga-card-inner {
+            transform: scale(1.008);
+        }
+        .fire-stage:active .giga-card-inner {
+            transform: scale(0.985);
+        }
+
+        .giga-shimmer {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -150%;
+            width: 75%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(251, 146, 60, 0.16),
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transform: skewX(-25deg);
+            animation: sweepLight 3.6s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes sweepLight {
+            0% { left: -120%; }
+            45%, 100% { left: 160%; }
+        }
+
+        .bento-card {
+            background: #121216;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            box-shadow: 
+                0 2px 8px -2px rgba(0, 0, 0, 0.4),
+                0 1px 2px 0 rgba(0, 0, 0, 0.2);
+            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bento-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, #ef4444, #f97316);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(239, 68, 68, 0.5);
+            background: #18181f;
+            box-shadow: 
+                0 10px 22px -8px rgba(0, 0, 0, 0.6),
+                0 3px 8px -2px rgba(239, 68, 68, 0.2);
+        }
+
+        .bento-card:hover::before {
+            opacity: 1;
+        }
+
+        .bento-card:active {
+            transform: scale(0.985);
+        }
+
+        @keyframes sparkFlicker {
+            0%, 100% { transform: scale(1) rotate(0deg); filter: drop-shadow(0 0 4px #facc15); }
+            50% { transform: scale(1.3) rotate(22deg); filter: drop-shadow(0 0 9px #ef4444); }
+        }
+        .fuse-spark {
+            transform-origin: 19px 5px;
+            animation: sparkFlicker 0.35s infinite ease-in-out;
+        }
+
+        @keyframes floatDiamond {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-3px) rotate(2deg); }
+        }
+        .float-logo {
+            animation: floatDiamond 3.5s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body class="luxury-bg min-h-[100dvh] flex flex-col items-center justify-center py-3 px-3 sm:py-6 sm:px-4 selection:bg-red-600 selection:text-white">
+
+    <main class="w-full max-w-[340px] sm:max-w-[370px] app-shell rounded-[24px] p-3.5 sm:p-5 relative my-auto mx-auto">
+        
+        <!-- Top Subtle Handle -->
+        <div class="w-8 h-1 rounded-full bg-neutral-700/80 mx-auto mb-2.5"></div>
+
+        <section class="flex flex-col items-center text-center mb-3">
+            <div class="relative mb-1.5 float-logo">
+                <!-- Red Soft Glow Behind Emblem -->
+                <div class="absolute -inset-2 rounded-2xl bg-gradient-to-tr from-red-600 via-rose-500 to-orange-500 opacity-30 blur-md"></div>
+                
+                <!-- Sleek Brilliant Red Diamond Emblem -->
+                <div class="relative w-11 h-11 rounded-[14px] bg-[#050507] p-[1px] shadow-lg shadow-red-950/50">
+                    <div class="w-full h-full rounded-[13px] bg-gradient-to-b from-[#1c0808] to-[#070505] flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute -top-3 inset-x-0 h-6 bg-gradient-to-b from-red-500/40 to-transparent blur-xs"></div>
+                        
+                        <!-- Gorgeous Natural Red Diamond SVG -->
+                        <svg class="w-6 h-6 relative z-10 drop-shadow-[0_0_8px_rgba(239,68,68,0.9)]" viewBox="0 0 24 24" fill="none">
+                            <path d="M6 3H18L21 8L12 21L3 8L6 3Z" fill="url(#natDiamondBody)" stroke="url(#natDiamondStroke)" stroke-width="1.2" stroke-linejoin="round"/>
+                            <path d="M3 8H21" stroke="url(#natDiamondStroke)" stroke-width="1" stroke-linecap="round"/>
+                            <path d="M6 3L10 8L12 21L6 3Z" fill="url(#natFacet1)" opacity="0.8"/>
+                            <path d="M18 3L14 8L12 21L18 3Z" fill="url(#natFacet2)" opacity="0.95"/>
+                            <path d="M10 8L14 8L12 21L10 8Z" fill="#FCA5A5" opacity="0.5"/>
+                            <path d="M6 3L10 8H14L18 3H6Z" fill="#FFFFFF" opacity="0.4"/>
+                            <defs>
+                                <linearGradient id="natDiamondBody" x1="3" y1="3" x2="21" y2="21" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#F87171"/>
+                                    <stop offset="0.5" stop-color="#DC2626"/>
+                                    <stop offset="1" stop-color="#7F1D1D"/>
+                                </linearGradient>
+                                <linearGradient id="natDiamondStroke" x1="3" y1="3" x2="21" y2="21" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#FEE2E2"/>
+                                    <stop offset="0.6" stop-color="#EF4444"/>
+                                    <stop offset="1" stop-color="#991B1B"/>
+                                </linearGradient>
+                                <linearGradient id="natFacet1" x1="6" y1="3" x2="12" y2="21" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#FECACA"/>
+                                    <stop offset="1" stop-color="#7F1D1D"/>
+                                </linearGradient>
+                                <linearGradient id="natFacet2" x1="18" y1="3" x2="12" y2="21" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#FEF2F2"/>
+                                    <stop offset="1" stop-color="#991B1B"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Verified Official Badge -->
+                <div class="absolute -bottom-1 -left-1 w-4 h-4 rounded-full bg-[#121216] p-0.5 shadow border border-neutral-800">
+                    <div class="w-full h-full rounded-full bg-gradient-to-tr from-red-600 to-orange-500 flex items-center justify-center text-white">
+                        <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" stroke-width="3.2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Title & Subtitle with Tight Spacing -->
+            <h1 class="text-sm sm:text-base font-black tracking-tight text-white">
+                SPONSORACB
+            </h1>
+            <p class="text-[11px] font-medium text-neutral-400 mt-0.5">
+                پورتال رسمی جوایز، سرویس‌های ویژه و پشتیبانی
+            </p>
+        </section>
+
+        <div class="space-y-2">
+
+            <!-- 1. دریافت گیگا (TOP PRIORITY - SLEEK SPREADING FIRE & BOMB) -->
+            <div class="py-1 relative">
+                <!-- Interactive Canvas for Spreading Fire Flames & Sparks -->
+                <canvas id="fireCanvas" class="absolute -inset-x-3 -inset-y-3.5 w-[calc(100%+24px)] h-[calc(100%+28px)] pointer-events-none z-20"></canvas>
+
+                <div class="fire-stage group">
+                    <div class="fire-aura-outer"></div>
+                    <div class="fire-aura-inner"></div>
+
+                    <a href="https://t.me/monsmain/277" target="_blank" rel="noopener noreferrer" class="giga-card-inner p-3 sm:p-3.5 flex items-center justify-between gap-2.5 block z-10">
+                        <div class="giga-shimmer"></div>
+
+                        <!-- Ambient Magma Core -->
+                        <div class="absolute -right-4 -bottom-6 w-24 h-24 bg-red-600/35 rounded-full blur-xl pointer-events-none"></div>
+                        <div class="absolute right-12 -top-6 w-20 h-20 bg-orange-500/25 rounded-full blur-xl pointer-events-none"></div>
+
+                        <div class="flex items-center gap-2.5 min-w-0 relative z-10">
+                            <!-- Sleek Bomb Icon Container -->
+                            <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-orange-400 via-red-600 to-red-900 p-[1px] shrink-0 shadow-md shadow-red-950/50 group-hover:scale-105 transition-transform">
+                                <div class="w-full h-full rounded-[11px] bg-[#0A0505] flex items-center justify-center relative overflow-hidden">
+                                    <div class="absolute inset-0 bg-gradient-to-tr from-red-600/25 via-orange-500/15 to-transparent"></div>
+                                    <!-- Custom Explosive Bomb SVG -->
+                                    <svg class="w-6 h-6 relative z-10" viewBox="0 0 24 24" fill="none">
+                                        <circle cx="10.5" cy="14" r="6.8" fill="url(#bombBody)" stroke="#F97316" stroke-width="1.2"/>
+                                        <path d="M7.2 11.5C7.8 10.2 9 9.5 10.2 9.5" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" opacity="0.85"/>
+                                        <path d="M13.5 7.2L15.6 9.3" stroke="#FB923C" stroke-width="2.4" stroke-linecap="round"/>
+                                        <path d="M14.8 8C16.2 6.5 17.8 6.8 19 5" stroke="#FDE047" stroke-width="1.7" stroke-linecap="round"/>
+                                        <g class="fuse-spark">
+                                            <path d="M19 1.5L19.8 3.9L22.2 4.7L19.8 5.5L19 7.9L18.2 5.5L15.8 4.7L18.2 3.9L19 1.5Z" fill="#FEF08A"/>
+                                            <circle cx="19" cy="4.7" r="1.5" fill="#EF4444"/>
+                                        </g>
+                                        <defs>
+                                            <radialGradient id="bombBody" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(8.5 11.5) rotate(50) scale(9.5)">
+                                                <stop stop-color="#451A1A"/>
+                                                <stop offset="0.55" stop-color="#180909"/>
+                                                <stop offset="1" stop-color="#050507"/>
+                                            </radialGradient>
+                                        </defs>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <!-- Text Info -->
+                            <div class="min-w-0">
+                                <div class="flex items-center gap-1.5">
+                                    <h2 class="text-[13px] sm:text-sm font-black text-white tracking-tight truncate">
+                                        دریافت گیگا
+                                    </h2>
+                                    <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[9px] font-extrabold bg-gradient-to-r from-red-600 to-orange-500 text-white shrink-0">
+                                        <span>ویژه</span>
+                                        <span class="w-1 h-1 rounded-full bg-yellow-200 animate-ping"></span>
+                                    </span>
+                                </div>
+                                <p class="text-[10px] sm:text-[11px] text-orange-200/80 font-medium mt-0.5 truncate">
+                                    ورود مستقیم و دریافت آنی پاداش
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Compact CTA Pill -->
+                        <div class="shrink-0 relative z-10">
+                            <div class="px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-gradient-to-r from-orange-500 to-red-600 text-white text-[11px] font-extrabold flex items-center gap-1 shadow-md shadow-orange-950/40">
+                                <span>دریافت</span>
+                                <svg class="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2. چنل تلگرام: SPONSORACB -->
+            <a href="https://t.me/SPONSORACB" target="_blank" rel="noopener noreferrer" class="bento-card group p-2.5 sm:p-3 flex items-center justify-between gap-2.5 block">
+                <div class="flex items-center gap-2.5 min-w-0">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-neutral-900 text-neutral-200 flex items-center justify-center shrink-0 group-hover:bg-gradient-to-br group-hover:from-red-600 group-hover:to-orange-500 group-hover:text-white transition-colors duration-300 border border-neutral-800">
+                        <svg class="w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg>
+                    </div>
+                    <div class="min-w-0">
+                        <div class="flex items-center gap-1.5">
+                            <h2 class="text-xs sm:text-[13px] font-extrabold text-white group-hover:text-red-500 transition-colors truncate">
+                                چنل تلگرام
+                            </h2>
+                            <span class="px-1.5 py-0.5 text-[9px] font-bold rounded bg-neutral-800 text-neutral-300 border border-neutral-700 shrink-0">
+                                رسمی
+                            </span>
+                        </div>
+                        <p class="text-[10px] sm:text-[11px] text-neutral-400 font-medium mt-0.5 truncate">
+                            اخبار، کدهای هدیه و اطلاع‌رسانی‌ها
+                        </p>
+                    </div>
+                </div>
+
+                <div class="shrink-0">
+                    <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-neutral-900 text-neutral-300 group-hover:bg-white group-hover:text-black transition-all flex items-center justify-center border border-neutral-800">
+                        <svg class="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 3. شماره مجازی رایگان: درحال آماده سازی -->
+            <div onclick="openModal('شماره مجازی رایگان', 'در حال آماده‌سازی', 'زیرساخت دریافت شماره مجازی رایگان در حال تکمیل ظرفیت سرورها است و به‌زودی برای تمام کاربران فعال خواهد شد.', 'orange')" role="button" tabindex="0" class="bento-card cursor-pointer group p-2.5 sm:p-3 flex items-center justify-between gap-2.5">
+                <div class="flex items-center gap-2.5 min-w-0">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-orange-950/40 text-orange-400 border border-orange-900/50 flex items-center justify-center shrink-0 group-hover:bg-orange-500 group-hover:text-white transition-colors duration-300">
+                        <svg class="w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <div class="min-w-0">
+                        <h2 class="text-xs sm:text-[13px] font-extrabold text-white truncate">
+                            شماره مجازی رایگان
+                        </h2>
+                        <div class="flex items-center gap-1 mt-0.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse shrink-0"></span>
+                            <p class="text-[10px] sm:text-[11px] font-bold text-orange-400 truncate">
+                                درحال آماده سازی
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shrink-0">
+                    <span class="px-2 py-1 rounded-lg text-[10px] font-extrabold bg-neutral-900 text-white border border-neutral-800">
+                        به‌زودی
+                    </span>
+                </div>
+            </div>
+
+            <!-- 4. تلگرام پرمیوم: درحال بروزرسانی و آپدیت برنامه -->
+            <div onclick="openModal('تلگرام پرمیوم', 'در حال بروزرسانی', 'سرویس فعال‌سازی تلگرام پرمیوم در حال ارتقا به نسخه جدید برنامه می‌باشد. اطلاعیه فعال‌سازی در چنل رسمی قرار می‌گیرد.', 'red')" role="button" tabindex="0" class="bento-card cursor-pointer group p-2.5 sm:p-3 flex items-center justify-between gap-2.5">
+                <div class="flex items-center gap-2.5 min-w-0">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-red-950/40 text-red-400 border border-red-900/50 flex items-center justify-center shrink-0 group-hover:bg-red-600 group-hover:text-white transition-colors duration-300">
+                        <svg class="w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+                        </svg>
+                    </div>
+                    <div class="min-w-0">
+                        <h2 class="text-xs sm:text-[13px] font-extrabold text-white truncate">
+                            تلگرام پرمیوم
+                        </h2>
+                        <div class="flex items-center gap-1 mt-0.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping shrink-0"></span>
+                            <p class="text-[10px] sm:text-[11px] font-bold text-red-400 truncate">
+                                درحال بروزرسانی و آپدیت برنامه
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shrink-0">
+                    <span class="px-2 py-1 rounded-lg text-[10px] font-extrabold bg-red-950/60 text-red-400 border border-red-900/60">
+                        آپدیت
+                    </span>
+                </div>
+            </div>
+
+            <!-- 5. پشتیبانی: SPONSORACB.ir/Support -->
+            <a href="https://t.me/SPONSORACB" target="_blank" rel="noopener noreferrer" class="bento-card group p-2.5 sm:p-3 flex items-center justify-between gap-2.5 block">
+                <div class="flex items-center gap-2.5 min-w-0">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-neutral-900 text-neutral-200 flex items-center justify-center shrink-0 group-hover:bg-gradient-to-br group-hover:from-red-600 group-hover:to-orange-500 group-hover:text-white transition-colors duration-300 border border-neutral-800">
+                        <svg class="w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636l3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
+                        </svg>
+                    </div>
+                    <div class="min-w-0">
+                        <div class="flex items-center gap-1.5">
+                            <h2 class="text-xs sm:text-[13px] font-extrabold text-white group-hover:text-orange-500 transition-colors truncate">
+                                پشتیبانی
+                            </h2>
+                            <span class="px-1.5 py-0.5 text-[9px] font-extrabold rounded bg-orange-500 text-white shrink-0">
+                                ۲۴/۷
+                            </span>
+                        </div>
+                        <p class="text-[10px] sm:text-[11px] text-neutral-400 font-medium mt-0.5 truncate">
+                            ارتباط مستقیم با تیم پشتیبانی
+                        </p>
+                    </div>
+                </div>
+
+                <div class="shrink-0">
+                    <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-neutral-900 text-neutral-300 group-hover:bg-white group-hover:text-black transition-all flex items-center justify-center border border-neutral-800">
+                        <svg class="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+        <footer class="mt-3 pt-2 border-t border-neutral-800/80 flex items-center justify-between text-[10px] font-bold text-neutral-500">
+            <span>SPONSORACB</span>
+            <span class="inline-flex items-center gap-1 text-neutral-400">
+                <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                <span>سرویس‌ها آنلاین</span>
+            </span>
+        </footer>
+    </main>
+
+    <!-- Status Modal (Compact & Responsive) -->
+    <div id="statusModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 bg-black/80 backdrop-blur-sm">
+        <div class="w-full max-w-[310px] rounded-[20px] bg-[#121216] border border-neutral-800 p-4 shadow-2xl text-white">
+            <div class="flex items-center justify-between mb-2.5">
+                <span id="modalBadge" class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold"></span>
+                <button type="button" onclick="closeModal()" class="w-6 h-6 rounded-lg bg-neutral-800 text-neutral-300 hover:bg-red-600 hover:text-white flex items-center justify-center transition-colors">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <h3 id="modalTitle" class="text-sm font-black text-white mb-1"></h3>
+            <p id="modalDesc" class="text-xs text-neutral-400 leading-relaxed mb-3.5 font-medium"></p>
+            <div class="flex items-center gap-2">
+                <a href="https://t.me/SPONSORACB" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 px-3 rounded-xl bg-gradient-to-r from-red-600 to-orange-500 hover:opacity-90 text-white text-[11px] font-extrabold text-center transition-opacity">
+                    ورود به چنل تلگرام
+                </a>
+                <button type="button" onclick="closeModal()" class="py-2 px-3 rounded-xl bg-neutral-800 text-neutral-300 text-[11px] font-extrabold hover:bg-neutral-700 transition-colors">
+                    بستن
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal Logic
+        function openModal(title, badge, desc, theme) {
+            const modal = document.getElementById('statusModal');
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalDesc').textContent = desc;
+            const badgeEl = document.getElementById('modalBadge');
+            badgeEl.textContent = badge;
+
+            if (theme === 'orange') {
+                badgeEl.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-orange-950 text-orange-400 border border-orange-900';
+            } else {
+                badgeEl.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-red-950 text-red-400 border border-red-900';
+            }
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('statusModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        document.getElementById('statusModal').addEventListener('click', (e) => {
+            if (e.target.id === 'statusModal') closeModal();
+        });
+
+        // Smooth 60FPS Canvas Fire & Spreading Embers
+        const canvas = document.getElementById('fireCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeFireCanvas() {
+            const rect = canvas.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+
+        window.addEventListener('resize', resizeFireCanvas);
+        resizeFireCanvas();
+
+        function createFlameParticle() {
+            const w = canvas.clientWidth;
+            const h = canvas.clientHeight;
+            if (!w || !h) return;
+
+            const padX = 12;
+            const padY = 14;
+            const boxW = w - padX * 2;
+            const boxH = h - padY * 2;
+
+            const edge = Math.random();
+            let x, y, vx, vy;
+
+            if (edge < 0.55) {
+                x = padX + Math.random() * boxW;
+                y = padY + (Math.random() * 6 - 2);
+                vx = (Math.random() - 0.5) * 0.9;
+                vy = -(Math.random() * 1.2 + 0.5);
+            } else if (edge < 0.8) {
+                const isLeft = Math.random() < 0.5;
+                x = isLeft ? padX + 2 : padX + boxW - 2;
+                y = padY + Math.random() * boxH;
+                vx = (isLeft ? -1 : 1) * (Math.random() * 1.0 + 0.3);
+                vy = -(Math.random() * 0.9 + 0.2);
+            } else {
+                x = padX + Math.random() * boxW;
+                y = padY + boxH - 2;
+                vx = (Math.random() - 0.5) * 0.8;
+                vy = Math.random() * 0.6 + 0.15;
+            }
+
+            const colors = [
+                { r: 239, g: 68, b: 68 },
+                { r: 249, g: 115, b: 22 },
+                { r: 251, g: 146, b: 60 },
+                { r: 250, g: 204, b: 21 }
+            ];
+            const c = colors[Math.floor(Math.random() * colors.length)];
+
+            particles.push({
+                x,
+                y,
+                vx,
+                vy,
+                radius: Math.random() * 3 + 1.2,
+                alpha: 1,
+                decay: Math.random() * 0.026 + 0.018,
+                color: c
+            });
+        }
+
+        function animateFire() {
+            const w = canvas.clientWidth;
+            const h = canvas.clientHeight;
+            ctx.clearRect(0, 0, w, h);
+
+            for (let i = 0; i < 2; i++) {
+                createFlameParticle();
+            }
+
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.radius *= 0.985;
+                p.alpha -= p.decay;
+
+                if (p.alpha <= 0 || p.radius <= 0.3) {
+                    particles.splice(i, 1);
+                    continue;
+                }
+
+                const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * 2);
+                grad.addColorStop(0, `rgba(255, 255, 240, ${p.alpha})`);
+                grad.addColorStop(0.4, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${p.alpha * 0.88})`);
+                grad.addColorStop(1, `rgba(220, 38, 38, 0)`);
+
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius * 2, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            requestAnimationFrame(animateFire);
+        }
+
+        window.onload = function() {
+            resizeFireCanvas();
+            animateFire();
+        };
+    </script>
+</body>
+</html>
